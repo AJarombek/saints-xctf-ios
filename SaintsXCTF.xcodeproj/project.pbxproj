@@ -8,12 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		A15BA1391E8AF61D00B9796B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15BA1381E8AF61D00B9796B /* AppDelegate.swift */; };
-		A15BA13B1E8AF61D00B9796B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15BA13A1E8AF61D00B9796B /* ViewController.swift */; };
 		A15BA13E1E8AF61D00B9796B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A15BA13C1E8AF61D00B9796B /* Main.storyboard */; };
 		A15BA1401E8AF61D00B9796B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A15BA13F1E8AF61D00B9796B /* Assets.xcassets */; };
 		A15BA1431E8AF61D00B9796B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A15BA1411E8AF61D00B9796B /* LaunchScreen.storyboard */; };
 		A15BA14E1E8AF61D00B9796B /* SaintsXCTFTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15BA14D1E8AF61D00B9796B /* SaintsXCTFTests.swift */; };
 		A15BA1591E8AF61E00B9796B /* SaintsXCTFUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15BA1581E8AF61E00B9796B /* SaintsXCTFUITests.swift */; };
+		A15BA1671E8AF6CE00B9796B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15BA1661E8AF6CE00B9796B /* HomeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +36,6 @@
 /* Begin PBXFileReference section */
 		A15BA1351E8AF61D00B9796B /* SaintsXCTF.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SaintsXCTF.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A15BA1381E8AF61D00B9796B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A15BA13A1E8AF61D00B9796B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A15BA13D1E8AF61D00B9796B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A15BA13F1E8AF61D00B9796B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A15BA1421E8AF61D00B9796B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +46,7 @@
 		A15BA1541E8AF61E00B9796B /* SaintsXCTFUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SaintsXCTFUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A15BA1581E8AF61E00B9796B /* SaintsXCTFUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaintsXCTFUITests.swift; sourceTree = "<group>"; };
 		A15BA15A1E8AF61E00B9796B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A15BA1661E8AF6CE00B9796B /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,11 +98,11 @@
 			isa = PBXGroup;
 			children = (
 				A15BA1381E8AF61D00B9796B /* AppDelegate.swift */,
-				A15BA13A1E8AF61D00B9796B /* ViewController.swift */,
 				A15BA13C1E8AF61D00B9796B /* Main.storyboard */,
 				A15BA13F1E8AF61D00B9796B /* Assets.xcassets */,
 				A15BA1411E8AF61D00B9796B /* LaunchScreen.storyboard */,
 				A15BA1441E8AF61D00B9796B /* Info.plist */,
+				A15BA1661E8AF6CE00B9796B /* HomeViewController.swift */,
 			);
 			path = SaintsXCTF;
 			sourceTree = "<group>";
@@ -259,8 +259,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A15BA13B1E8AF61D00B9796B /* ViewController.swift in Sources */,
 				A15BA1391E8AF61D00B9796B /* AppDelegate.swift in Sources */,
+				A15BA1671E8AF6CE00B9796B /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
