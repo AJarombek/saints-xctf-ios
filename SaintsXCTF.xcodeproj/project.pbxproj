@@ -14,6 +14,9 @@
 		A15BA14E1E8AF61D00B9796B /* SaintsXCTFTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15BA14D1E8AF61D00B9796B /* SaintsXCTFTests.swift */; };
 		A15BA1591E8AF61E00B9796B /* SaintsXCTFUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15BA1581E8AF61E00B9796B /* SaintsXCTFUITests.swift */; };
 		A15BA1671E8AF6CE00B9796B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15BA1661E8AF6CE00B9796B /* HomeViewController.swift */; };
+		A1D53DEE1E8B647100842177 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D53DED1E8B647100842177 /* APIClient.swift */; };
+		A1D53DF01E8B648400842177 /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D53DEF1E8B648400842177 /* APIRequest.swift */; };
+		A1D53DF21E8B64A300842177 /* JSONConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D53DF11E8B64A300842177 /* JSONConverter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +50,9 @@
 		A15BA1581E8AF61E00B9796B /* SaintsXCTFUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaintsXCTFUITests.swift; sourceTree = "<group>"; };
 		A15BA15A1E8AF61E00B9796B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A15BA1661E8AF6CE00B9796B /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		A1D53DED1E8B647100842177 /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		A1D53DEF1E8B648400842177 /* APIRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
+		A1D53DF11E8B64A300842177 /* JSONConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONConverter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +109,9 @@
 				A15BA1411E8AF61D00B9796B /* LaunchScreen.storyboard */,
 				A15BA1441E8AF61D00B9796B /* Info.plist */,
 				A15BA1661E8AF6CE00B9796B /* HomeViewController.swift */,
+				A1D53DED1E8B647100842177 /* APIClient.swift */,
+				A1D53DEF1E8B648400842177 /* APIRequest.swift */,
+				A1D53DF11E8B64A300842177 /* JSONConverter.swift */,
 			);
 			path = SaintsXCTF;
 			sourceTree = "<group>";
@@ -260,7 +269,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				A15BA1391E8AF61D00B9796B /* AppDelegate.swift in Sources */,
+				A1D53DF01E8B648400842177 /* APIRequest.swift in Sources */,
 				A15BA1671E8AF6CE00B9796B /* HomeViewController.swift in Sources */,
+				A1D53DEE1E8B647100842177 /* APIClient.swift in Sources */,
+				A1D53DF21E8B64A300842177 /* JSONConverter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -505,6 +517,7 @@
 				A15BA15F1E8AF61E00B9796B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A15BA1601E8AF61E00B9796B /* Build configuration list for PBXNativeTarget "SaintsXCTFTests" */ = {
 			isa = XCConfigurationList;
@@ -513,6 +526,7 @@
 				A15BA1621E8AF61E00B9796B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A15BA1631E8AF61E00B9796B /* Build configuration list for PBXNativeTarget "SaintsXCTFUITests" */ = {
 			isa = XCConfigurationList;
@@ -521,6 +535,7 @@
 				A15BA1651E8AF61E00B9796B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
