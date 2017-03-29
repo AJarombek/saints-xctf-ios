@@ -12,7 +12,7 @@ class APIRequest {
     
     private static let logTag = "APIRequest:"
     
-    public static func get(withURL url: URL) {
+    public static func get(withURL url: URL, completion: @escaping (Data) -> Void) {
         let urlRequest = URLRequest(url: url)
         let session = URLSession.shared
         
@@ -31,7 +31,10 @@ class APIRequest {
                 print("\(logTag) Error, did not receive data")
                 return
             }
+            
+            completion(responseData)
         }
+        task.resume()
     }
     
     public static func post(withURL url: String) {

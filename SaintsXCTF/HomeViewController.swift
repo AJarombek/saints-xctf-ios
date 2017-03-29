@@ -24,6 +24,6 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func logInUser(_ sender: UIButton) {
-        print("\(logTag) Loging In User.")
+        print("\(logTag) Logging In User.")
     }
 }
