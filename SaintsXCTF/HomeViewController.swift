@@ -10,12 +10,20 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
+    let logTag = "HomeViewController:"
+    
     @IBOutlet var backgroundImage: UIImageView!
     @IBOutlet var logIn: UIButton!
     @IBOutlet var signUp: UIButton!
+    @IBOutlet var username: UITextField!
+    @IBOutlet var password: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.backgroundImage.image = #imageLiteral(resourceName: "Background")
+    }
+    
+    @IBAction func logInUser(_ sender: UIButton) {
+        print("\(logTag) Loging In User.")
     }
 }
