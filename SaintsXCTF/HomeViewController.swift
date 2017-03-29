@@ -10,4 +10,11 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
+    @IBOutlet var backgroundImage: UIImageView!
+    //var backgroundImage = UIImage?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.backgroundImage.image = #imageLiteral(resourceName: "Background")
+    }
 }
