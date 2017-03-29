@@ -11,7 +11,8 @@ import UIKit
 class HomeViewController: UIViewController {
     
     @IBOutlet var backgroundImage: UIImageView!
-    //var backgroundImage = UIImage?
+    @IBOutlet var logIn: UIButton!
+    @IBOutlet var signUp: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()

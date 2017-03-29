@@ -25,40 +25,59 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TCD-wy-8MH">
                                 <rect key="frame" x="16" y="120" width="343" height="447"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bUD-Ry-2Lb">
-                                <rect key="frame" x="166" y="328" width="42" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Log In">
-                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                    <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pn8-gf-tIQ">
-                                <rect key="frame" x="160" y="400" width="55" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Sign Up">
-                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                    <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                            </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="SaintsXCTF" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="28" translatesAutoresizingMaskIntoConstraints="NO" id="vB4-vl-UFp">
-                                <rect key="frame" x="100" y="214" width="174" height="66"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                            <view alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5mD-YQ-23l">
+                                <rect key="frame" x="36" y="220" width="303" height="247"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bUD-Ry-2Lb">
+                                        <rect key="frame" x="123" y="126" width="57" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                        <state key="normal" title="Log In">
+                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pn8-gf-tIQ">
+                                        <rect key="frame" x="115" y="182" width="74" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                        <state key="normal" title="Sign Up">
+                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="SaintsXCTF" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="28" translatesAutoresizingMaskIntoConstraints="NO" id="vB4-vl-UFp">
+                                        <rect key="frame" x="69" y="40" width="166" height="36"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" red="0.96078431369999995" green="0.95686274510000002" blue="0.94509803920000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="bUD-Ry-2Lb" firstAttribute="top" secondItem="vB4-vl-UFp" secondAttribute="bottom" constant="50" id="M4e-ZM-Qtr"/>
+                                    <constraint firstItem="pn8-gf-tIQ" firstAttribute="top" secondItem="bUD-Ry-2Lb" secondAttribute="bottom" constant="20" id="P5w-Rw-WVP"/>
+                                    <constraint firstItem="vB4-vl-UFp" firstAttribute="centerX" secondItem="5mD-YQ-23l" secondAttribute="centerX" id="Xsq-xK-Ov9"/>
+                                    <constraint firstItem="bUD-Ry-2Lb" firstAttribute="centerX" secondItem="5mD-YQ-23l" secondAttribute="centerX" id="bt0-3K-bdR"/>
+                                    <constraint firstItem="vB4-vl-UFp" firstAttribute="top" secondItem="5mD-YQ-23l" secondAttribute="top" constant="40" id="ojn-jH-fte"/>
+                                    <constraint firstItem="pn8-gf-tIQ" firstAttribute="centerX" secondItem="5mD-YQ-23l" secondAttribute="centerX" id="tYV-Pu-W6F"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.93070126488095228" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="TCD-wy-8MH" secondAttribute="bottom" constant="100" id="G6A-de-TKJ"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="5mD-YQ-23l" secondAttribute="bottom" constant="200" id="LSL-2T-P8s"/>
                             <constraint firstItem="TCD-wy-8MH" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="NAX-0U-4V6"/>
+                            <constraint firstItem="5mD-YQ-23l" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="200" id="O4X-K4-Pe6"/>
                             <constraint firstItem="TCD-wy-8MH" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="100" id="ndu-IA-Pd6"/>
                             <constraint firstAttribute="trailingMargin" secondItem="TCD-wy-8MH" secondAttribute="trailing" id="qYT-Gf-tL8"/>
+                            <constraint firstItem="5mD-YQ-23l" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="w5Z-xC-TXi"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="5mD-YQ-23l" secondAttribute="trailing" constant="20" id="wWj-w4-fTK"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="backgroundImage" destination="TCD-wy-8MH" id="uaU-we-vWl"/>
+                        <outlet property="logIn" destination="bUD-Ry-2Lb" id="Mmn-xe-M4X"/>
+                        <outlet property="signUp" destination="pn8-gf-tIQ" id="DYy-xD-dSh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
