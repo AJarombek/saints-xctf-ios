@@ -25,7 +25,9 @@ class APIClient {
             (data) -> Void in
             
             do {
-                guard let user = try JSONSerialization.jsonObject(with: responseData, options: [])
+                guard let user = try JSONSerialization.jsonObject(with: responseData, options: []) else {
+                    
+                }
             }
         }
     }
