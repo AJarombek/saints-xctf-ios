@@ -7,10 +7,15 @@
 //
 
 import Foundation
+import ObjectMapper
 
 class APIClient {
     
+    private static let logTag = "APIClient:"
     
+    // MARK: - GET Requests
+    
+    // Handle GET Requests for a User
     public static func userGetRequest(withUser username: String) {
         
         // Create the URL
@@ -22,13 +27,33 @@ class APIClient {
         
         // Generate the request with a completion function to parse JSON
         APIRequest.get(withURL: url) {
-            (data) -> Void in
-            
-            do {
-                guard let user = try JSONSerialization.jsonObject(with: responseData, options: []) else {
-                    
-                }
-            }
+            (jsonMap) -> Void in
+        
+            let user = User(map: jsonMap)
+            print(user ?? "User Conversion Failed.")
         }
     }
+    
+    // Handle GET Requests for all Users
+    public static func usersGetRequest() {
+        
+        let usersGetEndpoint = "https://www.saintsxctf.com/api/api.php/users"
+        guard let url = URL(string: usersGetEndpoint) else {
+            print("Error: Cannot create URL")
+            return
+        }
+        
+        APIRequest.get(withURL: url) {
+            (jsonMap) -> Void in
+            
+            let user = User(map: jsonMap)
+            print(user ?? "User Conversion Failed.")
+        }
+    }
+    
+    // MARK: - POST Requests
+    
+    // MARK: - PUT Requests
+    
+    // MARK: - DELETE Requests
 }

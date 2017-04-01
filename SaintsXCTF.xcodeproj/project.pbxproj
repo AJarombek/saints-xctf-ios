@@ -21,7 +21,6 @@
 		A15BA1671E8AF6CE00B9796B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15BA1661E8AF6CE00B9796B /* HomeViewController.swift */; };
 		A1D53DEE1E8B647100842177 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D53DED1E8B647100842177 /* APIClient.swift */; };
 		A1D53DF01E8B648400842177 /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D53DEF1E8B648400842177 /* APIRequest.swift */; };
-		A1D53DF21E8B64A300842177 /* JSONConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D53DF11E8B64A300842177 /* JSONConverter.swift */; };
 		A1D53DF61E8DE25400842177 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D53DF51E8DE25400842177 /* User.swift */; };
 /* End PBXBuildFile section */
 
@@ -63,7 +62,6 @@
 		A15BA1661E8AF6CE00B9796B /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		A1D53DED1E8B647100842177 /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		A1D53DEF1E8B648400842177 /* APIRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
-		A1D53DF11E8B64A300842177 /* JSONConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONConverter.swift; sourceTree = "<group>"; };
 		A1D53DF51E8DE25400842177 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -132,7 +130,6 @@
 				A15BA1661E8AF6CE00B9796B /* HomeViewController.swift */,
 				A1D53DED1E8B647100842177 /* APIClient.swift */,
 				A1D53DEF1E8B648400842177 /* APIRequest.swift */,
-				A1D53DF11E8B64A300842177 /* JSONConverter.swift */,
 				A1D53DF51E8DE25400842177 /* User.swift */,
 				A1505B8F1E8F105A00F111DB /* Comment.swift */,
 				A1505B911E8F10A900F111DB /* Group.swift */,
@@ -348,7 +345,6 @@
 				A15BA1671E8AF6CE00B9796B /* HomeViewController.swift in Sources */,
 				A1505B981E8F117700F111DB /* LeaderboardItem.swift in Sources */,
 				A1D53DEE1E8B647100842177 /* APIClient.swift in Sources */,
-				A1D53DF21E8B64A300842177 /* JSONConverter.swift in Sources */,
 				A1505B941E8F10E400F111DB /* GroupInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
