@@ -26,9 +26,12 @@ class User: Mappable {
     var location: String?
     var favorite_event: String?
     var forgot_password: [String]!
+    var flair: [String]!
+    var notifications: [Notification]!
     var groups: [GroupInfo]!
     var statistics: [String:Double]!
     var last_signin: String?
+    var week_start: String?
     
     required init?(map: Map) {
         // pass
@@ -50,8 +53,11 @@ class User: Mappable {
         location <- map["location"]
         favorite_event <- map["favorite_event"]
         forgot_password <- map["forgot_password"]
+        flair <- map["flair"]
+        notifications <- map["notifications"]
         groups <- map["groups"]
         statistics <- map["statistics"]
         last_signin <- map["last_signin"]
+        week_start <- map["week_start"]
     }
 }

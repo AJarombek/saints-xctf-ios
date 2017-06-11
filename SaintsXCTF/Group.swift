@@ -16,6 +16,7 @@ class Group: Mappable {
     var grouppic: String?
     var grouppic_name: String?
     var description: String?
+    var week_start: String?
     var members: [GroupMember]!
     var statistics: [String:Double]!
     var leaderboards: [String:[LeaderboardItem]]!
@@ -30,6 +31,7 @@ class Group: Mappable {
         grouppic <- map["grouppic"]
         grouppic_name <- map["grouppic_name"]
         description <- map["description"]
+        week_start <- map["week_start"]
         members <- map["members"]
         statistics <- map["statistics"]
         leaderboards <- map["leaderboards"]

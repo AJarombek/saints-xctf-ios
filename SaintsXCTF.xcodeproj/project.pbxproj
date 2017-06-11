@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		1CE0610CCE5153FFA7B56A74 /* Pods_SaintsXCTF.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5710AA933FBAE02B146B8E7E /* Pods_SaintsXCTF.framework */; };
+		A1015A371EEDC0EA00A2358E /* ActivationCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1015A361EEDC0EA00A2358E /* ActivationCode.swift */; };
+		A1015A391EEDC1CF00A2358E /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1015A381EEDC1CF00A2358E /* Message.swift */; };
+		A1015A3B1EEDC2B800A2358E /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1015A3A1EEDC2B800A2358E /* Notification.swift */; };
+		A1015A3D1EEDC3F400A2358E /* RangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1015A3C1EEDC3F400A2358E /* RangeView.swift */; };
 		A1505B901E8F105A00F111DB /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1505B8F1E8F105A00F111DB /* Comment.swift */; };
 		A1505B921E8F10A900F111DB /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1505B911E8F10A900F111DB /* Group.swift */; };
 		A1505B941E8F10E400F111DB /* GroupInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1505B931E8F10E400F111DB /* GroupInfo.swift */; };
@@ -45,6 +49,10 @@
 		0CD90F1E9754CEAF302758E6 /* Pods-SaintsXCTF.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SaintsXCTF.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SaintsXCTF/Pods-SaintsXCTF.debug.xcconfig"; sourceTree = "<group>"; };
 		5710AA933FBAE02B146B8E7E /* Pods_SaintsXCTF.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SaintsXCTF.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A040544706F126FFF8857D3 /* Pods-SaintsXCTF.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SaintsXCTF.release.xcconfig"; path = "Pods/Target Support Files/Pods-SaintsXCTF/Pods-SaintsXCTF.release.xcconfig"; sourceTree = "<group>"; };
+		A1015A361EEDC0EA00A2358E /* ActivationCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivationCode.swift; sourceTree = "<group>"; };
+		A1015A381EEDC1CF00A2358E /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		A1015A3A1EEDC2B800A2358E /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
+		A1015A3C1EEDC3F400A2358E /* RangeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RangeView.swift; sourceTree = "<group>"; };
 		A1505B8F1E8F105A00F111DB /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		A1505B911E8F10A900F111DB /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		A1505B931E8F10E400F111DB /* GroupInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupInfo.swift; sourceTree = "<group>"; };
@@ -137,6 +145,10 @@
 				A1505B951E8F112500F111DB /* GroupMember.swift */,
 				A1505B971E8F117700F111DB /* LeaderboardItem.swift */,
 				A1505B991E8F11BC00F111DB /* Log.swift */,
+				A1015A361EEDC0EA00A2358E /* ActivationCode.swift */,
+				A1015A381EEDC1CF00A2358E /* Message.swift */,
+				A1015A3A1EEDC2B800A2358E /* Notification.swift */,
+				A1015A3C1EEDC3F400A2358E /* RangeView.swift */,
 			);
 			path = SaintsXCTF;
 			sourceTree = "<group>";
@@ -339,10 +351,14 @@
 				A1D53DF01E8B648400842177 /* APIRequest.swift in Sources */,
 				A1505B9A1E8F11BC00F111DB /* Log.swift in Sources */,
 				A1D53DF61E8DE25400842177 /* User.swift in Sources */,
+				A1015A371EEDC0EA00A2358E /* ActivationCode.swift in Sources */,
 				A1505B921E8F10A900F111DB /* Group.swift in Sources */,
 				A1505B901E8F105A00F111DB /* Comment.swift in Sources */,
 				A1505B961E8F112500F111DB /* GroupMember.swift in Sources */,
 				A15BA1671E8AF6CE00B9796B /* HomeViewController.swift in Sources */,
+				A1015A391EEDC1CF00A2358E /* Message.swift in Sources */,
+				A1015A3D1EEDC3F400A2358E /* RangeView.swift in Sources */,
+				A1015A3B1EEDC2B800A2358E /* Notification.swift in Sources */,
 				A1505B981E8F117700F111DB /* LeaderboardItem.swift in Sources */,
 				A1D53DEE1E8B647100842177 /* APIClient.swift in Sources */,
 				A1505B941E8F10E400F111DB /* GroupInfo.swift in Sources */,

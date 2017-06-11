@@ -1,35 +1,31 @@
 //
-//  Comment.swift
+//  Message.swift
 //  SaintsXCTF
 //
-//  Created by Andy Jarombek on 3/31/17.
+//  Created by Andy Jarombek on 6/11/17.
 //  Copyright © 2017 Andy Jarombek. All rights reserved.
 //
 
 import Foundation
 import ObjectMapper
 
-class Comment: Mappable {
+class Message: Mappable {
     
-    var comment_id: Int!
-    var log_id: Int!
+    var message_id: Int!
     var username: String!
     var first: String!
     var last: String!
-    var time: String!
-    var content: String!
+    var group_name: String!
     
     required init?(map: Map) {
         // pass
     }
     
     func mapping(map: Map) {
-        comment_id <- map["comment_id"]
-        log_id <- map["log_id"]
+        message_id <- map["message_id"]
         username <- map["username"]
         first <- map["first"]
         last <- map["last"]
-        time <- map["time"]
-        content <- map["content"]
+        group_name <- map["group_name"]
     }
 }
