@@ -27,9 +27,9 @@ class APIClient {
         
         // Generate the request with a completion function to parse JSON
         APIRequest.get(withURL: url) {
-            (jsonMap) -> Void in
+            (json) -> Void in
         
-            let user = User(map: jsonMap)
+            let user: User? = Mapper<User>().map(JSON: json as! [String : Any])
             print(user ?? "User Conversion Failed.")
         }
     }
@@ -44,9 +44,9 @@ class APIClient {
         }
         
         APIRequest.get(withURL: url) {
-            (jsonMap) -> Void in
+            (json) -> Void in
             
-            let user = User(map: jsonMap)
+            let user = Mapper<User>().map(JSON: json as! [String : Any])
             print(user ?? "User Conversion Failed.")
         }
     }

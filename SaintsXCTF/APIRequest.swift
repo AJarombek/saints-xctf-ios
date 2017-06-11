@@ -23,7 +23,9 @@ class APIRequest {
     }()
     
     // Handle HTTP GET Requests to the API
-    public static func get(withURL url: URL, completion: @escaping (Map) -> Void) {
+    // Add a Completion closure.  Fetching data is an asynchronous process, so the
+    // @escaping annotation lets the compiler know that the closure might not get called immediately
+    public static func get(withURL url: URL, completion: @escaping (AnyObject) -> Void) {
         let urlRequest = URLRequest(url: url)
         
         let task = session.dataTask(with: urlRequest) {
@@ -43,28 +45,24 @@ class APIRequest {
                     print("\(logTag) Error, did not receive data")
                     return
                 }
+                
+                print(responseData)
             
                 // Serialize with JSON
-                guard
-                    let json = try? JSONSerialization.jsonObject(with: responseData, options: []) else {
-                        
-                        print("\(logTag) Error, Invalid JSON Received")
-                        print(responseData)
-                        throw JSONError.jsonConversionError
-                }
+                let json: AnyObject? = try JSONSerialization.jsonObject(
+                    with: responseData, options: .mutableContainers) as AnyObject
                 
-                guard let jsonMap = json as? Map else {
+                if let j: AnyObject = json {
+                    
+                    OperationQueue.main.addOperation {
+                        completion(j)
+                    }
+                    
+                } else {
                     print("\(logTag) Error, Map Conversion Failed")
-                    print(json)
                     return
                 }
             
-                print("\(logTag) JSON Received:")
-                print("\(json)")
-            
-                OperationQueue.main.addOperation {
-                    completion(jsonMap)
-                }
             } catch let error {
                 print(error)
             }

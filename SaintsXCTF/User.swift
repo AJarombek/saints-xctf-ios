@@ -9,7 +9,7 @@
 import Foundation
 import ObjectMapper
 
-class User: Mappable {
+class User: Mappable, CustomStringConvertible {
     
     var username: String!
     var first: String!
@@ -19,7 +19,7 @@ class User: Mappable {
     var password: String?
     var profilepic: String?
     var profilepic_name: String?
-    var description: String?
+    var user_description: String?
     var activation_code: String?
     var member_since: Date!
     var class_year: Int?
@@ -37,6 +37,12 @@ class User: Mappable {
         // pass
     }
     
+    // This class uses the CustomStringConvertible protocol.
+    // The description will be printed whenever we try to print a User object
+    var description: String {
+        return "User: (\(username!), \(first!), \(last!))"
+    }
+    
     func mapping(map: Map) {
         username <- map["username"]
         first <- map["first"]
@@ -46,7 +52,7 @@ class User: Mappable {
         password <- map["password"]
         profilepic <- map["profilepic"]
         profilepic_name <- map["profilepic_name"]
-        description <- map["description"]
+        user_description <- map["description"]
         activation_code <- map["activation_code"]
         member_since <- map["member_since"]
         class_year <- map["class_year"]
