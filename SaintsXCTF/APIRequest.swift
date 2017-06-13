@@ -189,8 +189,7 @@ class APIRequest {
     }
     
     // Handle HTTP DELETE Requests to the API
-    public static func delete(withURL url: URL, andObject object: Any,
-                              completion: @escaping (AnyObject) -> Void) {
+    public static func delete(withURL url: URL, completion: @escaping (Bool) -> Void) {
         var urlrequest = URLRequest(url: url)
         urlrequest.httpMethod = "DELETE"
         
@@ -202,6 +201,10 @@ class APIRequest {
                 return
             }
             print("\(logTag) Delete Request Successful!")
+            
+            OperationQueue.main.addOperation {
+                completion(true)
+            }
         }
         task.resume()
     }

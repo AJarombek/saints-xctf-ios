@@ -16,12 +16,12 @@ class APIClient {
     // MARK: - GET Requests
     
     // Handle GET Requests for a User
-    public static func userGetRequest(withUser username: String) {
+    public static func userGetRequest(withUsername username: String) {
         
         // Create the URL
         let userGetEndpoint = "https://www.saintsxctf.com/api/api.php/users/\(username)"
         guard let url = URL(string: userGetEndpoint) else {
-            print("Error: Cannot create URL")
+            print("\(logTag) Error, Cannot create URL")
             return
         }
         
@@ -30,7 +30,7 @@ class APIClient {
             (json) -> Void in
         
             let user: User? = Mapper<User>().map(JSON: json as! [String : Any])
-            print(user ?? "User Conversion Failed.")
+            print(user ?? "\(logTag) User Conversion Failed.")
         }
     }
     
@@ -39,7 +39,7 @@ class APIClient {
         
         let usersGetEndpoint = "https://www.saintsxctf.com/api/api.php/users"
         guard let url = URL(string: usersGetEndpoint) else {
-            print("Error: Cannot create URL")
+            print("\(logTag) Error, Cannot create URL")
             return
         }
         
@@ -47,13 +47,63 @@ class APIClient {
             (json) -> Void in
             
             let user = Mapper<User>().map(JSON: json as! [String : Any])
-            print(user ?? "User Conversion Failed.")
+            print(user ?? "\(logTag) User Conversion Failed.")
         }
     }
     
     // MARK: - POST Requests
     
+    // Handle POST Request for a User
+    public static func userPostRequest(withUser user: User) {
+        
+        let usersPostEndpoint = "https://www.saintsxctf.com/api/api.php/users"
+        guard let url = URL(string: usersPostEndpoint) else {
+            print("\(logTag) Error, Cannot create URL")
+            return
+        }
+        
+        APIRequest.post(withURL: url, andObject: user) {
+            (json) -> Void in
+            
+            let user = Mapper<User>().map(JSON: json as! [String : Any])
+            print(user ?? "\(logTag) User Conversion Failed")
+        }
+    }
+    
     // MARK: - PUT Requests
     
+    // Handle PUT Request for a User
+    public static func userPutRequest(withUsername username: String, andUser user: User) {
+        
+        let usersPutEndpoint = "https://www.saintsxctf.com/api/api.php/user/\(username)"
+        guard let url = URL(string: usersPutEndpoint) else {
+            print("\(logTag) Error, Cannot create URL")
+            return
+        }
+        
+        APIRequest.put(withURL: url, andObject: user) {
+            (json) -> Void in
+            
+            let user = Mapper<User>().map(JSON: json as! [String : Any])
+            print(user ?? "\(logTag) User Conversion Failed")
+        }
+    }
+    
     // MARK: - DELETE Requests
+    
+    // Handle DELETE Request for a User
+    public static func userDeleteRequest(withUsername username: String) {
+        
+        let usersDeleteEndpoint = "https://www.saintsxctf.com/api/api.php/user/\(username)"
+        guard let url = URL(string: usersDeleteEndpoint) else {
+            print("\(logTag) Error, Cannot create URL")
+            return
+        }
+        
+        APIRequest.delete(withURL: url) {
+            (success) -> Void in
+            
+            // return success
+        }
+    }
 }
