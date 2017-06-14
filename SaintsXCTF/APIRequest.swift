@@ -25,46 +25,38 @@ class APIRequest {
     // Handle HTTP GET Requests to the API
     // Add a Completion closure.  Fetching data is an asynchronous process, so the
     // @escaping annotation lets the compiler know that the closure might not get called immediately
-    public static func get(withURL url: URL, completion: @escaping (AnyObject) -> Void) {
+    public static func get(withURL url: URL, completion: @escaping (String) -> Void) {
         let urlRequest = URLRequest(url: url)
         
         let task = session.dataTask(with: urlRequest) {
             (data, response, error) -> Void in
-            
-            do {
                 
-                // Check for any errors
-                guard error == nil else {
-                    print("\(logTag) Error with GET request")
-                    print(error!)
-                    return
-                }
+            // Check for any errors
+            guard error == nil else {
+                print("\(logTag) Error with GET request")
+                print(error!)
+                return
+            }
+        
+            // Check the response data
+            guard let responseData = data else {
+                print("\(logTag) Error, did not receive data")
+                return
+            }
             
-                // Check the response data
-                guard let responseData = data else {
-                    print("\(logTag) Error, did not receive data")
-                    return
-                }
-                
-                print(responseData)
+            print(responseData)
             
-                // Serialize with JSON
-                let json: AnyObject? = try JSONSerialization.jsonObject(
-                    with: responseData, options: .mutableContainers) as AnyObject
+            let jsonString: String? = String(data: responseData, encoding: String.Encoding.utf8)
                 
-                if let j: AnyObject = json {
+            guard let json = jsonString else {
                     
-                    OperationQueue.main.addOperation {
-                        completion(j)
-                    }
+                print("\(logTag) Error, Map Conversion Failed")
+                return
                     
-                } else {
-                    print("\(logTag) Error, Map Conversion Failed")
-                    return
-                }
-            
-            } catch let error {
-                print(error)
+            }
+                
+            OperationQueue.main.addOperation {
+                completion(json)
             }
         }
         task.resume()
@@ -72,7 +64,7 @@ class APIRequest {
     
     // Handle HTTP POST Requests to the API
     public static func post(withURL url: URL, andObject object: Any,
-                            completion: @escaping (AnyObject) -> Void) {
+                            completion: @escaping (String) -> Void) {
         var urlrequest = URLRequest(url: url)
         urlrequest.httpMethod = "POST"
         
@@ -90,41 +82,33 @@ class APIRequest {
         
         let task = session.dataTask(with: urlrequest) {
             (data, response, error) -> Void in
+                
+            // Check for any errors
+            guard error == nil else {
+                print("\(logTag) Error with POST request")
+                print(error!)
+                return
+            }
             
-            do {
+            // Check the response data
+            guard let responseData = data else {
+                print("\(logTag) Error, did not receive data")
+                return
+            }
                 
-                // Check for any errors
-                guard error == nil else {
-                    print("\(logTag) Error with POST request")
-                    print(error!)
-                    return
-                }
+            print(responseData)
                 
-                // Check the response data
-                guard let responseData = data else {
-                    print("\(logTag) Error, did not receive data")
-                    return
-                }
+            let jsonString: String? = String(data: responseData, encoding: String.Encoding.utf8)
+            
+            guard let json = jsonString else {
                 
-                print(responseData)
+                print("\(logTag) Error, Map Conversion Failed")
+                return
                 
-                // Serialize with JSON
-                let json: AnyObject? = try JSONSerialization.jsonObject(
-                    with: responseData, options: .mutableContainers) as AnyObject
-                
-                if let j: AnyObject = json {
-                    
-                    OperationQueue.main.addOperation {
-                        completion(j)
-                    }
-                    
-                } else {
-                    print("\(logTag) Error, Map Conversion Failed")
-                    return
-                }
-                
-            } catch let error {
-                print(error)
+            }
+            
+            OperationQueue.main.addOperation {
+                completion(json)
             }
         }
         task.resume()
@@ -132,7 +116,7 @@ class APIRequest {
     
     // Handle HTTP PUT Requests to the API
     public static func put(withURL url: URL, andObject object: Any,
-                           completion: @escaping (AnyObject) -> Void) {
+                           completion: @escaping (String) -> Void) {
         var urlrequest = URLRequest(url: url)
         urlrequest.httpMethod = "PUT"
         
@@ -148,41 +132,33 @@ class APIRequest {
         
         let task = session.dataTask(with: urlrequest) {
             (data, response, error) -> Void in
-            
-            do {
                 
-                // Check for any errors
-                guard error == nil else {
-                    print("\(logTag) Error with PUT request")
-                    print(error!)
-                    return
-                }
+            // Check for any errors
+            guard error == nil else {
+                print("\(logTag) Error with PUT request")
+                print(error!)
+                return
+            }
                 
-                // Check the response data
-                guard let responseData = data else {
-                    print("\(logTag) Error, did not receive data")
-                    return
-                }
+            // Check the response data
+            guard let responseData = data else {
+                print("\(logTag) Error, did not receive data")
+                return
+            }
                 
-                print(responseData)
+            print(responseData)
                 
-                // Serialize with JSON
-                let json: AnyObject? = try JSONSerialization.jsonObject(
-                    with: responseData, options: .mutableContainers) as AnyObject
+            let jsonString: String? = String(data: responseData, encoding: String.Encoding.utf8)
                 
-                if let j: AnyObject = json {
+            guard let json = jsonString else {
                     
-                    OperationQueue.main.addOperation {
-                        completion(j)
-                    }
+                print("\(logTag) Error, Map Conversion Failed")
+                return
                     
-                } else {
-                    print("\(logTag) Error, Map Conversion Failed")
-                    return
-                }
+            }
                 
-            } catch let error {
-                print(error)
+            OperationQueue.main.addOperation {
+                completion(json)
             }
         }
         task.resume()
