@@ -27,4 +27,8 @@ class HomeViewController: UIViewController {
         print("\(logTag) Logging In User.")
         var user: User? = APIClient.userGetRequest(withUsername: "andy")
     }
+    
+    @IBAction func signUpUser(_ sender: UIButton) {
+        
+    }
 }

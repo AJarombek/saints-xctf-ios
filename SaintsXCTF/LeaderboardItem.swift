@@ -15,6 +15,10 @@ class LeaderboardItem: Mappable {
     var first: String!
     var last: String!
     var miles: Double!
+    var milesrun: Double!
+    var milesbiked: Double!
+    var milesswam: Double!
+    var milesother: Double!
     
     required init?(map: Map) {
         // pass
@@ -25,5 +29,9 @@ class LeaderboardItem: Mappable {
         first <- map["first"]
         last <- map["last"]
         miles <- map["miles"]
+        milesrun <- map["milesrun"]
+        milesbiked <- map["milesbiked"]
+        milesswam <- map["milesswam"]
+        milesother <- map["milesother"]
     }
 }
