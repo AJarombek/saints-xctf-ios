@@ -10,7 +10,12 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
-    let logTag = "HomeViewController:"
+    let logTag = "HomeViewController: "
+    
+    // Remove the keyboard when tapping the background
+    @IBAction func backgroundTapped(_ sender: UITapGestureRecognizer) {
+        view.endEditing(true)
+    }
     
     @IBOutlet var backgroundImage: UIImageView!
     @IBOutlet var logIn: UIButton!
@@ -24,8 +29,12 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func logInUser(_ sender: UIButton) {
-        print("\(logTag) Logging In User.")
-        var user: User? = APIClient.userGetRequest(withUsername: "andy")
+        print("\(logTag) Logging In User \(username).")
+        
+        if let usernameString: String = username.text {
+            var user: User? = APIClient.userGetRequest(withUsername: usernameString)
+        }
+        
     }
     
     @IBAction func signUpUser(_ sender: UIButton) {
