@@ -13,6 +13,20 @@ enum JSONError: Error {
     case jsonConversionError
 }
 
+// Entend the String class to have base 64 functionality
+extension String {
+    // Encode a String to Base64
+    func toBase64() -> String {
+        return Data(self.utf8).base64EncodedString()
+    }
+    
+    // Decode a String from Base64. Returns nil if unsuccessful.
+    func fromBase64() -> String? {
+        guard let data = Data(base64Encoded: self) else { return nil }
+        return String(data: data, encoding: .utf8)
+    }
+}
+
 class APIRequest {
     
     private static let logTag = "APIRequest:"
@@ -26,7 +40,18 @@ class APIRequest {
     // Add a Completion closure.  Fetching data is an asynchronous process, so the
     // @escaping annotation lets the compiler know that the closure might not get called immediately
     public static func get(withURL url: URL, completion: @escaping (String) -> Void) {
-        let urlRequest = URLRequest(url: url)
+        var urlRequest = URLRequest(url: url)
+        
+        // Get the necessary credentials for the API Request
+        let cred = Credentials()
+
+        // encode the credentials
+        var credsJSON: String? = cred.toJSONString()
+        credsJSON = credsJSON?.toBase64()
+        
+        // add the credentials and accept type to the url request
+        urlRequest.addValue("application/json", forHTTPHeaderField: "Accept")
+        urlRequest.addValue(credsJSON!, forHTTPHeaderField: "Authorization")
         
         let task = session.dataTask(with: urlRequest) {
             (data, response, error) -> Void in

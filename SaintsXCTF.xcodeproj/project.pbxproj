@@ -14,6 +14,7 @@
 		A1015A3D1EEDC3F400A2358E /* RangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1015A3C1EEDC3F400A2358E /* RangeView.swift */; };
 		A11C2DF41F0B249E00EBDDB5 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11C2DF31F0B249E00EBDDB5 /* SignUpViewController.swift */; };
 		A11C2DF61F0B284F00EBDDB5 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11C2DF51F0B284F00EBDDB5 /* MainViewController.swift */; };
+		A11C2DF81F0C124000EBDDB5 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11C2DF71F0C124000EBDDB5 /* Credentials.swift */; };
 		A1505B901E8F105A00F111DB /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1505B8F1E8F105A00F111DB /* Comment.swift */; };
 		A1505B921E8F10A900F111DB /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1505B911E8F10A900F111DB /* Group.swift */; };
 		A1505B941E8F10E400F111DB /* GroupInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1505B931E8F10E400F111DB /* GroupInfo.swift */; };
@@ -57,6 +58,7 @@
 		A1015A3C1EEDC3F400A2358E /* RangeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RangeView.swift; sourceTree = "<group>"; };
 		A11C2DF31F0B249E00EBDDB5 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		A11C2DF51F0B284F00EBDDB5 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		A11C2DF71F0C124000EBDDB5 /* Credentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
 		A1505B8F1E8F105A00F111DB /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		A1505B911E8F10A900F111DB /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		A1505B931E8F10E400F111DB /* GroupInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupInfo.swift; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 				A1015A3C1EEDC3F400A2358E /* RangeView.swift */,
 				A11C2DF31F0B249E00EBDDB5 /* SignUpViewController.swift */,
 				A11C2DF51F0B284F00EBDDB5 /* MainViewController.swift */,
+				A11C2DF71F0C124000EBDDB5 /* Credentials.swift */,
 			);
 			path = SaintsXCTF;
 			sourceTree = "<group>";
@@ -365,6 +368,7 @@
 				A1505B961E8F112500F111DB /* GroupMember.swift in Sources */,
 				A15BA1671E8AF6CE00B9796B /* HomeViewController.swift in Sources */,
 				A1015A391EEDC1CF00A2358E /* Message.swift in Sources */,
+				A11C2DF81F0C124000EBDDB5 /* Credentials.swift in Sources */,
 				A1015A3D1EEDC3F400A2358E /* RangeView.swift in Sources */,
 				A1015A3B1EEDC2B800A2358E /* Notification.swift in Sources */,
 				A1505B981E8F117700F111DB /* LeaderboardItem.swift in Sources */,

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import BCryptSwift
 
 class HomeViewController: UIViewController {
     
@@ -28,11 +29,29 @@ class HomeViewController: UIViewController {
         self.backgroundImage.image = #imageLiteral(resourceName: "Background")
     }
     
+    // Action to take when logging in a user
     @IBAction func logInUser(_ sender: UIButton) {
-        print("\(logTag) Logging In User \(username).")
         
-        if let usernameString: String = username.text {
-            var user: User? = APIClient.userGetRequest(withUsername: usernameString)
+        // First make sure the username and password fields are filled
+        if let usernameString: String = username.text, let passwordString: String = password.text {
+            
+            print("\(logTag) Logging In User \(usernameString).")
+            
+            APIClient.userGetRequest(withUsername: usernameString) {
+                (user) -> Void in
+                
+                if let hash: String = user.password,
+                    let verified: Bool = BCryptSwift.verifyPassword(passwordString, matchesHash: hash) {
+                    
+                    if verified {
+                        print("\(self.logTag) Valid Password Entered!")
+                    } else {
+                        print("\(self.logTag) INVALID Password Entered.")
+                    }
+                } else {
+                    print("\(self.logTag) Unable to Verfiy Password")
+                }
+            }
         }
         
     }
