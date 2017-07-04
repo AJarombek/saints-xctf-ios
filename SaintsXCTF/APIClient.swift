@@ -43,26 +43,27 @@ class APIClient {
     }
     
     // Handle GET Requests for all Users
-    public static func usersGetRequest() -> [User]? {
-        
+    public static func usersGetRequest(completion: @escaping ([User]) -> Void) {
+    
         let usersGetEndpoint = "https://www.saintsxctf.com/api/api.php/users"
         guard let url = URL(string: usersGetEndpoint) else {
             print("\(logTag) Error, Cannot create URL")
-            return nil
+            return
         }
-        
-        var userArray: Array<User>?
         
         APIRequest.get(withURL: url) {
             (json) -> Void in
             
-            let user: Array<User>? = Mapper<User>().mapArray(JSONString: json)
-            print(user ?? "\(logTag) User Conversion Failed.")
+            if let user: Array<User> = Mapper<User>().mapArray(JSONString: json) {
+                print("\(logTag) \(user)")
             
-            userArray = user
+                OperationQueue.main.addOperation {
+                    completion(user)
+                }
+            } else {
+                print("\(logTag) User Conversion Failed.")
+            }
         }
-        
-        return userArray
     }
     
     // Handle GET Requests for a Log
