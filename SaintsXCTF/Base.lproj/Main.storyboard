@@ -252,6 +252,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wWy-WS-vpf">
                                 <rect key="frame" x="202" y="439" width="81" height="30"/>
                                 <state key="normal" title="Submit"/>
+                                <connections>
+                                    <action selector="signUpUser:" destination="adv-TS-dIo" eventType="touchUpInside" id="Ywu-sZ-nKo"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -290,6 +293,14 @@
                             <constraint firstItem="dTY-Q8-Si8" firstAttribute="trailing" secondItem="9bN-wO-8nQ" secondAttribute="trailing" id="xnp-kp-JEo"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="activationCode" destination="TbJ-H8-AIK" id="eH6-c3-1T4"/>
+                        <outlet property="confirmPassword" destination="A2S-OE-owB" id="i4N-SP-cLw"/>
+                        <outlet property="email" destination="9bN-wO-8nQ" id="p1f-Se-f3d"/>
+                        <outlet property="firstName" destination="bVS-XM-VZ8" id="BtL-Ue-Ksl"/>
+                        <outlet property="lastName" destination="dTY-Q8-Si8" id="ah3-vR-fKm"/>
+                        <outlet property="password" destination="6Ns-zf-uSi" id="SAX-NJ-2Ef"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pno-Ez-Igc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

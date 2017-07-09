@@ -49,6 +49,13 @@ class HomeViewController: UIViewController {
                     if verified {
                         print("\(self.logTag) Valid Password Entered!")
                         
+                        // Save the user sign in data
+                        let defaults = UserDefaults.standard
+                        
+                        defaults.set(user.first, forKey: "first name")
+                        defaults.set(user.last, forKey: "last name")
+                        defaults.set(user.toJSONString()!, forKey: "user")
+                        
                         // Redirect to the main page
                         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                         let mainViewController = storyBoard.instantiateViewController(withIdentifier:

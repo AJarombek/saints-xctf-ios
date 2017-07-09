@@ -14,7 +14,6 @@
 		A1015A3D1EEDC3F400A2358E /* RangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1015A3C1EEDC3F400A2358E /* RangeView.swift */; };
 		A11C2DF41F0B249E00EBDDB5 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11C2DF31F0B249E00EBDDB5 /* SignUpViewController.swift */; };
 		A11C2DF61F0B284F00EBDDB5 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11C2DF51F0B284F00EBDDB5 /* MainViewController.swift */; };
-		A11C2DF81F0C124000EBDDB5 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11C2DF71F0C124000EBDDB5 /* Credentials.swift */; };
 		A1505B901E8F105A00F111DB /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1505B8F1E8F105A00F111DB /* Comment.swift */; };
 		A1505B921E8F10A900F111DB /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1505B911E8F10A900F111DB /* Group.swift */; };
 		A1505B941E8F10E400F111DB /* GroupInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1505B931E8F10E400F111DB /* GroupInfo.swift */; };
@@ -26,6 +25,8 @@
 		A15BA1401E8AF61D00B9796B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A15BA13F1E8AF61D00B9796B /* Assets.xcassets */; };
 		A15BA1431E8AF61D00B9796B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A15BA1411E8AF61D00B9796B /* LaunchScreen.storyboard */; };
 		A15BA1671E8AF6CE00B9796B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15BA1661E8AF6CE00B9796B /* HomeViewController.swift */; };
+		A1B458941F0C5FA400EDCF80 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B458931F0C5FA400EDCF80 /* Credentials.swift */; };
+		A1B458961F11AC0800EDCF80 /* TextFieldStyler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B458951F11AC0800EDCF80 /* TextFieldStyler.swift */; };
 		A1D53DEE1E8B647100842177 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D53DED1E8B647100842177 /* APIClient.swift */; };
 		A1D53DF01E8B648400842177 /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D53DEF1E8B648400842177 /* APIRequest.swift */; };
 		A1D53DF61E8DE25400842177 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D53DF51E8DE25400842177 /* User.swift */; };
@@ -58,7 +59,6 @@
 		A1015A3C1EEDC3F400A2358E /* RangeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RangeView.swift; sourceTree = "<group>"; };
 		A11C2DF31F0B249E00EBDDB5 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		A11C2DF51F0B284F00EBDDB5 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		A11C2DF71F0C124000EBDDB5 /* Credentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
 		A1505B8F1E8F105A00F111DB /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		A1505B911E8F10A900F111DB /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		A1505B931E8F10E400F111DB /* GroupInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupInfo.swift; sourceTree = "<group>"; };
@@ -74,6 +74,8 @@
 		A15BA1491E8AF61D00B9796B /* SaintsXCTFTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SaintsXCTFTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A15BA1541E8AF61E00B9796B /* SaintsXCTFUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SaintsXCTFUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A15BA1661E8AF6CE00B9796B /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		A1B458931F0C5FA400EDCF80 /* Credentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
+		A1B458951F11AC0800EDCF80 /* TextFieldStyler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldStyler.swift; sourceTree = "<group>"; };
 		A1D53DED1E8B647100842177 /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		A1D53DEF1E8B648400842177 /* APIRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
 		A1D53DF51E8DE25400842177 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -157,7 +159,8 @@
 				A1015A3C1EEDC3F400A2358E /* RangeView.swift */,
 				A11C2DF31F0B249E00EBDDB5 /* SignUpViewController.swift */,
 				A11C2DF51F0B284F00EBDDB5 /* MainViewController.swift */,
-				A11C2DF71F0C124000EBDDB5 /* Credentials.swift */,
+				A1B458931F0C5FA400EDCF80 /* Credentials.swift */,
+				A1B458951F11AC0800EDCF80 /* TextFieldStyler.swift */,
 			);
 			path = SaintsXCTF;
 			sourceTree = "<group>";
@@ -361,6 +364,7 @@
 				A1505B9A1E8F11BC00F111DB /* Log.swift in Sources */,
 				A1D53DF61E8DE25400842177 /* User.swift in Sources */,
 				A1015A371EEDC0EA00A2358E /* ActivationCode.swift in Sources */,
+				A1B458961F11AC0800EDCF80 /* TextFieldStyler.swift in Sources */,
 				A11C2DF41F0B249E00EBDDB5 /* SignUpViewController.swift in Sources */,
 				A1505B921E8F10A900F111DB /* Group.swift in Sources */,
 				A11C2DF61F0B284F00EBDDB5 /* MainViewController.swift in Sources */,
@@ -368,7 +372,7 @@
 				A1505B961E8F112500F111DB /* GroupMember.swift in Sources */,
 				A15BA1671E8AF6CE00B9796B /* HomeViewController.swift in Sources */,
 				A1015A391EEDC1CF00A2358E /* Message.swift in Sources */,
-				A11C2DF81F0C124000EBDDB5 /* Credentials.swift in Sources */,
+				A1B458941F0C5FA400EDCF80 /* Credentials.swift in Sources */,
 				A1015A3D1EEDC3F400A2358E /* RangeView.swift in Sources */,
 				A1015A3B1EEDC2B800A2358E /* Notification.swift in Sources */,
 				A1505B981E8F117700F111DB /* LeaderboardItem.swift in Sources */,
