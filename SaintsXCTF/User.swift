@@ -33,6 +33,10 @@ class User: Mappable, CustomStringConvertible {
     var last_signin: String?
     var week_start: String?
     
+    init() {
+        username = ""
+    }
+    
     required init?(map: Map) {
         // pass
     }

@@ -300,6 +300,7 @@
                         <outlet property="firstName" destination="bVS-XM-VZ8" id="BtL-Ue-Ksl"/>
                         <outlet property="lastName" destination="dTY-Q8-Si8" id="ah3-vR-fKm"/>
                         <outlet property="password" destination="6Ns-zf-uSi" id="SAX-NJ-2Ef"/>
+                        <outlet property="signUpError" destination="sgJ-Ql-HPB" id="c8j-uc-wwn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pno-Ez-Igc" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -38,6 +38,11 @@ class APIClient {
                 }
             } else {
                 print("\(logTag) User Conversion Failed.")
+                
+                // If no user exists, return an empty user object
+                OperationQueue.main.addOperation {
+                    completion(User())
+                }
             }
         }
     }
