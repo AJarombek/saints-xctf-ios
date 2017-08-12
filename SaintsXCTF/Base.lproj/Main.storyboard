@@ -150,10 +150,10 @@
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="138.98050974512745"/>
         </scene>
-        <!--Main View Controller-->
+        <!--Home-->
         <scene sceneID="Slo-Ks-UjU">
             <objects>
-                <viewController storyboardIdentifier="mainViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="FLo-0O-VSj" customClass="MainViewController" customModule="SaintsXCTF" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="FLo-0O-VSj" customClass="MainViewController" customModule="SaintsXCTF" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="JyW-Cl-XSy"/>
                         <viewControllerLayoutGuide type="bottom" id="yOq-3j-f8e"/>
@@ -163,10 +163,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Home" image="home" id="nAZ-xc-49k"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1V4-gW-hAE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1001" y="194"/>
+            <point key="canvasLocation" x="1924" y="-860"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="737-Ld-le4">
@@ -294,18 +295,123 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="activationCode" destination="TbJ-H8-AIK" id="eH6-c3-1T4"/>
-                        <outlet property="confirmPassword" destination="A2S-OE-owB" id="i4N-SP-cLw"/>
+                        <outlet property="activationCode" destination="TbJ-H8-AIK" id="yYf-cB-cdW"/>
+                        <outlet property="confirmPassword" destination="A2S-OE-owB" id="Y75-2K-s7B"/>
                         <outlet property="email" destination="9bN-wO-8nQ" id="p1f-Se-f3d"/>
                         <outlet property="firstName" destination="bVS-XM-VZ8" id="BtL-Ue-Ksl"/>
                         <outlet property="lastName" destination="dTY-Q8-Si8" id="ah3-vR-fKm"/>
                         <outlet property="password" destination="6Ns-zf-uSi" id="SAX-NJ-2Ef"/>
                         <outlet property="signUpError" destination="sgJ-Ql-HPB" id="c8j-uc-wwn"/>
+                        <outlet property="username" destination="Rhs-fz-28O" id="iHE-Th-PDh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pno-Ez-Igc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1001" y="-548"/>
         </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="hzI-ti-Oa0">
+            <objects>
+                <tabBarController storyboardIdentifier="mainViewController" automaticallyAdjustsScrollViewInsets="NO" id="GAU-tW-vRC" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="41j-1d-LCy">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="FLo-0O-VSj" kind="relationship" relationship="viewControllers" id="Z4l-PB-wsn"/>
+                        <segue destination="Uro-DD-rjU" kind="relationship" relationship="viewControllers" id="kMz-Rq-Nzj"/>
+                        <segue destination="ZET-dO-YVX" kind="relationship" relationship="viewControllers" id="3Ke-kd-k9Y"/>
+                        <segue destination="Oh1-0I-oC1" kind="relationship" relationship="viewControllers" id="hEg-3q-GGI"/>
+                        <segue destination="Bxe-MV-Z1j" kind="relationship" relationship="viewControllers" id="H9w-je-24d"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PVl-FM-5xn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1000.8" y="193.85307346326837"/>
+        </scene>
+        <!--New Log-->
+        <scene sceneID="ZDm-Qf-Iq8">
+            <objects>
+                <viewController id="ZET-dO-YVX" customClass="LogViewController" customModule="SaintsXCTF" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="9SS-KN-q8v"/>
+                        <viewControllerLayoutGuide type="bottom" id="jUf-KW-WJG"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="PII-GQ-Yzw">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="New Log" image="edit" id="5GP-Av-p43"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QDL-Qz-q5o" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1914" y="499"/>
+        </scene>
+        <!--Sign Out-->
+        <scene sceneID="cTm-cP-C5x">
+            <objects>
+                <viewController id="Bxe-MV-Z1j" customClass="SignOutController" customModule="SaintsXCTF" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ycw-gf-SZq"/>
+                        <viewControllerLayoutGuide type="bottom" id="tWN-EI-Vwh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="RjW-4N-Mhv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Sign Out" image="exit" id="9wg-KD-D3W"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kU3-k9-QTg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1001" y="931"/>
+        </scene>
+        <!--Groups-->
+        <scene sceneID="bm5-HG-UaO">
+            <objects>
+                <viewController id="Oh1-0I-oC1" customClass="GroupListViewController" customModule="SaintsXCTF" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="n4V-kD-m7I"/>
+                        <viewControllerLayoutGuide type="bottom" id="JHH-Fv-INY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="HLU-KU-uif">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Groups" image="group" id="1U0-Cu-0PK"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eUd-Hv-cGR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1905" y="1203"/>
+        </scene>
+        <!--Profile-->
+        <scene sceneID="eGO-WS-o8i">
+            <objects>
+                <viewController id="Uro-DD-rjU" customClass="ProfileViewController" customModule="SaintsXCTF" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="PjP-b7-aTK"/>
+                        <viewControllerLayoutGuide type="bottom" id="8b3-lJ-o47"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="5Kp-Uw-VZr">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Profile" image="profile" id="fdF-ye-nFm"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bdN-K2-r88" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1924" y="-181"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="edit" width="24" height="24"/>
+        <image name="exit" width="24" height="24"/>
+        <image name="group" width="24" height="24"/>
+        <image name="home" width="24" height="24"/>
+        <image name="profile" width="24" height="24"/>
+    </resources>
 </document>

@@ -1,20 +1,20 @@
 //
-//  MainViewController.swift
+//  LogViewController.swift
 //  SaintsXCTF
 //
-//  Created by Andy Jarombek on 7/3/17.
+//  Created by Andy Jarombek on 8/12/17.
 //  Copyright © 2017 Andy Jarombek. All rights reserved.
 //
 
 import UIKit
 
-class MainViewController: UIViewController {
+class LogViewController: UIViewController {
     
-    let logTag = "SignUpViewController: "
+    let logTag = "LogViewController: "
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("\(logTag) MainViewController Loaded.")
+        print("\(logTag) LogViewController Loaded.")
     }
     
     // Remove the keyboard when tapping the background

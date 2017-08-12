@@ -59,7 +59,7 @@ class HomeViewController: UIViewController {
                         // Redirect to the main page
                         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                         let mainViewController = storyBoard.instantiateViewController(withIdentifier:
-                            "mainViewController") as! MainViewController
+                            "mainViewController") as! UITabBarController
                         self.present(mainViewController, animated: true, completion: nil)
                         
                     } else {
@@ -77,7 +77,5 @@ class HomeViewController: UIViewController {
         
     }
     
-    @IBAction func signUpUser(_ sender: UIButton) {
-        
-    }
+    @IBAction func signUpUser(_ sender: UIButton) {}
 }
