@@ -32,7 +32,7 @@ class APIClient {
             (json) -> Void in
         
             if let user: User = Mapper<User>().map(JSONString: json) {
-                print("\(logTag) \(user)")
+                os_log("%@", log: APIClient.logTag, type: .debug, user.toJSONString()!)
                 
                 OperationQueue.main.addOperation {
                     completion(user)

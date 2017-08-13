@@ -14,6 +14,8 @@ class SignUpViewController: UIViewController {
     
     let logTag = OSLog(subsystem: "SaintsXCTF.App.SignUpViewController", category: "SignUpViewController")
     
+    
+    @IBOutlet var signUpView: UIView!
     @IBOutlet var username: UITextField!
     @IBOutlet var activationCode: UITextField!
     @IBOutlet var confirmPassword: UITextField!
@@ -22,6 +24,21 @@ class SignUpViewController: UIViewController {
     @IBOutlet var email: UITextField!
     @IBOutlet var firstName: UITextField!
     @IBOutlet var signUpError: UITextView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        signUpView.backgroundColor = UIColor(0xEEEEEE)
+        signUpError.backgroundColor = UIColor(0xEEEEEE)
+        
+        // Give the textfields the standard app style
+        username.standardStyle()
+        activationCode.standardStyle()
+        confirmPassword.standardStyle()
+        password.standardStyle()
+        lastName.standardStyle()
+        email.standardStyle()
+        firstName.standardStyle()
+    }
     
     // Remove the keyboard when tapping the background
     @IBAction func backgroundTapped(_ sender: UITapGestureRecognizer) {

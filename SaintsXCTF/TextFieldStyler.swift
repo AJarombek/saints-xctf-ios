@@ -12,30 +12,42 @@ enum Style {
     case error, warning, valid, none
 }
 
-// Build an extension on the UITextField class to change the border style
+// Build an extension on the UITextField class for styling functions
 extension UITextField {
     
+    // Change border and background based on the style argument
     func changeStyle(_ style: Style) {
         
-        // Change border based on the style argument
         if style == .valid {
-            let validColor = UIColor.green.cgColor
+            let validColor = UIColor(0x5cb85c).cgColor
+            let validBackgroundColor = UIColor(0x5cb85c, a: 0.2)
             self.layer.borderColor = validColor
-            
+            self.backgroundColor = validBackgroundColor
             
         } else if style == .warning {
-            let warningColor = UIColor.orange.cgColor
+            let warningColor = UIColor(0xf0ad4e).cgColor
+            let warningBackgroundColor = UIColor(0xf0ad4e, a: 0.2)
             self.layer.borderColor = warningColor
+            self.backgroundColor = warningBackgroundColor
             
         
         } else if style == .error {
-            let errorColor = UIColor.red.cgColor
+            let errorColor = UIColor(0xd9534f).cgColor
+            let errorBackgroundColor = UIColor(0xd9534f, a: 0.2)
             self.layer.borderColor = errorColor
+            self.backgroundColor = errorBackgroundColor
             
         } else if style == .none {
-            self.layer.borderWidth = 0
+            self.layer.borderColor = UIColor(0xCCCCCC).cgColor
+            self.backgroundColor = UIColor.white
         }
-        
-        self.layer.borderWidth = 1
+    }
+    
+    // Set a text field to the standard style used across the app
+    func standardStyle() {
+        self.layer.borderWidth = 2
+        self.layer.borderColor = UIColor(0xCCCCCC).cgColor
+        self.layer.cornerRadius = 1
+        self.backgroundColor = UIColor.white
     }
 }
