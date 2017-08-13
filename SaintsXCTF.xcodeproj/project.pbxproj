@@ -30,6 +30,7 @@
 		A15E62331F3F986C00AC9EF1 /* GroupListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15E62321F3F986C00AC9EF1 /* GroupListViewController.swift */; };
 		A15E62351F3F98EC00AC9EF1 /* SignOutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15E62341F3F98EC00AC9EF1 /* SignOutViewController.swift */; };
 		A15E62371F3FA45F00AC9EF1 /* PickGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15E62361F3FA45F00AC9EF1 /* PickGroupViewController.swift */; };
+		A15E62391F3FD44000AC9EF1 /* HexColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15E62381F3FD44000AC9EF1 /* HexColor.swift */; };
 		A1B458941F0C5FA400EDCF80 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B458931F0C5FA400EDCF80 /* Credentials.swift */; };
 		A1B458961F11AC0800EDCF80 /* TextFieldStyler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B458951F11AC0800EDCF80 /* TextFieldStyler.swift */; };
 		A1D53DEE1E8B647100842177 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D53DED1E8B647100842177 /* APIClient.swift */; };
@@ -84,6 +85,7 @@
 		A15E62321F3F986C00AC9EF1 /* GroupListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupListViewController.swift; sourceTree = "<group>"; };
 		A15E62341F3F98EC00AC9EF1 /* SignOutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignOutViewController.swift; sourceTree = "<group>"; };
 		A15E62361F3FA45F00AC9EF1 /* PickGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickGroupViewController.swift; sourceTree = "<group>"; };
+		A15E62381F3FD44000AC9EF1 /* HexColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HexColor.swift; sourceTree = "<group>"; };
 		A1B458931F0C5FA400EDCF80 /* Credentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
 		A1B458951F11AC0800EDCF80 /* TextFieldStyler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldStyler.swift; sourceTree = "<group>"; };
 		A1D53DED1E8B647100842177 /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
@@ -216,6 +218,7 @@
 			isa = PBXGroup;
 			children = (
 				A1B458951F11AC0800EDCF80 /* TextFieldStyler.swift */,
+				A15E62381F3FD44000AC9EF1 /* HexColor.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -431,6 +434,7 @@
 				A15E62301F3F981600AC9EF1 /* LogViewController.swift in Sources */,
 				A15E62351F3F98EC00AC9EF1 /* SignOutViewController.swift in Sources */,
 				A15BA1671E8AF6CE00B9796B /* HomeViewController.swift in Sources */,
+				A15E62391F3FD44000AC9EF1 /* HexColor.swift in Sources */,
 				A1015A391EEDC1CF00A2358E /* Message.swift in Sources */,
 				A1B458941F0C5FA400EDCF80 /* Credentials.swift in Sources */,
 				A1015A3D1EEDC3F400A2358E /* RangeView.swift in Sources */,
