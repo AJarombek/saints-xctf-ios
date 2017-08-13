@@ -7,14 +7,15 @@
 //
 
 import UIKit
+import os.log
 
 class LogViewController: UIViewController {
     
-    let logTag = "LogViewController: "
+    let logTag = OSLog(subsystem: "SaintsXCTF.App.LogViewController", category: "LogViewController")
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("\(logTag) LogViewController Loaded.")
+        os_log("LogViewController Loaded.", log: logTag, type: .debug)
     }
     
     // Remove the keyboard when tapping the background

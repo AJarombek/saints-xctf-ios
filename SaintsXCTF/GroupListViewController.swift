@@ -7,14 +7,16 @@
 //
 
 import UIKit
+import os.log
 
 class GroupListViewController: UIViewController {
     
-    let logTag = "GroupListViewController: "
+    let logTag = OSLog(subsystem: "SaintsXCTF.App.GroupListViewController",
+                       category: "GroupListViewController")
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("\(logTag) GroupListViewController Loaded.")
+        os_log("GroupListViewController Loaded.", log: OSLog.default, type: .debug)
     }
     
     // Remove the keyboard when tapping the background

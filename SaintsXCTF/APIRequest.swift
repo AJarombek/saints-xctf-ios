@@ -8,6 +8,7 @@
 
 import Foundation
 import ObjectMapper
+import os.log
 
 enum JSONError: Error {
     case jsonConversionError
@@ -29,7 +30,7 @@ extension String {
 
 class APIRequest {
     
-    private static let logTag = "APIRequest:"
+    private static let logTag = OSLog(subsystem: "SaintsXCTF.APIClient.APIRequest", category: "APIRequest")
     
     private static let session: URLSession = {
         let config = URLSessionConfiguration.default
@@ -58,14 +59,14 @@ class APIRequest {
                 
             // Check for any errors
             guard error == nil else {
-                print("\(logTag) Error with GET request")
+                os_log("Error with GET request.", log: APIRequest.logTag, type: .error)
                 print(error!)
                 return
             }
         
             // Check the response data
             guard let responseData = data else {
-                print("\(logTag) Error, did not receive data")
+                os_log("Error, did not receive data.", log: APIRequest.logTag, type: .error)
                 return
             }
             
@@ -74,8 +75,8 @@ class APIRequest {
             let jsonString: String? = String(data: responseData, encoding: String.Encoding.utf8)
                 
             guard let json = jsonString else {
-                    
-                print("\(logTag) Error, Map Conversion Failed")
+                
+                os_log("Error, Map Conversion Failed.", log: APIRequest.logTag, type: .error)
                 return
                     
             }
@@ -101,7 +102,7 @@ class APIRequest {
             jsonObject = try JSONSerialization.data(withJSONObject: object, options: [])
             urlrequest.httpBody = jsonObject
         } catch {
-            print("\(logTag) Error, cannot produce JSON from object")
+            os_log("Error, cannot produce JSON from object.", log: APIRequest.logTag, type: .error)
             return
         }
         
@@ -110,14 +111,14 @@ class APIRequest {
                 
             // Check for any errors
             guard error == nil else {
-                print("\(logTag) Error with POST request")
+                os_log("Error with POST request.", log: APIRequest.logTag, type: .error)
                 print(error!)
                 return
             }
             
             // Check the response data
             guard let responseData = data else {
-                print("\(logTag) Error, did not receive data")
+                os_log("Error, did not receive data.", log: APIRequest.logTag, type: .error)
                 return
             }
                 
@@ -127,7 +128,7 @@ class APIRequest {
             
             guard let json = jsonString else {
                 
-                print("\(logTag) Error, Map Conversion Failed")
+                os_log("Error, Map Conversion Failed.", log: APIRequest.logTag, type: .error)
                 return
                 
             }
@@ -151,7 +152,7 @@ class APIRequest {
             jsonObject = try JSONSerialization.data(withJSONObject: object, options: [])
             urlrequest.httpBody = jsonObject
         } catch {
-            print("\(logTag) Error, cannot produce JSON from object")
+            os_log("Error, cannot produce JSON from object.", log: APIRequest.logTag, type: .error)
             return
         }
         
@@ -160,14 +161,14 @@ class APIRequest {
                 
             // Check for any errors
             guard error == nil else {
-                print("\(logTag) Error with PUT request")
+                os_log("Error with PUT request.", log: APIRequest.logTag, type: .error)
                 print(error!)
                 return
             }
                 
             // Check the response data
             guard let responseData = data else {
-                print("\(logTag) Error, did not receive data")
+                os_log("Error, did not receive data.", log: APIRequest.logTag, type: .error)
                 return
             }
                 
@@ -176,8 +177,8 @@ class APIRequest {
             let jsonString: String? = String(data: responseData, encoding: String.Encoding.utf8)
                 
             guard let json = jsonString else {
-                    
-                print("\(logTag) Error, Map Conversion Failed")
+                
+                os_log("Error, Map Conversion Failed.", log: APIRequest.logTag, type: .error)
                 return
                     
             }
@@ -198,10 +199,10 @@ class APIRequest {
             (data, response, error) -> Void in
             
             guard let _ = data else {
-                print("\(logTag) Error, Delete Request failed")
+                os_log("Error, Delete Request failed", log: APIRequest.logTag, type: .error)
                 return
             }
-            print("\(logTag) Delete Request Successful!")
+            os_log("Delete Request Successful!", log: APIRequest.logTag, type: .debug)
             
             OperationQueue.main.addOperation {
                 completion(true)

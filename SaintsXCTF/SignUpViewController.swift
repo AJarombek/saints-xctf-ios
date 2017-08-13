@@ -8,10 +8,11 @@
 
 import UIKit
 import Foundation
+import os.log
 
 class SignUpViewController: UIViewController {
     
-    let logTag = "SignUpViewController: "
+    let logTag = OSLog(subsystem: "SaintsXCTF.App.SignUpViewController", category: "SignUpViewController")
     
     @IBOutlet var username: UITextField!
     @IBOutlet var activationCode: UITextField!
@@ -126,7 +127,8 @@ class SignUpViewController: UIViewController {
                     return
                 }
                 
-                print("\(self.logTag) Username \(user.username) is Available.  Checking Activation Code...")
+                os_log("Username %@ is Available.  Checking Activation Code...", log: self.logTag,
+                       type: .debug, user.username)
                 
                 //APIClient.activationCodeGetRequest(withCode: activationCodeString)
                 

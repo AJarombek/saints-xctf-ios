@@ -7,14 +7,15 @@
 //
 
 import UIKit
+import os.log
 
 class ProfileViewController: UIViewController {
     
-    let logTag = "ProfileViewController: "
+    let logTag = OSLog(subsystem: "SaintsXCTF.App.ProfileViewController", category: "ProfileViewController")
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("\(logTag) ProfileViewController Loaded.")
+        os_log("ProfileViewController Loaded.", log: logTag, type: .debug)
     }
     
     // Remove the keyboard when tapping the background

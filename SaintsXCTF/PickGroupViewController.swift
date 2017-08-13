@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import os.log
 
 class PickGroupController: UIViewController {
     
-    let logTag = "PickGroupViewController: "
+    let logTag = OSLog(subsystem: "SaintsXCTF.App.PickGroupViewController",
+                       category: "PickGroupViewController")
     
     @IBOutlet weak var alumniButton: UIButton!
     @IBOutlet weak var womenstfButton: UIButton!
@@ -23,7 +25,7 @@ class PickGroupController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("\(logTag) SignOutViewController Loaded.")
+        os_log("PickGroupViewController Loaded.", log: OSLog.default, type: .debug)
         
         // Programatically set the radiuses of all the buttons
         mensxcButton.layer.cornerRadius = 4

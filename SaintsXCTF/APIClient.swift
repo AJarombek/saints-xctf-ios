@@ -8,10 +8,11 @@
 
 import Foundation
 import ObjectMapper
+import os.log
 
 class APIClient {
     
-    private static let logTag = "APIClient:"
+    private static let logTag = OSLog(subsystem: "SaintsXCTF.APIClient.APIClient", category: "APIClient")
     
     // MARK: - GET Requests
     
@@ -22,7 +23,7 @@ class APIClient {
         // Create the URL
         let userGetEndpoint = "https://www.saintsxctf.com/api/api.php/users/\(username)"
         guard let url = URL(string: userGetEndpoint) else {
-            print("\(logTag) Error, Cannot create URL")
+            os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
             return
         }
         
@@ -37,7 +38,7 @@ class APIClient {
                     completion(user)
                 }
             } else {
-                print("\(logTag) User Conversion Failed.")
+                os_log("User Conversion Failed.", log: APIClient.logTag, type: .error)
                 
                 // If no user exists, return an empty user object
                 OperationQueue.main.addOperation {
@@ -52,7 +53,7 @@ class APIClient {
     
         let usersGetEndpoint = "https://www.saintsxctf.com/api/api.php/users"
         guard let url = URL(string: usersGetEndpoint) else {
-            print("\(logTag) Error, Cannot create URL")
+            os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
             return
         }
         
@@ -66,7 +67,7 @@ class APIClient {
                     completion(user)
                 }
             } else {
-                print("\(logTag) User Conversion Failed.")
+                os_log("Users Conversion Failed.", log: APIClient.logTag, type: .error)
             }
         }
     }
@@ -78,7 +79,7 @@ class APIClient {
         // Create the URL
         let logGetEndpoint = "https://www.saintsxctf.com/api/api.php/log/\(logID)"
         guard let url = URL(string: logGetEndpoint) else {
-            print("\(logTag) Error, Cannot create URL")
+            os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
             return
         }
         
@@ -93,7 +94,7 @@ class APIClient {
                     completion(log)
                 }
             } else {
-                print("\(logTag) Log Conversion Failed.")
+                os_log("Log Conversion Failed.", log: APIClient.logTag, type: .error)
             }
         }
     }
@@ -103,7 +104,7 @@ class APIClient {
         
         let logsGetEndpoint = "https://www.saintsxctf.com/api/api.php/logs"
         guard let url = URL(string: logsGetEndpoint) else {
-            print("\(logTag) Error, Cannot create URL")
+            os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
             return
         }
         
@@ -117,7 +118,7 @@ class APIClient {
                     completion(logs)
                 }
             } else {
-                print("\(logTag) Log Conversion Failed.")
+                os_log("Logs Conversion Failed.", log: APIClient.logTag, type: .error)
             }
         }
     }
@@ -129,7 +130,7 @@ class APIClient {
         // Create the URL
         let groupGetEndpoint = "https://www.saintsxctf.com/api/api.php/group/\(groupname)"
         guard let url = URL(string: groupGetEndpoint) else {
-            print("\(logTag) Error, Cannot create URL")
+            os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
             return
         }
         
@@ -143,7 +144,7 @@ class APIClient {
                     completion(group)
                 }
             } else {
-                print("\(logTag) Group Conversion Failed.")
+                os_log("Group Conversion Failed.", log: APIClient.logTag, type: .error)
             }
         }
     }
@@ -153,7 +154,7 @@ class APIClient {
         
         let groupsGetEndpoint = "https://www.saintsxctf.com/api/api.php/groups"
         guard let url = URL(string: groupsGetEndpoint) else {
-            print("\(logTag) Error, Cannot create URL")
+            os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
             return
         }
         
@@ -167,7 +168,7 @@ class APIClient {
                     completion(groups)
                 }
             } else {
-                print("\(logTag) Groups Conversion Failed.")
+                os_log("Groups Conversion Failed.", log: APIClient.logTag, type: .error)
             }
         }
     }
@@ -179,7 +180,7 @@ class APIClient {
         // Create the URL
         let commentGetEndpoint = "https://www.saintsxctf.com/api/api.php/comment/\(commentId)"
         guard let url = URL(string: commentGetEndpoint) else {
-            print("\(logTag) Error, Cannot create URL")
+            os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
             return
         }
         
@@ -193,7 +194,7 @@ class APIClient {
                     completion(comment)
                 }
             } else {
-                print("\(logTag) Comment Conversion Failed.")
+                os_log("Comment Conversion Failed.", log: APIClient.logTag, type: .error)
             }
         }
     }
@@ -203,7 +204,7 @@ class APIClient {
         
         let commentsGetEndpoint = "https://www.saintsxctf.com/api/api.php/comments"
         guard let url = URL(string: commentsGetEndpoint) else {
-            print("\(logTag) Error, Cannot create URL")
+            os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
             return
         }
         
@@ -217,7 +218,7 @@ class APIClient {
                     completion(comments)
                 }
             } else {
-                print("\(logTag) Comments Conversion Failed.")
+                os_log("Comments Conversion Failed.", log: APIClient.logTag, type: .error)
             }
         }
     }
@@ -229,7 +230,7 @@ class APIClient {
         // Create the URL
         let messageGetEndpoint = "https://www.saintsxctf.com/api/api.php/message/\(messageId)"
         guard let url = URL(string: messageGetEndpoint) else {
-            print("\(logTag) Error, Cannot create URL")
+            os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
             return
         }
         
@@ -243,7 +244,7 @@ class APIClient {
                     completion(message)
                 }
             } else {
-                print("\(logTag) Message Conversion Failed.")
+                os_log("Message Conversion Failed.", log: APIClient.logTag, type: .error)
             }
         }
     }
@@ -253,7 +254,7 @@ class APIClient {
         
         let messagesGetEndpoint = "https://www.saintsxctf.com/api/api.php/messages"
         guard let url = URL(string: messagesGetEndpoint) else {
-            print("\(logTag) Error, Cannot create URL")
+            os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
             return
         }
         
@@ -267,7 +268,7 @@ class APIClient {
                     completion(messages)
                 }
             } else {
-                print("\(logTag) Messages Conversion Failed.")
+                os_log("Messages Conversion Failed.", log: APIClient.logTag, type: .error)
             }
         }
     }
@@ -279,7 +280,7 @@ class APIClient {
         // Create the URL
         let activationCodeGetEndpoint = "https://www.saintsxctf.com/api/api.php/activationcode/\(code)"
         guard let url = URL(string: activationCodeGetEndpoint) else {
-            print("\(logTag) Error, Cannot create URL")
+            os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
             return
         }
         
@@ -293,7 +294,7 @@ class APIClient {
                     completion(activationcode)
                 }
             } else {
-                print("\(logTag) Activation Code Conversion Failed.")
+                os_log("Activation Code Conversion Failed.", log: APIClient.logTag, type: .error)
             }
         }
     }
@@ -305,7 +306,7 @@ class APIClient {
         // Create the URL
         let notificationGetEndpoint = "https://www.saintsxctf.com/api/api.php/notification/\(notificationId)"
         guard let url = URL(string: notificationGetEndpoint) else {
-            print("\(logTag) Error, Cannot create URL")
+            os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
             return
         }
         
@@ -319,7 +320,7 @@ class APIClient {
                     completion(notification)
                 }
             } else {
-                print("\(logTag) Notification Conversion Failed.")
+                os_log("Notification Conversion Failed.", log: APIClient.logTag, type: .error)
             }
         }
     }
@@ -329,7 +330,7 @@ class APIClient {
         
         let notificationsGetEndpoint = "https://www.saintsxctf.com/api/api.php/notifications"
         guard let url = URL(string: notificationsGetEndpoint) else {
-            print("\(logTag) Error, Cannot create URL")
+            os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
             return
         }
         
@@ -343,7 +344,7 @@ class APIClient {
                     completion(notifications)
                 }
             } else {
-                print("\(logTag) Notifications Conversion Failed.")
+                os_log("Notifications Conversion Failed.", log: APIClient.logTag, type: .error)
             }
         }
     }
@@ -355,7 +356,7 @@ class APIClient {
         let logfeedGetEndpoint = "https://www.saintsxctf.com/api/api.php/logfeed/"
             + "\(paramType)/\(sortParam)/\(limit)/\(offset)"
         guard let url = URL(string: logfeedGetEndpoint) else {
-            print("\(logTag) Error, Cannot create URL")
+            os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
             return
         }
         
@@ -369,7 +370,7 @@ class APIClient {
                     completion(logfeed)
                 }
             } else {
-                print("\(logTag) Log Feed Conversion Failed.")
+                os_log("Log Feed Conversion Failed.", log: APIClient.logTag, type: .error)
             }
         }
     }
@@ -381,7 +382,7 @@ class APIClient {
         let messagefeedGetEndpoint = "https://www.saintsxctf.com/api/api.php/messagefeed/"
             + "\(paramType)/\(sortParam)/\(limit)/\(offset)"
         guard let url = URL(string: messagefeedGetEndpoint) else {
-            print("\(logTag) Error, Cannot create URL")
+            os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
             return
         }
         
@@ -395,7 +396,7 @@ class APIClient {
                     completion(messagefeed)
                 }
             } else {
-                print("\(logTag) Message Feed Conversion Failed.")
+                os_log("Message Feed Conversion Failed.", log: APIClient.logTag, type: .error)
             }
         }
     }
@@ -407,7 +408,7 @@ class APIClient {
         let rangeviewGetEndpoint = "https://www.saintsxctf.com/api/api.php/rangeview/"
             + "\(paramType)/\(sortParam)/\(start)/\(end)"
         guard let url = URL(string: rangeviewGetEndpoint) else {
-            print("\(logTag) Error, Cannot create URL")
+            os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
             return
         }
         
@@ -421,7 +422,7 @@ class APIClient {
                     completion(rangeview)
                 }
             } else {
-                print("\(logTag) Range View Conversion Failed.")
+                os_log("Range View Conversion Failed.", log: APIClient.logTag, type: .error)
             }
         }
     }
@@ -433,7 +434,7 @@ class APIClient {
         
         let usersPostEndpoint = "https://www.saintsxctf.com/api/api.php/users"
         guard let url = URL(string: usersPostEndpoint) else {
-            print("\(logTag) Error, Cannot create URL")
+            os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
             return
         }
         
@@ -447,7 +448,7 @@ class APIClient {
                     completion(user)
                 }
             } else {
-                print("\(logTag) User Conversion Failed.")
+                os_log("User Conversion Failed.", log: APIClient.logTag, type: .error)
             }
         }
     }
@@ -457,7 +458,7 @@ class APIClient {
         
         let logPostEndpoint = "https://www.saintsxctf.com/api/api.php/log"
         guard let url = URL(string: logPostEndpoint) else {
-            print("\(logTag) Error, Cannot create URL")
+            os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
             return
         }
         
@@ -471,7 +472,7 @@ class APIClient {
                     completion(log)
                 }
             } else {
-                print("\(logTag) Log Conversion Failed.")
+                os_log("Log Conversion Failed.", log: APIClient.logTag, type: .error)
             }
         }
     }
@@ -482,7 +483,7 @@ class APIClient {
         
         let commentPostEndpoint = "https://www.saintsxctf.com/api/api.php/comment"
         guard let url = URL(string: commentPostEndpoint) else {
-            print("\(logTag) Error, Cannot create URL")
+            os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
             return
         }
         
@@ -496,7 +497,7 @@ class APIClient {
                     completion(comment)
                 }
             } else {
-                print("\(logTag) Comment Conversion Failed.")
+                os_log("Comment Conversion Failed.", log: APIClient.logTag, type: .error)
             }
         }
     }
@@ -507,7 +508,7 @@ class APIClient {
         
         let messagePostEndpoint = "https://www.saintsxctf.com/api/api.php/message"
         guard let url = URL(string: messagePostEndpoint) else {
-            print("\(logTag) Error, Cannot create URL")
+            os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
             return
         }
         
@@ -521,7 +522,7 @@ class APIClient {
                     completion(message)
                 }
             } else {
-                print("\(logTag) Message Conversion Failed.")
+                os_log("Message Conversion Failed.", log: APIClient.logTag, type: .error)
             }
         }
     }
@@ -532,7 +533,7 @@ class APIClient {
         
         let activationCodePostEndpoint = "https://www.saintsxctf.com/api/api.php/activationcode"
         guard let url = URL(string: activationCodePostEndpoint) else {
-            print("\(logTag) Error, Cannot create URL")
+            os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
             return
         }
         
@@ -546,7 +547,7 @@ class APIClient {
                     completion(activationcode)
                 }
             } else {
-                print("\(logTag) Activation Code Conversion Failed.")
+                os_log("Activation Code Conversion Failed.", log: APIClient.logTag, type: .error)
             }
         }
     }
@@ -557,7 +558,7 @@ class APIClient {
         
         let notificationPostEndpoint = "https://www.saintsxctf.com/api/api.php/notification"
         guard let url = URL(string: notificationPostEndpoint) else {
-            print("\(logTag) Error, Cannot create URL")
+            os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
             return
         }
         
@@ -571,7 +572,7 @@ class APIClient {
                     completion(notification)
                 }
             } else {
-                print("\(logTag) Notifications Conversion Failed.")
+                os_log("Notifications Conversion Failed.", log: APIClient.logTag, type: .error)
             }
         }
     }
@@ -584,7 +585,7 @@ class APIClient {
         
         let usersPutEndpoint = "https://www.saintsxctf.com/api/api.php/user/\(username)"
         guard let url = URL(string: usersPutEndpoint) else {
-            print("\(logTag) Error, Cannot create URL")
+            os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
             return
         }
         
@@ -598,7 +599,7 @@ class APIClient {
                     completion(user)
                 }
             } else {
-                print("\(logTag) User Conversion Failed.")
+                os_log("User Conversion Failed.", log: APIClient.logTag, type: .error)
             }
         }
     }
@@ -609,7 +610,7 @@ class APIClient {
         
         let logPutEndpoint = "https://www.saintsxctf.com/api/api.php/log/\(logID)"
         guard let url = URL(string: logPutEndpoint) else {
-            print("\(logTag) Error, Cannot create URL")
+            os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
             return
         }
         
@@ -623,7 +624,7 @@ class APIClient {
                     completion(log)
                 }
             } else {
-                print("\(logTag) Log Conversion Failed.")
+                os_log("Log Conversion Failed.", log: APIClient.logTag, type: .error)
             }
         }
     }
@@ -634,7 +635,7 @@ class APIClient {
         
         let groupPutEndpoint = "https://www.saintsxctf.com/api/api.php/group/\(groupname)"
         guard let url = URL(string: groupPutEndpoint) else {
-            print("\(logTag) Error, Cannot create URL")
+            os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
             return
         }
         
@@ -648,7 +649,7 @@ class APIClient {
                     completion(group)
                 }
             } else {
-                print("\(logTag) Group Conversion Failed.")
+                os_log("Group Conversion Failed.", log: APIClient.logTag, type: .error)
             }
         }
     }
@@ -659,7 +660,7 @@ class APIClient {
         
         let commentPutEndpoint = "https://www.saintsxctf.com/api/api.php/comment/\(commentId)"
         guard let url = URL(string: commentPutEndpoint) else {
-            print("\(logTag) Error, Cannot create URL")
+            os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
             return
         }
         
@@ -673,7 +674,7 @@ class APIClient {
                     completion(comment)
                 }
             } else {
-                print("\(logTag) Comment Conversion Failed.")
+                os_log("Comment Conversion Failed.", log: APIClient.logTag, type: .error)
             }
         }
     }
@@ -684,7 +685,7 @@ class APIClient {
         
         let messagePutEndpoint = "https://www.saintsxctf.com/api/api.php/message/\(messageId)"
         guard let url = URL(string: messagePutEndpoint) else {
-            print("\(logTag) Error, Cannot create URL")
+            os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
             return
         }
         
@@ -698,7 +699,7 @@ class APIClient {
                     completion(message)
                 }
             } else {
-                print("\(logTag) Message Conversion Failed.")
+                os_log("Message Conversion Failed.", log: APIClient.logTag, type: .error)
             }
         }
     }
@@ -710,7 +711,7 @@ class APIClient {
         
         let usersDeleteEndpoint = "https://www.saintsxctf.com/api/api.php/user/\(username)"
         guard let url = URL(string: usersDeleteEndpoint) else {
-            print("\(logTag) Error, Cannot create URL")
+            os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
             return false
         }
         
@@ -732,7 +733,7 @@ class APIClient {
         
         let logDeleteEndpoint = "https://www.saintsxctf.com/api/api.php/log/\(logID)"
         guard let url = URL(string: logDeleteEndpoint) else {
-            print("\(logTag) Error, Cannot create URL")
+            os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
             return false
         }
         
@@ -754,7 +755,7 @@ class APIClient {
         
         let commentDeleteEndpoint = "https://www.saintsxctf.com/api/api.php/comment/\(commentID)"
         guard let url = URL(string: commentDeleteEndpoint) else {
-            print("\(logTag) Error, Cannot create URL")
+            os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
             return false
         }
         
@@ -776,7 +777,7 @@ class APIClient {
         
         let messageDeleteEndpoint = "https://www.saintsxctf.com/api/api.php/message/\(messageID)"
         guard let url = URL(string: messageDeleteEndpoint) else {
-            print("\(logTag) Error, Cannot create URL")
+            os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
             return false
         }
         
@@ -799,7 +800,7 @@ class APIClient {
         let activationCodeDeleteEndpoint = "https://www.saintsxctf.com/api/api.php/"
                                             + "activationcode/\(activationCode)"
         guard let url = URL(string: activationCodeDeleteEndpoint) else {
-            print("\(logTag) Error, Cannot create URL")
+            os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
             return false
         }
         
@@ -822,7 +823,7 @@ class APIClient {
         let notificationDeleteEndpoint = "https://www.saintsxctf.com/api/api.php/"
             + "notification/\(notificationId)"
         guard let url = URL(string: notificationDeleteEndpoint) else {
-            print("\(logTag) Error, Cannot create URL")
+            os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
             return false
         }
         

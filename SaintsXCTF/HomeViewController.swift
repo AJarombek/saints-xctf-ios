@@ -8,10 +8,11 @@
 
 import UIKit
 import BCryptSwift
+import os.log
 
 class HomeViewController: UIViewController {
     
-    let logTag = "HomeViewController: "
+    let logTag = OSLog(subsystem: "SaintsXCTF.App.HomeViewController", category: "HomeViewController")
     
     // Remove the keyboard when tapping the background
     @IBAction func backgroundTapped(_ sender: UITapGestureRecognizer) {
@@ -36,7 +37,7 @@ class HomeViewController: UIViewController {
         // First make sure the username and password fields are filled
         if let usernameString: String = username.text, let passwordString: String = password.text {
             
-            print("\(logTag) Logging In User \(usernameString).")
+            os_log("Logging In User %@.", log: logTag, type: .debug, usernameString)
             
             // Second request the user from the API and specify a callback closure
             APIClient.userGetRequest(withUsername: usernameString) {
@@ -47,7 +48,7 @@ class HomeViewController: UIViewController {
                     let verified: Bool = BCryptSwift.verifyPassword(passwordString, matchesHash: hash) {
                     
                     if verified {
-                        print("\(self.logTag) Valid Password Entered!")
+                        os_log("Valid Password Entered!", log: self.logTag, type: .debug)
                         
                         // Save the user sign in data
                         let defaults = UserDefaults.standard
@@ -63,11 +64,11 @@ class HomeViewController: UIViewController {
                         self.present(mainViewController, animated: true, completion: nil)
                         
                     } else {
-                        print("\(self.logTag) INVALID Password Entered.")
+                        os_log("INVALID Password Entered.", log: self.logTag, type: .error)
                         self.error.text = "Invalid Username/Password Entered"
                     }
                 } else {
-                    print("\(self.logTag) Unable to Verfiy Password")
+                    os_log("Unable to Verfiy Password", log: self.logTag, type: .error)
                     self.error.text = "Invalid Username Entered"
                 }
             }
