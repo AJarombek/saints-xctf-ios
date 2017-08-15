@@ -147,21 +147,72 @@ class SignUpViewController: UIViewController {
                 os_log("Username %@ is Available.  Checking Activation Code...", log: self.logTag,
                        type: .debug, user.username)
                 
-                //APIClient.activationCodeGetRequest(withCode: activationCodeString)
-                
-                let newUser = User()
-                newUser.username = usernameString
-                newUser.first = firstNameString
-                newUser.last = lastNameString
-                newUser.email = emailString
-                newUser.password = passwordString
-                
-                //APIClient.userPostRequest(withUser: newUser)
+                // Validate the activation code
+                APIClient.activationCodeGetRequest(withCode: activationCodeString) {
+                    (activationcode) -> Void in
+                    
+                    if let _: ActivationCode = activationcode {
+                        
+                        os_log("Activation Code Valid.  Adding User to Database",
+                               log: self.logTag, type: .debug)
+                        
+                        // When the activation code is valid, build up a User object for a POST request
+                        let newUser = User()
+                        newUser.username = usernameString
+                        newUser.first = firstNameString
+                        newUser.last = lastNameString
+                        newUser.email = emailString
+                        newUser.password = passwordString
+                        
+                        // Final call to add the new user
+                        self.addUser(newUser, usernameString)
+                        
+                    } else {
+                        os_log("Invalid Activation Code", log: self.logTag, type: .debug)
+                        self.signUpError.text = "Invalid Activation Code"
+                        self.activationCode.changeStyle(.error)
+                        return
+                    }
+                }
             }
             
         } else {
             signUpError.text = "Must Fill In All Forms Inputs"
             return
+        }
+    }
+    
+    func addUser(_ user: User, _ username: String) {
+        APIClient.userPostRequest(withUser: user) {
+            (user) -> Void in
+            
+            // Check that the added user exists and the username is as expected
+            if let newUser: User = user, user?.username == username {
+                os_log("User Successfully Created", log: self.logTag, type: .debug)
+                os_log("%@", log: self.logTag, type: .debug, newUser.description)
+                
+                // Save the user sign in data
+                SignedInUser.user = newUser
+                let savedUser = SignedInUser.saveUser()
+                
+                if (savedUser) {
+                    os_log("Saved User to Persistant Storage.", log: self.logTag, type: .debug)
+                } else {
+                    os_log("Failed to Saves User to Persistant Storage",
+                           log: self.logTag, type: .error)
+                }
+                
+                // Redirect to the pick group page
+                let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let pickGroupViewController = storyBoard.instantiateViewController(withIdentifier:
+                    "pickGroupViewController") as! UITabBarController
+                self.present(pickGroupViewController, animated: true, completion: nil)
+                
+            } else {
+                os_log("User Creation Failed", log: self.logTag, type: .error)
+                self.signUpError.text = "Internal Error.  Try Again."
+                return
+            }
         }
     }
 }

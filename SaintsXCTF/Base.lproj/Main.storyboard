@@ -186,7 +186,7 @@
         <!--Pick Group Controller-->
         <scene sceneID="NdL-kw-bFb">
             <objects>
-                <viewController id="qhu-81-tAR" customClass="PickGroupController" customModule="SaintsXCTF" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="pickGroupViewController" id="qhu-81-tAR" customClass="PickGroupController" customModule="SaintsXCTF" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="5Vd-5c-Hmd"/>
                         <viewControllerLayoutGuide type="bottom" id="JAw-s3-ZWe"/>
@@ -195,22 +195,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m2t-ip-lNS">
-                                <rect key="frame" x="87" y="98" width="200" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.95999999999999996" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="Men's Cross Country">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="mensxcSelected:" destination="qhu-81-tAR" eventType="touchUpInside" id="g4T-SC-XYF"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TLx-Pl-STL">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TLx-Pl-STL">
                                 <rect key="frame" x="87" y="60" width="200" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.95999999999999996" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="JDV-uT-TwL"/>
+                                </constraints>
                                 <state key="normal" title="Women's Cross Country">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -219,10 +209,26 @@
                                     <action selector="womensxcSelected:" destination="qhu-81-tAR" eventType="touchUpInside" id="hpO-if-6u4"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ig3-hh-azd">
-                                <rect key="frame" x="87" y="136" width="200" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m2t-ip-lNS">
+                                <rect key="frame" x="87" y="98" width="200" height="30"/>
                                 <color key="backgroundColor" white="0.95999999999999996" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="nhM-47-lWg"/>
+                                </constraints>
+                                <state key="normal" title="Men's Cross Country">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="mensxcSelected:" destination="qhu-81-tAR" eventType="touchUpInside" id="g4T-SC-XYF"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ig3-hh-azd">
+                                <rect key="frame" x="87" y="136" width="200" height="30"/>
+                                <color key="backgroundColor" white="0.95999999999999996" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="dYn-lc-DPl"/>
+                                </constraints>
                                 <state key="normal" title="Women's Track &amp; Field">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -231,10 +237,12 @@
                                     <action selector="womenstfSelected:" destination="qhu-81-tAR" eventType="touchUpInside" id="pbn-un-0jk"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5bH-iV-JgC">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5bH-iV-JgC">
                                 <rect key="frame" x="87" y="212" width="200" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.95999999999999996" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="ktL-bY-Mjx"/>
+                                </constraints>
                                 <state key="normal" title="Alumni">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -243,18 +251,12 @@
                                     <action selector="alumniSelected:" destination="qhu-81-tAR" eventType="touchUpInside" id="z7D-EN-eRX"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gDa-DK-8GR">
-                                <rect key="frame" x="163" y="278" width="49" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Submit"/>
-                                <connections>
-                                    <action selector="pickGroups:" destination="qhu-81-tAR" eventType="touchUpInside" id="hMB-EO-yXt"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9r4-zl-F1S">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9r4-zl-F1S">
                                 <rect key="frame" x="87" y="174" width="200" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.95999999999999996" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="p3B-NQ-dWC"/>
+                                </constraints>
                                 <state key="normal" title="Men's Track &amp; Field">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -263,7 +265,31 @@
                                     <action selector="menstfSelected:" destination="qhu-81-tAR" eventType="touchUpInside" id="9AY-9E-zBP"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gDa-DK-8GR">
+                                <rect key="frame" x="163" y="278" width="49" height="30"/>
+                                <state key="normal" title="Submit"/>
+                                <connections>
+                                    <action selector="pickGroups:" destination="qhu-81-tAR" eventType="touchUpInside" id="hMB-EO-yXt"/>
+                                </connections>
+                            </button>
                         </subviews>
+                        <constraints>
+                            <constraint firstItem="TLx-Pl-STL" firstAttribute="top" secondItem="5Vd-5c-Hmd" secondAttribute="bottom" constant="40" id="1A6-dY-1I4"/>
+                            <constraint firstItem="Ig3-hh-azd" firstAttribute="top" secondItem="m2t-ip-lNS" secondAttribute="bottom" constant="8" id="8OG-Ya-NDW"/>
+                            <constraint firstItem="m2t-ip-lNS" firstAttribute="top" secondItem="TLx-Pl-STL" secondAttribute="bottom" constant="8" id="Bps-ax-gpv"/>
+                            <constraint firstItem="m2t-ip-lNS" firstAttribute="centerX" secondItem="7hh-Ji-M7D" secondAttribute="centerX" id="BxB-pW-2xw"/>
+                            <constraint firstItem="Ig3-hh-azd" firstAttribute="centerX" secondItem="7hh-Ji-M7D" secondAttribute="centerX" id="EFH-kx-fNS"/>
+                            <constraint firstItem="gDa-DK-8GR" firstAttribute="top" secondItem="5bH-iV-JgC" secondAttribute="bottom" constant="36" id="FIh-XX-IeF"/>
+                            <constraint firstItem="Ig3-hh-azd" firstAttribute="centerX" secondItem="m2t-ip-lNS" secondAttribute="centerX" id="FL1-aD-M6V"/>
+                            <constraint firstItem="gDa-DK-8GR" firstAttribute="centerX" secondItem="7hh-Ji-M7D" secondAttribute="centerX" id="FXI-jK-MdQ"/>
+                            <constraint firstItem="9r4-zl-F1S" firstAttribute="centerX" secondItem="m2t-ip-lNS" secondAttribute="centerX" id="NcC-Jj-a3v"/>
+                            <constraint firstItem="9r4-zl-F1S" firstAttribute="centerX" secondItem="7hh-Ji-M7D" secondAttribute="centerX" id="Num-KP-aM6"/>
+                            <constraint firstItem="5bH-iV-JgC" firstAttribute="centerX" secondItem="7hh-Ji-M7D" secondAttribute="centerX" id="hv3-KI-MWH"/>
+                            <constraint firstItem="5bH-iV-JgC" firstAttribute="centerX" secondItem="m2t-ip-lNS" secondAttribute="centerX" id="j4n-s0-s8o"/>
+                            <constraint firstItem="TLx-Pl-STL" firstAttribute="centerX" secondItem="7hh-Ji-M7D" secondAttribute="centerX" id="qTr-mU-lxa"/>
+                            <constraint firstItem="9r4-zl-F1S" firstAttribute="top" secondItem="Ig3-hh-azd" secondAttribute="bottom" constant="8" id="u6y-MG-uTU"/>
+                            <constraint firstItem="5bH-iV-JgC" firstAttribute="top" secondItem="9r4-zl-F1S" secondAttribute="bottom" constant="8" id="wjt-JS-gff"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="alumniButton" destination="5bH-iV-JgC" id="ByY-wY-MCA"/>

@@ -275,7 +275,7 @@ class APIClient {
     
     // Handle GET Requests for an Activation Code
     public static func activationCodeGetRequest(withCode code: String,
-                                                completion: @escaping (ActivationCode) -> Void) {
+                                                completion: @escaping (ActivationCode?) -> Void) {
         
         // Create the URL
         let activationCodeGetEndpoint = "https://www.saintsxctf.com/api/api.php/activationcode/\(code)"
@@ -295,6 +295,10 @@ class APIClient {
                 }
             } else {
                 os_log("Activation Code Conversion Failed.", log: APIClient.logTag, type: .error)
+                
+                OperationQueue.main.addOperation {
+                    completion(nil)
+                }
             }
         }
     }
@@ -430,7 +434,7 @@ class APIClient {
     // MARK: - POST Requests
     
     // Handle POST Request for a User
-    public static func userPostRequest(withUser user: User, completion: @escaping (User) -> Void) {
+    public static func userPostRequest(withUser user: User, completion: @escaping (User?) -> Void) {
         
         let usersPostEndpoint = "https://www.saintsxctf.com/api/api.php/users"
         guard let url = URL(string: usersPostEndpoint) else {
@@ -449,6 +453,10 @@ class APIClient {
                 }
             } else {
                 os_log("User Conversion Failed.", log: APIClient.logTag, type: .error)
+                
+                OperationQueue.main.addOperation {
+                    completion(nil)
+                }
             }
         }
     }

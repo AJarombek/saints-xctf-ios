@@ -68,11 +68,15 @@ class HomeViewController: UIViewController {
                             os_log("Valid Password Entered!", log: self.logTag, type: .debug)
                         
                             // Save the user sign in data
-                            let defaults = UserDefaults.standard
-                        
-                            defaults.set(user.first, forKey: "first name")
-                            defaults.set(user.last, forKey: "last name")
-                            defaults.set(user.toJSONString()!, forKey: "user")
+                            SignedInUser.user = user
+                            let savedUser = SignedInUser.saveUser()
+                            
+                            if (savedUser) {
+                                os_log("Saved User to Persistant Storage.", log: self.logTag, type: .debug)
+                            } else {
+                                os_log("Failed to Saves User to Persistant Storage",
+                                       log: self.logTag, type: .error)
+                            }
                         
                             // Redirect to the main page
                             let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)

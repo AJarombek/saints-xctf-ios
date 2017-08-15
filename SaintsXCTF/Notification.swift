@@ -9,16 +9,39 @@
 import Foundation
 import ObjectMapper
 
-class Notification: Mappable {
+class Notification: NSObject, Mappable, NSCoding {
     
     var notification_id: Int!
     var username: String!
     var time: String!
     var link: String!
-    var description: String!
+    var notification_description: String!
     
-    required init?(map: Map) {
-        // pass
+    // Mappable Initializer
+    required init?(map: Map) {}
+    
+    // NSCoder Initializer
+    required init?(coder aDecoder: NSCoder) {
+        notification_id = aDecoder.decodeInteger(forKey: "notification_id")
+        username = aDecoder.decodeObject(forKey: "username") as! String!
+        time = aDecoder.decodeObject(forKey: "time") as! String!
+        link = aDecoder.decodeObject(forKey: "link") as! String!
+        notification_description = aDecoder.decodeObject(
+            forKey: "notification_description") as! String!
+    }
+    
+    // This class uses the CustomStringConvertible protocol.
+    // The description will be printed whenever we try to print a Notification object
+    override var description: String {
+        return "Notification: (\(username!), \(time!), \(link!), \(notification_description!))"
+    }
+    
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(notification_id, forKey: "notification_id")
+        aCoder.encode(username, forKey: "username")
+        aCoder.encode(time, forKey: "time")
+        aCoder.encode(link, forKey: "link")
+        aCoder.encode(notification_description, forKey: "notification_description")
     }
     
     func mapping(map: Map) {
@@ -26,6 +49,6 @@ class Notification: Mappable {
         username <- map["username"]
         time <- map["time"]
         link <- map["link"]
-        description <- map["description"]
+        notification_description <- map["description"]
     }
 }

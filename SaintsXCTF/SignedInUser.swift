@@ -16,7 +16,7 @@ class SignedInUser {
     static var user = User()
     
     // Get the url to the document directory where we will store the user object
-    let userArchiveURL: URL = {
+    static let userArchiveURL: URL = {
         let documentsDirectories = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         let documentDirectory = documentsDirectories.first!
         return documentDirectory.appendingPathComponent("user.archive")
@@ -24,13 +24,15 @@ class SignedInUser {
     
     // On initialization, check to see if an archived user exists
     init() {
-        if let archivedUser = NSKeyedUnarchiver.unarchiveObject(withFile: userArchiveURL.path) as? User {
+        if let archivedUser = NSKeyedUnarchiver.unarchiveObject(withFile:
+                        SignedInUser.userArchiveURL.path) as? User {
+            
             SignedInUser.user = archivedUser
         }
     }
     
     // Save the user to the filesystem
-    func saveUser() -> Bool {
+    static func saveUser() -> Bool {
         os_log("Saving items to %@", log: OSLog.default, type: .debug, userArchiveURL.path)
         return NSKeyedArchiver.archiveRootObject(SignedInUser.user, toFile: userArchiveURL.path)
     }
