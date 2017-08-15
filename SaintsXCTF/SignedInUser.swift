@@ -13,7 +13,7 @@ class SignedInUser {
     
     let logTag = OSLog(subsystem: "SaintsXCTF.App.SignedInUser", category: "SignedInUser")
     
-    var user = User()
+    static var user = User()
     
     // Get the url to the document directory where we will store the user object
     let userArchiveURL: URL = {
@@ -25,13 +25,13 @@ class SignedInUser {
     // On initialization, check to see if an archived user exists
     init() {
         if let archivedUser = NSKeyedUnarchiver.unarchiveObject(withFile: userArchiveURL.path) as? User {
-            user = archivedUser
+            SignedInUser.user = archivedUser
         }
     }
     
     // Save the user to the filesystem
     func saveUser() -> Bool {
         os_log("Saving items to %@", log: OSLog.default, type: .debug, userArchiveURL.path)
-        return NSKeyedArchiver.archiveRootObject(user, toFile: userArchiveURL.path)
+        return NSKeyedArchiver.archiveRootObject(SignedInUser.user, toFile: userArchiveURL.path)
     }
 }
