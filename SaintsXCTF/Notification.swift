@@ -11,7 +11,7 @@ import ObjectMapper
 
 class Notification: NSObject, Mappable, NSCoding {
     
-    var notification_id: Int!
+    var notification_id: String!
     var username: String!
     var time: String!
     var link: String!
@@ -22,7 +22,7 @@ class Notification: NSObject, Mappable, NSCoding {
     
     // NSCoder Initializer
     required init?(coder aDecoder: NSCoder) {
-        notification_id = aDecoder.decodeInteger(forKey: "notification_id")
+        notification_id = aDecoder.decodeObject(forKey: "notification_id") as! String!
         username = aDecoder.decodeObject(forKey: "username") as! String!
         time = aDecoder.decodeObject(forKey: "time") as! String!
         link = aDecoder.decodeObject(forKey: "link") as! String!

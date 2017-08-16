@@ -22,7 +22,7 @@ class User: NSObject, Mappable, NSCoding {
     var user_description: String?
     var activation_code: String?
     var member_since: Date!
-    var class_year: Int?
+    var class_year: String?
     var location: String?
     var favorite_event: String?
     var forgot_password: [String]!
@@ -51,7 +51,7 @@ class User: NSObject, Mappable, NSCoding {
         user_description = aDecoder.decodeObject(forKey: "description") as! String?
         activation_code = aDecoder.decodeObject(forKey: "activation_code") as! String?
         member_since = aDecoder.decodeObject(forKey: "member_since") as! Date!
-        class_year = aDecoder.decodeInteger(forKey: "class_year")
+        class_year = aDecoder.decodeObject(forKey: "class_year") as! String?
         location = aDecoder.decodeObject(forKey: "location") as! String?
         favorite_event = aDecoder.decodeObject(forKey: "favorite_event") as! String?
         forgot_password = aDecoder.decodeObject(forKey: "forgot_password") as! [String]!

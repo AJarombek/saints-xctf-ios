@@ -39,7 +39,7 @@ class StartViewController: UIViewController {
                 // Redirect to the signed out home page
                 let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                 let homeViewController = storyBoard.instantiateViewController(withIdentifier:
-                    "homeViewController") as! HomeViewController
+                    "pickGroupViewController") as! HomeViewController
                 self.present(homeViewController, animated: true, completion: nil)
             }
         })

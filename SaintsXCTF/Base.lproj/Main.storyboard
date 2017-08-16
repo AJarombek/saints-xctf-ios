@@ -541,9 +541,34 @@
                     <view key="view" contentMode="scaleToFill" id="RjW-4N-Mhv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="SIGN OUT" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EbE-I5-ihT">
+                                <rect key="frame" x="87" y="308.5" width="200" height="50"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="Bvm-hS-Qci"/>
+                                    <constraint firstAttribute="height" constant="50" id="cO6-R3-3cI"/>
+                                </constraints>
+                                <color key="textColor" white="0.42088093250000003" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5dm-F0-Tya">
+                                <rect key="frame" x="163" y="356" width="51" height="31"/>
+                            </switch>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="5dm-F0-Tya" firstAttribute="centerX" secondItem="EbE-I5-ihT" secondAttribute="centerX" id="7gV-bf-CME"/>
+                            <constraint firstItem="EbE-I5-ihT" firstAttribute="centerX" secondItem="RjW-4N-Mhv" secondAttribute="centerX" id="W9g-ce-CRQ"/>
+                            <constraint firstItem="EbE-I5-ihT" firstAttribute="centerY" secondItem="RjW-4N-Mhv" secondAttribute="centerY" id="bBN-Kl-imZ"/>
+                            <constraint firstItem="5dm-F0-Tya" firstAttribute="top" secondItem="EbE-I5-ihT" secondAttribute="bottom" constant="-2.5" id="v9M-be-n8K"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Sign Out" image="exit" id="9wg-KD-D3W"/>
+                    <connections>
+                        <outlet property="signOutSwitch" destination="5dm-F0-Tya" id="oKu-J9-A5s"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kU3-k9-QTg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

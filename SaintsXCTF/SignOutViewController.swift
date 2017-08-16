@@ -13,9 +13,13 @@ class SignOutController: UIViewController {
     
     let logTag = OSLog(subsystem: "SaintsXCTF.App.LogViewController", category: "LogViewController")
     
+    @IBOutlet weak var signOutSwitch: UISwitch!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         os_log("LogViewController Loaded.", log: OSLog.default, type: .debug)
+        
+        signOutSwitch.setOn(false, animated: false)
     }
     
     // Remove the keyboard when tapping the background
