@@ -11,7 +11,7 @@ import os.log
 
 class SignedInUser {
     
-    let logTag = OSLog(subsystem: "SaintsXCTF.App.SignedInUser", category: "SignedInUser")
+    static let logTag = OSLog(subsystem: "SaintsXCTF.App.SignedInUser", category: "SignedInUser")
     
     static var user = User()
     
@@ -33,7 +33,14 @@ class SignedInUser {
     
     // Save the user to the filesystem
     static func saveUser() -> Bool {
-        os_log("Saving items to %@", log: OSLog.default, type: .debug, userArchiveURL.path)
+        os_log("Saving items to %@", log: SignedInUser.logTag, type: .debug, userArchiveURL.path)
+        return NSKeyedArchiver.archiveRootObject(SignedInUser.user, toFile: userArchiveURL.path)
+    }
+    
+    // Remove the user in the filesystem by overwriting the old user with an empty one
+    static func removeUser() -> Bool {
+        os_log("Removing user from storage", log: SignedInUser.logTag, type: .debug)
+        user = User()
         return NSKeyedArchiver.archiveRootObject(SignedInUser.user, toFile: userArchiveURL.path)
     }
 }

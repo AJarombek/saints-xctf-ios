@@ -13,7 +13,7 @@
         <!--Start View Controller-->
         <scene sceneID="RDn-IO-QOR">
             <objects>
-                <viewController id="z0R-dm-gls" customClass="StartViewController" customModule="SaintsXCTF" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="startViewController" id="z0R-dm-gls" customClass="StartViewController" customModule="SaintsXCTF" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="iff-Jw-yxU"/>
                         <viewControllerLayoutGuide type="bottom" id="Q2V-WS-YDf"/>

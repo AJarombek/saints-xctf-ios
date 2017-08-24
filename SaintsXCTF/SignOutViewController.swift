@@ -17,13 +17,33 @@ class SignOutController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        os_log("LogViewController Loaded.", log: OSLog.default, type: .debug)
+        os_log("LogViewController Loaded.", log: logTag, type: .debug)
         
         signOutSwitch.setOn(false, animated: false)
+        signOutSwitch.addTarget(self, action: #selector(switchChanged),
+                                for: UIControlEvents.valueChanged)
     }
     
     // Remove the keyboard when tapping the background
     @IBAction func backgroundTapped(_ sender: UITapGestureRecognizer) {
         view.endEditing(true)
+    }
+    
+    // Function called when the UISwitch is changed.  If it is turned on, sign out user
+    func switchChanged(mySwitch: UISwitch) {
+        let on: Bool = mySwitch.isOn
+        
+        if (on) {
+            let removed = SignedInUser.removeUser()
+            
+            if (removed) {
+                os_log("Successfully Signed Out User.", log: logTag, type: .debug)
+            }
+            
+            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let startViewController = storyBoard.instantiateViewController(withIdentifier:
+                "startViewController") as! StartViewController
+            self.present(startViewController, animated: true, completion: nil)
+        }
     }
 }
