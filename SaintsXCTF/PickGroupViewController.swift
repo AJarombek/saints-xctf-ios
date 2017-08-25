@@ -14,6 +14,7 @@ class PickGroupController: UIViewController {
     let logTag = OSLog(subsystem: "SaintsXCTF.App.PickGroupViewController",
                        category: "PickGroupViewController")
     
+    
     @IBOutlet weak var alumniButton: UIButton!
     @IBOutlet weak var womenstfButton: UIButton!
     @IBOutlet weak var menstfButton: UIButton!
@@ -125,8 +126,88 @@ class PickGroupController: UIViewController {
     }
     
     @IBAction func pickGroups(_ sender: UIButton) {
-        /*APIClient.userPutRequest(withUsername: username, andUser: user) {
-            (User) -> Void in
-        }*/
+        _ = SignedInUser()
+        let user = SignedInUser.user
+        let username = user.username!
+        
+        // In swift classes are pass by reference, so changing the altered user in addGroups
+        // points back to this user object
+        addGroups(user)
+        
+        APIClient.userPutRequest(withUsername: username, andUser: user) {
+            (user) -> Void in
+                
+            os_log("Users picked groups: %@", log: self.logTag, type: .debug, user.groups)
+            
+            // Save the user picked groups data
+            SignedInUser.user = user
+            let savedUser = SignedInUser.saveUser()
+            
+            if (savedUser) {
+                os_log("Saved Updated User to Persistant Storage.", log: self.logTag, type: .debug)
+            } else {
+                os_log("Failed to Save Updated User to Persistant Storage",
+                       log: self.logTag, type: .error)
+            }
+            
+            // Redirect to the main page
+            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let mainViewController = storyBoard.instantiateViewController(withIdentifier:
+                "mainViewController") as! MainViewController
+            self.present(mainViewController, animated: true, completion: nil)
+            
+        }
+    }
+    
+    func addGroups(_ user: User) {
+        if (mensxc) {
+            let mensxcInfo = GroupInfo()
+            mensxcInfo.group_name = "mensxc"
+            mensxcInfo.group_title = "Men's Cross Country"
+            mensxcInfo.status = "pending"
+            mensxcInfo.user = "user"
+            
+            user.groups.append(mensxcInfo)
+        }
+        
+        if (wmensxc) {
+            let wmensxcInfo = GroupInfo()
+            wmensxcInfo.group_name = "wmensxc"
+            wmensxcInfo.group_title = "Women's Cross Country"
+            wmensxcInfo.status = "pending"
+            wmensxcInfo.user = "user"
+            
+            user.groups.append(wmensxcInfo)
+        }
+        
+        if (menstf) {
+            let menstfInfo = GroupInfo()
+            menstfInfo.group_name = "mensxf"
+            menstfInfo.group_title = "Men's Track & Field"
+            menstfInfo.status = "pending"
+            menstfInfo.user = "user"
+            
+            user.groups.append(menstfInfo)
+        }
+        
+        if (wmenstf) {
+            let wmenstfInfo = GroupInfo()
+            wmenstfInfo.group_name = "wmenstf"
+            wmenstfInfo.group_title = "Women's Track & Field"
+            wmenstfInfo.status = "pending"
+            wmenstfInfo.user = "user"
+            
+            user.groups.append(wmenstfInfo)
+        }
+        
+        if (alumni) {
+            let alumniInfo = GroupInfo()
+            alumniInfo.group_name = "alumni"
+            alumniInfo.group_title = "Alumni"
+            alumniInfo.status = "pending"
+            alumniInfo.user = "user"
+            
+            user.groups.append(alumniInfo)
+        }
     }
 }
