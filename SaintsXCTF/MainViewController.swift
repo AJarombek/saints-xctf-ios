@@ -59,7 +59,7 @@ class MainViewController: UIViewController, UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         let height = 100
-        let width = collectionView.bounds.size.width
+        let width = collectionView.bounds.size.width - 10
         return CGSize(width: Int(width), height: height)
     }
 }

@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SaintsXCTF/LogCollectionViewCell.swift"
-            timestampString = "525401181.795445"
+            timestampString = "525407262.401795"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "20"
-            endingLineNumber = "20"
+            startingLineNumber = "16"
+            endingLineNumber = "16"
             landmarkName = "LogCollectionViewCell"
             landmarkType = "3">
          </BreakpointContent>

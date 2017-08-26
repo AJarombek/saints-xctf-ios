@@ -181,8 +181,8 @@
 		A15E62291F3F91F600AC9EF1 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				A15E62451F5119F700AC9EF1 /* Main */,
 				A15E622C1F3F938B00AC9EF1 /* Extensions */,
-				A11C2DF51F0B284F00EBDDB5 /* MainViewController.swift */,
 				A15BA1661E8AF6CE00B9796B /* HomeViewController.swift */,
 				A11C2DF31F0B249E00EBDDB5 /* SignUpViewController.swift */,
 				A15E622D1F3F97D700AC9EF1 /* ProfileViewController.swift */,
@@ -192,8 +192,6 @@
 				A15E62361F3FA45F00AC9EF1 /* PickGroupViewController.swift */,
 				A15E623D1F41545000AC9EF1 /* SignedInUser.swift */,
 				A15E623F1F4273BB00AC9EF1 /* StartViewController.swift */,
-				A15E62411F4FC70400AC9EF1 /* LogDataSource.swift */,
-				A15E62431F50F4E200AC9EF1 /* LogCollectionViewCell.swift */,
 			);
 			name = App;
 			sourceTree = "<group>";
@@ -233,6 +231,16 @@
 				A15E62381F3FD44000AC9EF1 /* HexColor.swift */,
 			);
 			name = Extensions;
+			sourceTree = "<group>";
+		};
+		A15E62451F5119F700AC9EF1 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				A15E62411F4FC70400AC9EF1 /* LogDataSource.swift */,
+				A15E62431F50F4E200AC9EF1 /* LogCollectionViewCell.swift */,
+				A11C2DF51F0B284F00EBDDB5 /* MainViewController.swift */,
+			);
+			name = Main;
 			sourceTree = "<group>";
 		};
 		BA1F2D94348037A236758C1C /* Pods */ = {
