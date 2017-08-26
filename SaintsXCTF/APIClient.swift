@@ -368,7 +368,7 @@ class APIClient {
             (json) -> Void in
             
             if let logfeed: Array<Log> = Mapper<Log>().mapArray(JSONString: json) {
-                print("\(logTag) \(logfeed)")
+                os_log("%@", log: APIClient.logTag, type: .debug, logfeed)
                 
                 OperationQueue.main.addOperation {
                     completion(logfeed)

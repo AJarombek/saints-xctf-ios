@@ -9,7 +9,7 @@
 import Foundation
 import ObjectMapper
 
-class Log: Mappable {
+class Log: Mappable, CustomStringConvertible {
     
     var log_id: Int!
     var username: String!
@@ -19,17 +19,26 @@ class Log: Mappable {
     var location: String?
     var date: Date!
     var type: String?
-    var distance: Double?
+    var distance: String?
+    var miles: String?
     var metric: String!
     var time: String?
     var pace: String?
     var feel: Int!
-    var description: String?
+    var log_description: String?
     var time_created: Date?
     var comments: [Comment]!
     
     required init?(map: Map) {
         // pass
+    }
+    
+    // This class uses the CustomStringConvertible protocol.
+    // The description will be printed whenever we try to print a User object
+    var description: String {
+        let logdistance = distance ?? "0.1"
+        let logtime = time ?? "0:00"
+        return "Log: (\(username!), \(name!), \(logdistance) - \(logtime))"
     }
     
     func mapping(map: Map) {
@@ -42,11 +51,12 @@ class Log: Mappable {
         date <- map["date"]
         type <- map["type"]
         distance <- map["distance"]
+        miles <- map["miles"]
         metric <- map["metric"]
         time <- map["time"]
         pace <- map["pace"]
         feel <- map["feel"]
-        description <- map["description"]
+        log_description <- map["description"]
         time_created <- map["time_created"]
         comments <- map["comments"]
     }

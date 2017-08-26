@@ -9,11 +9,11 @@
 import UIKit
 import os.log
 
-class MainViewController: UIViewController, UICollectionViewDelegateFlowLayout {
+class MainViewController: UITableViewController {
     
     let logTag = OSLog(subsystem: "SaintsXCTF.App.MainViewController", category: "MainViewController")
     
-    @IBOutlet weak var logCollectionView: UICollectionView!
+    @IBOutlet weak var logTableView: UITableView!
     
     let logDataSource = LogDataSource()
     var finished = false
@@ -27,16 +27,27 @@ class MainViewController: UIViewController, UICollectionViewDelegateFlowLayout {
         super.viewDidLoad()
         os_log("MainViewController Loaded.", log: logTag, type: .debug)
         
-        
-        
-        // Set up the datasource for the log collectionview and get the newest 10 logs
-        logCollectionView.dataSource = logDataSource
         load()
     }
     
     // Remove the keyboard when tapping the background
     @IBAction func backgroundTapped(_ sender: UITapGestureRecognizer) {
         view.endEditing(true)
+    }
+    
+    // Returns the number of rows that the tableview should display
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return logDataSource.count()
+    }
+    
+    // Ask the datasource for a cell to insert at a certain location in the table view
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        
+        let log = logDataSource.get(indexPath.row)
+        
+        cell.textLabel?.text = log.username
+        return cell
     }
     
     func load() {
@@ -48,18 +59,7 @@ class MainViewController: UIViewController, UICollectionViewDelegateFlowLayout {
             if (done) {
                 self.finished = done
             }
-            
-            self.logCollectionView.reloadSections(IndexSet(integer: 0))
         }
         offset += 10
-    }
-    
-    // Set the width and height of the collection view item
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let height = 100
-        let width = collectionView.bounds.size.width - 10
-        return CGSize(width: Int(width), height: height)
     }
 }

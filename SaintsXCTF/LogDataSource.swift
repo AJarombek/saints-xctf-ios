@@ -9,26 +9,18 @@
 import UIKit
 import os.log
 
-class LogDataSource: NSObject, UICollectionViewDataSource {
+class LogDataSource {
     
     static let logTag = OSLog(subsystem: "SaintsXCTF.App.LogDataSource", category: "LogDataSource")
     
     private var logs = [Log]()
     
-    func collectionView(_ collectionView: UICollectionView,
-                        numberOfItemsInSection section: Int) -> Int {
+    func count() -> Int {
         return logs.count
     }
     
-    func collectionView(_ collectionView: UICollectionView,
-                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let identifier = "LogCollectionViewCell"
-        
-        // Get a reusable cell object found by the identifier
-        let cell: LogCollectionViewCell = collectionView.dequeueReusableCell(
-                    withReuseIdentifier: identifier, for: indexPath) as! LogCollectionViewCell
-        
-        return cell
+    func get(_ index: Int) -> Log {
+        return logs[index]
     }
     
     // Load a defined number of logs into the datasource using the logfeed endpoint
