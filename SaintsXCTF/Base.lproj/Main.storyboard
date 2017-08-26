@@ -314,7 +314,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="BLk-Ye-qfA">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="BLk-Ye-qfA">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BLk-Ye-qfA" id="XKP-dL-gJw">
@@ -329,6 +329,9 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Home" image="home" id="fcm-sx-7H4"/>
+                    <connections>
+                        <outlet property="logTableView" destination="zQP-vr-edn" id="xBe-ZQ-TEx"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5e8-AJ-9T3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

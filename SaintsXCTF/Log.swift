@@ -36,7 +36,7 @@ class Log: Mappable, CustomStringConvertible {
     // This class uses the CustomStringConvertible protocol.
     // The description will be printed whenever we try to print a User object
     var description: String {
-        let logdistance = distance ?? "0.1"
+        let logdistance = distance ?? "0.0"
         let logtime = time ?? "0:00"
         return "Log: (\(username!), \(name!), \(logdistance) - \(logtime))"
     }
