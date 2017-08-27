@@ -27,7 +27,15 @@ class MainViewController: UITableViewController {
         super.viewDidLoad()
         os_log("MainViewController Loaded.", log: logTag, type: .debug)
         
+        // Setting the row height to UITableViewAutomaticDimension tells the TableView to determine the
+        // height of a cell based on its contents and constraints.
+        // The estimated row height is arbitrary but must be set in order for this to work.
+        logTableView.estimatedRowHeight = 200
+        logTableView.rowHeight = UITableViewAutomaticDimension
+
         load()
+        logTableView.beginUpdates()
+        logTableView.endUpdates()
     }
     
     // Remove the keyboard when tapping the background
@@ -42,11 +50,18 @@ class MainViewController: UITableViewController {
     
     // Ask the datasource for a cell to insert at a certain location in the table view
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! LogTableViewCell
         let log = logDataSource.get(indexPath.row)
         
-        cell.textLabel?.text = log.username
+        let feelInt: Int! = Int(log.feel)
+        if let validFeel: Int = feelInt {
+            cell.setStyle(withFeel: validFeel)
+        } else {
+            cell.setStyle(withFeel: 6)
+        }
+        
+        cell.userLabel?.text = "\(log.first!) \(log.last!)"
         return cell
     }
     

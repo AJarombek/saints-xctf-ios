@@ -11,7 +11,7 @@ import ObjectMapper
 
 class Log: Mappable, CustomStringConvertible {
     
-    var log_id: Int!
+    var log_id: String!
     var username: String!
     var first: String!
     var last: String!
@@ -24,7 +24,7 @@ class Log: Mappable, CustomStringConvertible {
     var metric: String!
     var time: String?
     var pace: String?
-    var feel: Int!
+    var feel: String!
     var log_description: String?
     var time_created: Date?
     var comments: [Comment]!

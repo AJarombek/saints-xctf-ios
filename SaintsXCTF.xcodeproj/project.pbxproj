@@ -36,6 +36,8 @@
 		A15E62421F4FC70400AC9EF1 /* LogDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15E62411F4FC70400AC9EF1 /* LogDataSource.swift */; };
 		A15E62441F50F4E200AC9EF1 /* LogCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15E62431F50F4E200AC9EF1 /* LogCollectionViewCell.swift */; };
 		A15E62471F5231CC00AC9EF1 /* UITableExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15E62461F5231CC00AC9EF1 /* UITableExt.swift */; };
+		A15E62491F52372000AC9EF1 /* LogTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15E62481F52372000AC9EF1 /* LogTableViewCell.swift */; };
+		A15E624C1F536C8500AC9EF1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15E624B1F536C8500AC9EF1 /* Constants.swift */; };
 		A1B458941F0C5FA400EDCF80 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B458931F0C5FA400EDCF80 /* Credentials.swift */; };
 		A1B458961F11AC0800EDCF80 /* TextFieldStyler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B458951F11AC0800EDCF80 /* TextFieldStyler.swift */; };
 		A1D53DEE1E8B647100842177 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D53DED1E8B647100842177 /* APIClient.swift */; };
@@ -96,6 +98,8 @@
 		A15E62411F4FC70400AC9EF1 /* LogDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogDataSource.swift; sourceTree = "<group>"; };
 		A15E62431F50F4E200AC9EF1 /* LogCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogCollectionViewCell.swift; sourceTree = "<group>"; };
 		A15E62461F5231CC00AC9EF1 /* UITableExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableExt.swift; sourceTree = "<group>"; };
+		A15E62481F52372000AC9EF1 /* LogTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogTableViewCell.swift; sourceTree = "<group>"; };
+		A15E624B1F536C8500AC9EF1 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A1B458931F0C5FA400EDCF80 /* Credentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
 		A1B458951F11AC0800EDCF80 /* TextFieldStyler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldStyler.swift; sourceTree = "<group>"; };
 		A1D53DED1E8B647100842177 /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
@@ -183,6 +187,7 @@
 		A15E62291F3F91F600AC9EF1 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				A15E624A1F536C6200AC9EF1 /* Constants */,
 				A15E62451F5119F700AC9EF1 /* Main */,
 				A15E622C1F3F938B00AC9EF1 /* Extensions */,
 				A15BA1661E8AF6CE00B9796B /* HomeViewController.swift */,
@@ -242,8 +247,17 @@
 				A15E62411F4FC70400AC9EF1 /* LogDataSource.swift */,
 				A15E62431F50F4E200AC9EF1 /* LogCollectionViewCell.swift */,
 				A11C2DF51F0B284F00EBDDB5 /* MainViewController.swift */,
+				A15E62481F52372000AC9EF1 /* LogTableViewCell.swift */,
 			);
 			name = Main;
+			sourceTree = "<group>";
+		};
+		A15E624A1F536C6200AC9EF1 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				A15E624B1F536C8500AC9EF1 /* Constants.swift */,
+			);
+			name = Constants;
 			sourceTree = "<group>";
 		};
 		BA1F2D94348037A236758C1C /* Pods */ = {
@@ -447,6 +461,7 @@
 				A1505B9A1E8F11BC00F111DB /* Log.swift in Sources */,
 				A15E62401F4273BB00AC9EF1 /* StartViewController.swift in Sources */,
 				A1D53DF61E8DE25400842177 /* User.swift in Sources */,
+				A15E624C1F536C8500AC9EF1 /* Constants.swift in Sources */,
 				A1015A371EEDC0EA00A2358E /* ActivationCode.swift in Sources */,
 				A15E62471F5231CC00AC9EF1 /* UITableExt.swift in Sources */,
 				A1B458961F11AC0800EDCF80 /* TextFieldStyler.swift in Sources */,
@@ -459,6 +474,7 @@
 				A15E62371F3FA45F00AC9EF1 /* PickGroupViewController.swift in Sources */,
 				A1505B961E8F112500F111DB /* GroupMember.swift in Sources */,
 				A15E62301F3F981600AC9EF1 /* LogViewController.swift in Sources */,
+				A15E62491F52372000AC9EF1 /* LogTableViewCell.swift in Sources */,
 				A15E62351F3F98EC00AC9EF1 /* SignOutViewController.swift in Sources */,
 				A15BA1671E8AF6CE00B9796B /* HomeViewController.swift in Sources */,
 				A15E62421F4FC70400AC9EF1 /* LogDataSource.swift in Sources */,
