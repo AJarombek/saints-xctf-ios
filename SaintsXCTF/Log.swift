@@ -17,7 +17,7 @@ class Log: Mappable, CustomStringConvertible {
     var last: String!
     var name: String!
     var location: String?
-    var date: Date!
+    var date: String!
     var type: String?
     var distance: String?
     var miles: String?

@@ -11,6 +11,14 @@ import UIKit
 class LogTableViewCell: UITableViewCell {
     
     @IBOutlet weak var userLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var typeLabel: UILabel!
+    @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet weak var distanceLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var commentField: UITextField!
     
     // Add padding to the cell
     override var frame: CGRect {

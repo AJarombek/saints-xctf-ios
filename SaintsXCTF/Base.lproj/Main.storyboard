@@ -407,6 +407,14 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="commentField" destination="6ZB-2R-o0l" id="fCW-oE-bH2"/>
+                                    <outlet property="dateLabel" destination="DpY-eg-vM2" id="6fH-Wh-p7g"/>
+                                    <outlet property="descriptionLabel" destination="nV1-uQ-nP7" id="wVr-uF-Ucs"/>
+                                    <outlet property="distanceLabel" destination="7tT-Mm-P4b" id="2Gz-iT-hli"/>
+                                    <outlet property="locationLabel" destination="Je4-gg-Z8b" id="vlJ-gl-IVt"/>
+                                    <outlet property="nameLabel" destination="8Lw-Gy-MXz" id="3lb-wo-Gis"/>
+                                    <outlet property="timeLabel" destination="h8U-it-YFL" id="ZHT-vp-WpK"/>
+                                    <outlet property="typeLabel" destination="cLQ-LZ-Gqv" id="kuF-Te-K0n"/>
                                     <outlet property="userLabel" destination="83E-X0-HvJ" id="M2P-Ss-6MG"/>
                                 </connections>
                             </tableViewCell>

@@ -62,6 +62,21 @@ class MainViewController: UITableViewController {
         }
         
         cell.userLabel?.text = "\(log.first!) \(log.last!)"
+        
+        // Convert the string to a date
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        
+        // Then format the date for viewing
+        let formattedDate = dateFormatter.date(from: log.date)
+        dateFormatter.dateFormat = "MMM dd, yyyy"
+        cell.dateLabel?.text = dateFormatter.string(from: formattedDate!)
+        
+        cell.nameLabel?.text = log.name!
+        
+        if let description : String = log.log_description {
+            cell.descriptionLabel?.text = description
+        }
         return cell
     }
     
