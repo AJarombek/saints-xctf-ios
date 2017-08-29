@@ -34,8 +34,6 @@ class MainViewController: UITableViewController {
         logTableView.rowHeight = UITableViewAutomaticDimension
 
         load()
-        logTableView.beginUpdates()
-        logTableView.endUpdates()
     }
     
     // Remove the keyboard when tapping the background
@@ -77,6 +75,10 @@ class MainViewController: UITableViewController {
         if let description : String = log.log_description {
             cell.descriptionLabel?.text = description
         }
+        
+        logTableView.beginUpdates()
+        logTableView.endUpdates()
+        
         return cell
     }
     

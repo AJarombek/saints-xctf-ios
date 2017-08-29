@@ -37,6 +37,20 @@ class LogTableViewCell: UITableViewCell {
         }
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        userLabel.text = ""
+        dateLabel.text = ""
+        nameLabel.text = ""
+        typeLabel.text = ""
+        locationLabel.text = ""
+        distanceLabel.text = ""
+        timeLabel.text = ""
+        descriptionLabel.text = ""
+        commentField.text = ""
+    }
+    
     // Set the style of the cell with a background color determined by the log feel
     func setStyle(withFeel feel: Int) {
         self.layer.borderWidth = 2
