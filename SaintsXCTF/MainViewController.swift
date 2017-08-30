@@ -16,11 +16,12 @@ class MainViewController: UITableViewController {
     @IBOutlet weak var logTableView: UITableView!
     
     let logDataSource = LogDataSource()
+    let heightDict = NSMutableDictionary()
     var finished = false
     
     let paramType = "all"
     let sortParam = "all"
-    let limit = 10
+    let limit = 20
     var offset = 0
     
     override func viewDidLoad() {
@@ -37,7 +38,7 @@ class MainViewController: UITableViewController {
         // Setting the row height to UITableViewAutomaticDimension tells the TableView to determine the
         // height of a cell based on its contents and constraints.
         // The estimated row height is arbitrary but must be set in order for this to work.
-        logTableView.estimatedRowHeight = 200
+        //logTableView.estimatedRowHeight = 190
         logTableView.rowHeight = UITableViewAutomaticDimension
 
         load()
@@ -51,6 +52,29 @@ class MainViewController: UITableViewController {
     // Returns the number of rows that the tableview should display
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return logDataSource.count()
+    }
+    
+    // Either set the height to the cached value or let the automaticdimension determine the height
+    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        if let height = heightDict.object(forKey: indexPath) as? NSNumber {
+            return CGFloat(height.floatValue)
+        } else {
+            return UITableViewAutomaticDimension
+        }
+    }
+    
+    // Called when a cell at a certain index is about to be displayed
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell,
+                            forRowAt indexPath: IndexPath) {
+        
+        // Cache the height of the cell
+        let height = NSNumber(value: Float(cell.frame.size.height))
+        heightDict.setObject(height, forKey: indexPath as NSCopying)
+        
+        // When we are four logs from the bottom, load more
+        if indexPath.row == logDataSource.count() - 4 {
+            load()
+        }
     }
     
     // Ask the datasource for a cell to insert at a certain location in the table view
@@ -122,6 +146,7 @@ class MainViewController: UITableViewController {
         return cell
     }
     
+    // Load more logs into the data source
     func load() {
         logDataSource.load(withParamType: paramType, sortParam: sortParam, limit: limit, andOffset: offset) {
             (done) -> Void in
@@ -134,7 +159,7 @@ class MainViewController: UITableViewController {
                 self.finished = done
             }
         }
-        offset += 10
+        offset += limit
     }
     
     // Function to remove excess zeros from the time
