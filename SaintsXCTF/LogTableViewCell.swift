@@ -37,6 +37,7 @@ class LogTableViewCell: UITableViewCell {
         }
     }
     
+    // Called when the cell is about to be reused.  Reset all of the text fields
     override func prepareForReuse() {
         super.prepareForReuse()
         

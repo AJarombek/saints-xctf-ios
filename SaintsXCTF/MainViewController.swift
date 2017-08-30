@@ -27,6 +27,13 @@ class MainViewController: UITableViewController {
         super.viewDidLoad()
         os_log("MainViewController Loaded.", log: logTag, type: .debug)
         
+        // Make sure the table view does not overlap the status bar
+        let statusBarHight = UIApplication.shared.statusBarFrame.height
+        let insets = UIEdgeInsets(top: statusBarHight, left: 0, bottom: 0, right: 0)
+        
+        logTableView.contentInset = insets
+        logTableView.scrollIndicatorInsets = insets
+        
         // Setting the row height to UITableViewAutomaticDimension tells the TableView to determine the
         // height of a cell based on its contents and constraints.
         // The estimated row height is arbitrary but must be set in order for this to work.
@@ -72,12 +79,45 @@ class MainViewController: UITableViewController {
         
         cell.nameLabel?.text = log.name!
         
-        if let description : String = log.log_description {
-            cell.descriptionLabel?.text = description
+        // Set the logs location
+        if let location: String = log.location {
+            cell.locationLabel?.text = "Location: " + location
+        } else {
+            cell.locationLabel?.text = ""
         }
         
-        logTableView.beginUpdates()
-        logTableView.endUpdates()
+        // Set the logs distance
+        var distanceTxt = ""
+        
+        if let distance: String = log.distance, let metric: String = log.metric {
+            
+            if distance != "0" {
+                distanceTxt = distance + " " + metric
+            }
+        }
+        
+        cell.distanceLabel?.text = distanceTxt
+        
+        // Set the logs time
+        var timeTxt = ""
+        
+        if let time: String = log.time, let pace: String = log.pace {
+            if time != "00:00:00" {
+                timeTxt = shortenTime(withTime: time)
+                
+                if pace == "00:00:00" {
+                    timeTxt += " (0:00/mi)"
+                } else {
+                    timeTxt += " (\(shortenTime(withTime: pace))/mi)"
+                }
+            }
+        }
+        
+        cell.timeLabel?.text = timeTxt
+        
+        if let description: String = log.log_description {
+            cell.descriptionLabel?.text = description
+        }
         
         return cell
     }
@@ -95,5 +135,21 @@ class MainViewController: UITableViewController {
             }
         }
         offset += 10
+    }
+    
+    // Function to remove excess zeros from the time
+    func shortenTime(withTime time: String) -> String {
+        var start = 0
+        
+        for i in 0 ..< time.characters.count {
+            let index = time.index(time.startIndex, offsetBy: i)
+            if time[index] != "0" && time[index] != ":" {
+                start = i
+                break
+            }
+        }
+        
+        let index =  time.index(time.startIndex, offsetBy: start)
+        return time.substring(from: index)
     }
 }
