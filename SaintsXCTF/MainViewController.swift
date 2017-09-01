@@ -151,7 +151,7 @@ class MainViewController: UITableViewController {
         logDataSource.load(withParamType: paramType, sortParam: sortParam, limit: limit, andOffset: offset) {
             (done) -> Void in
             
-            self.logTableView.refresh()
+            self.logTableView.reloadData()
             
             // If there are no more logs to load, remove the activity indicator and
             // stop trying to load more logs

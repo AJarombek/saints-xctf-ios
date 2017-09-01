@@ -34,7 +34,6 @@
 		A15E623E1F41545000AC9EF1 /* SignedInUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15E623D1F41545000AC9EF1 /* SignedInUser.swift */; };
 		A15E62401F4273BB00AC9EF1 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15E623F1F4273BB00AC9EF1 /* StartViewController.swift */; };
 		A15E62421F4FC70400AC9EF1 /* LogDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15E62411F4FC70400AC9EF1 /* LogDataSource.swift */; };
-		A15E62441F50F4E200AC9EF1 /* LogCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15E62431F50F4E200AC9EF1 /* LogCollectionViewCell.swift */; };
 		A15E62471F5231CC00AC9EF1 /* UITableExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15E62461F5231CC00AC9EF1 /* UITableExt.swift */; };
 		A15E62491F52372000AC9EF1 /* LogTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15E62481F52372000AC9EF1 /* LogTableViewCell.swift */; };
 		A15E624C1F536C8500AC9EF1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15E624B1F536C8500AC9EF1 /* Constants.swift */; };
@@ -96,7 +95,6 @@
 		A15E623D1F41545000AC9EF1 /* SignedInUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignedInUser.swift; sourceTree = "<group>"; };
 		A15E623F1F4273BB00AC9EF1 /* StartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		A15E62411F4FC70400AC9EF1 /* LogDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogDataSource.swift; sourceTree = "<group>"; };
-		A15E62431F50F4E200AC9EF1 /* LogCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogCollectionViewCell.swift; sourceTree = "<group>"; };
 		A15E62461F5231CC00AC9EF1 /* UITableExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableExt.swift; sourceTree = "<group>"; };
 		A15E62481F52372000AC9EF1 /* LogTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogTableViewCell.swift; sourceTree = "<group>"; };
 		A15E624B1F536C8500AC9EF1 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -245,7 +243,6 @@
 			isa = PBXGroup;
 			children = (
 				A15E62411F4FC70400AC9EF1 /* LogDataSource.swift */,
-				A15E62431F50F4E200AC9EF1 /* LogCollectionViewCell.swift */,
 				A11C2DF51F0B284F00EBDDB5 /* MainViewController.swift */,
 				A15E62481F52372000AC9EF1 /* LogTableViewCell.swift */,
 			);
@@ -470,7 +467,6 @@
 				A11C2DF61F0B284F00EBDDB5 /* MainViewController.swift in Sources */,
 				A15E623E1F41545000AC9EF1 /* SignedInUser.swift in Sources */,
 				A1505B901E8F105A00F111DB /* Comment.swift in Sources */,
-				A15E62441F50F4E200AC9EF1 /* LogCollectionViewCell.swift in Sources */,
 				A15E62371F3FA45F00AC9EF1 /* PickGroupViewController.swift in Sources */,
 				A1505B961E8F112500F111DB /* GroupMember.swift in Sources */,
 				A15E62301F3F981600AC9EF1 /* LogViewController.swift in Sources */,
