@@ -28,10 +28,10 @@ class LogTableViewCell: UITableViewCell {
         set {
             var frame = newValue
             frame.origin.x += 2
-            frame.size.width -= 2
+            frame.size.width -= 4
             
             frame.origin.y += 2
-            frame.size.height -= 2
+            frame.size.height -= 4
             
             super.frame = frame
         }

@@ -433,16 +433,16 @@
             </objects>
             <point key="canvasLocation" x="1924" y="-878.41079460269873"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Comment View Controller-->
         <scene sceneID="CSw-sh-97C">
             <objects>
-                <tableViewController id="TEP-fJ-qwv" sceneMemberID="viewController">
+                <tableViewController id="TEP-fJ-qwv" customClass="CommentViewController" customModule="SaintsXCTF" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" sectionHeaderHeight="28" sectionFooterHeight="28" id="5bm-A4-f5r">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="48" id="Nhc-zl-T3P">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NewCommentCell" rowHeight="48" id="Nhc-zl-T3P" customClass="NewCommentTableViewCell" customModule="SaintsXCTF" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="48"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Nhc-zl-T3P" id="5Rc-xp-95D">
@@ -463,8 +463,11 @@
                                         <constraint firstAttribute="bottomMargin" secondItem="VQ5-Ia-U0A" secondAttribute="bottom" id="qsi-HJ-haX"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="commentField" destination="VQ5-Ia-U0A" id="Jjs-eP-Zbn"/>
+                                </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="65" id="K4S-4Q-Sw1">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CommentCell" rowHeight="65" id="K4S-4Q-Sw1" customClass="CommentTableViewCell" customModule="SaintsXCTF" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="76" width="375" height="65"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="K4S-4Q-Sw1" id="z4k-az-u05">
@@ -504,6 +507,11 @@
                                         <constraint firstAttribute="bottomMargin" secondItem="wir-Mn-zHc" secondAttribute="bottom" constant="5" id="haC-hG-Hby"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="contentLabel" destination="wir-Mn-zHc" id="Stv-6y-MtO"/>
+                                    <outlet property="dateLabel" destination="WMv-Pw-r4A" id="Xmh-wn-uXC"/>
+                                    <outlet property="nameLabel" destination="6AW-tE-7Hd" id="2M8-7u-ydS"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -511,10 +519,13 @@
                             <outlet property="delegate" destination="TEP-fJ-qwv" id="zMh-Uw-J33"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="commentTableView" destination="5bm-A4-f5r" id="tbs-6A-9Le"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="laB-8r-6Cn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2760.8000000000002" y="-850.52473763118451"/>
+            <point key="canvasLocation" x="2649" y="-878"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="737-Ld-le4">

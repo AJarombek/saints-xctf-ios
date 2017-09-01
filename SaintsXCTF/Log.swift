@@ -29,6 +29,10 @@ class Log: Mappable, CustomStringConvertible {
     var time_created: Date?
     var comments: [Comment]!
     
+    init() {
+        log_id = ""
+    }
+    
     required init?(map: Map) {
         // pass
     }

@@ -155,6 +155,16 @@ class MainViewController: UITableViewController {
         return cell
     }
     
+    // Pass data to the CommentViewController when the segue is executed
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        // We want to send the CommentViewController the log that was selected
+        if let destination = segue.destination as? CommentViewController,
+            let indexPath = logTableView.indexPathForSelectedRow {
+            destination.log = logDataSource.get(indexPath.row)
+        }
+    }
+    
     // Load more logs into the data source
     func load() {
         logDataSource.load(withParamType: paramType, sortParam: sortParam, limit: limit, andOffset: offset) {
