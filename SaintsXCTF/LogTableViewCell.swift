@@ -18,7 +18,7 @@ class LogTableViewCell: UITableViewCell {
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
-    @IBOutlet weak var commentField: UITextField!
+    @IBOutlet weak var commentsButton: UIButton!
     
     // Add padding to the cell
     override var frame: CGRect {
@@ -49,7 +49,6 @@ class LogTableViewCell: UITableViewCell {
         distanceLabel.text = ""
         timeLabel.text = ""
         descriptionLabel.text = ""
-        commentField.text = ""
     }
     
     // Set the style of the cell with a background color determined by the log feel

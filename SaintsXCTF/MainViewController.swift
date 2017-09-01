@@ -21,7 +21,7 @@ class MainViewController: UITableViewController {
     
     let paramType = "all"
     let sortParam = "all"
-    let limit = 20
+    let limit = 10
     var offset = 0
     
     override func viewDidLoad() {
@@ -89,6 +89,15 @@ class MainViewController: UITableViewController {
         } else {
             cell.setStyle(withFeel: 6)
         }
+        
+        // Create a top border for the comments button
+        let topline = UIView(frame: CGRect(x: -10, y: 0, width: cell.commentsButton.frame.size.width + 10, height: 0.5))
+        topline.layer.backgroundColor = UIColor(0xAAAAAA).cgColor
+        
+        // Customize the comments button display
+        cell.commentsButton.backgroundColor = UIColor(0x000000, a: 0.0)
+        cell.commentsButton.addSubview(topline)
+        cell.commentsButton.setTitleColor(UIColor(0x333333), for: UIControlState.normal)
         
         cell.userLabel?.text = "\(log.first!) \(log.last!)"
         
