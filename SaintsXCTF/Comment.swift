@@ -9,10 +9,10 @@
 import Foundation
 import ObjectMapper
 
-class Comment: Mappable {
+class Comment: Mappable, CustomStringConvertible {
     
-    var comment_id: Int!
-    var log_id: Int!
+    var comment_id: String!
+    var log_id: String!
     var username: String!
     var first: String!
     var last: String!
@@ -21,6 +21,12 @@ class Comment: Mappable {
     
     required init?(map: Map) {
         // pass
+    }
+    
+    // This class uses the CustomStringConvertible protocol.
+    // The description will be printed whenever we try to print a Comment object
+    var description: String {
+        return "Comment: (\(username!), \(time!), \(content!))"
     }
     
     func mapping(map: Map) {

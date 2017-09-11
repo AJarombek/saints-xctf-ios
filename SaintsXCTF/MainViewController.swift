@@ -37,8 +37,6 @@ class MainViewController: UITableViewController {
         
         // Setting the row height to UITableViewAutomaticDimension tells the TableView to determine the
         // height of a cell based on its contents and constraints.
-        // The estimated row height is arbitrary but must be set in order for this to work.
-        //logTableView.estimatedRowHeight = 190
         logTableView.rowHeight = UITableViewAutomaticDimension
 
         load()
@@ -91,7 +89,7 @@ class MainViewController: UITableViewController {
         }
         
         // Create a top border for the comments button
-        let topline = UIView(frame: CGRect(x: -10, y: 0, width: cell.commentsButton.frame.size.width + 10, height: 0.5))
+        let topline = UIView(frame: CGRect(x: -10, y: 0, width: cell.commentsButton.frame.size.width + 10, height: 1))
         topline.layer.backgroundColor = UIColor(0xAAAAAA).cgColor
         
         // Customize the comments button display
@@ -111,6 +109,9 @@ class MainViewController: UITableViewController {
         cell.dateLabel?.text = dateFormatter.string(from: formattedDate!)
         
         cell.nameLabel?.text = log.name!
+        
+        // Set the logs type
+        cell.typeLabel?.text = log.type?.uppercased()
         
         // Set the logs location
         if let location: String = log.location {
