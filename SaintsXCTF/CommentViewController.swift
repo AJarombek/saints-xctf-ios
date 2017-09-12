@@ -15,7 +15,7 @@ class CommentViewController: UITableViewController {
     
     let logTag = OSLog(subsystem: "SaintsXCTF.App.CommentViewController", category: "CommentViewController")
     
-    var log: Log = Log()
+    var log: Log!
     var comments: [Comment]?
     
     override func viewDidLoad() {
@@ -38,7 +38,7 @@ class CommentViewController: UITableViewController {
         
         os_log("CommentViewController Appeared.", log: logTag, type: .debug)
         
-        comments = log.comments
+        comments = log?.comments
         os_log("Log Comments: %@", log: logTag, type: .debug, comments ?? "")
     }
     
@@ -57,19 +57,19 @@ class CommentViewController: UITableViewController {
         
         if indexPath.row == 0 {
             
-            os_log("Generating New Comment Cell at Index %@", log: logTag, type: .debug, indexPath.row)
+            os_log("Generating New Comment Cell at Index %@", log: logTag, type: .debug, String(indexPath.row))
             
             return tableView.dequeueReusableCell(withIdentifier: "NewCommentCell", for: indexPath)
                     as! NewCommentTableViewCell
             
         } else {
             
-            os_log("Generating Comment Cell at Index %@", log: logTag, type: .debug, indexPath.row)
+            os_log("Generating Comment Cell at Index %@", log: logTag, type: .debug, String(indexPath.row))
         
             let cell = tableView.dequeueReusableCell(withIdentifier: "CommentCell", for: indexPath)
                     as! CommentTableViewCell
         
-            if let comment = comments?[indexPath.row] {
+            if let comment = comments?[indexPath.row - 1] {
             
                 /*
                  // Convert the string to a date
@@ -83,9 +83,9 @@ class CommentViewController: UITableViewController {
                  
                  cell.nameLabel?.text = log.name!*/
             
-                cell.contentLabel.text = comment.content
-                cell.dateLabel.text = comment.time
-                cell.nameLabel.text = "\(comment.first) \(comment.last)"
+                cell.contentLabel.text = comment.content!
+                cell.dateLabel.text = comment.time!
+                cell.nameLabel.text = "\(comment.first!) \(comment.last!)"
             
             } else {
                 os_log("Comment Failed to Load.", log: logTag, type: .debug)

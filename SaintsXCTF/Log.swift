@@ -26,7 +26,7 @@ class Log: Mappable, CustomStringConvertible {
     var pace: String?
     var feel: String!
     var log_description: String?
-    var time_created: Date?
+    var time_created: String?
     var comments: [Comment]!
     
     init() {

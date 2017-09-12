@@ -28,18 +28,27 @@ class MainViewController: UITableViewController {
         super.viewDidLoad()
         os_log("MainViewController Loaded.", log: logTag, type: .debug)
         
-        // Make sure the table view does not overlap the status bar
-        let statusBarHight = UIApplication.shared.statusBarFrame.height
-        let insets = UIEdgeInsets(top: statusBarHight, left: 0, bottom: 0, right: 0)
-        
-        logTableView.contentInset = insets
-        logTableView.scrollIndicatorInsets = insets
+        navigationController?.navigationBar.backgroundColor = UIColor(0x999999, a: 0.9)
         
         // Setting the row height to UITableViewAutomaticDimension tells the TableView to determine the
         // height of a cell based on its contents and constraints.
         logTableView.rowHeight = UITableViewAutomaticDimension
 
         load()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Hide the navigation bar on view appearing
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        // Show the navigation bar on view disappearing
+        navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
     // Remove the keyboard when tapping the background
@@ -149,9 +158,14 @@ class MainViewController: UITableViewController {
         
         cell.timeLabel?.text = timeTxt
         
+        // Set the logs description
         if let description: String = log.log_description {
             cell.descriptionLabel?.text = description
         }
+        
+        // Add a tag to the comments button of the current index path.
+        // This will be used with the segue to call the commentsView
+        cell.commentsButton.tag = indexPath.row
         
         return cell
     }
@@ -160,9 +174,14 @@ class MainViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         // We want to send the CommentViewController the log that was selected
-        if let destination = segue.destination as? CommentViewController,
-            let indexPath = logTableView.indexPathForSelectedRow {
-            destination.log = logDataSource.get(indexPath.row)
+        if let destination = segue.destination as? CommentViewController {
+            
+            if let button: UIButton = sender as! UIButton? {
+                
+                let row = button.tag
+                let log = logDataSource.get(row)
+                destination.log = log
+            }
         }
     }
     
