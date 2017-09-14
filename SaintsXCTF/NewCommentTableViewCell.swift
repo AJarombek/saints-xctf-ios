@@ -50,6 +50,9 @@ class NewCommentTableViewCell: UITableViewCell {
                     self.commentVC?.comments?.append(newcomment)
                     self.commentVC?.log = self.log
                     self.commentVC?.commentTableView.reloadData()
+                    
+                    // Reset the comment text field
+                    self.commentField.text = ""
                 }
                 
             } else {

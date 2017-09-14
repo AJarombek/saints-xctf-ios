@@ -111,7 +111,8 @@ class CommentViewController: UITableViewController {
                 cell.dateLabel.text = dateFormatter.string(from: formattedDate!)
             
                 cell.contentLabel.text = comment.content!
-                // cell.dateLabel.text = comment.time!
+                cell.contentLabel.sizeToFit()
+                
                 cell.nameLabel.text = "\(comment.first!) \(comment.last!)"
             
             } else {

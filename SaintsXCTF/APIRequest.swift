@@ -89,22 +89,14 @@ class APIRequest {
     }
     
     // Handle HTTP POST Requests to the API
-    public static func post(withURL url: URL, andObject object: Any,
+    public static func post(withURL url: URL, andJson json: String,
                             completion: @escaping (String) -> Void) {
         var urlrequest = URLRequest(url: url)
         urlrequest.httpMethod = "POST"
         
-        // Object to hold the JSON string
-        let jsonObject: Data
-        
-        // Serialize the object into JSON for the URL Request
-        do {
-            jsonObject = try JSONSerialization.data(withJSONObject: object, options: [])
-            urlrequest.httpBody = jsonObject
-        } catch {
-            os_log("Error, cannot produce JSON from object.", log: APIRequest.logTag, type: .error)
-            return
-        }
+        // Get the data for the httpbody from the JSON
+        let body: Data = json.data(using: .utf8)!
+        urlrequest.httpBody = body
         
         // Get the necessary credentials for the API Request
         let cred = Credentials()

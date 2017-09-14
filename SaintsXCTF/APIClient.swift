@@ -442,7 +442,10 @@ class APIClient {
             return
         }
         
-        APIRequest.post(withURL: url, andObject: user) {
+        // Convert the Comment to a JSON string
+        let userJSON = Mapper().toJSONString(user, prettyPrint: false)
+        
+        APIRequest.post(withURL: url, andJson: userJSON ?? "") {
             (json) -> Void in
             
             if let user: User = Mapper<User>().map(JSONString: json) {
@@ -470,7 +473,10 @@ class APIClient {
             return
         }
         
-        APIRequest.post(withURL: url, andObject: log) {
+        // Convert the Log to a JSON string
+        let logJSON = Mapper().toJSONString(log, prettyPrint: false)
+        
+        APIRequest.post(withURL: url, andJson: logJSON ?? "") {
             (json) -> Void in
             
             if let log: Log = Mapper<Log>().map(JSONString: json) {
@@ -495,7 +501,10 @@ class APIClient {
             return
         }
         
-        APIRequest.post(withURL: url, andObject: comment) {
+        // Convert the Comment to a JSON string
+        let commentJSON = Mapper().toJSONString(comment, prettyPrint: false)
+        
+        APIRequest.post(withURL: url, andJson: commentJSON ?? "") {
             (json) -> Void in
             
             if let comment: Comment = Mapper<Comment>().map(JSONString: json) {
@@ -520,7 +529,10 @@ class APIClient {
             return
         }
         
-        APIRequest.post(withURL: url, andObject: message) {
+        // Convert the Comment to a JSON string
+        let messageJSON = Mapper().toJSONString(message, prettyPrint: false)
+        
+        APIRequest.post(withURL: url, andJson: messageJSON ?? "") {
             (json) -> Void in
             
             if let message: Message = Mapper<Message>().map(JSONString: json) {
@@ -545,7 +557,10 @@ class APIClient {
             return
         }
         
-        APIRequest.post(withURL: url, andObject: activationCode) {
+        // Convert the Comment to a JSON string
+        let activationCodeJSON = Mapper().toJSONString(activationCode, prettyPrint: false)
+        
+        APIRequest.post(withURL: url, andJson: activationCodeJSON ?? "") {
             (json) -> Void in
             
             if let activationcode: ActivationCode = Mapper<ActivationCode>().map(JSONString: json) {
@@ -570,7 +585,10 @@ class APIClient {
             return
         }
         
-        APIRequest.post(withURL: url, andObject: notification) {
+        // Convert the Comment to a JSON string
+        let notificationJSON = Mapper().toJSONString(notification, prettyPrint: false)
+        
+        APIRequest.post(withURL: url, andJson: notificationJSON ?? "") {
             (json) -> Void in
             
             if let notification: Notification = Mapper<Notification>().map(JSONString: json) {
