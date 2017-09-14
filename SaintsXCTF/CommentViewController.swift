@@ -77,8 +77,13 @@ class CommentViewController: UITableViewController {
             
             os_log("Generating New Comment Cell at Index %@", log: logTag, type: .debug, String(indexPath.row))
             
-            return tableView.dequeueReusableCell(withIdentifier: "NewCommentCell", for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "NewCommentCell", for: indexPath)
                     as! NewCommentTableViewCell
+            
+            // Pass the log and the viewcontroller to the new comment cell
+            cell.log = log
+            cell.commentVC = self
+            return cell
             
         } else {
             

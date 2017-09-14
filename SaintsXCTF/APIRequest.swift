@@ -106,6 +106,17 @@ class APIRequest {
             return
         }
         
+        // Get the necessary credentials for the API Request
+        let cred = Credentials()
+        
+        // encode the credentials
+        var credsJSON: String? = cred.toJSONString()
+        credsJSON = credsJSON?.toBase64()
+        
+        // add the credentials and accept type to the url request
+        urlrequest.addValue("application/json", forHTTPHeaderField: "Accept")
+        urlrequest.addValue(credsJSON!, forHTTPHeaderField: "Authorization")
+        
         let task = session.dataTask(with: urlrequest) {
             (data, response, error) -> Void in
                 
@@ -156,6 +167,17 @@ class APIRequest {
             return
         }
         
+        // Get the necessary credentials for the API Request
+        let cred = Credentials()
+        
+        // encode the credentials
+        var credsJSON: String? = cred.toJSONString()
+        credsJSON = credsJSON?.toBase64()
+        
+        // add the credentials and accept type to the url request
+        urlrequest.addValue("application/json", forHTTPHeaderField: "Accept")
+        urlrequest.addValue(credsJSON!, forHTTPHeaderField: "Authorization")
+        
         let task = session.dataTask(with: urlrequest) {
             (data, response, error) -> Void in
                 
@@ -194,6 +216,17 @@ class APIRequest {
     public static func delete(withURL url: URL, completion: @escaping (Bool) -> Void) {
         var urlrequest = URLRequest(url: url)
         urlrequest.httpMethod = "DELETE"
+        
+        // Get the necessary credentials for the API Request
+        let cred = Credentials()
+        
+        // encode the credentials
+        var credsJSON: String? = cred.toJSONString()
+        credsJSON = credsJSON?.toBase64()
+        
+        // add the credentials and accept type to the url request
+        urlrequest.addValue("application/json", forHTTPHeaderField: "Accept")
+        urlrequest.addValue(credsJSON!, forHTTPHeaderField: "Authorization")
         
         let task = session.dataTask(with: urlrequest) {
             (data, response, error) -> Void in

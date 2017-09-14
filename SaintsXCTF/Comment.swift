@@ -19,6 +19,10 @@ class Comment: Mappable, CustomStringConvertible {
     var time: String!
     var content: String!
     
+    init() {
+        comment_id = ""
+    }
+    
     required init?(map: Map) {
         // pass
     }
