@@ -46,13 +46,32 @@ class NewCommentTableViewCell: UITableViewCell {
                     
                     // Append the comment to the log, comments object, update the log in the view controller
                     // And reload the cells in the comment table view
-                    self.log?.comments.append(newcomment)
-                    self.commentVC?.comments?.append(newcomment)
+                    self.log?.comments.insert(newcomment, at: 0)
+                    self.commentVC?.comments?.insert(newcomment, at: 0)
                     self.commentVC?.log = self.log
                     self.commentVC?.commentTableView.reloadData()
                     
                     // Reset the comment text field
                     self.commentField.text = ""
+                    
+                    // If the commenter isnt also the log owner, send the owner a notification
+                    let logUsername: String = self.log?.username ?? ""
+                    
+                    if newcomment.username != logUsername {
+                        
+                        let logId = self.log?.log_id ?? ""
+                        let first = newcomment.first ?? ""
+                        let last = newcomment.last ?? ""
+                        
+                        // Build the notification
+                        let notification = Notification()
+                        notification.username = logUsername
+                        notification.link = "https://www.saintsxctf.com/log.php?logno=\(logId)"
+                        notification.notification_description = "\(first) \(last) Commented on Your Log."
+                        notification.viewed = "N"
+                        
+                        self.commentNotification(notification)
+                    }
                 }
                 
             } else {
@@ -61,6 +80,16 @@ class NewCommentTableViewCell: UITableViewCell {
             
         } else {
             os_log("Error: Comment Content or Log are Invalid", log: logTag, type: .error)
+        }
+    }
+    
+    // Make an API Request to create a new notification
+    func commentNotification(_ notification: Notification) {
+        
+        APIClient.notificationPostRequest(withNotification: notification) {
+            (newnotification) -> Void in
+            
+            os_log("New Notification Sent: %@", log: self.logTag, type: .debug, newnotification.description)
         }
     }
 }

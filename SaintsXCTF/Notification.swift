@@ -15,7 +15,12 @@ class Notification: NSObject, Mappable, NSCoding {
     var username: String!
     var time: String!
     var link: String!
+    var viewed: String!
     var notification_description: String!
+    
+    override init() {
+        notification_id = ""
+    }
     
     // Mappable Initializer
     required init?(map: Map) {}
@@ -26,6 +31,7 @@ class Notification: NSObject, Mappable, NSCoding {
         username = aDecoder.decodeObject(forKey: "username") as! String!
         time = aDecoder.decodeObject(forKey: "time") as! String!
         link = aDecoder.decodeObject(forKey: "link") as! String!
+        viewed = aDecoder.decodeObject(forKey: "viewed") as! String!
         notification_description = aDecoder.decodeObject(
             forKey: "notification_description") as! String!
     }
@@ -41,6 +47,7 @@ class Notification: NSObject, Mappable, NSCoding {
         aCoder.encode(username, forKey: "username")
         aCoder.encode(time, forKey: "time")
         aCoder.encode(link, forKey: "link")
+        aCoder.encode(viewed, forKey: "viewed")
         aCoder.encode(notification_description, forKey: "notification_description")
     }
     
@@ -49,6 +56,7 @@ class Notification: NSObject, Mappable, NSCoding {
         username <- map["username"]
         time <- map["time"]
         link <- map["link"]
+        viewed <- map["viewed"]
         notification_description <- map["description"]
     }
 }
