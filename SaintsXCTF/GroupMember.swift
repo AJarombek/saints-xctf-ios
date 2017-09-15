@@ -14,6 +14,8 @@ class GroupMember: Mappable {
     var username: String!
     var first: String!
     var last: String!
+    var status: String!
+    var user: String!
     var member_since: String!
     
     required init?(map: Map) {
@@ -24,6 +26,8 @@ class GroupMember: Mappable {
         username <- map["username"]
         first <- map["first"]
         last <- map["last"]
+        status <- map["status"]
+        user <- map["user"]
         member_since <- map["member_since"]
     }
 }

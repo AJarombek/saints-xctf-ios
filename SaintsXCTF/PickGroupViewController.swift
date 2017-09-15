@@ -156,6 +156,53 @@ class PickGroupController: UIViewController {
                 "mainViewController") as! MainViewController
             self.present(mainViewController, animated: true, completion: nil)
             
+            // Send a notification to the picked group admins
+            user.groups.forEach {
+                groupinfo in
+                
+                if let groupname: String = groupinfo.group_name {
+                    
+                    // Find the admins for this group and send a notification to each of them
+                    self.findGroupAdmins(withGroupname: groupname, forUser: user)
+                }
+            }
+        }
+    }
+    
+    // Find the admins for a given group and create a notification for them
+    func findGroupAdmins(withGroupname groupname: String, forUser user: User) {
+        APIClient.groupGetRequest(withGroupname: groupname) {
+            (group) -> Void in
+            
+            let members: [GroupMember] = group.members!
+            
+            members.forEach {
+                member in
+                
+                if member.user == "admin" {
+                    let name = "\(member.first) \(member.last)"
+                    os_log("Sending Notification to Admin %@", log: self.logTag, type: .debug, name)
+                    
+                    let notification = Notification()
+                    notification.username = member.username
+                    notification.link = "https://www.saintsxctf.com/group.php?name=\(group.group_name)"
+                    notification.notification_description = "\(user.first) \(user.last) Has Requested to" +
+                                                            "Join \(group.group_title)"
+                    notification.viewed = "N"
+                    
+                    self.sendAdminNotification(notification)
+                }
+            }
+        }
+    }
+    
+    // Send a create notification request to the API
+    func sendAdminNotification(_ notification: Notification) {
+        
+        APIClient.notificationPostRequest(withNotification: notification) {
+            (newnotification) -> Void in
+            
+            os_log("New Notification Sent: %@", log: self.logTag, type: .debug, newnotification.description)
         }
     }
     
