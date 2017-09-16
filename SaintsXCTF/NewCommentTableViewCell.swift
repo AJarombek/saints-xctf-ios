@@ -51,6 +51,30 @@ class NewCommentTableViewCell: UITableViewCell {
                     self.commentVC?.log = self.log
                     self.commentVC?.commentTableView.reloadData()
                     
+                    // Find all the tags in the new comment
+                    let tagRegex = "@[a-zA-Z0-9]+"
+                    let tags: [String] = Utils.matches(for: tagRegex, in: newcomment.content!)
+                    
+                    os_log("Comment Tags: %@", log: self.logTag, type: .debug, tags)
+                    
+                    // Go thorugh each tag and notify the user tagged
+                    tags.forEach {
+                        tag -> Void in
+                        
+                        let index = tag.index(tag.startIndex, offsetBy: 1)
+                        let tagUsername = tag.substring(from: index)
+                        
+                        // Build the notification
+                        let tagnotification = Notification()
+                        tagnotification.username = tagUsername
+                        tagnotification.link = "https://www.saintsxctf.com/log.php?logno=\(newcomment.log_id!)"
+                        tagnotification.notification_description = "\(newcomment.first!) \(newcomment.last!)"
+                                                                    + "Commented on Your Log."
+                        tagnotification.viewed = "N"
+                        
+                        self.commentTagNotification(tagnotification)
+                    }
+                    
                     // Reset the comment text field
                     self.commentField.text = ""
                     
@@ -83,7 +107,7 @@ class NewCommentTableViewCell: UITableViewCell {
         }
     }
     
-    // Make an API Request to create a new notification
+    // Make an API Request to create a new comment notification
     func commentNotification(_ notification: Notification) {
         
         APIClient.notificationPostRequest(withNotification: notification) {
@@ -91,5 +115,10 @@ class NewCommentTableViewCell: UITableViewCell {
             
             os_log("New Notification Sent: %@", log: self.logTag, type: .debug, newnotification.description)
         }
+    }
+    
+    // Make an API request to create a tag in comment notification
+    func commentTagNotification(_ notification: Notification) {
+        self.commentNotification(notification)
     }
 }

@@ -109,8 +109,23 @@ class CommentViewController: UITableViewController {
                 dateFormatter.pmSymbol = "PM"
                 dateFormatter.dateFormat = "MMM dd, yyyy h:mm a"
                 cell.dateLabel.text = dateFormatter.string(from: formattedDate!)
+                
+                // Find all the tagged users in the comment
+                let tagRegex = "@[a-zA-Z0-9]+"
+                let matches = Utils.matchesInfo(for: comment.content!, in: tagRegex)
+                
+                // Create a MutableAttributedString for each tag
+                let mutableContent = NSMutableAttributedString(string: comment.content!,
+                                                               attributes: [:])
+                
+                for i in 0...matches.substrings.count {
+                    let start = matches.startIndices[i]
+                    let end = start + matches.stringLengths[i]
+                    mutableContent.addAttribute(NSFontAttributeName, value: UIColor.blue,
+                                                range: NSRange(location: start, length: end))
+                }
             
-                cell.contentLabel.text = comment.content!
+                cell.contentLabel.attributedText = mutableContent
                 cell.contentLabel.sizeToFit()
                 
                 cell.nameLabel.text = "\(comment.first!) \(comment.last!)"
