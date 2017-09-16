@@ -235,7 +235,7 @@
                                     <color key="titleShadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="womenstfSelected:" destination="qhu-81-tAR" eventType="touchUpInside" id="pbn-un-0jk"/>
+                                    <action selector="womenstfSelected:" destination="qhu-81-tAR" eventType="touchUpInside" id="x2f-3Y-Oui"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5bH-iV-JgC">
@@ -263,7 +263,7 @@
                                     <color key="titleShadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="menstfSelected:" destination="qhu-81-tAR" eventType="touchUpInside" id="9AY-9E-zBP"/>
+                                    <action selector="menstfSelected:" destination="qhu-81-tAR" eventType="touchUpInside" id="Kpx-jr-6i1"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gDa-DK-8GR">
@@ -274,6 +274,7 @@
                                 </connections>
                             </button>
                         </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="TLx-Pl-STL" firstAttribute="top" secondItem="5Vd-5c-Hmd" secondAttribute="bottom" constant="40" id="1A6-dY-1I4"/>
                             <constraint firstItem="Ig3-hh-azd" firstAttribute="top" secondItem="m2t-ip-lNS" secondAttribute="bottom" constant="8" id="8OG-Ya-NDW"/>
@@ -295,10 +296,8 @@
                     <connections>
                         <outlet property="alumniButton" destination="5bH-iV-JgC" id="ByY-wY-MCA"/>
                         <outlet property="menstfButton" destination="9r4-zl-F1S" id="MQW-Iu-vkq"/>
-                        <outlet property="menstfSelected" destination="9r4-zl-F1S" id="lii-4O-pUr"/>
                         <outlet property="mensxcButton" destination="m2t-ip-lNS" id="rRz-yY-arP"/>
                         <outlet property="womenstfButton" destination="Ig3-hh-azd" id="z9v-vB-hlx"/>
-                        <outlet property="womenstfSelected" destination="Ig3-hh-azd" id="aeW-49-25z"/>
                         <outlet property="womensxcButton" destination="TLx-Pl-STL" id="tea-gk-hdi"/>
                     </connections>
                 </viewController>
@@ -601,7 +600,7 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="A2S-OE-owB">
                                 <rect key="frame" x="88" y="301.5" width="200" height="30"/>
@@ -610,7 +609,7 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Activation Code" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TbJ-H8-AIK">
                                 <rect key="frame" x="88" y="341.5" width="200" height="30"/>
@@ -834,7 +833,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KJM-Et-dTA" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Home" image="home" id="fcm-sx-7H4"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="ZjL-Ux-97s">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="ZjL-Ux-97s">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>

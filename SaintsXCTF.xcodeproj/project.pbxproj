@@ -40,6 +40,7 @@
 		A19DED511F5907C500E6C9DA /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19DED501F5907C500E6C9DA /* CommentTableViewCell.swift */; };
 		A19DED531F59088D00E6C9DA /* CommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19DED521F59088D00E6C9DA /* CommentViewController.swift */; };
 		A19DED551F590A9F00E6C9DA /* NewCommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19DED541F590A9F00E6C9DA /* NewCommentTableViewCell.swift */; };
+		A19DED591F6CC79500E6C9DA /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19DED581F6CC79500E6C9DA /* Utils.swift */; };
 		A1B458941F0C5FA400EDCF80 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B458931F0C5FA400EDCF80 /* Credentials.swift */; };
 		A1B458961F11AC0800EDCF80 /* TextFieldStyler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B458951F11AC0800EDCF80 /* TextFieldStyler.swift */; };
 		A1D53DEE1E8B647100842177 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D53DED1E8B647100842177 /* APIClient.swift */; };
@@ -104,6 +105,7 @@
 		A19DED501F5907C500E6C9DA /* CommentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
 		A19DED521F59088D00E6C9DA /* CommentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentViewController.swift; sourceTree = "<group>"; };
 		A19DED541F590A9F00E6C9DA /* NewCommentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewCommentTableViewCell.swift; sourceTree = "<group>"; };
+		A19DED581F6CC79500E6C9DA /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		A1B458931F0C5FA400EDCF80 /* Credentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
 		A1B458951F11AC0800EDCF80 /* TextFieldStyler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldStyler.swift; sourceTree = "<group>"; };
 		A1D53DED1E8B647100842177 /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
@@ -203,6 +205,7 @@
 				A15E62361F3FA45F00AC9EF1 /* PickGroupViewController.swift */,
 				A15E623D1F41545000AC9EF1 /* SignedInUser.swift */,
 				A15E623F1F4273BB00AC9EF1 /* StartViewController.swift */,
+				A19DED581F6CC79500E6C9DA /* Utils.swift */,
 			);
 			name = App;
 			sourceTree = "<group>";
@@ -470,6 +473,7 @@
 				A15E624C1F536C8500AC9EF1 /* Constants.swift in Sources */,
 				A1015A371EEDC0EA00A2358E /* ActivationCode.swift in Sources */,
 				A15E62471F5231CC00AC9EF1 /* UITableExt.swift in Sources */,
+				A19DED591F6CC79500E6C9DA /* Utils.swift in Sources */,
 				A1B458961F11AC0800EDCF80 /* TextFieldStyler.swift in Sources */,
 				A19DED511F5907C500E6C9DA /* CommentTableViewCell.swift in Sources */,
 				A11C2DF41F0B249E00EBDDB5 /* SignUpViewController.swift in Sources */,

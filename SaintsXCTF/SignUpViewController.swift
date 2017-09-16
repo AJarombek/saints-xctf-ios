@@ -163,6 +163,7 @@ class SignUpViewController: UIViewController {
                         newUser.last = lastNameString
                         newUser.email = emailString
                         newUser.password = passwordString
+                        newUser.activation_code = activationCodeString
                         
                         // Final call to add the new user
                         self.addUser(newUser, usernameString)
@@ -182,6 +183,7 @@ class SignUpViewController: UIViewController {
         }
     }
     
+    // Add a user to the database through the API and store locally on success
     func addUser(_ user: User, _ username: String) {
         APIClient.userPostRequest(withUser: user) {
             (user) -> Void in
@@ -205,7 +207,7 @@ class SignUpViewController: UIViewController {
                 // Redirect to the pick group page
                 let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                 let pickGroupViewController = storyBoard.instantiateViewController(withIdentifier:
-                    "pickGroupViewController") as! UITabBarController
+                    "pickGroupViewController") as! PickGroupController
                 self.present(pickGroupViewController, animated: true, completion: nil)
                 
             } else {

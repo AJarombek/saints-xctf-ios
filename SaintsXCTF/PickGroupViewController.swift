@@ -35,11 +35,11 @@ class PickGroupController: UIViewController {
         womenstfButton.layer.cornerRadius = 4
         alumniButton.layer.cornerRadius = 4
         
-        mensxcButton.backgroundColor = UIColor(0xFFFFFF)
-        womensxcButton.backgroundColor = UIColor(0xFFFFFF)
-        menstfButton.backgroundColor = UIColor(0xFFFFFF)
-        womenstfButton.backgroundColor = UIColor(0xFFFFFF)
-        alumniButton.backgroundColor = UIColor(0xFFFFFF)
+        mensxcButton.backgroundColor = UIColor(0xEEEEEE)
+        womensxcButton.backgroundColor = UIColor(0xEEEEEE)
+        menstfButton.backgroundColor = UIColor(0xEEEEEE)
+        womenstfButton.backgroundColor = UIColor(0xEEEEEE)
+        alumniButton.backgroundColor = UIColor(0xEEEEEE)
     }
     
     // Remove the keyboard when tapping the background
@@ -59,7 +59,7 @@ class PickGroupController: UIViewController {
             womensxcButton.isEnabled = false
             womenstfButton.isEnabled = false
         } else {
-            mensxcButton.backgroundColor = UIColor(0xFFFFFF)
+            mensxcButton.backgroundColor = UIColor(0xEEEEEE)
             if (!menstf) {
                 womensxcButton.isEnabled = true
                 womenstfButton.isEnabled = true
@@ -75,7 +75,7 @@ class PickGroupController: UIViewController {
             mensxcButton.isEnabled = false
             menstfButton.isEnabled = false
         } else {
-            womensxcButton.backgroundColor = UIColor(0xFFFFFF)
+            womensxcButton.backgroundColor = UIColor(0xEEEEEE)
             if (!wmenstf) {
                 mensxcButton.isEnabled = true
                 menstfButton.isEnabled = true
@@ -91,7 +91,7 @@ class PickGroupController: UIViewController {
             mensxcButton.isEnabled = false
             menstfButton.isEnabled = false
         } else {
-            womensxcButton.backgroundColor = UIColor(0xFFFFFF)
+            womenstfButton.backgroundColor = UIColor(0xEEEEEE)
             if (!wmensxc) {
                 mensxcButton.isEnabled = true
                 menstfButton.isEnabled = true
@@ -107,7 +107,7 @@ class PickGroupController: UIViewController {
             womensxcButton.isEnabled = false
             womenstfButton.isEnabled = false
         } else {
-            menstfButton.backgroundColor = UIColor(0xFFFFFF)
+            menstfButton.backgroundColor = UIColor(0xEEEEEE)
             if (!mensxc) {
                 womenstfButton.isEnabled = true
                 womensxcButton.isEnabled = true
@@ -121,7 +121,7 @@ class PickGroupController: UIViewController {
         if (alumni) {
             alumniButton.backgroundColor = UIColor(0xCCCCCC)
         } else {
-            alumniButton.backgroundColor = UIColor(0xFFFFFF)
+            alumniButton.backgroundColor = UIColor(0xEEEEEE)
         }
     }
     
@@ -153,7 +153,7 @@ class PickGroupController: UIViewController {
             // Redirect to the main page
             let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let mainViewController = storyBoard.instantiateViewController(withIdentifier:
-                "mainViewController") as! MainViewController
+                "mainViewController") as! UITabBarController
             self.present(mainViewController, animated: true, completion: nil)
             
             // Send a notification to the picked group admins
@@ -180,14 +180,14 @@ class PickGroupController: UIViewController {
                 member in
                 
                 if member.user == "admin" {
-                    let name = "\(member.first) \(member.last)"
+                    let name = "\(member.first!) \(member.last!)"
                     os_log("Sending Notification to Admin %@", log: self.logTag, type: .debug, name)
                     
                     let notification = Notification()
                     notification.username = member.username
-                    notification.link = "https://www.saintsxctf.com/group.php?name=\(group.group_name)"
-                    notification.notification_description = "\(user.first) \(user.last) Has Requested to" +
-                                                            "Join \(group.group_title)"
+                    notification.link = "https://www.saintsxctf.com/group.php?name=\(group.group_name!)"
+                    notification.notification_description = "\(name) Has Requested to " +
+                                                            "Join \(group.group_title!)"
                     notification.viewed = "N"
                     
                     self.sendAdminNotification(notification)

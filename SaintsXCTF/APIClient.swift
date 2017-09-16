@@ -442,7 +442,7 @@ class APIClient {
             return
         }
         
-        // Convert the Comment to a JSON string
+        // Convert the User to a JSON string
         let userJSON = Mapper().toJSONString(user, prettyPrint: false)
         
         APIRequest.post(withURL: url, andJson: userJSON ?? "") {
@@ -615,7 +615,10 @@ class APIClient {
             return
         }
         
-        APIRequest.put(withURL: url, andObject: user) {
+        // Convert the User to a JSON string
+        let userJSON = Mapper().toJSONString(user, prettyPrint: false)
+        
+        APIRequest.put(withURL: url, andJson: userJSON ?? "") {
             (json) -> Void in
             
             if let user: User = Mapper<User>().map(JSONString: json) {
@@ -640,7 +643,10 @@ class APIClient {
             return
         }
         
-        APIRequest.put(withURL: url, andObject: log) {
+        // Convert the User to a JSON string
+        let logJSON = Mapper().toJSONString(log, prettyPrint: false)
+        
+        APIRequest.put(withURL: url, andJson: logJSON ?? "") {
             (json) -> Void in
             
             if let log: Log = Mapper<Log>().map(JSONString: json) {
@@ -665,7 +671,10 @@ class APIClient {
             return
         }
         
-        APIRequest.put(withURL: url, andObject: group) {
+        // Convert the User to a JSON string
+        let groupJSON = Mapper().toJSONString(group, prettyPrint: false)
+        
+        APIRequest.put(withURL: url, andJson: groupJSON ?? "") {
             (json) -> Void in
             
             if let group: Group = Mapper<Group>().map(JSONString: json) {
@@ -690,7 +699,10 @@ class APIClient {
             return
         }
         
-        APIRequest.put(withURL: url, andObject: comment) {
+        // Convert the User to a JSON string
+        let commentJSON = Mapper().toJSONString(comment, prettyPrint: false)
+        
+        APIRequest.put(withURL: url, andJson: commentJSON ?? "") {
             (json) -> Void in
             
             if let comment: Comment = Mapper<Comment>().map(JSONString: json) {
@@ -715,7 +727,10 @@ class APIClient {
             return
         }
         
-        APIRequest.put(withURL: url, andObject: message) {
+        // Convert the User to a JSON string
+        let messageJSON = Mapper().toJSONString(message, prettyPrint: false)
+        
+        APIRequest.put(withURL: url, andJson: messageJSON ?? "") {
             (json) -> Void in
             
             if let message: Message = Mapper<Message>().map(JSONString: json) {
