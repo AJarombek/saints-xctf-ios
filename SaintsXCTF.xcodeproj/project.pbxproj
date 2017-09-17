@@ -147,6 +147,24 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		A10D61C21F6E120400A406D9 /* Comment */ = {
+			isa = PBXGroup;
+			children = (
+				A19DED541F590A9F00E6C9DA /* NewCommentTableViewCell.swift */,
+				A19DED521F59088D00E6C9DA /* CommentViewController.swift */,
+				A19DED501F5907C500E6C9DA /* CommentTableViewCell.swift */,
+			);
+			name = Comment;
+			sourceTree = "<group>";
+		};
+		A10D61C31F6E126900A406D9 /* Log */ = {
+			isa = PBXGroup;
+			children = (
+				A15E622F1F3F981600AC9EF1 /* LogViewController.swift */,
+			);
+			name = Log;
+			sourceTree = "<group>";
+		};
 		A15BA12C1E8AF61D00B9796B = {
 			isa = PBXGroup;
 			children = (
@@ -193,13 +211,14 @@
 		A15E62291F3F91F600AC9EF1 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				A10D61C31F6E126900A406D9 /* Log */,
+				A10D61C21F6E120400A406D9 /* Comment */,
 				A15E624A1F536C6200AC9EF1 /* Constants */,
 				A15E62451F5119F700AC9EF1 /* Main */,
 				A15E622C1F3F938B00AC9EF1 /* Extensions */,
 				A15BA1661E8AF6CE00B9796B /* HomeViewController.swift */,
 				A11C2DF31F0B249E00EBDDB5 /* SignUpViewController.swift */,
 				A15E622D1F3F97D700AC9EF1 /* ProfileViewController.swift */,
-				A15E622F1F3F981600AC9EF1 /* LogViewController.swift */,
 				A15E62321F3F986C00AC9EF1 /* GroupListViewController.swift */,
 				A15E62341F3F98EC00AC9EF1 /* SignOutViewController.swift */,
 				A15E62361F3FA45F00AC9EF1 /* PickGroupViewController.swift */,
@@ -254,9 +273,6 @@
 				A15E62411F4FC70400AC9EF1 /* LogDataSource.swift */,
 				A11C2DF51F0B284F00EBDDB5 /* MainViewController.swift */,
 				A15E62481F52372000AC9EF1 /* LogTableViewCell.swift */,
-				A19DED501F5907C500E6C9DA /* CommentTableViewCell.swift */,
-				A19DED521F59088D00E6C9DA /* CommentViewController.swift */,
-				A19DED541F590A9F00E6C9DA /* NewCommentTableViewCell.swift */,
 			);
 			name = Main;
 			sourceTree = "<group>";
