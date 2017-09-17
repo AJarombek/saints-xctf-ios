@@ -56,6 +56,6 @@ class LogTableViewCell: UITableViewCell {
         self.layer.borderWidth = 2
         self.layer.borderColor = UIColor(0xAAAAAA).cgColor
         self.layer.cornerRadius = 1
-        self.backgroundColor = UIColor(Constants.getFeelColor(feel))
+        self.backgroundColor = UIColor(Constants.getFeelColor(feel - 1))
     }
 }
