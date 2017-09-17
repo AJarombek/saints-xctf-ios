@@ -499,28 +499,27 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wir-Mn-zHc">
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Description" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="7JC-MJ-Gc5">
                                             <rect key="frame" x="8" y="33" width="359" height="49"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        </textView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="wir-Mn-zHc" firstAttribute="top" secondItem="WMv-Pw-r4A" secondAttribute="bottom" constant="8" id="3GM-Az-tbG"/>
+                                        <constraint firstItem="7JC-MJ-Gc5" firstAttribute="trailing" secondItem="z4k-az-u05" secondAttribute="trailingMargin" id="2D3-aN-WAu"/>
                                         <constraint firstItem="WMv-Pw-r4A" firstAttribute="trailing" secondItem="z4k-az-u05" secondAttribute="trailingMargin" id="3Ku-5K-Ccu"/>
                                         <constraint firstItem="6AW-tE-7Hd" firstAttribute="top" secondItem="z4k-az-u05" secondAttribute="topMargin" id="E9b-Bj-7Dv"/>
-                                        <constraint firstItem="wir-Mn-zHc" firstAttribute="top" secondItem="6AW-tE-7Hd" secondAttribute="bottom" constant="8" id="FBI-ef-1qe"/>
-                                        <constraint firstItem="6AW-tE-7Hd" firstAttribute="leading" secondItem="wir-Mn-zHc" secondAttribute="leading" id="JMC-Jc-kts"/>
                                         <constraint firstItem="6AW-tE-7Hd" firstAttribute="top" secondItem="WMv-Pw-r4A" secondAttribute="top" id="JcG-J2-Hxd"/>
                                         <constraint firstItem="WMv-Pw-r4A" firstAttribute="leading" secondItem="6AW-tE-7Hd" secondAttribute="trailing" constant="5" id="KZ2-eH-wWN"/>
-                                        <constraint firstItem="WMv-Pw-r4A" firstAttribute="trailing" secondItem="wir-Mn-zHc" secondAttribute="trailing" id="Q9T-1N-see"/>
+                                        <constraint firstItem="7JC-MJ-Gc5" firstAttribute="leading" secondItem="z4k-az-u05" secondAttribute="leadingMargin" id="RYH-AP-TxQ"/>
+                                        <constraint firstItem="7JC-MJ-Gc5" firstAttribute="top" secondItem="6AW-tE-7Hd" secondAttribute="bottom" constant="8" id="XcO-N3-VCS"/>
+                                        <constraint firstItem="7JC-MJ-Gc5" firstAttribute="bottom" secondItem="z4k-az-u05" secondAttribute="bottomMargin" id="eGB-J1-Qh7"/>
+                                        <constraint firstItem="7JC-MJ-Gc5" firstAttribute="top" secondItem="WMv-Pw-r4A" secondAttribute="bottom" constant="8" id="et9-qe-KyZ"/>
                                         <constraint firstItem="6AW-tE-7Hd" firstAttribute="leading" secondItem="z4k-az-u05" secondAttribute="leadingMargin" id="fYA-i9-LAB"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="wir-Mn-zHc" secondAttribute="bottom" id="woP-zE-KOU"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="contentLabel" destination="wir-Mn-zHc" id="uOp-bQ-awH"/>
+                                    <outlet property="contentLabel" destination="7JC-MJ-Gc5" id="hGN-59-4Vq"/>
                                     <outlet property="dateLabel" destination="WMv-Pw-r4A" id="Xmh-wn-uXC"/>
                                     <outlet property="nameLabel" destination="6AW-tE-7Hd" id="2M8-7u-ydS"/>
                                 </connections>

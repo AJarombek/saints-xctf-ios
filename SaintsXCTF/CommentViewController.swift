@@ -9,7 +9,7 @@
 import UIKit
 import os.log
 
-class CommentViewController: UITableViewController {
+class CommentViewController: UITableViewController, UITextViewDelegate {
     
     @IBOutlet weak var commentTableView: UITableView!
     
@@ -112,29 +112,48 @@ class CommentViewController: UITableViewController {
                 
                 // Find all the tagged users in the comment
                 let tagRegex = "@[a-zA-Z0-9]+"
-                let matches = Utils.matchesInfo(for: comment.content!, in: tagRegex)
+                let matches = Utils.matchesInfo(for: tagRegex, in: comment.content!)
                 
                 // Create a MutableAttributedString for each tag
                 let mutableContent = NSMutableAttributedString(string: comment.content!,
                                                                attributes: [:])
                 
-                for i in 0...matches.substrings.count {
-                    let start = matches.startIndices[i]
-                    let end = start + matches.stringLengths[i]
-                    mutableContent.addAttribute(NSFontAttributeName, value: UIColor.blue,
-                                                range: NSRange(location: start, length: end))
+                // Go through each tag and add a link when clicked
+                if matches.substrings.count > 0 {
+                    for i in 0...matches.substrings.count - 1 {
+                        let start = matches.startIndices[i]
+                        let length = matches.stringLengths[i]
+                        
+                        mutableContent.addAttribute(NSLinkAttributeName, value: matches.substrings[i],
+                                                    range: NSRange(location: start, length: length))
+                    }
                 }
             
                 cell.contentLabel.attributedText = mutableContent
+                
+                // Set the properties of the link text
+                cell.contentLabel.linkTextAttributes = [NSForegroundColorAttributeName:UIColor(0x555555),
+                                                    NSFontAttributeName:UIFont(name: "HelveticaNeue-Bold", size: 12)!]
+                
+                // Allows the shouldInteractWith URL function to execute on click
+                cell.contentLabel.delegate = self
                 cell.contentLabel.sizeToFit()
                 
                 cell.nameLabel.text = "\(comment.first!) \(comment.last!)"
             
             } else {
-                os_log("Comment Failed to Load.", log: logTag, type: .debug)
+                os_log("Comment Failed to Load.", log: logTag, type: .error)
             }
         
             return cell
         }
+    }
+    
+    // This function is called when a tagged user is clicked in a comment
+    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange,
+                  interaction: UITextItemInteraction) -> Bool {
+        os_log("%@", log: logTag, type: .debug, URL.absoluteString)
+        
+        return false
     }
 }

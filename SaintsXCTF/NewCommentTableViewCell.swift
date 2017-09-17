@@ -69,7 +69,7 @@ class NewCommentTableViewCell: UITableViewCell {
                         tagnotification.username = tagUsername
                         tagnotification.link = "https://www.saintsxctf.com/log.php?logno=\(newcomment.log_id!)"
                         tagnotification.notification_description = "\(newcomment.first!) \(newcomment.last!)"
-                                                                    + "Commented on Your Log."
+                                                                    + " Mentioned You in a Log."
                         tagnotification.viewed = "N"
                         
                         self.commentTagNotification(tagnotification)

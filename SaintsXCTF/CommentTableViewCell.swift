@@ -12,7 +12,7 @@ class CommentTableViewCell: UITableViewCell {
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var contentLabel: UILabel!
+    @IBOutlet weak var contentLabel: UITextView!
     
     // Add padding to the cell
     override var frame: CGRect {
