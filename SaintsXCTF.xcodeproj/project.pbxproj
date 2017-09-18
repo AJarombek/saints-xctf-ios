@@ -12,6 +12,7 @@
 		A1015A391EEDC1CF00A2358E /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1015A381EEDC1CF00A2358E /* Message.swift */; };
 		A1015A3B1EEDC2B800A2358E /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1015A3A1EEDC2B800A2358E /* Notification.swift */; };
 		A1015A3D1EEDC3F400A2358E /* RangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1015A3C1EEDC3F400A2358E /* RangeView.swift */; };
+		A10D61C51F6F45C100A406D9 /* UIToolbarExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10D61C41F6F45C100A406D9 /* UIToolbarExt.swift */; };
 		A11C2DF41F0B249E00EBDDB5 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11C2DF31F0B249E00EBDDB5 /* SignUpViewController.swift */; };
 		A11C2DF61F0B284F00EBDDB5 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11C2DF51F0B284F00EBDDB5 /* MainViewController.swift */; };
 		A1505B901E8F105A00F111DB /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1505B8F1E8F105A00F111DB /* Comment.swift */; };
@@ -73,6 +74,7 @@
 		A1015A381EEDC1CF00A2358E /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		A1015A3A1EEDC2B800A2358E /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		A1015A3C1EEDC3F400A2358E /* RangeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RangeView.swift; sourceTree = "<group>"; };
+		A10D61C41F6F45C100A406D9 /* UIToolbarExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIToolbarExt.swift; sourceTree = "<group>"; };
 		A11C2DF31F0B249E00EBDDB5 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		A11C2DF51F0B284F00EBDDB5 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		A1505B8F1E8F105A00F111DB /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
@@ -263,6 +265,7 @@
 				A1B458951F11AC0800EDCF80 /* TextFieldStyler.swift */,
 				A15E62381F3FD44000AC9EF1 /* UIColorExt.swift */,
 				A15E62461F5231CC00AC9EF1 /* UITableExt.swift */,
+				A10D61C41F6F45C100A406D9 /* UIToolbarExt.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -506,6 +509,7 @@
 				A15BA1671E8AF6CE00B9796B /* HomeViewController.swift in Sources */,
 				A15E62421F4FC70400AC9EF1 /* LogDataSource.swift in Sources */,
 				A15E62391F3FD44000AC9EF1 /* UIColorExt.swift in Sources */,
+				A10D61C51F6F45C100A406D9 /* UIToolbarExt.swift in Sources */,
 				A1015A391EEDC1CF00A2358E /* Message.swift in Sources */,
 				A1B458941F0C5FA400EDCF80 /* Credentials.swift in Sources */,
 				A1015A3D1EEDC3F400A2358E /* RangeView.swift in Sources */,

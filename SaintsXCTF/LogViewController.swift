@@ -9,7 +9,7 @@
 import UIKit
 import os.log
 
-class LogViewController: UIViewController {
+class LogViewController: UIViewController, UITextViewDelegate {
     
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var locationField: UITextField!
@@ -43,12 +43,47 @@ class LogViewController: UIViewController {
         
         descriptionField.text = "Description"
         descriptionField.textColor = UIColor.lightGray
+        descriptionField.delegate = self
         
+        // Add Styling to the log fields
+        nameField.standardStyle()
+        locationField.standardStyle()
+        dateField.standardStyle()
+        typeField.standardStyle()
+        distanceField.standardStyle()
+        metricField.standardStyle()
+        minutesField.standardStyle()
+        secondsField.standardStyle()
+        
+        feelStepper.tintColor = UIColor(0xCCCCCC)
+        feelStepper.backgroundColor = UIColor.white
+        feelStepper.layer.cornerRadius = 4
+        
+        descriptionField.layer.borderWidth = 2
+        descriptionField.layer.borderColor = UIColor(0xCCCCCC).cgColor
+        descriptionField.layer.cornerRadius = 1
+        descriptionField.backgroundColor = UIColor.white
+        
+        // Set the settings for the log feel stepper
         feelStepper.minimumValue = 1
         feelStepper.maximumValue = 10
         feelStepper.wraps = false
         feelStepper.autorepeat = true
         feelStepper.value = 6
+        
+        // Create a view to hold the date picker and the done button
+        let inputView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 240))
+        
+        // Create and add the date picker
+        let datePickerView: UIDatePicker = UIDatePicker(frame: CGRect(x: 0, y: 40, width: 0, height: 0))
+        datePickerView.datePickerMode = UIDatePickerMode.date
+        datePickerView.addTarget(self, action: #selector(handleDatePicker(_:)), for: UIControlEvents.valueChanged)
+        
+        inputView.addSubview(datePickerView)
+        dateField.inputView = inputView
+        
+        let toolBar = UIToolbar().DatePickToolbar(selector: #selector(self.dismissDatePicker))
+        dateField.inputAccessoryView = toolBar
     }
     
     // Remove the keyboard when tapping the background
@@ -67,39 +102,9 @@ class LogViewController: UIViewController {
         
     }
     
-    // When the dateField is clicked, show a datepicker
-    @IBAction func editDate(_ sender: UITextField) {
-        
-        // Create a view to hold the date picker and the done button
-        let inputView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 240))
-        
-        // Create and add the date picker
-        let datePickerView: UIDatePicker = UIDatePicker(frame: CGRect(x: 0, y: 40, width: 0, height: 0))
-        datePickerView.datePickerMode = UIDatePickerMode.date
-        inputView.addSubview(datePickerView)
-        
-        // Create and add done button
-        let doneButton = UIButton(frame: CGRect(x: (self.view.frame.size.width/2) - (100/2),
-                                                y: 0, width: 100, height: 50))
-        doneButton.setTitle("Done", for: UIControlState.normal)
-        doneButton.setTitle("Done", for: UIControlState.highlighted)
-        doneButton.setTitleColor(UIColor.black, for: UIControlState.normal)
-        doneButton.setTitleColor(UIColor.gray, for: UIControlState.highlighted)
-        inputView.addSubview(doneButton)
-        
-        // Set functions to call when the done button is clicked & when the date picker value changes
-        doneButton.addTarget(self, action: #selector(datePickerDone(_:)), for: UIControlEvents.touchUpInside)
-        
-        sender.inputView = inputView
-        datePickerView.addTarget(self, action: #selector(handleDatePicker(_:)), for: UIControlEvents.valueChanged)
-        
-        // Set the date on startup
-        handleDatePicker(datePickerView)
-    }
-    
     // Stop displaying the date picker
-    func datePickerDone(_ sender: UIButton) {
-        dateField.resignFirstResponder()
+    func dismissDatePicker() {
+        view.endEditing(true)
     }
     
     // Show the date in the date picker in the text field
@@ -121,5 +126,21 @@ class LogViewController: UIViewController {
         secondsField.text = ""
         descriptionField.text = ""
         errorField.text = ""
+    }
+    
+    // When beginning to edit the textview, remove the placeholder and prepare view for user input
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.textColor == UIColor.lightGray {
+            textView.text = ""
+            textView.textColor = UIColor.black
+        }
+    }
+    
+    // When done editing textview, if the contents are empty restore the placeholder
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.text = "Description"
+            textView.textColor = UIColor.lightGray
+        }
     }
 }
