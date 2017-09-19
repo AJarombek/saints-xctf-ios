@@ -10,7 +10,8 @@ import UIKit
 
 extension UIToolbar {
     
-    func DatePickToolbar(selector: Selector) -> UIToolbar {
+    // Make a toolbar for a picker that has a done button
+    func PickerToolbar(selector: Selector) -> UIToolbar {
         
         let toolbar = UIToolbar()
         
@@ -24,7 +25,7 @@ extension UIToolbar {
         let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace,
                                           target: nil, action: nil)
         
-        toolbar.setItems([ spaceButton, doneButton], animated: false)
+        toolbar.setItems([spaceButton, doneButton], animated: false)
         toolbar.isUserInteractionEnabled = true
         
         return toolbar

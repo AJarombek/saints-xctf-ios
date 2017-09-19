@@ -626,6 +626,7 @@
                                     <constraint firstAttribute="height" constant="40" id="68Q-Nc-hmV"/>
                                     <constraint firstAttribute="width" constant="200" id="red-nL-Yeo"/>
                                 </constraints>
+                                <color key="textColor" red="0.59999999999999998" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -900,6 +901,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="cRK-F3-cge"/>
                                         </constraints>
+                                        <color key="textColor" red="0.59999999999999998" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
