@@ -30,12 +30,14 @@ class LogViewController: UIViewController, UITextViewDelegate, UIPickerViewDeleg
     var metricPicker: UIPickerView!
     var datePickerView: UIDatePicker!
     
+    var user: User!
+    
     let distanceRegex = "^[0-9]{0,3}(\\.[0-9]{1,2})?$"
     let minuteRegex = "^[0-9]{1,5}$"
     let secondRegex = "^[0-9]{1,2}$"
     let userTagRegex = "@[a-zA-Z0-9]+"
     
-    let currentDate = "08/16/2017"
+    var currentDate = "09/16/2017"
     
     let logTypes = ["Run", "Bike", "Swim", "Other"]
     let logMetrics = ["Miles", "Kilometers", "Meters"]
@@ -119,6 +121,15 @@ class LogViewController: UIViewController, UITextViewDelegate, UIPickerViewDeleg
         
         let metricToolbar = UIToolbar().PickerToolbar(selector: #selector(self.dismissPicker))
         metricField.inputAccessoryView = metricToolbar
+        
+        // Set the current date to be displayed in the dateField
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM/dd/yyyy"
+        currentDate = dateFormatter.string(from: Date())
+        dateField.text = currentDate
+        
+        // Set the user for the created logs to the signed in user
+        user = SignedInUser.user
     }
     
     // Remove the keyboard when tapping the background
@@ -143,21 +154,6 @@ class LogViewController: UIViewController, UITextViewDelegate, UIPickerViewDeleg
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM/dd/yyyy"
         dateField.text = dateFormatter.string(from: sender.date)
-    }
-    
-    // When the user clicks cancel, reset all the fields to their default values
-    @IBAction func cancelLog(_ sender: UIButton) {
-        nameField.text = ""
-        locationField.text = ""
-        dateField.text = ""
-        typeField.text = "Run"
-        distanceField.text = ""
-        metricField.text = "Miles"
-        minutesField.text = ""
-        secondsField.text = ""
-        descriptionField.text = "Description"
-        descriptionField.textColor = UIColor.lightGray
-        errorField.text = ""
     }
     
     // When beginning to edit the textview, remove the placeholder and prepare view for user input
@@ -212,7 +208,149 @@ class LogViewController: UIViewController, UITextViewDelegate, UIPickerViewDeleg
         }
     }
     
+    // When the user clicks cancel, reset all the fields to their default values
+    @IBAction func cancelLog(_ sender: UIButton) {
+        nameField.text = ""
+        locationField.text = ""
+        dateField.text = currentDate
+        typeField.text = "Run"
+        distanceField.text = ""
+        metricField.text = "Miles"
+        minutesField.text = ""
+        secondsField.text = ""
+        feelStepper.value = 6
+        descriptionField.text = "Description"
+        descriptionField.textColor = UIColor.lightGray
+        descriptionField.resignFirstResponder()
+        errorField.text = ""
+    }
+    
+    // When the log is submitted, perform validation and if valid send to the API for creation.
+    // Otherwise display an error message
     @IBAction func submitLog(_ sender: UIButton) {
         
+        // Get the values from all of the textFields
+        if let name = nameField.text?.trimmingCharacters(in: .whitespaces),
+            let location = locationField.text?.trimmingCharacters(in: .whitespaces),
+            let dateString = dateField.text?.trimmingCharacters(in: .whitespaces),
+            let type = typeField.text?.trimmingCharacters(in: .whitespaces),
+            let distance = distanceField.text?.trimmingCharacters(in: .whitespaces),
+            let metric = metricField.text?.trimmingCharacters(in: .whitespaces),
+            let minutes = minutesField.text?.trimmingCharacters(in: .whitespaces),
+            let seconds = secondsField.text?.trimmingCharacters(in: .whitespaces),
+            let description = descriptionField.text?.trimmingCharacters(in: .whitespaces) {
+            
+            // Get the feel from the stepper
+            let feel = Int(feelStepper.value)
+            
+            // Name is a required field
+            if name.isEmpty {
+                errorField.text = "A Log Name Must Be Entered"
+                nameField.changeStyle(.error)
+                return
+            } else {
+                nameField.changeStyle(.valid)
+            }
+            
+            // Make sure the date isnt in the future
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "MM/dd/yyyy"
+            let date = dateFormatter.date(from: dateString)!
+            
+            if date > Date() {
+                errorField.text = "Date Cannot Be In the Future"
+                dateField.changeStyle(.error)
+                return
+            } else {
+                dateField.changeStyle(.valid)
+            }
+            
+            // And make sure the date isnt before 2016
+            let oldestDate = dateFormatter.date(from: "01/01/2016")!
+            
+            if date < oldestDate {
+                errorField.text = "Date Must be After Jan. 1st, 2016"
+                dateField.changeStyle(.error)
+                return
+            } else {
+                dateField.changeStyle(.valid)
+            }
+            
+            // One of the following must be entered: minutes, seconds, distance
+            if distance.isEmpty && seconds.isEmpty && minutes.isEmpty {
+                errorField.text = "No Distance or Time Entered"
+                distanceField.changeStyle(.error)
+                minutesField.changeStyle(.error)
+                secondsField.changeStyle(.error)
+                return
+            }
+            
+            var distanceFilledOut = false
+            
+            // Make sure the distance is properly inputted
+            if distance.range(of: distanceRegex, options: .regularExpression) == nil {
+                
+                if distance.isEmpty && minutes.range(of: minuteRegex, options: .regularExpression) != nil &&
+                    seconds.range(of: secondRegex, options: .regularExpression) != nil {
+                    distanceField.changeStyle(.valid)
+                } else {
+                    // If the distance doesnt match + isnt empty and the minutes and seconds aren't filled in
+                    // there is an error: and invalid distance was entered
+                    errorField.text = "Invalid Distance Entered"
+                    distanceField.changeStyle(.error)
+                    return
+                }
+            } else {
+                distanceFilledOut = true
+            }
+            
+                // Make sure the minutes are properly inputted
+                if minutes.range(of: minuteRegex, options: .regularExpression) == nil {
+                    
+                    if minutes.isEmpty && seconds.range(of: secondRegex, options: .regularExpression) != nil && Int(seconds)! <= 59 {
+                        minutesField.changeStyle(.valid)
+                    } else {
+                        
+                        // If the minutes doesnt match + isnt empty and the
+                        errorField.text = "Invalid Minutes Entered"
+                        minutesField.changeStyle(.error)
+                        return
+                    }
+                    
+                } else {
+                    minutesField.changeStyle(.valid)
+                }
+            
+            
+            
+            // Make sure the seconds are properly inputted
+            if seconds.range(of: secondRegex, options: .regularExpression) == nil {
+                errorField.text = "Invalid Seconds Entered"
+                secondsField.changeStyle(.error)
+                return
+            } else {
+                secondsField.changeStyle(.valid)
+            }
+            
+            // If you reach this point, everything is in a valid state
+            // Now we want to build the Log obejct to be sent off to the API
+            let log = Log()
+            log.name = name
+            log.username = user.username
+            log.first = user.first
+            log.last = user.last
+            log.location = location
+            log.date = dateString
+            log.type = type
+            log.distance = distance
+            log.metric = metric
+            log.time = minutes
+            log.feel = "\(feel)"
+            log.log_description = description
+            
+        } else {
+            errorField.text = "An Unexpected Error Occurred"
+            return
+        }
     }
 }

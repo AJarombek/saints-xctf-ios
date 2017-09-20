@@ -81,4 +81,9 @@ class Utils {
             return StringMatches()
         }
     }
+    
+    // Convert minutes and seconds to time
+    static func toTime(withMinutes minutes: String, andSeconds seconds: String) {
+        
+    }
 }
