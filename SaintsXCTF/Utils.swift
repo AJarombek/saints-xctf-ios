@@ -84,13 +84,63 @@ class Utils {
     
     // Convert minutes and seconds to time
     static func toTime(withMinutes minutes: String, andSeconds seconds: String) -> String {
-        return ""
+        
+        // Base case: the minutes and seconds are both empty
+        if minutes == "" && seconds == "" {
+            return "00:00:00"
+        }
+        
+        var secStr, minStr, hrStr: String
+        var minInt, hrInt: Int
+        
+        // If the seconds are only of length one, pad with a zero
+        if seconds.characters.count == 1 {
+            secStr = "0\(seconds)"
+        } else {
+            secStr = seconds
+        }
+        
+        // If minutes are empty and seconds exist, return just the seconds
+        if minutes == "" {
+            return "00:00:\(secStr)"
+        }
+        
+        // Find the hours and minutes from the minute input
+        minInt = Int(minutes)!
+        hrInt = minInt / 60
+        minInt = minInt % 60
+        hrStr = "\(hrInt)"
+        minStr = "\(minInt)"
+        
+        // If the minutes are only of length one, pad with a zero
+        if minStr.characters.count == 1 {
+            minStr = "0\(minStr)"
+        }
+        
+        // If the hours are only of length one, pad with a zero
+        if hrStr.characters.count == 1 {
+            hrStr = "0\(hrStr)"
+        }
+        
+        return "\(hrStr):\(minStr):\(secStr)"
     }
     
     // Convert a metric and distance to miles
     static func toMiles(fromMetric metric: String, withDistance distance: String) -> Double {
         
-        return 0
+        let dist: Double = Double(distance)!
+        
+        switch metric {
+        case "Miles":
+            return dist
+        case "Meters":
+            return dist / 1609.344
+        case "Kilometers":
+            return dist * 0.621317
+        default:
+            os_log("ToMiles: Unexpected Metric Provided: %@", log: Utils.logTag, type: .error, metric)
+            return dist
+        }
     }
     
     // Get the mile pace with
