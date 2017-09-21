@@ -8,6 +8,7 @@
 
 import UIKit
 import os.log
+import PopupDialog
 
 class LogViewController: UIViewController, UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     
@@ -208,8 +209,8 @@ class LogViewController: UIViewController, UITextViewDelegate, UIPickerViewDeleg
         }
     }
     
-    // When the user clicks cancel, reset all the fields to their default values
-    @IBAction func cancelLog(_ sender: UIButton) {
+    // Reset all the fields in the log input to the default values
+    func resetFields() {
         nameField.text = ""
         locationField.text = ""
         dateField.text = currentDate
@@ -225,6 +226,11 @@ class LogViewController: UIViewController, UITextViewDelegate, UIPickerViewDeleg
         errorField.text = ""
     }
     
+    // When the user clicks cancel, reset all the fields to their default values
+    @IBAction func cancelLog(_ sender: UIButton) {
+        resetFields()
+    }
+    
     // When the log is submitted, perform validation and if valid send to the API for creation.
     // Otherwise display an error message
     @IBAction func submitLog(_ sender: UIButton) {
@@ -234,14 +240,11 @@ class LogViewController: UIViewController, UITextViewDelegate, UIPickerViewDeleg
             let location = locationField.text?.trimmingCharacters(in: .whitespaces),
             let dateString = dateField.text?.trimmingCharacters(in: .whitespaces),
             let type = typeField.text?.trimmingCharacters(in: .whitespaces),
-            let distance = distanceField.text?.trimmingCharacters(in: .whitespaces),
+            var distance = distanceField.text?.trimmingCharacters(in: .whitespaces),
             let metric = metricField.text?.trimmingCharacters(in: .whitespaces),
-            let minutes = minutesField.text?.trimmingCharacters(in: .whitespaces),
-            let seconds = secondsField.text?.trimmingCharacters(in: .whitespaces),
+            var minutes = minutesField.text?.trimmingCharacters(in: .whitespaces),
+            var seconds = secondsField.text?.trimmingCharacters(in: .whitespaces),
             let description = descriptionField.text?.trimmingCharacters(in: .whitespaces) {
-            
-            // Get the feel from the stepper
-            let feel = Int(feelStepper.value)
             
             // Name is a required field
             if name.isEmpty {
@@ -249,7 +252,7 @@ class LogViewController: UIViewController, UITextViewDelegate, UIPickerViewDeleg
                 nameField.changeStyle(.error)
                 return
             } else {
-                nameField.changeStyle(.valid)
+                nameField.changeStyle(.none)
             }
             
             // Make sure the date isnt in the future
@@ -262,7 +265,7 @@ class LogViewController: UIViewController, UITextViewDelegate, UIPickerViewDeleg
                 dateField.changeStyle(.error)
                 return
             } else {
-                dateField.changeStyle(.valid)
+                dateField.changeStyle(.none)
             }
             
             // And make sure the date isnt before 2016
@@ -273,7 +276,7 @@ class LogViewController: UIViewController, UITextViewDelegate, UIPickerViewDeleg
                 dateField.changeStyle(.error)
                 return
             } else {
-                dateField.changeStyle(.valid)
+                dateField.changeStyle(.none)
             }
             
             // One of the following must be entered: minutes, seconds, distance
@@ -290,9 +293,9 @@ class LogViewController: UIViewController, UITextViewDelegate, UIPickerViewDeleg
             // Make sure the distance is properly inputted
             if distance.range(of: distanceRegex, options: .regularExpression) == nil {
                 
-                if distance.isEmpty && minutes.range(of: minuteRegex, options: .regularExpression) != nil &&
-                    seconds.range(of: secondRegex, options: .regularExpression) != nil {
-                    distanceField.changeStyle(.valid)
+                if distance.isEmpty {
+                    distanceField.changeStyle(.none)
+                    distance = "0"
                 } else {
                     // If the distance doesnt match + isnt empty and the minutes and seconds aren't filled in
                     // there is an error: and invalid distance was entered
@@ -304,33 +307,76 @@ class LogViewController: UIViewController, UITextViewDelegate, UIPickerViewDeleg
                 distanceFilledOut = true
             }
             
-                // Make sure the minutes are properly inputted
-                if minutes.range(of: minuteRegex, options: .regularExpression) == nil {
+            // Make sure the minutes are properly inputted
+            if minutes.range(of: minuteRegex, options: .regularExpression) == nil {
                     
-                    if minutes.isEmpty && seconds.range(of: secondRegex, options: .regularExpression) != nil && Int(seconds)! <= 59 {
-                        minutesField.changeStyle(.valid)
+                if minutes.isEmpty {
+                    minutesField.changeStyle(.none)
+                    minutes = "0"
+                } else {
+                        
+                    // If the minutes doesnt match + isnt empty there is an error
+                    errorField.text = "Invalid Minutes Entered"
+                    minutesField.changeStyle(.error)
+                    return
+                }
+                    
+            } else {
+                if seconds.range(of: secondRegex, options: .regularExpression) == nil {
+                    // If the minutes are entered but seconds arent, there is an error
+                    errorField.text = "Seconds Must Be Entered"
+                    secondsField.changeStyle(.error)
+                    return
+                } else {
+                    minutesField.changeStyle(.none)
+                }
+            }
+            
+            // Make sure the seconds are properly inputted
+            if seconds.range(of: secondRegex, options: .regularExpression) == nil {
+                
+                if seconds.isEmpty {
+                    
+                    if distanceFilledOut {
+                        secondsField.changeStyle(.none)
+                        seconds = "0"
                     } else {
                         
-                        // If the minutes doesnt match + isnt empty and the
-                        errorField.text = "Invalid Minutes Entered"
+                        // If the seconds dont match + isnt empty + dsitance isnt filled out there is an error
+                        errorField.text = "Time or Distance Must Be Entered"
+                        distanceField.changeStyle(.error)
                         minutesField.changeStyle(.error)
+                        secondsField.changeStyle(.error)
                         return
                     }
                     
                 } else {
-                    minutesField.changeStyle(.valid)
+                    // If the seconds dont match + isnt empty there is an error
+                    errorField.text = "Invalid Seconds Must Be Entered"
+                    secondsField.changeStyle(.error)
+                    return
                 }
-            
-            
-            
-            // Make sure the seconds are properly inputted
-            if seconds.range(of: secondRegex, options: .regularExpression) == nil {
-                errorField.text = "Invalid Seconds Entered"
-                secondsField.changeStyle(.error)
-                return
+                
             } else {
-                secondsField.changeStyle(.valid)
+                secondsField.changeStyle(.none)
             }
+            
+            // Get the feel from the stepper
+            let feel = Int(feelStepper.value)
+            
+            // Format the Date for MySQL
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            let formattedDate = dateFormatter.string(from: date)
+            
+            // Get the time from minutes and seconds
+            let time = Utils.toTime(withMinutes: minutes, andSeconds: seconds)
+            
+            // Get the mileage from the distance and metric
+            let miles = Utils.toMiles(fromMetric: metric, withDistance: distance)
+            let milesString = "\(miles)"
+            
+            // Get the pace from the miles and time
+            let pace = Utils.getMilePace(withMiles: milesString, andMinutes: minutes, andSeconds: seconds)
             
             // If you reach this point, everything is in a valid state
             // Now we want to build the Log obejct to be sent off to the API
@@ -340,13 +386,36 @@ class LogViewController: UIViewController, UITextViewDelegate, UIPickerViewDeleg
             log.first = user.first
             log.last = user.last
             log.location = location
-            log.date = dateString
-            log.type = type
+            log.date = formattedDate
+            log.type = type.lowercased()
             log.distance = distance
-            log.metric = metric
-            log.time = minutes
+            log.miles = milesString
+            log.pace = pace
+            log.metric = metric.lowercased()
+            log.time = time
             log.feel = "\(feel)"
             log.log_description = description
+            
+            os_log("Log Passed Validation: %@", log: logTag, type: .debug, log.description)
+            
+            // Submit the new log to the API
+            APIClient.logPostRequest(withLog: log) {
+                (newlog) -> Void in
+                
+                os_log("New Log Submitted to API.", log: self.logTag, type: .debug)
+                
+                // Build the popup dialog to be displayed
+                let title = "New Log Created"
+                let button = DefaultButton(title: "Continue") {
+                    self.resetFields()
+                    os_log("Continue and Reset Log Inputs.", log: self.logTag, type: .debug)
+                }
+                
+                let popup = PopupDialog(title: title, message: nil)
+                popup.addButton(button)
+                
+                self.present(popup, animated: true, completion: nil)
+            }
             
         } else {
             errorField.text = "An Unexpected Error Occurred"

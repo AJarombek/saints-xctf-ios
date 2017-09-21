@@ -83,7 +83,19 @@ class Utils {
     }
     
     // Convert minutes and seconds to time
-    static func toTime(withMinutes minutes: String, andSeconds seconds: String) {
+    static func toTime(withMinutes minutes: String, andSeconds seconds: String) -> String {
+        return ""
+    }
+    
+    // Convert a metric and distance to miles
+    static func toMiles(fromMetric metric: String, withDistance distance: String) -> Double {
         
+        return 0
+    }
+    
+    // Get the mile pace with
+    static func getMilePace(withMiles miles: String, andMinutes minutes: String,
+                        andSeconds seconds: String) -> String {
+        return ""
     }
 }
