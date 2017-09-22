@@ -146,6 +146,45 @@ class Utils {
     // Get the mile pace with
     static func getMilePace(withMiles miles: String, andMinutes minutes: String,
                         andSeconds seconds: String) -> String {
-        return ""
+        
+        var secStr, minStr, hrStr: String
+        
+        minStr = minutes
+        secStr = seconds
+        
+        // If minutes or seconds are empty, set them
+        if minutes == "" {
+            if seconds == "" {
+                return "00:00:00"
+            }
+            
+            minStr = "0"
+        }
+        
+        if seconds == "" {
+            secStr = "0"
+        }
+        
+        // Get the pace per second from the given parameters
+        let s: Int = (Int(minStr)! * 60) + Int(secStr)!
+        let secondPace = Double(s) / Double(miles)!
+        
+        // Calculate the hour, min, and sec per mile
+        secStr = String(Int(secondPace) % 60)
+        minStr = String(Int(secondPace / 60))
+        hrStr = String(Int(minStr)! / 60)
+        
+        // Pad with zeros if the time has a length of one
+        if secStr.characters.count == 1 {
+            secStr = "0\(secStr)"
+        }
+        if minStr.characters.count == 1 {
+            minStr = "0\(minStr)"
+        }
+        if hrStr.characters.count == 1 {
+            hrStr = "0\(hrStr)"
+        }
+        
+        return "\(hrStr):\(minStr):\(secStr)"
     }
 }

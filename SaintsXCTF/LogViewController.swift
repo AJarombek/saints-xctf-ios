@@ -220,6 +220,8 @@ class LogViewController: UIViewController, UITextViewDelegate, UIPickerViewDeleg
         minutesField.text = ""
         secondsField.text = ""
         feelStepper.value = 6
+        feelDescriptionField.text = Constants.getFeelDescription(5)
+        view.layer.backgroundColor = UIColor(Constants.getFeelColor(5)).cgColor
         descriptionField.text = "Description"
         descriptionField.textColor = UIColor.lightGray
         descriptionField.resignFirstResponder()
