@@ -10,14 +10,11 @@ import UIKit
 
 class LogTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var userLabel: UILabel!
-    @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var typeLabel: UILabel!
-    @IBOutlet weak var locationLabel: UILabel!
-    @IBOutlet weak var distanceLabel: UILabel!
-    @IBOutlet weak var timeLabel: UILabel!
-    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var userLabel: UITextView!
+    @IBOutlet weak var dateLabel: UITextView!
+    @IBOutlet weak var nameLabel: UITextView!
+    @IBOutlet weak var typeLabel: UITextView!
+    @IBOutlet weak var descriptionLabel: UITextView!
     @IBOutlet weak var commentsButton: UIButton!
     
     // Add padding to the cell
@@ -45,9 +42,6 @@ class LogTableViewCell: UITableViewCell {
         dateLabel.text = ""
         nameLabel.text = ""
         typeLabel.text = ""
-        locationLabel.text = ""
-        distanceLabel.text = ""
-        timeLabel.text = ""
         descriptionLabel.text = ""
     }
     

@@ -9,7 +9,7 @@
 import UIKit
 import os.log
 
-class MainViewController: UITableViewController {
+class MainViewController: UITableViewController, UITextViewDelegate {
     
     let logTag = OSLog(subsystem: "SaintsXCTF.App.MainViewController", category: "MainViewController")
     
@@ -27,6 +27,13 @@ class MainViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         os_log("MainViewController Loaded.", log: logTag, type: .debug)
+        
+        // Make sure the table view does not overlap the status bar
+        let statusBarHight = UIApplication.shared.statusBarFrame.height
+        let insets = UIEdgeInsets(top: statusBarHight, left: 0, bottom: 0, right: 0)
+
+        logTableView.contentInset = insets
+        logTableView.scrollIndicatorInsets = insets
         
         navigationController?.navigationBar.backgroundColor = UIColor(0x999999, a: 0.9)
         
@@ -90,6 +97,8 @@ class MainViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! LogTableViewCell
         let log = logDataSource.get(indexPath.row)
         
+        cell.nameLabel.contentOffset = CGPoint()
+        
         let feelInt: Int! = Int(log.feel)
         if let validFeel: Int = feelInt {
             cell.setStyle(withFeel: validFeel)
@@ -123,10 +132,10 @@ class MainViewController: UITableViewController {
         cell.typeLabel?.text = log.type?.uppercased()
         
         // Set the logs location
+        var locationTxt = ""
+        
         if let location: String = log.location {
-            cell.locationLabel?.text = "Location: " + location
-        } else {
-            cell.locationLabel?.text = ""
+            locationTxt = "Location: \(location)\n"
         }
         
         // Set the logs distance
@@ -135,11 +144,9 @@ class MainViewController: UITableViewController {
         if let distance: String = log.distance, let metric: String = log.metric {
             
             if distance != "0" {
-                distanceTxt = distance + " " + metric
+                distanceTxt = "\(distance) \(metric)\n"
             }
         }
-        
-        cell.distanceLabel?.text = distanceTxt
         
         // Set the logs time
         var timeTxt = ""
@@ -149,25 +156,72 @@ class MainViewController: UITableViewController {
                 timeTxt = shortenTime(withTime: time)
                 
                 if pace == "00:00:00" {
-                    timeTxt += " (0:00/mi)"
+                    timeTxt += " (0:00/mi)\n"
                 } else {
-                    timeTxt += " (\(shortenTime(withTime: pace))/mi)"
+                    timeTxt += " (\(shortenTime(withTime: pace))/mi)\n"
                 }
             }
         }
         
-        cell.timeLabel?.text = timeTxt
+        // Combine the location, distance, and time
+        let logInfo = "\(locationTxt)\(distanceTxt)\(timeTxt)\n"
+        let logInfoMutableContent = NSMutableAttributedString(string: logInfo, attributes: [:])
+        
+        // Create a combined mutable attribute string for all the log info + description
+        let combinedMutableContent = NSMutableAttributedString()
+        combinedMutableContent.append(logInfoMutableContent)
         
         // Set the logs description
         if let description: String = log.log_description {
             cell.descriptionLabel?.text = description
+            
+            // Find all the tagged users in the comment
+            let tagRegex = "@[a-zA-Z0-9]+"
+            let matches = Utils.matchesInfo(for: tagRegex, in: description)
+            
+            // Create a MutableAttributedString for each tag
+            // Add a new line at the end of the description so none of the text gets cut off
+            let mutableContent = NSMutableAttributedString(string: "\(description)\n", attributes: [:])
+            
+            // Go through each tag and add a link when clicked
+            if matches.substrings.count > 0 {
+                for i in 0...matches.substrings.count - 1 {
+                    let start = matches.startIndices[i]
+                    let length = matches.stringLengths[i]
+                    
+                    mutableContent.addAttribute(NSLinkAttributeName, value: matches.substrings[i],
+                                                range: NSRange(location: start, length: length))
+                }
+            }
+            
+            // Add the description to the rest of the mutable content
+            combinedMutableContent.append(mutableContent)
         }
+        
+        // Set the description as the combined location, time, pace, distance, and description
+        cell.descriptionLabel?.attributedText = combinedMutableContent
+        
+        // Set the properties of the link text
+        cell.descriptionLabel?.linkTextAttributes = [NSForegroundColorAttributeName:UIColor(0x555555),
+                            NSFontAttributeName:UIFont(name: "HelveticaNeue-Bold", size: 12)!]
+        
+        // Allows the shouldInteractWith URL function to execute on click
+        cell.descriptionLabel?.delegate = self
+        cell.descriptionLabel?.sizeToFit()
         
         // Add a tag to the comments button of the current index path.
         // This will be used with the segue to call the commentsView
         cell.commentsButton.tag = indexPath.row
         
         return cell
+    }
+    
+    // This function is called when a tagged user is clicked in a comment
+    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange,
+                  interaction: UITextItemInteraction) -> Bool {
+        os_log("%@", log: logTag, type: .debug, URL.absoluteString)
+        
+        return false
     }
     
     // Pass data to the CommentViewController when the segue is executed
