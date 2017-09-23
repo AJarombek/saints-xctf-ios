@@ -186,7 +186,7 @@ class PickGroupController: UIViewController {
                     let notification = Notification()
                     notification.username = member.username
                     notification.link = "https://www.saintsxctf.com/group.php?name=\(group.group_name!)"
-                    notification.notification_description = "\(name) Has Requested to " +
+                    notification.notification_description = "\(user.first!) \(user.last) Has Requested to " +
                                                             "Join \(group.group_title!)"
                     notification.viewed = "N"
                     

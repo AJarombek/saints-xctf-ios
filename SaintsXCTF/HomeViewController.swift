@@ -91,7 +91,7 @@ class HomeViewController: UIViewController {
                             self.password.changeStyle(.warning)
                         }
                     } else {
-                        os_log("Unable to Verfiy Password", log: self.logTag, type: .error)
+                        os_log("Unable to Verify Password", log: self.logTag, type: .error)
                         self.error.text = "Invalid Username Entered"
                         self.username.changeStyle(.error)
                     }

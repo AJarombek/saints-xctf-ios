@@ -320,7 +320,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="119"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" scrollEnabled="NO" editable="NO" text="Description" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nol-T3-Uj4">
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" scrollEnabled="NO" editable="NO" text="Description" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Nol-T3-Uj4">
                                             <rect key="frame" x="2" y="45.5" width="373" height="30.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -339,7 +339,7 @@
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" scrollEnabled="NO" editable="NO" text="First Last" translatesAutoresizingMaskIntoConstraints="NO" id="y4e-xk-vUC">
                                             <rect key="frame" x="0.0" y="0.0" width="247.5" height="35.5"/>
                                             <edgeInsets key="layoutMargins" top="0.0" left="8" bottom="0.0" right="8"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="TYPE" textAlignment="right" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2VM-X6-oEn">
@@ -354,8 +354,24 @@
                                                 <segue destination="TEP-fJ-qwv" kind="show" id="Tc9-9x-L8v"/>
                                             </connections>
                                         </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PVN-xu-MPb">
+                                            <rect key="frame" x="346" y="5" width="24" height="24"/>
+                                            <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <state key="normal" image="delete">
+                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fgh-OF-z0d">
+                                            <rect key="frame" x="317" y="5" width="24" height="24"/>
+                                            <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <state key="normal" image="edit">
+                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                        </button>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="fgh-OF-z0d" firstAttribute="top" secondItem="XKP-dL-gJw" secondAttribute="top" constant="5" id="17b-Vh-zFO"/>
                                         <constraint firstItem="Dd8-8u-fXj" firstAttribute="leading" secondItem="XKP-dL-gJw" secondAttribute="leading" constant="1" id="34G-DS-QvL"/>
                                         <constraint firstItem="y4e-xk-vUC" firstAttribute="top" secondItem="XKP-dL-gJw" secondAttribute="top" id="7bE-8R-jU4"/>
                                         <constraint firstItem="Nol-T3-Uj4" firstAttribute="leading" secondItem="XKP-dL-gJw" secondAttribute="leading" constant="2" id="AUd-uI-ER2"/>
@@ -364,6 +380,8 @@
                                         <constraint firstItem="xS7-gu-K0R" firstAttribute="top" secondItem="XKP-dL-gJw" secondAttribute="top" id="KBR-Gr-Xiu"/>
                                         <constraint firstItem="2VM-X6-oEn" firstAttribute="trailing" secondItem="XKP-dL-gJw" secondAttribute="trailingMargin" constant="5" id="KJh-fz-21h"/>
                                         <constraint firstItem="ZEy-6j-OeE" firstAttribute="top" secondItem="Nol-T3-Uj4" secondAttribute="bottom" constant="5" id="MXR-Gf-QHQ"/>
+                                        <constraint firstAttribute="trailing" secondItem="PVN-xu-MPb" secondAttribute="trailing" constant="5" id="Q0Y-mi-bcd"/>
+                                        <constraint firstItem="PVN-xu-MPb" firstAttribute="leading" secondItem="fgh-OF-z0d" secondAttribute="trailing" constant="5" id="QMx-bU-oLz"/>
                                         <constraint firstItem="Nol-T3-Uj4" firstAttribute="top" secondItem="y4e-xk-vUC" secondAttribute="bottom" constant="10" id="QX2-d4-nCf"/>
                                         <constraint firstAttribute="trailing" secondItem="xS7-gu-K0R" secondAttribute="trailing" id="UYb-q6-zqI"/>
                                         <constraint firstItem="y4e-xk-vUC" firstAttribute="width" secondItem="xS7-gu-K0R" secondAttribute="width" constant="120" id="aFV-Hm-ogv"/>
@@ -375,16 +393,21 @@
                                         <constraint firstItem="ZEy-6j-OeE" firstAttribute="leading" secondItem="XKP-dL-gJw" secondAttribute="leadingMargin" id="jb8-qu-QnO"/>
                                         <constraint firstItem="y4e-xk-vUC" firstAttribute="leading" secondItem="XKP-dL-gJw" secondAttribute="leading" id="k2g-d2-RxE"/>
                                         <constraint firstAttribute="trailing" secondItem="Nol-T3-Uj4" secondAttribute="trailing" id="nJS-G8-sRr"/>
+                                        <constraint firstItem="PVN-xu-MPb" firstAttribute="top" secondItem="XKP-dL-gJw" secondAttribute="top" constant="5" id="pBp-TV-Dup"/>
                                         <constraint firstItem="xS7-gu-K0R" firstAttribute="leading" secondItem="y4e-xk-vUC" secondAttribute="trailing" id="qeH-sK-7Kf"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <gestureRecognizers/>
                                 <connections>
                                     <outlet property="commentsButton" destination="ZEy-6j-OeE" id="jSQ-sS-fbd"/>
                                     <outlet property="dateLabel" destination="xS7-gu-K0R" id="XhD-cQ-Q2X"/>
+                                    <outlet property="deleteButton" destination="PVN-xu-MPb" id="G62-ZR-sd0"/>
                                     <outlet property="descriptionLabel" destination="Nol-T3-Uj4" id="u29-jT-FmW"/>
+                                    <outlet property="editButton" destination="fgh-OF-z0d" id="kdf-Uj-XK0"/>
                                     <outlet property="nameLabel" destination="Dd8-8u-fXj" id="naA-zd-IW4"/>
                                     <outlet property="typeLabel" destination="2VM-X6-oEn" id="eU7-or-ajM"/>
                                     <outlet property="userLabel" destination="y4e-xk-vUC" id="G7O-ca-Jtw"/>
+                                    <outletCollection property="gestureRecognizers" destination="VYU-0j-U5V" appends="YES" id="akz-HF-G00"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -401,6 +424,7 @@
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5e8-AJ-9T3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="VYU-0j-U5V"/>
             </objects>
             <point key="canvasLocation" x="2863.1999999999998" y="-878.41079460269873"/>
         </scene>
@@ -1080,6 +1104,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="delete" width="24" height="24"/>
         <image name="edit" width="24" height="24"/>
         <image name="exit" width="24" height="24"/>
         <image name="group" width="24" height="24"/>

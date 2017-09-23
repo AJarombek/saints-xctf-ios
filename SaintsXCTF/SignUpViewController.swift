@@ -8,6 +8,7 @@
 
 import UIKit
 import Foundation
+import BCryptSwift
 import os.log
 
 class SignUpViewController: UIViewController {
@@ -162,7 +163,10 @@ class SignUpViewController: UIViewController {
                         newUser.first = firstNameString
                         newUser.last = lastNameString
                         newUser.email = emailString
-                        newUser.password = passwordString
+                        
+                        // Hash the password using BCrypt
+                        newUser.password = BCryptSwift.hashPassword(passwordString,
+                                                                    withSalt: BCryptSwift.generateSalt())
                         newUser.activation_code = activationCodeString
                         
                         // Final call to add the new user

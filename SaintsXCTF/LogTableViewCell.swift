@@ -16,6 +16,8 @@ class LogTableViewCell: UITableViewCell {
     @IBOutlet weak var typeLabel: UITextView!
     @IBOutlet weak var descriptionLabel: UITextView!
     @IBOutlet weak var commentsButton: UIButton!
+    @IBOutlet weak var deleteButton: UIButton!
+    @IBOutlet weak var editButton: UIButton!
     
     // Add padding to the cell
     override var frame: CGRect {

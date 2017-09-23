@@ -40,6 +40,11 @@ class MainViewController: UITableViewController, UITextViewDelegate {
         // Setting the row height to UITableViewAutomaticDimension tells the TableView to determine the
         // height of a cell based on its contents and constraints.
         logTableView.rowHeight = UITableViewAutomaticDimension
+        
+        // Add a long press gesture recognizer to the table view so that an edit and delete option
+        // can pop up when pressing on a log
+        let longpress = UILongPressGestureRecognizer(target: self, action: #selector(MainViewController.handleLogLongPress))
+        logTableView.addGestureRecognizer(longpress)
 
         load()
     }
@@ -99,6 +104,20 @@ class MainViewController: UITableViewController, UITextViewDelegate {
         
         cell.nameLabel.contentOffset = CGPoint()
         
+        // Set the styles of the edit and delete buttons
+        cell.editButton.backgroundColor = UIColor(0xCCCCCC, a: 0.9)
+        cell.deleteButton.backgroundColor = UIColor(0xCCCCCC, a: 0.9)
+        cell.editButton.imageEdgeInsets = UIEdgeInsetsMake(20, 20, 20, 20)
+        cell.deleteButton.imageEdgeInsets = UIEdgeInsetsMake(20, 20, 20, 20)
+        
+        // Set the buttons to be round
+        cell.editButton.layer.cornerRadius = 0.5 * cell.editButton.bounds.size.width
+        cell.deleteButton.layer.cornerRadius = 0.5 * cell.deleteButton.bounds.size.width
+        
+        // Add click listeners to the buttons
+        cell.editButton.addTarget(self, action: #selector(MainViewController.editLog), for: .touchUpInside)
+        cell.deleteButton.addTarget(self, action: #selector(MainViewController.deleteLog), for: .touchUpInside)
+        
         let feelInt: Int! = Int(log.feel)
         if let validFeel: Int = feelInt {
             cell.setStyle(withFeel: validFeel)
@@ -115,7 +134,18 @@ class MainViewController: UITableViewController, UITextViewDelegate {
         cell.commentsButton.addSubview(topline)
         cell.commentsButton.setTitleColor(UIColor(0x333333), for: UIControlState.normal)
         
-        cell.userLabel?.text = "\(log.first!) \(log.last!)"
+        // Set the user name as clickable text in the log
+        let usertitle: String = "\(log.first!) \(log.last!)"
+        let range: NSRange = NSRange(location: 0, length: usertitle.characters.count)
+        
+        let mutableName = NSMutableAttributedString(string: usertitle, attributes: [:])
+        mutableName.addAttribute(NSLinkAttributeName, value: log.username!,
+                                 range: range)
+        mutableName.addAttribute(NSFontAttributeName, value: UIFont.systemFont(ofSize: 16.0, weight: UIFontWeightBold), range: range)
+        cell.userLabel?.linkTextAttributes = [NSForegroundColorAttributeName:UIColor(0x000000)]
+        
+        cell.userLabel?.attributedText = mutableName
+        cell.userLabel?.delegate = self
         
         // Convert the string to a date
         let dateFormatter = DateFormatter()
@@ -126,6 +156,7 @@ class MainViewController: UITableViewController, UITextViewDelegate {
         dateFormatter.dateFormat = "MMM dd, yyyy"
         cell.dateLabel?.text = dateFormatter.string(from: formattedDate!)
         
+        // Set the logs name
         cell.nameLabel?.text = log.name!
         
         // Set the logs type
@@ -269,5 +300,27 @@ class MainViewController: UITableViewController, UITextViewDelegate {
         
         let index =  time.index(time.startIndex, offsetBy: start)
         return time.substring(from: index)
+    }
+    
+    // Function that handles the long press recognizer
+    func handleLogLongPress(sender: UILongPressGestureRecognizer) {
+        if sender.state == UIGestureRecognizerState.began {
+            
+            // Get the index path of the log where the user pressed
+            let touchpoint = sender.location(in: logTableView)
+            if let indexPath = logTableView.indexPathForRow(at: touchpoint) {
+                
+                let log: Log = logDataSource.get(indexPath.row)
+                os_log("Log Long Pressed: %@", log: logTag, type: .debug, log.description)
+            }
+        }
+    }
+    
+    func editLog(sender: UIButton) {
+        os_log("Pressed Edit", log: logTag, type: .debug)
+    }
+    
+    func deleteLog(sender: UIButton) {
+        os_log("Pressed Delete", log: logTag, type: .debug)
     }
 }
