@@ -9,7 +9,7 @@
 import Foundation
 import ObjectMapper
 
-class RangeView: Mappable {
+class RangeView: Mappable, CustomStringConvertible {
     
     var date: String!
     var miles: Double!
@@ -17,6 +17,12 @@ class RangeView: Mappable {
     
     required init?(map: Map) {
         // pass
+    }
+    
+    // This class uses the CustomStringConvertible protocol.
+    // The description will be printed whenever we try to print a Comment object
+    var description: String {
+        return "RangeView: (\(date!), \(miles!), \(feel!))"
     }
     
     func mapping(map: Map) {

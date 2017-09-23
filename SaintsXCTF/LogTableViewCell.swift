@@ -7,8 +7,14 @@
 //
 
 import UIKit
+import os.log
+import PopupDialog
 
 class LogTableViewCell: UITableViewCell {
+    
+    let logTag = OSLog(subsystem: "SaintsXCTF.App.LogTableViewCell", category: "LogTableViewCell")
+    var mainViewController: MainViewController? = nil
+    var log: Log? = nil
     
     @IBOutlet weak var userLabel: UITextView!
     @IBOutlet weak var dateLabel: UITextView!
@@ -53,5 +59,40 @@ class LogTableViewCell: UITableViewCell {
         self.layer.borderColor = UIColor(0xAAAAAA).cgColor
         self.layer.cornerRadius = 1
         self.backgroundColor = UIColor(Constants.getFeelColor(feel - 1))
+    }
+    
+    func editLog(sender: LogTableViewCell) {
+        os_log("Pressed Edit", log: logTag, type: .debug)
+    }
+    
+    func deleteLog(sender: UIButton) {
+        os_log("Pressed Delete", log: logTag, type: .debug)
+        
+        // Build the popup dialog to be displayed
+        let title = "Delete Log"
+        let message = "Are you sure you would like to permanently delete this log?"
+        
+        // Actions to do when cancelling the delete log operation
+        let cancelButton = CancelButton(title: "Cancel") {
+            os_log("Cancelled Deleting Log.", log: self.logTag, type: .debug)
+        }
+        
+        // Actions to do when deleting a log
+        let deleteButton = DefaultButton(title: "Delete") {
+            os_log("Confirm Deleting Log: %@", log: self.logTag, type: .debug, self.log?.description ?? "")
+            
+            if let log_id: String = self.log?.log_id {
+                APIClient.logDeleteRequest(withLogID: Int(log_id)!) {
+                    (result) -> Void in
+                    
+                    // TODO
+                }
+            }
+        }
+        
+        let popup = PopupDialog(title: title, message: message)
+        popup.addButtons([cancelButton, deleteButton])
+        
+        mainViewController?.present(popup, animated: true, completion: nil)
     }
 }

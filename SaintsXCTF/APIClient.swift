@@ -60,11 +60,11 @@ class APIClient {
         APIRequest.get(withURL: url) {
             (json) -> Void in
             
-            if let user: Array<User> = Mapper<User>().mapArray(JSONString: json) {
-                print("\(logTag) \(user)")
+            if let users: Array<User> = Mapper<User>().mapArray(JSONString: json) {
+                os_log("%@", log: APIClient.logTag, type: .debug, users)
             
                 OperationQueue.main.addOperation {
-                    completion(user)
+                    completion(users)
                 }
             } else {
                 os_log("Users Conversion Failed.", log: APIClient.logTag, type: .error)
@@ -88,7 +88,7 @@ class APIClient {
             (json) -> Void in
             
             if let log: Log = Mapper<Log>().map(JSONString: json) {
-                print("\(logTag) \(log)")
+                os_log("%@", log: APIClient.logTag, type: .debug, log.toJSONString()!)
                 
                 OperationQueue.main.addOperation {
                     completion(log)
@@ -112,7 +112,7 @@ class APIClient {
             (json) -> Void in
             
             if let logs: Array<Log> = Mapper<Log>().mapArray(JSONString: json) {
-                print("\(logTag) \(logs)")
+                os_log("%@", log: APIClient.logTag, type: .debug, logs)
                 
                 OperationQueue.main.addOperation {
                     completion(logs)
@@ -138,7 +138,7 @@ class APIClient {
             (json) -> Void in
             
             if let group: Group = Mapper<Group>().map(JSONString: json) {
-                print("\(logTag) \(group)")
+                os_log("%@", log: APIClient.logTag, type: .debug, group.description)
                 
                 OperationQueue.main.addOperation {
                     completion(group)
@@ -162,7 +162,7 @@ class APIClient {
             (json) -> Void in
             
             if let groups: Array<Group> = Mapper<Group>().mapArray(JSONString: json) {
-                print("\(logTag) \(groups)")
+                os_log("%@", log: APIClient.logTag, type: .debug, groups)
                 
                 OperationQueue.main.addOperation {
                     completion(groups)
@@ -188,7 +188,7 @@ class APIClient {
             (json) -> Void in
             
             if let comment: Comment = Mapper<Comment>().map(JSONString: json) {
-                print("\(logTag) \(comment)")
+                os_log("%@", log: APIClient.logTag, type: .debug, comment.description)
                 
                 OperationQueue.main.addOperation {
                     completion(comment)
@@ -212,7 +212,7 @@ class APIClient {
             (json) -> Void in
             
             if let comments: Array<Comment> = Mapper<Comment>().mapArray(JSONString: json) {
-                print("\(logTag) \(comments)")
+                os_log("%@", log: APIClient.logTag, type: .debug, comments)
                 
                 OperationQueue.main.addOperation {
                     completion(comments)
@@ -238,7 +238,7 @@ class APIClient {
             (json) -> Void in
             
             if let message: Message = Mapper<Message>().map(JSONString: json) {
-                print("\(logTag) \(message)")
+                os_log("%@", log: APIClient.logTag, type: .debug, message.description)
                 
                 OperationQueue.main.addOperation {
                     completion(message)
@@ -262,7 +262,7 @@ class APIClient {
             (json) -> Void in
             
             if let messages: Array<Message> = Mapper<Message>().mapArray(JSONString: json) {
-                print("\(logTag) \(messages)")
+                os_log("%@", log: APIClient.logTag, type: .debug, messages)
                 
                 OperationQueue.main.addOperation {
                     completion(messages)
@@ -288,7 +288,7 @@ class APIClient {
             (json) -> Void in
             
             if let activationcode: ActivationCode = Mapper<ActivationCode>().map(JSONString: json) {
-                print("\(logTag) \(activationcode)")
+                os_log("%@", log: APIClient.logTag, type: .debug, activationcode.description)
                 
                 OperationQueue.main.addOperation {
                     completion(activationcode)
@@ -318,7 +318,7 @@ class APIClient {
             (json) -> Void in
             
             if let notification: Notification = Mapper<Notification>().map(JSONString: json) {
-                print("\(logTag) \(notification)")
+                os_log("%@", log: APIClient.logTag, type: .debug, notification.description)
                 
                 OperationQueue.main.addOperation {
                     completion(notification)
@@ -342,7 +342,7 @@ class APIClient {
             (json) -> Void in
             
             if let notifications: Array<Notification> = Mapper<Notification>().mapArray(JSONString: json) {
-                print("\(logTag) \(notifications)")
+                os_log("%@", log: APIClient.logTag, type: .debug, notifications)
                 
                 OperationQueue.main.addOperation {
                     completion(notifications)
@@ -394,7 +394,7 @@ class APIClient {
             (json) -> Void in
             
             if let messagefeed: Array<Message> = Mapper<Message>().mapArray(JSONString: json) {
-                print("\(logTag) \(messagefeed)")
+                os_log("%@", log: APIClient.logTag, type: .debug, messagefeed)
                 
                 OperationQueue.main.addOperation {
                     completion(messagefeed)
@@ -420,7 +420,7 @@ class APIClient {
             (json) -> Void in
             
             if let rangeview: Array<RangeView> = Mapper<RangeView>().mapArray(JSONString: json) {
-                print("\(logTag) \(rangeview)")
+                os_log("%@", log: APIClient.logTag, type: .debug, rangeview.description)
                 
                 OperationQueue.main.addOperation {
                     completion(rangeview)
@@ -449,7 +449,7 @@ class APIClient {
             (json) -> Void in
             
             if let user: User = Mapper<User>().map(JSONString: json) {
-                print("\(logTag) \(user)")
+                os_log("%@", log: APIClient.logTag, type: .debug, user.description)
                 
                 OperationQueue.main.addOperation {
                     completion(user)
@@ -480,7 +480,7 @@ class APIClient {
             (json) -> Void in
             
             if let log: Log = Mapper<Log>().map(JSONString: json) {
-                print("\(logTag) \(log)")
+                os_log("%@", log: APIClient.logTag, type: .debug, log.description)
                 
                 OperationQueue.main.addOperation {
                     completion(log)
@@ -508,7 +508,7 @@ class APIClient {
             (json) -> Void in
             
             if let comment: Comment = Mapper<Comment>().map(JSONString: json) {
-                print("\(logTag) \(comment)")
+                os_log("%@", log: APIClient.logTag, type: .debug, comment.description)
                 
                 OperationQueue.main.addOperation {
                     completion(comment)
@@ -536,7 +536,7 @@ class APIClient {
             (json) -> Void in
             
             if let message: Message = Mapper<Message>().map(JSONString: json) {
-                print("\(logTag) \(message)")
+                os_log("%@", log: APIClient.logTag, type: .debug, message.description)
                 
                 OperationQueue.main.addOperation {
                     completion(message)
@@ -564,7 +564,7 @@ class APIClient {
             (json) -> Void in
             
             if let activationcode: ActivationCode = Mapper<ActivationCode>().map(JSONString: json) {
-                print("\(logTag) \(activationcode)")
+                os_log("%@", log: APIClient.logTag, type: .debug, activationcode.description)
                 
                 OperationQueue.main.addOperation {
                     completion(activationcode)
@@ -592,7 +592,7 @@ class APIClient {
             (json) -> Void in
             
             if let notification: Notification = Mapper<Notification>().map(JSONString: json) {
-                print("\(logTag) \(notification)")
+                os_log("%@", log: APIClient.logTag, type: .debug, notification.description)
                 
                 OperationQueue.main.addOperation {
                     completion(notification)
@@ -622,7 +622,7 @@ class APIClient {
             (json) -> Void in
             
             if let user: User = Mapper<User>().map(JSONString: json) {
-                print("\(logTag) \(user)")
+                os_log("%@", log: APIClient.logTag, type: .debug, user.description)
                 
                 OperationQueue.main.addOperation {
                     completion(user)
@@ -650,7 +650,7 @@ class APIClient {
             (json) -> Void in
             
             if let log: Log = Mapper<Log>().map(JSONString: json) {
-                print("\(logTag) \(log)")
+                os_log("%@", log: APIClient.logTag, type: .debug, log.description)
                 
                 OperationQueue.main.addOperation {
                     completion(log)
@@ -678,7 +678,7 @@ class APIClient {
             (json) -> Void in
             
             if let group: Group = Mapper<Group>().map(JSONString: json) {
-                print("\(logTag) \(group)")
+                os_log("%@", log: APIClient.logTag, type: .debug, group.description)
                 
                 OperationQueue.main.addOperation {
                     completion(group)
@@ -706,7 +706,7 @@ class APIClient {
             (json) -> Void in
             
             if let comment: Comment = Mapper<Comment>().map(JSONString: json) {
-                print("\(logTag) \(comment)")
+                os_log("%@", log: APIClient.logTag, type: .debug, comment.description)
                 
                 OperationQueue.main.addOperation {
                     completion(comment)
@@ -734,7 +734,7 @@ class APIClient {
             (json) -> Void in
             
             if let message: Message = Mapper<Message>().map(JSONString: json) {
-                print("\(logTag) \(message)")
+                os_log("%@", log: APIClient.logTag, type: .debug, message.description)
                 
                 OperationQueue.main.addOperation {
                     completion(message)
@@ -748,136 +748,130 @@ class APIClient {
     // MARK: - DELETE Requests
     
     // Handle DELETE Request for a User
-    public static func userDeleteRequest(withUsername username: String) -> Bool {
+    public static func userDeleteRequest(withUsername username: String,
+                                         completion: @escaping (Bool) -> Void) {
         
         let usersDeleteEndpoint = "https://www.saintsxctf.com/api/api.php/user/\(username)"
         guard let url = URL(string: usersDeleteEndpoint) else {
             os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
-            return false
+            return
         }
-        
-        var deleteSuccess: Bool!
         
         APIRequest.delete(withURL: url) {
             (success) -> Void in
             
-            print(success)
+            os_log("Delete Result: %@", log: APIClient.logTag, type: .debug, String(success))
             
-            deleteSuccess = success
+            OperationQueue.main.addOperation {
+                completion(success)
+            }
         }
-        
-        return deleteSuccess
     }
     
     // Handle DELETE Request for a Log
-    public static func logDeleteRequest(withLogID logID: Int) -> Bool {
+    public static func logDeleteRequest(withLogID logID: Int,
+                                        completion: @escaping (Bool) -> Void) {
         
         let logDeleteEndpoint = "https://www.saintsxctf.com/api/api.php/log/\(logID)"
         guard let url = URL(string: logDeleteEndpoint) else {
             os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
-            return false
+            return
         }
-        
-        var deleteSuccess: Bool!
         
         APIRequest.delete(withURL: url) {
             (success) -> Void in
             
-            print(success)
+            os_log("Delete Result: %@", log: APIClient.logTag, type: .debug, String(success))
             
-            deleteSuccess = success
+            OperationQueue.main.addOperation {
+                completion(success)
+            }
         }
-        
-        return deleteSuccess
     }
     
     // Handle DELETE Request for a Comment
-    public static func commentDeleteRequest(withCommentID commentID: Int) -> Bool {
+    public static func commentDeleteRequest(withCommentID commentID: Int,
+                                            completion: @escaping (Bool) -> Void) {
         
         let commentDeleteEndpoint = "https://www.saintsxctf.com/api/api.php/comment/\(commentID)"
         guard let url = URL(string: commentDeleteEndpoint) else {
             os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
-            return false
+            return
         }
-        
-        var deleteSuccess: Bool!
         
         APIRequest.delete(withURL: url) {
             (success) -> Void in
             
-            print(success)
+            os_log("Delete Result: %@", log: APIClient.logTag, type: .debug, String(success))
             
-            deleteSuccess = success
+            OperationQueue.main.addOperation {
+                completion(success)
+            }
         }
-        
-        return deleteSuccess
     }
     
     // Handle DELETE Request for a Message
-    public static func messageDeleteRequest(withMessageID messageID: Int) -> Bool {
+    public static func messageDeleteRequest(withMessageID messageID: Int,
+                                            completion: @escaping (Bool) -> Void) {
         
         let messageDeleteEndpoint = "https://www.saintsxctf.com/api/api.php/message/\(messageID)"
         guard let url = URL(string: messageDeleteEndpoint) else {
             os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
-            return false
+            return
         }
-        
-        var deleteSuccess: Bool!
         
         APIRequest.delete(withURL: url) {
             (success) -> Void in
             
-            print(success)
+            os_log("Delete Result: %@", log: APIClient.logTag, type: .debug, String(success))
             
-            deleteSuccess = success
+            OperationQueue.main.addOperation {
+                completion(success)
+            }
         }
-        
-        return deleteSuccess
     }
     
     // Handle DELETE Request for a Activation Code
-    public static func activationCodeDeleteRequest(withActivationCode activationCode: String) -> Bool {
+    public static func activationCodeDeleteRequest(withActivationCode activationCode: String,
+                                                   completion: @escaping (Bool) -> Void) {
         
         let activationCodeDeleteEndpoint = "https://www.saintsxctf.com/api/api.php/"
                                             + "activationcode/\(activationCode)"
         guard let url = URL(string: activationCodeDeleteEndpoint) else {
             os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
-            return false
+            return
         }
-        
-        var deleteSuccess: Bool!
         
         APIRequest.delete(withURL: url) {
             (success) -> Void in
             
-            print(success)
+            os_log("Delete Result: %@", log: APIClient.logTag, type: .debug, String(success))
             
-            deleteSuccess = success
+            OperationQueue.main.addOperation {
+                completion(success)
+            }
         }
-        
-        return deleteSuccess
     }
     
     // Handle DELETE Request for a Notification
-    public static func notificationDeleteRequest(withNotificationId notificationId: String) -> Bool {
+    public static func notificationDeleteRequest(withNotificationId notificationId: String,
+                                                 completion: @escaping (Bool) -> Void) {
         
         let notificationDeleteEndpoint = "https://www.saintsxctf.com/api/api.php/"
             + "notification/\(notificationId)"
         guard let url = URL(string: notificationDeleteEndpoint) else {
             os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
-            return false
+            return
         }
-        
-        var deleteSuccess: Bool!
         
         APIRequest.delete(withURL: url) {
             (success) -> Void in
             
-            print(success)
+            os_log("Delete Result: %@", log: APIClient.logTag, type: .debug, String(success))
             
-            deleteSuccess = success
+            OperationQueue.main.addOperation {
+                completion(success)
+            }
         }
-        
-        return deleteSuccess
     }
 }

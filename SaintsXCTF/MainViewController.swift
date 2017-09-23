@@ -8,12 +8,15 @@
 
 import UIKit
 import os.log
+import PopupDialog
 
 class MainViewController: UITableViewController, UITextViewDelegate {
     
     let logTag = OSLog(subsystem: "SaintsXCTF.App.MainViewController", category: "MainViewController")
     
     @IBOutlet weak var logTableView: UITableView!
+    
+    var user: User = User()
     
     let logDataSource = LogDataSource()
     let heightDict = NSMutableDictionary()
@@ -45,6 +48,9 @@ class MainViewController: UITableViewController, UITextViewDelegate {
         // can pop up when pressing on a log
         let longpress = UILongPressGestureRecognizer(target: self, action: #selector(MainViewController.handleLogLongPress))
         logTableView.addGestureRecognizer(longpress)
+        
+        // Get the currently logged in user
+        user = SignedInUser.user
 
         load()
     }
@@ -104,19 +110,35 @@ class MainViewController: UITableViewController, UITextViewDelegate {
         
         cell.nameLabel.contentOffset = CGPoint()
         
-        // Set the styles of the edit and delete buttons
-        cell.editButton.backgroundColor = UIColor(0xCCCCCC, a: 0.9)
-        cell.deleteButton.backgroundColor = UIColor(0xCCCCCC, a: 0.9)
-        cell.editButton.imageEdgeInsets = UIEdgeInsetsMake(20, 20, 20, 20)
-        cell.deleteButton.imageEdgeInsets = UIEdgeInsetsMake(20, 20, 20, 20)
+        // Create a reference to the view controller in the cell
+        cell.mainViewController = self
+        cell.log = log
         
-        // Set the buttons to be round
-        cell.editButton.layer.cornerRadius = 0.5 * cell.editButton.bounds.size.width
-        cell.deleteButton.layer.cornerRadius = 0.5 * cell.deleteButton.bounds.size.width
+        let username = user.username ?? ""
         
-        // Add click listeners to the buttons
-        cell.editButton.addTarget(self, action: #selector(MainViewController.editLog), for: .touchUpInside)
-        cell.deleteButton.addTarget(self, action: #selector(MainViewController.deleteLog), for: .touchUpInside)
+        // Show the edit and delete buttons if the log username matches the signed in username
+        if username == log.username! {
+            cell.editButton.isHidden = false
+            cell.deleteButton.isHidden = false
+            
+            // Set the styles of the edit and delete buttons
+            cell.editButton.backgroundColor = UIColor(0xCCCCCC, a: 0.9)
+            cell.deleteButton.backgroundColor = UIColor(0xCCCCCC, a: 0.9)
+            cell.editButton.imageEdgeInsets = UIEdgeInsetsMake(20, 20, 20, 20)
+            cell.deleteButton.imageEdgeInsets = UIEdgeInsetsMake(20, 20, 20, 20)
+            
+            // Set the buttons to be round
+            cell.editButton.layer.cornerRadius = 0.5 * cell.editButton.bounds.size.width
+            cell.deleteButton.layer.cornerRadius = 0.5 * cell.deleteButton.bounds.size.width
+            
+            // Add click listeners to the buttons
+            cell.editButton.addTarget(cell, action: #selector(LogTableViewCell.editLog), for: .touchUpInside)
+            cell.deleteButton.addTarget(cell, action: #selector(LogTableViewCell.deleteLog), for: .touchUpInside)
+            
+        } else {
+            cell.editButton.isHidden = true
+            cell.deleteButton.isHidden = true
+        }
         
         let feelInt: Int! = Int(log.feel)
         if let validFeel: Int = feelInt {
@@ -314,13 +336,5 @@ class MainViewController: UITableViewController, UITextViewDelegate {
                 os_log("Log Long Pressed: %@", log: logTag, type: .debug, log.description)
             }
         }
-    }
-    
-    func editLog(sender: UIButton) {
-        os_log("Pressed Edit", log: logTag, type: .debug)
-    }
-    
-    func deleteLog(sender: UIButton) {
-        os_log("Pressed Delete", log: logTag, type: .debug)
     }
 }
