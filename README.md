@@ -23,11 +23,11 @@ You can follow development of the android app here: [SaintsXCTF Android GitHub](
 
 >**Log In (Done)**
 
->*Sign Up (QA/Testing)*
+>**Sign Up (Done)**
 
->*Pick Groups (QA/Testing)*
+>**Pick Groups (Done)**
 
->Notify Admins on Group Picked
+>**Notify Admins on Group Picked (Done)**
 
 >Forgot Password
 
@@ -35,23 +35,23 @@ You can follow development of the android app here: [SaintsXCTF Android GitHub](
 
 >*Main Log View (QA/Testing)*
 
->*Log Comments (QA/Testing)*
+>**Log Comments (Done)**
 
->Comment Notification
+>**Comment Notification (Done)**
 
->Tag in Comment
+>**Tag in Comment (Done)**
 
->Comment Tag Notification
+>**Comment Tag Notification (Done)**
 
->New Log
+>**New Log (Done)**
 
->Tag in Log
+>**Tag in Log (Done)**
 
->Log Tag Notification
+>**Log Tag Notification (Done)**
 
->Delete Log
+>**Delete Log (Done)**
 
->Edit Log
+>*Edit Log (In-Progress)*
 
 >Main Profile Page
 
