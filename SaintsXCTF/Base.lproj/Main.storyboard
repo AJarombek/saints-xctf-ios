@@ -726,7 +726,7 @@
         <!--New Log-->
         <scene sceneID="ZDm-Qf-Iq8">
             <objects>
-                <viewController id="ZET-dO-YVX" customClass="LogViewController" customModule="SaintsXCTF" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="logViewController" id="ZET-dO-YVX" customClass="LogViewController" customModule="SaintsXCTF" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="9SS-KN-q8v"/>
                         <viewControllerLayoutGuide type="bottom" id="jUf-KW-WJG"/>

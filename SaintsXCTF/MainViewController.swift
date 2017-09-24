@@ -348,7 +348,7 @@ class MainViewController: UITableViewController, UITextViewDelegate {
     
     // Call the LogViewController and edit the existing log
     func editExistingLog(at index: Int, log: Log) {
-        let logViewController = storyboard?.instantiateViewController(withIdentifier: "LogViewController")
+        let logViewController = storyboard?.instantiateViewController(withIdentifier: "logViewController")
                                     as! LogViewController
         
         // Pass both the log and the index to the log view controller

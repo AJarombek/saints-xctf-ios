@@ -62,10 +62,18 @@ class LogTableViewCell: UITableViewCell {
         self.backgroundColor = UIColor(Constants.getFeelColor(feel - 1))
     }
     
+    // Executed when the user clicks on the edit log button
     func editLog(sender: LogTableViewCell) {
         os_log("Pressed Edit", log: logTag, type: .debug)
+        
+        if let i = self.index, let logToEdit = self.log {
+            self.mainViewController?.editExistingLog(at: i, log: logToEdit)
+        } else {
+            os_log("Failed to Edit Log: Invalid Index", log: self.logTag, type: .error)
+        }
     }
     
+    // Executed when the user clicks on the delete log button
     func deleteLog(sender: UIButton) {
         os_log("Pressed Delete", log: logTag, type: .debug)
         
@@ -76,12 +84,6 @@ class LogTableViewCell: UITableViewCell {
         // Actions to do when cancelling the delete log operation
         let cancelButton = CancelButton(title: "Cancel") {
             os_log("Cancelled Deleting Log.", log: self.logTag, type: .debug)
-            
-            if let i = self.index, let logToEdit = self.log {
-                self.mainViewController?.editExistingLog(at: i, log: logToEdit)
-            } else {
-                os_log("Failed to Edit Log: Invalid Index", log: self.logTag, type: .error)
-            }
         }
         
         // Actions to do when deleting a log

@@ -240,7 +240,7 @@ class LogViewController: UIViewController, UITextViewDelegate, UIPickerViewDeleg
         secondsField.text = ""
         
         let feelValue: Double = Double((logPassed?.feel)!)! - 1
-        feelStepper.value = feelValue
+        feelStepper.value = feelValue + 1
         feelDescriptionField.text = Constants.getFeelDescription(Int(feelValue))
         view.layer.backgroundColor = UIColor(Constants.getFeelColor(Int(feelValue))).cgColor
         
@@ -293,7 +293,12 @@ class LogViewController: UIViewController, UITextViewDelegate, UIPickerViewDeleg
             let metric = metricField.text?.trimmingCharacters(in: .whitespaces),
             var minutes = minutesField.text?.trimmingCharacters(in: .whitespaces),
             var seconds = secondsField.text?.trimmingCharacters(in: .whitespaces),
-            let description = descriptionField.text?.trimmingCharacters(in: .whitespaces) {
+            var description = descriptionField.text?.trimmingCharacters(in: .whitespaces) {
+            
+            // If the description field holds a placeholder, return an empty description
+            if descriptionField.textColor == UIColor.lightGray {
+                description = ""
+            }
             
             // Name is a required field
             if name.isEmpty {
@@ -473,6 +478,8 @@ class LogViewController: UIViewController, UITextViewDelegate, UIPickerViewDeleg
                     self.present(popup, animated: true, completion: nil)
                 }
             } else {
+                
+                log.log_id = logPassed?.log_id
                 
                 // Submit the edited log to the API
                 APIClient.logPutRequest(withLogID: Int(log.log_id)!, andLog: log) {
