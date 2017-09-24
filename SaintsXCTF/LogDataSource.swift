@@ -15,12 +15,19 @@ class LogDataSource {
     
     private var logs = [Log]()
     
+    // Get the number of items in the datasource
     func count() -> Int {
         return logs.count
     }
     
+    // Get item from the datasource at a specific index
     func get(_ index: Int) -> Log {
         return logs[index]
+    }
+    
+    // Remove from the datasource at specific index
+    func delete(_ index: Int) {
+        logs.remove(at: index)
     }
     
     // Load a defined number of logs into the datasource using the logfeed endpoint

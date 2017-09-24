@@ -113,6 +113,7 @@ class MainViewController: UITableViewController, UITextViewDelegate {
         // Create a reference to the view controller in the cell
         cell.mainViewController = self
         cell.log = log
+        cell.index = indexPath.row
         
         let username = user.username ?? ""
         
@@ -336,5 +337,12 @@ class MainViewController: UITableViewController, UITextViewDelegate {
                 os_log("Log Long Pressed: %@", log: logTag, type: .debug, log.description)
             }
         }
+    }
+    
+    // Remove a cell at a specific index
+    func removeDeletedLog(at index: Int) {
+        logDataSource.delete(index)
+        offset -= 1
+        logTableView.reloadData()
     }
 }

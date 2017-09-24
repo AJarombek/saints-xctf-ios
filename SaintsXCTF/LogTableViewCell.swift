@@ -15,6 +15,7 @@ class LogTableViewCell: UITableViewCell {
     let logTag = OSLog(subsystem: "SaintsXCTF.App.LogTableViewCell", category: "LogTableViewCell")
     var mainViewController: MainViewController? = nil
     var log: Log? = nil
+    var index: Int? = nil
     
     @IBOutlet weak var userLabel: UITextView!
     @IBOutlet weak var dateLabel: UITextView!
@@ -85,7 +86,16 @@ class LogTableViewCell: UITableViewCell {
                 APIClient.logDeleteRequest(withLogID: Int(log_id)!) {
                     (result) -> Void in
                     
-                    // TODO
+                    if result {
+                        if let i = self.index {
+                            self.mainViewController?.removeDeletedLog(at: i)
+                            os_log("Successfully Deleted Log: ", log: self.logTag, type: .error)
+                        } else {
+                            os_log("Failed to Delete Log: Invalid Index", log: self.logTag, type: .error)
+                        }
+                    } else {
+                        os_log("Failed to Delete Log: API Call Failed", log: self.logTag, type: .error)
+                    }
                 }
             }
         }
