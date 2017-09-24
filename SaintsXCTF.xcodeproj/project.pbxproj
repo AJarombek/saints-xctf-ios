@@ -169,6 +169,14 @@
 			name = Log;
 			sourceTree = "<group>";
 		};
+		A11E68AA1F783CD300170E47 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				A15E622D1F3F97D700AC9EF1 /* ProfileViewController.swift */,
+			);
+			name = Profile;
+			sourceTree = "<group>";
+		};
 		A15BA12C1E8AF61D00B9796B = {
 			isa = PBXGroup;
 			children = (
@@ -215,6 +223,7 @@
 		A15E62291F3F91F600AC9EF1 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				A11E68AA1F783CD300170E47 /* Profile */,
 				A10D61C31F6E126900A406D9 /* Log */,
 				A10D61C21F6E120400A406D9 /* Comment */,
 				A15E624A1F536C6200AC9EF1 /* Constants */,
@@ -222,7 +231,6 @@
 				A15E622C1F3F938B00AC9EF1 /* Extensions */,
 				A15BA1661E8AF6CE00B9796B /* HomeViewController.swift */,
 				A11C2DF31F0B249E00EBDDB5 /* SignUpViewController.swift */,
-				A15E622D1F3F97D700AC9EF1 /* ProfileViewController.swift */,
 				A15E62321F3F986C00AC9EF1 /* GroupListViewController.swift */,
 				A15E62341F3F98EC00AC9EF1 /* SignOutViewController.swift */,
 				A15E62361F3FA45F00AC9EF1 /* PickGroupViewController.swift */,

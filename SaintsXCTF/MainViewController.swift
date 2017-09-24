@@ -22,8 +22,8 @@ class MainViewController: UITableViewController, UITextViewDelegate {
     let heightDict = NSMutableDictionary()
     var finished = false
     
-    let paramType = "all"
-    let sortParam = "all"
+    var paramType = "all"
+    var sortParam = "all"
     let limit = 10
     var offset = 0
     
