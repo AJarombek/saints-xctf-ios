@@ -76,6 +76,12 @@ class LogTableViewCell: UITableViewCell {
         // Actions to do when cancelling the delete log operation
         let cancelButton = CancelButton(title: "Cancel") {
             os_log("Cancelled Deleting Log.", log: self.logTag, type: .debug)
+            
+            if let i = self.index, let logToEdit = self.log {
+                self.mainViewController?.editExistingLog(at: i, log: logToEdit)
+            } else {
+                os_log("Failed to Edit Log: Invalid Index", log: self.logTag, type: .error)
+            }
         }
         
         // Actions to do when deleting a log
@@ -83,9 +89,12 @@ class LogTableViewCell: UITableViewCell {
             os_log("Confirm Deleting Log: %@", log: self.logTag, type: .debug, self.log?.description ?? "")
             
             if let log_id: String = self.log?.log_id {
+                
+                // Call the api to delete the log
                 APIClient.logDeleteRequest(withLogID: Int(log_id)!) {
                     (result) -> Void in
                     
+                    // The result of the API call is a boolean of whether or not the delete operation succeeded
                     if result {
                         if let i = self.index {
                             self.mainViewController?.removeDeletedLog(at: i)
@@ -100,6 +109,7 @@ class LogTableViewCell: UITableViewCell {
             }
         }
         
+        // Display the delete log popup which gives a final warning before deleting your log
         let popup = PopupDialog(title: title, message: message)
         popup.addButtons([cancelButton, deleteButton])
         

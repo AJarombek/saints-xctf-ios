@@ -345,4 +345,16 @@ class MainViewController: UITableViewController, UITextViewDelegate {
         offset -= 1
         logTableView.reloadData()
     }
+    
+    // Call the LogViewController and edit the existing log
+    func editExistingLog(at index: Int, log: Log) {
+        let logViewController = storyboard?.instantiateViewController(withIdentifier: "LogViewController")
+                                    as! LogViewController
+        
+        // Pass both the log and the index to the log view controller
+        logViewController.editingLog = true
+        logViewController.logPassed = log
+        logViewController.indexPassed = index
+        navigationController?.pushViewController(logViewController, animated: true)
+    }
 }

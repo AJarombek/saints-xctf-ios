@@ -33,6 +33,10 @@ class LogViewController: UIViewController, UITextViewDelegate, UIPickerViewDeleg
     
     var user: User!
     
+    var editingLog: Bool = false
+    var logPassed: Log? = nil
+    var indexPassed: Int? = nil
+    
     let distanceRegex = "^[0-9]{0,3}(\\.[0-9]{1,2})?$"
     let minuteRegex = "^[0-9]{1,5}$"
     let secondRegex = "^[0-9]{1,2}$"
@@ -131,6 +135,11 @@ class LogViewController: UIViewController, UITextViewDelegate, UIPickerViewDeleg
         
         // Set the user for the created logs to the signed in user
         user = SignedInUser.user
+        
+        // Check if we are editing an existing log.  If so, fill in the existing fields
+        if editingLog {
+            setFields()
+        }
     }
     
     // Remove the keyboard when tapping the background
@@ -207,6 +216,44 @@ class LogViewController: UIViewController, UITextViewDelegate, UIPickerViewDeleg
         } else if pickerView == metricPicker {
             metricField.text = logMetrics[row]
         }
+    }
+    
+    // Set all the fields from the existing log
+    func setFields() {
+        nameField.text = logPassed?.name ?? ""
+        locationField.text = logPassed?.location ?? ""
+        
+        if let date: String = logPassed?.date {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            let date = dateFormatter.date(from: date)!
+            dateFormatter.dateFormat = "MM/dd/yyyy"
+            let dateString = dateFormatter.string(from: date)
+            dateField.text = dateString
+        }
+        
+        typeField.text = logPassed?.type?.capitalizingFirstLetter() ?? ""
+        distanceField.text = logPassed?.distance ?? ""
+        metricField.text = logPassed?.metric.capitalizingFirstLetter() ?? ""
+        
+        minutesField.text = ""
+        secondsField.text = ""
+        
+        let feelValue: Double = Double((logPassed?.feel)!)! - 1
+        feelStepper.value = feelValue
+        feelDescriptionField.text = Constants.getFeelDescription(Int(feelValue))
+        view.layer.backgroundColor = UIColor(Constants.getFeelColor(Int(feelValue))).cgColor
+        
+        let descriptionValue: String = logPassed?.log_description ?? ""
+        if !descriptionValue.isEmpty {
+            descriptionField.text = descriptionValue
+            descriptionField.textColor = UIColor.black
+        } else {
+            descriptionField.text = "Description"
+            descriptionField.textColor = UIColor.lightGray
+        }
+        
+        errorField.text = ""
     }
     
     // Reset all the fields in the log input to the default values
@@ -400,23 +447,56 @@ class LogViewController: UIViewController, UITextViewDelegate, UIPickerViewDeleg
             
             os_log("Log Passed Validation: %@", log: logTag, type: .debug, log.description)
             
-            // Submit the new log to the API
-            APIClient.logPostRequest(withLog: log) {
-                (newlog) -> Void in
+            if !self.editingLog {
                 
-                os_log("New Log Submitted to API.", log: self.logTag, type: .debug)
-                
-                // Build the popup dialog to be displayed
-                let title = "New Log Created"
-                let button = DefaultButton(title: "Continue") {
-                    self.resetFields()
-                    os_log("Continue and Reset Log Inputs.", log: self.logTag, type: .debug)
+                // Submit the new log to the API
+                APIClient.logPostRequest(withLog: log) {
+                    (newlog) -> Void in
+                    
+                    os_log("New Log Submitted to API.", log: self.logTag, type: .debug)
+                    
+                    // Build the popup dialog to be displayed
+                    let title = "New Log Created"
+                    
+                    let button = DefaultButton(title: "Continue") {
+                        self.resetFields()
+                        
+                        self.editingLog = false
+                        self.indexPassed = nil
+                        self.logPassed = nil
+                        os_log("Continue and Reset Log Inputs.", log: self.logTag, type: .debug)
+                    }
+                    
+                    let popup = PopupDialog(title: title, message: nil)
+                    popup.addButton(button)
+                    
+                    self.present(popup, animated: true, completion: nil)
                 }
+            } else {
                 
-                let popup = PopupDialog(title: title, message: nil)
-                popup.addButton(button)
-                
-                self.present(popup, animated: true, completion: nil)
+                // Submit the edited log to the API
+                APIClient.logPutRequest(withLogID: Int(log.log_id)!, andLog: log) {
+                    (newlog) -> Void in
+                    
+                    os_log("Updated Log Submitted to API.", log: self.logTag, type: .debug)
+                    
+                    // Build the popup dialog to be displayed
+                    let title = "Existing Log Updated"
+                    
+                    let button = DefaultButton(title: "Continue") {
+                        self.resetFields()
+                        
+                        self.editingLog = false
+                        self.indexPassed = nil
+                        self.logPassed = nil
+                        os_log("Continue and Reset Log Inputs.", log: self.logTag, type: .debug)
+                    }
+                    
+                    let popup = PopupDialog(title: title, message: nil)
+                    popup.addButton(button)
+                    
+                    self.present(popup, animated: true, completion: nil)
+                }
             }
             
         } else {
