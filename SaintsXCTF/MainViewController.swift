@@ -46,7 +46,11 @@ class MainViewController: UITableViewController, UITextViewDelegate {
         logTableView.addGestureRecognizer(longpress)
         
         // Get the currently logged in user
-        user = SignedInUser.user
+        if userPassed.username == "" {
+            user = SignedInUser.user
+        } else {
+            user = userPassed
+        }
 
         load()
     }
@@ -70,7 +74,6 @@ class MainViewController: UITableViewController, UITextViewDelegate {
             navigationController?.navigationBar.backIndicatorImage = UIImage(named: "back")
             navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "back")
             navigationController?.navigationBar.tintColor = UIColor(0x000000)
-            navigationController?.title = "\(user.first ?? "") \(user.last ?? "")"
             navigationItem.title = "\(user.first ?? "") \(user.last ?? "")"
             
             navigationItem.backBarButtonItem = UIBarButtonItem(title: " ", style: UIBarButtonItemStyle.plain, target: nil, action: nil)
@@ -289,6 +292,18 @@ class MainViewController: UITableViewController, UITextViewDelegate {
     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange,
                   interaction: UITextItemInteraction) -> Bool {
         os_log("%@", log: logTag, type: .debug, URL.absoluteString)
+        
+        APIClient.userGetRequest(withUsername: URL.absoluteString) {
+            (user) -> Void in
+            
+            let profileViewController = self.storyboard?.instantiateViewController(withIdentifier:
+                                        "profileViewController") as! ProfileViewController
+            
+            // Pass both the log and the index to the log view controller
+            profileViewController.user = user
+            profileViewController.showNavBar = true
+            self.navigationController?.pushViewController(profileViewController, animated: true)
+        }
         
         return false
     }

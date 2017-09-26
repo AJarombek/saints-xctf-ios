@@ -29,6 +29,8 @@ class ProfileViewController: UIViewController, UIGestureRecognizerDelegate {
     
     var user: User? = nil
     
+    var showNavBar = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         os_log("ProfileViewController Loaded.", log: logTag, type: .debug)
@@ -68,6 +70,10 @@ class ProfileViewController: UIViewController, UIGestureRecognizerDelegate {
         let click = UITapGestureRecognizer(target: self, action: #selector(self.showLogs(_:)))
         click.delegate = self
         logsView.addGestureRecognizer(click)
+        
+        let buttonclick = UITapGestureRecognizer(target: self, action: #selector(self.showLogs(_:)))
+        buttonclick.delegate = self
+        logsButton.addGestureRecognizer(buttonclick)
         
         // If there is no user defined, use the currently signed in user
         if let _ = user {
@@ -125,7 +131,18 @@ class ProfileViewController: UIViewController, UIGestureRecognizerDelegate {
         super.viewWillAppear(animated)
         
         // Hide the navigation bar on view appearing
-        navigationController?.setNavigationBarHidden(true, animated: animated)
+        if !showNavBar {
+            navigationController?.setNavigationBarHidden(true, animated: animated)
+            
+        } else {
+            // Set the navigation bar back button to a custom image
+            navigationController?.navigationBar.backIndicatorImage = UIImage(named: "back")
+            navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "back")
+            navigationController?.navigationBar.tintColor = UIColor(0x000000)
+            navigationItem.title = "\(user?.first ?? "") \(user?.last ?? "")"
+            
+            navigationItem.backBarButtonItem = UIBarButtonItem(title: " ", style: UIBarButtonItemStyle.plain, target: nil, action: nil)
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {

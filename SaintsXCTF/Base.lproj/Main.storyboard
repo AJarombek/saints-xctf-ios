@@ -1065,7 +1065,7 @@
         <!--Profile View Controller-->
         <scene sceneID="eGO-WS-o8i">
             <objects>
-                <viewController id="Uro-DD-rjU" customClass="ProfileViewController" customModule="SaintsXCTF" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="profileViewController" id="Uro-DD-rjU" customClass="ProfileViewController" customModule="SaintsXCTF" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="PjP-b7-aTK"/>
                         <viewControllerLayoutGuide type="bottom" id="8b3-lJ-o47"/>
