@@ -22,6 +22,9 @@ class MainViewController: UITableViewController, UITextViewDelegate {
     let heightDict = NSMutableDictionary()
     var finished = false
     
+    var showNavBar = false
+    var userPassed: User = User()
+    
     var paramType = "all"
     var sortParam = "all"
     let limit = 10
@@ -30,13 +33,6 @@ class MainViewController: UITableViewController, UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         os_log("MainViewController Loaded.", log: logTag, type: .debug)
-        
-        // Make sure the table view does not overlap the status bar
-        let statusBarHight = UIApplication.shared.statusBarFrame.height
-        let insets = UIEdgeInsets(top: statusBarHight, left: 0, bottom: 0, right: 0)
-
-        logTableView.contentInset = insets
-        logTableView.scrollIndicatorInsets = insets
         
         navigationController?.navigationBar.backgroundColor = UIColor(0x999999, a: 0.9)
         
@@ -59,7 +55,26 @@ class MainViewController: UITableViewController, UITextViewDelegate {
         super.viewWillAppear(animated)
         
         // Hide the navigation bar on view appearing
-        navigationController?.setNavigationBarHidden(true, animated: animated)
+        if !showNavBar {
+            navigationController?.setNavigationBarHidden(true, animated: animated)
+            
+            // Make sure the table view does not overlap the status bar
+            let statusBarHight = UIApplication.shared.statusBarFrame.height
+            let insets = UIEdgeInsets(top: statusBarHight, left: 0, bottom: 0, right: 0)
+            
+            logTableView.contentInset = insets
+            logTableView.scrollIndicatorInsets = insets
+            
+        } else {
+            // Set the navigation bar back button to a custom image
+            navigationController?.navigationBar.backIndicatorImage = UIImage(named: "back")
+            navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "back")
+            navigationController?.navigationBar.tintColor = UIColor(0x000000)
+            navigationController?.title = "\(user.first ?? "") \(user.last ?? "")"
+            navigationItem.title = "\(user.first ?? "") \(user.last ?? "")"
+            
+            navigationItem.backBarButtonItem = UIBarButtonItem(title: " ", style: UIBarButtonItemStyle.plain, target: nil, action: nil)
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {

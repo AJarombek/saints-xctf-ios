@@ -9,7 +9,7 @@
 import UIKit
 import os.log
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: UIViewController, UIGestureRecognizerDelegate {
     
     let logTag = OSLog(subsystem: "SaintsXCTF.App.ProfileViewController", category: "ProfileViewController")
     
@@ -33,7 +33,7 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         os_log("ProfileViewController Loaded.", log: logTag, type: .debug)
         
-        os_log("%@", log: logTag, type: .debug, "\(view.frame.width)")
+        navigationController?.navigationBar.backgroundColor = UIColor(0x999999, a: 0.9)
         
         // Create top borders for all the profile selections
         let topBorder = CALayer()
@@ -63,6 +63,11 @@ class ProfileViewController: UIViewController {
         monthlyView.layer.addSublayer(monthlyTopBorder)
         weeklyView.layer.addSublayer(weeklyTopBorder)
         weeklyView.layer.addSublayer(weeklyBottomBorder)
+        
+        // Set click listener to the logs view to open up the users logs
+        let click = UITapGestureRecognizer(target: self, action: #selector(self.showLogs(_:)))
+        click.delegate = self
+        logsView.addGestureRecognizer(click)
         
         // If there is no user defined, use the currently signed in user
         if let _ = user {
@@ -116,22 +121,43 @@ class ProfileViewController: UIViewController {
         descriptionView.text = "\(classYearTxt)\(favoriteEventTxt)\(locationTxt)"
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Hide the navigation bar on view appearing
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        // Show the navigation bar on view disappearing
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    
     // Remove the keyboard when tapping the background
     @IBAction func backgroundTapped(_ sender: UITapGestureRecognizer) {
         view.endEditing(true)
     }
     
-    @IBAction func showLogs(_ sender: UIButton) {
+    func showLogs(_ sender: UIView) {
         os_log("Viewing Profile Logs", log: logTag, type: .debug)
         
-        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let mainViewController = storyBoard.instantiateViewController(withIdentifier:
+        if let _: UIStoryboard = storyboard {
+            os_log("Storyboard Exists", log: logTag, type: .debug)
+        } else {
+            os_log("No Current Storyboard", log: logTag, type: .debug)
+        }
+        
+        let mainViewController = storyboard?.instantiateViewController(withIdentifier:
             "showLogView") as! MainViewController
         
         // Pass both the log and the index to the log view controller
         mainViewController.paramType = "user"
         mainViewController.sortParam = user?.username ?? ""
+        mainViewController.showNavBar = true
+        mainViewController.userPassed = user ?? User()
         
-        self.present(mainViewController, animated: true, completion: nil)
+        navigationController?.pushViewController(mainViewController, animated: true)
     }
 }

@@ -97,7 +97,7 @@ class CommentViewController: UITableViewController, UITextViewDelegate {
                 cell.layer.borderWidth = 2
                 cell.layer.borderColor = UIColor(0xAAAAAA).cgColor
                 cell.layer.cornerRadius = 1
-                cell.backgroundColor = UIColor(Constants.getFeelColor(6))
+                cell.backgroundColor = UIColor(Constants.getFeelColor(5))
             
                 // Convert the string to a date
                 let dateFormatter = DateFormatter()
