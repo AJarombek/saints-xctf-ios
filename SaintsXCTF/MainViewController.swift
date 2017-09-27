@@ -46,11 +46,7 @@ class MainViewController: UITableViewController, UITextViewDelegate {
         logTableView.addGestureRecognizer(longpress)
         
         // Get the currently logged in user
-        if userPassed.username == "" {
-            user = SignedInUser.user
-        } else {
-            user = userPassed
-        }
+        user = SignedInUser.user
 
         load()
     }
@@ -74,7 +70,7 @@ class MainViewController: UITableViewController, UITextViewDelegate {
             navigationController?.navigationBar.backIndicatorImage = UIImage(named: "back")
             navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "back")
             navigationController?.navigationBar.tintColor = UIColor(0x000000)
-            navigationItem.title = "\(user.first ?? "") \(user.last ?? "")"
+            navigationItem.title = "\(userPassed.first ?? "") \(userPassed.last ?? "")"
             
             navigationItem.backBarButtonItem = UIBarButtonItem(title: " ", style: UIBarButtonItemStyle.plain, target: nil, action: nil)
         }

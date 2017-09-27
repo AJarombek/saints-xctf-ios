@@ -125,6 +125,21 @@ class ProfileViewController: UIViewController, UIGestureRecognizerDelegate {
         }
         
         descriptionView.text = "\(classYearTxt)\(favoriteEventTxt)\(locationTxt)"
+        
+        // Set the profile picture
+        if let profPicBase64 = user?.profilepic {
+            
+            // Part of the base 64 encoding is html specific, remove this piece
+            let index = profPicBase64.index(profPicBase64.startIndex, offsetBy: 23)
+            let base64 = profPicBase64.substring(from: index)
+            
+            // Now decode the base 64 encoded string and convert it to an image
+            let profPicData: Data = Data(base64Encoded: base64, options: .ignoreUnknownCharacters)!
+            let profPic: UIImage = UIImage(data: profPicData)!
+            
+            // Display the profile picture image
+            profilePictureView.image = profPic
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
