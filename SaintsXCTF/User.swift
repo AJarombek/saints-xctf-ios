@@ -71,7 +71,7 @@ class User: NSObject, Mappable, NSCoding {
     // This class uses the CustomStringConvertible protocol.
     // The description will be printed whenever we try to print a User object
     override var description: String {
-        return "User: (\(username!), \(first!), \(last!))"
+        return "User: (\(username!), \(first ?? ""), \(last ?? ""))"
     }
     
     func encode(with aCoder: NSCoder) {

@@ -38,6 +38,8 @@
 		A15E62471F5231CC00AC9EF1 /* UITableExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15E62461F5231CC00AC9EF1 /* UITableExt.swift */; };
 		A15E62491F52372000AC9EF1 /* LogTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15E62481F52372000AC9EF1 /* LogTableViewCell.swift */; };
 		A15E624C1F536C8500AC9EF1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15E624B1F536C8500AC9EF1 /* Constants.swift */; };
+		A18968271F7B25940073A73B /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18968261F7B25940073A73B /* EditProfileViewController.swift */; };
+		A18968291F7B44150073A73B /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18968281F7B44150073A73B /* DetailsViewController.swift */; };
 		A19DED511F5907C500E6C9DA /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19DED501F5907C500E6C9DA /* CommentTableViewCell.swift */; };
 		A19DED531F59088D00E6C9DA /* CommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19DED521F59088D00E6C9DA /* CommentViewController.swift */; };
 		A19DED551F590A9F00E6C9DA /* NewCommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19DED541F590A9F00E6C9DA /* NewCommentTableViewCell.swift */; };
@@ -105,6 +107,8 @@
 		A15E62461F5231CC00AC9EF1 /* UITableExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableExt.swift; sourceTree = "<group>"; };
 		A15E62481F52372000AC9EF1 /* LogTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogTableViewCell.swift; sourceTree = "<group>"; };
 		A15E624B1F536C8500AC9EF1 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		A18968261F7B25940073A73B /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
+		A18968281F7B44150073A73B /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		A19DED501F5907C500E6C9DA /* CommentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
 		A19DED521F59088D00E6C9DA /* CommentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentViewController.swift; sourceTree = "<group>"; };
 		A19DED541F590A9F00E6C9DA /* NewCommentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewCommentTableViewCell.swift; sourceTree = "<group>"; };
@@ -173,6 +177,8 @@
 			isa = PBXGroup;
 			children = (
 				A15E622D1F3F97D700AC9EF1 /* ProfileViewController.swift */,
+				A18968261F7B25940073A73B /* EditProfileViewController.swift */,
+				A18968281F7B44150073A73B /* DetailsViewController.swift */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -504,6 +510,7 @@
 				A1015A371EEDC0EA00A2358E /* ActivationCode.swift in Sources */,
 				A15E62471F5231CC00AC9EF1 /* UITableExt.swift in Sources */,
 				A19DED591F6CC79500E6C9DA /* Utils.swift in Sources */,
+				A18968291F7B44150073A73B /* DetailsViewController.swift in Sources */,
 				A1B458961F11AC0800EDCF80 /* TextFieldStyler.swift in Sources */,
 				A19DED511F5907C500E6C9DA /* CommentTableViewCell.swift in Sources */,
 				A11C2DF41F0B249E00EBDDB5 /* SignUpViewController.swift in Sources */,
@@ -519,6 +526,7 @@
 				A15E62351F3F98EC00AC9EF1 /* SignOutViewController.swift in Sources */,
 				A15BA1671E8AF6CE00B9796B /* HomeViewController.swift in Sources */,
 				A15E62421F4FC70400AC9EF1 /* LogDataSource.swift in Sources */,
+				A18968271F7B25940073A73B /* EditProfileViewController.swift in Sources */,
 				A15E62391F3FD44000AC9EF1 /* UIColorExt.swift in Sources */,
 				A10D61C51F6F45C100A406D9 /* UIToolbarExt.swift in Sources */,
 				A1015A391EEDC1CF00A2358E /* Message.swift in Sources */,

@@ -66,14 +66,23 @@ class ProfileViewController: UIViewController, UIGestureRecognizerDelegate {
         weeklyView.layer.addSublayer(weeklyTopBorder)
         weeklyView.layer.addSublayer(weeklyBottomBorder)
         
-        // Set click listener to the logs view to open up the users logs
-        let click = UITapGestureRecognizer(target: self, action: #selector(self.showLogs(_:)))
+        // Set click listener to the edit view to open up the edit profile page
+        let click = UITapGestureRecognizer(target: self, action: #selector(self.editProfile(_:)))
         click.delegate = self
-        logsView.addGestureRecognizer(click)
+        editView.addGestureRecognizer(click)
         
-        let buttonclick = UITapGestureRecognizer(target: self, action: #selector(self.showLogs(_:)))
+        let buttonclick = UITapGestureRecognizer(target: self, action: #selector(self.editProfile(_:)))
         buttonclick.delegate = self
-        logsButton.addGestureRecognizer(buttonclick)
+        editProfileButton.addGestureRecognizer(buttonclick)
+        
+        // Set click listener to the logs view to open up the users logs
+        let clickLogs = UITapGestureRecognizer(target: self, action: #selector(self.showLogs(_:)))
+        clickLogs.delegate = self
+        logsView.addGestureRecognizer(clickLogs)
+        
+        let buttonclickLogs = UITapGestureRecognizer(target: self, action: #selector(self.showLogs(_:)))
+        buttonclickLogs.delegate = self
+        logsButton.addGestureRecognizer(buttonclickLogs)
         
         // If there is no user defined, use the currently signed in user
         if let _ = user {
@@ -167,19 +176,9 @@ class ProfileViewController: UIViewController, UIGestureRecognizerDelegate {
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
-    // Remove the keyboard when tapping the background
-    @IBAction func backgroundTapped(_ sender: UITapGestureRecognizer) {
-        view.endEditing(true)
-    }
-    
+    // Show the users logs (using mainViewController)
     func showLogs(_ sender: UIView) {
         os_log("Viewing Profile Logs", log: logTag, type: .debug)
-        
-        if let _: UIStoryboard = storyboard {
-            os_log("Storyboard Exists", log: logTag, type: .debug)
-        } else {
-            os_log("No Current Storyboard", log: logTag, type: .debug)
-        }
         
         let mainViewController = storyboard?.instantiateViewController(withIdentifier:
             "showLogView") as! MainViewController
@@ -191,5 +190,18 @@ class ProfileViewController: UIViewController, UIGestureRecognizerDelegate {
         mainViewController.userPassed = user ?? User()
         
         navigationController?.pushViewController(mainViewController, animated: true)
+    }
+    
+    // Edit the users profile (using editProfileViewController)
+    func editProfile(_ sender: UIView) {
+        os_log("Editing Profile", log: logTag, type: .debug)
+        
+        let editProfileViewController = storyboard?.instantiateViewController(withIdentifier:
+            "editProfileViewController") as! EditProfileViewController
+        
+        // Pass the user to the edit profile view
+        editProfileViewController.user = user ?? User()
+        
+        navigationController?.pushViewController(editProfileViewController, animated: true)
     }
 }
