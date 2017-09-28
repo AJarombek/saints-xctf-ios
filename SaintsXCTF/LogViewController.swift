@@ -142,11 +142,6 @@ class LogViewController: UIViewController, UITextViewDelegate, UIPickerViewDeleg
         }
     }
     
-    // Remove the keyboard when tapping the background
-    @IBAction func backgroundTapped(_ sender: UITapGestureRecognizer) {
-        view.endEditing(true)
-    }
-    
     // When the feel stepper is clicked, display the feel description
     @IBAction func feelChanged(_ sender: UIStepper) {
         let value = Int(sender.value) - 1

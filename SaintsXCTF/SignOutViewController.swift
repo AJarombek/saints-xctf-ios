@@ -24,11 +24,6 @@ class SignOutController: UIViewController {
                                 for: UIControlEvents.valueChanged)
     }
     
-    // Remove the keyboard when tapping the background
-    @IBAction func backgroundTapped(_ sender: UITapGestureRecognizer) {
-        view.endEditing(true)
-    }
-    
     // Function called when the UISwitch is changed.  If it is turned on, sign out user
     func switchChanged(mySwitch: UISwitch) {
         let on: Bool = mySwitch.isOn

@@ -41,11 +41,6 @@ class SignUpViewController: UIViewController {
         firstName.standardStyle()
     }
     
-    // Remove the keyboard when tapping the background
-    @IBAction func backgroundTapped(_ sender: UITapGestureRecognizer) {
-        view.endEditing(true)
-    }
-    
     @IBAction func signUpUser(_ sender: UIButton) {
         
         // Make sure all of the form entries are populated

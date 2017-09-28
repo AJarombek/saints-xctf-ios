@@ -83,11 +83,6 @@ class MainViewController: UITableViewController, UITextViewDelegate {
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
-    // Remove the keyboard when tapping the background
-    @IBAction func backgroundTapped(_ sender: UITapGestureRecognizer) {
-        view.endEditing(true)
-    }
-    
     // Returns the number of rows that the tableview should display
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return logDataSource.count()

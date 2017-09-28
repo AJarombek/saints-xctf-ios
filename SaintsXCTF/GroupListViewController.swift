@@ -18,9 +18,4 @@ class GroupListViewController: UIViewController {
         super.viewDidLoad()
         os_log("GroupListViewController Loaded.", log: OSLog.default, type: .debug)
     }
-    
-    // Remove the keyboard when tapping the background
-    @IBAction func backgroundTapped(_ sender: UITapGestureRecognizer) {
-        view.endEditing(true)
-    }
 }

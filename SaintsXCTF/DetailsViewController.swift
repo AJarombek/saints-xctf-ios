@@ -8,6 +8,7 @@
 
 import UIKit
 import os.log
+import PopupDialog
 
 class DetailsViewController: UIViewController {
     
@@ -63,21 +64,107 @@ class DetailsViewController: UIViewController {
         descriptionView.text = user.user_description ?? ""
     }
     
+    // Validate the mandatory fields (first name, last name, email)
     func validateDetails() -> Bool {
+        
+        if let firstNameString = firstNameField.text,
+            let lastNameString = lastNameField.text,
+            let emailString = emailField.text,
+            let classYearString = classYearField.text,
+            let locationString = locationField.text,
+            let favoriteEventString = favoriteEventField.text,
+            let descriptionString = descriptionView.text {
+            
+            // First Name Validation
+            if (!firstNameString.isEmpty ||
+                firstNameString.range(of: regexName, options: .regularExpression) != nil) {
+                
+                user.first = firstNameString
+                firstNameField.changeStyle(.none)
+            } else {
+                firstNameField.changeStyle(.error)
+                errorView.text = "Invalid First Name Entered"
+                return false
+            }
+            
+            // Last Name Validation
+            if (!lastNameString.isEmpty ||
+                lastNameString.range(of: regexName, options: .regularExpression) != nil) {
+                
+                user.last = lastNameString
+                lastNameField.changeStyle(.none)
+            } else {
+                lastNameField.changeStyle(.error)
+                errorView.text = "Invalid Last Name Entered"
+                return false
+            }
+            
+            // Email Validation
+            if (!emailString.isEmpty ||
+                emailString.range(of: regexEmail, options: .regularExpression) != nil) {
+                
+                user.email = emailString
+                emailField.changeStyle(.none)
+            } else {
+                emailField.changeStyle(.error)
+                errorView.text = "Invalid Email Entered"
+                return false
+            }
+            
+            user.class_year = classYearString
+            user.location = locationString
+            user.favorite_event = favoriteEventString
+            user.user_description = descriptionString
+            
+        } else {
+            os_log("Error Getting Values from Fields.", log: logTag, type: .error)
+            errorView.text = "Internal Error.  Try Again"
+            return false
+        }
+        
         return true
     }
     
+    // Save the profile details and send the update to the API
     @IBAction func saveDetails(_ sender: UIButton) {
         os_log("Saving User Profile Details.", log: logTag, type: .debug)
         
         if validateDetails() {
+            os_log("Valid Profile Details Entered: Sending updates to API", log: logTag, type: .debug)
+            
+            // If the details are valid, send them to the API
+            APIClient.userPutRequest(withUsername: user.username, andUser: user) {
+                (newuser) -> Void in
+                
+                // Update the signed in users details
+                SignedInUser.user = newuser
+                
+                // Build the popup dialog to be displayed
+                let title = "Profile Details Changed"
+                
+                // Actions to do when deleting a log
+                let continueButton = DefaultButton(title: "Continue") {
+                    os_log("Continue to Edit Profile Page", log: self.logTag, type: .debug)
+                    
+                    // Go back in the view controller hierarchy
+                    self.navigationController?.popViewController(animated: true)
+                }
+                
+                // Display the delete log popup which gives a final warning before deleting your log
+                let popup = PopupDialog(title: title, message: nil)
+                popup.addButton(continueButton)
+                
+                self.present(popup, animated: true, completion: nil)
+            }
             
         } else {
-            
+            os_log("Invalid Profile Details Entered.", log: logTag, type: .debug)
         }
     }
     
+    // Cancel the profile details and return to the edit profile page
     @IBAction func cancelDetails(_ sender: UIButton) {
         os_log("Cancel User Profile Details.", log: logTag, type: .debug)
+        self.navigationController?.popViewController(animated: true)
     }
 }

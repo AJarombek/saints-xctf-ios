@@ -42,11 +42,6 @@ class PickGroupController: UIViewController {
         alumniButton.backgroundColor = UIColor(0xEEEEEE)
     }
     
-    // Remove the keyboard when tapping the background
-    @IBAction func backgroundTapped(_ sender: UITapGestureRecognizer) {
-        view.endEditing(true)
-    }
-    
     // Functions for clicking group buttons.
     // Joined -> Change to Grey Background, Disable Conflicting Groups
     // Unjoined -> Change to White Background, Check for Resolved Conflicts
