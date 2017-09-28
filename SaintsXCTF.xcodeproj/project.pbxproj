@@ -40,6 +40,7 @@
 		A15E624C1F536C8500AC9EF1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15E624B1F536C8500AC9EF1 /* Constants.swift */; };
 		A18968271F7B25940073A73B /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18968261F7B25940073A73B /* EditProfileViewController.swift */; };
 		A18968291F7B44150073A73B /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18968281F7B44150073A73B /* DetailsViewController.swift */; };
+		A189682B1F7C903B0073A73B /* TextViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = A189682A1F7C903B0073A73B /* TextViewExt.swift */; };
 		A19DED511F5907C500E6C9DA /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19DED501F5907C500E6C9DA /* CommentTableViewCell.swift */; };
 		A19DED531F59088D00E6C9DA /* CommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19DED521F59088D00E6C9DA /* CommentViewController.swift */; };
 		A19DED551F590A9F00E6C9DA /* NewCommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19DED541F590A9F00E6C9DA /* NewCommentTableViewCell.swift */; };
@@ -109,6 +110,7 @@
 		A15E624B1F536C8500AC9EF1 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A18968261F7B25940073A73B /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		A18968281F7B44150073A73B /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		A189682A1F7C903B0073A73B /* TextViewExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewExt.swift; sourceTree = "<group>"; };
 		A19DED501F5907C500E6C9DA /* CommentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
 		A19DED521F59088D00E6C9DA /* CommentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentViewController.swift; sourceTree = "<group>"; };
 		A19DED541F590A9F00E6C9DA /* NewCommentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewCommentTableViewCell.swift; sourceTree = "<group>"; };
@@ -283,6 +285,7 @@
 				A15E62461F5231CC00AC9EF1 /* UITableExt.swift */,
 				A10D61C41F6F45C100A406D9 /* UIToolbarExt.swift */,
 				A1AAD7D61F7745580066710C /* StringExt.swift */,
+				A189682A1F7C903B0073A73B /* TextViewExt.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -504,6 +507,7 @@
 				A1D53DF01E8B648400842177 /* APIRequest.swift in Sources */,
 				A15E622E1F3F97D700AC9EF1 /* ProfileViewController.swift in Sources */,
 				A1505B9A1E8F11BC00F111DB /* Log.swift in Sources */,
+				A189682B1F7C903B0073A73B /* TextViewExt.swift in Sources */,
 				A15E62401F4273BB00AC9EF1 /* StartViewController.swift in Sources */,
 				A1D53DF61E8DE25400842177 /* User.swift in Sources */,
 				A15E624C1F536C8500AC9EF1 /* Constants.swift in Sources */,
