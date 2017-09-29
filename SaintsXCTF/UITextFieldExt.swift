@@ -12,6 +12,8 @@ enum Style {
     case error, warning, valid, none
 }
 
+private var __maxLengths = [UITextField: Int]()
+
 // Build an extension on the UITextField class for styling functions
 extension UITextField {
     
@@ -49,5 +51,24 @@ extension UITextField {
         self.layer.borderColor = UIColor(0xCCCCCC).cgColor
         self.layer.cornerRadius = 1
         self.backgroundColor = UIColor.white
+    }
+    
+    // This is to set a maximum length option in the storyboard
+    @IBInspectable var maxLength: Int {
+        get {
+            guard let l = __maxLengths[self] else {
+                return 150
+            }
+            return l
+        }
+        set {
+            __maxLengths[self] = newValue
+            addTarget(self, action: #selector(fix), for: .editingChanged)
+        }
+    }
+    
+    func fix(textField: UITextField) {
+        let t = textField.text
+        textField.text = t?.safelyLimitedTo(length: maxLength)
     }
 }

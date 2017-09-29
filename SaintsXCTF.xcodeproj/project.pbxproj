@@ -47,7 +47,7 @@
 		A19DED591F6CC79500E6C9DA /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19DED581F6CC79500E6C9DA /* Utils.swift */; };
 		A1AAD7D71F7745580066710C /* StringExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1AAD7D61F7745580066710C /* StringExt.swift */; };
 		A1B458941F0C5FA400EDCF80 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B458931F0C5FA400EDCF80 /* Credentials.swift */; };
-		A1B458961F11AC0800EDCF80 /* TextFieldStyler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B458951F11AC0800EDCF80 /* TextFieldStyler.swift */; };
+		A1B458961F11AC0800EDCF80 /* UITextFieldExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B458951F11AC0800EDCF80 /* UITextFieldExt.swift */; };
 		A1D53DEE1E8B647100842177 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D53DED1E8B647100842177 /* APIClient.swift */; };
 		A1D53DF01E8B648400842177 /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D53DEF1E8B648400842177 /* APIRequest.swift */; };
 		A1D53DF61E8DE25400842177 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D53DF51E8DE25400842177 /* User.swift */; };
@@ -117,7 +117,7 @@
 		A19DED581F6CC79500E6C9DA /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		A1AAD7D61F7745580066710C /* StringExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExt.swift; sourceTree = "<group>"; };
 		A1B458931F0C5FA400EDCF80 /* Credentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
-		A1B458951F11AC0800EDCF80 /* TextFieldStyler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldStyler.swift; sourceTree = "<group>"; };
+		A1B458951F11AC0800EDCF80 /* UITextFieldExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextFieldExt.swift; sourceTree = "<group>"; };
 		A1D53DED1E8B647100842177 /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		A1D53DEF1E8B648400842177 /* APIRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
 		A1D53DF51E8DE25400842177 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -280,7 +280,7 @@
 		A15E622C1F3F938B00AC9EF1 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				A1B458951F11AC0800EDCF80 /* TextFieldStyler.swift */,
+				A1B458951F11AC0800EDCF80 /* UITextFieldExt.swift */,
 				A15E62381F3FD44000AC9EF1 /* UIColorExt.swift */,
 				A15E62461F5231CC00AC9EF1 /* UITableExt.swift */,
 				A10D61C41F6F45C100A406D9 /* UIToolbarExt.swift */,
@@ -515,7 +515,7 @@
 				A15E62471F5231CC00AC9EF1 /* UITableExt.swift in Sources */,
 				A19DED591F6CC79500E6C9DA /* Utils.swift in Sources */,
 				A18968291F7B44150073A73B /* DetailsViewController.swift in Sources */,
-				A1B458961F11AC0800EDCF80 /* TextFieldStyler.swift in Sources */,
+				A1B458961F11AC0800EDCF80 /* UITextFieldExt.swift in Sources */,
 				A19DED511F5907C500E6C9DA /* CommentTableViewCell.swift in Sources */,
 				A11C2DF41F0B249E00EBDDB5 /* SignUpViewController.swift in Sources */,
 				A1505B921E8F10A900F111DB /* Group.swift in Sources */,

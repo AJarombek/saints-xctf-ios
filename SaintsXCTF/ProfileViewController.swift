@@ -16,7 +16,6 @@ class ProfileViewController: UIViewController, UIGestureRecognizerDelegate {
     @IBOutlet weak var profilePictureView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
-    @IBOutlet weak var teamsView: UITextView!
     @IBOutlet weak var descriptionView: UITextView!
     @IBOutlet weak var editProfileButton: UIButton!
     @IBOutlet weak var logsButton: UIButton!
@@ -54,17 +53,23 @@ class ProfileViewController: UIViewController, UIGestureRecognizerDelegate {
         weeklyTopBorder.frame = CGRect.init(x: -20, y: 0, width: view.frame.width + 20, height: 1)
         weeklyTopBorder.backgroundColor = UIColor(0xBBBBBB).cgColor
         
-        // Since weekly is the last selection, it needs a bottom border as well
+        // Weekly bottom border for other profiles that dont show the edit view
         let weeklyBottomBorder = CALayer()
         weeklyBottomBorder.frame = CGRect.init(x: -20, y: weeklyView.frame.height + 1,
-                                               width: view.frame.width + 20, height: 1)
+                                             width: view.frame.width + 20, height: 1)
         weeklyBottomBorder.backgroundColor = UIColor(0xBBBBBB).cgColor
         
-        editView.layer.addSublayer(topBorder)
+        // Since weekly is the last selection, it needs a bottom border as well
+        let editBottomBorder = CALayer()
+        editBottomBorder.frame = CGRect.init(x: -20, y: weeklyView.frame.height + 1,
+                                               width: view.frame.width + 20, height: 1)
+        editBottomBorder.backgroundColor = UIColor(0xBBBBBB).cgColor
+        
         logsView.layer.addSublayer(logsTopBorder)
         monthlyView.layer.addSublayer(monthlyTopBorder)
         weeklyView.layer.addSublayer(weeklyTopBorder)
-        weeklyView.layer.addSublayer(weeklyBottomBorder)
+        editView.layer.addSublayer(topBorder)
+        editView.layer.addSublayer(editBottomBorder)
         
         // Set click listener to the edit view to open up the edit profile page
         let click = UITapGestureRecognizer(target: self, action: #selector(self.editProfile(_:)))
@@ -87,6 +92,10 @@ class ProfileViewController: UIViewController, UIGestureRecognizerDelegate {
         // If there is no user defined, use the currently signed in user
         if let _ = user {
             os_log("Viewing Other Profile: %@", log: logTag, type: .debug, user?.description ?? "")
+            
+            // If this is not the signed in user, set the edit profile view to hidden
+            editView.isHidden = true
+            weeklyView.layer.addSublayer(weeklyBottomBorder)
         } else {
             user = SignedInUser.user
             os_log("Viewing My Profile: %@", log: logTag, type: .debug, user?.description ?? "")
@@ -101,20 +110,8 @@ class ProfileViewController: UIViewController, UIGestureRecognizerDelegate {
         let groups: [GroupInfo] = (user?.groups)!
         
         for i in 0...groups.count - 1 {
-            
-            if i == 0 {
-                teamsTxt += groups[i].group_title!
-            } else {
-                
-                if i % 2 == 0 {
-                    teamsTxt += ",\n\(groups[i].group_title!)"
-                } else {
-                    teamsTxt += ", \(groups[i].group_title!)"
-                }
-            }
+            teamsTxt += "\(groups[i].group_title!)\n"
         }
-        
-        teamsView.text = teamsTxt
         
         // Set the description text view with the users class year, favorite event,
         // and location
@@ -133,7 +130,19 @@ class ProfileViewController: UIViewController, UIGestureRecognizerDelegate {
             locationTxt = "Location: \(location)\n"
         }
         
-        descriptionView.text = "\(classYearTxt)\(favoriteEventTxt)\(locationTxt)"
+        let descriptionText = "\(teamsTxt)\n\(classYearTxt)\(favoriteEventTxt)\(locationTxt)"
+        
+        // Create a MutableAttributedString for the profile description
+        let mutableContent = NSMutableAttributedString(string: descriptionText,
+                                                       attributes: [:])
+        
+        let start = 0
+        let end = teamsTxt.characters.count
+        
+        let boldFontAttribute = [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 12.0)]
+        mutableContent.addAttributes(boldFontAttribute, range: NSRange(location: start, length: end))
+        
+        descriptionView.attributedText = mutableContent
         
         // Set the profile picture
         if let profPicBase64 = user?.profilepic {

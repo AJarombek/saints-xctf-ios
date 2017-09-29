@@ -21,4 +21,10 @@ extension String {
     mutating func capitalizeFirstLetter() {
         self = self.capitalizingFirstLetter()
     }
+    
+    func safelyLimitedTo(length n: Int)->String {
+        let c = self.characters
+        if (c.count <= n) { return self }
+        return String( Array(c).prefix(upTo: n) )
+    }
 }

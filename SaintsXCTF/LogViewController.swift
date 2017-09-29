@@ -506,4 +506,16 @@ class LogViewController: UIViewController, UITextViewDelegate, UIPickerViewDeleg
             return
         }
     }
+    
+    // Set a limit on the description input
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange,
+                  replacementText text: String) -> Bool {
+        let str = textView.text + text
+        
+        if str.characters.count <= 1000 {
+            return true
+        }
+        textView.text = str.substring(to: str.index(str.startIndex, offsetBy: 1000))
+        return false
+    }
 }

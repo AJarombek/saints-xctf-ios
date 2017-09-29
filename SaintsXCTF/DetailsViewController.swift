@@ -10,7 +10,7 @@ import UIKit
 import os.log
 import PopupDialog
 
-class DetailsViewController: UIViewController {
+class DetailsViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate {
     
     let logTag = OSLog(subsystem: "SaintsXCTF.App.DetailsViewController",
                        category: "DetailsViewController")
@@ -166,5 +166,17 @@ class DetailsViewController: UIViewController {
     @IBAction func cancelDetails(_ sender: UIButton) {
         os_log("Cancel User Profile Details.", log: logTag, type: .debug)
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    // Set a limit on the description input
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange,
+                  replacementText text: String) -> Bool {
+        let str = textView.text + text
+        
+        if str.characters.count <= 255 {
+            return true
+        }
+        textView.text = str.substring(to: str.index(str.startIndex, offsetBy: 255))
+        return false
     }
 }
