@@ -68,6 +68,15 @@ class EditProfileViewController: UIViewController, UIGestureRecognizerDelegate {
         let buttonclick = UITapGestureRecognizer(target: self, action: #selector(self.editProfileDetails(_:)))
         buttonclick.delegate = self
         detailsButton.addGestureRecognizer(buttonclick)
+        
+        // Set click listener to the details view to open up the profile picture page
+        let propicClick = UITapGestureRecognizer(target: self, action: #selector(self.editProfilePicture(_:)))
+        propicClick.delegate = self
+        profileView.addGestureRecognizer(propicClick)
+        
+        let propicButtonclick = UITapGestureRecognizer(target: self, action: #selector(self.editProfilePicture(_:)))
+        propicButtonclick.delegate = self
+        profileView.addGestureRecognizer(propicButtonclick)
     }
     
     // Edit the users profile details (using detailsViewController)
@@ -81,5 +90,18 @@ class EditProfileViewController: UIViewController, UIGestureRecognizerDelegate {
         detailsViewController.user = user
         
         navigationController?.pushViewController(detailsViewController, animated: true)
+    }
+    
+    // Edit the users profile picture (using proPicViewController)
+    func editProfilePicture(_ sender: UIView) {
+        os_log("Editing Profile Picture", log: logTag, type: .debug)
+        
+        let proPicViewController = storyboard?.instantiateViewController(withIdentifier:
+            "proPicViewController") as! ProPicViewController
+        
+        // Pass the user to the profile picture view
+        proPicViewController.user = user
+        
+        navigationController?.pushViewController(proPicViewController, animated: true)
     }
 }

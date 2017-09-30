@@ -176,7 +176,7 @@ class DetailsViewController: UIViewController, UITextViewDelegate, UITextFieldDe
                     self.navigationController?.popViewController(animated: true)
                 }
                 
-                // Display the delete log popup which gives a final warning before deleting your log
+                // Display the popup before redirecting to edit profile page
                 let popup = PopupDialog(title: title, message: nil)
                 popup.addButton(continueButton)
                 

@@ -36,6 +36,11 @@ class ProfileViewController: UIViewController, UIGestureRecognizerDelegate {
         
         navigationController?.navigationBar.backgroundColor = UIColor(0x999999, a: 0.9)
         
+        // Add a border to the profile picture
+        profilePictureView.layer.borderWidth = 2
+        profilePictureView.layer.borderColor = UIColor(0xCCCCCC).cgColor
+        profilePictureView.layer.cornerRadius = 1
+        
         // Create top borders for all the profile selections
         let topBorder = CALayer()
         topBorder.frame = CGRect.init(x: -20, y: 0, width: view.frame.width + 20, height: 1)
