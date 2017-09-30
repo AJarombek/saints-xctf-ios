@@ -39,6 +39,32 @@ class SignUpViewController: UIViewController {
         lastName.standardStyle()
         email.standardStyle()
         firstName.standardStyle()
+        
+        // Set up the done button for the keyboard
+        setDoneKeyboard()
+    }
+    
+    // Create the done button for the keyboard
+    func setDoneKeyboard() {
+        let keyboardToolbar = UIToolbar()
+        keyboardToolbar.sizeToFit()
+        let flexBarButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let doneBarButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.dismissKeyboard))
+        keyboardToolbar.items = [flexBarButton, doneBarButton]
+        
+        // Connect the done button to all the text fields keyboards
+        username.inputAccessoryView = keyboardToolbar
+        activationCode.inputAccessoryView = keyboardToolbar
+        confirmPassword.inputAccessoryView = keyboardToolbar
+        password.inputAccessoryView = keyboardToolbar
+        lastName.inputAccessoryView = keyboardToolbar
+        email.inputAccessoryView = keyboardToolbar
+        firstName.inputAccessoryView = keyboardToolbar
+    }
+    
+    // Called when the done button on the keyboard is clicked
+    func dismissKeyboard() {
+        view.endEditing(true)
     }
     
     @IBAction func signUpUser(_ sender: UIButton) {

@@ -80,6 +80,9 @@ class CommentViewController: UITableViewController, UITextViewDelegate {
             let cell = tableView.dequeueReusableCell(withIdentifier: "NewCommentCell", for: indexPath)
                     as! NewCommentTableViewCell
             
+            // Set up the done button for the keyboard
+            setDoneKeyboard(cell: cell)
+            
             // Pass the log and the viewcontroller to the new comment cell
             cell.log = log
             cell.commentVC = self
@@ -133,7 +136,7 @@ class CommentViewController: UITableViewController, UITextViewDelegate {
                 
                 // Set the properties of the link text
                 cell.contentLabel.linkTextAttributes = [NSForegroundColorAttributeName:UIColor(0x555555),
-                                                    NSFontAttributeName:UIFont(name: "HelveticaNeue-Bold", size: 12)!]
+                                                NSFontAttributeName:UIFont(name: "HelveticaNeue-Bold", size: 12)!]
                 
                 // Allows the shouldInteractWith URL function to execute on click
                 cell.contentLabel.delegate = self
@@ -155,5 +158,22 @@ class CommentViewController: UITableViewController, UITextViewDelegate {
         os_log("%@", log: logTag, type: .debug, URL.absoluteString)
         
         return false
+    }
+    
+    // Create the done button for the keyboard in a given new comment cell
+    func setDoneKeyboard(cell: NewCommentTableViewCell) {
+        let keyboardToolbar = UIToolbar()
+        keyboardToolbar.sizeToFit()
+        let flexBarButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let doneBarButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.dismissKeyboard))
+        keyboardToolbar.items = [flexBarButton, doneBarButton]
+        
+        // Connect the done button to all the text fields keyboards
+        cell.commentField.inputAccessoryView = keyboardToolbar
+    }
+    
+    // Called when the done button on the keyboard is clicked
+    func dismissKeyboard() {
+        view.endEditing(true)
     }
 }

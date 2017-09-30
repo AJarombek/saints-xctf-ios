@@ -62,6 +62,9 @@ class DetailsViewController: UIViewController, UITextViewDelegate, UITextFieldDe
         locationField.text = user.location ?? ""
         favoriteEventField.text = user.favorite_event ?? ""
         descriptionView.text = user.user_description ?? ""
+        
+        // Set up the done button for the keyboard
+        setDoneKeyboard()
     }
     
     // Validate the mandatory fields (first name, last name, email)
@@ -123,6 +126,29 @@ class DetailsViewController: UIViewController, UITextViewDelegate, UITextFieldDe
         }
         
         return true
+    }
+    
+    // Create the done button for the keyboard
+    func setDoneKeyboard() {
+        let keyboardToolbar = UIToolbar()
+        keyboardToolbar.sizeToFit()
+        let flexBarButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let doneBarButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.dismissKeyboard))
+        keyboardToolbar.items = [flexBarButton, doneBarButton]
+        
+        // Connect the done button to all the text fields keyboards
+        firstNameField.inputAccessoryView = keyboardToolbar
+        lastNameField.inputAccessoryView = keyboardToolbar
+        emailField.inputAccessoryView = keyboardToolbar
+        classYearField.inputAccessoryView = keyboardToolbar
+        locationField.inputAccessoryView = keyboardToolbar
+        favoriteEventField.inputAccessoryView = keyboardToolbar
+        descriptionView.inputAccessoryView = keyboardToolbar
+    }
+    
+    // Called when the done button on the keyboard is clicked
+    func dismissKeyboard() {
+        view.endEditing(true)
     }
     
     // Save the profile details and send the update to the API
