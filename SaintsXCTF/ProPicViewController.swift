@@ -20,6 +20,8 @@ class ProPicViewController: UIViewController, UIGestureRecognizerDelegate,
     
     var user: User = User()
     var image: UIImage? = nil
+    var originalPic: UIImage? = nil
+    var originalBase64: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +43,9 @@ class ProPicViewController: UIViewController, UIGestureRecognizerDelegate,
         // If the user has a profile picture, display it
         if let profPicBase64 = user.profilepic {
             
+            // Save the base64 encoding in case an invalid picture is entered
+            originalBase64 = profPicBase64
+            
             // Part of the base 64 encoding is html specific, remove this piece
             let index = profPicBase64.index(profPicBase64.startIndex, offsetBy: 23)
             let base64 = profPicBase64.substring(from: index)
@@ -48,6 +53,9 @@ class ProPicViewController: UIViewController, UIGestureRecognizerDelegate,
             // Now decode the base 64 encoded string and convert it to an image
             let profPicData: Data = Data(base64Encoded: base64, options: .ignoreUnknownCharacters)!
             let profPic: UIImage = UIImage(data: profPicData)!
+            
+            // Set the original profile picture in case an invalid picture is entered
+            originalPic = profPic
             
             // Display the profile picture image
             proPicView.image = profPic
@@ -86,34 +94,61 @@ class ProPicViewController: UIViewController, UIGestureRecognizerDelegate,
         
         if let newImage: UIImage = image {
             let imageData: Data = UIImagePNGRepresentation(newImage)!
-            let proPicBase64 = imageData.base64EncodedString(options: .lineLength64Characters)
+            var proPicBase64: String = imageData.base64EncodedString()
             
-            user.profilepic = "data:image/jpeg;base64,\(proPicBase64)"
+            proPicBase64 = proPicBase64.replacingOccurrences(of: "\n", with: "")
+            
+            user.profilepic = "data:image/jpeg;base64," + proPicBase64
             
             APIClient.userPutRequest(withUsername: user.username, andUser: user) {
-                (newuser) -> Void in
+                (nu) -> Void in
                 
-                os_log("New Profile Picture Uploaded", log: self.logTag, type: .debug)
+                if let newuser: User = nu {
                 
-                // Update the signed in users details
-                SignedInUser.user = newuser
-                
-                // Build the popup dialog to be displayed
-                let title = "Profile Picture Changed"
-                
-                // Actions to do when deleting a log
-                let continueButton = DefaultButton(title: "Continue") {
-                    os_log("Continue to Edit Profile Page", log: self.logTag, type: .debug)
+                    os_log("New Profile Picture Uploaded", log: self.logTag, type: .debug)
                     
-                    // Go back in the view controller hierarchy
-                    self.navigationController?.popViewController(animated: true)
+                    // Update the signed in users details
+                    SignedInUser.user = newuser
+                    
+                    // Build the popup dialog to be displayed
+                    let title = "Profile Picture Changed"
+                    
+                    // Actions to do when deleting a log
+                    let continueButton = DefaultButton(title: "Continue") {
+                        os_log("Continue to Edit Profile Page", log: self.logTag, type: .debug)
+                        
+                        // Go back in the view controller hierarchy
+                        self.navigationController?.popViewController(animated: true)
+                    }
+                    
+                    // Display the popup before redirecting to edit profile page
+                    let popup = PopupDialog(title: title, message: nil)
+                    popup.addButton(continueButton)
+                    
+                    self.present(popup, animated: true, completion: nil)
+                } else {
+                    
+                    os_log("Failed to Upload New Profile Picture", log: self.logTag, type: .error)
+                    
+                    // On failure, restore the original profile picture
+                    self.proPicView.image = self.originalPic
+                    self.user.profilepic = self.originalBase64
+                    
+                    // Build the popup dialog to be displayed
+                    let title = "Profile Picture Not Changed"
+                    let message = "The Size of the Picture Uploaded was Too Large"
+                    
+                    // Actions to do when acknowledging the error message
+                    let continueButton = DefaultButton(title: "Continue") {
+                        os_log("Continue to Edit Profile Page", log: self.logTag, type: .debug)
+                    }
+                    
+                    // Display the popup before redirecting to edit profile page
+                    let popup = PopupDialog(title: title, message: message)
+                    popup.addButton(continueButton)
+                    
+                    self.present(popup, animated: true, completion: nil)
                 }
-                
-                // Display the popup before redirecting to edit profile page
-                let popup = PopupDialog(title: title, message: nil)
-                popup.addButton(continueButton)
-                
-                self.present(popup, animated: true, completion: nil)
             }
         } else {
             self.navigationController?.popViewController(animated: true)

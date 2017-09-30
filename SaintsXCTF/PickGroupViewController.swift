@@ -130,35 +130,38 @@ class PickGroupController: UIViewController {
         addGroups(user)
         
         APIClient.userPutRequest(withUsername: username, andUser: user) {
-            (user) -> Void in
+            (newuser) -> Void in
+            
+            if let user: User = newuser {
                 
-            os_log("Users picked groups: %@", log: self.logTag, type: .debug, user.groups)
-            
-            // Save the user picked groups data
-            SignedInUser.user = user
-            let savedUser = SignedInUser.saveUser()
-            
-            if (savedUser) {
-                os_log("Saved Updated User to Persistant Storage.", log: self.logTag, type: .debug)
-            } else {
-                os_log("Failed to Save Updated User to Persistant Storage",
-                       log: self.logTag, type: .error)
-            }
-            
-            // Redirect to the main page
-            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let mainViewController = storyBoard.instantiateViewController(withIdentifier:
-                "mainViewController") as! UITabBarController
-            self.present(mainViewController, animated: true, completion: nil)
-            
-            // Send a notification to the picked group admins
-            user.groups.forEach {
-                groupinfo in
+                os_log("Users picked groups: %@", log: self.logTag, type: .debug, user.groups)
                 
-                if let groupname: String = groupinfo.group_name {
+                // Save the user picked groups data
+                SignedInUser.user = user
+                let savedUser = SignedInUser.saveUser()
+                
+                if (savedUser) {
+                    os_log("Saved Updated User to Persistant Storage.", log: self.logTag, type: .debug)
+                } else {
+                    os_log("Failed to Save Updated User to Persistant Storage",
+                           log: self.logTag, type: .error)
+                }
+                
+                // Redirect to the main page
+                let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let mainViewController = storyBoard.instantiateViewController(withIdentifier:
+                    "mainViewController") as! UITabBarController
+                self.present(mainViewController, animated: true, completion: nil)
+                
+                // Send a notification to the picked group admins
+                user.groups.forEach {
+                    groupinfo in
                     
-                    // Find the admins for this group and send a notification to each of them
-                    self.findGroupAdmins(withGroupname: groupname, forUser: user)
+                    if let groupname: String = groupinfo.group_name {
+                        
+                        // Find the admins for this group and send a notification to each of them
+                        self.findGroupAdmins(withGroupname: groupname, forUser: user)
+                    }
                 }
             }
         }

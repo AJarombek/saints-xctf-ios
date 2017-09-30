@@ -160,27 +160,30 @@ class DetailsViewController: UIViewController, UITextViewDelegate, UITextFieldDe
             
             // If the details are valid, send them to the API
             APIClient.userPutRequest(withUsername: user.username, andUser: user) {
-                (newuser) -> Void in
+                (nu) -> Void in
                 
-                // Update the signed in users details
-                SignedInUser.user = newuser
-                
-                // Build the popup dialog to be displayed
-                let title = "Profile Details Changed"
-                
-                // Actions to do when deleting a log
-                let continueButton = DefaultButton(title: "Continue") {
-                    os_log("Continue to Edit Profile Page", log: self.logTag, type: .debug)
+                if let newuser: User = nu {
                     
-                    // Go back in the view controller hierarchy
-                    self.navigationController?.popViewController(animated: true)
+                    // Update the signed in users details
+                    SignedInUser.user = newuser
+                    
+                    // Build the popup dialog to be displayed
+                    let title = "Profile Details Changed"
+                    
+                    // Actions to do when deleting a log
+                    let continueButton = DefaultButton(title: "Continue") {
+                        os_log("Continue to Edit Profile Page", log: self.logTag, type: .debug)
+                        
+                        // Go back in the view controller hierarchy
+                        self.navigationController?.popViewController(animated: true)
+                    }
+                    
+                    // Display the popup before redirecting to edit profile page
+                    let popup = PopupDialog(title: title, message: nil)
+                    popup.addButton(continueButton)
+                    
+                    self.present(popup, animated: true, completion: nil)
                 }
-                
-                // Display the popup before redirecting to edit profile page
-                let popup = PopupDialog(title: title, message: nil)
-                popup.addButton(continueButton)
-                
-                self.present(popup, animated: true, completion: nil)
             }
             
         } else {

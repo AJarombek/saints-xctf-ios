@@ -607,7 +607,7 @@ class APIClient {
     
     // Handle PUT Request for a User
     public static func userPutRequest(withUsername username: String, andUser user: User,
-                                      completion: @escaping (User) -> Void) {
+                                      completion: @escaping (User?) -> Void) {
         
         let usersPutEndpoint = "https://www.saintsxctf.com/api/api.php/user/\(username)"
         guard let url = URL(string: usersPutEndpoint) else {
@@ -617,6 +617,7 @@ class APIClient {
         
         // Convert the User to a JSON string
         let userJSON = Mapper().toJSONString(user, prettyPrint: false)
+        os_log("%@", log: APIClient.logTag, type: .debug, userJSON!)
         
         APIRequest.put(withURL: url, andJson: userJSON ?? "") {
             (json) -> Void in
@@ -629,6 +630,10 @@ class APIClient {
                 }
             } else {
                 os_log("User Conversion Failed.", log: APIClient.logTag, type: .error)
+                
+                OperationQueue.main.addOperation {
+                    completion(nil)
+                }
             }
         }
     }

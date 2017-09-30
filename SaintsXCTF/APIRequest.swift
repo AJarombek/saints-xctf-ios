@@ -180,9 +180,9 @@ class APIRequest {
                 return
             }
                 
-            print(responseData)
-                
             let jsonString: String? = String(data: responseData, encoding: String.Encoding.utf8)
+            
+            os_log("%@", log: APIRequest.logTag, type: .debug, jsonString ?? "")
                 
             guard let json = jsonString else {
                 
