@@ -17,6 +17,8 @@ class ProPicViewController: UIViewController, UIGestureRecognizerDelegate,
                        category: "ProPicViewController")
     
     @IBOutlet weak var proPicView: UIImageView!
+    @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var cancelButton: UIButton!
     
     var user: User = User()
     var image: UIImage? = nil
@@ -93,6 +95,16 @@ class ProPicViewController: UIViewController, UIGestureRecognizerDelegate,
         os_log("Save the Profile Picture", log: logTag, type: .debug)
         
         if let newImage: UIImage = image {
+            
+            // Add a loading overlay to the profile picture on upload
+            var overlay: UIView?
+            overlay = LoadingView(frame: CGRect(x: 0, y: 0, width: 150, height: 150))
+            proPicView.addSubview(overlay!)
+            
+            // Temporarily disable the save and cancel buttons
+            saveButton.isEnabled = false
+            cancelButton.isEnabled = false
+            
             let imageData: Data = UIImagePNGRepresentation(newImage)!
             var proPicBase64: String = imageData.base64EncodedString()
             
@@ -116,6 +128,11 @@ class ProPicViewController: UIViewController, UIGestureRecognizerDelegate,
                     // Actions to do when deleting a log
                     let continueButton = DefaultButton(title: "Continue") {
                         os_log("Continue to Edit Profile Page", log: self.logTag, type: .debug)
+                        
+                        // Re-enable buttons and remove loading overlay
+                        overlay?.removeFromSuperview()
+                        self.saveButton.isEnabled = true
+                        self.cancelButton.isEnabled = true
                         
                         // Go back in the view controller hierarchy
                         self.navigationController?.popViewController(animated: true)
@@ -141,6 +158,11 @@ class ProPicViewController: UIViewController, UIGestureRecognizerDelegate,
                     // Actions to do when acknowledging the error message
                     let continueButton = DefaultButton(title: "Continue") {
                         os_log("Continue to Edit Profile Page", log: self.logTag, type: .debug)
+                        
+                        // Re-enable buttons and remove loading overlay
+                        overlay?.removeFromSuperview()
+                        self.saveButton.isEnabled = true
+                        self.cancelButton.isEnabled = true
                     }
                     
                     // Display the popup before redirecting to edit profile page

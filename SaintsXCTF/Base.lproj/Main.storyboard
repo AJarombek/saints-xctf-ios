@@ -1803,7 +1803,9 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="cancelButton" destination="8Tu-nZ-opD" id="8Y6-Tr-64y"/>
                         <outlet property="proPicView" destination="Xv6-BV-IG5" id="q8l-LE-fa6"/>
+                        <outlet property="saveButton" destination="Z6k-BE-uLa" id="k21-eg-Ak4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zPD-du-IGp" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1837,7 +1839,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KsS-GM-skk" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Profile" image="profile" id="fdF-ye-nFm"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="GWN-t1-lEn">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="GWN-t1-lEn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="deviceRGB"/>
