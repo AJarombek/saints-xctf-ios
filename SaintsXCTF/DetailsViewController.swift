@@ -158,6 +158,15 @@ class DetailsViewController: UIViewController, UITextViewDelegate, UITextFieldDe
         if validateDetails() {
             os_log("Valid Profile Details Entered: Sending updates to API", log: logTag, type: .debug)
             
+            // Add a loading overlay to the profile details on save
+            var overlay: UIView?
+            overlay = LoadingView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height))
+            view.addSubview(overlay!)
+            
+            // Temporarily disable the save and cancel buttons
+            saveButton.isEnabled = false
+            cancelButton.isEnabled = false
+            
             // If the details are valid, send them to the API
             APIClient.userPutRequest(withUsername: user.username, andUser: user) {
                 (nu) -> Void in
@@ -173,6 +182,11 @@ class DetailsViewController: UIViewController, UITextViewDelegate, UITextFieldDe
                     // Actions to do when deleting a log
                     let continueButton = DefaultButton(title: "Continue") {
                         os_log("Continue to Edit Profile Page", log: self.logTag, type: .debug)
+                        
+                        // Re-enable buttons and remove loading overlay
+                        overlay?.removeFromSuperview()
+                        self.saveButton.isEnabled = true
+                        self.cancelButton.isEnabled = true
                         
                         // Go back in the view controller hierarchy
                         self.navigationController?.popViewController(animated: true)

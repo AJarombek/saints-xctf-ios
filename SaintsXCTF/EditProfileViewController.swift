@@ -69,7 +69,7 @@ class EditProfileViewController: UIViewController, UIGestureRecognizerDelegate {
         buttonclick.delegate = self
         detailsButton.addGestureRecognizer(buttonclick)
         
-        // Set click listener to the details view to open up the profile picture page
+        // Set click listener to the profile picture view to open up the profile picture page
         let propicClick = UITapGestureRecognizer(target: self, action: #selector(self.editProfilePicture(_:)))
         propicClick.delegate = self
         profileView.addGestureRecognizer(propicClick)
@@ -77,6 +77,15 @@ class EditProfileViewController: UIViewController, UIGestureRecognizerDelegate {
         let propicButtonclick = UITapGestureRecognizer(target: self, action: #selector(self.editProfilePicture(_:)))
         propicButtonclick.delegate = self
         profileView.addGestureRecognizer(propicButtonclick)
+        
+        // Set click listener to the group view to open up the pick groups page
+        let groupClick = UITapGestureRecognizer(target: self, action: #selector(self.editProfileGroups(_:)))
+        groupClick.delegate = self
+        groupsView.addGestureRecognizer(groupClick)
+        
+        let groupButtonclick = UITapGestureRecognizer(target: self, action: #selector(self.editProfileGroups(_:)))
+        groupButtonclick.delegate = self
+        groupsView.addGestureRecognizer(groupButtonclick)
     }
     
     // Edit the users profile details (using detailsViewController)
@@ -103,5 +112,18 @@ class EditProfileViewController: UIViewController, UIGestureRecognizerDelegate {
         proPicViewController.user = user
         
         navigationController?.pushViewController(proPicViewController, animated: true)
+    }
+    
+    // Edit the users groups (using pickGroupViewController)
+    func editProfileGroups(_ sender: UIView) {
+        os_log("Editing Profile Picture", log: logTag, type: .debug)
+        
+        let pickViewController = storyboard?.instantiateViewController(withIdentifier:
+            "pickGroupViewController") as! PickGroupController
+        
+        // Pass the user to the pick groups view
+        pickViewController.user = user
+        
+        navigationController?.pushViewController(pickViewController, animated: true)
     }
 }

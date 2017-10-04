@@ -297,6 +297,7 @@
                         <outlet property="alumniButton" destination="5bH-iV-JgC" id="ByY-wY-MCA"/>
                         <outlet property="menstfButton" destination="9r4-zl-F1S" id="MQW-Iu-vkq"/>
                         <outlet property="mensxcButton" destination="m2t-ip-lNS" id="rRz-yY-arP"/>
+                        <outlet property="submitButton" destination="gDa-DK-8GR" id="uWy-rV-jwE"/>
                         <outlet property="womenstfButton" destination="Ig3-hh-azd" id="z9v-vB-hlx"/>
                         <outlet property="womensxcButton" destination="TLx-Pl-STL" id="tea-gk-hdi"/>
                     </connections>

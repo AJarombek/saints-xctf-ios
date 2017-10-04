@@ -14,6 +14,7 @@ class PickGroupController: UIViewController {
     let logTag = OSLog(subsystem: "SaintsXCTF.App.PickGroupViewController",
                        category: "PickGroupViewController")
     
+    var user: User? = nil
     
     @IBOutlet weak var alumniButton: UIButton!
     @IBOutlet weak var womenstfButton: UIButton!
@@ -21,8 +22,13 @@ class PickGroupController: UIViewController {
     @IBOutlet weak var womensxcButton: UIButton!
     @IBOutlet weak var mensxcButton: UIButton!
     
+    @IBOutlet weak var submitButton: UIButton!
+    
     var mensxc = false, wmensxc = false, menstf = false,
         wmenstf = false, alumni = false
+    var mensxcAccepted = false, wmensxcAccepted = false,
+        menstfAccepted = false, wmenstfAccepted = false,
+        alumniAccepted = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,17 +46,61 @@ class PickGroupController: UIViewController {
         menstfButton.backgroundColor = UIColor(0xEEEEEE)
         womenstfButton.backgroundColor = UIColor(0xEEEEEE)
         alumniButton.backgroundColor = UIColor(0xEEEEEE)
+        
+        // See if there is a user entered.  If so, check to see if the user is a member of any groups
+        if let _ : User = user {
+            let groups: [GroupInfo] = (user?.groups)!
+            
+            groups.forEach {
+                (group) -> Void in
+                
+                // Get whether the user is accepted into the group
+                let accepted: Bool = group.status == "accepted"
+                    
+                let groupName: String = group.group_name
+                
+                // Select the group that the user is a member of
+                switch groupName {
+                case "mensxc":
+                    mensxcAccepted = accepted
+                    mensxcSelected()
+                case "wmensxc":
+                    wmensxcAccepted = accepted
+                    womensxcSelected()
+                case "menstf":
+                    menstfAccepted = accepted
+                    menstfSelected()
+                case "wmenstf":
+                    wmenstfAccepted = accepted
+                    womenstfSelected()
+                case "alumni":
+                    alumniAccepted = accepted
+                    alumniSelected()
+                default:
+                    os_log("Invalid Group Name.", log: OSLog.default, type: .error)
+                }
+            }
+        }
     }
     
     // Functions for clicking group buttons.
     // Joined -> Change to Grey Background, Disable Conflicting Groups
     // Unjoined -> Change to White Background, Check for Resolved Conflicts
     
+    // Men's Cross Country
     @IBAction func mensxcSelected(_ sender: UIButton) {
+        mensxcSelected()
+    }
+    
+    func mensxcSelected() {
         mensxc = !mensxc
         
         if (mensxc) {
-            mensxcButton.backgroundColor = UIColor(0xCCCCCC)
+            if mensxcAccepted {
+                mensxcButton.backgroundColor = UIColor(0x990000)
+            } else {
+                mensxcButton.backgroundColor = UIColor(0xCCCCCC)
+            }
             womensxcButton.isEnabled = false
             womenstfButton.isEnabled = false
         } else {
@@ -62,11 +112,20 @@ class PickGroupController: UIViewController {
         }
     }
     
+    // Women's Cross Country
     @IBAction func womensxcSelected(_ sender: UIButton) {
+        womensxcSelected()
+    }
+    
+    func womensxcSelected() {
         wmensxc = !wmensxc
         
         if (wmensxc) {
-            womensxcButton.backgroundColor = UIColor(0xCCCCCC)
+            if wmensxcAccepted {
+                womensxcButton.backgroundColor = UIColor(0x990000)
+            } else {
+                womensxcButton.backgroundColor = UIColor(0xCCCCCC)
+            }
             mensxcButton.isEnabled = false
             menstfButton.isEnabled = false
         } else {
@@ -78,11 +137,20 @@ class PickGroupController: UIViewController {
         }
     }
     
+    // Women's Track & Field
     @IBAction func womenstfSelected(_ sender: UIButton) {
+        womenstfSelected()
+    }
+    
+    func womenstfSelected() {
         wmenstf = !wmenstf
         
         if (wmenstf) {
-            womenstfButton.backgroundColor = UIColor(0xCCCCCC)
+            if wmenstfAccepted {
+                womenstfButton.backgroundColor = UIColor(0x990000)
+            } else {
+                womenstfButton.backgroundColor = UIColor(0xCCCCCC)
+            }
             mensxcButton.isEnabled = false
             menstfButton.isEnabled = false
         } else {
@@ -94,11 +162,20 @@ class PickGroupController: UIViewController {
         }
     }
     
+    // Men's Track & Field
     @IBAction func menstfSelected(_ sender: UIButton) {
+        menstfSelected()
+    }
+    
+    func menstfSelected() {
         menstf = !menstf
         
         if (menstf) {
-            menstfButton.backgroundColor = UIColor(0xCCCCCC)
+            if menstfAccepted {
+                menstfButton.backgroundColor = UIColor(0x990000)
+            } else {
+                menstfButton.backgroundColor = UIColor(0xCCCCCC)
+            }
             womensxcButton.isEnabled = false
             womenstfButton.isEnabled = false
         } else {
@@ -110,11 +187,20 @@ class PickGroupController: UIViewController {
         }
     }
     
+    // Alumni
     @IBAction func alumniSelected(_ sender: UIButton) {
+        alumniSelected()
+    }
+    
+    func alumniSelected() {
         alumni = !alumni
         
         if (alumni) {
-            alumniButton.backgroundColor = UIColor(0xCCCCCC)
+            if alumniAccepted {
+                alumniButton.backgroundColor = UIColor(0x990000)
+            } else {
+                alumniButton.backgroundColor = UIColor(0xCCCCCC)
+            }
         } else {
             alumniButton.backgroundColor = UIColor(0xEEEEEE)
         }
@@ -124,6 +210,14 @@ class PickGroupController: UIViewController {
         _ = SignedInUser()
         let user = SignedInUser.user
         let username = user.username!
+        
+        // Add a loading overlay to the pick groups on save
+        var overlay: UIView?
+        overlay = LoadingView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height))
+        view.addSubview(overlay!)
+        
+        // Temporarily disable the submit button
+        submitButton.isEnabled = false
         
         // In swift classes are pass by reference, so changing the altered user in addGroups
         // points back to this user object
@@ -146,6 +240,10 @@ class PickGroupController: UIViewController {
                     os_log("Failed to Save Updated User to Persistant Storage",
                            log: self.logTag, type: .error)
                 }
+                
+                // Re-enable button and remove loading overlay
+                overlay?.removeFromSuperview()
+                self.submitButton.isEnabled = true
                 
                 // Redirect to the main page
                 let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
@@ -209,7 +307,10 @@ class PickGroupController: UIViewController {
             let mensxcInfo = GroupInfo()
             mensxcInfo.group_name = "mensxc"
             mensxcInfo.group_title = "Men's Cross Country"
-            mensxcInfo.status = "pending"
+            
+            let mensxcStatus = mensxcAccepted ? "accepted" : "pending"
+            mensxcInfo.status = mensxcStatus
+            
             mensxcInfo.user = "user"
             
             user.groups.append(mensxcInfo)
@@ -219,7 +320,10 @@ class PickGroupController: UIViewController {
             let wmensxcInfo = GroupInfo()
             wmensxcInfo.group_name = "wmensxc"
             wmensxcInfo.group_title = "Women's Cross Country"
-            wmensxcInfo.status = "pending"
+            
+            let wmensxcStatus = wmensxcAccepted ? "accepted" : "pending"
+            wmensxcInfo.status = wmensxcStatus
+            
             wmensxcInfo.user = "user"
             
             user.groups.append(wmensxcInfo)
@@ -229,7 +333,10 @@ class PickGroupController: UIViewController {
             let menstfInfo = GroupInfo()
             menstfInfo.group_name = "mensxf"
             menstfInfo.group_title = "Men's Track & Field"
-            menstfInfo.status = "pending"
+            
+            let menstfStatus = menstfAccepted ? "accepted" : "pending"
+            menstfInfo.status = menstfStatus
+            
             menstfInfo.user = "user"
             
             user.groups.append(menstfInfo)
@@ -239,7 +346,10 @@ class PickGroupController: UIViewController {
             let wmenstfInfo = GroupInfo()
             wmenstfInfo.group_name = "wmenstf"
             wmenstfInfo.group_title = "Women's Track & Field"
-            wmenstfInfo.status = "pending"
+            
+            let wmenstfStatus = wmenstfAccepted ? "accepted" : "pending"
+            wmenstfInfo.status = wmenstfStatus
+            
             wmenstfInfo.user = "user"
             
             user.groups.append(wmenstfInfo)
@@ -249,7 +359,10 @@ class PickGroupController: UIViewController {
             let alumniInfo = GroupInfo()
             alumniInfo.group_name = "alumni"
             alumniInfo.group_title = "Alumni"
-            alumniInfo.status = "pending"
+            
+            let alumniStatus = alumniAccepted ? "accepted" : "pending"
+            alumniInfo.status = alumniStatus
+            
             alumniInfo.user = "user"
             
             user.groups.append(alumniInfo)
