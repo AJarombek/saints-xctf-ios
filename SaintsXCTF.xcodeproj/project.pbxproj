@@ -39,6 +39,7 @@
 		A15E62491F52372000AC9EF1 /* LogTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15E62481F52372000AC9EF1 /* LogTableViewCell.swift */; };
 		A15E624C1F536C8500AC9EF1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15E624B1F536C8500AC9EF1 /* Constants.swift */; };
 		A173CB541F81C07D009C7A28 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A173CB531F81C07D009C7A28 /* LoadingView.swift */; };
+		A173CB561F847D90009C7A28 /* MonthlyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A173CB551F847D90009C7A28 /* MonthlyViewController.swift */; };
 		A18968271F7B25940073A73B /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18968261F7B25940073A73B /* EditProfileViewController.swift */; };
 		A18968291F7B44150073A73B /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18968281F7B44150073A73B /* DetailsViewController.swift */; };
 		A189682B1F7C903B0073A73B /* TextViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = A189682A1F7C903B0073A73B /* TextViewExt.swift */; };
@@ -111,6 +112,7 @@
 		A15E62481F52372000AC9EF1 /* LogTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogTableViewCell.swift; sourceTree = "<group>"; };
 		A15E624B1F536C8500AC9EF1 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A173CB531F81C07D009C7A28 /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		A173CB551F847D90009C7A28 /* MonthlyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthlyViewController.swift; sourceTree = "<group>"; };
 		A18968261F7B25940073A73B /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		A18968281F7B44150073A73B /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		A189682A1F7C903B0073A73B /* TextViewExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewExt.swift; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 				A18968261F7B25940073A73B /* EditProfileViewController.swift */,
 				A18968281F7B44150073A73B /* DetailsViewController.swift */,
 				A189682C1F7F253E0073A73B /* ProPicViewController.swift */,
+				A173CB551F847D90009C7A28 /* MonthlyViewController.swift */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -514,6 +517,7 @@
 				A15E622E1F3F97D700AC9EF1 /* ProfileViewController.swift in Sources */,
 				A1505B9A1E8F11BC00F111DB /* Log.swift in Sources */,
 				A173CB541F81C07D009C7A28 /* LoadingView.swift in Sources */,
+				A173CB561F847D90009C7A28 /* MonthlyViewController.swift in Sources */,
 				A189682B1F7C903B0073A73B /* TextViewExt.swift in Sources */,
 				A15E62401F4273BB00AC9EF1 /* StartViewController.swift in Sources */,
 				A1D53DF61E8DE25400842177 /* User.swift in Sources */,
