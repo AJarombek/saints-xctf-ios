@@ -94,6 +94,15 @@ class ProfileViewController: UIViewController, UIGestureRecognizerDelegate {
         buttonclickLogs.delegate = self
         logsButton.addGestureRecognizer(buttonclickLogs)
         
+        // Set click listener to the monthly view to open up the users monthly calendar
+        let clickMonthly = UITapGestureRecognizer(target: self, action: #selector(self.showMonthly(_:)))
+        clickMonthly.delegate = self
+        monthlyView.addGestureRecognizer(clickMonthly)
+        
+        let buttonclickMonthly = UITapGestureRecognizer(target: self, action: #selector(self.showMonthly(_:)))
+        buttonclickMonthly.delegate = self
+        monthlyButton.addGestureRecognizer(buttonclickMonthly)
+        
         // If there is no user defined, use the currently signed in user
         if let _ = user {
             os_log("Viewing Other Profile: %@", log: logTag, type: .debug, user?.description ?? "")
@@ -204,6 +213,19 @@ class ProfileViewController: UIViewController, UIGestureRecognizerDelegate {
         mainViewController.userPassed = user ?? User()
         
         navigationController?.pushViewController(mainViewController, animated: true)
+    }
+    
+    // Show the users monthly calendar (using monthlyViewController)
+    func showMonthly(_ sender: UIView) {
+        os_log("Viewing Profile Monthly", log: logTag, type: .debug)
+        
+        let monthlyViewController = storyboard?.instantiateViewController(withIdentifier:
+            "monthlyViewController") as! MonthlyViewController
+        
+        // Pass the user to the edit profile view
+        monthlyViewController.user = user ?? User()
+        
+        navigationController?.pushViewController(monthlyViewController, animated: true)
     }
     
     // Edit the users profile (using editProfileViewController)

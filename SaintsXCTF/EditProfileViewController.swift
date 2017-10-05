@@ -116,7 +116,7 @@ class EditProfileViewController: UIViewController, UIGestureRecognizerDelegate {
     
     // Edit the users groups (using pickGroupViewController)
     func editProfileGroups(_ sender: UIView) {
-        os_log("Editing Profile Picture", log: logTag, type: .debug)
+        os_log("Editing Profile Groups", log: logTag, type: .debug)
         
         let pickViewController = storyboard?.instantiateViewController(withIdentifier:
             "pickGroupViewController") as! PickGroupController
