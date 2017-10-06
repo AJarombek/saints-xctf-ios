@@ -175,8 +175,27 @@ class MonthlyViewController: UIViewController {
     @IBOutlet weak var miles42: UILabel!
     @IBOutlet weak var total06: UILabel!
     
+    // Get all the views for the week totals
+    @IBOutlet weak var totalView01: UIView!
+    @IBOutlet weak var totalView02: UIView!
+    @IBOutlet weak var totalView03: UIView!
+    @IBOutlet weak var totalView04: UIView!
+    @IBOutlet weak var totalView05: UIView!
+    @IBOutlet weak var totalView06: UIView!
+    
     var user: User = User()
+    var weekstart: String = ""
     var run = true, bike = false, swim = false, other = false
+    
+    var weekdays: [UILabel] = []
+    var views: [UIView] = []
+    var days: [UILabel] = []
+    var miles: [UILabel] = []
+    var totals: [UILabel] = []
+    var totalviews: [UIView] = []
+    var dayLabels: [String] = []
+    
+    var monthStart: Date = Date()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -191,20 +210,74 @@ class MonthlyViewController: UIViewController {
         navigationItem.backBarButtonItem = UIBarButtonItem(title: " ", style:
             UIBarButtonItemStyle.plain, target: nil, action: nil)
         
-        // Set the margins for the filter stack view
-        //filterStackView.layoutMargins = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 1)
-        //filterStackView.isLayoutMarginsRelativeArrangement = true
+        // Create array for the calendar day labels
+        weekdays = [d1Label, d2Label, d3Label, d4Label, d5Label, d6Label, d7Label]
+        dayLabels = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"]
         
-        // Add a border to the right side of the filter buttons
-        let runRightBorder = CALayer()
-        runRightBorder.frame = CGRect.init(x: runFilterButton.frame.width + 1, y: 0,
-                                               width: 1, height: runFilterButton.frame.height)
-        runRightBorder.backgroundColor = UIColor(0xBBBBBB).cgColor
+        // Create array for the views in the calendar
+        views = [view01, view02, view03, view04, view05, view06, view07, view08, view09, view10,
+                    view11, view12, view13, view14, view15, view16, view17, view18, view19, view20,
+                    view21, view22, view23, view24, view25, view26, view27, view28, view29, view30,
+                    view31, view32, view33, view34, view35, view36, view37, view38, view39, view40,
+                    view41, view42]
         
-        runFilterButton.layer.addSublayer(runRightBorder)
+        // Create array for the days in the calendar
+        days = [day01, day02, day03, day04, day05, day06, day07, day08, day09, day10,
+                 day11, day12, day13, day14, day15, day16, day17, day18, day19, day20,
+                 day21, day22, day23, day24, day25, day26, day27, day28, day29, day30,
+                 day31, day32, day33, day34, day35, day36, day37, day38, day39, day40,
+                 day41, day42]
+        
+        // Create array for the daily mileage in the calendar
+        miles = [miles01, miles02, miles03, miles04, miles05, miles06, miles07, miles08, miles09, miles10,
+                miles11, miles12, miles13, miles14, miles15, miles16, miles17, miles18, miles19, miles20,
+                miles21, miles22, miles23, miles24, miles25, miles26, miles27, miles28, miles29, miles30,
+                miles31, miles32, miles33, miles34, miles35, miles36, miles37, miles38, miles39, miles40,
+                miles41, miles42]
+        
+        // Create array for the weekly total mileage in the calendar
+        totals = [total01, total02, total03, total04, total05, total06]
+        
+        // Create array for the weekly total views in the calendar
+        totalviews = [totalView01, totalView02, totalView03, totalView04, totalView05, totalView06]
+        
+        // Give each day a border
+        for dayview in views {
+            dayview.layer.borderWidth = 1
+            dayview.layer.borderColor = UIColor(0xCCCCCC).cgColor
+        }
+        
+        // Give each week total a border
+        for totalview in totalviews {
+            totalview.layer.borderWidth = 1
+            totalview.layer.borderColor = UIColor(0xCCCCCC).cgColor
+        }
+        
+        // Get the users weekstart to build the calendar
+        weekstart = user.week_start!
+        
+        // Days have to be shifted if the weekstart is sunday
+        if weekstart == "sunday" {
+            
+            for i in 0...6 {
+                weekdays[i].text = dayLabels[i]
+            }
+        }
         
         // By default runs are shown in the monthly view
         filterRun()
+        
+        // Get the date for the start of the month
+        let date = Date()
+        let calendar = Calendar(identifier: .gregorian)
+        
+        var components = calendar.dateComponents([.year, .month, .day], from: date)
+        components.day = 1
+        
+        monthStart = Calendar.current.date(from: components)!
+        
+        reset()
+        filter(monthStart)
     }
     
     // Actions for when the filter buttons for the monthly view are clicked
@@ -216,7 +289,7 @@ class MonthlyViewController: UIViewController {
     @IBAction func filterRun(_ sender: UIButton) {
         run = !run
         filterRun()
-        filter()
+        filter(monthStart)
     }
     
     func filterRun() {
@@ -233,7 +306,7 @@ class MonthlyViewController: UIViewController {
     @IBAction func filterBike(_ sender: UIButton) {
         bike = !bike
         filterBike()
-        filter()
+        filter(monthStart)
     }
     
     func filterBike() {
@@ -250,7 +323,7 @@ class MonthlyViewController: UIViewController {
     @IBAction func filterSwim(_ sender: UIButton) {
         swim = !swim
         filterSwim()
-        filter()
+        filter(monthStart)
     }
     
     func filterSwim() {
@@ -267,7 +340,7 @@ class MonthlyViewController: UIViewController {
     @IBAction func filterOther(_ sender: UIButton) {
         other = !other
         filterOther()
-        filter()
+        filter(monthStart)
     }
     
     func filterOther() {
@@ -281,16 +354,66 @@ class MonthlyViewController: UIViewController {
     }
     
     // A general filter function for the monthly calendar
-    func filter() {
+    func filter(_ startMonth: Date) {
         
+        let calendar = Calendar(identifier: .gregorian)
+        var components = calendar.dateComponents([.year, .month, .day], from: startMonth)
+        
+        components.month = 1
+        components.year = 0
+        components.day = -1
+        var endMonth = Calendar.current.date(byAdding: components, to: startMonth)
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMMM YYYY"
+        let title = dateFormatter.string(from: startMonth)
+        
+        monthLabel.text = title
+    }
+    
+    // A function to reset the calendar to its original state
+    func reset() {
+        views.forEach {
+            view -> Void in
+            
+            view.backgroundColor = UIColor(0xFFFFFF)
+        }
+        
+        miles.forEach {
+            mileLabel -> Void in
+            
+            mileLabel.text = ""
+        }
     }
     
     @IBAction func prevMonth(_ sender: UIButton) {
         os_log("View Previous Month.", log: logTag, type: .debug)
+        
+        let calendar = Calendar(identifier: .gregorian)
+        var components = calendar.dateComponents([.year, .month, .day], from: monthStart)
+        
+        components.year = 0
+        components.day = 0
+        components.month = -1
+        monthStart = Calendar.current.date(byAdding: components, to: monthStart)!
+        
+        reset()
+        filter(monthStart)
     }
     
     @IBAction func nextMonth(_ sender: UIButton) {
         os_log("View Next Month.", log: logTag, type: .debug)
+        
+        let calendar = Calendar(identifier: .gregorian)
+        var components = calendar.dateComponents([.year, .month, .day], from: monthStart)
+        
+        components.year = 0
+        components.day = 0
+        components.month = 1
+        monthStart = Calendar.current.date(byAdding: components, to: monthStart)!
+        
+        reset()
+        filter(monthStart)
     }
     
 }
