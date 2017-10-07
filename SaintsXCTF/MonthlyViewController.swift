@@ -295,6 +295,7 @@ class MonthlyViewController: UIViewController {
     @IBAction func filterRun(_ sender: UIButton) {
         run = !run
         filterRun()
+        reset()
         filter(monthStart)
     }
     
@@ -312,6 +313,7 @@ class MonthlyViewController: UIViewController {
     @IBAction func filterBike(_ sender: UIButton) {
         bike = !bike
         filterBike()
+        reset()
         filter(monthStart)
     }
     
@@ -329,6 +331,7 @@ class MonthlyViewController: UIViewController {
     @IBAction func filterSwim(_ sender: UIButton) {
         swim = !swim
         filterSwim()
+        reset()
         filter(monthStart)
     }
     
@@ -346,6 +349,7 @@ class MonthlyViewController: UIViewController {
     @IBAction func filterOther(_ sender: UIButton) {
         other = !other
         filterOther()
+        reset()
         filter(monthStart)
     }
     
@@ -361,6 +365,9 @@ class MonthlyViewController: UIViewController {
     
     // A general filter function for the monthly calendar
     func filter(_ startMonth: Date) {
+        
+        // Get the type filter to send to the API
+        let typeFilter = getTypeFilter()
         
         var start = startMonth
         
@@ -430,7 +437,8 @@ class MonthlyViewController: UIViewController {
         }
         
         // Get the range view from the API for this month and user
-        APIClient.rangeViewGetRequest(withParamType: "user", sortParam: user.username!, filter: "r", start: first, end: last) {
+        APIClient.rangeViewGetRequest(withParamType: "user", sortParam: user.username!, filter: typeFilter,
+                                      start: first, end: last) {
             rangeView -> Void in
             
             var weekTotals: [Double] = [0,0,0,0,0,0]
@@ -496,6 +504,15 @@ class MonthlyViewController: UIViewController {
             
             total.text = ""
         }
+    }
+    
+    // Return the type filter to send to the rangeview API endpoint
+    func getTypeFilter() -> String {
+        let r = run ? "r" : ""
+        let b = bike ? "b" : ""
+        let s = swim ? "s" : ""
+        let o = other ? "o" : ""
+        return "\(r)\(b)\(s)\(o)"
     }
     
     @IBAction func prevMonth(_ sender: UIButton) {
