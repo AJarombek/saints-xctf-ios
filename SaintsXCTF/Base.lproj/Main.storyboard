@@ -3702,6 +3702,79 @@
             </objects>
             <point key="canvasLocation" x="3620" y="501.49925037481262"/>
         </scene>
+        <!--Weekly View Controller-->
+        <scene sceneID="Jdc-SA-Fdg">
+            <objects>
+                <viewController storyboardIdentifier="weeklyViewController" id="8eG-w6-bec" customClass="WeeklyViewController" customModule="SaintsXCTF" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="a9i-vb-1O5"/>
+                        <viewControllerLayoutGuide type="bottom" id="QFh-fU-Yh1"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="x8y-l8-5at">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qC3-nP-3UH">
+                                <rect key="frame" x="36" y="30" width="303" height="30"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="juP-Bb-sHv">
+                                        <rect key="frame" x="0.0" y="0.0" width="76" height="30"/>
+                                        <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="Run">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4q6-3H-MIh">
+                                        <rect key="frame" x="76" y="0.0" width="75.5" height="30"/>
+                                        <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="Bike">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="geR-cl-Oog">
+                                        <rect key="frame" x="151.5" y="0.0" width="76" height="30"/>
+                                        <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="Swim">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bd1-Gg-Vkw">
+                                        <rect key="frame" x="227.5" y="0.0" width="75.5" height="30"/>
+                                        <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="Other">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="juP-Bb-sHv" firstAttribute="width" secondItem="4q6-3H-MIh" secondAttribute="width" id="Qso-ev-Kh5"/>
+                                    <constraint firstItem="geR-cl-Oog" firstAttribute="width" secondItem="bd1-Gg-Vkw" secondAttribute="width" id="d7l-ta-hqa"/>
+                                    <constraint firstItem="4q6-3H-MIh" firstAttribute="width" secondItem="geR-cl-Oog" secondAttribute="width" id="sl4-rr-HpP"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="qC3-nP-3UH" firstAttribute="leading" secondItem="x8y-l8-5at" secondAttribute="leadingMargin" constant="20" id="Dnq-ZR-BqG"/>
+                            <constraint firstItem="qC3-nP-3UH" firstAttribute="top" secondItem="a9i-vb-1O5" secondAttribute="bottom" constant="10" id="Li0-KS-at4"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="qC3-nP-3UH" secondAttribute="trailing" constant="20" id="nNH-BT-kWY"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="bikeFilterButton" destination="4q6-3H-MIh" id="xGc-CT-wsc"/>
+                        <outlet property="otherFilterButton" destination="bd1-Gg-Vkw" id="XuR-oM-yH5"/>
+                        <outlet property="runFilterButton" destination="juP-Bb-sHv" id="oSf-MC-n0E"/>
+                        <outlet property="swimFilterButton" destination="geR-cl-Oog" id="JHi-bz-62b"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5Kc-q6-pLe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3620" y="1155"/>
+        </scene>
         <!--Pro Pic View Controller-->
         <scene sceneID="MTo-uu-01G">
             <objects>

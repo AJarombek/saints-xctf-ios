@@ -256,7 +256,6 @@ class MonthlyViewController: UIViewController {
         
         // Get the users weekstart to build the calendar
         weekstart = user.week_start!
-        print(weekstart)
         
         // Setup depending on when the user has their weeks set to start
         if weekstart == "sunday" {
@@ -369,7 +368,7 @@ class MonthlyViewController: UIViewController {
         // Get the type filter to send to the API
         let typeFilter = getTypeFilter()
         
-        var start = startMonth
+        let start = startMonth
         
         let calendar = Calendar(identifier: .gregorian)
         
@@ -388,8 +387,6 @@ class MonthlyViewController: UIViewController {
         var weekdayComponent = calendar.dateComponents([.weekday], from: startMonth)
         let weekday = weekdayComponent.weekday!
         
-        //start.addTimeInterval(prevday)
-        
         // First day of the calendar
         var firstDay: Date = Calendar.current.date(byAdding: .day, value: weekstartOffset - weekday,
                                                          to: start)!
@@ -403,7 +400,7 @@ class MonthlyViewController: UIViewController {
         }
         
         // Get a copy of firstDay for later use - we will be modifying firstDay
-        var fd = firstDay
+        let fd = firstDay
         
         // Last day of the calendar
         let lastDay: Date = Calendar.current.date(byAdding: .day, value: 41, to: firstDay)!
@@ -451,7 +448,6 @@ class MonthlyViewController: UIViewController {
                 
                 let difComponent = Calendar.current.dateComponents([.day], from: fd, to: activityDate)
                 let day = difComponent.day!
-                print(day)
                 
                 // Get the miles string and convert it to a double
                 var milesString: String = activity.miles!
@@ -460,7 +456,6 @@ class MonthlyViewController: UIViewController {
                 // Get the miles into a number with two decimal places
                 milesString = String(format: "%.2f", miles)
                 miles = Double(milesString)!
-                print(miles)
                 
                 self.miles[day].text = "\(milesString) Miles"
                 

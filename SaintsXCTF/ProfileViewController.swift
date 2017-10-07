@@ -103,6 +103,15 @@ class ProfileViewController: UIViewController, UIGestureRecognizerDelegate {
         buttonclickMonthly.delegate = self
         monthlyButton.addGestureRecognizer(buttonclickMonthly)
         
+        // Set click listener to the weekly view to open up the users weekly exercise graph
+        let clickWeekly = UITapGestureRecognizer(target: self, action: #selector(self.showWeekly(_:)))
+        clickWeekly.delegate = self
+        weeklyView.addGestureRecognizer(clickWeekly)
+        
+        let buttonclickWeekly = UITapGestureRecognizer(target: self, action: #selector(self.showWeekly(_:)))
+        buttonclickWeekly.delegate = self
+        weeklyButton.addGestureRecognizer(buttonclickWeekly)
+        
         // If there is no user defined, use the currently signed in user
         if let _ = user {
             os_log("Viewing Other Profile: %@", log: logTag, type: .debug, user?.description ?? "")
@@ -226,6 +235,19 @@ class ProfileViewController: UIViewController, UIGestureRecognizerDelegate {
         monthlyViewController.user = user ?? User()
         
         navigationController?.pushViewController(monthlyViewController, animated: true)
+    }
+    
+    // Show the users weekly exercise graph (using weeklyViewController)
+    func showWeekly(_ sender: UIView) {
+        os_log("Viewing Profile Weekly", log: logTag, type: .debug)
+        
+        let weeklyViewController = storyboard?.instantiateViewController(withIdentifier:
+            "weeklyViewController") as! WeeklyViewController
+        
+        // Pass the user to the edit profile view
+        weeklyViewController.user = user ?? User()
+        
+        navigationController?.pushViewController(weeklyViewController, animated: true)
     }
     
     // Edit the users profile (using editProfileViewController)
