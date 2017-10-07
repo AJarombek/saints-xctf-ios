@@ -362,6 +362,8 @@ class MonthlyViewController: UIViewController {
     // A general filter function for the monthly calendar
     func filter(_ startMonth: Date) {
         
+        var start = startMonth
+        
         let calendar = Calendar(identifier: .gregorian)
         
         // Intervals to add and subtract a day from a date
@@ -379,13 +381,22 @@ class MonthlyViewController: UIViewController {
         var weekdayComponent = calendar.dateComponents([.weekday], from: startMonth)
         let weekday = weekdayComponent.weekday!
         
+        //start.addTimeInterval(prevday)
+        
         // First day of the calendar
-        var fd: Date = Calendar.current.date(byAdding: .day, value: weekstartOffset - weekday,
-                                                   to: startMonth)!
         var firstDay: Date = Calendar.current.date(byAdding: .day, value: weekstartOffset - weekday,
-                                                         to: startMonth)!
-        firstDay.addTimeInterval(prevday)
-        fd.addTimeInterval(prevday)
+                                                         to: start)!
+        
+        let dayComponent = calendar.dateComponents([.day], from: firstDay)
+        let dayNum: Int = dayComponent.day!
+        
+        // If the first day is between 2 and 4, we want to subtract a week from the first day
+        if dayNum < 5 && dayNum > 1 {
+            firstDay.addTimeInterval(prevday * 7)
+        }
+        
+        // Get a copy of firstDay for later use - we will be modifying firstDay
+        var fd = firstDay
         
         // Last day of the calendar
         let lastDay: Date = Calendar.current.date(byAdding: .day, value: 41, to: firstDay)!
@@ -434,26 +445,56 @@ class MonthlyViewController: UIViewController {
                 let day = difComponent.day!
                 print(day)
                 
-                let miles = activity.miles!
+                // Get the miles string and convert it to a double
+                var milesString: String = activity.miles!
+                var miles: Double = Double(milesString)!
+                
+                // Get the miles into a number with two decimal places
+                milesString = String(format: "%.2f", miles)
+                miles = Double(milesString)!
                 print(miles)
                 
-                self.miles[day].text = "\(miles) Miles"
+                self.miles[day].text = "\(milesString) Miles"
+                
+                // Set the background color based on the days feel
+                let feel: Int = Int(activity.feel)!
+                self.views[day].backgroundColor = UIColor(Constants.getFeelColor(feel - 1))
+                
+                // Add this days mileage to the weekly total
+                let weekIndex: Int = day / 7
+                weekTotals[weekIndex] += miles
+            }
+            
+            // Populate all the week totals
+            for i in 0...5 {
+                let weekMiles = String(format: "%.2f", weekTotals[i])
+                self.totals[i].text = "\(weekMiles) Miles"
             }
         }
     }
     
     // A function to reset the calendar to its original state
     func reset() {
+        
+        // Reset all the views background color
         views.forEach {
             view -> Void in
             
             view.backgroundColor = UIColor(0xFFFFFF)
         }
         
+        // Reset all the miles for each day
         miles.forEach {
             mileLabel -> Void in
             
             mileLabel.text = ""
+        }
+        
+        // Reset the weekly mileage totals
+        totals.forEach {
+            total -> Void in
+            
+            total.text = ""
         }
     }
     
