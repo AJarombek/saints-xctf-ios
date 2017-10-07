@@ -406,11 +406,12 @@ class APIClient {
     }
     
     // Handle GET Requests for a Range View
-    public static func rangeViewGetRequest(withParamType paramType: String, sortParam: String,
-                                           start: Int, end: Int, completion: @escaping ([RangeView]) -> Void) {
+    public static func rangeViewGetRequest(withParamType paramType: String, sortParam: String, filter: String,
+                                           start: String, end: String, completion: @escaping ([RangeView]) -> Void) {
         
         let rangeviewGetEndpoint = "https://www.saintsxctf.com/api/api.php/rangeview/"
-            + "\(paramType)/\(sortParam)/\(start)/\(end)"
+            + "\(paramType)/\(sortParam)/\(filter)/\(start)/\(end)"
+        print(rangeviewGetEndpoint)
         guard let url = URL(string: rangeviewGetEndpoint) else {
             os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
             return

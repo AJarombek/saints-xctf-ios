@@ -12,8 +12,8 @@ import ObjectMapper
 class RangeView: Mappable, CustomStringConvertible {
     
     var date: String!
-    var miles: Double!
-    var feel: Int!
+    var miles: String!
+    var feel: String!
     
     required init?(map: Map) {
         // pass

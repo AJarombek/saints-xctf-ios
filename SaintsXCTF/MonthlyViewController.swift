@@ -185,6 +185,7 @@ class MonthlyViewController: UIViewController {
     
     var user: User = User()
     var weekstart: String = ""
+    var weekstartOffset: Int = 0
     var run = true, bike = false, swim = false, other = false
     
     var weekdays: [UILabel] = []
@@ -255,13 +256,18 @@ class MonthlyViewController: UIViewController {
         
         // Get the users weekstart to build the calendar
         weekstart = user.week_start!
+        print(weekstart)
         
-        // Days have to be shifted if the weekstart is sunday
+        // Setup depending on when the user has their weeks set to start
         if weekstart == "sunday" {
+            weekstartOffset = 1
             
+            // Days have to be shifted if the weekstart is sunday
             for i in 0...6 {
                 weekdays[i].text = dayLabels[i]
             }
+        } else {
+            weekstartOffset = 2
         }
         
         // By default runs are shown in the monthly view
@@ -357,18 +363,83 @@ class MonthlyViewController: UIViewController {
     func filter(_ startMonth: Date) {
         
         let calendar = Calendar(identifier: .gregorian)
-        var components = calendar.dateComponents([.year, .month, .day], from: startMonth)
         
-        components.month = 1
-        components.year = 0
-        components.day = -1
-        var endMonth = Calendar.current.date(byAdding: components, to: startMonth)
+        // Intervals to add and subtract a day from a date
+        let prevday: TimeInterval = -60 * 60 * 24
+        let day: TimeInterval = 60 * 60 * 24
         
+        // First set up the date formatter for the month and year label
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMMM YYYY"
         let title = dateFormatter.string(from: startMonth)
         
         monthLabel.text = title
+        
+        // Get the day of the week that the first of the month is on
+        var weekdayComponent = calendar.dateComponents([.weekday], from: startMonth)
+        let weekday = weekdayComponent.weekday!
+        
+        // First day of the calendar
+        var fd: Date = Calendar.current.date(byAdding: .day, value: weekstartOffset - weekday,
+                                                   to: startMonth)!
+        var firstDay: Date = Calendar.current.date(byAdding: .day, value: weekstartOffset - weekday,
+                                                         to: startMonth)!
+        firstDay.addTimeInterval(prevday)
+        fd.addTimeInterval(prevday)
+        
+        // Last day of the calendar
+        let lastDay: Date = Calendar.current.date(byAdding: .day, value: 41, to: firstDay)!
+        
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let first = dateFormatter.string(from: firstDay)
+        let last = dateFormatter.string(from: lastDay)
+        
+        os_log("Start Date: %@", log: logTag, type: .debug, first)
+        os_log("End Date: %@", log: logTag, type: .debug, last)
+        
+        // Go through each cell in the calendar
+        for i in 0...41 {
+            let dayComponents = calendar.dateComponents([.day], from: firstDay)
+            let dayNum = dayComponents.day!
+            
+            days[i].text = "\(dayNum)"
+            
+            // Check to see whether the cell is a part of this month or next month for background
+            // coloring purposes
+            if (i < 8 && dayNum > 10) || (i > 30 && dayNum < 15) {
+                // Previous or next month
+                views[i].backgroundColor = UIColor(0xEEEEEE)
+                
+            } else {
+                // Current month
+                views[i].backgroundColor = UIColor(0xFFFFFF)
+            }
+            
+            firstDay.addTimeInterval(day)
+        }
+        
+        // Get the range view from the API for this month and user
+        APIClient.rangeViewGetRequest(withParamType: "user", sortParam: user.username!, filter: "r", start: first, end: last) {
+            rangeView -> Void in
+            
+            var weekTotals: [Double] = [0,0,0,0,0,0]
+            
+            rangeView.forEach {
+                activity -> Void in
+                
+                let activityDateString: String = activity.date!
+                let activityDate: Date = dateFormatter.date(from: activityDateString)!
+                
+                let difComponent = Calendar.current.dateComponents([.day], from: fd, to: activityDate)
+                let day = difComponent.day!
+                print(day)
+                
+                let miles = activity.miles!
+                print(miles)
+                
+                self.miles[day].text = "\(miles) Miles"
+            }
+        }
     }
     
     // A function to reset the calendar to its original state
@@ -389,6 +460,7 @@ class MonthlyViewController: UIViewController {
     @IBAction func prevMonth(_ sender: UIButton) {
         os_log("View Previous Month.", log: logTag, type: .debug)
         
+        // Subtract one month to the current monthStart date
         let calendar = Calendar(identifier: .gregorian)
         var components = calendar.dateComponents([.year, .month, .day], from: monthStart)
         
@@ -397,6 +469,7 @@ class MonthlyViewController: UIViewController {
         components.month = -1
         monthStart = Calendar.current.date(byAdding: components, to: monthStart)!
         
+        // Reset the calendar to default values and build the new month
         reset()
         filter(monthStart)
     }
@@ -404,6 +477,7 @@ class MonthlyViewController: UIViewController {
     @IBAction func nextMonth(_ sender: UIButton) {
         os_log("View Next Month.", log: logTag, type: .debug)
         
+        // Add one month to the current monthStart date
         let calendar = Calendar(identifier: .gregorian)
         var components = calendar.dateComponents([.year, .month, .day], from: monthStart)
         
@@ -412,6 +486,7 @@ class MonthlyViewController: UIViewController {
         components.month = 1
         monthStart = Calendar.current.date(byAdding: components, to: monthStart)!
         
+        // Reset the calendar to default values and build the new month
         reset()
         filter(monthStart)
     }
