@@ -3756,15 +3756,24 @@
                                     <constraint firstItem="4q6-3H-MIh" firstAttribute="width" secondItem="geR-cl-Oog" secondAttribute="width" id="sl4-rr-HpP"/>
                                 </constraints>
                             </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eYk-6R-CNc" customClass="BarChartView" customModule="Charts">
+                                <rect key="frame" x="26" y="70" width="323" height="587"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="eYk-6R-CNc" secondAttribute="trailing" constant="10" id="0ch-ND-VeQ"/>
                             <constraint firstItem="qC3-nP-3UH" firstAttribute="leading" secondItem="x8y-l8-5at" secondAttribute="leadingMargin" constant="20" id="Dnq-ZR-BqG"/>
                             <constraint firstItem="qC3-nP-3UH" firstAttribute="top" secondItem="a9i-vb-1O5" secondAttribute="bottom" constant="10" id="Li0-KS-at4"/>
+                            <constraint firstItem="eYk-6R-CNc" firstAttribute="leading" secondItem="x8y-l8-5at" secondAttribute="leadingMargin" constant="10" id="RR5-6T-gnv"/>
+                            <constraint firstItem="QFh-fU-Yh1" firstAttribute="top" secondItem="eYk-6R-CNc" secondAttribute="bottom" constant="10" id="TIJ-il-k1y"/>
+                            <constraint firstItem="eYk-6R-CNc" firstAttribute="top" secondItem="qC3-nP-3UH" secondAttribute="bottom" constant="10" id="YP7-Jw-cze"/>
                             <constraint firstAttribute="trailingMargin" secondItem="qC3-nP-3UH" secondAttribute="trailing" constant="20" id="nNH-BT-kWY"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="barChartView" destination="eYk-6R-CNc" id="4qi-fQ-iwq"/>
                         <outlet property="bikeFilterButton" destination="4q6-3H-MIh" id="xGc-CT-wsc"/>
                         <outlet property="otherFilterButton" destination="bd1-Gg-Vkw" id="XuR-oM-yH5"/>
                         <outlet property="runFilterButton" destination="juP-Bb-sHv" id="oSf-MC-n0E"/>
