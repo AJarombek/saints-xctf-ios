@@ -176,13 +176,8 @@ class WeeklyViewController: UIViewController {
             weekDates.addTimeInterval(day * 7)
         }
         
-        // Set up some default chart values
-        barChartView.backgroundColor = UIColor(0xFFFFFF)
-        barChartView.chartDescription?.text = ""
-        
-        // Setup the axis
-        barChartView.xAxis.labelPosition = .bottom
-        barChartView.xAxis.drawGridLinesEnabled = false
+        // Perform one time setup on the bar chart
+        barChartView.initialSetup()
     }
     
     // Function to populate the weekly graph based on the filter
@@ -237,26 +232,9 @@ class WeeklyViewController: UIViewController {
             }
             
             // Finally set up the bar chart with the given data
-            self.setBarChart(dataPoints: self.chartLabels, mileage: mileageWeekly, feel: feelWeekly)
+            self.barChartView.setBarChartData(xValues: self.chartLabels, yValues: mileageWeekly,
+                                         feelValues: feelWeekly, label: "Miles")
         }
-    }
-    
-    // Set up the bar chart with the data points, mileage and feel
-    func setBarChart(dataPoints: [String], mileage: [Double], feel: [Int]) {
-        var dataEntries: [BarChartDataEntry] = []
-        
-        for i in 0..<self.chartLabels.count {
-            let chartEntry = BarChartDataEntry(x: Double(i), y: mileage[i])
-            dataEntries.append(chartEntry)
-        }
-        
-        let chartDataSet = BarChartDataSet(values: dataEntries, label: "Week")
-        let chartData = BarChartData()
-        chartData.addDataSet(chartDataSet)
-        chartData.setDrawValues(true)
-        chartDataSet.colors = [UIColor(0xCCCCCC)]
-        
-        barChartView.data = chartData
     }
     
     // Return the type filter to send to the rangeview API endpoint

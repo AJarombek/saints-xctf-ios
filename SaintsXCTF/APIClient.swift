@@ -428,6 +428,10 @@ class APIClient {
                 }
             } else {
                 os_log("Range View Conversion Failed.", log: APIClient.logTag, type: .error)
+                
+                OperationQueue.main.addOperation {
+                    completion([])
+                }
             }
         }
     }
