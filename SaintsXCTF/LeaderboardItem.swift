@@ -14,11 +14,11 @@ class LeaderboardItem: Mappable {
     var username: String!
     var first: String!
     var last: String!
-    var miles: Double!
-    var milesrun: Double!
-    var milesbiked: Double!
-    var milesswam: Double!
-    var milesother: Double!
+    var miles: String!
+    var milesrun: String!
+    var milesbiked: String!
+    var milesswam: String!
+    var milesother: String!
     
     required init?(map: Map) {
         // pass

@@ -1591,6 +1591,68 @@
             </objects>
             <point key="canvasLocation" x="2844" y="1918"/>
         </scene>
+        <!--Leaderboard View Controller-->
+        <scene sceneID="GKH-bw-wdd">
+            <objects>
+                <tableViewController storyboardIdentifier="leaderboardViewController" id="HN4-ya-Qzb" customClass="LeaderboardViewController" customModule="SaintsXCTF" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="zyn-2h-eOn">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="NUd-s1-Stp" customClass="LeaderboardTableViewCell" customModule="SaintsXCTF" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NUd-s1-Stp" id="E5D-h4-5rc">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1) First Last" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KDw-wL-5Xa">
+                                            <rect key="frame" x="8" y="10" width="239.5" height="26"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="26" id="ji9-jJ-zvT"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 mi" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LNl-BG-F3D">
+                                            <rect key="frame" x="247.5" y="10" width="119.5" height="16"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="LNl-BG-F3D" firstAttribute="trailing" secondItem="E5D-h4-5rc" secondAttribute="trailingMargin" id="Hau-ld-m0T"/>
+                                        <constraint firstItem="LNl-BG-F3D" firstAttribute="leading" secondItem="KDw-wL-5Xa" secondAttribute="trailing" id="PtL-hA-4yH"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="LNl-BG-F3D" secondAttribute="bottom" constant="2" id="QKL-l7-XeX"/>
+                                        <constraint firstItem="LNl-BG-F3D" firstAttribute="top" secondItem="E5D-h4-5rc" secondAttribute="topMargin" constant="2" id="SJI-7n-7Lb"/>
+                                        <constraint firstItem="KDw-wL-5Xa" firstAttribute="top" secondItem="E5D-h4-5rc" secondAttribute="topMargin" constant="2" id="SWg-ZI-08y"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="KDw-wL-5Xa" secondAttribute="bottom" constant="2" id="XfC-Op-fGp"/>
+                                        <constraint firstItem="KDw-wL-5Xa" firstAttribute="width" secondItem="LNl-BG-F3D" secondAttribute="width" multiplier="2" id="lxn-yw-H7O"/>
+                                        <constraint firstItem="KDw-wL-5Xa" firstAttribute="leading" secondItem="E5D-h4-5rc" secondAttribute="leadingMargin" id="sxd-C7-lgU"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="distanceLabel" destination="LNl-BG-F3D" id="JGc-wp-tfW"/>
+                                    <outlet property="nameLabel" destination="KDw-wL-5Xa" id="Arw-Pp-aa5"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="HN4-ya-Qzb" id="5eG-Ew-Gek"/>
+                            <outlet property="delegate" destination="HN4-ya-Qzb" id="5kA-Cp-E6L"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <outlet property="leaderboardTableView" destination="zyn-2h-eOn" id="sPx-bQ-vf9"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="enb-Cr-3lx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3597.5999999999999" y="1665.5172413793105"/>
+        </scene>
         <!--Profile View Controller-->
         <scene sceneID="eGO-WS-o8i">
             <objects>
@@ -4255,7 +4317,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Kc-q6-pLe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4559.1999999999998" y="1154.5727136431785"/>
+            <point key="canvasLocation" x="4393" y="836"/>
         </scene>
         <!--Pro Pic View Controller-->
         <scene sceneID="MTo-uu-01G">
