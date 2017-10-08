@@ -18,7 +18,7 @@ class Group: Mappable, CustomStringConvertible {
     var group_description: String?
     var week_start: String?
     var members: [GroupMember]!
-    var statistics: [String:Double]!
+    var statistics: [String:String]!
     var leaderboards: [String:[LeaderboardItem]]!
     
     required init?(map: Map) {

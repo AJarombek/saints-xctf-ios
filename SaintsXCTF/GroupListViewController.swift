@@ -29,7 +29,7 @@ class GroupListViewController: UIViewController, UIGestureRecognizerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        os_log("GroupListViewController Loaded.", log: OSLog.default, type: .debug)
+        os_log("GroupListViewController Loaded.", log: logTag, type: .debug)
         
         navigationController?.navigationBar.backgroundColor = UIColor(0x999999, a: 0.9)
         
@@ -130,27 +130,27 @@ class GroupListViewController: UIViewController, UIGestureRecognizerDelegate {
     
     // Functions to load groups depending on the group picked
     func womensXC(_ sender: UIView) {
-        os_log("Go to Women's Cross Country Page", log: OSLog.default, type: .debug)
-        loadGroup(withGroupname: "womensxc")
+        os_log("Go to Women's Cross Country Page", log: logTag, type: .debug)
+        loadGroup(withGroupname: "wmensxc")
     }
     
     func mensXC(_ sender: UIView) {
-        os_log("Go to Men's Cross Country Page", log: OSLog.default, type: .debug)
+        os_log("Go to Men's Cross Country Page", log: logTag, type: .debug)
         loadGroup(withGroupname: "mensxc")
     }
     
     func womensTF(_ sender: UIView) {
-        os_log("Go to Women's Track & Field Page", log: OSLog.default, type: .debug)
-        loadGroup(withGroupname: "womenstf")
+        os_log("Go to Women's Track & Field Page", log: logTag, type: .debug)
+        loadGroup(withGroupname: "wmenstf")
     }
     
     func mensTF(_ sender: UIView) {
-        os_log("Go to Men's Track & Field Page", log: OSLog.default, type: .debug)
+        os_log("Go to Men's Track & Field Page", log: logTag, type: .debug)
         loadGroup(withGroupname: "menstf")
     }
     
     func alumni(_ sender: UIView) {
-        os_log("Go to Alumni Page", log: OSLog.default, type: .debug)
+        os_log("Go to Alumni Page", log: logTag, type: .debug)
         loadGroup(withGroupname: "alumni")
     }
     
