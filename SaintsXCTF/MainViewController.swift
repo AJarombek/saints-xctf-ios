@@ -24,6 +24,7 @@ class MainViewController: UITableViewController, UITextViewDelegate {
     
     var showNavBar = false
     var userPassed: User = User()
+    var groupPassed: Group? = nil
     
     var paramType = "all"
     var sortParam = "all"
@@ -70,9 +71,16 @@ class MainViewController: UITableViewController, UITextViewDelegate {
             navigationController?.navigationBar.backIndicatorImage = UIImage(named: "back")
             navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "back")
             navigationController?.navigationBar.tintColor = UIColor(0x000000)
-            navigationItem.title = "\(userPassed.first ?? "") \(userPassed.last ?? "")"
             
-            navigationItem.backBarButtonItem = UIBarButtonItem(title: " ", style: UIBarButtonItemStyle.plain, target: nil, action: nil)
+            // The navigation bar title should be either the users name or the group title
+            if let group: Group = groupPassed {
+                navigationItem.title = group.group_title!
+            } else {
+                navigationItem.title = "\(userPassed.first ?? "") \(userPassed.last ?? "")"
+            }
+            
+            navigationItem.backBarButtonItem = UIBarButtonItem(title: " ", style: UIBarButtonItemStyle.plain,
+                                                               target: nil, action: nil)
         }
     }
     

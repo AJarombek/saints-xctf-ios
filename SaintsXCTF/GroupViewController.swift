@@ -164,6 +164,17 @@ class GroupViewController: UIViewController, UIGestureRecognizerDelegate {
     
     func viewLogs(_ sender: UIView) {
         os_log("View Group Logs", log: logTag, type: .debug)
+        
+        let mainViewController = storyboard?.instantiateViewController(withIdentifier:
+            "showLogView") as! MainViewController
+        
+        // Pass both the log and the index to the log view controller
+        mainViewController.paramType = "group"
+        mainViewController.sortParam = group?.group_name ?? ""
+        mainViewController.showNavBar = true
+        mainViewController.groupPassed = group ?? nil
+        
+        navigationController?.pushViewController(mainViewController, animated: true)
     }
     
     func viewLeaderboards(_ sender: UIView) {
