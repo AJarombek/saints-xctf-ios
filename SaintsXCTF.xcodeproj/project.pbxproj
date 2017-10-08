@@ -15,6 +15,7 @@
 		A10D61C51F6F45C100A406D9 /* UIToolbarExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10D61C41F6F45C100A406D9 /* UIToolbarExt.swift */; };
 		A11AB8A31F895CC40098AE8E /* WeeklyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11AB8A21F895CC40098AE8E /* WeeklyViewController.swift */; };
 		A11AB8A51F8997290098AE8E /* BarChartFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11AB8A41F8997290098AE8E /* BarChartFormatter.swift */; };
+		A11AB8A81F89C3760098AE8E /* GroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11AB8A71F89C3760098AE8E /* GroupViewController.swift */; };
 		A11C2DF41F0B249E00EBDDB5 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11C2DF31F0B249E00EBDDB5 /* SignUpViewController.swift */; };
 		A11C2DF61F0B284F00EBDDB5 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11C2DF51F0B284F00EBDDB5 /* MainViewController.swift */; };
 		A1505B901E8F105A00F111DB /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1505B8F1E8F105A00F111DB /* Comment.swift */; };
@@ -99,6 +100,7 @@
 		A10D61C41F6F45C100A406D9 /* UIToolbarExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIToolbarExt.swift; sourceTree = "<group>"; };
 		A11AB8A21F895CC40098AE8E /* WeeklyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeeklyViewController.swift; sourceTree = "<group>"; };
 		A11AB8A41F8997290098AE8E /* BarChartFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarChartFormatter.swift; sourceTree = "<group>"; };
+		A11AB8A71F89C3760098AE8E /* GroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupViewController.swift; sourceTree = "<group>"; };
 		A11C2DF31F0B249E00EBDDB5 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		A11C2DF51F0B284F00EBDDB5 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		A1505B8F1E8F105A00F111DB /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
@@ -198,6 +200,15 @@
 			name = Log;
 			sourceTree = "<group>";
 		};
+		A11AB8A61F89B70A0098AE8E /* Group */ = {
+			isa = PBXGroup;
+			children = (
+				A15E62321F3F986C00AC9EF1 /* GroupListViewController.swift */,
+				A11AB8A71F89C3760098AE8E /* GroupViewController.swift */,
+			);
+			name = Group;
+			sourceTree = "<group>";
+		};
 		A11E68AA1F783CD300170E47 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
@@ -258,6 +269,7 @@
 		A15E62291F3F91F600AC9EF1 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				A11AB8A61F89B70A0098AE8E /* Group */,
 				A11E68AA1F783CD300170E47 /* Profile */,
 				A10D61C31F6E126900A406D9 /* Log */,
 				A10D61C21F6E120400A406D9 /* Comment */,
@@ -266,7 +278,6 @@
 				A15E622C1F3F938B00AC9EF1 /* Extensions */,
 				A15BA1661E8AF6CE00B9796B /* HomeViewController.swift */,
 				A11C2DF31F0B249E00EBDDB5 /* SignUpViewController.swift */,
-				A15E62321F3F986C00AC9EF1 /* GroupListViewController.swift */,
 				A15E62341F3F98EC00AC9EF1 /* SignOutViewController.swift */,
 				A15E62361F3FA45F00AC9EF1 /* PickGroupViewController.swift */,
 				A15E623D1F41545000AC9EF1 /* SignedInUser.swift */,
@@ -537,6 +548,7 @@
 				A15E622E1F3F97D700AC9EF1 /* ProfileViewController.swift in Sources */,
 				A1505B9A1E8F11BC00F111DB /* Log.swift in Sources */,
 				A173CB541F81C07D009C7A28 /* LoadingView.swift in Sources */,
+				A11AB8A81F89C3760098AE8E /* GroupViewController.swift in Sources */,
 				A173CB561F847D90009C7A28 /* MonthlyViewController.swift in Sources */,
 				A189682B1F7C903B0073A73B /* TextViewExt.swift in Sources */,
 				A15E62401F4273BB00AC9EF1 /* StartViewController.swift in Sources */,
