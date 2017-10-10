@@ -20,6 +20,8 @@ class LeaderboardViewController: UITableViewController {
     var leaderboardItems: [LeaderboardItem] = []
     let heightDict = NSMutableDictionary()
     
+    var filters: UIView? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         os_log("MainViewController Loaded.", log: logTag, type: .debug)
@@ -34,12 +36,11 @@ class LeaderboardViewController: UITableViewController {
         navigationItem.backBarButtonItem = UIBarButtonItem(title: " ", style:
             UIBarButtonItemStyle.plain, target: nil, action: nil)
         
-        // Set up the view for the leaderboard filters
-        var overlay: UIView?
-        overlay = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 150))
-        overlay?.backgroundColor = UIColor(0xCCCCCC)
-        navigationController?.view.insertSubview(overlay!,
-                                                 belowSubview: (self.navigationController?.navigationBar)!)
+        // Make sure the table view does not overlap the status bar & overlay view
+        let insets = UIEdgeInsets(top: 88, left: 0, bottom: 0, right: 0)
+        
+        leaderboardTableView.contentInset = insets
+        leaderboardTableView.scrollIndicatorInsets = insets
         
         // Setting the row height to UITableViewAutomaticDimension tells the TableView to determine the
         // height of a cell based on its contents and constraints.
@@ -50,6 +51,22 @@ class LeaderboardViewController: UITableViewController {
             
             leaderboardItems = group.leaderboards["miles"]!
         }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        // Set up the view for the leaderboard filters
+        filters = SortView.instantiateFromNib()
+        filters?.center.x = (navigationController?.view.center.x)!
+        navigationController?.view.insertSubview(filters!,
+                                                 belowSubview: (self.navigationController?.navigationBar)!)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        filters?.removeFromSuperview()
     }
     
     // Returns the number of rows that the tableview should display
