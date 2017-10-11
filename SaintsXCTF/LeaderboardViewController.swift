@@ -17,10 +17,12 @@ class LeaderboardViewController: UITableViewController, UIGestureRecognizerDeleg
     @IBOutlet weak var leaderboardTableView: UITableView!
     
     var passedGroup: Group? = nil
-    var leaderboardItems: [LeaderboardItem] = []
+    var leaderboardItems: [LeaderboardItem] = [LeaderboardItem]()
+    var leaderboard: [[String]] = [[String]]()
     let heightDict = NSMutableDictionary()
     
     let timeFilters = ["All Time", "Past Year", "Past Month", "Past Week"]
+    let timeAPIFilters = ["miles", "milespastyear", "milespastmonth", "milespastweek"]
     var run = true, bike = false, swim = false, other = false
     
     var timePicker: UIPickerView!
@@ -53,7 +55,11 @@ class LeaderboardViewController: UITableViewController, UIGestureRecognizerDeleg
         if let group: Group = passedGroup {
             navigationItem.title = group.group_title!
             
+            // Build the default leaderboard - all time running miles
             leaderboardItems = group.leaderboards["miles"]!
+            print(leaderboardItems)
+            buildLeaderboardData()
+            self.leaderboardTableView.reloadData()
         }
     }
     
@@ -115,7 +121,7 @@ class LeaderboardViewController: UITableViewController, UIGestureRecognizerDeleg
     
     // Returns the number of rows that the tableview should display
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return leaderboardItems.count
+        return leaderboard.count
     }
     
     // Either set the height to the cached value or let the automaticdimension determine the height
@@ -141,10 +147,12 @@ class LeaderboardViewController: UITableViewController, UIGestureRecognizerDeleg
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
                         as! LeaderboardTableViewCell
-        let leaderboardItem: LeaderboardItem = leaderboardItems[indexPath.row]
+        let leader: [String] = leaderboard[indexPath.row]
         
-        cell.nameLabel.text = "\(indexPath.row + 1)) \(leaderboardItem.first!) \(leaderboardItem.last!)"
-        let distanceDouble = Double(leaderboardItem.milesrun)!
+        print(leader)
+        
+        cell.nameLabel.text = "\(indexPath.row + 1)) \(leader[0])"
+        let distanceDouble = Double(leader[1])!
         let distance = String(format: "%.2f", distanceDouble)
         cell.distanceLabel.text = "\(distance) Miles"
         
@@ -171,6 +179,40 @@ class LeaderboardViewController: UITableViewController, UIGestureRecognizerDeleg
     // Dislay the picked value from the UIPicker
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         self.filters?.rangeSortField.text = timeFilters[row]
+        
+        // Get the proper leaderboard based on the time filter selected.  Also make sure to reload the
+        // data for the table view
+        let filter: String = timeAPIFilters[row]
+        leaderboardItems = (passedGroup?.leaderboards[filter])!
+        buildLeaderboardData()
+        self.leaderboardTableView.reloadData()
+    }
+    
+    // Function to build the leaderboard array with the current filters
+    func buildLeaderboardData() {
+        
+        // Array for the final leaderboard data structure
+        var leaders: [[String]] = [[String]]()
+        
+        // Go through each of the leaderboard items from the API
+        leaderboardItems.forEach {
+            entry -> Void in
+            
+            // For each item, get the persons name and their mileage for the given filters
+            var leader: [String] = []
+            
+            let milesrun: Double = Double(entry.milesrun) ?? 0
+            let milesbiked: Double = Double(entry.milesbiked) ?? 0
+            let milesswam: Double = Double(entry.milesswam) ?? 0
+            let milesother: Double = Double(entry.milesother) ?? 0
+            
+            leader.append("\(entry.first!) \(entry.last!)")
+            leader.append("\(milesrun + milesbiked + milesswam + milesother)")
+            
+            leaders.append(leader)
+        }
+        
+        leaderboard = leaders
     }
     
     // These functions are called when the filter buttons for the leaderboard are clicked
