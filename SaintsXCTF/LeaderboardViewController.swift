@@ -57,7 +57,6 @@ class LeaderboardViewController: UITableViewController, UIGestureRecognizerDeleg
             
             // Build the default leaderboard - all time running miles
             leaderboardItems = group.leaderboards["miles"]!
-            print(leaderboardItems)
             buildLeaderboardData()
             self.leaderboardTableView.reloadData()
         }
@@ -201,15 +200,20 @@ class LeaderboardViewController: UITableViewController, UIGestureRecognizerDeleg
             // For each item, get the persons name and their mileage for the given filters
             var leader: [String] = []
             
-            let milesrun: Double = Double(entry.milesrun) ?? 0
-            let milesbiked: Double = Double(entry.milesbiked) ?? 0
-            let milesswam: Double = Double(entry.milesswam) ?? 0
-            let milesother: Double = Double(entry.milesother) ?? 0
+            let milesrun: Double = run ? Double(entry.milesrun) ?? 0 : 0
+            let milesbiked: Double = bike ? Double(entry.milesbiked) ?? 0 : 0
+            let milesswam: Double = swim ? Double(entry.milesswam) ?? 0 : 0
+            let milesother: Double = other ? Double(entry.milesother) ?? 0 : 0
             
             leader.append("\(entry.first!) \(entry.last!)")
             leader.append("\(milesrun + milesbiked + milesswam + milesother)")
             
             leaders.append(leader)
+        }
+        
+        // Sort the leaderboards by the mileage
+        leaders.sort {
+            $0[1].compare($1[1], options: .numeric) == .orderedDescending
         }
         
         leaderboard = leaders
@@ -219,6 +223,8 @@ class LeaderboardViewController: UITableViewController, UIGestureRecognizerDeleg
     func filterRun(_ sender: UIView) {
         run = !run
         filterRun()
+        buildLeaderboardData()
+        self.leaderboardTableView.reloadData()
     }
     
     func filterRun() {
@@ -234,6 +240,8 @@ class LeaderboardViewController: UITableViewController, UIGestureRecognizerDeleg
     func filterBike(_ sender: UIView) {
         bike = !bike
         filterBike()
+        buildLeaderboardData()
+        self.leaderboardTableView.reloadData()
     }
     
     func filterBike() {
@@ -249,6 +257,8 @@ class LeaderboardViewController: UITableViewController, UIGestureRecognizerDeleg
     func filterSwim(_ sender: UIView) {
         swim = !swim
         filterSwim()
+        buildLeaderboardData()
+        self.leaderboardTableView.reloadData()
     }
     
     func filterSwim() {
@@ -264,10 +274,12 @@ class LeaderboardViewController: UITableViewController, UIGestureRecognizerDeleg
     func filterOther(_ sender: UIView) {
         other = !other
         filterOther()
+        buildLeaderboardData()
+        self.leaderboardTableView.reloadData()
     }
     
     func filterOther() {
-        if run {
+        if other {
             filters?.otherButton.backgroundColor = UIColor(0x990000)
             filters?.otherButton.setTitleColor(UIColor(0xFFFFFF), for: .normal)
         } else {
