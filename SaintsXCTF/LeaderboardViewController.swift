@@ -9,7 +9,7 @@
 import UIKit
 import os.log
 
-class LeaderboardViewController: UITableViewController {
+class LeaderboardViewController: UITableViewController, UIGestureRecognizerDelegate, UIPickerViewDelegate {
     
     let logTag = OSLog(subsystem: "SaintsXCTF.App.LeaderboardViewController",
                        category: "LeaderboardViewController")
@@ -20,7 +20,11 @@ class LeaderboardViewController: UITableViewController {
     var leaderboardItems: [LeaderboardItem] = []
     let heightDict = NSMutableDictionary()
     
-    var filters: UIView? = nil
+    let timeFilters = ["All Time", "Past Year", "Past Month", "Past Week"]
+    var run = true, bike = false, swim = false, other = false
+    
+    var timePicker: UIPickerView!
+    var filters: SortView? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,6 +65,46 @@ class LeaderboardViewController: UITableViewController {
         filters?.center.x = (navigationController?.view.center.x)!
         navigationController?.view.insertSubview(filters!,
                                                  belowSubview: (self.navigationController?.navigationBar)!)
+        
+        // Set click listener to the leaderboard run filter
+        let click = UITapGestureRecognizer(target: self, action: #selector(self.filterRun(_:)))
+        click.delegate = self
+        self.filters?.runButton.addGestureRecognizer(click)
+        
+        // Set click listener to the leaderboard bike filter
+        let bikeclick = UITapGestureRecognizer(target: self, action: #selector(self.filterBike(_:)))
+        bikeclick.delegate = self
+        self.filters?.bikeButton.addGestureRecognizer(bikeclick)
+        
+        // Set click listener to the leaderboard swim filter
+        let swimclick = UITapGestureRecognizer(target: self, action: #selector(self.filterSwim(_:)))
+        swimclick.delegate = self
+        self.filters?.swimButton.addGestureRecognizer(swimclick)
+        
+        // Set click listener to the leaderboard other filter
+        let otherclick = UITapGestureRecognizer(target: self, action: #selector(self.filterOther(_:)))
+        otherclick.delegate = self
+        self.filters?.otherButton.addGestureRecognizer(otherclick)
+        
+        // Create a view to hold the time picker and the done button
+        let timeInputView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 240))
+        
+        // Set the picker view for time filter
+        timePicker = UIPickerView(frame: CGRect(x: 0, y: 40, width: 0, height: 0))
+        timePicker.delegate = self
+        
+        timeInputView.addSubview(timePicker)
+        self.filters?.rangeSortField.inputView = timePicker
+        self.filters?.rangeSortField.text = timeFilters[0]
+        
+        let typeToolbar = UIToolbar().PickerToolbar(selector: #selector(filters?.dismissPicker))
+        self.filters?.rangeSortField.inputAccessoryView = typeToolbar
+        
+        // Hide the colored cursor when the rangeSortField is selected
+        self.filters?.rangeSortField.tintColor = .clear
+        
+        // The run filter is selected by default
+        filterRun()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -107,5 +151,86 @@ class LeaderboardViewController: UITableViewController {
         cell.setStyle()
         
         return cell
+    }
+    
+    // Return the number of components in the UIPicker
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    // Return the number of rows in the given UIPicker
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return timeFilters.count
+    }
+    
+    // Return the title for the row that is to be shown in the UIPicker
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return timeFilters[row]
+    }
+    
+    // Dislay the picked value from the UIPicker
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        self.filters?.rangeSortField.text = timeFilters[row]
+    }
+    
+    // These functions are called when the filter buttons for the leaderboard are clicked
+    func filterRun(_ sender: UIView) {
+        run = !run
+        filterRun()
+    }
+    
+    func filterRun() {
+        if run {
+            filters?.runButton.backgroundColor = UIColor(0x990000)
+            filters?.runButton.setTitleColor(UIColor(0xFFFFFF), for: .normal)
+        } else {
+            filters?.runButton.backgroundColor = UIColor(0xEEEEEE)
+            filters?.runButton.setTitleColor(UIColor(0x000000), for: .normal)
+        }
+    }
+    
+    func filterBike(_ sender: UIView) {
+        bike = !bike
+        filterBike()
+    }
+    
+    func filterBike() {
+        if bike {
+            filters?.bikeButton.backgroundColor = UIColor(0x990000)
+            filters?.bikeButton.setTitleColor(UIColor(0xFFFFFF), for: .normal)
+        } else {
+            filters?.bikeButton.backgroundColor = UIColor(0xEEEEEE)
+            filters?.bikeButton.setTitleColor(UIColor(0x000000), for: .normal)
+        }
+    }
+    
+    func filterSwim(_ sender: UIView) {
+        swim = !swim
+        filterSwim()
+    }
+    
+    func filterSwim() {
+        if swim {
+            filters?.swimButton.backgroundColor = UIColor(0x990000)
+            filters?.swimButton.setTitleColor(UIColor(0xFFFFFF), for: .normal)
+        } else {
+            filters?.swimButton.backgroundColor = UIColor(0xEEEEEE)
+            filters?.swimButton.setTitleColor(UIColor(0x000000), for: .normal)
+        }
+    }
+    
+    func filterOther(_ sender: UIView) {
+        other = !other
+        filterOther()
+    }
+    
+    func filterOther() {
+        if run {
+            filters?.otherButton.backgroundColor = UIColor(0x990000)
+            filters?.otherButton.setTitleColor(UIColor(0xFFFFFF), for: .normal)
+        } else {
+            filters?.otherButton.backgroundColor = UIColor(0xEEEEEE)
+            filters?.otherButton.setTitleColor(UIColor(0x000000), for: .normal)
+        }
     }
 }

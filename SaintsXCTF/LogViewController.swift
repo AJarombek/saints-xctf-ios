@@ -85,6 +85,11 @@ class LogViewController: UIViewController, UITextViewDelegate, UIPickerViewDeleg
         feelStepper.autorepeat = true
         feelStepper.value = 6
         
+        // Hide the colored cursor when the date, type, and metric is selected
+        dateField.tintColor = .clear
+        typeField.tintColor = .clear
+        metricField.tintColor = .clear
+        
         // Create a view to hold the date picker and the done button
         let inputView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 240))
         
