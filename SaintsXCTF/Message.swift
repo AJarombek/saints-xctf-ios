@@ -19,6 +19,10 @@ class Message: Mappable, CustomStringConvertible {
     var time: String!
     var content: String!
     
+    init() {
+        message_id = ""
+    }
+    
     required init?(map: Map) {
         // pass
     }

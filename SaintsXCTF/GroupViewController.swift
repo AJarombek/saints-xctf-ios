@@ -191,6 +191,14 @@ class GroupViewController: UIViewController, UIGestureRecognizerDelegate {
     
     func viewMessages(_ sender: UIView) {
         os_log("View Group Messages", log: logTag, type: .debug)
+        
+        let messageViewController = storyboard?.instantiateViewController(withIdentifier:
+            "messageViewController") as! MessageViewController
+        
+        // Pass the group to the message view controller
+        messageViewController.passedGroup = group ?? nil
+        
+        navigationController?.pushViewController(messageViewController, animated: true)
     }
     
     func viewMembers(_ sender: UIView) {
