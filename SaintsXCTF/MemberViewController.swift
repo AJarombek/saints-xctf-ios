@@ -9,7 +9,7 @@
 import UIKit
 import os.log
 
-class MemberViewController: UITableViewController {
+class MemberViewController: UITableViewController, UIGestureRecognizerDelegate {
     
     let logTag = OSLog(subsystem: "SaintsXCTF.App.MemberViewController",
                        category: "MemberViewController")
@@ -94,6 +94,38 @@ class MemberViewController: UITableViewController {
         
         cell.setStyle()
         
+        cell.tag = indexPath.row
+        
+        // Set click listener to the cell to open up the profile page
+        let clickview = UITapGestureRecognizer(target: self, action: #selector(self.viewProfile(_:)))
+        clickview.delegate = self
+        cell.addGestureRecognizer(clickview)
+        
         return cell
+    }
+    
+    // Called when the name label is clicked to load a users profile
+    func viewProfile(_ sender: UITapGestureRecognizer) {
+        if let cell = sender.view as? MemberTableViewCell {
+            
+            os_log("View Group Messages", log: logTag, type: .debug)
+            
+            let member = members[cell.tag]
+            let username: String = member.username!
+            
+            os_log("Load Users Profile: %@", log: logTag, type: .debug, username)
+            
+            APIClient.userGetRequest(withUsername: username) {
+                (user) -> Void in
+                
+                let profileViewController = self.storyboard?.instantiateViewController(withIdentifier:
+                    "profileViewController") as! ProfileViewController
+                
+                // Pass the user to the profile view controller
+                profileViewController.user = user
+                profileViewController.showNavBar = true
+                self.navigationController?.pushViewController(profileViewController, animated: true)
+            }
+        }
     }
 }

@@ -298,7 +298,7 @@ class MainViewController: UITableViewController, UITextViewDelegate {
             let profileViewController = self.storyboard?.instantiateViewController(withIdentifier:
                                         "profileViewController") as! ProfileViewController
             
-            // Pass both the log and the index to the log view controller
+            // Pass the user to the profile view controller
             profileViewController.user = user
             profileViewController.showNavBar = true
             self.navigationController?.pushViewController(profileViewController, animated: true)
