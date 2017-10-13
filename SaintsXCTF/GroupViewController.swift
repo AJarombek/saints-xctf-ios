@@ -58,7 +58,11 @@ class GroupViewController: UIViewController, UIGestureRecognizerDelegate {
             // Set the group title and description
             self.groupTitleView.text = group.group_title!
             
-            let members: [GroupMember] = group.members!
+            var members: [GroupMember] = group.members!
+            
+            // Filter the members array so only accepted members show up
+            members = members.filter { $0.status ?? "" == "accepted" }
+            
             let memberCount: Int = members.count
             let description = group.group_description ?? ""
             
@@ -203,6 +207,14 @@ class GroupViewController: UIViewController, UIGestureRecognizerDelegate {
     
     func viewMembers(_ sender: UIView) {
         os_log("View Group Members", log: logTag, type: .debug)
+        
+        let memberViewController = storyboard?.instantiateViewController(withIdentifier:
+            "memberViewController") as! MemberViewController
+        
+        // Pass the group to the member view controller
+        memberViewController.passedGroup = group ?? nil
+        
+        navigationController?.pushViewController(memberViewController, animated: true)
     }
     
     func viewAdmin(_ sender: UIView) {

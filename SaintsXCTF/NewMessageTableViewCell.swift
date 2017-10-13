@@ -57,6 +57,7 @@ class NewMessageTableViewCell: UITableViewCell {
                     let last = newmessage.last ?? ""
                     let members: [GroupMember] = self.group?.members ?? [GroupMember]()
                     
+                    // Send a notification to each of the members of the group
                     members.forEach {
                         member -> Void in
                         

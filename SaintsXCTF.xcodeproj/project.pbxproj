@@ -23,6 +23,8 @@
 		A11AB8B21F8EE9360098AE8E /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11AB8B11F8EE9360098AE8E /* MessageViewController.swift */; };
 		A11AB8B41F8EF0810098AE8E /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11AB8B31F8EF0810098AE8E /* MessageTableViewCell.swift */; };
 		A11AB8B61F8EF0A10098AE8E /* NewMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11AB8B51F8EF0A10098AE8E /* NewMessageTableViewCell.swift */; };
+		A11AB8B81F9060850098AE8E /* MemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11AB8B71F9060850098AE8E /* MemberViewController.swift */; };
+		A11AB8BA1F9065390098AE8E /* MemberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11AB8B91F9065390098AE8E /* MemberTableViewCell.swift */; };
 		A11C2DF41F0B249E00EBDDB5 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11C2DF31F0B249E00EBDDB5 /* SignUpViewController.swift */; };
 		A11C2DF61F0B284F00EBDDB5 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11C2DF51F0B284F00EBDDB5 /* MainViewController.swift */; };
 		A1505B901E8F105A00F111DB /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1505B8F1E8F105A00F111DB /* Comment.swift */; };
@@ -115,6 +117,8 @@
 		A11AB8B11F8EE9360098AE8E /* MessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
 		A11AB8B31F8EF0810098AE8E /* MessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
 		A11AB8B51F8EF0A10098AE8E /* NewMessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewMessageTableViewCell.swift; sourceTree = "<group>"; };
+		A11AB8B71F9060850098AE8E /* MemberViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberViewController.swift; sourceTree = "<group>"; };
+		A11AB8B91F9065390098AE8E /* MemberTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberTableViewCell.swift; sourceTree = "<group>"; };
 		A11C2DF31F0B249E00EBDDB5 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		A11C2DF51F0B284F00EBDDB5 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		A1505B8F1E8F105A00F111DB /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
@@ -225,6 +229,8 @@
 				A11AB8B11F8EE9360098AE8E /* MessageViewController.swift */,
 				A11AB8B31F8EF0810098AE8E /* MessageTableViewCell.swift */,
 				A11AB8B51F8EF0A10098AE8E /* NewMessageTableViewCell.swift */,
+				A11AB8B71F9060850098AE8E /* MemberViewController.swift */,
+				A11AB8B91F9065390098AE8E /* MemberTableViewCell.swift */,
 			);
 			name = Group;
 			sourceTree = "<group>";
@@ -582,6 +588,7 @@
 				A19DED591F6CC79500E6C9DA /* Utils.swift in Sources */,
 				A18968291F7B44150073A73B /* DetailsViewController.swift in Sources */,
 				A1B458961F11AC0800EDCF80 /* UITextFieldExt.swift in Sources */,
+				A11AB8B81F9060850098AE8E /* MemberViewController.swift in Sources */,
 				A19DED511F5907C500E6C9DA /* CommentTableViewCell.swift in Sources */,
 				A11C2DF41F0B249E00EBDDB5 /* SignUpViewController.swift in Sources */,
 				A11AB8B41F8EF0810098AE8E /* MessageTableViewCell.swift in Sources */,
@@ -594,6 +601,7 @@
 				A1505B961E8F112500F111DB /* GroupMember.swift in Sources */,
 				A15E62301F3F981600AC9EF1 /* LogViewController.swift in Sources */,
 				A19DED551F590A9F00E6C9DA /* NewCommentTableViewCell.swift in Sources */,
+				A11AB8BA1F9065390098AE8E /* MemberTableViewCell.swift in Sources */,
 				A15E62491F52372000AC9EF1 /* LogTableViewCell.swift in Sources */,
 				A15E62351F3F98EC00AC9EF1 /* SignOutViewController.swift in Sources */,
 				A11AB8A31F895CC40098AE8E /* WeeklyViewController.swift in Sources */,

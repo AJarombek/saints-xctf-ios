@@ -30,7 +30,7 @@ class LeaderboardViewController: UITableViewController, UIGestureRecognizerDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        os_log("MainViewController Loaded.", log: logTag, type: .debug)
+        os_log("LeaderboardViewController Loaded.", log: logTag, type: .debug)
         
         navigationController?.navigationBar.backgroundColor = UIColor(0x999999, a: 0.9)
         

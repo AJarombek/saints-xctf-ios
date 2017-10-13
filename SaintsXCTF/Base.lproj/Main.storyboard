@@ -4649,6 +4649,68 @@
             </objects>
             <point key="canvasLocation" x="3588" y="2358"/>
         </scene>
+        <!--Member View Controller-->
+        <scene sceneID="EOM-RB-8Kj">
+            <objects>
+                <tableViewController storyboardIdentifier="memberViewController" id="xqA-nB-oHT" customClass="MemberViewController" customModule="SaintsXCTF" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="456-oc-bmi">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="gxT-tn-zhO" customClass="MemberTableViewCell" customModule="SaintsXCTF" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gxT-tn-zhO" id="HtW-0v-Bee">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First Last" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VzK-rB-hqc">
+                                            <rect key="frame" x="8" y="10" width="239.5" height="26"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="26" id="Qk9-Fy-932"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Since: Oct. 12, 2017" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vjC-Tm-pO7">
+                                            <rect key="frame" x="247.5" y="10" width="119.5" height="13.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="VzK-rB-hqc" firstAttribute="width" secondItem="vjC-Tm-pO7" secondAttribute="width" multiplier="2" id="7aa-mP-2LP"/>
+                                        <constraint firstItem="VzK-rB-hqc" firstAttribute="leading" secondItem="HtW-0v-Bee" secondAttribute="leadingMargin" id="8dC-Ca-3S3"/>
+                                        <constraint firstItem="VzK-rB-hqc" firstAttribute="top" secondItem="HtW-0v-Bee" secondAttribute="topMargin" constant="2" id="9VR-SH-KIu"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="vjC-Tm-pO7" secondAttribute="bottom" constant="2" id="DLU-51-Oyf"/>
+                                        <constraint firstItem="vjC-Tm-pO7" firstAttribute="leading" secondItem="VzK-rB-hqc" secondAttribute="trailing" id="Tet-bf-6jn"/>
+                                        <constraint firstItem="vjC-Tm-pO7" firstAttribute="top" secondItem="HtW-0v-Bee" secondAttribute="topMargin" constant="2" id="ebM-Sp-nUR"/>
+                                        <constraint firstItem="vjC-Tm-pO7" firstAttribute="trailing" secondItem="HtW-0v-Bee" secondAttribute="trailingMargin" id="f1M-i9-HaK"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="VzK-rB-hqc" secondAttribute="bottom" constant="2" id="iP5-8i-ude"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="memberSinceLabel" destination="vjC-Tm-pO7" id="zXX-gn-oJM"/>
+                                    <outlet property="nameLabel" destination="VzK-rB-hqc" id="PEh-7A-PwQ"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="xqA-nB-oHT" id="QG7-kv-myV"/>
+                            <outlet property="delegate" destination="xqA-nB-oHT" id="G4x-SD-ySO"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <outlet property="memberTableView" destination="456-oc-bmi" id="t7j-oN-y1Z"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZxS-Z5-pQX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4284" y="1666"/>
+        </scene>
     </scenes>
     <resources>
         <image name="admin" width="24" height="24"/>
