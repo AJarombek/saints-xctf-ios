@@ -673,7 +673,7 @@ class APIClient {
     
     // Handle PUT Request for a Group
     public static func groupPutRequest(withGroupname groupname: String, andGroup group: Group,
-                                       completion: @escaping (Group) -> Void) {
+                                       completion: @escaping (Group?) -> Void) {
         
         let groupPutEndpoint = "https://www.saintsxctf.com/api/api.php/group/\(groupname)"
         guard let url = URL(string: groupPutEndpoint) else {
@@ -695,6 +695,10 @@ class APIClient {
                 }
             } else {
                 os_log("Group Conversion Failed.", log: APIClient.logTag, type: .error)
+                
+                OperationQueue.main.addOperation {
+                    completion(nil)
+                }
             }
         }
     }
