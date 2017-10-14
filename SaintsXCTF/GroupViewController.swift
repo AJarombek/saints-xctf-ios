@@ -219,5 +219,13 @@ class GroupViewController: UIViewController, UIGestureRecognizerDelegate {
     
     func viewAdmin(_ sender: UIView) {
         os_log("View Group Admin Page", log: logTag, type: .debug)
+        
+        let adminViewController = storyboard?.instantiateViewController(withIdentifier:
+            "adminViewController") as! AdminViewController
+        
+        // Pass the group to the admin view controller
+        adminViewController.passedGroup = group ?? nil
+        
+        navigationController?.pushViewController(adminViewController, animated: true)
     }
 }
