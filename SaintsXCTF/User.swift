@@ -32,6 +32,7 @@ class User: NSObject, Mappable, NSCoding {
     var statistics: [String:Double]!
     var last_signin: String?
     var week_start: String?
+    var give_flair: String?
     
     override init() {
         username = ""
@@ -61,6 +62,7 @@ class User: NSObject, Mappable, NSCoding {
         statistics = aDecoder.decodeObject(forKey: "statistics") as! [String:Double]!
         last_signin = aDecoder.decodeObject(forKey: "last_signin") as! String?
         week_start = aDecoder.decodeObject(forKey: "week_start") as! String?
+        give_flair = aDecoder.decodeObject(forKey: "give_flair") as! String?
         
         super.init()
     }
@@ -96,6 +98,7 @@ class User: NSObject, Mappable, NSCoding {
         aCoder.encode(statistics, forKey: "statistics")
         aCoder.encode(last_signin, forKey: "last_signin")
         aCoder.encode(week_start, forKey: "week_start")
+        aCoder.encode(give_flair, forKey: "give_flair")
     }
     
     func mapping(map: Map) {
@@ -120,5 +123,6 @@ class User: NSObject, Mappable, NSCoding {
         statistics <- map["statistics"]
         last_signin <- map["last_signin"]
         week_start <- map["week_start"]
+        give_flair <- map["give_flair"]
     }
 }

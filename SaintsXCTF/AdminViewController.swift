@@ -411,13 +411,76 @@ class AdminViewController: UIViewController, UIPickerViewDelegate {
     
     @IBAction func giveFlair(_ sender: UIButton) {
     
+        // Add a loading overlay to the admin view on accept
+        var overlay: UIView?
+        overlay = LoadingView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height))
+        view.addSubview(overlay!)
+        
+        giveFlairButton.isEnabled = false
+        
+        // Get the the rejected user
+        let selectedIndex: Int = flairPicker.selectedRow(inComponent: 0)
+        let member: GroupMember = acceptedMembers[selectedIndex]
+        let username: String = member.username!
+        
+        let flair: String = (flairField.text?.trimmingCharacters(in: .whitespaces))!
+        
+        // Call the API to get the selected user if the flair is not empty
+        if !flair.isEmpty {
+            
+            APIClient.userGetRequest(withUsername: username) {
+                user -> Void in
+                
+                // Now give this user the flair and send the change request to the API
+                user.give_flair = flair
+                
+                APIClient.userPutRequest(withUsername: user.username!, andUser: user) {
+                    newuser -> Void in
+                    
+                    var title: String?
+                    var message: String?
+                    
+                    if let _: User = newuser {
+                        
+                        // Build the popup dialog to be displayed on success
+                        title = "Gave Flair to \(user.first!) \(user.last!)"
+                    } else {
+                        
+                        // Build the popup dialog to be displayed when the post request fails
+                        title = "Give Flair Failed"
+                        message = "Check Your Internet Connection"
+                    }
+                    
+                    let continueButton = DefaultButton(title: "Continue") {
+                        
+                        self.errorField.text = ""
+                        self.flairField.changeStyle(.none)
+                        
+                        // Re-enable button and remove loading overlay
+                        overlay?.removeFromSuperview()
+                        self.giveFlairButton.isEnabled = true
+                    }
+                    
+                    // Display the popup
+                    let popup = PopupDialog(title: title, message: message)
+                    popup.addButton(continueButton)
+                    
+                    self.present(popup, animated: true, completion: nil)
+                }
+            }
+            
+        } else {
+            
+            // Show error message if no flair is entered
+            flairField.changeStyle(.error)
+            errorField.text = "No Flair Entered"
+            
+            overlay?.removeFromSuperview()
+            giveFlairButton.isEnabled = true
+        }
     }
     
     @IBAction func sendNotification(_ sender: UIButton) {
-        
-    }
-    
-    func noInternetPopup() {
         
     }
 }
