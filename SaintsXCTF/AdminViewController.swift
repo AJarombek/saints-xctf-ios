@@ -29,6 +29,7 @@ class AdminViewController: UIViewController, UIPickerViewDelegate {
     
     var passedGroup: Group? = nil
     var groupname: String = ""
+    var grouptitle: String = ""
     var addUserPicker: UIPickerView!
     var flairPicker: UIPickerView!
     
@@ -65,6 +66,7 @@ class AdminViewController: UIViewController, UIPickerViewDelegate {
             navigationItem.title = group.group_title!
             
             groupname = group.group_name!
+            grouptitle = group.group_title!
             members = group.members!
             
             // Get the members that have not been accepted into the group yet
@@ -482,5 +484,71 @@ class AdminViewController: UIViewController, UIPickerViewDelegate {
     
     @IBAction func sendNotification(_ sender: UIButton) {
         
+        // Add a loading overlay to the admin view on accept
+        var overlay: UIView?
+        overlay = LoadingView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height))
+        view.addSubview(overlay!)
+        
+        notificationButton.isEnabled = false
+        
+        let content: String = (notificationField.text?.trimmingCharacters(in: .whitespaces))!
+        
+        // If notification content exists, send it to the rest of the group members
+        if !content.isEmpty {
+            
+            // Get the currently signed in user
+            let user: User = SignedInUser.user
+            
+            // Send the notification to all accepted members except for the current user
+            let otherMembers = acceptedMembers.filter { $0.username! != user.username! }
+            
+            otherMembers.forEach {
+                member -> Void in
+                
+                let name = "\(member.first!) \(member.last!)"
+                os_log("Sending Notification to User %@", log: self.logTag, type: .debug, name)
+                
+                // Build the notification message
+                let notification = Notification()
+                notification.username = member.username
+                notification.link = "https://www.saintsxctf.com/group.php?name=\(groupname)"
+                notification.notification_description = "A Message From \(grouptitle): \(content)"
+                notification.viewed = "N"
+                
+                // Send the notification
+                APIClient.notificationPostRequest(withNotification: notification) {
+                    (newnotification) -> Void in
+                    
+                    os_log("New Notification Sent: %@", log: self.logTag, type: .debug, newnotification.description)
+                }
+            }
+            
+            let title = "Sent Notifications"
+            
+            let continueButton = DefaultButton(title: "Continue") {
+                
+                // Re-enable button and remove loading overlay
+                overlay?.removeFromSuperview()
+                self.notificationButton.isEnabled = true
+                
+                self.errorField.text = ""
+                self.notificationField.changeStyle(.none)
+            }
+            
+            // Display the popup
+            let popup = PopupDialog(title: title, message: nil)
+            popup.addButton(continueButton)
+            
+            self.present(popup, animated: true, completion: nil)
+            
+        } else {
+            
+            // Show error message if no notification content is entered
+            notificationField.changeStyle(.error)
+            errorField.text = "No Notification Entered"
+            
+            overlay?.removeFromSuperview()
+            notificationButton.isEnabled = true
+        }
     }
 }
