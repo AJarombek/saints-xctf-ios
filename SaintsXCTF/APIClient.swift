@@ -534,7 +534,7 @@ class APIClient {
             return
         }
         
-        // Convert the Comment to a JSON string
+        // Convert the Message to a JSON string
         let messageJSON = Mapper().toJSONString(message, prettyPrint: false)
         
         APIRequest.post(withURL: url, andJson: messageJSON ?? "") {
@@ -553,8 +553,7 @@ class APIClient {
     }
     
     // Handle POST Request for an Activation Code
-    public static func activationCodePostRequest(withActivationCode activationCode: ActivationCode,
-                                                 completion: @escaping (ActivationCode) -> Void) {
+    public static func activationCodePostRequest(completion: @escaping (ActivationCode?) -> Void) {
         
         let activationCodePostEndpoint = "https://www.saintsxctf.com/api/api.php/activationcode"
         guard let url = URL(string: activationCodePostEndpoint) else {
@@ -562,10 +561,7 @@ class APIClient {
             return
         }
         
-        // Convert the Comment to a JSON string
-        let activationCodeJSON = Mapper().toJSONString(activationCode, prettyPrint: false)
-        
-        APIRequest.post(withURL: url, andJson: activationCodeJSON ?? "") {
+        APIRequest.post(withURL: url, andJson: "") {
             (json) -> Void in
             
             if let activationcode: ActivationCode = Mapper<ActivationCode>().map(JSONString: json) {
@@ -576,6 +572,9 @@ class APIClient {
                 }
             } else {
                 os_log("Activation Code Conversion Failed.", log: APIClient.logTag, type: .error)
+                OperationQueue.main.addOperation {
+                    completion(nil)
+                }
             }
         }
     }
@@ -590,7 +589,7 @@ class APIClient {
             return
         }
         
-        // Convert the Comment to a JSON string
+        // Convert the Notification to a JSON string
         let notificationJSON = Mapper().toJSONString(notification, prettyPrint: false)
         
         APIRequest.post(withURL: url, andJson: notificationJSON ?? "") {
@@ -604,6 +603,28 @@ class APIClient {
                 }
             } else {
                 os_log("Notifications Conversion Failed.", log: APIClient.logTag, type: .error)
+            }
+        }
+    }
+    
+    // Handle POST Request for a Mail
+    public static func mailPostRequest(withMail mail: Mail,
+                                               completion: @escaping (Mail?) -> Void) {
+        
+        let mailPostEndpoint = "https://www.saintsxctf.com/api/api.php/mail"
+        guard let url = URL(string: mailPostEndpoint) else {
+            os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
+            return
+        }
+        
+        // Convert the Mail to a JSON string
+        let mailJSON = Mapper().toJSONString(mail, prettyPrint: false)
+        
+        APIRequest.post(withURL: url, andJson: mailJSON ?? "") {
+            (json) -> Void in
+                
+            OperationQueue.main.addOperation {
+                completion(mail)
             }
         }
     }

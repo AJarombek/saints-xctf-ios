@@ -13,6 +13,10 @@ class ActivationCode: Mappable, CustomStringConvertible {
     
     var activation_code: String!
     
+    init() {
+        activation_code = ""
+    }
+    
     required init?(map: Map) {
         // pass
     }

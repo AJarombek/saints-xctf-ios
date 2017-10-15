@@ -84,7 +84,7 @@ class SignUpViewController: UIViewController {
             let regexName = "^[a-zA-Z\\-']+$"
             
             // Username Validation
-            if (!usernameString.isEmpty ||
+            if (!usernameString.isEmpty &&
                 usernameString.range(of: regexUsername, options: .regularExpression) != nil) {
                 
                 username.changeStyle(.valid)
@@ -95,7 +95,7 @@ class SignUpViewController: UIViewController {
             }
             
             // First Name Validation
-            if (!firstNameString.isEmpty ||
+            if (!firstNameString.isEmpty &&
                 firstNameString.range(of: regexName, options: .regularExpression) != nil) {
                 
                 firstName.changeStyle(.valid)
@@ -106,7 +106,7 @@ class SignUpViewController: UIViewController {
             }
             
             // Last Name Validation
-            if (!lastNameString.isEmpty ||
+            if (!lastNameString.isEmpty &&
                 lastNameString.range(of: regexName, options: .regularExpression) != nil) {
                 
                 lastName.changeStyle(.valid)
@@ -117,7 +117,7 @@ class SignUpViewController: UIViewController {
             }
             
             // Email Validation
-            if (!emailString.isEmpty ||
+            if (!emailString.isEmpty &&
                 emailString.range(of: regexEmail, options: .regularExpression) != nil) {
                 
                 email.changeStyle(.valid)

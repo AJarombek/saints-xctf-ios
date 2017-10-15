@@ -25,6 +25,7 @@ class AdminViewController: UIViewController, UIPickerViewDelegate {
     @IBOutlet weak var giveFlairButton: UIButton!
     @IBOutlet weak var notificationField: UITextField!
     @IBOutlet weak var notificationButton: UIButton!
+    @IBOutlet weak var errorField: UILabel!
     
     var passedGroup: Group? = nil
     var groupname: String = ""
@@ -37,6 +38,8 @@ class AdminViewController: UIViewController, UIPickerViewDelegate {
     
     var acceptedMembers: [GroupMember] = [GroupMember]()
     var acceptedNames: [String] = [String]()
+    
+    let regexEmail = "^(([a-zA-Z0-9_.-])+@([a-zA-Z0-9_.-])+\\.([a-zA-Z])+([a-zA-Z])+)?$"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -289,7 +292,6 @@ class AdminViewController: UIViewController, UIPickerViewDelegate {
                     message = "Check Your Internet Connection"
                 }
                 
-                // Actions to do when deleting a log
                 let continueButton = DefaultButton(title: "Continue") {
                     
                     // If there are no more pending users, hide accept and reject calls
@@ -311,7 +313,100 @@ class AdminViewController: UIViewController, UIPickerViewDelegate {
     }
     
     @IBAction func sendEmail(_ sender: UIButton) {
+        
+        // Add a loading overlay to the admin view on accept
+        var overlay: UIView?
+        overlay = LoadingView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height))
+        view.addSubview(overlay!)
+        
+        sendRequestButton.isEnabled = false
+        
+        if let emailString = sendRequestField.text {
+            
+            // Email Validation
+            if (!emailString.isEmpty &&
+                emailString.range(of: regexEmail, options: .regularExpression) != nil) {
+                
+                sendRequestField.changeStyle(.none)
+                
+                APIClient.activationCodePostRequest() {
+                    code -> Void in
+                    
+                    if let activationCode: ActivationCode = code {
+                        self.createEmail(withActivationCode: activationCode.activation_code!,
+                                         andAddress: emailString, andOverlay: overlay)
+                    } else {
+                        
+                        // Build the popup dialog to be displayed when the API call fails
+                        let title = "Send Email Request Failed"
+                        let message = "Check Your Internet Connection"
+                        
+                        let continueButton = DefaultButton(title: "Continue") {
+                            
+                            // Re-enable button and remove loading overlay
+                            overlay?.removeFromSuperview()
+                            self.sendRequestButton.isEnabled = true
+                            
+                            self.errorField.text = ""
+                        }
+                        
+                        // Display the popup
+                        let popup = PopupDialog(title: title, message: message)
+                        popup.addButton(continueButton)
+                        
+                        self.present(popup, animated: true, completion: nil)
+                    }
+                }
+                
+            } else {
+                sendRequestField.changeStyle(.error)
+                errorField.text = "Invalid Email Entered"
+                
+                overlay?.removeFromSuperview()
+                self.sendRequestButton.isEnabled = true
+            }
+        }
+    }
     
+    // Create an email with a certain activation code
+    func createEmail(withActivationCode code: String, andAddress address: String, andOverlay overlay: UIView?) {
+        let mail: Mail = Mail()
+        mail.emailAddress = address
+        mail.subject = "SaintsXCTF.com Invite"
+        mail.body = "<html>" +
+            "<head>" +
+            "<title>HTML email</title>" +
+            "</head>" +
+            "<body>" +
+            "<h3>SaintsXCTF.com Invite</h3>" +
+            "<br><p>You Have Been Invited to SaintsXCTF.com!</p>" +
+            "<br><br><p>Use the following confirmation code to sign up:</p><br>" +
+            "<p><b>Code: </b>" + code + "</p>" +
+            "</body>" +
+        "</html>"
+        
+        APIClient.mailPostRequest(withMail: mail) {
+            newMail -> Void in
+            
+            let title = "Sent Email Request to \(address)"
+            
+            self.sendRequestField.changeStyle(.none)
+            
+            let continueButton = DefaultButton(title: "Continue") {
+                
+                // Re-enable button and remove loading overlay
+                overlay?.removeFromSuperview()
+                self.sendRequestButton.isEnabled = true
+                
+                self.errorField.text = ""
+            }
+            
+            // Display the popup
+            let popup = PopupDialog(title: title, message: nil)
+            popup.addButton(continueButton)
+            
+            self.present(popup, animated: true, completion: nil)
+        }
     }
     
     @IBAction func giveFlair(_ sender: UIButton) {
@@ -319,6 +414,10 @@ class AdminViewController: UIViewController, UIPickerViewDelegate {
     }
     
     @IBAction func sendNotification(_ sender: UIButton) {
+        
+    }
+    
+    func noInternetPopup() {
         
     }
 }

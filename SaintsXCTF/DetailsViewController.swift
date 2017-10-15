@@ -79,7 +79,7 @@ class DetailsViewController: UIViewController, UITextViewDelegate, UITextFieldDe
             let descriptionString = descriptionView.text {
             
             // First Name Validation
-            if (!firstNameString.isEmpty ||
+            if (!firstNameString.isEmpty &&
                 firstNameString.range(of: regexName, options: .regularExpression) != nil) {
                 
                 user.first = firstNameString
@@ -91,7 +91,7 @@ class DetailsViewController: UIViewController, UITextViewDelegate, UITextFieldDe
             }
             
             // Last Name Validation
-            if (!lastNameString.isEmpty ||
+            if (!lastNameString.isEmpty &&
                 lastNameString.range(of: regexName, options: .regularExpression) != nil) {
                 
                 user.last = lastNameString
@@ -103,7 +103,7 @@ class DetailsViewController: UIViewController, UITextViewDelegate, UITextFieldDe
             }
             
             // Email Validation
-            if (!emailString.isEmpty ||
+            if (!emailString.isEmpty &&
                 emailString.range(of: regexEmail, options: .regularExpression) != nil) {
                 
                 user.email = emailString
