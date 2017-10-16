@@ -22,12 +22,23 @@ class LogDataSource {
     
     // Get item from the datasource at a specific index
     func get(_ index: Int) -> Log {
-        return logs[index]
+        print(index)
+        print(logs)
+        if index < logs.count {
+            return logs[index]
+        } else {
+            return Log()
+        }
     }
     
     // Remove from the datasource at specific index
     func delete(_ index: Int) {
         logs.remove(at: index)
+    }
+    
+    // Remove all logs from the datasource
+    func clearLogs() {
+        logs.removeAll()
     }
     
     // Load a defined number of logs into the datasource using the logfeed endpoint

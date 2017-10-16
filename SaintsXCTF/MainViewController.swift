@@ -16,9 +16,11 @@ class MainViewController: UITableViewController, UITextViewDelegate {
     
     @IBOutlet weak var logTableView: UITableView!
     
+    let refreshcontrol = UIRefreshControl()
+    
     var user: User = User()
     
-    let logDataSource = LogDataSource()
+    var logDataSource = LogDataSource()
     let heightDict = NSMutableDictionary()
     var finished = false
     
@@ -45,6 +47,12 @@ class MainViewController: UITableViewController, UITextViewDelegate {
         // can pop up when pressing on a log
         let longpress = UILongPressGestureRecognizer(target: self, action: #selector(MainViewController.handleLogLongPress))
         logTableView.addGestureRecognizer(longpress)
+        
+        // Set the refresh control for the table view for pull down refresh
+        logTableView.refreshControl = refreshcontrol
+        
+        refreshcontrol.addTarget(self, action: #selector(reloadLogs(_:)), for: .valueChanged)
+        refreshcontrol.attributedTitle = NSAttributedString(string: "Reloading Logs ...", attributes: [:])
         
         // Get the currently logged in user
         user = SignedInUser.user
@@ -89,6 +97,14 @@ class MainViewController: UITableViewController, UITextViewDelegate {
         
         // Show the navigation bar on view disappearing
         navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    
+    func reloadLogs(_ sender: UIView) {
+        refreshcontrol.isEnabled = false
+        offset = 0
+        logDataSource.clearLogs()
+        logTableView.reloadData()
+        load()
     }
     
     // Returns the number of rows that the tableview should display
@@ -328,6 +344,12 @@ class MainViewController: UITableViewController, UITextViewDelegate {
             (done) -> Void in
             
             self.logTableView.reloadData()
+            
+            // If the refresh control is visible, remove it
+            if self.refreshcontrol.isRefreshing {
+                self.refreshcontrol.endRefreshing()
+                self.refreshcontrol.isEnabled = true
+            }
             
             // If there are no more logs to load, remove the activity indicator and
             // stop trying to load more logs
