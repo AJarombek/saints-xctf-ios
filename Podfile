@@ -6,4 +6,5 @@ target 'SaintsXCTF' do
   pod 'BCryptSwift'
   pod 'PopupDialog', '~> 0.5'
   pod 'Charts'
+  pod 'IQKeyboardManagerSwift'
 end

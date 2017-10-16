@@ -113,26 +113,6 @@ class AdminViewController: UIViewController, UIPickerViewDelegate {
         
         // Hide the colored cursor when the nameFlairField is selected
         nameFlairField.tintColor = .clear
-        
-        // Set up the done button for the keyboard
-        setDoneKeyboard()
-    }
-    
-    // Create the done button for the keyboard
-    func setDoneKeyboard() {
-        let keyboardToolbar = UIToolbar()
-        keyboardToolbar.sizeToFit()
-        let flexBarButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        let doneBarButton = UIBarButtonItem(barButtonSystemItem: .done, target: self,
-                                            action: #selector(self.dismissKeyboard))
-        keyboardToolbar.items = [flexBarButton, doneBarButton]
-        
-        // Connect the done button to all the text fields keyboards
-        addUserField.inputAccessoryView = keyboardToolbar
-        sendRequestField.inputAccessoryView = keyboardToolbar
-        nameFlairField.inputAccessoryView = keyboardToolbar
-        flairField.inputAccessoryView = keyboardToolbar
-        notificationField.inputAccessoryView = keyboardToolbar
     }
     
     // Called when the done button on the keyboard is clicked

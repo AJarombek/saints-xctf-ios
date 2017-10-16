@@ -145,31 +145,6 @@ class LogViewController: UIViewController, UITextViewDelegate, UIPickerViewDeleg
         if editingLog {
             setFields()
         }
-        
-        // Set up the done button for the keyboard
-        setDoneKeyboard()
-    }
-    
-    // Create the done button for the keyboard
-    func setDoneKeyboard() {
-        let keyboardToolbar = UIToolbar()
-        keyboardToolbar.sizeToFit()
-        let flexBarButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        let doneBarButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.dismissKeyboard))
-        keyboardToolbar.items = [flexBarButton, doneBarButton]
-        
-        // Connect the done button to all the text fields keyboards
-        nameField.inputAccessoryView = keyboardToolbar
-        locationField.inputAccessoryView = keyboardToolbar
-        distanceField.inputAccessoryView = keyboardToolbar
-        minutesField.inputAccessoryView = keyboardToolbar
-        secondsField.inputAccessoryView = keyboardToolbar
-        descriptionField.inputAccessoryView = keyboardToolbar
-    }
-    
-    // Called when the done button on the keyboard is clicked
-    func dismissKeyboard() {
-        view.endEditing(true)
     }
     
     // When the feel stepper is clicked, display the feel description

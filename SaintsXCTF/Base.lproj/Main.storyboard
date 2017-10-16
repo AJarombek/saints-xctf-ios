@@ -323,8 +323,8 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="119"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" scrollEnabled="NO" editable="NO" text="Description" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Nol-T3-Uj4">
-                                            <rect key="frame" x="2" y="45.5" width="373" height="30.5"/>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Description" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Nol-T3-Uj4">
+                                            <rect key="frame" x="2" y="55.5" width="373" height="30.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
@@ -334,13 +334,13 @@
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Log Name" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dd8-8u-fXj">
-                                            <rect key="frame" x="1" y="20" width="280.5" height="32"/>
+                                            <rect key="frame" x="1" y="20" width="280.5" height="30.5"/>
                                             <edgeInsets key="layoutMargins" top="0.0" left="8" bottom="8" right="8"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" scrollEnabled="NO" editable="NO" text="First Last" translatesAutoresizingMaskIntoConstraints="NO" id="y4e-xk-vUC">
-                                            <rect key="frame" x="0.0" y="0.0" width="247.5" height="35.5"/>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="First Last" translatesAutoresizingMaskIntoConstraints="NO" id="y4e-xk-vUC">
+                                            <rect key="frame" x="0.0" y="0.0" width="247.5" height="37"/>
                                             <edgeInsets key="layoutMargins" top="0.0" left="8" bottom="0.0" right="8"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -350,8 +350,8 @@
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
-                                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZEy-6j-OeE">
-                                            <rect key="frame" x="8" y="81" width="359" height="30"/>
+                                        <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZEy-6j-OeE">
+                                            <rect key="frame" x="8" y="91" width="359" height="20"/>
                                             <state key="normal" title="Comments"/>
                                             <connections>
                                                 <segue destination="TEP-fJ-qwv" kind="show" id="Tc9-9x-L8v"/>
@@ -379,13 +379,13 @@
                                         <constraint firstItem="y4e-xk-vUC" firstAttribute="top" secondItem="XKP-dL-gJw" secondAttribute="top" id="7bE-8R-jU4"/>
                                         <constraint firstItem="Nol-T3-Uj4" firstAttribute="leading" secondItem="XKP-dL-gJw" secondAttribute="leading" constant="2" id="AUd-uI-ER2"/>
                                         <constraint firstItem="2VM-X6-oEn" firstAttribute="leading" secondItem="Dd8-8u-fXj" secondAttribute="trailing" id="Bmf-tY-rVI"/>
+                                        <constraint firstItem="Nol-T3-Uj4" firstAttribute="top" secondItem="Dd8-8u-fXj" secondAttribute="bottom" constant="5" id="GEV-F8-Wlx"/>
                                         <constraint firstItem="2VM-X6-oEn" firstAttribute="top" secondItem="XKP-dL-gJw" secondAttribute="topMargin" constant="10" id="Ivl-xU-LwN"/>
                                         <constraint firstItem="xS7-gu-K0R" firstAttribute="top" secondItem="XKP-dL-gJw" secondAttribute="top" id="KBR-Gr-Xiu"/>
                                         <constraint firstItem="2VM-X6-oEn" firstAttribute="trailing" secondItem="XKP-dL-gJw" secondAttribute="trailingMargin" constant="5" id="KJh-fz-21h"/>
                                         <constraint firstItem="ZEy-6j-OeE" firstAttribute="top" secondItem="Nol-T3-Uj4" secondAttribute="bottom" constant="5" id="MXR-Gf-QHQ"/>
                                         <constraint firstAttribute="trailing" secondItem="PVN-xu-MPb" secondAttribute="trailing" constant="5" id="Q0Y-mi-bcd"/>
                                         <constraint firstItem="PVN-xu-MPb" firstAttribute="leading" secondItem="fgh-OF-z0d" secondAttribute="trailing" constant="5" id="QMx-bU-oLz"/>
-                                        <constraint firstItem="Nol-T3-Uj4" firstAttribute="top" secondItem="y4e-xk-vUC" secondAttribute="bottom" constant="10" id="QX2-d4-nCf"/>
                                         <constraint firstAttribute="trailing" secondItem="xS7-gu-K0R" secondAttribute="trailing" id="UYb-q6-zqI"/>
                                         <constraint firstItem="y4e-xk-vUC" firstAttribute="width" secondItem="xS7-gu-K0R" secondAttribute="width" constant="120" id="aFV-Hm-ogv"/>
                                         <constraint firstItem="ZEy-6j-OeE" firstAttribute="bottom" secondItem="XKP-dL-gJw" secondAttribute="bottomMargin" id="bTB-6V-QIZ"/>

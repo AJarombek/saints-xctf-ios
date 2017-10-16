@@ -32,27 +32,6 @@ class HomeViewController: UIViewController {
         
         username.standardStyle()
         password.standardStyle()
-        
-        // Set up the done button for the keyboard
-        setDoneKeyboard()
-    }
-    
-    // Create the done button for the keyboard
-    func setDoneKeyboard() {
-        let keyboardToolbar = UIToolbar()
-        keyboardToolbar.sizeToFit()
-        let flexBarButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        let doneBarButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.dismissKeyboard))
-        keyboardToolbar.items = [flexBarButton, doneBarButton]
-        
-        // Connect the done button to all the text fields keyboards
-        username.inputAccessoryView = keyboardToolbar
-        password.inputAccessoryView = keyboardToolbar
-    }
-    
-    // Called when the done button on the keyboard is clicked
-    func dismissKeyboard() {
-        view.endEditing(true)
     }
     
     // Action to take when logging in a user
