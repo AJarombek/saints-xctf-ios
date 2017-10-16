@@ -24,8 +24,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Set the color of the status bar for the app
         UINavigationBar.appearance().clipsToBounds = true
         let statusBar: UIView = UIApplication.shared.value(forKey: "statusBar") as! UIView
-        statusBar.backgroundColor = UIColor(0x999999, a: 1)
+        statusBar.backgroundColor = UIColor(0x990000, a: 1)
         UIApplication.shared.statusBarStyle = .lightContent
+        
+        let navigationBarAppearance = UINavigationBar.appearance()
+        navigationBarAppearance.titleTextAttributes = [NSForegroundColorAttributeName:UIColor(0xFFFFFF)]
         
         // Override point for customization after application launch.
         return true

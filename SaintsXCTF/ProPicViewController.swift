@@ -32,7 +32,7 @@ class ProPicViewController: UIViewController, UIGestureRecognizerDelegate,
         // Set the navigation bar back button to a custom image
         navigationController?.navigationBar.backIndicatorImage = UIImage(named: "back")
         navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "back")
-        navigationController?.navigationBar.tintColor = UIColor(0x000000)
+        navigationController?.navigationBar.tintColor = UIColor(0xFFFFFF)
         navigationItem.title = "Edit Profile Picture"
         
         navigationItem.backBarButtonItem = UIBarButtonItem(title: " ", style:

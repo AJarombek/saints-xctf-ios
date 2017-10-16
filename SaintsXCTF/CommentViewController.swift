@@ -33,7 +33,7 @@ class CommentViewController: UITableViewController, UITextViewDelegate {
         // Set the navigation bar back button to a custom image
         navigationController?.navigationBar.backIndicatorImage = UIImage(named: "back")
         navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "back")
-        navigationController?.navigationBar.tintColor = UIColor(0x000000)
+        navigationController?.navigationBar.tintColor = UIColor(0xFFFFFF)
         navigationItem.backBarButtonItem = UIBarButtonItem(title: " ", style: UIBarButtonItemStyle.plain, target: nil, action: nil)
         
         os_log("CommentViewController Appeared.", log: logTag, type: .debug)

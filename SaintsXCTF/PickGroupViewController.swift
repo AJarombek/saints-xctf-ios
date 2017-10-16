@@ -48,8 +48,10 @@ class PickGroupController: UIViewController {
         alumniButton.backgroundColor = UIColor(0xEEEEEE)
         
         // See if there is a user entered.  If so, check to see if the user is a member of any groups
-        if let _ : User = user {
+        if let _: User = user {
             let groups: [GroupInfo] = (user?.groups)!
+            
+            navigationItem.title = "Edit Groups"
             
             groups.forEach {
                 (group) -> Void in

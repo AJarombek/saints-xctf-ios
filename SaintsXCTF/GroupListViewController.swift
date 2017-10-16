@@ -31,7 +31,7 @@ class GroupListViewController: UIViewController, UIGestureRecognizerDelegate {
         super.viewDidLoad()
         os_log("GroupListViewController Loaded.", log: logTag, type: .debug)
         
-        navigationController?.navigationBar.backgroundColor = UIColor(0x999999, a: 0.9)
+        navigationController?.navigationBar.backgroundColor = UIColor(0x990000, a: 0.9)
         
         // Create top borders for all the group selections
         let wxcTopBorder = CALayer()

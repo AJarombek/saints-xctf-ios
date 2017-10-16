@@ -205,7 +205,7 @@ class MonthlyViewController: UIViewController {
         // Set the navigation bar back button to a custom image
         navigationController?.navigationBar.backIndicatorImage = UIImage(named: "back")
         navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "back")
-        navigationController?.navigationBar.tintColor = UIColor(0x000000)
+        navigationController?.navigationBar.tintColor = UIColor(0xFFFFFF)
         navigationItem.title = "Monthly Calendar"
         
         navigationItem.backBarButtonItem = UIBarButtonItem(title: " ", style:

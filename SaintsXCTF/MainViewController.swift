@@ -37,7 +37,7 @@ class MainViewController: UITableViewController, UITextViewDelegate {
         super.viewDidLoad()
         os_log("MainViewController Loaded.", log: logTag, type: .debug)
         
-        navigationController?.navigationBar.backgroundColor = UIColor(0x999999, a: 0.9)
+        navigationController?.navigationBar.backgroundColor = UIColor(0x990000, a: 0.9)
         
         // Setting the row height to UITableViewAutomaticDimension tells the TableView to determine the
         // height of a cell based on its contents and constraints.
@@ -78,7 +78,7 @@ class MainViewController: UITableViewController, UITextViewDelegate {
             // Set the navigation bar back button to a custom image
             navigationController?.navigationBar.backIndicatorImage = UIImage(named: "back")
             navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "back")
-            navigationController?.navigationBar.tintColor = UIColor(0x000000)
+            navigationController?.navigationBar.tintColor = UIColor(0xFFFFFF)
             
             // The navigation bar title should be either the users name or the group title
             if let group: Group = groupPassed {

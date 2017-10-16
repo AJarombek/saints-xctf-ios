@@ -41,7 +41,7 @@ class WeeklyViewController: UIViewController {
         // Set the navigation bar back button to a custom image
         navigationController?.navigationBar.backIndicatorImage = UIImage(named: "back")
         navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "back")
-        navigationController?.navigationBar.tintColor = UIColor(0x000000)
+        navigationController?.navigationBar.tintColor = UIColor(0xFFFFFF)
         navigationItem.title = "Weekly Graph"
         
         navigationItem.backBarButtonItem = UIBarButtonItem(title: " ", style:
