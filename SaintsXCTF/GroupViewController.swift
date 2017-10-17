@@ -47,6 +47,13 @@ class GroupViewController: UIViewController, UIGestureRecognizerDelegate {
         navigationItem.backBarButtonItem = UIBarButtonItem(title: " ", style:
             UIBarButtonItemStyle.plain, target: nil, action: nil)
         
+        // Hide all the views until we know which ones to show
+        logsView.isHidden = true
+        leaderboardsView.isHidden = true
+        messagesView.isHidden = true
+        membersView.isHidden = true
+        adminView.isHidden = true
+        
         // Get the group from the API with given groupname 
         APIClient.groupGetRequest(withGroupname: groupname) {
             (group) -> Void in
@@ -81,6 +88,41 @@ class GroupViewController: UIViewController, UIGestureRecognizerDelegate {
                 
                 // Display the group picture image
                 self.groupImageView.image = groupPic
+            }
+            
+            // Get the member info for the currently signed in user
+            let user: User = SignedInUser.user
+            let member: [GroupMember] = members.filter { $0.username! == user.username! }
+            
+            // Unhide the always visible buttons
+            self.logsView.isHidden = false
+            self.leaderboardsView.isHidden = false
+            self.membersView.isHidden = false
+            
+            // Hide message button if the signed in user is not an accepted member,
+            // Hide admin button if the signed in user is not an admin
+            if member.count == 0 || member[0].status! != "accepted" {
+                
+                let membersBottomBorder = CALayer()
+                membersBottomBorder.frame = CGRect.init(x: -20, y: self.membersView.frame.height + 1,
+                                                        width: self.view.frame.width + 20, height: 1)
+                membersBottomBorder.backgroundColor = UIColor(0xBBBBBB).cgColor
+                
+                self.membersView.layer.addSublayer(membersBottomBorder)
+                
+            } else if member[0].user! != "admin" {
+                self.messagesView.isHidden = false
+                
+                let messagesBottomBorder = CALayer()
+                messagesBottomBorder.frame = CGRect.init(x: -20, y: self.messagesView.frame.height + 1,
+                                                         width: self.view.frame.width + 20, height: 1)
+                messagesBottomBorder.backgroundColor = UIColor(0xBBBBBB).cgColor
+                
+                self.messagesView.layer.addSublayer(messagesBottomBorder)
+                
+            } else {
+                self.adminView.isHidden = false
+                self.messagesView.isHidden = false
             }
             
             // Set click listener to the logs view to open up the group logs page
@@ -131,7 +173,7 @@ class GroupViewController: UIViewController, UIGestureRecognizerDelegate {
             self.adminButton.addGestureRecognizer(adminbuttonclick)
         }
         
-        // Create top borders for all the profile selections
+        // Create top borders for all the group selections
         let topBorder = CALayer()
         topBorder.frame = CGRect.init(x: -20, y: 0, width: view.frame.width + 20, height: 1)
         topBorder.backgroundColor = UIColor(0xBBBBBB).cgColor
@@ -152,7 +194,6 @@ class GroupViewController: UIViewController, UIGestureRecognizerDelegate {
         adminTopBorder.frame = CGRect.init(x: -20, y: 0, width: view.frame.width + 20, height: 1)
         adminTopBorder.backgroundColor = UIColor(0xBBBBBB).cgColor
         
-        // Weekly bottom border for other profiles that dont show the edit view
         let adminBottomBorder = CALayer()
         adminBottomBorder.frame = CGRect.init(x: -20, y: adminView.frame.height + 1,
                                                width: view.frame.width + 20, height: 1)

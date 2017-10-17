@@ -26,6 +26,8 @@ class HomeViewController: UIViewController {
     @IBOutlet var password: UITextField!
     @IBOutlet var error: UITextView!
     
+    var overlay: UIView?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.backgroundImage.image = #imageLiteral(resourceName: "Background")
@@ -53,6 +55,14 @@ class HomeViewController: UIViewController {
                 self.error.text = "Please Enter a Password"
                 self.password.changeStyle(.error)
             } else {
+                
+                // Add a loading overlay to the home page
+                overlay = LoadingView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height))
+                view.addSubview(overlay!)
+                
+                // Disable the login and signup buttons
+                logIn.isEnabled = false
+                signUp.isEnabled = false
             
                 os_log("Logging In User %@.", log: logTag, type: .debug, usernameString)
             
@@ -89,11 +99,13 @@ class HomeViewController: UIViewController {
                             self.error.text = "Invalid Username/Password Entered"
                             self.username.changeStyle(.warning)
                             self.password.changeStyle(.warning)
+                            self.removeOverlay()
                         }
                     } else {
                         os_log("Unable to Verify Password", log: self.logTag, type: .error)
                         self.error.text = "Invalid Username Entered"
                         self.username.changeStyle(.error)
+                        self.removeOverlay()
                     }
                 }
             }
@@ -105,5 +117,10 @@ class HomeViewController: UIViewController {
         
     }
     
-    @IBAction func signUpUser(_ sender: UIButton) {}
+    // Re-enable buttons and remove loading overlay
+    func removeOverlay() {
+        self.overlay?.removeFromSuperview()
+        self.signUp.isEnabled = true
+        self.logIn.isEnabled = true
+    }
 }

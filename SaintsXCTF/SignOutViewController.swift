@@ -22,6 +22,7 @@ class SignOutController: UIViewController {
         signOutSwitch.setOn(false, animated: false)
         signOutSwitch.addTarget(self, action: #selector(switchChanged),
                                 for: UIControlEvents.valueChanged)
+        signOutSwitch.onTintColor = UIColor(0x990000)
     }
     
     // Function called when the UISwitch is changed.  If it is turned on, sign out user
