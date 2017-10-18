@@ -17,7 +17,6 @@ class Constants {
                              "Fairly Good", "Good", "Great", "Fantastic"]
     
     static func getFeelColor(_ index: Int) -> Int {
-        print(index)
         return feel_colors[index]
     }
     

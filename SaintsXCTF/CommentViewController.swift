@@ -80,6 +80,8 @@ class CommentViewController: UITableViewController, UITextViewDelegate {
             let cell = tableView.dequeueReusableCell(withIdentifier: "NewCommentCell", for: indexPath)
                     as! NewCommentTableViewCell
             
+            cell.commentField.standardStyle()
+            
             // Set up the done button for the keyboard
             setDoneKeyboard(cell: cell)
             
@@ -156,6 +158,19 @@ class CommentViewController: UITableViewController, UITextViewDelegate {
     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange,
                   interaction: UITextItemInteraction) -> Bool {
         os_log("%@", log: logTag, type: .debug, URL.absoluteString)
+        
+        let index = URL.absoluteString.index(URL.absoluteString.startIndex, offsetBy: 1)
+        APIClient.userGetRequest(withUsername: URL.absoluteString.substring(from: index)) {
+            (user) -> Void in
+            
+            let profileViewController = self.storyboard?.instantiateViewController(withIdentifier:
+                "profileViewController") as! ProfileViewController
+            
+            // Pass the user to the profile view controller
+            profileViewController.user = user
+            profileViewController.showNavBar = true
+            self.navigationController?.pushViewController(profileViewController, animated: true)
+        }
         
         return false
     }

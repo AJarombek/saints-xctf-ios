@@ -65,10 +65,6 @@ class Utils {
                 $0.range.length
             }
             
-            os_log("Start Indices: %@", log: Utils.logTag, type: .debug, startIndices)
-            os_log("Substrings: %@", log: Utils.logTag, type: .debug, substrings)
-            os_log("String Lengths: %@", log: Utils.logTag, type: .debug, stringLengths)
-            
             var matches = StringMatches()
             matches.startIndices = startIndices
             matches.substrings = substrings

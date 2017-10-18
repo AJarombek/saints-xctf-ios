@@ -30,7 +30,7 @@ class MainViewController: UITableViewController, UITextViewDelegate {
     
     var paramType = "all"
     var sortParam = "all"
-    let limit = 10
+    let limit = 25
     var offset = 0
     
     override func viewDidLoad() {
@@ -100,7 +100,6 @@ class MainViewController: UITableViewController, UITextViewDelegate {
     }
     
     func reloadLogs(_ sender: UIView) {
-        refreshcontrol.isEnabled = false
         offset = 0
         logDataSource.clearLogs()
         logTableView.reloadData()
@@ -139,166 +138,83 @@ class MainViewController: UITableViewController, UITextViewDelegate {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! LogTableViewCell
-        let log = logDataSource.get(indexPath.row)
+        let log: LogData? = logDataSource.get(indexPath.row)
         
-        cell.nameLabel.contentOffset = CGPoint()
-        
-        // Create a reference to the view controller in the cell
-        cell.mainViewController = self
-        cell.log = log
-        cell.index = indexPath.row
-        
-        let username = user.username ?? ""
-        
-        // Show the edit and delete buttons if the log username matches the signed in username
-        if username == log.username! {
-            cell.editButton.isHidden = false
-            cell.deleteButton.isHidden = false
+        if let logData: LogData = log {
             
-            // Set the styles of the edit and delete buttons
-            cell.editButton.backgroundColor = UIColor(0xCCCCCC, a: 0.9)
-            cell.deleteButton.backgroundColor = UIColor(0xCCCCCC, a: 0.9)
-            cell.editButton.imageEdgeInsets = UIEdgeInsetsMake(20, 20, 20, 20)
-            cell.deleteButton.imageEdgeInsets = UIEdgeInsetsMake(20, 20, 20, 20)
+            // Create a reference to the view controller in the cell
+            cell.mainViewController = self
+            cell.log = logData.log!
+            cell.index = indexPath.row
+
+            let username = user.username ?? ""
             
-            // Set the buttons to be round
-            cell.editButton.layer.cornerRadius = 0.5 * cell.editButton.bounds.size.width
-            cell.deleteButton.layer.cornerRadius = 0.5 * cell.deleteButton.bounds.size.width
-            
-            // Add click listeners to the buttons
-            cell.editButton.addTarget(cell, action: #selector(LogTableViewCell.editLog), for: .touchUpInside)
-            cell.deleteButton.addTarget(cell, action: #selector(LogTableViewCell.deleteLog), for: .touchUpInside)
-            
-        } else {
-            cell.editButton.isHidden = true
-            cell.deleteButton.isHidden = true
-        }
-        
-        let feelInt: Int! = Int(log.feel)
-        if let validFeel: Int = feelInt {
-            cell.setStyle(withFeel: validFeel)
-        } else {
-            cell.setStyle(withFeel: 6)
-        }
-        
-        // Create a top border for the comments button
-        let topline = UIView(frame: CGRect(x: -10, y: 0, width: cell.commentsButton.frame.size.width + 10, height: 1))
-        topline.layer.backgroundColor = UIColor(0xAAAAAA).cgColor
-        
-        // Customize the comments button display
-        cell.commentsButton.backgroundColor = UIColor(0x000000, a: 0.0)
-        cell.commentsButton.addSubview(topline)
-        cell.commentsButton.setTitleColor(UIColor(0x333333), for: UIControlState.normal)
-        
-        // Set the user name as clickable text in the log
-        let usertitle: String = "\(log.first!) \(log.last!)"
-        let range: NSRange = NSRange(location: 0, length: usertitle.characters.count)
-        
-        let mutableName = NSMutableAttributedString(string: usertitle, attributes: [:])
-        mutableName.addAttribute(NSLinkAttributeName, value: log.username!,
-                                 range: range)
-        mutableName.addAttribute(NSFontAttributeName, value: UIFont.systemFont(ofSize: 16.0, weight: UIFontWeightBold), range: range)
-        cell.userLabel?.linkTextAttributes = [NSForegroundColorAttributeName:UIColor(0x000000)]
-        
-        cell.userLabel?.attributedText = mutableName
-        cell.userLabel?.delegate = self
-        
-        // Convert the string to a date
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        
-        // Then format the date for viewing
-        let formattedDate = dateFormatter.date(from: log.date)
-        dateFormatter.dateFormat = "MMM dd, yyyy"
-        cell.dateLabel?.text = dateFormatter.string(from: formattedDate!)
-        
-        // Set the logs name
-        cell.nameLabel?.text = log.name!
-        
-        // Set the logs type
-        cell.typeLabel?.text = log.type?.uppercased()
-        
-        // Set the logs location
-        var locationTxt = ""
-        
-        if let location: String = log.location {
-            locationTxt = "Location: \(location)\n"
-        }
-        
-        // Set the logs distance
-        var distanceTxt = ""
-        
-        if let distance: String = log.distance, let metric: String = log.metric {
-            
-            if distance != "0" {
-                distanceTxt = "\(distance) \(metric)\n"
-            }
-        }
-        
-        // Set the logs time
-        var timeTxt = ""
-        
-        if let time: String = log.time, let pace: String = log.pace {
-            if time != "00:00:00" {
-                timeTxt = shortenTime(withTime: time)
+            // Show the edit and delete buttons if the log username matches the signed in username
+            if username == logData.username! {
+                cell.editButton.isHidden = false
+                cell.deleteButton.isHidden = false
                 
-                if pace == "00:00:00" {
-                    timeTxt += " (0:00/mi)\n"
-                } else {
-                    timeTxt += " (\(shortenTime(withTime: pace))/mi)\n"
-                }
-            }
-        }
-        
-        // Combine the location, distance, and time
-        let logInfo = "\(locationTxt)\(distanceTxt)\(timeTxt)\n"
-        let logInfoMutableContent = NSMutableAttributedString(string: logInfo, attributes: [:])
-        
-        // Create a combined mutable attribute string for all the log info + description
-        let combinedMutableContent = NSMutableAttributedString()
-        combinedMutableContent.append(logInfoMutableContent)
-        
-        // Set the logs description
-        if let description: String = log.log_description {
-            cell.descriptionLabel?.text = description
-            
-            // Find all the tagged users in the comment
-            let tagRegex = "@[a-zA-Z0-9]+"
-            let matches = Utils.matchesInfo(for: tagRegex, in: description)
-            
-            // Create a MutableAttributedString for each tag
-            // Add a new line at the end of the description so none of the text gets cut off
-            let mutableContent = NSMutableAttributedString(string: "\(description)\n", attributes: [:])
-            
-            // Go through each tag and add a link when clicked
-            if matches.substrings.count > 0 {
-                for i in 0...matches.substrings.count - 1 {
-                    let start = matches.startIndices[i]
-                    let length = matches.stringLengths[i]
-                    
-                    mutableContent.addAttribute(NSLinkAttributeName, value: matches.substrings[i],
-                                                range: NSRange(location: start, length: length))
-                }
+                // Set the styles of the edit and delete buttons
+                cell.editButton.backgroundColor = UIColor(0xCCCCCC, a: 0.9)
+                cell.deleteButton.backgroundColor = UIColor(0xCCCCCC, a: 0.9)
+                cell.editButton.imageEdgeInsets = UIEdgeInsetsMake(20, 20, 20, 20)
+                cell.deleteButton.imageEdgeInsets = UIEdgeInsetsMake(20, 20, 20, 20)
+                
+                // Set the buttons to be round
+                cell.editButton.layer.cornerRadius = 0.5 * cell.editButton.bounds.size.width
+                cell.deleteButton.layer.cornerRadius = 0.5 * cell.deleteButton.bounds.size.width
+                
+                // Add click listeners to the buttons
+                cell.editButton.addTarget(cell, action: #selector(LogTableViewCell.editLog), for: .touchUpInside)
+                cell.deleteButton.addTarget(cell, action: #selector(LogTableViewCell.deleteLog), for: .touchUpInside)
+                
+            } else {
+                cell.editButton.isHidden = true
+                cell.deleteButton.isHidden = true
             }
             
-            // Add the description to the rest of the mutable content
-            combinedMutableContent.append(mutableContent)
+            cell.setStyle(withFeel: logData.feel!)
+
+            // Create a top border for the comments button
+            let topline = UIView(frame: CGRect(x: -10, y: -5, width: cell.commentsButton.frame.size.width + 50, height: 1))
+            topline.layer.backgroundColor = UIColor(0xAAAAAA).cgColor
+            
+            // Customize the comments button display
+            cell.commentsButton.backgroundColor = UIColor(0x000000, a: 0.0)
+            cell.commentsButton.addSubview(topline)
+            cell.commentsButton.setTitleColor(UIColor(0x333333), for: UIControlState.normal)
+            
+            cell.userLabel?.linkTextAttributes = [NSForegroundColorAttributeName:UIColor(0x000000)]
+            cell.userLabel?.attributedText = logData.userLabelText!
+            cell.userLabel?.delegate = self
+
+            cell.dateLabel?.text = logData.date!
+            
+            // Set the logs name
+            cell.nameLabel?.text = logData.name!
+            
+            // Set the logs type
+            cell.typeLabel?.text = logData.type ?? "RUN"
+            
+            if let desc: String = logData.description {
+                cell.descriptionLabel.text = desc
+                
+            } else if let attDesc: NSMutableAttributedString = logData.descriptionTags {
+                cell.descriptionLabel.attributedText = attDesc
+                
+                // Set the properties of the link text
+                cell.descriptionLabel?.linkTextAttributes = [NSForegroundColorAttributeName:UIColor(0x555555),
+                                                             NSFontAttributeName:UIFont(name: "HelveticaNeue-Bold", size: 12)!]
+                
+                // Allows the shouldInteractWith URL function to execute on click
+                cell.descriptionLabel?.delegate = self
+                cell.descriptionLabel?.sizeToFit()
+            }
+            
+            // Add a tag to the comments button of the current index path.
+            // This will be used with the segue to call the commentsView
+            cell.commentsButton.tag = indexPath.row
         }
-        
-        // Set the description as the combined location, time, pace, distance, and description
-        cell.descriptionLabel?.attributedText = combinedMutableContent
-        
-        // Set the properties of the link text
-        cell.descriptionLabel?.linkTextAttributes = [NSForegroundColorAttributeName:UIColor(0x555555),
-                            NSFontAttributeName:UIFont(name: "HelveticaNeue-Bold", size: 12)!]
-        
-        // Allows the shouldInteractWith URL function to execute on click
-        cell.descriptionLabel?.delegate = self
-        cell.descriptionLabel?.sizeToFit()
-        
-        // Add a tag to the comments button of the current index path.
-        // This will be used with the segue to call the commentsView
-        cell.commentsButton.tag = indexPath.row
         
         return cell
     }
@@ -308,7 +224,8 @@ class MainViewController: UITableViewController, UITextViewDelegate {
                   interaction: UITextItemInteraction) -> Bool {
         os_log("%@", log: logTag, type: .debug, URL.absoluteString)
         
-        APIClient.userGetRequest(withUsername: URL.absoluteString) {
+        let index = URL.absoluteString.index(URL.absoluteString.startIndex, offsetBy: 1)
+        APIClient.userGetRequest(withUsername: URL.absoluteString.substring(from: index)) {
             (user) -> Void in
             
             let profileViewController = self.storyboard?.instantiateViewController(withIdentifier:
@@ -332,8 +249,8 @@ class MainViewController: UITableViewController, UITextViewDelegate {
             if let button: UIButton = sender as! UIButton? {
                 
                 let row = button.tag
-                let log = logDataSource.get(row)
-                destination.log = log
+                let logData = logDataSource.get(row)
+                destination.log = logData?.log!
             }
         }
     }
@@ -344,12 +261,7 @@ class MainViewController: UITableViewController, UITextViewDelegate {
             (done) -> Void in
             
             self.logTableView.reloadData()
-            
-            // If the refresh control is visible, remove it
-            if self.refreshcontrol.isRefreshing {
-                self.refreshcontrol.endRefreshing()
-                self.refreshcontrol.isEnabled = true
-            }
+            self.refreshcontrol.endRefreshing()
             
             // If there are no more logs to load, remove the activity indicator and
             // stop trying to load more logs
@@ -360,22 +272,6 @@ class MainViewController: UITableViewController, UITextViewDelegate {
         offset += limit
     }
     
-    // Function to remove excess zeros from the time
-    func shortenTime(withTime time: String) -> String {
-        var start = 0
-        
-        for i in 0 ..< time.characters.count {
-            let index = time.index(time.startIndex, offsetBy: i)
-            if time[index] != "0" && time[index] != ":" {
-                start = i
-                break
-            }
-        }
-        
-        let index =  time.index(time.startIndex, offsetBy: start)
-        return time.substring(from: index)
-    }
-    
     // Function that handles the long press recognizer
     func handleLogLongPress(sender: UILongPressGestureRecognizer) {
         if sender.state == UIGestureRecognizerState.began {
@@ -384,7 +280,7 @@ class MainViewController: UITableViewController, UITextViewDelegate {
             let touchpoint = sender.location(in: logTableView)
             if let indexPath = logTableView.indexPathForRow(at: touchpoint) {
                 
-                let log: Log = logDataSource.get(indexPath.row)
+                let log: Log = (logDataSource.get(indexPath.row)?.log!)!
                 os_log("Log Long Pressed: %@", log: logTag, type: .debug, log.description)
             }
         }

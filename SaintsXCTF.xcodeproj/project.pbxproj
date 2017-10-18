@@ -52,6 +52,7 @@
 		A15E62471F5231CC00AC9EF1 /* UITableExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15E62461F5231CC00AC9EF1 /* UITableExt.swift */; };
 		A15E62491F52372000AC9EF1 /* LogTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15E62481F52372000AC9EF1 /* LogTableViewCell.swift */; };
 		A15E624C1F536C8500AC9EF1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15E624B1F536C8500AC9EF1 /* Constants.swift */; };
+		A172A1771F96E8A100C7A535 /* LogData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A172A1761F96E8A100C7A535 /* LogData.swift */; };
 		A173CB541F81C07D009C7A28 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A173CB531F81C07D009C7A28 /* LoadingView.swift */; };
 		A173CB561F847D90009C7A28 /* MonthlyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A173CB551F847D90009C7A28 /* MonthlyViewController.swift */; };
 		A18968271F7B25940073A73B /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18968261F7B25940073A73B /* EditProfileViewController.swift */; };
@@ -152,6 +153,7 @@
 		A15E62461F5231CC00AC9EF1 /* UITableExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableExt.swift; sourceTree = "<group>"; };
 		A15E62481F52372000AC9EF1 /* LogTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogTableViewCell.swift; sourceTree = "<group>"; };
 		A15E624B1F536C8500AC9EF1 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		A172A1761F96E8A100C7A535 /* LogData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogData.swift; sourceTree = "<group>"; };
 		A173CB531F81C07D009C7A28 /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		A173CB551F847D90009C7A28 /* MonthlyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthlyViewController.swift; sourceTree = "<group>"; };
 		A18968261F7B25940073A73B /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
@@ -368,6 +370,7 @@
 				A15E62411F4FC70400AC9EF1 /* LogDataSource.swift */,
 				A11C2DF51F0B284F00EBDDB5 /* MainViewController.swift */,
 				A15E62481F52372000AC9EF1 /* LogTableViewCell.swift */,
+				A172A1761F96E8A100C7A535 /* LogData.swift */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -461,6 +464,7 @@
 				TargetAttributes = {
 					A15BA1341E8AF61D00B9796B = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = XEFS6M4T2D;
 						ProvisioningStyle = Automatic;
 					};
 					A15BA1481E8AF61D00B9796B = {
@@ -597,6 +601,7 @@
 				A11AB8B81F9060850098AE8E /* MemberViewController.swift in Sources */,
 				A19DED511F5907C500E6C9DA /* CommentTableViewCell.swift in Sources */,
 				A11C2DF41F0B249E00EBDDB5 /* SignUpViewController.swift in Sources */,
+				A172A1771F96E8A100C7A535 /* LogData.swift in Sources */,
 				A11AB8B41F8EF0810098AE8E /* MessageTableViewCell.swift in Sources */,
 				A1505B921E8F10A900F111DB /* Group.swift in Sources */,
 				A11AB8B01F8C57B50098AE8E /* SortView.swift in Sources */,
@@ -782,10 +787,15 @@
 			baseConfigurationReference = 0CD90F1E9754CEAF302758E6 /* Pods-SaintsXCTF.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Andrew Jarombek (V2L96G9662)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = XEFS6M4T2D;
 				INFOPLIST_FILE = SaintsXCTF/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = andyjarombek.SaintsXCTF;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jarombek.saintsxctf;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -795,10 +805,15 @@
 			baseConfigurationReference = 7A040544706F126FFF8857D3 /* Pods-SaintsXCTF.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Andrew Jarombek (XEFS6M4T2D)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = XEFS6M4T2D;
 				INFOPLIST_FILE = SaintsXCTF/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = andyjarombek.SaintsXCTF;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jarombek.saintsxctf;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

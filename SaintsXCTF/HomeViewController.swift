@@ -117,6 +117,8 @@ class HomeViewController: UIViewController {
         
     }
     
+    @IBAction func signUpUser(_ sender: UIButton) {}
+    
     // Re-enable buttons and remove loading overlay
     func removeOverlay() {
         self.overlay?.removeFromSuperview()

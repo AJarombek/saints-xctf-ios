@@ -60,6 +60,7 @@ class LogTableViewCell: UITableViewCell {
         self.layer.borderColor = UIColor(0xAAAAAA).cgColor
         self.layer.cornerRadius = 1
         self.backgroundColor = UIColor(Constants.getFeelColor(feel - 1))
+        self.descriptionLabel.backgroundColor = UIColor(Constants.getFeelColor(feel - 1))
     }
     
     // Executed when the user clicks on the edit log button
