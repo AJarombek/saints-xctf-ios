@@ -24,6 +24,9 @@ class APIClient {
         let userGetEndpoint = "https://www.saintsxctf.com/api/api.php/users/\(username)"
         guard let url = URL(string: userGetEndpoint) else {
             os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
+            OperationQueue.main.addOperation {
+                completion(User())
+            }
             return
         }
         
