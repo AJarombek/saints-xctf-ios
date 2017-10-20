@@ -13,64 +13,13 @@ You can follow development of the android app here: [SaintsXCTF Android GitHub](
 
 **V.1.0 - Official Release**
 
-> Release Date: Expected 11/1/2017*
+> Release Date: Oct 19, 2017
 
-* This is more of a target date than an expected one.  Development is still in an early stage.
+This was the first public release of the iOS app.
 
-**Feature Implementation (As of 9/14/2017)**
 
->**API Client (Done)**
+Current development is being spent on other projects.  However a codebase is always dynamic.  Future plans include:
 
->**Log In (Done)**
-
->**Sign Up (Done)**
-
->**Pick Groups (Done)**
-
->**Notify Admins on Group Picked (Done)**
-
->Forgot Password
-
->**Sign Out (Done)**
-
->*Main Log View (QA/Testing)*
-
->**Log Comments (Done)**
-
->**Comment Notification (Done)**
-
->**Tag in Comment (Done)**
-
->**Comment Tag Notification (Done)**
-
->**New Log (Done)**
-
->**Tag in Log (Done)**
-
->**Log Tag Notification (Done)**
-
->**Delete Log (Done)**
-
->*Edit Log (In-Progress)*
-
->Main Profile Page
-
->Profile Logs
-
->Profile Monthly
-
->Profile Weekly
-
->Main Group Page
-
->Group Logs
-
->Group Leaderboards
-
->Group Messages
-
->Message Notifications
-
->Group Members
-
->Group Admin
+* Suggested Features (ex. Delete/Edit Comments)
+* Forgot Password
+* Real-Time Notifications with a Message Broker
