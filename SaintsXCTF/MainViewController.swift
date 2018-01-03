@@ -66,6 +66,7 @@ class MainViewController: UITableViewController, UITextViewDelegate {
         // Hide the navigation bar on view appearing
         if !showNavBar {
             navigationController?.setNavigationBarHidden(true, animated: animated)
+            navigationController?.navigationBar.tintColor = UIColor(0xFFFFFF)
             
             // Make sure the table view does not overlap the status bar
             let statusBarHight = UIApplication.shared.statusBarFrame.height
