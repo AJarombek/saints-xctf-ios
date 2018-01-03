@@ -170,16 +170,24 @@ class ProfileViewController: UIViewController, UIGestureRecognizerDelegate {
         // Set the profile picture
         if let profPicBase64 = user?.profilepic {
             
-            // Part of the base 64 encoding is html specific, remove this piece
-            let index = profPicBase64.index(profPicBase64.startIndex, offsetBy: 23)
-            let base64 = profPicBase64.substring(from: index)
-            
-            // Now decode the base 64 encoded string and convert it to an image
-            let profPicData: Data = Data(base64Encoded: base64, options: .ignoreUnknownCharacters)!
-            let profPic: UIImage = UIImage(data: profPicData)!
-            
-            // Display the profile picture image
-            profilePictureView.image = profPic
+            if let range = profPicBase64.range(of: ",") {
+                let start = profPicBase64.distance(from: profPicBase64.startIndex, to: range.lowerBound)
+                
+                // Part of the base 64 encoding is html specific, remove this piece
+                let index = profPicBase64.index(profPicBase64.startIndex, offsetBy: start)
+                let base64 = profPicBase64.substring(from: index)
+                
+                // Now decode the base 64 encoded string and convert it to an image
+                guard let profPicData: Data = Data(base64Encoded: base64, options: .ignoreUnknownCharacters) else {
+                    os_log("Failed to decode profile picture", log: logTag, type: .error)
+                    return
+                }
+                
+                let profPic: UIImage = UIImage(data: profPicData)!
+                
+                // Display the profile picture image
+                profilePictureView.image = profPic
+            }
         }
     }
     

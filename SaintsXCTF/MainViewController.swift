@@ -228,13 +228,16 @@ class MainViewController: UITableViewController, UITextViewDelegate {
         APIClient.userGetRequest(withUsername: URL.absoluteString.substring(from: index)) {
             (user) -> Void in
             
-            let profileViewController = self.storyboard?.instantiateViewController(withIdentifier:
+            if (user.username! != "") {
+            
+                let profileViewController = self.storyboard?.instantiateViewController(withIdentifier:
                                         "profileViewController") as! ProfileViewController
             
-            // Pass the user to the profile view controller
-            profileViewController.user = user
-            profileViewController.showNavBar = true
-            self.navigationController?.pushViewController(profileViewController, animated: true)
+                // Pass the user to the profile view controller
+                profileViewController.user = user
+                profileViewController.showNavBar = true
+                self.navigationController?.pushViewController(profileViewController, animated: true)
+            }
         }
         
         return false

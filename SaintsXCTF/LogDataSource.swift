@@ -109,7 +109,7 @@ class LogDataSource {
                         // Set the logs location
                         var locationTxt = ""
                         
-                        if let location: String = log.location {
+                        if let location: String = log.location, location != "" {
                             locationTxt = "Location: \(location)\n"
                         }
                         
@@ -166,13 +166,14 @@ class LogDataSource {
                                     
                                     mutableContent.addAttribute(NSLinkAttributeName, value: matches.substrings[i],
                                                                 range: NSRange(location: start, length: length))
-                                    
-                                    // Add the description to the rest of the mutable content
-                                    combinedMutableContent.append(mutableContent)
-                                    
-                                    // Set the description as the combined location, time, pace, distance, and description
-                                    logData.descriptionTags = combinedMutableContent
                                 }
+                                
+                                // Add the description to the rest of the mutable content
+                                combinedMutableContent.append(mutableContent)
+                                
+                                // Set the description as the combined location, time, pace, distance, and description
+                                logData.descriptionTags = combinedMutableContent
+                                
                             } else {
                                 logData.description = "\(logInfo)\(description)\n"
                             }
