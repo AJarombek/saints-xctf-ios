@@ -67,7 +67,7 @@ extension UITextField {
         }
     }
     
-    func fix(textField: UITextField) {
+    @objc func fix(textField: UITextField) {
         let t = textField.text
         textField.text = t?.safelyLimitedTo(length: maxLength)
     }

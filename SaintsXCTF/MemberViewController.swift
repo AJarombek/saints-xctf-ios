@@ -105,7 +105,7 @@ class MemberViewController: UITableViewController, UIGestureRecognizerDelegate {
     }
     
     // Called when the name label is clicked to load a users profile
-    func viewProfile(_ sender: UITapGestureRecognizer) {
+    @objc func viewProfile(_ sender: UITapGestureRecognizer) {
         if let cell = sender.view as? MemberTableViewCell {
             
             os_log("View Group Messages", log: logTag, type: .debug)

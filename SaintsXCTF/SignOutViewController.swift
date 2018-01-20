@@ -26,7 +26,7 @@ class SignOutController: UIViewController {
     }
     
     // Function called when the UISwitch is changed.  If it is turned on, sign out user
-    func switchChanged(mySwitch: UISwitch) {
+    @objc func switchChanged(mySwitch: UISwitch) {
         let on: Bool = mySwitch.isOn
         
         if (on) {

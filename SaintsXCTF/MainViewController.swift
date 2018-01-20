@@ -100,7 +100,7 @@ class MainViewController: UITableViewController, UITextViewDelegate {
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
-    func reloadLogs(_ sender: UIView) {
+    @objc func reloadLogs(_ sender: UIView) {
         offset = 0
         logDataSource.clearLogs()
         logTableView.reloadData()
@@ -172,7 +172,7 @@ class MainViewController: UITableViewController, UITextViewDelegate {
             cell.commentsButton.addSubview(topline)
             cell.commentsButton.setTitleColor(UIColor(0x333333), for: UIControlState.normal)
             
-            cell.userLabel?.linkTextAttributes = [NSForegroundColorAttributeName:UIColor(0x000000)]
+            cell.userLabel?.linkTextAttributes = [NSAttributedStringKey.foregroundColor.rawValue:UIColor(0x000000)]
             cell.userLabel?.attributedText = logData.userLabelText!
             cell.userLabel?.delegate = self
             
@@ -190,8 +190,8 @@ class MainViewController: UITableViewController, UITextViewDelegate {
             
             if let _: NSMutableAttributedString = logData.descriptionTags {
                 // Set the properties of the link text
-                cell.descriptionLabel?.linkTextAttributes = [NSForegroundColorAttributeName:UIColor(0x555555),
-                                                             NSFontAttributeName:UIFont(name: "HelveticaNeue-Bold", size: 12)!]
+                cell.descriptionLabel?.linkTextAttributes = [NSAttributedStringKey.foregroundColor.rawValue:UIColor(0x555555),
+                                                             NSAttributedStringKey.font.rawValue:UIFont(name: "HelveticaNeue-Bold", size: 12)!]
                 
                 // Allows the shouldInteractWith URL function to execute on click
                 cell.descriptionLabel?.delegate = self
@@ -287,7 +287,7 @@ class MainViewController: UITableViewController, UITextViewDelegate {
     }
     
     // Function that handles the long press recognizer
-    func handleLogLongPress(sender: UILongPressGestureRecognizer) {
+    @objc func handleLogLongPress(sender: UILongPressGestureRecognizer) {
         if sender.state == UIGestureRecognizerState.began {
             
             // Get the index path of the log where the user pressed

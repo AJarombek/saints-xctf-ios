@@ -116,7 +116,7 @@ class AdminViewController: UIViewController, UIPickerViewDelegate {
     }
     
     // Called when the done button on the keyboard is clicked
-    func dismissKeyboard() {
+    @objc func dismissKeyboard() {
         view.endEditing(true)
     }
     

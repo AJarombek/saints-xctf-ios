@@ -70,7 +70,7 @@ class ProPicViewController: UIViewController, UIGestureRecognizerDelegate,
     }
     
     // Edit the users profile picture
-    func editProfilePicture(_ sender: UIView) {
+    @objc func editProfilePicture(_ sender: UIView) {
         os_log("Editing Profile Picture", log: logTag, type: .debug)
         
         let imagePicker = UIImagePickerController()

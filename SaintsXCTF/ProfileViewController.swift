@@ -162,7 +162,7 @@ class ProfileViewController: UIViewController, UIGestureRecognizerDelegate {
         let start = 0
         let end = teamsTxt.characters.count
         
-        let boldFontAttribute = [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 12.0)]
+        let boldFontAttribute = [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 12.0)]
         mutableContent.addAttributes(boldFontAttribute, range: NSRange(location: start, length: end))
         
         descriptionView.attributedText = mutableContent
@@ -217,7 +217,7 @@ class ProfileViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     // Show the users logs (using mainViewController)
-    func showLogs(_ sender: UIView) {
+    @objc func showLogs(_ sender: UIView) {
         os_log("Viewing Profile Logs", log: logTag, type: .debug)
         
         let mainViewController = storyboard?.instantiateViewController(withIdentifier:
@@ -233,7 +233,7 @@ class ProfileViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     // Show the users monthly calendar (using monthlyViewController)
-    func showMonthly(_ sender: UIView) {
+    @objc func showMonthly(_ sender: UIView) {
         os_log("Viewing Profile Monthly", log: logTag, type: .debug)
         
         let monthlyViewController = storyboard?.instantiateViewController(withIdentifier:
@@ -246,7 +246,7 @@ class ProfileViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     // Show the users weekly exercise graph (using weeklyViewController)
-    func showWeekly(_ sender: UIView) {
+    @objc func showWeekly(_ sender: UIView) {
         os_log("Viewing Profile Weekly", log: logTag, type: .debug)
         
         let weeklyViewController = storyboard?.instantiateViewController(withIdentifier:
@@ -259,7 +259,7 @@ class ProfileViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     // Edit the users profile (using editProfileViewController)
-    func editProfile(_ sender: UIView) {
+    @objc func editProfile(_ sender: UIView) {
         os_log("Editing Profile", log: logTag, type: .debug)
         
         let editProfileViewController = storyboard?.instantiateViewController(withIdentifier:

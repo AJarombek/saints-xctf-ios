@@ -129,27 +129,27 @@ class GroupListViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     // Functions to load groups depending on the group picked
-    func womensXC(_ sender: UIView) {
+    @objc func womensXC(_ sender: UIView) {
         os_log("Go to Women's Cross Country Page", log: logTag, type: .debug)
         loadGroup(withGroupname: "wmensxc")
     }
     
-    func mensXC(_ sender: UIView) {
+    @objc func mensXC(_ sender: UIView) {
         os_log("Go to Men's Cross Country Page", log: logTag, type: .debug)
         loadGroup(withGroupname: "mensxc")
     }
     
-    func womensTF(_ sender: UIView) {
+    @objc func womensTF(_ sender: UIView) {
         os_log("Go to Women's Track & Field Page", log: logTag, type: .debug)
         loadGroup(withGroupname: "wmenstf")
     }
     
-    func mensTF(_ sender: UIView) {
+    @objc func mensTF(_ sender: UIView) {
         os_log("Go to Men's Track & Field Page", log: logTag, type: .debug)
         loadGroup(withGroupname: "menstf")
     }
     
-    func alumni(_ sender: UIView) {
+    @objc func alumni(_ sender: UIView) {
         os_log("Go to Alumni Page", log: logTag, type: .debug)
         loadGroup(withGroupname: "alumni")
     }

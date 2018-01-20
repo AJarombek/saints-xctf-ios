@@ -129,7 +129,7 @@ class CommentViewController: UITableViewController, UITextViewDelegate {
                         let start = matches.startIndices[i]
                         let length = matches.stringLengths[i]
                         
-                        mutableContent.addAttribute(NSLinkAttributeName, value: matches.substrings[i],
+                        mutableContent.addAttribute(NSAttributedStringKey.link, value: matches.substrings[i],
                                                     range: NSRange(location: start, length: length))
                     }
                 }
@@ -137,8 +137,8 @@ class CommentViewController: UITableViewController, UITextViewDelegate {
                 cell.contentLabel.attributedText = mutableContent
                 
                 // Set the properties of the link text
-                cell.contentLabel.linkTextAttributes = [NSForegroundColorAttributeName:UIColor(0x555555),
-                                                NSFontAttributeName:UIFont(name: "HelveticaNeue-Bold", size: 12)!]
+                cell.contentLabel.linkTextAttributes = [NSAttributedStringKey.foregroundColor.rawValue:UIColor(0x555555),
+                                                NSAttributedStringKey.font.rawValue:UIFont(name: "HelveticaNeue-Bold", size: 12)!]
                 
                 // Allows the shouldInteractWith URL function to execute on click
                 cell.contentLabel.delegate = self
@@ -188,7 +188,7 @@ class CommentViewController: UITableViewController, UITextViewDelegate {
     }
     
     // Called when the done button on the keyboard is clicked
-    func dismissKeyboard() {
+    @objc func dismissKeyboard() {
         view.endEditing(true)
     }
 }

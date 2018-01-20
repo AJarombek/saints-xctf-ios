@@ -207,7 +207,7 @@ class GroupViewController: UIViewController, UIGestureRecognizerDelegate {
         adminView.layer.addSublayer(adminBottomBorder)
     }
     
-    func viewLogs(_ sender: UIView) {
+    @objc func viewLogs(_ sender: UIView) {
         os_log("View Group Logs", log: logTag, type: .debug)
         
         let mainViewController = storyboard?.instantiateViewController(withIdentifier:
@@ -222,7 +222,7 @@ class GroupViewController: UIViewController, UIGestureRecognizerDelegate {
         navigationController?.pushViewController(mainViewController, animated: true)
     }
     
-    func viewLeaderboards(_ sender: UIView) {
+    @objc func viewLeaderboards(_ sender: UIView) {
         os_log("View Group Leaderboards", log: logTag, type: .debug)
         
         let leaderboardViewController = storyboard?.instantiateViewController(withIdentifier:
@@ -234,7 +234,7 @@ class GroupViewController: UIViewController, UIGestureRecognizerDelegate {
         navigationController?.pushViewController(leaderboardViewController, animated: true)
     }
     
-    func viewMessages(_ sender: UIView) {
+    @objc func viewMessages(_ sender: UIView) {
         os_log("View Group Messages", log: logTag, type: .debug)
         
         let messageViewController = storyboard?.instantiateViewController(withIdentifier:
@@ -246,7 +246,7 @@ class GroupViewController: UIViewController, UIGestureRecognizerDelegate {
         navigationController?.pushViewController(messageViewController, animated: true)
     }
     
-    func viewMembers(_ sender: UIView) {
+    @objc func viewMembers(_ sender: UIView) {
         os_log("View Group Members", log: logTag, type: .debug)
         
         let memberViewController = storyboard?.instantiateViewController(withIdentifier:
@@ -258,7 +258,7 @@ class GroupViewController: UIViewController, UIGestureRecognizerDelegate {
         navigationController?.pushViewController(memberViewController, animated: true)
     }
     
-    func viewAdmin(_ sender: UIView) {
+    @objc func viewAdmin(_ sender: UIView) {
         os_log("View Group Admin Page", log: logTag, type: .debug)
         
         let adminViewController = storyboard?.instantiateViewController(withIdentifier:

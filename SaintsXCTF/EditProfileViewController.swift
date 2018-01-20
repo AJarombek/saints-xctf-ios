@@ -89,7 +89,7 @@ class EditProfileViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     // Edit the users profile details (using detailsViewController)
-    func editProfileDetails(_ sender: UIView) {
+    @objc func editProfileDetails(_ sender: UIView) {
         os_log("Editing Profile Details", log: logTag, type: .debug)
         
         let detailsViewController = storyboard?.instantiateViewController(withIdentifier:
@@ -102,7 +102,7 @@ class EditProfileViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     // Edit the users profile picture (using proPicViewController)
-    func editProfilePicture(_ sender: UIView) {
+    @objc func editProfilePicture(_ sender: UIView) {
         os_log("Editing Profile Picture", log: logTag, type: .debug)
         
         let proPicViewController = storyboard?.instantiateViewController(withIdentifier:
@@ -115,7 +115,7 @@ class EditProfileViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     // Edit the users groups (using pickGroupViewController)
-    func editProfileGroups(_ sender: UIView) {
+    @objc func editProfileGroups(_ sender: UIView) {
         os_log("Editing Profile Groups", log: logTag, type: .debug)
         
         let pickViewController = storyboard?.instantiateViewController(withIdentifier:

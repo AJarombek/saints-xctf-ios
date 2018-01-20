@@ -220,7 +220,7 @@ class LeaderboardViewController: UITableViewController, UIGestureRecognizerDeleg
     }
     
     // These functions are called when the filter buttons for the leaderboard are clicked
-    func filterRun(_ sender: UIView) {
+    @objc func filterRun(_ sender: UIView) {
         run = !run
         filterRun()
         buildLeaderboardData()
@@ -237,7 +237,7 @@ class LeaderboardViewController: UITableViewController, UIGestureRecognizerDeleg
         }
     }
     
-    func filterBike(_ sender: UIView) {
+    @objc func filterBike(_ sender: UIView) {
         bike = !bike
         filterBike()
         buildLeaderboardData()
@@ -254,7 +254,7 @@ class LeaderboardViewController: UITableViewController, UIGestureRecognizerDeleg
         }
     }
     
-    func filterSwim(_ sender: UIView) {
+    @objc func filterSwim(_ sender: UIView) {
         swim = !swim
         filterSwim()
         buildLeaderboardData()
@@ -271,7 +271,7 @@ class LeaderboardViewController: UITableViewController, UIGestureRecognizerDeleg
         }
     }
     
-    func filterOther(_ sender: UIView) {
+    @objc func filterOther(_ sender: UIView) {
         other = !other
         filterOther()
         buildLeaderboardData()

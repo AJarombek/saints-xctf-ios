@@ -155,12 +155,12 @@ class LogViewController: UIViewController, UITextViewDelegate, UIPickerViewDeleg
     }
     
     // Stop displaying the visible picker
-    func dismissPicker() {
+    @objc func dismissPicker() {
         view.endEditing(true)
     }
     
     // Show the date in the date picker in the text field
-    func handleDatePicker(_ sender: UIDatePicker) {
+    @objc func handleDatePicker(_ sender: UIDatePicker) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM/dd/yyyy"
         dateField.text = dateFormatter.string(from: sender.date)
