@@ -125,21 +125,8 @@ class MainViewController: UITableViewController, UITextViewDelegate {
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell,
                             forRowAt indexPath: IndexPath) {
         
-        // Cache the height of the cell
-        let height = NSNumber(value: Float(cell.frame.size.height))
-        heightDict.setObject(height, forKey: indexPath as NSCopying)
-        
-        // When we are four logs from the bottom, load more
-        if indexPath.row == logDataSource.count() - 4 {
-            load()
-        }
-    }
-    
-    // Ask the datasource for a cell to insert at a certain location in the table view
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! LogTableViewCell
         let log: LogData? = logDataSource.get(indexPath.row)
+        let cell = cell as! LogTableViewCell
         
         if let logData: LogData = log {
             
@@ -147,7 +134,7 @@ class MainViewController: UITableViewController, UITextViewDelegate {
             cell.mainViewController = self
             cell.log = logData.log!
             cell.index = indexPath.row
-
+            
             let username = user.username ?? ""
             
             // Show the edit and delete buttons if the log username matches the signed in username
@@ -175,7 +162,7 @@ class MainViewController: UITableViewController, UITextViewDelegate {
             }
             
             cell.setStyle(withFeel: logData.feel!)
-
+            
             // Create a top border for the comments button
             let topline = UIView(frame: CGRect(x: -10, y: -5, width: cell.commentsButton.frame.size.width + 50, height: 1))
             topline.layer.backgroundColor = UIColor(0xAAAAAA).cgColor
@@ -188,7 +175,7 @@ class MainViewController: UITableViewController, UITextViewDelegate {
             cell.userLabel?.linkTextAttributes = [NSForegroundColorAttributeName:UIColor(0x000000)]
             cell.userLabel?.attributedText = logData.userLabelText!
             cell.userLabel?.delegate = self
-
+            
             cell.dateLabel?.text = logData.date!
             
             // Set the logs name
@@ -197,12 +184,11 @@ class MainViewController: UITableViewController, UITextViewDelegate {
             // Set the logs type
             cell.typeLabel?.text = logData.type ?? "RUN"
             
-            if let desc: String = logData.description {
-                cell.descriptionLabel.text = desc
-                
-            } else if let attDesc: NSMutableAttributedString = logData.descriptionTags {
-                cell.descriptionLabel.attributedText = attDesc
-                
+            // Add a tag to the comments button of the current index path.
+            // This will be used with the segue to call the commentsView
+            cell.commentsButton.tag = indexPath.row
+            
+            if let _: NSMutableAttributedString = logData.descriptionTags {
                 // Set the properties of the link text
                 cell.descriptionLabel?.linkTextAttributes = [NSForegroundColorAttributeName:UIColor(0x555555),
                                                              NSFontAttributeName:UIFont(name: "HelveticaNeue-Bold", size: 12)!]
@@ -211,10 +197,34 @@ class MainViewController: UITableViewController, UITextViewDelegate {
                 cell.descriptionLabel?.delegate = self
                 cell.descriptionLabel?.sizeToFit()
             }
+        }
+        
+        // Cache the height of the cell
+        let height = NSNumber(value: Float(cell.frame.size.height))
+        heightDict.setObject(height, forKey: indexPath as NSCopying)
+        
+        // When we are four logs from the bottom, load more
+        if indexPath.row == logDataSource.count() - 4 {
+            load()
+        }
+    }
+    
+    // Ask the datasource for a cell to insert at a certain location in the table view
+    // The less work that is done in this function, the smoother the scrolling is
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! LogTableViewCell
+        
+        let log: LogData? = logDataSource.get(indexPath.row)
+        
+        if let logData: LogData = log {
             
-            // Add a tag to the comments button of the current index path.
-            // This will be used with the segue to call the commentsView
-            cell.commentsButton.tag = indexPath.row
+            if let desc: String = logData.description {
+                cell.descriptionLabel.text = desc
+                
+            } else if let attDesc: NSMutableAttributedString = logData.descriptionTags {
+                cell.descriptionLabel.attributedText = attDesc
+            }
         }
         
         return cell
