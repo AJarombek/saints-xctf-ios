@@ -4,5 +4,6 @@
 /*.xcodeproj
 /Pods
 Podfile.lock
+SaintsXCTF.xcworkspace/xcshareddata/
 
 SaintsXCTF/Credentials.swift

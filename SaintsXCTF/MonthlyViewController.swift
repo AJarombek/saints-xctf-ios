@@ -198,6 +198,9 @@ class MonthlyViewController: UIViewController {
     
     var monthStart: Date = Date()
     
+    /**
+     Invoked when the MonthlyViewController loads
+     */
     override func viewDidLoad() {
         super.viewDidLoad()
         os_log("MonthlyViewController Loaded.", log: logTag, type: .debug)
@@ -290,7 +293,11 @@ class MonthlyViewController: UIViewController {
     // Second change the filter button accordingly
     // Last implement the filter to get appropriate range view data from the API
     
-    // Run Filter
+    /**
+     Run Filter is invoked when the 'Run' button is clicked
+     - parameters:
+     - sender: the 'Run' button that was clicked
+     */
     @IBAction func filterRun(_ sender: UIButton) {
         run = !run
         filterRun()
@@ -298,6 +305,9 @@ class MonthlyViewController: UIViewController {
         filter(monthStart)
     }
     
+    /**
+     Set the background color of the Run button based on whether its active
+     */
     func filterRun() {
         if run {
             runFilterButton.backgroundColor = UIColor(0x990000)
@@ -308,7 +318,11 @@ class MonthlyViewController: UIViewController {
         }
     }
     
-    // Bike Filter
+    /**
+     Bike Filter is invoked when the 'Bike' button is clicked
+     - parameters:
+     - sender: the 'Bike' button that was clicked
+     */
     @IBAction func filterBike(_ sender: UIButton) {
         bike = !bike
         filterBike()
@@ -316,6 +330,9 @@ class MonthlyViewController: UIViewController {
         filter(monthStart)
     }
     
+    /**
+     Set the background color of the Bike button based on whether its active
+     */
     func filterBike() {
         if bike {
             bikeFilterButton.backgroundColor = UIColor(0x990000)
@@ -326,7 +343,11 @@ class MonthlyViewController: UIViewController {
         }
     }
     
-    // Swim Filter
+    /**
+     Swim Filter is invoked when the 'Swim' button is clicked
+     - parameters:
+     - sender: the 'Swim' button that was clicked
+     */
     @IBAction func filterSwim(_ sender: UIButton) {
         swim = !swim
         filterSwim()
@@ -334,6 +355,9 @@ class MonthlyViewController: UIViewController {
         filter(monthStart)
     }
     
+    /**
+     Set the background color of the Swim button based on whether its active
+     */
     func filterSwim() {
         if swim {
             swimFilterButton.backgroundColor = UIColor(0x990000)
@@ -344,7 +368,11 @@ class MonthlyViewController: UIViewController {
         }
     }
     
-    // Other Filter
+    /**
+     Other Filter is invoked when the 'Other' button is clicked
+     - parameters:
+     - sender: the 'Other' button that was clicked
+     */
     @IBAction func filterOther(_ sender: UIButton) {
         other = !other
         filterOther()
@@ -352,6 +380,9 @@ class MonthlyViewController: UIViewController {
         filter(monthStart)
     }
     
+    /**
+     Set the background color of the Other button based on whether its active
+     */
     func filterOther() {
         if other {
             otherFilterButton.backgroundColor = UIColor(0x990000)
@@ -362,7 +393,12 @@ class MonthlyViewController: UIViewController {
         }
     }
     
-    // A general filter function for the monthly calendar
+    /**
+     A general filter function for the monthly calendar.  Sets the initial background colors for
+     each day and numerically labels each calendar day.
+     - parameters:
+     - startMonth: the first day of the current month in the monthly view
+     */
     func filter(_ startMonth: Date) {
         
         // Get the type filter to send to the API
@@ -402,9 +438,13 @@ class MonthlyViewController: UIViewController {
         // Get a copy of firstDay for later use - we will be modifying firstDay
         let fd = firstDay
         
-        // Last day of the calendar
+        // Last day of the calendar - add 41 days to the first day in the calendar
         let lastDay: Date = Calendar.current.date(byAdding: .day, value: 41, to: firstDay)!
         
+        // Keep track of the previous day when iterating through the calendar days
+        var prevDayNum = -1
+        
+        // Format the first and last days of the month - used in an API request to populate the calendar
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let first = dateFormatter.string(from: firstDay)
         let last = dateFormatter.string(from: lastDay)
@@ -415,7 +455,14 @@ class MonthlyViewController: UIViewController {
         // Go through each cell in the calendar
         for i in 0...41 {
             let dayComponents = calendar.dateComponents([.day], from: firstDay)
-            let dayNum = dayComponents.day!
+            var dayNum = dayComponents.day!
+            
+            // If this day's calendar number equals yesterday, a common bug occurred.  Fix it.
+            if (dayNum == prevDayNum) {
+                os_log("Duplicate day bug occurred on day: %@", log: logTag, type: .debug, "\(dayNum)")
+                dayNum += 1
+                firstDay.addTimeInterval(day)
+            }
             
             days[i].text = "\(dayNum)"
             
@@ -431,6 +478,7 @@ class MonthlyViewController: UIViewController {
             }
             
             firstDay.addTimeInterval(day)
+            prevDayNum = dayNum
         }
         
         // Get the range view from the API for this month and user
