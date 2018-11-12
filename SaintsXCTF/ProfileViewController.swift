@@ -30,6 +30,9 @@ class ProfileViewController: UIViewController, UIGestureRecognizerDelegate {
     
     var showNavBar = false
     
+    /**
+     Invoked when the ProfileViewController loads
+     */
     override func viewDidLoad() {
         super.viewDidLoad()
         os_log("ProfileViewController Loaded.", log: logTag, type: .debug)
@@ -132,8 +135,12 @@ class ProfileViewController: UIViewController, UIGestureRecognizerDelegate {
         var teamsTxt = ""
         let groups: [GroupInfo] = (user?.groups)!
         
-        for i in 0...groups.count - 1 {
-            teamsTxt += "\(groups[i].group_title!)\n"
+        if (groups.count > 0) {
+            for i in 0...groups.count - 1 {
+                teamsTxt += "\(groups[i].group_title!)\n"
+            }
+        } else {
+            teamsTxt += "No Teams"
         }
         
         // Set the description text view with the users class year, favorite event,
@@ -160,7 +167,7 @@ class ProfileViewController: UIViewController, UIGestureRecognizerDelegate {
                                                        attributes: [:])
         
         let start = 0
-        let end = teamsTxt.characters.count
+        let end = teamsTxt.count
         
         let boldFontAttribute = [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 12.0)]
         mutableContent.addAttributes(boldFontAttribute, range: NSRange(location: start, length: end))
@@ -191,6 +198,11 @@ class ProfileViewController: UIViewController, UIGestureRecognizerDelegate {
         }
     }
     
+    /**
+     Invoked when the ProfileViewController is about to first appear on the screen
+     - parameters:
+     - animated: If true, the view is added to the window using an animation
+     */
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -209,6 +221,11 @@ class ProfileViewController: UIViewController, UIGestureRecognizerDelegate {
         }
     }
     
+    /**
+     Invoked when the ProfileViewController is about to disappear from the screen
+     - parameters:
+     - animated: If true, the view is added to the window using an animation
+     */
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
@@ -216,7 +233,11 @@ class ProfileViewController: UIViewController, UIGestureRecognizerDelegate {
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
-    // Show the users logs (using mainViewController)
+    /**
+     Show the users logs (using mainViewController)
+     - parameters:
+     - sender: the view that invoked this function (logsView)
+     */
     @objc func showLogs(_ sender: UIView) {
         os_log("Viewing Profile Logs", log: logTag, type: .debug)
         
@@ -232,7 +253,11 @@ class ProfileViewController: UIViewController, UIGestureRecognizerDelegate {
         navigationController?.pushViewController(mainViewController, animated: true)
     }
     
-    // Show the users monthly calendar (using monthlyViewController)
+    /**
+     Show the users monthly calendar (using monthlyViewController)
+     - parameters:
+     - sender: the view that invoked this function (monthlyView)
+     */
     @objc func showMonthly(_ sender: UIView) {
         os_log("Viewing Profile Monthly", log: logTag, type: .debug)
         
@@ -245,7 +270,11 @@ class ProfileViewController: UIViewController, UIGestureRecognizerDelegate {
         navigationController?.pushViewController(monthlyViewController, animated: true)
     }
     
-    // Show the users weekly exercise graph (using weeklyViewController)
+    /**
+     Show the users weekly exercise graph (using weeklyViewController)
+     - parameters:
+     - sender: the view that invoked this function (weeklyView)
+     */
     @objc func showWeekly(_ sender: UIView) {
         os_log("Viewing Profile Weekly", log: logTag, type: .debug)
         
@@ -258,7 +287,11 @@ class ProfileViewController: UIViewController, UIGestureRecognizerDelegate {
         navigationController?.pushViewController(weeklyViewController, animated: true)
     }
     
-    // Edit the users profile (using editProfileViewController)
+    /**
+     Edit the users profile (using editProfileViewController)
+     - parameters:
+     - sender: the view that invoked this function (editView)
+     */
     @objc func editProfile(_ sender: UIView) {
         os_log("Editing Profile", log: logTag, type: .debug)
         
