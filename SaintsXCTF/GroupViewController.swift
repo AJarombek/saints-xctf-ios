@@ -45,7 +45,7 @@ class GroupViewController: UIViewController, UIGestureRecognizerDelegate {
         navigationController?.navigationBar.tintColor = UIColor(0xFFFFFF)
         
         navigationItem.backBarButtonItem = UIBarButtonItem(title: " ", style:
-            UIBarButtonItemStyle.plain, target: nil, action: nil)
+            UIBarButtonItem.Style.plain, target: nil, action: nil)
         
         // Hide all the views until we know which ones to show
         logsView.isHidden = true

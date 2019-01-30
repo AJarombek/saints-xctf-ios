@@ -43,7 +43,7 @@ class DetailsViewController: UIViewController, UITextViewDelegate, UITextFieldDe
         navigationItem.title = "Edit Profile Details"
         
         navigationItem.backBarButtonItem = UIBarButtonItem(title: " ", style:
-            UIBarButtonItemStyle.plain, target: nil, action: nil)
+            UIBarButtonItem.Style.plain, target: nil, action: nil)
         
         // Set the styles for all the text fields
         firstNameField.standardStyle()

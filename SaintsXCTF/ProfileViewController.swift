@@ -169,7 +169,7 @@ class ProfileViewController: UIViewController, UIGestureRecognizerDelegate {
         let start = 0
         let end = teamsTxt.count
         
-        let boldFontAttribute = [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 12.0)]
+        let boldFontAttribute = [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 12.0)]
         mutableContent.addAttributes(boldFontAttribute, range: NSRange(location: start, length: end))
         
         descriptionView.attributedText = mutableContent
@@ -217,7 +217,7 @@ class ProfileViewController: UIViewController, UIGestureRecognizerDelegate {
             navigationController?.navigationBar.tintColor = UIColor(0xFFFFFF)
             navigationItem.title = "\(user?.first ?? "") \(user?.last ?? "")"
             
-            navigationItem.backBarButtonItem = UIBarButtonItem(title: " ", style: UIBarButtonItemStyle.plain, target: nil, action: nil)
+            navigationItem.backBarButtonItem = UIBarButtonItem(title: " ", style: UIBarButtonItem.Style.plain, target: nil, action: nil)
         }
     }
     

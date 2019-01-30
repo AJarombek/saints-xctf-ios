@@ -54,7 +54,7 @@ class AdminViewController: UIViewController, UIPickerViewDelegate {
         navigationController?.navigationBar.tintColor = UIColor(0xFFFFFF)
         
         navigationItem.backBarButtonItem = UIBarButtonItem(title: " ", style:
-            UIBarButtonItemStyle.plain, target: nil, action: nil)
+            UIBarButtonItem.Style.plain, target: nil, action: nil)
         
         addUserField.standardStyle()
         sendRequestField.standardStyle()

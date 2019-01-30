@@ -13,6 +13,6 @@ extension UITableView {
     // A function to refresh the UITableView Cells
     func refresh() {
         let indexPathForSection: IndexSet = [0]
-        self.reloadSections(indexPathForSection, with: UITableViewRowAnimation.middle)
+        self.reloadSections(indexPathForSection, with: UITableView.RowAnimation.middle)
     }
 }

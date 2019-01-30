@@ -508,7 +508,7 @@
 					A15BA1341E8AF61D00B9796B = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = XEFS6M4T2D;
-						LastSwiftMigration = 0920;
+						LastSwiftMigration = 1010;
 						ProvisioningStyle = Automatic;
 					};
 					A1D8AC872201383D007648DB = {
@@ -901,8 +901,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.jarombek.saintsxctf;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -921,8 +920,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.jarombek.saintsxctf;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};

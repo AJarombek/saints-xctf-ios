@@ -34,7 +34,7 @@ class EditProfileViewController: UIViewController, UIGestureRecognizerDelegate {
         navigationItem.title = "Edit Profile"
         
         navigationItem.backBarButtonItem = UIBarButtonItem(title: " ", style:
-            UIBarButtonItemStyle.plain, target: nil, action: nil)
+            UIBarButtonItem.Style.plain, target: nil, action: nil)
         
         // Create top borders for all the edit profile selections
         let detailsTopBorder = CALayer()

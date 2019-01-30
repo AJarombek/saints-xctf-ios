@@ -24,7 +24,7 @@ class CommentViewController: UITableViewController, UITextViewDelegate {
         
         // Setting the row height to UITableViewAutomaticDimension tells the TableView to determine the
         // height of a cell based on its contents and constraints.
-        commentTableView.rowHeight = UITableViewAutomaticDimension
+        commentTableView.rowHeight = UITableView.automaticDimension
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -34,7 +34,7 @@ class CommentViewController: UITableViewController, UITextViewDelegate {
         navigationController?.navigationBar.backIndicatorImage = UIImage(named: "back")
         navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "back")
         navigationController?.navigationBar.tintColor = UIColor(0xFFFFFF)
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: " ", style: UIBarButtonItemStyle.plain, target: nil, action: nil)
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: " ", style: UIBarButtonItem.Style.plain, target: nil, action: nil)
         
         os_log("CommentViewController Appeared.", log: logTag, type: .debug)
         
@@ -66,7 +66,7 @@ class CommentViewController: UITableViewController, UITextViewDelegate {
         if let height = heightDict.object(forKey: indexPath) as? NSNumber {
             return CGFloat(height.floatValue)
         } else {
-            return UITableViewAutomaticDimension
+            return UITableView.automaticDimension
         }
     }
     
@@ -129,7 +129,7 @@ class CommentViewController: UITableViewController, UITextViewDelegate {
                         let start = matches.startIndices[i]
                         let length = matches.stringLengths[i]
                         
-                        mutableContent.addAttribute(NSAttributedStringKey.link, value: matches.substrings[i],
+                        mutableContent.addAttribute(NSAttributedString.Key.link, value: matches.substrings[i],
                                                     range: NSRange(location: start, length: length))
                     }
                 }
@@ -137,8 +137,8 @@ class CommentViewController: UITableViewController, UITextViewDelegate {
                 cell.contentLabel.attributedText = mutableContent
                 
                 // Set the properties of the link text
-                cell.contentLabel.linkTextAttributes = [NSAttributedStringKey.foregroundColor.rawValue:UIColor(0x555555),
-                                                NSAttributedStringKey.font.rawValue:UIFont(name: "HelveticaNeue-Bold", size: 12)!]
+                cell.contentLabel.linkTextAttributes = convertToOptionalNSAttributedStringKeyDictionary([NSAttributedString.Key.foregroundColor.rawValue:UIColor(0x555555),
+                                                NSAttributedString.Key.font.rawValue:UIFont(name: "HelveticaNeue-Bold", size: 12)!])
                 
                 // Allows the shouldInteractWith URL function to execute on click
                 cell.contentLabel.delegate = self
@@ -191,4 +191,10 @@ class CommentViewController: UITableViewController, UITextViewDelegate {
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToOptionalNSAttributedStringKeyDictionary(_ input: [String: Any]?) -> [NSAttributedString.Key: Any]? {
+	guard let input = input else { return nil }
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (NSAttributedString.Key(rawValue: key), value)})
 }

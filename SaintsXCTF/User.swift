@@ -41,9 +41,9 @@ class User: NSObject, Mappable, NSCoding {
     // NSCoder Initializer
     // A required initializer means that all subclasses must implement the initializer
     required init?(coder aDecoder: NSCoder) {
-        username = aDecoder.decodeObject(forKey: "username") as! String!
-        first = aDecoder.decodeObject(forKey: "first") as! String!
-        last = aDecoder.decodeObject(forKey: "last") as! String!
+        username = aDecoder.decodeObject(forKey: "username") as? String
+        first = aDecoder.decodeObject(forKey: "first") as? String
+        last = aDecoder.decodeObject(forKey: "last") as? String
         email = aDecoder.decodeObject(forKey: "email") as! String?
         salt = aDecoder.decodeObject(forKey: "salt") as! String?
         password = aDecoder.decodeObject(forKey: "password") as! String?
@@ -51,15 +51,15 @@ class User: NSObject, Mappable, NSCoding {
         profilepic_name = aDecoder.decodeObject(forKey: "profilepic_name") as! String?
         user_description = aDecoder.decodeObject(forKey: "description") as! String?
         activation_code = aDecoder.decodeObject(forKey: "activation_code") as! String?
-        member_since = aDecoder.decodeObject(forKey: "member_since") as! Date!
+        member_since = aDecoder.decodeObject(forKey: "member_since") as? Date
         class_year = aDecoder.decodeObject(forKey: "class_year") as! String?
         location = aDecoder.decodeObject(forKey: "location") as! String?
         favorite_event = aDecoder.decodeObject(forKey: "favorite_event") as! String?
-        forgot_password = aDecoder.decodeObject(forKey: "forgot_password") as! [String]!
-        flair = aDecoder.decodeObject(forKey: "flair") as! [String]!
-        notifications = aDecoder.decodeObject(forKey: "notifications") as! [Notification]!
-        groups = aDecoder.decodeObject(forKey: "groups") as! [GroupInfo]!
-        statistics = aDecoder.decodeObject(forKey: "statistics") as! [String:Double]!
+        forgot_password = aDecoder.decodeObject(forKey: "forgot_password") as? [String]
+        flair = aDecoder.decodeObject(forKey: "flair") as? [String]
+        notifications = aDecoder.decodeObject(forKey: "notifications") as? [Notification]
+        groups = aDecoder.decodeObject(forKey: "groups") as? [GroupInfo]
+        statistics = aDecoder.decodeObject(forKey: "statistics") as? [String:Double]
         last_signin = aDecoder.decodeObject(forKey: "last_signin") as! String?
         week_start = aDecoder.decodeObject(forKey: "week_start") as! String?
         give_flair = aDecoder.decodeObject(forKey: "give_flair") as! String?

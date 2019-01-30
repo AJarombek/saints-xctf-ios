@@ -40,7 +40,7 @@ class LeaderboardViewController: UITableViewController, UIGestureRecognizerDeleg
         navigationController?.navigationBar.tintColor = UIColor(0xFFFFFF)
         
         navigationItem.backBarButtonItem = UIBarButtonItem(title: " ", style:
-            UIBarButtonItemStyle.plain, target: nil, action: nil)
+            UIBarButtonItem.Style.plain, target: nil, action: nil)
         
         // Make sure the table view does not overlap the status bar & overlay view
         let insets = UIEdgeInsets(top: 88, left: 0, bottom: 0, right: 0)
@@ -50,7 +50,7 @@ class LeaderboardViewController: UITableViewController, UIGestureRecognizerDeleg
         
         // Setting the row height to UITableViewAutomaticDimension tells the TableView to determine the
         // height of a cell based on its contents and constraints.
-        leaderboardTableView.rowHeight = UITableViewAutomaticDimension
+        leaderboardTableView.rowHeight = UITableView.automaticDimension
         
         if let group: Group = passedGroup {
             navigationItem.title = group.group_title!
@@ -128,7 +128,7 @@ class LeaderboardViewController: UITableViewController, UIGestureRecognizerDeleg
         if let height = heightDict.object(forKey: indexPath) as? NSNumber {
             return CGFloat(height.floatValue)
         } else {
-            return UITableViewAutomaticDimension
+            return UITableView.automaticDimension
         }
     }
     

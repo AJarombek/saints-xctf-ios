@@ -49,6 +49,9 @@ class LogViewController: UIViewController, UITextViewDelegate, UIPickerViewDeleg
     
     let logTag = OSLog(subsystem: "SaintsXCTF.App.LogViewController", category: "LogViewController")
     
+    /**
+     Invoked when the LogViewController loads
+     */
     override func viewDidLoad() {
         super.viewDidLoad()
         os_log("LogViewController Loaded.", log: logTag, type: .debug)
@@ -95,8 +98,8 @@ class LogViewController: UIViewController, UITextViewDelegate, UIPickerViewDeleg
         
         // Create and add the date picker
         datePickerView = UIDatePicker(frame: CGRect(x: 0, y: 40, width: 0, height: 0))
-        datePickerView.datePickerMode = UIDatePickerMode.date
-        datePickerView.addTarget(self, action: #selector(handleDatePicker(_:)), for: UIControlEvents.valueChanged)
+        datePickerView.datePickerMode = UIDatePicker.Mode.date
+        datePickerView.addTarget(self, action: #selector(handleDatePicker(_:)), for: UIControl.Event.valueChanged)
         
         inputView.addSubview(datePickerView)
         dateField.inputView = inputView
@@ -147,14 +150,20 @@ class LogViewController: UIViewController, UITextViewDelegate, UIPickerViewDeleg
         }
     }
     
-    // When the feel stepper is clicked, display the feel description
+    /**
+     When the feel stepper is clicked, display the feel description
+     - parameters:
+     - sender: the stepper view that invoked this function (feelStepper)
+     */
     @IBAction func feelChanged(_ sender: UIStepper) {
         let value = Int(sender.value) - 1
         feelDescriptionField.text = Constants.getFeelDescription(value)
         view.layer.backgroundColor = UIColor(Constants.getFeelColor(value)).cgColor
     }
     
-    // Stop displaying the visible picker
+    /**
+     Stop displaying the visible picker
+     */
     @objc func dismissPicker() {
         view.endEditing(true)
     }
@@ -517,10 +526,13 @@ class LogViewController: UIViewController, UITextViewDelegate, UIPickerViewDeleg
                   replacementText text: String) -> Bool {
         let str = textView.text + text
         
-        if str.characters.count <= 1000 {
+        if str.count <= 1000 {
             return true
         }
-        textView.text = str.substring(to: str.index(str.startIndex, offsetBy: 1000))
+        
+        let start = str.startIndex
+        let end = str.index(str.startIndex, offsetBy: 1000)
+        textView.text = String(str[start...end])
         return false
     }
 }

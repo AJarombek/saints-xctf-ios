@@ -30,7 +30,7 @@ class LoadingView: UIView {
         // Set the background and a spinner that is centered in the view
         self.backgroundColor = UIColor(0xBBBBBB, a: 0.5)
         
-        let spinner = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+        let spinner = UIActivityIndicatorView(style: .whiteLarge)
         spinner.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
         spinner.center = self.center
         spinner.startAnimating()

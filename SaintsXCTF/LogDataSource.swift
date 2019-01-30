@@ -86,9 +86,9 @@ class LogDataSource {
                         let range: NSRange = NSRange(location: 0, length: usertitle.characters.count)
                         
                         let mutableName = NSMutableAttributedString(string: usertitle, attributes: [:])
-                        mutableName.addAttribute(NSAttributedStringKey.link, value: "@\(log.username!)",
+                        mutableName.addAttribute(NSAttributedString.Key.link, value: "@\(log.username!)",
                                                  range: range)
-                        mutableName.addAttribute(NSAttributedStringKey.font, value: UIFont.systemFont(ofSize: 16.0, weight: UIFont.Weight.bold), range: range)
+                        mutableName.addAttribute(NSAttributedString.Key.font, value: UIFont.systemFont(ofSize: 16.0, weight: UIFont.Weight.bold), range: range)
                         logData.userLabelText = mutableName
                         
                         // Convert the string to a date
@@ -164,7 +164,7 @@ class LogDataSource {
                                     let start = matches.startIndices[i]
                                     let length = matches.stringLengths[i]
                                     
-                                    mutableContent.addAttribute(NSAttributedStringKey.link, value: matches.substrings[i],
+                                    mutableContent.addAttribute(NSAttributedString.Key.link, value: matches.substrings[i],
                                                                 range: NSRange(location: start, length: length))
                                 }
                                 

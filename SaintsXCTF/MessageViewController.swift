@@ -32,11 +32,11 @@ class MessageViewController: UITableViewController {
         navigationController?.navigationBar.tintColor = UIColor(0xFFFFFF)
         
         navigationItem.backBarButtonItem = UIBarButtonItem(title: " ", style:
-            UIBarButtonItemStyle.plain, target: nil, action: nil)
+            UIBarButtonItem.Style.plain, target: nil, action: nil)
         
         // Setting the row height to UITableViewAutomaticDimension tells the TableView to determine the
         // height of a cell based on its contents and constraints.
-        messageTableView.rowHeight = UITableViewAutomaticDimension
+        messageTableView.rowHeight = UITableView.automaticDimension
         
         if let group: Group = passedGroup {
             navigationItem.title = group.group_title!
@@ -72,7 +72,7 @@ class MessageViewController: UITableViewController {
         if let height = heightDict.object(forKey: indexPath) as? NSNumber {
             return CGFloat(height.floatValue)
         } else {
-            return UITableViewAutomaticDimension
+            return UITableView.automaticDimension
         }
     }
     

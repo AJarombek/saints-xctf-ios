@@ -36,7 +36,7 @@ class ProPicViewController: UIViewController, UIGestureRecognizerDelegate,
         navigationItem.title = "Edit Profile Picture"
         
         navigationItem.backBarButtonItem = UIBarButtonItem(title: " ", style:
-            UIBarButtonItemStyle.plain, target: nil, action: nil)
+            UIBarButtonItem.Style.plain, target: nil, action: nil)
         
         proPicView.layer.borderWidth = 2
         proPicView.layer.borderColor = UIColor(0xCCCCCC).cgColor
@@ -82,9 +82,12 @@ class ProPicViewController: UIViewController, UIGestureRecognizerDelegate,
     
     // Called when an image is picked from the photo library
     func imagePickerController(_ picker: UIImagePickerController,
-                               didFinishPickingMediaWithInfo info: [String : Any]) {
+                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+// Local variable inserted by Swift 4.2 migrator.
+let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
+
         // Get the picked image from info dictionary
-        image = info[UIImagePickerControllerOriginalImage] as? UIImage
+        image = info[convertFromUIImagePickerControllerInfoKey(UIImagePickerController.InfoKey.originalImage)] as? UIImage
         
         proPicView.image = image
         dismiss(animated: true, completion: nil)
@@ -105,7 +108,7 @@ class ProPicViewController: UIViewController, UIGestureRecognizerDelegate,
             saveButton.isEnabled = false
             cancelButton.isEnabled = false
             
-            let imageData: Data = UIImagePNGRepresentation(newImage)!
+            let imageData: Data = newImage.pngData()!
             var proPicBase64: String = imageData.base64EncodedString()
             
             proPicBase64 = proPicBase64.replacingOccurrences(of: "\n", with: "")
@@ -183,4 +186,14 @@ class ProPicViewController: UIViewController, UIGestureRecognizerDelegate,
         self.navigationController?.popViewController(animated: true)
     }
     
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromUIImagePickerControllerInfoKeyDictionary(_ input: [UIImagePickerController.InfoKey: Any]) -> [String: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map {key, value in (key.rawValue, value)})
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromUIImagePickerControllerInfoKey(_ input: UIImagePickerController.InfoKey) -> String {
+	return input.rawValue
 }

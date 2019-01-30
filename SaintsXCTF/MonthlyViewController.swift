@@ -212,7 +212,7 @@ class MonthlyViewController: UIViewController {
         navigationItem.title = "Monthly Calendar"
         
         navigationItem.backBarButtonItem = UIBarButtonItem(title: " ", style:
-            UIBarButtonItemStyle.plain, target: nil, action: nil)
+            UIBarButtonItem.Style.plain, target: nil, action: nil)
         
         // Create array for the calendar day labels
         weekdays = [d1Label, d2Label, d3Label, d4Label, d5Label, d6Label, d7Label]

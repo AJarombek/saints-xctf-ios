@@ -20,9 +20,9 @@ extension UIToolbar {
         toolbar.tintColor = UIColor.black
         toolbar.sizeToFit()
         
-        let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.plain,
+        let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.plain,
                                          target: self, action: selector)
-        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace,
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace,
                                           target: nil, action: nil)
         
         toolbar.setItems([spaceButton, doneButton], animated: false)

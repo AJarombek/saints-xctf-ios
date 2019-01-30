@@ -41,7 +41,7 @@ class MainViewController: UITableViewController, UITextViewDelegate {
         
         // Setting the row height to UITableViewAutomaticDimension tells the TableView to determine the
         // height of a cell based on its contents and constraints.
-        logTableView.rowHeight = UITableViewAutomaticDimension
+        logTableView.rowHeight = UITableView.automaticDimension
         
         // Add a long press gesture recognizer to the table view so that an edit and delete option
         // can pop up when pressing on a log
@@ -88,7 +88,7 @@ class MainViewController: UITableViewController, UITextViewDelegate {
                 navigationItem.title = "\(userPassed.first ?? "") \(userPassed.last ?? "")"
             }
             
-            navigationItem.backBarButtonItem = UIBarButtonItem(title: " ", style: UIBarButtonItemStyle.plain,
+            navigationItem.backBarButtonItem = UIBarButtonItem(title: " ", style: UIBarButtonItem.Style.plain,
                                                                target: nil, action: nil)
         }
     }
@@ -117,7 +117,7 @@ class MainViewController: UITableViewController, UITextViewDelegate {
         if let height = heightDict.object(forKey: indexPath) as? NSNumber {
             return CGFloat(height.floatValue)
         } else {
-            return UITableViewAutomaticDimension
+            return UITableView.automaticDimension
         }
     }
     
@@ -145,8 +145,8 @@ class MainViewController: UITableViewController, UITextViewDelegate {
                 // Set the styles of the edit and delete buttons
                 cell.editButton.backgroundColor = UIColor(0xCCCCCC, a: 0.9)
                 cell.deleteButton.backgroundColor = UIColor(0xCCCCCC, a: 0.9)
-                cell.editButton.imageEdgeInsets = UIEdgeInsetsMake(20, 20, 20, 20)
-                cell.deleteButton.imageEdgeInsets = UIEdgeInsetsMake(20, 20, 20, 20)
+                cell.editButton.imageEdgeInsets = UIEdgeInsets.init(top: 20, left: 20, bottom: 20, right: 20)
+                cell.deleteButton.imageEdgeInsets = UIEdgeInsets.init(top: 20, left: 20, bottom: 20, right: 20)
                 
                 // Set the buttons to be round
                 cell.editButton.layer.cornerRadius = 0.5 * cell.editButton.bounds.size.width
@@ -170,9 +170,9 @@ class MainViewController: UITableViewController, UITextViewDelegate {
             // Customize the comments button display
             cell.commentsButton.backgroundColor = UIColor(0x000000, a: 0.0)
             cell.commentsButton.addSubview(topline)
-            cell.commentsButton.setTitleColor(UIColor(0x333333), for: UIControlState.normal)
+            cell.commentsButton.setTitleColor(UIColor(0x333333), for: UIControl.State.normal)
             
-            cell.userLabel?.linkTextAttributes = [NSAttributedStringKey.foregroundColor.rawValue:UIColor(0x000000)]
+            cell.userLabel?.linkTextAttributes = convertToOptionalNSAttributedStringKeyDictionary([NSAttributedString.Key.foregroundColor.rawValue:UIColor(0x000000)])
             cell.userLabel?.attributedText = logData.userLabelText!
             cell.userLabel?.delegate = self
             
@@ -190,8 +190,8 @@ class MainViewController: UITableViewController, UITextViewDelegate {
             
             if let _: NSMutableAttributedString = logData.descriptionTags {
                 // Set the properties of the link text
-                cell.descriptionLabel?.linkTextAttributes = [NSAttributedStringKey.foregroundColor.rawValue:UIColor(0x555555),
-                                                             NSAttributedStringKey.font.rawValue:UIFont(name: "HelveticaNeue-Bold", size: 12)!]
+                cell.descriptionLabel?.linkTextAttributes = convertToOptionalNSAttributedStringKeyDictionary([NSAttributedString.Key.foregroundColor.rawValue:UIColor(0x555555),
+                                                             NSAttributedString.Key.font.rawValue:UIFont(name: "HelveticaNeue-Bold", size: 12)!])
                 
                 // Allows the shouldInteractWith URL function to execute on click
                 cell.descriptionLabel?.delegate = self
@@ -288,7 +288,7 @@ class MainViewController: UITableViewController, UITextViewDelegate {
     
     // Function that handles the long press recognizer
     @objc func handleLogLongPress(sender: UILongPressGestureRecognizer) {
-        if sender.state == UIGestureRecognizerState.began {
+        if sender.state == UIGestureRecognizer.State.began {
             
             // Get the index path of the log where the user pressed
             let touchpoint = sender.location(in: logTableView)
@@ -318,4 +318,10 @@ class MainViewController: UITableViewController, UITextViewDelegate {
         logViewController.indexPassed = index
         navigationController?.pushViewController(logViewController, animated: true)
     }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToOptionalNSAttributedStringKeyDictionary(_ input: [String: Any]?) -> [NSAttributedString.Key: Any]? {
+	guard let input = input else { return nil }
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (NSAttributedString.Key(rawValue: key), value)})
 }

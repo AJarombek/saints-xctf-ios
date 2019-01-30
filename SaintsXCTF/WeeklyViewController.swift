@@ -45,7 +45,7 @@ class WeeklyViewController: UIViewController {
         navigationItem.title = "Weekly Graph"
         
         navigationItem.backBarButtonItem = UIBarButtonItem(title: " ", style:
-            UIBarButtonItemStyle.plain, target: nil, action: nil)
+            UIBarButtonItem.Style.plain, target: nil, action: nil)
         
         // Get the users weekstart to build the calendar
         weekstart = user.week_start!

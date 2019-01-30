@@ -90,7 +90,7 @@ class Utils {
         var minInt, hrInt: Int
         
         // If the seconds are only of length one, pad with a zero
-        if seconds.characters.count == 1 {
+        if seconds.count == 1 {
             secStr = "0\(seconds)"
         } else {
             secStr = seconds
@@ -109,12 +109,12 @@ class Utils {
         minStr = "\(minInt)"
         
         // If the minutes are only of length one, pad with a zero
-        if minStr.characters.count == 1 {
+        if minStr.count == 1 {
             minStr = "0\(minStr)"
         }
         
         // If the hours are only of length one, pad with a zero
-        if hrStr.characters.count == 1 {
+        if hrStr.count == 1 {
             hrStr = "0\(hrStr)"
         }
         
@@ -171,13 +171,13 @@ class Utils {
         hrStr = String(Int(minStr)! / 60)
         
         // Pad with zeros if the time has a length of one
-        if secStr.characters.count == 1 {
+        if secStr.count == 1 {
             secStr = "0\(secStr)"
         }
-        if minStr.characters.count == 1 {
+        if minStr.count == 1 {
             minStr = "0\(minStr)"
         }
-        if hrStr.characters.count == 1 {
+        if hrStr.count == 1 {
             hrStr = "0\(hrStr)"
         }
         
