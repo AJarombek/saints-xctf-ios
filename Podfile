@@ -1,10 +1,10 @@
-platform :ios, '9.0'
+platform :ios, '12.1'
 use_frameworks!
 
 target 'SaintsXCTF' do
-  pod 'ObjectMapper', '~> 2.2'
+  pod 'ObjectMapper', '~> 3.4'
   pod 'BCryptSwift'
-  pod 'PopupDialog', '~> 0.5'
+  pod 'PopupDialog', '~> 0.8.0'
   pod 'Charts'
   pod 'IQKeyboardManagerSwift'
 end
