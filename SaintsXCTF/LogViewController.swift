@@ -168,14 +168,22 @@ class LogViewController: UIViewController, UITextViewDelegate, UIPickerViewDeleg
         view.endEditing(true)
     }
     
-    // Show the date in the date picker in the text field
+    /**
+     Show the date in the date picker in the text field
+     - parameters:
+     - sender: the date picker view that invoked this function (datePickerView)
+     */
     @objc func handleDatePicker(_ sender: UIDatePicker) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM/dd/yyyy"
         dateField.text = dateFormatter.string(from: sender.date)
     }
     
-    // When beginning to edit the textview, remove the placeholder and prepare view for user input
+    /**
+     When beginning to edit the textview, remove the placeholder and prepare view for user input
+     - parameters:
+     - textView: the text view that is in focus (descriptionField)
+     */
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.textColor == UIColor.lightGray {
             textView.text = ""
@@ -183,7 +191,11 @@ class LogViewController: UIViewController, UITextViewDelegate, UIPickerViewDeleg
         }
     }
     
-    // When done editing textview, if the contents are empty restore the placeholder
+    /**
+     When done editing textview, if the contents are empty restore the placeholder
+     - parameters:
+     - textView: the text view that was removed from focus (descriptionField)
+     */
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.isEmpty {
             textView.text = "Description"
@@ -191,12 +203,21 @@ class LogViewController: UIViewController, UITextViewDelegate, UIPickerViewDeleg
         }
     }
     
-    // Return the number of components in the UIPicker
+    /**
+     Return the number of components in the UIPicker
+     - parameters:
+     - pickerView: either the type or metric picker views
+     */
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
-    // Return the number of rows in the given UIPicker
+    /**
+     Return the number of rows in the given UIPicker
+     - parameters:
+     - pickerView: either the type or metric picker views
+     - component: unused
+     */
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if pickerView == typePicker {
             return logTypes.count
@@ -207,7 +228,13 @@ class LogViewController: UIViewController, UITextViewDelegate, UIPickerViewDeleg
         }
     }
     
-    // Return the title for the row that is to be shown in the UIPicker
+    /**
+     Return the title for the row that is to be shown in the UIPicker
+     - parameters:
+     - pickerView: either the type or metric picker views
+     - row: the integer index for a row in the picker view
+     - component: unused
+     */
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if pickerView == typePicker {
             return logTypes[row]
@@ -218,7 +245,13 @@ class LogViewController: UIViewController, UITextViewDelegate, UIPickerViewDeleg
         }
     }
     
-    // Dislay the picked value from the UIPicker
+    /**
+     Dislay the picked value from the UIPicker
+     - parameters:
+     - pickerView: either the type or metric picker views
+     - row: the integer index for a row selected in the picker view
+     - component: unused
+     */
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if pickerView == typePicker {
             typeField.text = logTypes[row]
@@ -227,7 +260,9 @@ class LogViewController: UIViewController, UITextViewDelegate, UIPickerViewDeleg
         }
     }
     
-    // Set all the fields from the existing log
+    /**
+     If we are editing an existing log, set all the fields from the existing log
+     */
     func setFields() {
         nameField.text = logPassed?.name ?? ""
         locationField.text = logPassed?.location ?? ""
@@ -265,7 +300,9 @@ class LogViewController: UIViewController, UITextViewDelegate, UIPickerViewDeleg
         errorField.text = ""
     }
     
-    // Reset all the fields in the log input to the default values
+    /**
+     Reset all the fields in the log input to the default values
+     */
     func resetFields() {
         nameField.text = ""
         locationField.text = ""
@@ -284,13 +321,21 @@ class LogViewController: UIViewController, UITextViewDelegate, UIPickerViewDeleg
         errorField.text = ""
     }
     
-    // When the user clicks cancel, reset all the fields to their default values
+    /**
+     When the user clicks cancel, reset all the fields to their default values
+     - parameters:
+     - sender: the cancel button (cancelButton)
+     */
     @IBAction func cancelLog(_ sender: UIButton) {
         resetFields()
     }
     
-    // When the log is submitted, perform validation and if valid send to the API for creation.
-    // Otherwise display an error message
+    /**
+     When the log is submitted, perform validation and if valid send to the API for creation.
+     Otherwise display an error message.
+     - parameters:
+     - sender: the submit button (submitButton)
+     */
     @IBAction func submitLog(_ sender: UIButton) {
         
         // Get the values from all of the textFields
@@ -521,7 +566,13 @@ class LogViewController: UIViewController, UITextViewDelegate, UIPickerViewDeleg
         }
     }
     
-    // Set a limit on the description input
+    /**
+     Set a limit on the description input.
+     - parameters:
+     - textView: the description text view (descriptionField)
+     - range: unused
+     - text: the text input from the user
+     */
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange,
                   replacementText text: String) -> Bool {
         let str = textView.text + text

@@ -33,6 +33,9 @@ class GroupViewController: UIViewController, UIGestureRecognizerDelegate {
     var group: Group? = nil
     var groupname = ""
     
+    /**
+     Invoked when the GroupViewController loads
+     */
     override func viewDidLoad() {
         super.viewDidLoad()
         os_log("GroupViewController Loaded.", log: logTag, type: .debug)
@@ -79,8 +82,10 @@ class GroupViewController: UIViewController, UIGestureRecognizerDelegate {
             if let groupPicBase64 = group.grouppic {
                 
                 // Part of the base 64 encoding is html specific, remove this piece
-                let index = groupPicBase64.index(groupPicBase64.startIndex, offsetBy: 23)
-                let base64 = groupPicBase64.substring(from: index)
+                let start: String.Index = groupPicBase64.index(groupPicBase64.startIndex, offsetBy: 23)
+                let end: String.Index = groupPicBase64.endIndex
+                
+                let base64: String = String(groupPicBase64[start...end])
                 
                 // Now decode the base 64 encoded string and convert it to an image
                 let groupPicData: Data = Data(base64Encoded: base64, options: .ignoreUnknownCharacters)!
@@ -207,6 +212,11 @@ class GroupViewController: UIViewController, UIGestureRecognizerDelegate {
         adminView.layer.addSublayer(adminBottomBorder)
     }
     
+    /**
+     Navigate to the Logs page for the group
+     - parameters:
+     - sender: the view that invoked this function (logsView)
+     */
     @objc func viewLogs(_ sender: UIView) {
         os_log("View Group Logs", log: logTag, type: .debug)
         
@@ -222,6 +232,11 @@ class GroupViewController: UIViewController, UIGestureRecognizerDelegate {
         navigationController?.pushViewController(mainViewController, animated: true)
     }
     
+    /**
+     Navigate to the Leaderboards page for the group
+     - parameters:
+     - sender: the view that invoked this function (leaderboardsView)
+     */
     @objc func viewLeaderboards(_ sender: UIView) {
         os_log("View Group Leaderboards", log: logTag, type: .debug)
         
@@ -234,6 +249,11 @@ class GroupViewController: UIViewController, UIGestureRecognizerDelegate {
         navigationController?.pushViewController(leaderboardViewController, animated: true)
     }
     
+    /**
+     Navigate to the Messages page for the group
+     - parameters:
+     - sender: the view that invoked this function (messagesView)
+     */
     @objc func viewMessages(_ sender: UIView) {
         os_log("View Group Messages", log: logTag, type: .debug)
         
@@ -246,6 +266,11 @@ class GroupViewController: UIViewController, UIGestureRecognizerDelegate {
         navigationController?.pushViewController(messageViewController, animated: true)
     }
     
+    /**
+     Navigate to the Members page for the group
+     - parameters:
+     - sender: the view that invoked this function (membersView)
+     */
     @objc func viewMembers(_ sender: UIView) {
         os_log("View Group Members", log: logTag, type: .debug)
         
@@ -258,6 +283,11 @@ class GroupViewController: UIViewController, UIGestureRecognizerDelegate {
         navigationController?.pushViewController(memberViewController, animated: true)
     }
     
+    /**
+     Navigate to the Admin page for the group
+     - parameters:
+     - sender: the view that invoked this function (adminView)
+     */
     @objc func viewAdmin(_ sender: UIView) {
         os_log("View Group Admin Page", log: logTag, type: .debug)
         

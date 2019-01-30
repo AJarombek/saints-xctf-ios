@@ -25,6 +25,9 @@ class ProPicViewController: UIViewController, UIGestureRecognizerDelegate,
     var originalPic: UIImage? = nil
     var originalBase64: String = ""
     
+    /**
+     Invoked when the ProPicViewController loads
+     */
     override func viewDidLoad() {
         super.viewDidLoad()
         os_log("DetailsViewController Loaded.", log: logTag, type: .debug)
@@ -49,8 +52,10 @@ class ProPicViewController: UIViewController, UIGestureRecognizerDelegate,
             originalBase64 = profPicBase64
             
             // Part of the base 64 encoding is html specific, remove this piece
-            let index = profPicBase64.index(profPicBase64.startIndex, offsetBy: 23)
-            let base64 = profPicBase64.substring(from: index)
+            let start = profPicBase64.index(profPicBase64.startIndex, offsetBy: 23)
+            let end = profPicBase64.endIndex
+            
+            let base64 = String(profPicBase64[start...end])
             
             // Now decode the base 64 encoded string and convert it to an image
             let profPicData: Data = Data(base64Encoded: base64, options: .ignoreUnknownCharacters)!
@@ -69,7 +74,11 @@ class ProPicViewController: UIViewController, UIGestureRecognizerDelegate,
         proPicView.addGestureRecognizer(propicClick)
     }
     
-    // Edit the users profile picture
+    /**
+     Edit the users profile picture
+     - parameters:
+     - sender: the view that invoked this function (proPicView)
+     */
     @objc func editProfilePicture(_ sender: UIView) {
         os_log("Editing Profile Picture", log: logTag, type: .debug)
         
@@ -80,11 +89,16 @@ class ProPicViewController: UIViewController, UIGestureRecognizerDelegate,
         self.present(imagePicker, animated: true, completion: nil)
     }
     
-    // Called when an image is picked from the photo library
+    /**
+     Called when an image is picked from the photo library
+     - parameters:
+     - picker: the controller managing the image picker
+     - info: contains the original picture and edit picture that were picked
+     */
     func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-// Local variable inserted by Swift 4.2 migrator.
-let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
+        // Local variable inserted by Swift 4.2 migrator.
+        let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
 
         // Get the picked image from info dictionary
         image = info[convertFromUIImagePickerControllerInfoKey(UIImagePickerController.InfoKey.originalImage)] as? UIImage
@@ -93,7 +107,11 @@ let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
         dismiss(animated: true, completion: nil)
     }
     
-    // If a new image is uploaded, save it to the API and go back to the edit profile page
+    /**
+     If a new image is uploaded, save it to the API and go back to the edit profile page
+     - parameters:
+     - sender: the view that invoked this function (saveButton)
+     */
     @IBAction func saveProPic(_ sender: UIButton) {
         os_log("Save the Profile Picture", log: logTag, type: .debug)
         
@@ -180,7 +198,11 @@ let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
         }
     }
     
-    // Picture upload cancelled, return to edit profile page
+    /**
+     Picture upload cancelled, return to edit profile page
+     - parameters:
+     - sender: the view that invoked this function (cancelButton)
+     */
     @IBAction func cancelProPic(_ sender: UIButton) {
         os_log("Cancel Editing the Profile Picture", log: logTag, type: .debug)
         self.navigationController?.popViewController(animated: true)
