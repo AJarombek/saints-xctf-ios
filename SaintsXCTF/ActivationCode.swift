@@ -9,14 +9,23 @@
 import Foundation
 import ObjectMapper
 
+/**
+ Class that represents an activation code for the website.  Activation codes are stored in the MySQL database.
+ */
 class ActivationCode: Mappable, CustomStringConvertible {
     
     var activation_code: String!
     
+    /**
+     Default initializer for an ActivationCode object
+     */
     init() {
         activation_code = ""
     }
     
+    /**
+     Required initializer for the Mappable protocol
+     */
     required init?(map: Map) {
         // pass
     }
@@ -24,9 +33,12 @@ class ActivationCode: Mappable, CustomStringConvertible {
     // This class uses the CustomStringConvertible protocol.
     // The description will be printed whenever we try to print a Notification object
     var description: String {
-        return "Activation Code: (\(activation_code))"
+        return "Activation Code: (\(activation_code ?? ""))"
     }
     
+    /**
+     Required function for the Mappable protocol.  Defines how each member maps to and from JSON.
+     */
     func mapping(map: Map) {
         activation_code <- map["activation_code"]
     }

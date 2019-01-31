@@ -32,6 +32,9 @@ class DetailsViewController: UIViewController, UITextViewDelegate, UITextFieldDe
     let regexEmail = "^(([a-zA-Z0-9_.-])+@([a-zA-Z0-9_.-])+\\.([a-zA-Z])+([a-zA-Z])+)?$"
     let regexName = "^[a-zA-Z\\-']+$"
     
+    /**
+     Invoked when the DetailsViewController loads
+     */
     override func viewDidLoad() {
         super.viewDidLoad()
         os_log("DetailsViewController Loaded.", log: logTag, type: .debug)
@@ -64,7 +67,10 @@ class DetailsViewController: UIViewController, UITextViewDelegate, UITextFieldDe
         descriptionView.text = user.user_description ?? ""
     }
     
-    // Validate the mandatory fields (first name, last name, email)
+    /**
+     Validate the mandatory fields (first name, last name, email)
+     - returns: `true` if the fields are valid, `false` otherwise
+     */
     func validateDetails() -> Bool {
         
         if let firstNameString = firstNameField.text,
@@ -125,7 +131,11 @@ class DetailsViewController: UIViewController, UITextViewDelegate, UITextFieldDe
         return true
     }
     
-    // Save the profile details and send the update to the API
+    /**
+     Save the profile details and send the update to the API
+     - parameters:
+     - sender: the button that invoked this function (saveButton)
+     */
     @IBAction func saveDetails(_ sender: UIButton) {
         os_log("Saving User Profile Details.", log: logTag, type: .debug)
         
@@ -179,21 +189,36 @@ class DetailsViewController: UIViewController, UITextViewDelegate, UITextFieldDe
         }
     }
     
-    // Cancel the profile details and return to the edit profile page
+    /**
+     Cancel the profile details and return to the edit profile page
+     - parameters:
+     - sender: the button that invoked this function (cancelButton)
+     */
     @IBAction func cancelDetails(_ sender: UIButton) {
         os_log("Cancel User Profile Details.", log: logTag, type: .debug)
         self.navigationController?.popViewController(animated: true)
     }
     
-    // Set a limit on the description input
+    /**
+     Set a limit on the description input
+     - parameters:
+     - textView: the text view to limit the input on (descriptionView)
+     - range: unused
+     - text: the text inputted by the user
+     - returns: `true` if the new text + the existing text is within the total length limit, `false` otherwise
+     */
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange,
                   replacementText text: String) -> Bool {
         let str = textView.text + text
         
-        if str.characters.count <= 255 {
+        if str.count <= 255 {
             return true
         }
-        textView.text = str.substring(to: str.index(str.startIndex, offsetBy: 255))
+        
+        let start: String.Index = str.startIndex
+        let end: String.Index = str.index(start, offsetBy: 255)
+        
+        textView.text = String(str[start...end])
         return false
     }
 }

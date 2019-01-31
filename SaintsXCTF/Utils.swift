@@ -15,6 +15,9 @@ struct StringMatches {
     var stringLengths: [Int] = []
 }
 
+/**
+ Class containing utility functions for the rest of the application.
+ */
 class Utils {
     
     static let logTag = OSLog(subsystem: "SaintsXCTF.App.Utils", category: "Utils")
@@ -38,8 +41,13 @@ class Utils {
         }
     }
     
-    // Find all the matching substrings of a pattern in a string and information such as 
-    // location in the original string and length of the substring
+    /**
+     Find all the matching substrings of a pattern in a string along with information such as
+     location in the original string and length of the substring
+     - parameters:
+     - regex: a regular expression to look for matches for in a string
+     - text: a string to perform a regular expression on
+     */
     static func matchesInfo(for regex: String, in text: String) -> StringMatches {
         
         do {
@@ -78,7 +86,12 @@ class Utils {
         }
     }
     
-    // Convert minutes and seconds to time
+    /**
+     Convert minutes and seconds to time
+     - parameters:
+     - minutes: a string containing minutes (should be in integer form)
+     - seconds: a string containing seconds (should be in integer form)
+     */
     static func toTime(withMinutes minutes: String, andSeconds seconds: String) -> String {
         
         // Base case: the minutes and seconds are both empty
@@ -121,7 +134,12 @@ class Utils {
         return "\(hrStr):\(minStr):\(secStr)"
     }
     
-    // Convert a metric and distance to miles
+    /**
+     Convert a metric and distance to miles
+     - parameters:
+     - metric: the metric used to determine distance
+     - distance: the distance in the specified metric
+     */
     static func toMiles(fromMetric metric: String, withDistance distance: String) -> Double {
         
         let dist: Double = Double(distance)!
@@ -139,7 +157,13 @@ class Utils {
         }
     }
     
-    // Get the mile pace with
+    /**
+     Get the mile pace with miles, minutes, and seconds
+     - parameters:
+     - miles: the number of miles exercised in string format
+     - minutes: the number of minutes exercised in string format
+     - seconds: the number of seconds exercised in string format
+     */
     static func getMilePace(withMiles miles: String, andMinutes minutes: String,
                         andSeconds seconds: String) -> String {
         
