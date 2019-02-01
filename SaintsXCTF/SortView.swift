@@ -21,6 +21,7 @@ class SortView: UIView {
     }
     
     // Stop displaying the visible picker for the range sort field
+    @objc
     func dismissPicker() {
         self.endEditing(true)
         print("remove")

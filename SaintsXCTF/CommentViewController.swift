@@ -19,6 +19,9 @@ class CommentViewController: UITableViewController, UITextViewDelegate {
     var comments: [Comment]?
     let heightDict = NSMutableDictionary()
     
+    /**
+     Invoked when the CommentViewController loads
+     */
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -27,6 +30,11 @@ class CommentViewController: UITableViewController, UITextViewDelegate {
         commentTableView.rowHeight = UITableView.automaticDimension
     }
     
+    /**
+     Invoked when the CommentViewController is about to appear
+     - parameters:
+     - animated: Whether or not the view appears with an animation
+     */
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -159,8 +167,10 @@ class CommentViewController: UITableViewController, UITextViewDelegate {
                   interaction: UITextItemInteraction) -> Bool {
         os_log("%@", log: logTag, type: .debug, URL.absoluteString)
         
-        let index = URL.absoluteString.index(URL.absoluteString.startIndex, offsetBy: 1)
-        APIClient.userGetRequest(withUsername: URL.absoluteString.substring(from: index)) {
+        let start = URL.absoluteString.index(URL.absoluteString.startIndex, offsetBy: 1)
+        let end = URL.absoluteString.endIndex
+        
+        APIClient.userGetRequest(withUsername: String(URL.absoluteString[start...end])) {
             (user) -> Void in
             
             let profileViewController = self.storyboard?.instantiateViewController(withIdentifier:

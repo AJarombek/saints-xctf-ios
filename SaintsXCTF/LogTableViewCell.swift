@@ -64,6 +64,7 @@ class LogTableViewCell: UITableViewCell {
     }
     
     // Executed when the user clicks on the edit log button
+    @objc
     func editLog(sender: LogTableViewCell) {
         os_log("Pressed Edit", log: logTag, type: .debug)
         
@@ -75,6 +76,7 @@ class LogTableViewCell: UITableViewCell {
     }
     
     // Executed when the user clicks on the delete log button
+    @objc
     func deleteLog(sender: UIButton) {
         os_log("Pressed Delete", log: logTag, type: .debug)
         

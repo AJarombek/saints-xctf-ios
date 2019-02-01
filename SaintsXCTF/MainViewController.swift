@@ -33,6 +33,9 @@ class MainViewController: UITableViewController, UITextViewDelegate {
     let limit = 25
     var offset = 0
     
+    /**
+     Invoked when the MainViewController loads
+     */
     override func viewDidLoad() {
         super.viewDidLoad()
         os_log("MainViewController Loaded.", log: logTag, type: .debug)
@@ -54,12 +57,17 @@ class MainViewController: UITableViewController, UITextViewDelegate {
         refreshcontrol.addTarget(self, action: #selector(reloadLogs(_:)), for: .valueChanged)
         refreshcontrol.attributedTitle = NSAttributedString(string: "Reloading Logs ...", attributes: [:])
         
-        // Get the currently logged in user
+        // Get the currently logge@objc d in user
         user = SignedInUser.user
 
         load()
     }
     
+    /**
+     Invoked when the MainViewController is about to appear
+     - parameters:
+     - animated: Whether or not the view appears with an animation
+     */
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -93,6 +101,11 @@ class MainViewController: UITableViewController, UITextViewDelegate {
         }
     }
     
+    /**
+     Invoked when the MainViewController is about to disappear
+     - parameters:
+     - animated: Whether or not the view disappears with an animation
+     */
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
@@ -100,6 +113,11 @@ class MainViewController: UITableViewController, UITextViewDelegate {
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
+    /**
+     Invoked when the logs on the screen should be reloaded from the server
+     - parameters:
+     - sender: the view that invoked this function
+     */
     @objc func reloadLogs(_ sender: UIView) {
         offset = 0
         logDataSource.clearLogs()
@@ -107,12 +125,25 @@ class MainViewController: UITableViewController, UITextViewDelegate {
         load()
     }
     
-    // Returns the number of rows that the tableview should display
+    /**
+     Returns the number of rows that the tableview should display
+     - parameters:
+     - tableView: the table view in which rows will be displayed
+     - section: the number of rows in this particular table view section.  This table view only uses
+     a single section.
+     - returns: The number of rows in the tableview
+     */
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return logDataSource.count()
     }
     
-    // Either set the height to the cached value or let the automaticdimension determine the height
+    /**
+     Either set the height to the cached value or let the automaticdimension determine the height
+     - parameters:
+     - tableView: the table view requesting information
+     - indexPath: the index of a row in the table view
+     - returns: The height of a row in the tableview
+     */
     override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         if let height = heightDict.object(forKey: indexPath) as? NSNumber {
             return CGFloat(height.floatValue)
@@ -121,7 +152,13 @@ class MainViewController: UITableViewController, UITextViewDelegate {
         }
     }
     
-    // Called when a cell at a certain index is about to be displayed
+    /**
+     Called when a cell at a certain index is about to be displayed
+     - parameters:
+     - tableView: the table view requesting information
+     - cell: the cell about to be displayed
+     - indexPath: The index of the cell in the table view
+     */
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell,
                             forRowAt indexPath: IndexPath) {
         
@@ -172,7 +209,9 @@ class MainViewController: UITableViewController, UITextViewDelegate {
             cell.commentsButton.addSubview(topline)
             cell.commentsButton.setTitleColor(UIColor(0x333333), for: UIControl.State.normal)
             
-            cell.userLabel?.linkTextAttributes = convertToOptionalNSAttributedStringKeyDictionary([NSAttributedString.Key.foregroundColor.rawValue:UIColor(0x000000)])
+            cell.userLabel?.linkTextAttributes = convertToOptionalNSAttributedStringKeyDictionary([
+                NSAttributedString.Key.foregroundColor.rawValue:UIColor(0x000000)
+            ])
             cell.userLabel?.attributedText = logData.userLabelText!
             cell.userLabel?.delegate = self
             
@@ -190,8 +229,10 @@ class MainViewController: UITableViewController, UITextViewDelegate {
             
             if let _: NSMutableAttributedString = logData.descriptionTags {
                 // Set the properties of the link text
-                cell.descriptionLabel?.linkTextAttributes = convertToOptionalNSAttributedStringKeyDictionary([NSAttributedString.Key.foregroundColor.rawValue:UIColor(0x555555),
-                                                             NSAttributedString.Key.font.rawValue:UIFont(name: "HelveticaNeue-Bold", size: 12)!])
+                cell.descriptionLabel?.linkTextAttributes = convertToOptionalNSAttributedStringKeyDictionary([
+                    NSAttributedString.Key.foregroundColor.rawValue:UIColor(0x555555),
+                    NSAttributedString.Key.font.rawValue:UIFont(name: "HelveticaNeue-Bold", size: 12)!
+                ])
                 
                 // Allows the shouldInteractWith URL function to execute on click
                 cell.descriptionLabel?.delegate = self
@@ -209,8 +250,14 @@ class MainViewController: UITableViewController, UITextViewDelegate {
         }
     }
     
-    // Ask the datasource for a cell to insert at a certain location in the table view
-    // The less work that is done in this function, the smoother the scrolling is
+    /**
+     Ask the datasource for a cell to insert at a certain location in the table view
+     The less work that is done in this function, the smoother the scrolling is
+     - parameters:
+     - tableView: the table view requesting information
+     - indexPath: the index of a row in the table view
+     - returns: The table view cell to be added
+     */
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! LogTableViewCell
@@ -230,13 +277,23 @@ class MainViewController: UITableViewController, UITextViewDelegate {
         return cell
     }
     
-    // This function is called when a tagged user is clicked in a comment
+    /**
+     This function is called when a tagged user is clicked in a comment
+     - parameters:
+     - textView: the table view requesting information
+     - URL: the URL clicked upon (a tagged users username)
+     - characterRange: the character range of the URL
+     - interaction: the type of interaction which occured with the URL
+     - returns: false because we dont want the default result of URL interaction to occur
+     */
     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange,
                   interaction: UITextItemInteraction) -> Bool {
         os_log("%@", log: logTag, type: .debug, URL.absoluteString)
         
-        let index = URL.absoluteString.index(URL.absoluteString.startIndex, offsetBy: 1)
-        APIClient.userGetRequest(withUsername: URL.absoluteString.substring(from: index)) {
+        let start = URL.absoluteString.index(URL.absoluteString.startIndex, offsetBy: 1)
+        let end = URL.absoluteString.endIndex
+        
+        APIClient.userGetRequest(withUsername: String(URL.absoluteString[start...end])) {
             (user) -> Void in
             
             if (user.username! != "") {
@@ -254,7 +311,12 @@ class MainViewController: UITableViewController, UITextViewDelegate {
         return false
     }
     
-    // Pass data to the CommentViewController when the segue is executed
+    /**
+     Pass data to the CommentViewController when the segue is executed
+     - parameters:
+     - segue: segue object containing information about the controllers involved with the segue
+     - sender: the object that initiated the segue
+     */
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         // We want to send the CommentViewController the log that was selected
@@ -269,7 +331,9 @@ class MainViewController: UITableViewController, UITextViewDelegate {
         }
     }
     
-    // Load more logs into the data source
+    /**
+     Load more logs into the data source
+     */
     func load() {
         logDataSource.load(withParamType: paramType, sortParam: sortParam, limit: limit, andOffset: offset) {
             (done) -> Void in
@@ -286,7 +350,11 @@ class MainViewController: UITableViewController, UITextViewDelegate {
         offset += limit
     }
     
-    // Function that handles the long press recognizer
+    /**
+     Function that handles the long press recognizer
+     - parameters:
+     - sender: long press recognizer object
+     */
     @objc func handleLogLongPress(sender: UILongPressGestureRecognizer) {
         if sender.state == UIGestureRecognizer.State.began {
             
@@ -300,14 +368,23 @@ class MainViewController: UITableViewController, UITextViewDelegate {
         }
     }
     
-    // Remove a cell at a specific index
+    /**
+     Remove a cell at a specific index
+     - parameters:
+     - index: the index in the table view to delete a row
+     */
     func removeDeletedLog(at index: Int) {
         logDataSource.delete(index)
         offset -= 1
         logTableView.reloadData()
     }
     
-    // Call the LogViewController and edit the existing log
+    /**
+     Call the LogViewController and edit the existing log
+     - parameters:
+     - index: the index in the table view to edit
+     - log: the log object to edit
+     */
     func editExistingLog(at index: Int, log: Log) {
         let logViewController = storyboard?.instantiateViewController(withIdentifier: "logViewController")
                                     as! LogViewController
