@@ -9,12 +9,22 @@
 import UIKit
 import IQKeyboardManagerSwift
 
+/**
+ The app delegate executes when the application launches.  This class provides lifecycle hooks
+ for the application.
+ */
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
+    /**
+     Executed when the application launch process is almost done and the app is almost ready to run.
+     - parameters:
+     - application: An object representing the iOS app
+     - launchOptions: Indicates the reason why the app was launched
+     - returns: always true
+     */
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         print(#function)
         
@@ -25,7 +35,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().clipsToBounds = true
         let statusBar: UIView = UIApplication.shared.value(forKey: "statusBar") as! UIView
         statusBar.backgroundColor = UIColor(0x990000, a: 1)
-        UIApplication.shared.statusBarStyle = .lightContent
         
         let navigationBarAppearance = UINavigationBar.appearance()
         navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor(0xFFFFFF)]
@@ -53,7 +62,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         print(#function)
     }
-
-
 }
-

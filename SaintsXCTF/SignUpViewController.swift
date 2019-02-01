@@ -26,6 +26,9 @@ class SignUpViewController: UIViewController {
     @IBOutlet var firstName: UITextField!
     @IBOutlet var signUpError: UITextView!
     
+    /**
+     Invoked when the SignUpViewController loads
+     */
     override func viewDidLoad() {
         super.viewDidLoad()
         signUpView.backgroundColor = UIColor(0xEEEEEE)
@@ -41,6 +44,11 @@ class SignUpViewController: UIViewController {
         firstName.standardStyle()
     }
     
+    /**
+     Attempt to sign up the user to use the app and website
+     - parameters:
+     - sender: the button that invoked this function
+     */
     @IBAction func signUpUser(_ sender: UIButton) {
         
         // Make sure all of the form entries are populated
@@ -102,7 +110,7 @@ class SignUpViewController: UIViewController {
             }
             
             // Password Validation
-            if (passwordString.characters.count >= 6) {
+            if (passwordString.count >= 6) {
                 
                 password.changeStyle(.valid)
             } else {
@@ -112,7 +120,7 @@ class SignUpViewController: UIViewController {
             }
             
             // Confirm Password Validation
-            if (confirmPasswordString.characters.count >= 6 && passwordString == confirmPasswordString) {
+            if (confirmPasswordString.count >= 6 && passwordString == confirmPasswordString) {
                 
                 confirmPassword.changeStyle(.valid)
             } else {
@@ -182,7 +190,12 @@ class SignUpViewController: UIViewController {
         }
     }
     
-    // Add a user to the database through the API and store locally on success
+    /**
+     Add a user to the database through the API and store locally on success
+     - parameters:
+     - user: data about the user to be added
+     - username: the username of the user to be added
+     */
     func addUser(_ user: User, _ username: String) {
         APIClient.userPostRequest(withUser: user) {
             (user) -> Void in
