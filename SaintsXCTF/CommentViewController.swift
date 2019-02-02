@@ -50,7 +50,14 @@ class CommentViewController: UITableViewController, UITextViewDelegate {
         os_log("Log Comments: %@", log: logTag, type: .debug, comments ?? "")
     }
     
-    // Returns the number of rows that the tableview should display
+    /**
+     Returns the number of rows that the tableview should display
+     - parameters:
+     - tableView: the table view in which rows will be displayed
+     - section: the number of rows in this particular table view section.  This table view only uses
+     a single section.
+     - returns: The number of rows in the tableview
+     */
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if let commentcount: Int = comments?.count {
@@ -60,7 +67,13 @@ class CommentViewController: UITableViewController, UITextViewDelegate {
         }
     }
     
-    // Called when a cell at a certain index is about to be displayed
+    /**
+     Called when a cell at a certain index is about to be displayed
+     - parameters:
+     - tableView: the table view requesting information
+     - cell: the cell about to be displayed
+     - indexPath: The index of the cell in the table view
+     */
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell,
                             forRowAt indexPath: IndexPath) {
         
@@ -69,7 +82,13 @@ class CommentViewController: UITableViewController, UITextViewDelegate {
         heightDict.setObject(height, forKey: indexPath as NSCopying)
     }
     
-    // Either set the height to the cached value or let the automaticdimension determine the height
+    /**
+     Either set the height to the cached value or let the automaticdimension determine the height
+     - parameters:
+     - tableView: the table view requesting information
+     - indexPath: the index of a row in the table view
+     - returns: The height of a row in the tableview
+     */
     override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         if let height = heightDict.object(forKey: indexPath) as? NSNumber {
             return CGFloat(height.floatValue)
@@ -78,7 +97,14 @@ class CommentViewController: UITableViewController, UITextViewDelegate {
         }
     }
     
-    // Ask the datasource for a cell to insert at a certain location in the table view
+    /**
+     Ask the datasource for a cell to insert at a certain location in the table view
+     The less work that is done in this function, the smoother the scrolling is
+     - parameters:
+     - tableView: the table view requesting information
+     - indexPath: the index of a row in the table view
+     - returns: The table view cell to be added
+     */
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if indexPath.row == 0 {
@@ -162,7 +188,15 @@ class CommentViewController: UITableViewController, UITextViewDelegate {
         }
     }
     
-    // This function is called when a tagged user is clicked in a comment
+    /**
+     This function is called when a tagged user is clicked in a comment
+     - parameters:
+     - textView: the table view requesting information
+     - URL: the URL clicked upon (a tagged users username)
+     - characterRange: the character range of the URL
+     - interaction: the type of interaction which occured with the URL
+     - returns: false because we dont want the default result of URL interaction to occur
+     */
     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange,
                   interaction: UITextItemInteraction) -> Bool {
         os_log("%@", log: logTag, type: .debug, URL.absoluteString)
@@ -185,7 +219,11 @@ class CommentViewController: UITableViewController, UITextViewDelegate {
         return false
     }
     
-    // Create the done button for the keyboard in a given new comment cell
+    /**
+     Create the done button for the keyboard in a given new comment cell
+     - parameters:
+     - cell: the table view cell that a new comment is created for
+     */
     func setDoneKeyboard(cell: NewCommentTableViewCell) {
         let keyboardToolbar = UIToolbar()
         keyboardToolbar.sizeToFit()

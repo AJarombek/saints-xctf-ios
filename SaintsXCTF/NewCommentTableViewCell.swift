@@ -17,7 +17,12 @@ class NewCommentTableViewCell: UITableViewCell {
     var log: Log?
     var commentVC: CommentViewController?
     
-    // Function runs when the return button is clicked
+    /**
+     Function runs when the return button is clicked.  Create the new comment object and write it
+     to the API.
+     - parameters:
+     - sender: the button that triggers this function
+     */
     @IBAction func commentPrimaryActionTriggered(_ sender: Any) {
         os_log("Adding Comment to %@", log: logTag, type: .debug, log?.description ?? "nil")
         
@@ -61,8 +66,10 @@ class NewCommentTableViewCell: UITableViewCell {
                     tags.forEach {
                         tag -> Void in
                         
-                        let index = tag.index(tag.startIndex, offsetBy: 1)
-                        let tagUsername = tag.substring(from: index)
+                        let start = tag.index(tag.startIndex, offsetBy: 1)
+                        let end = tag.endIndex
+                        
+                        let tagUsername: String = String(tag[start...end])
                         
                         // Build the notification
                         let tagnotification = Notification()
@@ -107,7 +114,11 @@ class NewCommentTableViewCell: UITableViewCell {
         }
     }
     
-    // Make an API Request to create a new comment notification
+    /**
+     Make an API Request to create a new comment notification
+     - parameters:
+     - notification: the notification object to send to the API
+     */
     func commentNotification(_ notification: Notification) {
         
         APIClient.notificationPostRequest(withNotification: notification) {
@@ -117,7 +128,11 @@ class NewCommentTableViewCell: UITableViewCell {
         }
     }
     
-    // Make an API request to create a tag in comment notification
+    /**
+     Make an API request to create a tag in comment notification
+     - parameters:
+     - notification: the notification object to send to the API
+     */
     func commentTagNotification(_ notification: Notification) {
         self.commentNotification(notification)
     }
