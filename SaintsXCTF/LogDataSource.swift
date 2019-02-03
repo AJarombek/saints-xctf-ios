@@ -9,18 +9,29 @@
 import UIKit
 import os.log
 
+/**
+ A collection of exercise logs that are used in a table view
+ */
 class LogDataSource {
     
     static let logTag = OSLog(subsystem: "SaintsXCTF.App.LogDataSource", category: "LogDataSource")
     
     private var logs = [LogData]()
     
-    // Get the number of items in the datasource
+    /**
+     Get the number of items in the datasource
+     - returns: number of log items
+     */
     func count() -> Int {
         return logs.count
     }
     
-    // Get item from the datasource at a specific index
+    /**
+     Get an item from the datasource at a specific index
+     - parameters:
+     - index: the integer index of the log within the datasource
+     - returns: a log item if the index is valid, otherwise `nil`
+     */
     func get(_ index: Int) -> LogData? {
         if index < logs.count {
             return logs[index]
@@ -29,7 +40,11 @@ class LogDataSource {
         }
     }
     
-    // Remove from the datasource at specific index
+    /**
+     Remove from the datasource at specific index
+     - parameters:
+     - index: the integer index of the log within the datasource
+     */
     func delete(_ index: Int) {
         logs.remove(at: index)
     }

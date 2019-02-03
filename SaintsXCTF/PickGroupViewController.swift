@@ -30,6 +30,9 @@ class PickGroupController: UIViewController {
         menstfAccepted = false, wmenstfAccepted = false,
         alumniAccepted = false
     
+    /**
+     Invoked when the PickGroupViewController loads
+     */
     override func viewDidLoad() {
         super.viewDidLoad()
         os_log("PickGroupViewController Loaded.", log: OSLog.default, type: .debug)
@@ -89,11 +92,19 @@ class PickGroupController: UIViewController {
     // Joined -> Change to Grey Background, Disable Conflicting Groups
     // Unjoined -> Change to White Background, Check for Resolved Conflicts
     
-    // Men's Cross Country
+    /**
+     Invoked when the mensxcButton is clicked, meaning the Men's Cross Country group should be joined if
+     the user isn't a member.  If the user is already a member, the user should be removed from the group.
+     - parameters:
+     - sender: the mensxcButton
+     */
     @IBAction func mensxcSelected(_ sender: UIButton) {
         mensxcSelected()
     }
     
+    /**
+     Add or remove the user from the Men's Cross Country group
+     */
     func mensxcSelected() {
         mensxc = !mensxc
         
@@ -114,11 +125,19 @@ class PickGroupController: UIViewController {
         }
     }
     
-    // Women's Cross Country
+    /**
+     Invoked when the womensxcButton is clicked, meaning the Womens Cross Country group should be joined if
+     the user isn't a member.  If the user is already a member, the user should be removed from the group.
+     - parameters:
+     - sender: the womensxcButton
+     */
     @IBAction func womensxcSelected(_ sender: UIButton) {
         womensxcSelected()
     }
     
+    /**
+     Add or remove the user from the Women's Cross Country group
+     */
     func womensxcSelected() {
         wmensxc = !wmensxc
         
@@ -139,11 +158,20 @@ class PickGroupController: UIViewController {
         }
     }
     
-    // Women's Track & Field
+    /**
+     Invoked when the womenstfButton is clicked, meaning the Women's Track & Field group should be joined
+     if the user isn't a member.  If the user is already a member, the user should be removed from the
+     group.
+     - parameters:
+     - sender: the womenstfButton
+     */
     @IBAction func womenstfSelected(_ sender: UIButton) {
         womenstfSelected()
     }
     
+    /**
+     Add or remove the user from the Women's Track & Field group
+     */
     func womenstfSelected() {
         wmenstf = !wmenstf
         
@@ -164,11 +192,20 @@ class PickGroupController: UIViewController {
         }
     }
     
-    // Men's Track & Field
+    /**
+     Invoked when the menstfButton is clicked, meaning the Men's Track & Field group should be joined
+     if the user isn't a member.  If the user is already a member, the user should be removed from the
+     group.
+     - parameters:
+     - sender: the menstfButton
+     */
     @IBAction func menstfSelected(_ sender: UIButton) {
         menstfSelected()
     }
     
+    /**
+     Add or remove the user from the Men's Track & Field group
+     */
     func menstfSelected() {
         menstf = !menstf
         
@@ -189,11 +226,19 @@ class PickGroupController: UIViewController {
         }
     }
     
-    // Alumni
+    /**
+     Invoked when the alumniButton is clicked, meaning the Alumni group should be joined if
+     the user isn't a member.  If the user is already a member, the user should be removed from the group.
+     - parameters:
+     - sender: the alumniButton
+     */
     @IBAction func alumniSelected(_ sender: UIButton) {
         alumniSelected()
     }
     
+    /**
+     Add or remove the user from the Alumni group
+     */
     func alumniSelected() {
         alumni = !alumni
         
@@ -208,6 +253,11 @@ class PickGroupController: UIViewController {
         }
     }
     
+    /**
+     Invoked when the submitButton is clicked, meaning the groups for this user should be finalized.
+     - parameters:
+     - sender: the submitButton
+     */
     @IBAction func pickGroups(_ sender: UIButton) {
         _ = SignedInUser()
         let user = SignedInUser.user
@@ -267,7 +317,12 @@ class PickGroupController: UIViewController {
         }
     }
     
-    // Find the admins for a given group and create a notification for them
+    /**
+     Find the admins for a given group and create a notification for them.
+     - parameters:
+     - groupname: the name of a group to search for admins
+     - user: information about the user that is requesting to join a group
+     */
     func findGroupAdmins(withGroupname groupname: String, forUser user: User) {
         APIClient.groupGetRequest(withGroupname: groupname) {
             (group) -> Void in
@@ -284,7 +339,7 @@ class PickGroupController: UIViewController {
                     let notification = Notification()
                     notification.username = member.username
                     notification.link = "https://www.saintsxctf.com/group.php?name=\(group.group_name!)"
-                    notification.notification_description = "\(user.first!) \(user.last) Has Requested to " +
+                    notification.notification_description = "\(user.first!) \(user.last ?? "") Has Requested to " +
                                                             "Join \(group.group_title!)"
                     notification.viewed = "N"
                     
@@ -294,7 +349,12 @@ class PickGroupController: UIViewController {
         }
     }
     
-    // Send a create notification request to the API
+    /**
+     Send a create notification request to the API.  In this context, the notification tells an admin
+     that a user is requesting to join their group.
+     - parameters:
+     - groupname: a notification object to send to the API
+     */
     func sendAdminNotification(_ notification: Notification) {
         
         APIClient.notificationPostRequest(withNotification: notification) {
@@ -304,6 +364,11 @@ class PickGroupController: UIViewController {
         }
     }
     
+    /**
+     Add groups to a user object
+     - parameters:
+     - user: the exiting information about a user
+     */
     func addGroups(_ user: User) {
         if (mensxc) {
             let mensxcInfo = GroupInfo()
