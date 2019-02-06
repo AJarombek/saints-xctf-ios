@@ -49,16 +49,23 @@ class LogDataSource {
         logs.remove(at: index)
     }
     
-    // Remove all logs from the datasource
+    /**
+     Remove all logs from the datasource
+     */
     func clearLogs() {
         logs.removeAll()
     }
     
-    // Function to remove excess zeros from the time
+    /**
+     Function to remove excess zeros from the time
+     - parameters:
+     - time: a string representing the time a workout took to complete
+     - returns: a shortened version of the time argument
+     */
     func shortenTime(withTime time: String) -> String {
         var start = 0
         
-        for i in 0 ..< time.characters.count {
+        for i in 0 ..< time.count {
             let index = time.index(time.startIndex, offsetBy: i)
             if time[index] != "0" && time[index] != ":" {
                 start = i
@@ -66,12 +73,22 @@ class LogDataSource {
             }
         }
         
-        let index =  time.index(time.startIndex, offsetBy: start)
-        return time.substring(from: index)
+        let startIndex =  time.index(time.startIndex, offsetBy: start)
+        let endIndex = time.endIndex
+        
+        return String(time[startIndex..<endIndex])
     }
     
-    // Load a defined number of logs into the datasource using the logfeed endpoint
-    // Return true if there are no more logs to load, otherwise false
+    /**
+     Load a defined number of logs into the datasource using the logfeed endpoint
+     Return `true` if there are no more logs to load, otherwise `false`
+     - parameters:
+     - paramType: how to filter the logs.  Sometimes we need all logs, or just a groups logs, or a single users logs
+     - sortParam: the group or user whose logs are needed
+     - limit: the max number of logs to retrieve
+     - offset: the offset from the most recent logs
+     - completion: a callback function called when the logs are returned from the API
+     */
     func load(withParamType paramType: String, sortParam: String, limit: Int, andOffset offset: Int,
               completion: @escaping (Bool) -> Void) {
         
@@ -98,7 +115,7 @@ class LogDataSource {
                         
                         // Set the user name as clickable text in the log
                         let usertitle: String = "\(log.first!) \(log.last!)"
-                        let range: NSRange = NSRange(location: 0, length: usertitle.characters.count)
+                        let range: NSRange = NSRange(location: 0, length: usertitle.count)
                         
                         let mutableName = NSMutableAttributedString(string: usertitle, attributes: [:])
                         mutableName.addAttribute(NSAttributedString.Key.link, value: "@\(log.username!)",

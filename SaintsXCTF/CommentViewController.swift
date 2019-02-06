@@ -204,7 +204,7 @@ class CommentViewController: UITableViewController, UITextViewDelegate {
         let start = URL.absoluteString.index(URL.absoluteString.startIndex, offsetBy: 1)
         let end = URL.absoluteString.endIndex
         
-        APIClient.userGetRequest(withUsername: String(URL.absoluteString[start...end])) {
+        APIClient.userGetRequest(withUsername: String(URL.absoluteString[start..<end])) {
             (user) -> Void in
             
             let profileViewController = self.storyboard?.instantiateViewController(withIdentifier:

@@ -218,7 +218,7 @@ class DetailsViewController: UIViewController, UITextViewDelegate, UITextFieldDe
         let start: String.Index = str.startIndex
         let end: String.Index = str.index(start, offsetBy: 255)
         
-        textView.text = String(str[start...end])
+        textView.text = String(str[start..<end])
         return false
     }
 }

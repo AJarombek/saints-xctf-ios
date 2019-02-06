@@ -69,7 +69,7 @@ class NewCommentTableViewCell: UITableViewCell {
                         let start = tag.index(tag.startIndex, offsetBy: 1)
                         let end = tag.endIndex
                         
-                        let tagUsername: String = String(tag[start...end])
+                        let tagUsername: String = String(tag[start..<end])
                         
                         // Build the notification
                         let tagnotification = Notification()

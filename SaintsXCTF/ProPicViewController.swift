@@ -55,7 +55,7 @@ class ProPicViewController: UIViewController, UIGestureRecognizerDelegate,
             let start = profPicBase64.index(profPicBase64.startIndex, offsetBy: 23)
             let end = profPicBase64.endIndex
             
-            let base64 = String(profPicBase64[start...end])
+            let base64 = String(profPicBase64[start..<end])
             
             // Now decode the base 64 encoded string and convert it to an image
             let profPicData: Data = Data(base64Encoded: base64, options: .ignoreUnknownCharacters)!

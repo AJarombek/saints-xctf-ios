@@ -28,6 +28,9 @@ class LeaderboardViewController: UITableViewController, UIGestureRecognizerDeleg
     var timePicker: UIPickerView!
     var filters: SortView? = nil
     
+    /**
+     Invoked when the LeaderboardViewController loads
+     */
     override func viewDidLoad() {
         super.viewDidLoad()
         os_log("LeaderboardViewController Loaded.", log: logTag, type: .debug)
@@ -62,6 +65,11 @@ class LeaderboardViewController: UITableViewController, UIGestureRecognizerDeleg
         }
     }
     
+    /**
+     Invoked when the LeaderboardViewController is about to first appear on the screen
+     - parameters:
+     - animated: If true, the view is added to the window using an animation
+     */
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
@@ -92,7 +100,7 @@ class LeaderboardViewController: UITableViewController, UIGestureRecognizerDeleg
         self.filters?.otherButton.addGestureRecognizer(otherclick)
         
         // Create a view to hold the time picker and the done button
-        let timeInputView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 240))
+        let timeInputView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: 240))
         
         // Set the picker view for time filter
         timePicker = UIPickerView(frame: CGRect(x: 0, y: 40, width: 0, height: 0))
@@ -112,18 +120,36 @@ class LeaderboardViewController: UITableViewController, UIGestureRecognizerDeleg
         filterRun()
     }
     
+    /**
+     Invoked when the LeaderboardViewController is about to disappear from the screen
+     - parameters:
+     - animated: If true, the view is added to the window using an animation
+     */
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
 
         filters?.removeFromSuperview()
     }
     
-    // Returns the number of rows that the tableview should display
+    /**
+     Returns the number of rows that the tableview should display
+     - parameters:
+     - tableView: the table view in which rows will be displayed
+     - section: the number of rows in this particular table view section.  This table view only uses
+     a single section.
+     - returns: The number of rows in the tableview
+     */
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return leaderboard.count
     }
     
-    // Either set the height to the cached value or let the automaticdimension determine the height
+    /**
+     Either set the height to the cached value or let the automaticdimension determine the height
+     - parameters:
+     - tableView: the table view requesting information
+     - indexPath: the index of a row in the table view
+     - returns: The height of a row in the tableview
+     */
     override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         if let height = heightDict.object(forKey: indexPath) as? NSNumber {
             return CGFloat(height.floatValue)
@@ -132,7 +158,13 @@ class LeaderboardViewController: UITableViewController, UIGestureRecognizerDeleg
         }
     }
     
-    // Called when a cell at a certain index is about to be displayed
+    /**
+     Called when a cell at a certain index is about to be displayed
+     - parameters:
+     - tableView: the table view requesting information
+     - cell: the cell about to be displayed
+     - indexPath: The index of the cell in the table view
+     */
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell,
                             forRowAt indexPath: IndexPath) {
         
@@ -141,14 +173,19 @@ class LeaderboardViewController: UITableViewController, UIGestureRecognizerDeleg
         heightDict.setObject(height, forKey: indexPath as NSCopying)
     }
     
-    // Ask the datasource for a cell to insert at a certain location in the table view
+    /**
+     Ask the datasource for a cell to insert at a certain location in the table view
+     The less work that is done in this function, the smoother the scrolling is
+     - parameters:
+     - tableView: the table view requesting information
+     - indexPath: the index of a row in the table view
+     - returns: The table view cell to be added
+     */
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
                         as! LeaderboardTableViewCell
         let leader: [String] = leaderboard[indexPath.row]
-        
-        print(leader)
         
         cell.nameLabel.text = "\(indexPath.row + 1)) \(leader[0])"
         let distanceDouble = Double(leader[1])!
@@ -160,12 +197,23 @@ class LeaderboardViewController: UITableViewController, UIGestureRecognizerDeleg
         return cell
     }
     
-    // Return the number of components in the UIPicker
+    /**
+     Ask the datasource for a cell to insert at a certain location in the table view
+     The less work that is done in this function, the smoother the scrolling is
+     - parameters:
+     - pickerView: the picker view requesting information
+     - returns: number of components (always 1)
+     */
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
-    // Return the number of rows in the given UIPicker
+    /**
+     Return the number of rows in the given UIPicker
+     - parameters:
+     - pickerView: the picker view requesting information
+     - returns: number of rows (length of the time filter list)
+     */
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return timeFilters.count
     }

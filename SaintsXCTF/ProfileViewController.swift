@@ -181,8 +181,10 @@ class ProfileViewController: UIViewController, UIGestureRecognizerDelegate {
                 let start = profPicBase64.distance(from: profPicBase64.startIndex, to: range.lowerBound)
                 
                 // Part of the base 64 encoding is html specific, remove this piece
-                let index = profPicBase64.index(profPicBase64.startIndex, offsetBy: start)
-                let base64 = profPicBase64.substring(from: index)
+                let startIndex = profPicBase64.index(profPicBase64.startIndex, offsetBy: start)
+                let endIndex = profPicBase64.endIndex
+                
+                let base64 = String(profPicBase64[startIndex..<endIndex])
                 
                 // Now decode the base 64 encoded string and convert it to an image
                 guard let profPicData: Data = Data(base64Encoded: base64, options: .ignoreUnknownCharacters) else {

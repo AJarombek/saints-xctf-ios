@@ -85,7 +85,7 @@ class GroupViewController: UIViewController, UIGestureRecognizerDelegate {
                 let start: String.Index = groupPicBase64.index(groupPicBase64.startIndex, offsetBy: 23)
                 let end: String.Index = groupPicBase64.endIndex
                 
-                let base64: String = String(groupPicBase64[start...end])
+                let base64: String = String(groupPicBase64[start..<end])
                 
                 // Now decode the base 64 encoded string and convert it to an image
                 let groupPicData: Data = Data(base64Encoded: base64, options: .ignoreUnknownCharacters)!
