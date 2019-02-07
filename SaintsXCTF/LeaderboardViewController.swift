@@ -9,7 +9,18 @@
 import UIKit
 import os.log
 
-class LeaderboardViewController: UITableViewController, UIGestureRecognizerDelegate, UIPickerViewDelegate {
+/**
+ Controller for the group leaderboard UI.
+ - Important:
+ ## Extends the following class:
+ - UITableViewController: view controller for managing a table view
+ 
+ ## Implements the following protocols:
+ - UIGestureRecognizerDelegate: provides helper methods gor handling gestures (clicks,swipes,etc.)
+ - UIPickerViewDelegate: provides the data needed for a picker view to construct itself
+ - UIPickerViewDataSource: used as a bridge between a picker view and the data held in the picker view
+ */
+class LeaderboardViewController: UITableViewController, UIGestureRecognizerDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     
     let logTag = OSLog(subsystem: "SaintsXCTF.App.LeaderboardViewController",
                        category: "LeaderboardViewController")
@@ -105,6 +116,7 @@ class LeaderboardViewController: UITableViewController, UIGestureRecognizerDeleg
         // Set the picker view for time filter
         timePicker = UIPickerView(frame: CGRect(x: 0, y: 40, width: 0, height: 0))
         timePicker.delegate = self
+        timePicker.dataSource = self
         
         timeInputView.addSubview(timePicker)
         self.filters?.rangeSortField.inputView = timePicker

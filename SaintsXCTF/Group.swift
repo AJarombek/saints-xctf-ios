@@ -11,6 +11,10 @@ import ObjectMapper
 
 /**
  Class that represents a group (team) in the application.  Groups are stored in the MySQL database.
+ - Important:
+ ## Implements the following protocols:
+ - Mappable: used to map an object to JSON
+ - CustomStringConvertible: allows class instances to create a string representation of themself
  */
 class Group: Mappable, CustomStringConvertible {
     

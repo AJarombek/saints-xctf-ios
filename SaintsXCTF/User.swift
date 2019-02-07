@@ -11,6 +11,10 @@ import ObjectMapper
 
 /**
  Class that represents a users in the application.  Users are stored in the MySQL database.
+ - Important:
+ ## Implements the following protocols:
+ - Mappable: used to map an object to JSON
+ - CustomStringConvertible: allows class instances to create a string representation of themself
  */
 class User: NSObject, Mappable, NSCoding {
     

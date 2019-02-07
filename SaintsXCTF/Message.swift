@@ -9,6 +9,13 @@
 import Foundation
 import ObjectMapper
 
+/**
+ Class that represents a group message in the application.  Messages are stored in the MySQL database.
+ - Important:
+ ## Implements the following protocols:
+ - Mappable: used to map an object to JSON
+ - CustomStringConvertible: allows class instances to create a string representation of themself
+ */
 class Message: Mappable, CustomStringConvertible {
     
     var message_id: String!
@@ -19,13 +26,19 @@ class Message: Mappable, CustomStringConvertible {
     var time: String!
     var content: String!
     
+    /**
+     Default initializer for a Message object
+     */
     init() {
         message_id = ""
     }
     
-    required init?(map: Map) {
-        // pass
-    }
+    /**
+     Required initializer for the Mappable protocol
+     - parameters:
+     - map: JSON data is stored within this map
+     */
+    required init?(map: Map) {}
     
     // This class uses the CustomStringConvertible protocol.
     // The description will be printed whenever we try to print a Comment object
@@ -33,6 +46,11 @@ class Message: Mappable, CustomStringConvertible {
         return "Message: (\(username!), \(content!))"
     }
     
+    /**
+     Required function for the Mappable protocol.  Defines how each member maps to and from JSON.
+     - parameters:
+     - map: JSON data is stored within this map
+     */
     func mapping(map: Map) {
         message_id <- map["message_id"]
         username <- map["username"]

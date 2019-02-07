@@ -11,6 +11,13 @@ import ObjectMapper
 
 /**
  Class that represents a users notification in the application.  Notifications are stored in the MySQL database.
+ - Important:
+ ## Extends the following class:
+ - NSObject: Represents an Objective-C class
+ 
+ ## Implements the following protocols:
+ - Mappable: used to map an object to JSON
+ - NSCoding: allows an object to be persisted between app sessions
  */
 class Notification: NSObject, Mappable, NSCoding {
     

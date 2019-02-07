@@ -9,6 +9,13 @@
 import Foundation
 import ObjectMapper
 
+/**
+ Class that represents an email for the application.  Emails can be sent through the REST API
+ - Important:
+ ## Implements the following protocols:
+ - Mappable: used to map an object to JSON
+ - CustomStringConvertible: allows class instances to create a string representation of themself
+ */
 class Mail: Mappable, CustomStringConvertible {
     
     var emailAddress: String!
