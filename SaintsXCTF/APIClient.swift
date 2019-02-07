@@ -265,7 +265,12 @@ class APIClient {
         }
     }
     
-    // Handle GET Requests for a Message
+    /**
+     Handle GET Requests for a Message
+     - parameters:
+     - messageId: a unique identifer for a message
+     - completion:  Callback function which is invoked once the GET request is fulfilled
+     */
     public static func messageGetRequest(withMessageId messageId: Int,
                                          completion: @escaping (Message) -> Void) {
         
@@ -291,7 +296,11 @@ class APIClient {
         }
     }
     
-    // Handle GET Requests for all Messages
+    /**
+     Handle a GET Request for all the messages in the database
+     - parameters:
+     - completion:  Callback function which is invoked once the GET request is fulfilled
+     */
     public static func messagesGetRequest(completion: @escaping ([Message]) -> Void) {
         
         let messagesGetEndpoint = "https://www.saintsxctf.com/api/api.php/messages"
@@ -315,7 +324,12 @@ class APIClient {
         }
     }
     
-    // Handle GET Requests for an Activation Code
+    /**
+     Handle GET Requests for an Activation Code
+     - parameters:
+     - code: a unique code to activate an account
+     - completion:  Callback function which is invoked once the GET request is fulfilled
+     */
     public static func activationCodeGetRequest(withCode code: String,
                                                 completion: @escaping (ActivationCode?) -> Void) {
         
@@ -345,7 +359,12 @@ class APIClient {
         }
     }
     
-    // Handle GET Requests for a Notification
+    /**
+     Handle GET Requests for a Notification
+     - parameters:
+     - notificationId: a unique identifer for a notification
+     - completion:  Callback function which is invoked once the GET request is fulfilled
+     */
     public static func notificationGetRequest(withNotificationId notificationId: Int,
                                               completion: @escaping (Notification) -> Void) {
         
@@ -371,7 +390,11 @@ class APIClient {
         }
     }
     
-    // Handle GET Requests for all Notifications
+    /**
+     Handle a GET Request for all the notifications in the database
+     - parameters:
+     - completion:  Callback function which is invoked once the GET request is fulfilled
+     */
     public static func notificationsGetRequest(completion: @escaping ([Notification]) -> Void) {
         
         let notificationsGetEndpoint = "https://www.saintsxctf.com/api/api.php/notifications"
@@ -395,7 +418,16 @@ class APIClient {
         }
     }
     
-    // Handle GET Requests for a Log Feed
+    /**
+     Handle GET Requests for a Log Feed
+     - parameters:
+     - paramType: the grouping of logs to return (ex. user, group)
+     - sortParam: a string to query the param type.  For example, if the paramType is user, the sortParam can
+     be the username of a user
+     - limit: the maximum number of logs to return
+     - offset: not the rapper
+     - completion:  Callback function which is invoked once the GET request is fulfilled
+     */
     public static func logfeedGetRequest(withParamType paramType: String, sortParam: String,
                                          limit: Int, offset: Int, completion: @escaping ([Log]) -> Void) {
         
@@ -421,7 +453,16 @@ class APIClient {
         }
     }
     
-    // Handle GET Requests for a Message Feed
+    /**
+     Handle GET Requests for a Message Feed
+     - parameters:
+     - paramType: the grouping of messages to return (ex. group, all)
+     - sortParam: a string to query the param type.  For example, if the paramType is group, the sortParam can
+     be the group name
+     - limit: the maximum number of messages to return
+     - offset: not the rapper
+     - completion:  Callback function which is invoked once the GET request is fulfilled
+     */
     public static func messagefeedGetRequest(withParamType paramType: String, sortParam: String,
                                              limit: Int, offset: Int, completion: @escaping ([Message]) -> Void) {
         
@@ -447,7 +488,18 @@ class APIClient {
         }
     }
     
-    // Handle GET Requests for a Range View
+    /**
+     Handle GET Requests for a Range View
+     - parameters:
+     - paramType: the grouping of range views to return (ex. user, group)
+     - sortParam: a string to query the param type.  For example, if the paramType is user, the sortParam can
+     be the username of a user
+     - filter: the types of exercises to include in the range view (any combination of 'r', 'b', 's', 'o') where
+     r->Run, b->Bike, s->Swim, o->Other
+     - start: the first day in the range view
+     - end: the last day in the range view
+     - completion:  Callback function which is invoked once the GET request is fulfilled
+     */
     public static func rangeViewGetRequest(withParamType paramType: String, sortParam: String, filter: String,
                                            start: String, end: String, completion: @escaping ([RangeView]) -> Void) {
         
@@ -480,7 +532,12 @@ class APIClient {
     
     // MARK: - POST Requests
     
-    // Handle POST Request for a User
+    /**
+     Handle POST Requests for a User
+     - parameters:
+     - user: an object representing the user to create on the server
+     - completion:  Callback function which is invoked once the POST request is fulfilled
+     */
     public static func userPostRequest(withUser user: User, completion: @escaping (User?) -> Void) {
         
         let usersPostEndpoint = "https://www.saintsxctf.com/api/api.php/users"
@@ -511,7 +568,12 @@ class APIClient {
         }
     }
     
-    // Handle POST Request for a Log
+    /**
+     Handle POST Requests for a Log
+     - parameters:
+     - log: an object representing the exercie log to create on the server
+     - completion:  Callback function which is invoked once the POST request is fulfilled
+     */
     public static func logPostRequest(withLog log: Log, completion: @escaping (Log) -> Void) {
         
         let logPostEndpoint = "https://www.saintsxctf.com/api/api.php/log"
@@ -538,7 +600,12 @@ class APIClient {
         }
     }
     
-    // Handle POST Request for a Comment
+    /**
+     Handle POST Requests for a Comment
+     - parameters:
+     - comment: an object representing the comment to create on the server
+     - completion:  Callback function which is invoked once the POST request is fulfilled
+     */
     public static func commentPostRequest(withComment comment: Comment,
                                           completion: @escaping (Comment) -> Void) {
         
@@ -566,7 +633,12 @@ class APIClient {
         }
     }
     
-    // Handle POST Request for a Message
+    /**
+     Handle POST Requests for a Message
+     - parameters:
+     - message: an object representing the message to create on the server
+     - completion:  Callback function which is invoked once the POST request is fulfilled
+     */
     public static func messagePostRequest(withMessage message: Message,
                                           completion: @escaping (Message) -> Void) {
         
@@ -594,7 +666,11 @@ class APIClient {
         }
     }
     
-    // Handle POST Request for an Activation Code
+    /**
+     Handle POST Requests for an Activation Code
+     - parameters:
+     - completion:  Callback function which is invoked once the POST request is fulfilled
+     */
     public static func activationCodePostRequest(completion: @escaping (ActivationCode?) -> Void) {
         
         let activationCodePostEndpoint = "https://www.saintsxctf.com/api/api.php/activationcode"
@@ -621,7 +697,12 @@ class APIClient {
         }
     }
     
-    // Handle POST Request for a Notification
+    /**
+     Handle POST Requests for a Notification
+     - parameters:
+     - notification: an object representing the notification to create on the server
+     - completion:  Callback function which is invoked once the POST request is fulfilled
+     */
     public static func notificationPostRequest(withNotification notification: Notification,
                                                completion: @escaping (Notification) -> Void) {
         
@@ -649,7 +730,12 @@ class APIClient {
         }
     }
     
-    // Handle POST Request for a Mail
+    /**
+     Handle POST Requests for an Email
+     - parameters:
+     - mail: an object representing the email to send to an address
+     - completion:  Callback function which is invoked once the POST request is fulfilled
+     */
     public static func mailPostRequest(withMail mail: Mail,
                                                completion: @escaping (Mail?) -> Void) {
         
@@ -673,7 +759,13 @@ class APIClient {
     
     // MARK: - PUT Requests
     
-    // Handle PUT Request for a User
+    /**
+     Handle PUT Requests for a User
+     - parameters:
+     - username: the username of an existing user on the server
+     - user: an object representing the updated user to reflect on the server
+     - completion:  Callback function which is invoked once the PUT request is fulfilled
+     */
     public static func userPutRequest(withUsername username: String, andUser user: User,
                                       completion: @escaping (User?) -> Void) {
         
@@ -706,7 +798,13 @@ class APIClient {
         }
     }
     
-    // Handle PUT Request for a Log
+    /**
+     Handle PUT Requests for a Log
+     - parameters:
+     - logID: the unique logId of an existing log on the server
+     - log: an object representing the updated log to reflect on the server
+     - completion:  Callback function which is invoked once the PUT request is fulfilled
+     */
     public static func logPutRequest(withLogID logID: Int, andLog log: Log,
                                      completion: @escaping (Log) -> Void) {
         
@@ -734,7 +832,13 @@ class APIClient {
         }
     }
     
-    // Handle PUT Request for a Group
+    /**
+     Handle PUT Requests for a Group
+     - parameters:
+     - groupname: the groupname of an existing group on the server
+     - group: an object representing the updated group to reflect on the server
+     - completion:  Callback function which is invoked once the PUT request is fulfilled
+     */
     public static func groupPutRequest(withGroupname groupname: String, andGroup group: Group,
                                        completion: @escaping (Group?) -> Void) {
         
@@ -766,7 +870,13 @@ class APIClient {
         }
     }
     
-    // Handle PUT Request for a Comment
+    /**
+     Handle PUT Requests for a Comment
+     - parameters:
+     - commentId: the unqiue comment identifier for an existing comment on the server
+     - comment: an object representing the updated comment to reflect on the server
+     - completion:  Callback function which is invoked once the PUT request is fulfilled
+     */
     public static func commentPutRequest(withCommentId commentId: Int, andComment comment: Comment,
                                          completion: @escaping (Comment) -> Void) {
         
@@ -794,7 +904,13 @@ class APIClient {
         }
     }
     
-    // Handle PUT Request for a Message
+    /**
+     Handle PUT Requests for a Message
+     - parameters:
+     - messageId: the unqiue message identifier for an existing message on the server
+     - message: an object representing the updated message to reflect on the server
+     - completion:  Callback function which is invoked once the PUT request is fulfilled
+     */
     public static func messagePutRequest(withMessageId messageId: Int, andMessage message: Message,
                                          completion: @escaping (Message) -> Void) {
         
@@ -824,7 +940,12 @@ class APIClient {
     
     // MARK: - DELETE Requests
     
-    // Handle DELETE Request for a User
+    /**
+     Handle DELETE Requests for a User
+     - parameters:
+     - username: the username of an existing user on the server
+     - completion:  Callback function which is invoked once the DELETE request is fulfilled
+     */
     public static func userDeleteRequest(withUsername username: String,
                                          completion: @escaping (Bool) -> Void) {
         
@@ -845,7 +966,12 @@ class APIClient {
         }
     }
     
-    // Handle DELETE Request for a Log
+    /**
+     Handle DELETE Requests for a Log
+     - parameters:
+     - logID: the unique log identifier of an existing log on the server
+     - completion:  Callback function which is invoked once the DELETE request is fulfilled
+     */
     public static func logDeleteRequest(withLogID logID: Int,
                                         completion: @escaping (Bool) -> Void) {
         
@@ -866,7 +992,12 @@ class APIClient {
         }
     }
     
-    // Handle DELETE Request for a Comment
+    /**
+     Handle DELETE Requests for a Comment
+     - parameters:
+     - commentID: the unique comment identifier for an existing comment on the server
+     - completion:  Callback function which is invoked once the DELETE request is fulfilled
+     */
     public static func commentDeleteRequest(withCommentID commentID: Int,
                                             completion: @escaping (Bool) -> Void) {
         
@@ -887,7 +1018,12 @@ class APIClient {
         }
     }
     
-    // Handle DELETE Request for a Message
+    /**
+     Handle DELETE Requests for a Message
+     - parameters:
+     - messageID: the unique message identifier of an existing message on the server
+     - completion:  Callback function which is invoked once the DELETE request is fulfilled
+     */
     public static func messageDeleteRequest(withMessageID messageID: Int,
                                             completion: @escaping (Bool) -> Void) {
         
@@ -908,7 +1044,12 @@ class APIClient {
         }
     }
     
-    // Handle DELETE Request for a Activation Code
+    /**
+     Handle DELETE Requests for an Activation Code
+     - parameters:
+     - activationCode: the existing activation code on the server
+     - completion:  Callback function which is invoked once the DELETE request is fulfilled
+     */
     public static func activationCodeDeleteRequest(withActivationCode activationCode: String,
                                                    completion: @escaping (Bool) -> Void) {
         
@@ -930,7 +1071,12 @@ class APIClient {
         }
     }
     
-    // Handle DELETE Request for a Notification
+    /**
+     Handle DELETE Requests for a Notification
+     - parameters:
+     - notificationId: the unique notification identifier of an existing notification on the server
+     - completion:  Callback function which is invoked once the DELETE request is fulfilled
+     */
     public static func notificationDeleteRequest(withNotificationId notificationId: String,
                                                  completion: @escaping (Bool) -> Void) {
         
