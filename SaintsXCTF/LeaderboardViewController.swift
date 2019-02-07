@@ -46,7 +46,7 @@ class LeaderboardViewController: UITableViewController, UIGestureRecognizerDeleg
             UIBarButtonItem.Style.plain, target: nil, action: nil)
         
         // Make sure the table view does not overlap the status bar & overlay view
-        let insets = UIEdgeInsets(top: 88, left: 0, bottom: 0, right: 0)
+        let insets = UIEdgeInsets(top: 98, left: 0, bottom: 0, right: 0)
         
         leaderboardTableView.contentInset = insets
         leaderboardTableView.scrollIndicatorInsets = insets
@@ -212,13 +212,21 @@ class LeaderboardViewController: UITableViewController, UIGestureRecognizerDeleg
      Return the number of rows in the given UIPicker
      - parameters:
      - pickerView: the picker view requesting information
+     - component: unused
      - returns: number of rows (length of the time filter list)
      */
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return timeFilters.count
     }
     
-    // Return the title for the row that is to be shown in the UIPicker
+    /**
+     Return the title for the row that is to be shown in the UIPicker
+     - parameters:
+     - pickerView: the picker view requesting information
+     - row: the row in the picker view being shown
+     - component: unused
+     - returns: the title for the row
+     */
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return timeFilters[row]
     }

@@ -583,7 +583,7 @@ class LogViewController: UIViewController, UITextViewDelegate, UIPickerViewDeleg
         
         let start = str.startIndex
         let end = str.index(str.startIndex, offsetBy: 1000)
-        textView.text = String(str[start..<end])
+        textView.text = String(str[start...end])
         return false
     }
 }

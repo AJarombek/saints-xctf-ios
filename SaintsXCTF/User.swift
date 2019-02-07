@@ -9,6 +9,9 @@
 import Foundation
 import ObjectMapper
 
+/**
+ Class that represents a users in the application.  Users are stored in the MySQL database.
+ */
 class User: NSObject, Mappable, NSCoding {
     
     var username: String!
@@ -34,12 +37,20 @@ class User: NSObject, Mappable, NSCoding {
     var week_start: String?
     var give_flair: String?
     
+    /**
+     Default initializer for a User object
+     */
     override init() {
         username = ""
     }
     
-    // NSCoder Initializer
-    // A required initializer means that all subclasses must implement the initializer
+    /**
+     Required initializer for the NSCoder protocol.  NSCoding is used to persist app data on a device.
+     The initializer declares how object fields are decoded.
+     - parameters:
+     - aDecoder: an NSCoder object which defines the NSCoding interface.
+     Used in this method for decoding persisted data.
+     */
     required init?(coder aDecoder: NSCoder) {
         username = aDecoder.decodeObject(forKey: "username") as? String
         first = aDecoder.decodeObject(forKey: "first") as? String
@@ -67,7 +78,11 @@ class User: NSObject, Mappable, NSCoding {
         super.init()
     }
     
-    // Mappable Initializer
+    /**
+     Required initializer for the Mappable protocol
+     - parameters:
+     - map: JSON data is stored within this map
+     */
     required init?(map: Map) {}
     
     // This class uses the CustomStringConvertible protocol.
@@ -76,6 +91,12 @@ class User: NSObject, Mappable, NSCoding {
         return "User: (\(username!), \(first ?? ""), \(last ?? ""))"
     }
     
+    /**
+     Required function for the NSCoder protocol.  Encodes the object fields so they can be persisted.
+     - parameters:
+     - aCoder: an NSCoder object which defines the NSCoding interface.
+     Used in this method for encoding data to be persisted.
+     */
     func encode(with aCoder: NSCoder) {
         aCoder.encode(username, forKey: "username")
         aCoder.encode(first, forKey: "first")
@@ -101,6 +122,11 @@ class User: NSObject, Mappable, NSCoding {
         aCoder.encode(give_flair, forKey: "give_flair")
     }
     
+    /**
+     Required function for the Mappable protocol.  Defines how each member maps to and from JSON.
+     - parameters:
+     - map: JSON data is stored within this map
+     */
     func mapping(map: Map) {
         username <- map["username"]
         first <- map["first"]

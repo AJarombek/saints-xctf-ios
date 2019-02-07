@@ -9,6 +9,9 @@
 import Foundation
 import ObjectMapper
 
+/**
+ Class that represents an exercise log in the application.  Logs are stored in the MySQL database.
+ */
 class Log: Mappable, CustomStringConvertible {
     
     var log_id: String!
@@ -29,13 +32,19 @@ class Log: Mappable, CustomStringConvertible {
     var time_created: String?
     var comments: [Comment]!
     
+    /**
+     Default initializer for a Log object
+     */
     init() {
         log_id = ""
     }
     
-    required init?(map: Map) {
-        // pass
-    }
+    /**
+     Required initializer for the Mappable protocol
+     - parameters:
+     - map: JSON data is stored within this map
+     */
+    required init?(map: Map) {}
     
     // This class uses the CustomStringConvertible protocol.
     // The description will be printed whenever we try to print a User object
@@ -45,6 +54,11 @@ class Log: Mappable, CustomStringConvertible {
         return "Log: (\(username!), \(name!), \(logdistance) - \(logtime))"
     }
     
+    /**
+     Required function for the Mappable protocol.  Defines how each member maps to and from JSON.
+     - parameters:
+     - map: JSON data is stored within this map
+     */
     func mapping(map: Map) {
         log_id <- map["log_id"]
         username <- map["username"]

@@ -9,6 +9,9 @@
 import Foundation
 import ObjectMapper
 
+/**
+ Class that represents a log comment in the application.  Comments are stored in the MySQL database.
+ */
 class Comment: Mappable, CustomStringConvertible {
     
     var comment_id: String!
@@ -19,13 +22,19 @@ class Comment: Mappable, CustomStringConvertible {
     var time: String!
     var content: String!
     
+    /**
+     Default initializer for a Notification object
+     */
     init() {
         comment_id = ""
     }
     
-    required init?(map: Map) {
-        // pass
-    }
+    /**
+     Required initializer for the Mappable protocol
+     - parameters:
+     - map: JSON data is stored within this map
+     */
+    required init?(map: Map) {}
     
     // This class uses the CustomStringConvertible protocol.
     // The description will be printed whenever we try to print a Comment object
@@ -33,6 +42,11 @@ class Comment: Mappable, CustomStringConvertible {
         return "Comment: (\(username!), \(time!), \(content!))"
     }
     
+    /**
+     Required function for the Mappable protocol.  Defines how each member maps to and from JSON.
+     - parameters:
+     - map: JSON data is stored within this map
+     */
     func mapping(map: Map) {
         comment_id <- map["comment_id"]
         log_id <- map["log_id"]

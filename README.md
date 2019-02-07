@@ -1,5 +1,7 @@
 # saints-xctf-ios
 
+## Overview
+
 The SaintsXCTF iOS App goes along with my website SaintsXCTF.com.  All development is done in Swift.  
 The backend calls the REST API built on the website server (Written in PHP).
 
@@ -23,3 +25,14 @@ Current development is being spent on other projects.  However a codebase is alw
 * Suggested Features (ex. Delete/Edit Comments)
 * Forgot Password
 * Real-Time Notifications with a Message Broker
+
+### Files
+
+| Filename                  | Description                                                                                      |
+|---------------------------|--------------------------------------------------------------------------------------------------|
+| `SaintsXCTF.xcodeproj`    | Configuration for the XCode project.                                                             |
+| `SaintsXCTF.xcworkspace`  | Configuration for the XCode workspace.                                                           |
+| `SaintsXCTF`              | Contains code for the main SaintsXCTF application.                                               |
+| `SaintsXCTFTests`         | Contains unit tests for the SaintsXCTF application.                                              |
+| `Podfile`                 | Cocoapods dependencies for the application.  Written in Ruby.                                    |
+| `pod.sh`                  | Important shell commands for working with Cocoapods.                                             |

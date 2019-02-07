@@ -9,6 +9,9 @@
 import Foundation
 import ObjectMapper
 
+/**
+ Class that represents a group (team) in the application.  Groups are stored in the MySQL database.
+ */
 class Group: Mappable, CustomStringConvertible {
     
     var group_name: String!
@@ -21,9 +24,12 @@ class Group: Mappable, CustomStringConvertible {
     var statistics: [String:String]!
     var leaderboards: [String:[LeaderboardItem]]!
     
-    required init?(map: Map) {
-        // pass
-    }
+    /**
+     Required initializer for the Mappable protocol
+     - parameters:
+     - map: JSON data is stored within this map
+     */
+    required init?(map: Map) {}
     
     // This class uses the CustomStringConvertible protocol.
     // The description will be printed whenever we try to print a Comment object
@@ -31,6 +37,11 @@ class Group: Mappable, CustomStringConvertible {
         return "Group: (\(group_name!), \(group_title!))"
     }
     
+    /**
+     Required function for the Mappable protocol.  Defines how each member maps to and from JSON.
+     - parameters:
+     - map: JSON data is stored within this map
+     */
     func mapping(map: Map) {
         group_name <- map["group_name"]
         group_title <- map["group_title"]
