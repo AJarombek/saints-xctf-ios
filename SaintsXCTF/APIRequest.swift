@@ -10,24 +10,9 @@ import Foundation
 import ObjectMapper
 import os.log
 
-enum JSONError: Error {
-    case jsonConversionError
-}
-
-// Entend the String class to have base 64 functionality
-extension String {
-    // Encode a String to Base64
-    func toBase64() -> String {
-        return Data(self.utf8).base64EncodedString()
-    }
-    
-    // Decode a String from Base64. Returns nil if unsuccessful.
-    func fromBase64() -> String? {
-        guard let data = Data(base64Encoded: self) else { return nil }
-        return String(data: data, encoding: .utf8)
-    }
-}
-
+/**
+ Class with helper methods to make HTTP API requests
+ */
 class APIRequest {
     
     private static let logTag = OSLog(subsystem: "SaintsXCTF.APIClient.APIRequest", category: "APIRequest")
@@ -37,9 +22,13 @@ class APIRequest {
         return URLSession(configuration: config)
     }()
     
-    // Handle HTTP GET Requests to the API
-    // Add a Completion closure.  Fetching data is an asynchronous process, so the
-    // @escaping annotation lets the compiler know that the closure might not get called immediately
+    /**
+     Handle HTTP GET Requests to the API.  Fetching data is an asynchronous process, so the
+     @escaping annotation lets the compiler know that the closure might not get called immediately
+     - parameters:
+     - url: the HTTP API URL to invoke
+     - completion:  Callback function which is invoked once the GET request is fulfilled
+     */
     public static func get(withURL url: URL, completion: @escaping (String) -> Void) {
         var urlRequest = URLRequest(url: url)
         
@@ -88,7 +77,13 @@ class APIRequest {
         task.resume()
     }
     
-    // Handle HTTP POST Requests to the API
+    /**
+     Handle HTTP POST Requests to the API
+     - parameters:
+     - url: the HTTP API URL to invoke
+     - json: JSON to use as the HTTP request body
+     - completion:  Callback function which is invoked once the POST request is fulfilled
+     */
     public static func post(withURL url: URL, andJson json: String,
                             completion: @escaping (String) -> Void) {
         var urlrequest = URLRequest(url: url)
@@ -143,7 +138,13 @@ class APIRequest {
         task.resume()
     }
     
-    // Handle HTTP PUT Requests to the API
+    /**
+     Handle HTTP PUT Requests to the API
+     - parameters:
+     - url: the HTTP API URL to invoke
+     - json: JSON to use as the HTTP request body
+     - completion:  Callback function which is invoked once the PUT request is fulfilled
+     */
     public static func put(withURL url: URL, andJson json: String,
                            completion: @escaping (String) -> Void) {
         var urlrequest = URLRequest(url: url)
@@ -198,7 +199,12 @@ class APIRequest {
         task.resume()
     }
     
-    // Handle HTTP DELETE Requests to the API
+    /**
+     Handle HTTP DELETE Requests to the API
+     - parameters:
+     - url: the HTTP API URL to invoke
+     - completion:  Callback function which is invoked once the DELETE request is fulfilled
+     */
     public static func delete(withURL url: URL, completion: @escaping (Bool) -> Void) {
         var urlrequest = URLRequest(url: url)
         urlrequest.httpMethod = "DELETE"

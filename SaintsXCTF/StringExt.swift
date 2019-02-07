@@ -40,4 +40,21 @@ extension String {
         if (self.count <= n) { return self }
         return String( Array(self).prefix(upTo: n) )
     }
+    
+    /**
+     Encode a String to Base64.
+     - returns: A Base64 encoded string
+     */
+    func toBase64() -> String {
+        return Data(self.utf8).base64EncodedString()
+    }
+    
+    /**
+     Decode a String from Base64. Returns nil if unsuccessful.
+     - returns: A decoded string if the conversion from Base64 is successful
+     */
+    func fromBase64() -> String? {
+        guard let data = Data(base64Encoded: self) else { return nil }
+        return String(data: data, encoding: .utf8)
+    }
 }

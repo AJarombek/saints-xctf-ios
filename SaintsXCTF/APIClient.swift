@@ -10,13 +10,21 @@ import Foundation
 import ObjectMapper
 import os.log
 
+/**
+ Class with methods to hit API endpoints.  These API endpoints interact with the database for the application.
+ */
 class APIClient {
     
     private static let logTag = OSLog(subsystem: "SaintsXCTF.APIClient.APIClient", category: "APIClient")
     
     // MARK: - GET Requests
     
-    // Handle GET Requests for a User
+    /**
+     Handle GET Requests for a User
+     - parameters:
+     - username: the username of a user to retrieve
+     - completion:  Callback function which is invoked once the GET request is fulfilled
+     */
     public static func userGetRequest(withUsername username: String,
                                       completion: @escaping (User) -> Void) {
         
@@ -51,7 +59,11 @@ class APIClient {
         }
     }
     
-    // Handle GET Requests for all Users
+    /**
+     Handle a GET request for all Users in the database
+     - parameters:
+     - completion:  Callback function which is invoked once the GET request is fulfilled
+     */
     public static func usersGetRequest(completion: @escaping ([User]) -> Void) {
     
         let usersGetEndpoint = "https://www.saintsxctf.com/api/api.php/users"
@@ -75,7 +87,12 @@ class APIClient {
         }
     }
     
-    // Handle GET Requests for a Log
+    /**
+     Handle GET Requests for an exercise Log
+     - parameters:
+     - logID: a unique identifier for an exercise log
+     - completion:  Callback function which is invoked once the GET request is fulfilled
+     */
     public static func logGetRequest(withLogID logID: Int,
                                      completion: @escaping (Log) -> Void) {
         
@@ -102,7 +119,11 @@ class APIClient {
         }
     }
     
-    // Handle GET Requests for all Logs
+    /**
+     Handle a GET Request for all Logs in the database
+     - parameters:
+     - completion:  Callback function which is invoked once the GET request is fulfilled
+     */
     public static func logsGetRequest(completion: @escaping ([Log]) -> Void) {
         
         let logsGetEndpoint = "https://www.saintsxctf.com/api/api.php/logs"
@@ -126,7 +147,12 @@ class APIClient {
         }
     }
     
-    // Handle GET Requests for a Group
+    /**
+     Handle GET Requests for a Group
+     - parameters:
+     - groupname: a unique name for a group
+     - completion:  Callback function which is invoked once the GET request is fulfilled
+     */
     public static func groupGetRequest(withGroupname groupname: String,
                                        completion: @escaping (Group) -> Void) {
         
@@ -152,7 +178,11 @@ class APIClient {
         }
     }
     
-    // Handle GET Requests for all Groups
+    /**
+     Handle a GET Request for all the Groups in the database
+     - parameters:
+     - completion:  Callback function which is invoked once the GET request is fulfilled
+     */
     public static func groupsGetRequest(completion: @escaping ([Group]) -> Void) {
         
         let groupsGetEndpoint = "https://www.saintsxctf.com/api/api.php/groups"
@@ -176,7 +206,12 @@ class APIClient {
         }
     }
     
-    // Handle GET Requests for a Comment
+    /**
+     Handle GET Requests for a Comment
+     - parameters:
+     - commentId: a unique identifer for a comment
+     - completion:  Callback function which is invoked once the GET request is fulfilled
+     */
     public static func commentGetRequest(withCommentId commentId: Int,
                                          completion: @escaping (Comment) -> Void) {
         
@@ -202,7 +237,11 @@ class APIClient {
         }
     }
     
-    // Handle GET Requests for all Comments
+    /**
+     Handle a GET Request for all the comments in the database
+     - parameters:
+     - completion:  Callback function which is invoked once the GET request is fulfilled
+     */
     public static func commentsGetRequest(completion: @escaping ([Comment]) -> Void) {
         
         let commentsGetEndpoint = "https://www.saintsxctf.com/api/api.php/comments"
