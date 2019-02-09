@@ -22,7 +22,13 @@ class Utils {
     
     static let logTag = OSLog(subsystem: "SaintsXCTF.App.Utils", category: "Utils")
     
-    // Find all the matching substrings of a pattern in a string
+    /**
+     Find all the matching substrings of a pattern in a string
+     - parameters:
+     - regex: a regular expression to look for matches for in a string
+     - text: a string to perform a regular expression on
+     - returns: an array of all the regex matches
+     */
     static func matches(for regex: String, in text: String) -> [String] {
         
         do {

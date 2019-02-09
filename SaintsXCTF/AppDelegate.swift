@@ -12,6 +12,12 @@ import IQKeyboardManagerSwift
 /**
  The app delegate executes when the application launches.  This class provides lifecycle hooks
  for the application.
+ - Important:
+ ## Extends the following class:
+ - UIResponder: Provides event response abilities
+ 
+ ## Implements the following protocols:
+ - UIApplicationDelegate: Contains methods that respond to important application lifecycle events
  */
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
