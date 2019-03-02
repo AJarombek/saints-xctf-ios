@@ -9,6 +9,12 @@
 import UIKit
 import os.log
 
+/**
+ Controller for the group messages.
+ - Important:
+ ## Extends the following class:
+ - UITableViewController: view controller for managing a table view
+ */
 class MessageViewController: UITableViewController {
     
     @IBOutlet weak var messageTableView: UITableView!
@@ -21,6 +27,9 @@ class MessageViewController: UITableViewController {
     
     var messages: [Message] = [Message]()
     
+    /**
+     Invoked when the MessageViewController loads
+     */
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -53,12 +62,25 @@ class MessageViewController: UITableViewController {
         }
     }
     
-    // Returns the number of rows that the tableview should display
+    /**
+     Returns the number of rows that the tableview should display
+     - parameters:
+     - tableView: the table view in which rows will be displayed
+     - section: the number of rows in this particular table view section.  This table view only uses
+     a single section.
+     - returns: The number of rows in the tableview
+     */
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return messages.count + 1
     }
     
-    // Called when a cell at a certain index is about to be displayed
+    /**
+     Called when a cell at a certain index is about to be displayed
+     - parameters:
+     - tableView: the table view requesting information
+     - cell: the cell about to be displayed
+     - indexPath: The index of the cell in the table view
+     */
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell,
                             forRowAt indexPath: IndexPath) {
         
@@ -67,7 +89,13 @@ class MessageViewController: UITableViewController {
         heightDict.setObject(height, forKey: indexPath as NSCopying)
     }
     
-    // Either set the height to the cached value or let the automaticdimension determine the height
+    /**
+     Either set the height to the cached value or let the automaticdimension determine the height
+     - parameters:
+     - tableView: the table view requesting information
+     - indexPath: the index of a row in the table view
+     - returns: The height of a row in the tableview
+     */
     override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         if let height = heightDict.object(forKey: indexPath) as? NSNumber {
             return CGFloat(height.floatValue)
@@ -76,7 +104,14 @@ class MessageViewController: UITableViewController {
         }
     }
     
-    // Ask the datasource for a cell to insert at a certain location in the table view
+    /**
+     Ask the datasource for a cell to insert at a certain location in the table view
+     The less work that is done in this function, the smoother the scrolling is
+     - parameters:
+     - tableView: the table view requesting information
+     - indexPath: the index of a row in the table view
+     - returns: The table view cell to be added
+     */
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if indexPath.row == 0 {
@@ -127,7 +162,11 @@ class MessageViewController: UITableViewController {
         }
     }
     
-    // Create the done button for the keyboard in a given new message cell
+    /**
+     Create the done button for the keyboard in a given new message cell
+     - parameters:
+     - cell: the cell for inserting a new message to a group
+     */
     func setDoneKeyboard(cell: NewMessageTableViewCell) {
         let keyboardToolbar = UIToolbar()
         keyboardToolbar.sizeToFit()
@@ -139,7 +178,9 @@ class MessageViewController: UITableViewController {
         cell.messageField.inputAccessoryView = keyboardToolbar
     }
     
-    // Called when the done button on the keyboard is clicked
+    /**
+     Called when the done button on the keyboard is clicked
+     */
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }

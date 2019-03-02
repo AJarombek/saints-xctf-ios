@@ -9,6 +9,15 @@
 import UIKit
 import os.log
 
+/**
+ Controller for listing all the group members.
+ - Important:
+ ## Extends the following class:
+ - UITableViewController: view controller for managing a table view
+ 
+ ## Implements the following protocols:
+ - UIGestureRecognizerDelegate: provides helper methods gor handling gestures (clicks,swipes,etc.)
+ */
 class MemberViewController: UITableViewController, UIGestureRecognizerDelegate {
     
     let logTag = OSLog(subsystem: "SaintsXCTF.App.MemberViewController",
@@ -20,6 +29,9 @@ class MemberViewController: UITableViewController, UIGestureRecognizerDelegate {
     var members: [GroupMember] = [GroupMember]()
     let heightDict = NSMutableDictionary()
     
+    /**
+     Invoked when the MemberViewController loads
+     */
     override func viewDidLoad() {
         super.viewDidLoad()
         os_log("MainViewController Loaded.", log: logTag, type: .debug)
@@ -51,12 +63,25 @@ class MemberViewController: UITableViewController, UIGestureRecognizerDelegate {
         }
     }
     
-    // Returns the number of rows that the tableview should display
+    /**
+     Returns the number of rows that the tableview should display
+     - parameters:
+     - tableView: the table view in which rows will be displayed
+     - section: the number of rows in this particular table view section.  This table view only uses
+     a single section.
+     - returns: The number of rows in the tableview
+     */
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return members.count
     }
     
-    // Either set the height to the cached value or let the automaticdimension determine the height
+    /**
+     Either set the height to the cached value or let the automaticdimension determine the height
+     - parameters:
+     - tableView: the table view requesting information
+     - indexPath: the index of a row in the table view
+     - returns: The height of a row in the tableview
+     */
     override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         if let height = heightDict.object(forKey: indexPath) as? NSNumber {
             return CGFloat(height.floatValue)
@@ -65,7 +90,13 @@ class MemberViewController: UITableViewController, UIGestureRecognizerDelegate {
         }
     }
     
-    // Called when a cell at a certain index is about to be displayed
+    /**
+     Called when a cell at a certain index is about to be displayed
+     - parameters:
+     - tableView: the table view requesting information
+     - cell: the cell about to be displayed
+     - indexPath: The index of the cell in the table view
+     */
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell,
                             forRowAt indexPath: IndexPath) {
         
@@ -74,7 +105,14 @@ class MemberViewController: UITableViewController, UIGestureRecognizerDelegate {
         heightDict.setObject(height, forKey: indexPath as NSCopying)
     }
     
-    // Ask the datasource for a cell to insert at a certain location in the table view
+    /**
+     Ask the datasource for a cell to insert at a certain location in the table view
+     The less work that is done in this function, the smoother the scrolling is
+     - parameters:
+     - tableView: the table view requesting information
+     - indexPath: the index of a row in the table view
+     - returns: The table view cell to be added
+     */
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
@@ -104,7 +142,11 @@ class MemberViewController: UITableViewController, UIGestureRecognizerDelegate {
         return cell
     }
     
-    // Called when the name label is clicked to load a users profile
+    /**
+     Called when the name label is clicked to load a users profile
+     - parameters:
+     - sender: the gesture that invokes this function (a click on a table view cell representing a group member)
+     */
     @objc func viewProfile(_ sender: UITapGestureRecognizer) {
         if let cell = sender.view as? MemberTableViewCell {
             

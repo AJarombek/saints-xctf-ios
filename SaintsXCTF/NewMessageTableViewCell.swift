@@ -9,6 +9,13 @@
 import UIKit
 import os.log
 
+/**
+ Class representing a cell in the messages table view.  Provides an input text field to create a new message
+ for group members to see.
+ - Important:
+ ## Extends the following class:
+ - UITableViewCell: provides methods for managing a table view cell
+ */
 class NewMessageTableViewCell: UITableViewCell {
     
     let logTag = OSLog(subsystem: "SaintsXCTF.App.NewMessageTableViewCell", category: "NewMessageTableViewCell")
@@ -17,7 +24,11 @@ class NewMessageTableViewCell: UITableViewCell {
     var group: Group?
     var messageVC: MessageViewController?
     
-    // Function runs when the return button is clicked
+    /**
+     Function runs when the return button is clicked.  Creates the new message.
+     - parameters:
+     - sender: the action that triggers this method (return button click)
+     */
     @IBAction func commentPrimaryActionTriggered(_ sender: Any) {
         os_log("Adding Message to %@", log: logTag, type: .debug, group?.description ?? "nil")
         
@@ -81,7 +92,11 @@ class NewMessageTableViewCell: UITableViewCell {
         }
     }
     
-    // Make an API Request to create a new message notification
+    /**
+     Make an API Request to create a new message notification.
+     - parameters:
+     - notification: a notification object to send to a group member
+     */
     func messageNotification(_ notification: Notification) {
         
         APIClient.notificationPostRequest(withNotification: notification) {
