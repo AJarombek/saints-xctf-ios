@@ -8,6 +8,12 @@
 
 import UIKit
 
+/**
+ Class representing a cell in the member table view.  Displays a memebers name and join date.
+ - Important:
+ ## Extends the following class:
+ - UITableViewCell: provides methods for managing a table view cell
+ */
 class MemberTableViewCell: UITableViewCell {
     
     @IBOutlet weak var nameLabel: UILabel!
@@ -30,7 +36,9 @@ class MemberTableViewCell: UITableViewCell {
         }
     }
     
-    // Called when the cell is about to be reused.  Reset all of the text fields
+    /**
+     Called when the cell is about to be reused.  Reset all of the text fields
+     */
     override func prepareForReuse() {
         super.prepareForReuse()
         
@@ -38,7 +46,9 @@ class MemberTableViewCell: UITableViewCell {
         memberSinceLabel.text = ""
     }
     
-    // Set the style of the cell with a background color determined by the log feel
+    /**
+     Set the style of the cell with a gray background color
+     */
     func setStyle() {
         self.layer.borderWidth = 1
         self.layer.borderColor = UIColor(0xAAAAAA).cgColor

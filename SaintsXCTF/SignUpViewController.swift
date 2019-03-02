@@ -31,7 +31,7 @@ class SignUpViewController: UIViewController {
     @IBOutlet var email: UITextField!
     @IBOutlet var firstName: UITextField!
     @IBOutlet var eulaSwitch: UISwitch!
-    @IBOutlet var eulaLabel: UILabel!
+    @IBOutlet var eulaTextView: UITextView!
     @IBOutlet var signUpError: UITextView!
     
     var eulaAccepted: Bool = false
@@ -53,9 +53,37 @@ class SignUpViewController: UIViewController {
         email.standardStyle()
         firstName.standardStyle()
         
+        // Fix for text view containing unnecessary padding
+        eulaTextView.textContainer.lineFragmentPadding = 0
+        eulaTextView.textContainerInset = UIEdgeInsets.zero
+        
+        // Turn the EULA agreement switch off by default, make it SaintsXCTF scarlett, and define
+        // a function that is invoked when the switch is flipped.
         eulaSwitch.setOn(false, animated: false)
         eulaSwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
         eulaSwitch.onTintColor = UIColor(0x990000)
+        
+        // The EULA needs to provide a link to the license agreement.  The EULA is hosted on termsfeed.com.
+        let eulaText: String = eulaTextView.text ?? ""
+        let eulaLinkRegex: String = "SaintsXCTF EULA"
+        let matches: StringMatches = Utils.matchesInfo(for: eulaLinkRegex, in: eulaText)
+        
+        let eulaAttributedText = NSMutableAttributedString(string: eulaText, attributes: [:])
+        let start = matches.startIndices[0]
+        let length = matches.stringLengths[0]
+        eulaAttributedText.addAttribute(NSAttributedString.Key.link,
+                                value: "https://termsfeed.com/eula/ef5f58cef41e72df54c0b73d8ee8be15",
+                                range: NSRange(location: start, length: length))
+
+        // Set the color of the URL to SaintsXCTF scarlett
+        let eulaLinkAttributes: [NSAttributedString.Key: Any] = [
+            NSAttributedString.Key.foregroundColor: UIColor(0x990000),
+            NSAttributedString.Key.underlineColor: UIColor(0x990000),
+            NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue
+        ]
+
+        eulaTextView.linkTextAttributes = eulaLinkAttributes
+        eulaTextView.attributedText = eulaAttributedText
     }
     
     /**
