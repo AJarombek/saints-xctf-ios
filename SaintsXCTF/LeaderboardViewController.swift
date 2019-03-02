@@ -210,8 +210,7 @@ class LeaderboardViewController: UITableViewController, UIGestureRecognizerDeleg
     }
     
     /**
-     Ask the datasource for a cell to insert at a certain location in the table view
-     The less work that is done in this function, the smoother the scrolling is
+     Return the number of components in the UIPicker
      - parameters:
      - pickerView: the picker view requesting information
      - returns: number of components (always 1)
@@ -243,7 +242,13 @@ class LeaderboardViewController: UITableViewController, UIGestureRecognizerDeleg
         return timeFilters[row]
     }
     
-    // Dislay the picked value from the UIPicker
+    /**
+     Dislay the picked value from the UIPicker
+     - parameters:
+     - pickerView: the picker view requesting information
+     - row: the row in the picker view being shown
+     - component: the component in the picker view being shown (there is only one component)
+     */
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         self.filters?.rangeSortField.text = timeFilters[row]
         
@@ -255,7 +260,9 @@ class LeaderboardViewController: UITableViewController, UIGestureRecognizerDeleg
         self.leaderboardTableView.reloadData()
     }
     
-    // Function to build the leaderboard array with the current filters
+    /**
+     Function to build the leaderboard array with the current filters
+     */
     func buildLeaderboardData() {
         
         // Array for the final leaderboard data structure
@@ -288,6 +295,12 @@ class LeaderboardViewController: UITableViewController, UIGestureRecognizerDeleg
     }
     
     // These functions are called when the filter buttons for the leaderboard are clicked
+    
+    /**
+     Toggle running exercises in the leaderboard table
+     - parameters:
+     - sender: the view clicked which toggles the run filter
+     */
     @objc func filterRun(_ sender: UIView) {
         run = !run
         filterRun()
@@ -295,6 +308,9 @@ class LeaderboardViewController: UITableViewController, UIGestureRecognizerDeleg
         self.leaderboardTableView.reloadData()
     }
     
+    /**
+     Visualize the running exercises toggled on/off in the leaderboard table
+     */
     func filterRun() {
         if run {
             filters?.runButton.backgroundColor = UIColor(0x990000)
@@ -305,6 +321,11 @@ class LeaderboardViewController: UITableViewController, UIGestureRecognizerDeleg
         }
     }
     
+    /**
+     Toggle bike exercises in the leaderboard table
+     - parameters:
+     - sender: the view clicked which toggles the bike filter
+     */
     @objc func filterBike(_ sender: UIView) {
         bike = !bike
         filterBike()
@@ -312,6 +333,9 @@ class LeaderboardViewController: UITableViewController, UIGestureRecognizerDeleg
         self.leaderboardTableView.reloadData()
     }
     
+    /**
+     Visualize the bike exercises toggled on/off in the leaderboard table
+     */
     func filterBike() {
         if bike {
             filters?.bikeButton.backgroundColor = UIColor(0x990000)
@@ -322,6 +346,11 @@ class LeaderboardViewController: UITableViewController, UIGestureRecognizerDeleg
         }
     }
     
+    /**
+     Toggle swimming exercises in the leaderboard table
+     - parameters:
+     - sender: the view clicked which toggles the swim filter
+     */
     @objc func filterSwim(_ sender: UIView) {
         swim = !swim
         filterSwim()
@@ -329,6 +358,9 @@ class LeaderboardViewController: UITableViewController, UIGestureRecognizerDeleg
         self.leaderboardTableView.reloadData()
     }
     
+    /**
+     Visualize the swimming exercises toggled on/off in the leaderboard table
+     */
     func filterSwim() {
         if swim {
             filters?.swimButton.backgroundColor = UIColor(0x990000)
@@ -339,6 +371,11 @@ class LeaderboardViewController: UITableViewController, UIGestureRecognizerDeleg
         }
     }
     
+    /**
+     Toggle other exercises in the leaderboard table
+     - parameters:
+     - sender: the view clicked which toggles the other filter
+     */
     @objc func filterOther(_ sender: UIView) {
         other = !other
         filterOther()
@@ -346,6 +383,9 @@ class LeaderboardViewController: UITableViewController, UIGestureRecognizerDeleg
         self.leaderboardTableView.reloadData()
     }
     
+    /**
+     Visualize the other exercises toggled on/off in the leaderboard table
+     */
     func filterOther() {
         if other {
             filters?.otherButton.backgroundColor = UIColor(0x990000)

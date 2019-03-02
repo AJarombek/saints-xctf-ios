@@ -16,7 +16,7 @@ import os.log
  - UITableViewController: view controller for managing a table view
  
  ## Implements the following protocols:
- - UIGestureRecognizerDelegate: provides helper methods gor handling gestures (clicks,swipes,etc.)
+ - UIGestureRecognizerDelegate: provides helper methods for handling gestures (clicks,swipes,etc.)
  */
 class MemberViewController: UITableViewController, UIGestureRecognizerDelegate {
     

@@ -10,6 +10,15 @@ import UIKit
 import os.log
 import PopupDialog
 
+/**
+ Controller providing administrative operations for a group.
+ - Important:
+ ## Extends the following class:
+ - UIViewController: provides behavior shared between all classes that manage a view
+ 
+ ## Implements the following protocols:
+ - UIPickerViewDelegate: provides helper methods for configuraing a picker views functionality
+ */
 class AdminViewController: UIViewController, UIPickerViewDelegate {
     
     let logTag = OSLog(subsystem: "SaintsXCTF.App.MemberViewController",
@@ -42,6 +51,9 @@ class AdminViewController: UIViewController, UIPickerViewDelegate {
     
     let regexEmail = "^(([a-zA-Z0-9_.-])+@([a-zA-Z0-9_.-])+\\.([a-zA-Z])+([a-zA-Z])+)?$"
     
+    /**
+     Invoked when the AdminViewController loads
+     */
     override func viewDidLoad() {
         super.viewDidLoad()
         os_log("MainViewController Loaded.", log: logTag, type: .debug)
@@ -115,17 +127,30 @@ class AdminViewController: UIViewController, UIPickerViewDelegate {
         nameFlairField.tintColor = .clear
     }
     
-    // Called when the done button on the keyboard is clicked
+    /**
+     Called when the done button on the keyboard is clicked
+     */
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
     
-    // Return the number of components in the UIPicker
+    /**
+     Return the number of components in the UIPicker
+     - parameters:
+     - pickerView: the picker view requesting information
+     - returns: number of components (always 1)
+     */
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
-    // Return the number of rows in the given UIPicker
+    /**
+     Return the number of rows in the given UIPicker
+     - parameters:
+     - pickerView: the picker view requesting information
+     - component: unused
+     - returns: number of rows (length of the time filter list)
+     */
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if pickerView == addUserPicker {
             return pendingNames.count
@@ -136,7 +161,14 @@ class AdminViewController: UIViewController, UIPickerViewDelegate {
         }
     }
     
-    // Return the title for the row that is to be shown in the UIPicker
+    /**
+     Return the title for the row that is to be shown in the UIPicker
+     - parameters:
+     - pickerView: the picker view requesting information
+     - row: the row in the picker view being shown
+     - component: unused
+     - returns: the title for the row
+     */
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if pickerView == addUserPicker {
             return pendingNames[row]
@@ -147,7 +179,13 @@ class AdminViewController: UIViewController, UIPickerViewDelegate {
         }
     }
     
-    // Dislay the picked value from the UIPicker
+    /**
+     Dislay the picked value from the UIPicker
+     - parameters:
+     - pickerView: the picker view requesting information
+     - row: the row in the picker view being shown
+     - component: the component in the picker view being shown (there is only one component)
+     */
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if pickerView == addUserPicker {
             addUserField.text = pendingNames[row]
@@ -156,7 +194,9 @@ class AdminViewController: UIViewController, UIPickerViewDelegate {
         }
     }
     
-    // Function hides accept/reject calls if there are no pending users
+    /**
+     Function hides accept/reject calls if there are no pending users
+     */
     func isPendingUsers() {
         
         if pendingNames.count == 0 {
@@ -166,6 +206,11 @@ class AdminViewController: UIViewController, UIPickerViewDelegate {
         }
     }
     
+    /**
+     Accept a user who wants to join the group
+     - parameters:
+     - sender: the button clicked which invokes this function (addUserAcceptButton)
+     */
     @IBAction func acceptUser(_ sender: UIButton) {
         
         // Add a loading overlay to the admin view on accept
@@ -232,6 +277,11 @@ class AdminViewController: UIViewController, UIPickerViewDelegate {
         }
     }
     
+    /**
+     Reject a user who wants to join the group
+     - parameters:
+     - sender: the button clicked which invokes this function (addUserRejectButton)
+     */
     @IBAction func rejectUser(_ sender: UIButton) {
     
         // Add a loading overlay to the admin view on accept
@@ -294,6 +344,11 @@ class AdminViewController: UIViewController, UIPickerViewDelegate {
         }
     }
     
+    /**
+     Send an email asking someone to join SaintsXCTF
+     - parameters:
+     - sender: the button clicked which invokes this function (sendRequestButton)
+     */
     @IBAction func sendEmail(_ sender: UIButton) {
         
         // Add a loading overlay to the admin view on accept
@@ -350,7 +405,13 @@ class AdminViewController: UIViewController, UIPickerViewDelegate {
         }
     }
     
-    // Create an email with a certain activation code
+    /**
+     Create an email with a certain activation code
+     - parameters:
+     - code: an activation code to send to a potential new SaintsXCTF user
+     - address: the email address to send the request to
+     - overlay: a view used to disable other administrative tasks while the email is sent
+     */
     func createEmail(withActivationCode code: String, andAddress address: String, andOverlay overlay: UIView?) {
         let mail: Mail = Mail()
         mail.emailAddress = address
@@ -391,6 +452,11 @@ class AdminViewController: UIViewController, UIPickerViewDelegate {
         }
     }
     
+    /**
+     Give flair to a group member
+     - parameters:
+     - sender: the button clicked which invokes this function (giveFlairButton)
+     */
     @IBAction func giveFlair(_ sender: UIButton) {
     
         // Add a loading overlay to the admin view on accept
@@ -462,6 +528,11 @@ class AdminViewController: UIViewController, UIPickerViewDelegate {
         }
     }
     
+    /**
+     Send a notification to every member of the group
+     - parameters:
+     - sender: the button clicked which invokes this function (notificationButton)
+     */
     @IBAction func sendNotification(_ sender: UIButton) {
         
         // Add a loading overlay to the admin view on accept
