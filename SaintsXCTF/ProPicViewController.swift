@@ -10,6 +10,17 @@ import UIKit
 import os.log
 import PopupDialog
 
+/**
+ Controller for editing a users profile picture.
+ - Important:
+ ## Extends the following class:
+ - UIViewController: provides behavior shared between all classes that manage a view
+ 
+ ## Implements the following protocols:
+ - UIGestureRecognizerDelegate: provides helper methods gor handling gestures (clicks,swipes,etc.)
+ - UINavigationControllerDelegate: configure the behavior when navigating between controllers
+ - UIImagePickerControllerDelegate: provides helper methods for using the image picker API
+ */
 class ProPicViewController: UIViewController, UIGestureRecognizerDelegate,
             UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     

@@ -9,6 +9,12 @@
 import UIKit
 import os.log
 
+/**
+ Controller for a monthly calendar disaplying an exercise summary for each day.
+ - Important:
+ ## Extends the following class:
+ - UIViewController: provides behavior shared between all classes that manage a view
+ */
 class MonthlyViewController: UIViewController {
     
     let logTag = OSLog(subsystem: "SaintsXCTF.App.MonthlyViewController",
@@ -524,7 +530,9 @@ class MonthlyViewController: UIViewController {
         }
     }
     
-    // A function to reset the calendar to its original state
+    /**
+     A function to reset the calendar to its original state
+     */
     func reset() {
         
         // Reset all the views background color
@@ -549,7 +557,10 @@ class MonthlyViewController: UIViewController {
         }
     }
     
-    // Return the type filter to send to the rangeview API endpoint
+    /**
+     Return the type filter to send to the rangeview API endpoint
+     - returns: A type filter code
+     */
     func getTypeFilter() -> String {
         let r = run ? "r" : ""
         let b = bike ? "b" : ""
@@ -558,6 +569,11 @@ class MonthlyViewController: UIViewController {
         return "\(r)\(b)\(s)\(o)"
     }
     
+    /**
+     Navigate to the previous month in the calendar
+     - parameters:
+     - sender: the view that invoked this function (prevButton)
+     */
     @IBAction func prevMonth(_ sender: UIButton) {
         os_log("View Previous Month.", log: logTag, type: .debug)
         
@@ -575,6 +591,11 @@ class MonthlyViewController: UIViewController {
         filter(monthStart)
     }
     
+    /**
+     Navigate to the next month in the calendar
+     - parameters:
+     - sender: the view that invoked this function (nextButton)
+     */
     @IBAction func nextMonth(_ sender: UIButton) {
         os_log("View Next Month.", log: logTag, type: .debug)
         

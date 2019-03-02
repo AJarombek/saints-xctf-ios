@@ -13,6 +13,7 @@
 		A1015A3B1EEDC2B800A2358E /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1015A3A1EEDC2B800A2358E /* Notification.swift */; };
 		A1015A3D1EEDC3F400A2358E /* RangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1015A3C1EEDC3F400A2358E /* RangeView.swift */; };
 		A10D61C51F6F45C100A406D9 /* UIToolbarExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10D61C41F6F45C100A406D9 /* UIToolbarExt.swift */; };
+		A1157E8F222B2507006DA097 /* ReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1157E8E222B2507006DA097 /* ReportViewController.swift */; };
 		A11AB8A31F895CC40098AE8E /* WeeklyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11AB8A21F895CC40098AE8E /* WeeklyViewController.swift */; };
 		A11AB8A51F8997290098AE8E /* BarChartFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11AB8A41F8997290098AE8E /* BarChartFormatter.swift */; };
 		A11AB8A81F89C3760098AE8E /* GroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11AB8A71F89C3760098AE8E /* GroupViewController.swift */; };
@@ -152,6 +153,7 @@
 		A1015A3C1EEDC3F400A2358E /* RangeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RangeView.swift; sourceTree = "<group>"; };
 		A1081BFA21FFF94500BF80A8 /* Pods.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Pods.xcodeproj; path = Pods/Pods.xcodeproj; sourceTree = "<group>"; };
 		A10D61C41F6F45C100A406D9 /* UIToolbarExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIToolbarExt.swift; sourceTree = "<group>"; };
+		A1157E8E222B2507006DA097 /* ReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportViewController.swift; sourceTree = "<group>"; };
 		A11AB8A21F895CC40098AE8E /* WeeklyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeeklyViewController.swift; sourceTree = "<group>"; };
 		A11AB8A41F8997290098AE8E /* BarChartFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarChartFormatter.swift; sourceTree = "<group>"; };
 		A11AB8A71F89C3760098AE8E /* GroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupViewController.swift; sourceTree = "<group>"; };
@@ -314,6 +316,7 @@
 				A173CB551F847D90009C7A28 /* MonthlyViewController.swift */,
 				A11AB8A21F895CC40098AE8E /* WeeklyViewController.swift */,
 				A11AB8A41F8997290098AE8E /* BarChartFormatter.swift */,
+				A1157E8E222B2507006DA097 /* ReportViewController.swift */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -721,6 +724,7 @@
 				A11AB8AA1F8ABB650098AE8E /* LeaderboardViewController.swift in Sources */,
 				A11AB8B21F8EE9360098AE8E /* MessageViewController.swift in Sources */,
 				A11AB8AC1F8AC91F0098AE8E /* LeaderboardTableViewCell.swift in Sources */,
+				A1157E8F222B2507006DA097 /* ReportViewController.swift in Sources */,
 				A15E62421F4FC70400AC9EF1 /* LogDataSource.swift in Sources */,
 				A11AB8B61F8EF0A10098AE8E /* NewMessageTableViewCell.swift in Sources */,
 				A11AB8A51F8997290098AE8E /* BarChartFormatter.swift in Sources */,

@@ -9,6 +9,15 @@
 import UIKit
 import os.log
 
+/**
+ Controller for editing a users profile information.
+ - Important:
+ ## Extends the following class:
+ - UIViewController: provides behavior shared between all classes that manage a view
+ 
+ ## Implements the following protocols:
+ - UIGestureRecognizerDelegate: provides helper methods gor handling gestures (clicks,swipes,etc.)
+ */
 class EditProfileViewController: UIViewController, UIGestureRecognizerDelegate {
     
     let logTag = OSLog(subsystem: "SaintsXCTF.App.EditProfileViewController",
@@ -23,6 +32,9 @@ class EditProfileViewController: UIViewController, UIGestureRecognizerDelegate {
     
     var user: User = User()
     
+    /**
+     Invoked when the EditProfileViewController loads
+     */
     override func viewDidLoad() {
         super.viewDidLoad()
         os_log("EditProfileViewController Loaded.", log: logTag, type: .debug)
@@ -88,7 +100,11 @@ class EditProfileViewController: UIViewController, UIGestureRecognizerDelegate {
         groupsView.addGestureRecognizer(groupButtonclick)
     }
     
-    // Edit the users profile details (using detailsViewController)
+    /**
+     Edit the users profile details (using detailsViewController)
+     - parameters:
+     - sender: the view that invoked this function (detailsButton)
+     */
     @objc func editProfileDetails(_ sender: UIView) {
         os_log("Editing Profile Details", log: logTag, type: .debug)
         
@@ -101,7 +117,11 @@ class EditProfileViewController: UIViewController, UIGestureRecognizerDelegate {
         navigationController?.pushViewController(detailsViewController, animated: true)
     }
     
-    // Edit the users profile picture (using proPicViewController)
+    /**
+     Edit the users profile picture (using proPicViewController)
+     - parameters:
+     - sender: the view that invoked this function (profileButton)
+     */
     @objc func editProfilePicture(_ sender: UIView) {
         os_log("Editing Profile Picture", log: logTag, type: .debug)
         
@@ -114,7 +134,11 @@ class EditProfileViewController: UIViewController, UIGestureRecognizerDelegate {
         navigationController?.pushViewController(proPicViewController, animated: true)
     }
     
-    // Edit the users groups (using pickGroupViewController)
+    /**
+     Edit the users groups (using pickGroupViewController)
+     - parameters:
+     - sender: the view that invoked this function (groupsButton)
+     */
     @objc func editProfileGroups(_ sender: UIView) {
         os_log("Editing Profile Groups", log: logTag, type: .debug)
         

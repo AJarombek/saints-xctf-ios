@@ -10,6 +10,16 @@ import UIKit
 import os.log
 import PopupDialog
 
+/**
+ Controller for editing a users profile information.
+ - Important:
+ ## Extends the following class:
+ - UIViewController: provides behavior shared between all classes that manage a view
+ 
+ ## Implements the following protocols:
+ - UITextViewDelegate: provides helper methods altering UITextView behavior
+ - UITextFieldDelegate: provides helper methods altering UITextField behavior
+ */
 class DetailsViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate {
     
     let logTag = OSLog(subsystem: "SaintsXCTF.App.DetailsViewController",
