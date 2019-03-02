@@ -80,7 +80,7 @@ class ProfileViewController: UIViewController, UIGestureRecognizerDelegate {
         monthlyClickListener()
         weeklyClickListener()
         editClickListener()
-        
+        reportClickListener()
         
         // If there is no user defined, use the currently signed in user
         if let _ = user {

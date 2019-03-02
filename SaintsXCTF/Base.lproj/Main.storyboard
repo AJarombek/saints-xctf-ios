@@ -2400,7 +2400,7 @@
                     </view>
                     <connections>
                         <outlet property="reportTextView" destination="zKA-Cr-DiT" id="oKn-Eh-eRT"/>
-                        <outlet property="sumbitButton" destination="9VI-4k-BBo" id="FMY-AF-3MQ"/>
+                        <outlet property="submitButton" destination="9VI-4k-BBo" id="I6U-pP-zqt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q5t-EH-Iha" userLabel="First Responder" sceneMemberID="firstResponder"/>

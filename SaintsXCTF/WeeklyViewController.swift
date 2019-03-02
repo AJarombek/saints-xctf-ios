@@ -10,6 +10,12 @@ import UIKit
 import os.log
 import Charts
 
+/**
+ Controller for a bar chart disaplying exercise summaries for each week.
+ - Important:
+ ## Extends the following class:
+ - UIViewController: provides behavior shared between all classes that manage a view
+ */
 class WeeklyViewController: UIViewController {
     
     let logTag = OSLog(subsystem: "SaintsXCTF.App.WeeklyViewController",
@@ -34,6 +40,9 @@ class WeeklyViewController: UIViewController {
     
     var chartLabels: [String] = []
     
+    /**
+     Invoked when the WeeklyViewController loads
+     */
     override func viewDidLoad() {
         super.viewDidLoad()
         os_log("WeeklyViewController Loaded.", log: logTag, type: .debug)
@@ -70,13 +79,20 @@ class WeeklyViewController: UIViewController {
     // Second change the filter button accordingly
     // Last implement the filter to get appropriate range view data from the API
     
-    // Run Filter
+    /**
+     Run Filter is invoked when the 'Bike' button is clicked
+     - parameters:
+     - sender: the 'Run' button that was clicked
+     */
     @IBAction func filterRun(_ sender: UIButton) {
         run = !run
         filterRun()
         populate()
     }
     
+    /**
+     Set the background color of the Run button based on whether its active
+     */
     func filterRun() {
         if run {
             runFilterButton.backgroundColor = UIColor(0x990000)
@@ -87,13 +103,20 @@ class WeeklyViewController: UIViewController {
         }
     }
     
-    // Bike Filter
+    /**
+     Bike Filter is invoked when the 'Bike' button is clicked
+     - parameters:
+     - sender: the 'Bike' button that was clicked
+     */
     @IBAction func filterBike(_ sender: UIButton) {
         bike = !bike
         filterBike()
         populate()
     }
     
+    /**
+     Set the background color of the Bike button based on whether its active
+     */
     func filterBike() {
         if bike {
             bikeFilterButton.backgroundColor = UIColor(0x990000)
@@ -104,13 +127,20 @@ class WeeklyViewController: UIViewController {
         }
     }
     
-    // Swim Filter
+    /**
+     Swim Filter is invoked when the 'Bike' button is clicked
+     - parameters:
+     - sender: the 'Swim' button that was clicked
+     */
     @IBAction func filterSwim(_ sender: UIButton) {
         swim = !swim
         filterSwim()
         populate()
     }
     
+    /**
+     Set the background color of the Swim button based on whether its active
+     */
     func filterSwim() {
         if swim {
             swimFilterButton.backgroundColor = UIColor(0x990000)
@@ -121,13 +151,20 @@ class WeeklyViewController: UIViewController {
         }
     }
     
-    // Other Filter
+    /**
+     Other Filter is invoked when the 'Bike' button is clicked
+     - parameters:
+     - sender: the 'Other' button that was clicked
+     */
     @IBAction func filterOther(_ sender: UIButton) {
         other = !other
         filterOther()
         populate()
     }
     
+    /**
+     Set the background color of the Other button based on whether its active
+     */
     func filterOther() {
         if other {
             otherFilterButton.backgroundColor = UIColor(0x990000)
@@ -138,7 +175,9 @@ class WeeklyViewController: UIViewController {
         }
     }
     
-    // Function to Initialize the creation of the weekly graph
+    /**
+     Function to Initialize the creation of the weekly graph
+     */
     func initialize() {
         
         // Interval to add a day to a date
@@ -180,7 +219,9 @@ class WeeklyViewController: UIViewController {
         barChartView.initialSetup()
     }
     
-    // Function to populate the weekly graph based on the filter
+    /**
+     Function to populate the weekly graph based on the filter
+     */
     func populate() {
         
         let typeFilter = getTypeFilter()
@@ -237,7 +278,10 @@ class WeeklyViewController: UIViewController {
         }
     }
     
-    // Return the type filter to send to the rangeview API endpoint
+    /**
+     Return the type filter to send to the rangeview API endpoint
+     - returns: A type filter code
+     */
     func getTypeFilter() -> String {
         let r = run ? "r" : ""
         let b = bike ? "b" : ""
