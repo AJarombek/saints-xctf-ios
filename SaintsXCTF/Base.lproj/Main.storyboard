@@ -355,14 +355,14 @@
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PVN-xu-MPb">
-                                            <rect key="frame" x="346" y="5" width="24" height="24"/>
+                                            <rect key="frame" x="322" y="5" width="48" height="48"/>
                                             <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <state key="normal" image="delete">
                                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </state>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fgh-OF-z0d">
-                                            <rect key="frame" x="317" y="5" width="24" height="24"/>
+                                            <rect key="frame" x="269" y="5" width="48" height="48"/>
                                             <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <state key="normal" image="edit">
@@ -1154,7 +1154,7 @@
                                         <state key="normal" image="xctf_logo_large"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1WD-j2-M6J">
-                                        <rect key="frame" x="309" y="10" width="24" height="25"/>
+                                        <rect key="frame" x="285" y="10" width="48" height="25"/>
                                         <state key="normal" image="forward"/>
                                     </button>
                                 </subviews>
@@ -1189,7 +1189,7 @@
                                         <state key="normal" image="xctf_logo_large"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vZO-Pz-hjP">
-                                        <rect key="frame" x="309" y="10" width="24" height="25"/>
+                                        <rect key="frame" x="285" y="10" width="48" height="25"/>
                                         <state key="normal" image="forward"/>
                                     </button>
                                 </subviews>
@@ -1224,7 +1224,7 @@
                                         <state key="normal" image="xctf_logo_large"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oCM-hR-2WG">
-                                        <rect key="frame" x="309" y="10" width="24" height="25"/>
+                                        <rect key="frame" x="285" y="10" width="48" height="25"/>
                                         <state key="normal" image="forward"/>
                                     </button>
                                 </subviews>
@@ -1259,7 +1259,7 @@
                                         <state key="normal" image="xctf_logo_large"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q1h-zP-Utn">
-                                        <rect key="frame" x="309" y="10" width="24" height="25"/>
+                                        <rect key="frame" x="285" y="10" width="48" height="25"/>
                                         <state key="normal" image="forward"/>
                                     </button>
                                 </subviews>
@@ -1294,7 +1294,7 @@
                                         <state key="normal" image="xctf_logo_large"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K7E-zy-uQi">
-                                        <rect key="frame" x="309" y="10" width="24" height="25"/>
+                                        <rect key="frame" x="285" y="10" width="48" height="25"/>
                                         <state key="normal" image="forward"/>
                                     </button>
                                 </subviews>
@@ -1406,17 +1406,17 @@
                                 <rect key="frame" x="16" y="235" width="343" height="45"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Logs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PW3-rX-RNd">
-                                        <rect key="frame" x="54" y="5" width="37" height="35"/>
+                                        <rect key="frame" x="78" y="5" width="37" height="35"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="81X-jE-p94">
-                                        <rect key="frame" x="10" y="5" width="24" height="35"/>
+                                        <rect key="frame" x="10" y="5" width="48" height="35"/>
                                         <state key="normal" image="logs"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="37R-sb-Y0L">
-                                        <rect key="frame" x="309" y="10" width="24" height="25"/>
+                                        <rect key="frame" x="285" y="10" width="48" height="25"/>
                                         <state key="normal" image="forward"/>
                                     </button>
                                 </subviews>
@@ -1438,17 +1438,17 @@
                                 <rect key="frame" x="16" y="280" width="343" height="45"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Leaderboards" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gb0-NX-XkQ">
-                                        <rect key="frame" x="54" y="5" width="106" height="35"/>
+                                        <rect key="frame" x="78" y="5" width="106" height="35"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rEg-rl-JZ8">
-                                        <rect key="frame" x="10" y="5" width="24" height="35"/>
+                                        <rect key="frame" x="10" y="5" width="48" height="35"/>
                                         <state key="normal" image="list"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7jr-gv-CTM">
-                                        <rect key="frame" x="309" y="10" width="24" height="25"/>
+                                        <rect key="frame" x="285" y="10" width="48" height="25"/>
                                         <state key="normal" image="forward"/>
                                     </button>
                                 </subviews>
@@ -1470,17 +1470,17 @@
                                 <rect key="frame" x="16" y="325" width="343" height="45"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Members" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oRs-kz-Y2M">
-                                        <rect key="frame" x="54" y="5" width="72" height="35"/>
+                                        <rect key="frame" x="78" y="5" width="72" height="35"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7cq-S9-9K8">
-                                        <rect key="frame" x="10" y="5" width="24" height="35"/>
+                                        <rect key="frame" x="10" y="5" width="48" height="35"/>
                                         <state key="normal" image="group"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RJm-49-L6Y">
-                                        <rect key="frame" x="309" y="10" width="24" height="25"/>
+                                        <rect key="frame" x="285" y="10" width="48" height="25"/>
                                         <state key="normal" image="forward"/>
                                     </button>
                                 </subviews>
@@ -1502,17 +1502,17 @@
                                 <rect key="frame" x="16" y="415" width="343" height="45"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Admin" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hj5-o0-9KK">
-                                        <rect key="frame" x="54" y="5" width="49" height="35"/>
+                                        <rect key="frame" x="78" y="5" width="49" height="35"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CW3-NC-twt">
-                                        <rect key="frame" x="10" y="5" width="24" height="35"/>
+                                        <rect key="frame" x="10" y="5" width="48" height="35"/>
                                         <state key="normal" image="admin"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ndi-Aq-ta7">
-                                        <rect key="frame" x="309" y="10" width="24" height="25"/>
+                                        <rect key="frame" x="285" y="10" width="48" height="25"/>
                                         <state key="normal" image="forward"/>
                                     </button>
                                 </subviews>
@@ -1534,17 +1534,17 @@
                                 <rect key="frame" x="16" y="370" width="343" height="45"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Messages" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Tw-YT-elM">
-                                        <rect key="frame" x="54" y="5" width="78" height="35"/>
+                                        <rect key="frame" x="78" y="5" width="78" height="35"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CSC-Sg-RbK">
-                                        <rect key="frame" x="10" y="5" width="24" height="35"/>
+                                        <rect key="frame" x="10" y="5" width="48" height="35"/>
                                         <state key="normal" image="messages"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ifd-Ot-JYM">
-                                        <rect key="frame" x="309" y="10" width="24" height="25"/>
+                                        <rect key="frame" x="285" y="10" width="48" height="25"/>
                                         <state key="normal" image="forward"/>
                                     </button>
                                 </subviews>

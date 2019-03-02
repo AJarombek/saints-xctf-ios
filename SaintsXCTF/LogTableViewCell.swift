@@ -93,10 +93,10 @@ class LogTableViewCell: UITableViewCell {
         let deleteButton = DefaultButton(title: "Delete") {
             os_log("Confirm Deleting Log: %@", log: self.logTag, type: .debug, self.log?.description ?? "")
             
-            if let log_id: String = self.log?.log_id {
+            if let log_id: Int = self.log?.log_id {
                 
                 // Call the api to delete the log
-                APIClient.logDeleteRequest(withLogID: Int(log_id)!) {
+                APIClient.logDeleteRequest(withLogID: log_id) {
                     (result) -> Void in
                     
                     // The result of the API call is a boolean of whether or not the delete operation succeeded

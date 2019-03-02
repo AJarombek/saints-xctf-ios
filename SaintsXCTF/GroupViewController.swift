@@ -9,6 +9,15 @@
 import UIKit
 import os.log
 
+/**
+ Class controlling logic for the view displaying a group.
+ - Important:
+ ## Extends the following class:
+ - UIViewController: provides behavior shared between all classes that manage a view
+ 
+ ## Implements the following protocols:
+ - UIGestureRecognizerDelegate: methods invoked by the gesture recognizer on a view
+ */
 class GroupViewController: UIViewController, UIGestureRecognizerDelegate {
     
     let logTag = OSLog(subsystem: "SaintsXCTF.App.GroupViewController",

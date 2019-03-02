@@ -9,6 +9,15 @@
 import UIKit
 import os.log
 
+/**
+ Class controlling logic for the view displaying all the groups.
+ - Important:
+ ## Extends the following class:
+ - UIViewController: provides behavior shared between all classes that manage a view
+ 
+ ## Implements the following protocols:
+ - UIGestureRecognizerDelegate: methods invoked by the gesture recognizer on a view
+ */
 class GroupListViewController: UIViewController, UIGestureRecognizerDelegate {
     
     let logTag = OSLog(subsystem: "SaintsXCTF.App.GroupListViewController",
@@ -26,7 +35,9 @@ class GroupListViewController: UIViewController, UIGestureRecognizerDelegate {
     @IBOutlet weak var mtfButton: UIButton!
     @IBOutlet weak var alumniButton: UIButton!
     
-    
+    /**
+     Invoked when the GroupListViewController loads
+     */
     override func viewDidLoad() {
         super.viewDidLoad()
         os_log("GroupListViewController Loaded.", log: logTag, type: .debug)
@@ -111,9 +122,11 @@ class GroupListViewController: UIViewController, UIGestureRecognizerDelegate {
         let alumnibuttonclick = UITapGestureRecognizer(target: self, action: #selector(self.alumni(_:)))
         alumnibuttonclick.delegate = self
         alumniButton.addGestureRecognizer(alumnibuttonclick)
-        
     }
     
+    /**
+     Invoked when the GroupListViewController is about to appear on the screen
+     */
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -121,6 +134,9 @@ class GroupListViewController: UIViewController, UIGestureRecognizerDelegate {
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
+    /**
+     Invoked when the GroupListViewController is about to disappear from the screen
+     */
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
@@ -128,33 +144,61 @@ class GroupListViewController: UIViewController, UIGestureRecognizerDelegate {
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
-    // Functions to load groups depending on the group picked
+    /**
+     Loads and navigates to the Women's Cross Country group view
+     - parameters:
+     - sender: the view that invoked this function (wxcView)
+     */
     @objc func womensXC(_ sender: UIView) {
         os_log("Go to Women's Cross Country Page", log: logTag, type: .debug)
         loadGroup(withGroupname: "wmensxc")
     }
     
+    /**
+     Loads and navigates to the Men's Cross Country group view
+     - parameters:
+     - sender: the view that invoked this function (mxcView)
+     */
     @objc func mensXC(_ sender: UIView) {
         os_log("Go to Men's Cross Country Page", log: logTag, type: .debug)
         loadGroup(withGroupname: "mensxc")
     }
     
+    /**
+     Loads and navigates to the Women's Track & Field group view
+     - parameters:
+     - sender: the view that invoked this function (wtfView)
+     */
     @objc func womensTF(_ sender: UIView) {
         os_log("Go to Women's Track & Field Page", log: logTag, type: .debug)
         loadGroup(withGroupname: "wmenstf")
     }
     
+    /**
+     Loads and navigates to the Men's Track & Field group view
+     - parameters:
+     - sender: the view that invoked this function (mtfView)
+     */
     @objc func mensTF(_ sender: UIView) {
         os_log("Go to Men's Track & Field Page", log: logTag, type: .debug)
         loadGroup(withGroupname: "menstf")
     }
     
+    /**
+     Loads and navigates to the Alumni group view
+     - parameters:
+     - sender: the view that invoked this function (alumniView)
+     */
     @objc func alumni(_ sender: UIView) {
         os_log("Go to Alumni Page", log: logTag, type: .debug)
         loadGroup(withGroupname: "alumni")
     }
     
-    // Load the groupViewController with the given groupname
+    /**
+     Load the groupViewController with the given groupname
+     - parameters:
+     - group: the name of the group to display
+     */
     func loadGroup(withGroupname group: String) {
         
         let groupViewController = storyboard?.instantiateViewController(withIdentifier:

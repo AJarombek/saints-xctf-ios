@@ -10,6 +10,16 @@ import UIKit
 import os.log
 import PopupDialog
 
+/**
+ Class controlling logic for the view displaying exercise logs.
+ - Important:
+ ## Implements the following class:
+ - UIViewController: provides behavior shared between all classes that manage a view
+ ## Implements the following protocols:
+ - UITextViewDelegate: methods that change the behavior of a text view being edited
+ - UIPickerViewDelegate: required class for a picker view to construct itself
+ - UIPickerViewDataSource: provides the picker view with content
+ */
 class LogViewController: UIViewController, UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     
     @IBOutlet weak var nameField: UITextField!
@@ -277,14 +287,14 @@ class LogViewController: UIViewController, UITextViewDelegate, UIPickerViewDeleg
         }
         
         typeField.text = logPassed?.type?.capitalizingFirstLetter() ?? ""
-        distanceField.text = logPassed?.distance ?? ""
+        distanceField.text = "\(logPassed?.distance ?? 0)"
         metricField.text = logPassed?.metric.capitalizingFirstLetter() ?? ""
         
         minutesField.text = ""
         secondsField.text = ""
         
-        let feelValue: Double = Double((logPassed?.feel)!)! - 1
-        feelStepper.value = feelValue + 1
+        let feelValue: Int = (logPassed?.feel)! - 1
+        feelStepper.value = Double(feelValue + 1)
         feelDescriptionField.text = Constants.getFeelDescription(Int(feelValue))
         view.layer.backgroundColor = UIColor(Constants.getFeelColor(Int(feelValue))).cgColor
         
@@ -496,12 +506,12 @@ class LogViewController: UIViewController, UITextViewDelegate, UIPickerViewDeleg
             log.location = location
             log.date = formattedDate
             log.type = type.lowercased()
-            log.distance = distance
-            log.miles = milesString
+            log.distance = Double(distance)
+            log.miles = Double(milesString)
             log.pace = pace
             log.metric = metric.lowercased()
             log.time = time
-            log.feel = "\(feel)"
+            log.feel = feel
             log.log_description = description
             
             os_log("Log Passed Validation: %@", log: logTag, type: .debug, log.description)
@@ -536,7 +546,7 @@ class LogViewController: UIViewController, UITextViewDelegate, UIPickerViewDeleg
                 log.log_id = logPassed?.log_id
                 
                 // Submit the edited log to the API
-                APIClient.logPutRequest(withLogID: Int(log.log_id)!, andLog: log) {
+                APIClient.logPutRequest(withLogID: log.log_id!, andLog: log) {
                     (newlog) -> Void in
                     
                     os_log("Updated Log Submitted to API.", log: self.logTag, type: .debug)

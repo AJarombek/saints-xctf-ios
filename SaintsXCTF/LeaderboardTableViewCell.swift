@@ -8,6 +8,12 @@
 
 import UIKit
 
+/**
+ Class controlling logic for a cell in the group leaderboard.
+ - Important:
+ ## Extends the following class:
+ - UITableViewCell: provides methods for a cell in a table view
+ */
 class LeaderboardTableViewCell: UITableViewCell {
     
     @IBOutlet weak var nameLabel: UILabel!
@@ -30,7 +36,9 @@ class LeaderboardTableViewCell: UITableViewCell {
         }
     }
     
-    // Called when the cell is about to be reused.  Reset all of the text fields
+    /**
+     Called when the cell is about to be reused.  Reset all of the text fields
+     */
     override func prepareForReuse() {
         super.prepareForReuse()
         
@@ -38,7 +46,9 @@ class LeaderboardTableViewCell: UITableViewCell {
         distanceLabel.text = ""
     }
     
-    // Set the style of the cell with a background color determined by the log feel
+    /**
+     Set the style of the cell with a background color determined by the log feel
+     */
     func setStyle() {
         self.layer.borderWidth = 2
         self.layer.borderColor = UIColor(0xAAAAAA).cgColor

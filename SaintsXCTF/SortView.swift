@@ -10,6 +10,9 @@ import UIKit
 
 /**
  A custom UIView that contains the sort parameters for different log statistics
+ - Important:
+ ## Extends the following class:
+ - UIView: provides behavior for a generic rectangular view on the screen
  */
 class SortView: UIView {
     

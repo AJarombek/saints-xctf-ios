@@ -18,7 +18,7 @@ import ObjectMapper
  */
 class Log: Mappable, CustomStringConvertible {
     
-    var log_id: String!
+    var log_id: Int!
     var username: String!
     var first: String!
     var last: String!
@@ -26,12 +26,12 @@ class Log: Mappable, CustomStringConvertible {
     var location: String?
     var date: String!
     var type: String?
-    var distance: String?
-    var miles: String?
+    var distance: Double?
+    var miles: Double?
     var metric: String!
     var time: String?
     var pace: String?
-    var feel: String!
+    var feel: Int!
     var log_description: String?
     var time_created: String?
     var comments: [Comment]!
@@ -40,7 +40,7 @@ class Log: Mappable, CustomStringConvertible {
      Default initializer for a Log object
      */
     init() {
-        log_id = ""
+        log_id = 0
     }
     
     /**
@@ -53,7 +53,7 @@ class Log: Mappable, CustomStringConvertible {
     // This class uses the CustomStringConvertible protocol.
     // The description will be printed whenever we try to print a User object
     var description: String {
-        let logdistance = distance ?? "0.0"
+        let logdistance = distance ?? 0.0
         let logtime = time ?? "0:00"
         return "Log: (\(username!), \(name!), \(logdistance) - \(logtime))"
     }

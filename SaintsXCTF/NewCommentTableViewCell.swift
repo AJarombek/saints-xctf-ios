@@ -90,7 +90,7 @@ class NewCommentTableViewCell: UITableViewCell {
                     
                     if newcomment.username != logUsername {
                         
-                        let logId = self.log?.log_id ?? ""
+                        let logId = self.log?.log_id ?? 0
                         let first = newcomment.first ?? ""
                         let last = newcomment.last ?? ""
                         

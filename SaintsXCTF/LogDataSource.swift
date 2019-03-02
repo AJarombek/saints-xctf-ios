@@ -148,9 +148,9 @@ class LogDataSource {
                         // Set the logs distance
                         var distanceTxt = ""
                         
-                        if let distance: String = log.distance, let metric: String = log.metric {
+                        if let distance: Double = log.distance, let metric: String = log.metric {
                             
-                            if distance != "0" {
+                            if distance != 0 {
                                 distanceTxt = "\(distance) \(metric)\n"
                             }
                         }
