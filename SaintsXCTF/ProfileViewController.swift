@@ -88,6 +88,7 @@ class ProfileViewController: UIViewController, UIGestureRecognizerDelegate {
             
             // If this is not the signed in user, set the edit profile view to hidden
             editView.isHidden = true
+            reportView.isHidden = true
             weeklyView.layer.addSublayer(weeklyBottomBorder)
         } else {
             user = SignedInUser.user

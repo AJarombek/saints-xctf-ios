@@ -742,6 +742,7 @@
                     </view>
                     <connections>
                         <outlet property="activationCode" destination="TbJ-H8-AIK" id="yYf-cB-cdW"/>
+                        <outlet property="cancelButton" destination="OYo-1P-2ao" id="xfJ-oh-QP8"/>
                         <outlet property="confirmPassword" destination="A2S-OE-owB" id="Y75-2K-s7B"/>
                         <outlet property="email" destination="9bN-wO-8nQ" id="p1f-Se-f3d"/>
                         <outlet property="eulaSwitch" destination="37t-GD-DJG" id="3Hv-IH-FzN"/>
@@ -751,6 +752,7 @@
                         <outlet property="password" destination="6Ns-zf-uSi" id="SAX-NJ-2Ef"/>
                         <outlet property="signUpError" destination="sgJ-Ql-HPB" id="c8j-uc-wwn"/>
                         <outlet property="signUpView" destination="PKw-7Z-3to" id="M9k-BQ-teZ"/>
+                        <outlet property="submitButton" destination="wWy-WS-vpf" id="Im1-co-VMY"/>
                         <outlet property="username" destination="Rhs-fz-28O" id="iHE-Th-PDh"/>
                     </connections>
                 </viewController>
@@ -2348,6 +2350,62 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c7Q-zA-lHs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4393" y="-548"/>
+        </scene>
+        <!--Report View Controller-->
+        <scene sceneID="OJe-gg-mwa">
+            <objects>
+                <viewController storyboardIdentifier="reportViewController" id="5KW-RA-XGZ" customClass="ReportViewController" customModule="SaintsXCTF" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="vP6-Sm-2vA"/>
+                        <viewControllerLayoutGuide type="bottom" id="EH2-J9-gI7"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="7A7-C7-cgc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sMg-fp-XQP">
+                                <rect key="frame" x="36" y="70" width="303" height="547"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="zKA-Cr-DiT">
+                                        <rect key="frame" x="31.5" y="20" width="240" height="437"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="zKA-Cr-DiT" secondAttribute="height" multiplier="240:437" id="djC-EO-IVo"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9VI-4k-BBo">
+                                        <rect key="frame" x="127" y="467" width="49" height="30"/>
+                                        <state key="normal" title="Submit"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="9VI-4k-BBo" firstAttribute="centerX" secondItem="sMg-fp-XQP" secondAttribute="centerX" id="77E-r8-tns"/>
+                                    <constraint firstItem="zKA-Cr-DiT" firstAttribute="top" secondItem="sMg-fp-XQP" secondAttribute="top" constant="20" id="BUn-Fi-sRF"/>
+                                    <constraint firstAttribute="bottom" secondItem="9VI-4k-BBo" secondAttribute="bottom" constant="50" id="ZXs-pe-pQQ"/>
+                                    <constraint firstItem="9VI-4k-BBo" firstAttribute="top" secondItem="zKA-Cr-DiT" secondAttribute="bottom" constant="10" id="bV5-IF-kyI"/>
+                                    <constraint firstItem="zKA-Cr-DiT" firstAttribute="centerX" secondItem="sMg-fp-XQP" secondAttribute="centerX" id="uV9-z0-fW2"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="sMg-fp-XQP" secondAttribute="trailing" constant="20" id="B05-pN-bR2"/>
+                            <constraint firstItem="EH2-J9-gI7" firstAttribute="top" secondItem="sMg-fp-XQP" secondAttribute="bottom" constant="50" id="CA1-90-h7b"/>
+                            <constraint firstItem="sMg-fp-XQP" firstAttribute="top" secondItem="vP6-Sm-2vA" secondAttribute="bottom" constant="50" id="Ddz-dO-FEd"/>
+                            <constraint firstItem="sMg-fp-XQP" firstAttribute="leading" secondItem="7A7-C7-cgc" secondAttribute="leadingMargin" constant="20" id="sa3-WA-jUR"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="reportTextView" destination="zKA-Cr-DiT" id="oKn-Eh-eRT"/>
+                        <outlet property="sumbitButton" destination="9VI-4k-BBo" id="FMY-AF-3MQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="q5t-EH-Iha" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5136.8000000000002" y="-181.25937031484258"/>
         </scene>
         <!--Monthly View Controller-->
         <scene sceneID="jA3-zD-H5c">

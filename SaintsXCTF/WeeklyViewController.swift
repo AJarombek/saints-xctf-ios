@@ -201,8 +201,8 @@ class WeeklyViewController: UIViewController {
             rangeView.forEach {
                 activity -> Void in
                 
-                let mileage: Double = Double(activity.miles)!
-                let feel: Int = Int(activity.feel)!
+                let mileage: Double = activity.miles
+                let feel: Int = activity.feel
                 let dateString: String = activity.date!
                 let date: Date = dateFormatter.date(from: dateString)!
                 

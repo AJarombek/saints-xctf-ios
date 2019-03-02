@@ -20,8 +20,8 @@ import ObjectMapper
 class RangeView: Mappable, CustomStringConvertible {
     
     var date: String!
-    var miles: String!
-    var feel: String!
+    var miles: Double!
+    var feel: Int!
     
     /**
      Required initializer for the Mappable protocol

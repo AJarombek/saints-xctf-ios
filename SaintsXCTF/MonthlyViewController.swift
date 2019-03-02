@@ -503,18 +503,16 @@ class MonthlyViewController: UIViewController {
                 let difComponent = Calendar.current.dateComponents([.day], from: fd, to: activityDate)
                 let day = difComponent.day!
                 
-                // Get the miles string and convert it to a double
-                var milesString: String = activity.miles!
-                var miles: Double = Double(milesString)!
+                var miles: Double = activity.miles!
                 
                 // Get the miles into a number with two decimal places
-                milesString = String(format: "%.2f", miles)
+                let milesString = String(format: "%.2f", miles)
                 miles = Double(milesString)!
                 
                 self.miles[day].text = "\(milesString)\n Miles"
                 
                 // Set the background color based on the days feel
-                let feel: Int = Int(activity.feel)!
+                let feel: Int = activity.feel!
                 self.views[day].backgroundColor = UIColor(Constants.getFeelColor(feel - 1))
                 
                 // Add this days mileage to the weekly total

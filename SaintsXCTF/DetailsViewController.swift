@@ -75,6 +75,9 @@ class DetailsViewController: UIViewController, UITextViewDelegate, UITextFieldDe
         locationField.text = user.location ?? ""
         favoriteEventField.text = user.favorite_event ?? ""
         descriptionView.text = user.user_description ?? ""
+        
+        saveButton.setTitleColor(UIColor(0x990000), for: .normal)
+        cancelButton.setTitleColor(UIColor(0xAAAAAA), for: .normal)
     }
     
     /**

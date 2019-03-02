@@ -33,6 +33,8 @@ class SignUpViewController: UIViewController {
     @IBOutlet var eulaSwitch: UISwitch!
     @IBOutlet var eulaTextView: UITextView!
     @IBOutlet var signUpError: UITextView!
+    @IBOutlet var submitButton: UIButton!
+    @IBOutlet var cancelButton: UIButton!
     
     var eulaAccepted: Bool = false
     
@@ -52,6 +54,9 @@ class SignUpViewController: UIViewController {
         lastName.standardStyle()
         email.standardStyle()
         firstName.standardStyle()
+        
+        submitButton.setTitleColor(UIColor(0x990000), for: .normal)
+        cancelButton.setTitleColor(UIColor(0xAAAAAA), for: .normal)
         
         // Fix for text view containing unnecessary padding
         eulaTextView.textContainer.lineFragmentPadding = 0

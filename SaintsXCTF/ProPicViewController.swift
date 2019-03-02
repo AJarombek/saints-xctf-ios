@@ -56,6 +56,9 @@ class ProPicViewController: UIViewController, UIGestureRecognizerDelegate,
         proPicView.layer.borderColor = UIColor(0xCCCCCC).cgColor
         proPicView.layer.cornerRadius = 1
         
+        saveButton.setTitleColor(UIColor(0x990000), for: .normal)
+        cancelButton.setTitleColor(UIColor(0xAAAAAA), for: .normal)
+        
         // If the user has a profile picture, display it
         if let profPicBase64 = user.profilepic {
             

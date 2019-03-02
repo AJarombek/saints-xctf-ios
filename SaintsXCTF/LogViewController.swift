@@ -82,6 +82,9 @@ class LogViewController: UIViewController, UITextViewDelegate, UIPickerViewDeleg
         minutesField.standardStyle()
         secondsField.standardStyle()
         
+        submitButton.setTitleColor(UIColor(0x990000), for: .normal)
+        cancelButton.setTitleColor(UIColor(0xAAAAAA), for: .normal)
+        
         feelStepper.tintColor = UIColor(0xCCCCCC)
         feelStepper.backgroundColor = UIColor.white
         feelStepper.layer.cornerRadius = 4
