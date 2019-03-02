@@ -11,6 +11,12 @@ import Foundation
 import BCryptSwift
 import os.log
 
+/**
+ Class controlling logic for the view displaying a sign up form.
+ - Important:
+ ## Extends the following class:
+ - UIViewController: provides behavior shared between all classes that manage a view
+ */
 class SignUpViewController: UIViewController {
     
     let logTag = OSLog(subsystem: "SaintsXCTF.App.SignUpViewController", category: "SignUpViewController")
@@ -24,7 +30,11 @@ class SignUpViewController: UIViewController {
     @IBOutlet var lastName: UITextField!
     @IBOutlet var email: UITextField!
     @IBOutlet var firstName: UITextField!
+    @IBOutlet var eulaSwitch: UISwitch!
+    @IBOutlet var eulaLabel: UILabel!
     @IBOutlet var signUpError: UITextView!
+    
+    var eulaAccepted: Bool = false
     
     /**
      Invoked when the SignUpViewController loads
@@ -42,6 +52,10 @@ class SignUpViewController: UIViewController {
         lastName.standardStyle()
         email.standardStyle()
         firstName.standardStyle()
+        
+        eulaSwitch.setOn(false, animated: false)
+        eulaSwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
+        eulaSwitch.onTintColor = UIColor(0x990000)
     }
     
     /**
@@ -139,6 +153,12 @@ class SignUpViewController: UIViewController {
                 return
             }
             
+            // EULA agreement Validation
+            if (!eulaAccepted) {
+                signUpError.text = "EULA Must Be Accepted"
+                return
+            }
+            
             // First we must check to see if this Username has already been taken
             APIClient.userGetRequest(withUsername: usernameString) {
                 (user) -> Void in
@@ -228,5 +248,15 @@ class SignUpViewController: UIViewController {
                 return
             }
         }
+    }
+    
+    /**
+     Function called when the UISwitch is changed.  If it is turned on, a user accepted the EULA anc is
+     permitted to sign up for the app.
+     - parameters:
+     - mySwitch: the UISwitch with an altered state (eulaSwitch)
+     */
+    @objc func switchChanged(mySwitch: UISwitch) {
+        eulaAccepted = mySwitch.isOn
     }
 }

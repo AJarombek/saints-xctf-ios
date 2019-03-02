@@ -9,12 +9,21 @@
 import UIKit
 import os.log
 
+/**
+ Class controlling logic for the view displaying a sign out switch.
+ - Important:
+ ## Extends the following class:
+ - UIViewController: provides behavior shared between all classes that manage a view
+ */
 class SignOutController: UIViewController {
     
     let logTag = OSLog(subsystem: "SaintsXCTF.App.LogViewController", category: "LogViewController")
     
     @IBOutlet weak var signOutSwitch: UISwitch!
     
+    /**
+     Invoked when the SignOutController loads
+     */
     override func viewDidLoad() {
         super.viewDidLoad()
         os_log("LogViewController Loaded.", log: logTag, type: .debug)
@@ -25,7 +34,11 @@ class SignOutController: UIViewController {
         signOutSwitch.onTintColor = UIColor(0x990000)
     }
     
-    // Function called when the UISwitch is changed.  If it is turned on, sign out user
+    /**
+     Function called when the UISwitch is changed.  If it is turned on, sign out the user.
+     - parameters:
+     - mySwitch: the UISwitch with an altered state (signOutSwitch)
+     */
     @objc func switchChanged(mySwitch: UISwitch) {
         let on: Bool = mySwitch.isOn
         
