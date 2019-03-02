@@ -9,6 +9,15 @@
 import UIKit
 import os.log
 
+/**
+ Controller for the profile information and navigation options.
+ - Important:
+ ## Extends the following class:
+ - UIViewController: provides behavior shared between all classes that manage a view
+ 
+ ## Implements the following protocols:
+ - UIGestureRecognizerDelegate: provides helper methods gor handling gestures (clicks,swipes,etc.)
+ */
 class ProfileViewController: UIViewController, UIGestureRecognizerDelegate {
     
     let logTag = OSLog(subsystem: "SaintsXCTF.App.ProfileViewController", category: "ProfileViewController")
@@ -17,10 +26,12 @@ class ProfileViewController: UIViewController, UIGestureRecognizerDelegate {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var descriptionView: UITextView!
+    @IBOutlet weak var reportButton: UIButton!
     @IBOutlet weak var editProfileButton: UIButton!
     @IBOutlet weak var logsButton: UIButton!
     @IBOutlet weak var monthlyButton: UIButton!
     @IBOutlet weak var weeklyButton: UIButton!
+    @IBOutlet weak var reportView: UIView!
     @IBOutlet weak var editView: UIView!
     @IBOutlet weak var logsView: UIView!
     @IBOutlet weak var monthlyView: UIView!
@@ -45,75 +56,31 @@ class ProfileViewController: UIViewController, UIGestureRecognizerDelegate {
         profilePictureView.layer.cornerRadius = 1
         
         // Create top borders for all the profile selections
-        let topBorder = CALayer()
-        topBorder.frame = CGRect.init(x: -20, y: 0, width: view.frame.width + 20, height: 1)
-        topBorder.backgroundColor = UIColor(0xBBBBBB).cgColor
-        
-        let logsTopBorder = CALayer()
-        logsTopBorder.frame = CGRect.init(x: -20, y: 0, width: view.frame.width + 20, height: 1)
-        logsTopBorder.backgroundColor = UIColor(0xBBBBBB).cgColor
-        
-        let monthlyTopBorder = CALayer()
-        monthlyTopBorder.frame = CGRect.init(x: -20, y: 0, width: view.frame.width + 20, height: 1)
-        monthlyTopBorder.backgroundColor = UIColor(0xBBBBBB).cgColor
-        
-        let weeklyTopBorder = CALayer()
-        weeklyTopBorder.frame = CGRect.init(x: -20, y: 0, width: view.frame.width + 20, height: 1)
-        weeklyTopBorder.backgroundColor = UIColor(0xBBBBBB).cgColor
+        let logsTopBorder = createTopBorder()
+        let monthlyTopBorder = createTopBorder()
+        let weeklyTopBorder = createTopBorder()
+        let editTopBorder = createTopBorder()
+        let reportTopBorder = createTopBorder()
         
         // Weekly bottom border for other profiles that dont show the edit view
-        let weeklyBottomBorder = CALayer()
-        weeklyBottomBorder.frame = CGRect.init(x: -20, y: weeklyView.frame.height + 1,
-                                             width: view.frame.width + 20, height: 1)
-        weeklyBottomBorder.backgroundColor = UIColor(0xBBBBBB).cgColor
+        let weeklyBottomBorder = createBottomBorder()
         
-        // Since weekly is the last selection, it needs a bottom border as well
-        let editBottomBorder = CALayer()
-        editBottomBorder.frame = CGRect.init(x: -20, y: weeklyView.frame.height + 1,
-                                               width: view.frame.width + 20, height: 1)
-        editBottomBorder.backgroundColor = UIColor(0xBBBBBB).cgColor
+        // Since report is the last selection, it needs a bottom border as well
+        let reportBottomBorder = createBottomBorder()
         
         logsView.layer.addSublayer(logsTopBorder)
         monthlyView.layer.addSublayer(monthlyTopBorder)
         weeklyView.layer.addSublayer(weeklyTopBorder)
-        editView.layer.addSublayer(topBorder)
-        editView.layer.addSublayer(editBottomBorder)
+        editView.layer.addSublayer(editTopBorder)
+        reportView.layer.addSublayer(reportTopBorder)
+        reportView.layer.addSublayer(reportBottomBorder)
         
-        // Set click listener to the edit view to open up the edit profile page
-        let click = UITapGestureRecognizer(target: self, action: #selector(self.editProfile(_:)))
-        click.delegate = self
-        editView.addGestureRecognizer(click)
+        // Set up click listeners
+        logsClickListener()
+        monthlyClickListener()
+        weeklyClickListener()
+        editClickListener()
         
-        let buttonclick = UITapGestureRecognizer(target: self, action: #selector(self.editProfile(_:)))
-        buttonclick.delegate = self
-        editProfileButton.addGestureRecognizer(buttonclick)
-        
-        // Set click listener to the logs view to open up the users logs
-        let clickLogs = UITapGestureRecognizer(target: self, action: #selector(self.showLogs(_:)))
-        clickLogs.delegate = self
-        logsView.addGestureRecognizer(clickLogs)
-        
-        let buttonclickLogs = UITapGestureRecognizer(target: self, action: #selector(self.showLogs(_:)))
-        buttonclickLogs.delegate = self
-        logsButton.addGestureRecognizer(buttonclickLogs)
-        
-        // Set click listener to the monthly view to open up the users monthly calendar
-        let clickMonthly = UITapGestureRecognizer(target: self, action: #selector(self.showMonthly(_:)))
-        clickMonthly.delegate = self
-        monthlyView.addGestureRecognizer(clickMonthly)
-        
-        let buttonclickMonthly = UITapGestureRecognizer(target: self, action: #selector(self.showMonthly(_:)))
-        buttonclickMonthly.delegate = self
-        monthlyButton.addGestureRecognizer(buttonclickMonthly)
-        
-        // Set click listener to the weekly view to open up the users weekly exercise graph
-        let clickWeekly = UITapGestureRecognizer(target: self, action: #selector(self.showWeekly(_:)))
-        clickWeekly.delegate = self
-        weeklyView.addGestureRecognizer(clickWeekly)
-        
-        let buttonclickWeekly = UITapGestureRecognizer(target: self, action: #selector(self.showWeekly(_:)))
-        buttonclickWeekly.delegate = self
-        weeklyButton.addGestureRecognizer(buttonclickWeekly)
         
         // If there is no user defined, use the currently signed in user
         if let _ = user {
@@ -236,6 +203,19 @@ class ProfileViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     /**
+     Set click listener to the logs view to open up the users logs
+     */
+    func logsClickListener() {
+        let clickLogs = UITapGestureRecognizer(target: self, action: #selector(self.showLogs(_:)))
+        clickLogs.delegate = self
+        logsView.addGestureRecognizer(clickLogs)
+        
+        let buttonclickLogs = UITapGestureRecognizer(target: self, action: #selector(self.showLogs(_:)))
+        buttonclickLogs.delegate = self
+        logsButton.addGestureRecognizer(buttonclickLogs)
+    }
+    
+    /**
      Show the users logs (using mainViewController)
      - parameters:
      - sender: the view that invoked this function (logsView)
@@ -256,6 +236,19 @@ class ProfileViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     /**
+     Set click listener to the monthly view to open up the users monthly calendar
+     */
+    func monthlyClickListener() {
+        let clickMonthly = UITapGestureRecognizer(target: self, action: #selector(self.showMonthly(_:)))
+        clickMonthly.delegate = self
+        monthlyView.addGestureRecognizer(clickMonthly)
+        
+        let buttonclickMonthly = UITapGestureRecognizer(target: self, action: #selector(self.showMonthly(_:)))
+        buttonclickMonthly.delegate = self
+        monthlyButton.addGestureRecognizer(buttonclickMonthly)
+    }
+    
+    /**
      Show the users monthly calendar (using monthlyViewController)
      - parameters:
      - sender: the view that invoked this function (monthlyView)
@@ -270,6 +263,19 @@ class ProfileViewController: UIViewController, UIGestureRecognizerDelegate {
         monthlyViewController.user = user ?? User()
         
         navigationController?.pushViewController(monthlyViewController, animated: true)
+    }
+    
+    /**
+     Set click listener to the weekly view to open up the users weekly exercise graph
+     */
+    func weeklyClickListener() {
+        let clickWeekly = UITapGestureRecognizer(target: self, action: #selector(self.showWeekly(_:)))
+        clickWeekly.delegate = self
+        weeklyView.addGestureRecognizer(clickWeekly)
+        
+        let buttonclickWeekly = UITapGestureRecognizer(target: self, action: #selector(self.showWeekly(_:)))
+        buttonclickWeekly.delegate = self
+        weeklyButton.addGestureRecognizer(buttonclickWeekly)
     }
     
     /**
@@ -290,6 +296,19 @@ class ProfileViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     /**
+     Set click listener to the edit view to open up the edit profile page
+     */
+    func editClickListener() {
+        let click = UITapGestureRecognizer(target: self, action: #selector(self.editProfile(_:)))
+        click.delegate = self
+        editView.addGestureRecognizer(click)
+        
+        let buttonclick = UITapGestureRecognizer(target: self, action: #selector(self.editProfile(_:)))
+        buttonclick.delegate = self
+        editProfileButton.addGestureRecognizer(buttonclick)
+    }
+    
+    /**
      Edit the users profile (using editProfileViewController)
      - parameters:
      - sender: the view that invoked this function (editView)
@@ -304,5 +323,60 @@ class ProfileViewController: UIViewController, UIGestureRecognizerDelegate {
         editProfileViewController.user = user ?? User()
         
         navigationController?.pushViewController(editProfileViewController, animated: true)
+    }
+    
+    /**
+     Set click listener to the report view to open up the file report page
+     */
+    func reportClickListener() {
+        let click = UITapGestureRecognizer(target: self, action: #selector(self.fileReport(_:)))
+        click.delegate = self
+        reportView.addGestureRecognizer(click)
+        
+        let buttonclick = UITapGestureRecognizer(target: self, action: #selector(self.fileReport(_:)))
+        buttonclick.delegate = self
+        reportButton.addGestureRecognizer(buttonclick)
+    }
+    
+    /**
+     File a report to the app admin (using reportViewController)
+     - parameters:
+     - sender: the view that invoked this function (reportView)
+     */
+    @objc func fileReport(_ sender: UIView) {
+        os_log("Filing Report", log: logTag, type: .debug)
+        
+        let reportViewController = storyboard?.instantiateViewController(withIdentifier:
+            "reportViewController") as! ReportViewController
+        
+        // Pass the user to the file report view
+        reportViewController.user = user ?? User()
+        
+        navigationController?.pushViewController(reportViewController, animated: true)
+    }
+    
+    /**
+     Creates a border for the top of a view
+     - returns: A border to place at the top of a view
+     */
+    func createTopBorder() -> CALayer {
+        let topBorder = CALayer()
+        topBorder.frame = CGRect.init(x: -20, y: 0, width: view.frame.width + 20, height: 1)
+        topBorder.backgroundColor = UIColor(0xBBBBBB).cgColor
+        
+        return topBorder
+    }
+    
+    /**
+     Creates a border for the bottom of a view
+     - returns: A border to place at the bottom of a view
+     */
+    func createBottomBorder() -> CALayer {
+        let bottomBorder = CALayer()
+        bottomBorder.frame = CGRect.init(x: -20, y: weeklyView.frame.height + 1,
+                                      width: view.frame.width + 20, height: 1)
+        bottomBorder.backgroundColor = UIColor(0xBBBBBB).cgColor
+        
+        return bottomBorder
     }
 }
