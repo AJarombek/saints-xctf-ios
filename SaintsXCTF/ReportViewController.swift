@@ -73,7 +73,7 @@ class ReportViewController: UIViewController, UITextViewDelegate {
             self.submitButton.isEnabled = false
             
             // Send an email to the website admin with the report
-            /// TODO
+            sendEmail(withBody: report)
             
             // Build the popup dialog to be displayed
             let title = "Report Submitted"
@@ -94,6 +94,27 @@ class ReportViewController: UIViewController, UITextViewDelegate {
             
             self.present(popup, animated: true, completion: nil)
         }
+    }
+    
+    /**
+     When beginning to edit the textview, remove the placeholder and prepare view for user input
+     - parameters:
+     - body: text to send in the email body
+     */
+    func sendEmail(withBody body: String) {
+        let mail: Mail = Mail()
+        mail.emailAddress = "andrew@jarombek.com"
+        mail.subject = "SaintsXCTF Report: \(user.first ?? "") \(user.last ?? "") (\(user.username ?? ""))"
+        mail.body = """
+        <html>
+        <head>
+            <title>HTML email</title>
+        </head>
+        <body>
+            <p>\(body)</p>
+        </body>
+        </html>
+        """
     }
     
     /**

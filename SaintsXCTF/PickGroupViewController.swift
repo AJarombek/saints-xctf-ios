@@ -9,6 +9,12 @@
 import UIKit
 import os.log
 
+/**
+ Class controlling logic for users picking a group to join.
+ - Important:
+ ## Extends the following class:
+ - UIViewController: provides behavior shared between all classes that manage a view
+ */
 class PickGroupController: UIViewController {
     
     let logTag = OSLog(subsystem: "SaintsXCTF.App.PickGroupViewController",

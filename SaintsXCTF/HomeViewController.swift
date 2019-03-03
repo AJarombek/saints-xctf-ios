@@ -10,11 +10,21 @@ import UIKit
 import BCryptSwift
 import os.log
 
+/**
+ Class controlling logic for the view displayed when a user isnt signed in or signed up.
+ - Important:
+ ## Extends the following class:
+ - UIViewController: provides behavior shared between all classes that manage a view
+ */
 class HomeViewController: UIViewController {
     
     let logTag = OSLog(subsystem: "SaintsXCTF.App.HomeViewController", category: "HomeViewController")
     
-    // Remove the keyboard when tapping the background
+    /**
+     Remove the keyboard when tapping the background
+     - parameters:
+     - sender: the gesture which caused this function to be called
+     */
     @IBAction func backgroundTapped(_ sender: UITapGestureRecognizer) {
         view.endEditing(true)
     }
@@ -28,6 +38,9 @@ class HomeViewController: UIViewController {
     
     var overlay: UIView?
     
+    /**
+     Invoked when the HomeViewController loads
+     */
     override func viewDidLoad() {
         super.viewDidLoad()
         self.backgroundImage.image = #imageLiteral(resourceName: "Background")
@@ -36,7 +49,11 @@ class HomeViewController: UIViewController {
         password.standardStyle()
     }
     
-    // Action to take when logging in a user
+    /**
+     Action to take when logging in a user
+     - parameters:
+     - sender: the button click which caused this function to be called (logIn)
+     */
     @IBAction func logInUser(_ sender: UIButton) {
         
         // Reset styling and errors
@@ -117,9 +134,16 @@ class HomeViewController: UIViewController {
         
     }
     
+    /**
+     Action to take when signing up a user (isnt used currently, SignUpViewController handles this logic)
+     - parameters:
+     - sender: the button click which caused this function to be called (signUp)
+     */
     @IBAction func signUpUser(_ sender: UIButton) {}
     
-    // Re-enable buttons and remove loading overlay
+    /**
+     Re-enable buttons and remove loading overlay
+     */
     func removeOverlay() {
         self.overlay?.removeFromSuperview()
         self.signUp.isEnabled = true

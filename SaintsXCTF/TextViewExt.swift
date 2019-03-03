@@ -8,9 +8,14 @@
 
 import UIKit
 
+/**
+ Extend the functionality of the UITextView class
+ */
 extension UITextView {
     
-    // Set a text field to the standard style used across the app
+    /**
+     Set a text field to the standard style used across the app
+     */
     func standardStyle() {
         self.layer.borderWidth = 2
         self.layer.borderColor = UIColor(0xCCCCCC).cgColor

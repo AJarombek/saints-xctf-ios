@@ -9,15 +9,27 @@
 import UIKit
 import os.log
 
+/**
+ Class controlling logic for the view displayed as the application loads.
+ - Important:
+ ## Extends the following class:
+ - UIViewController: provides behavior shared between all classes that manage a view
+ */
 class StartViewController: UIViewController {
     
     let logTag = OSLog(subsystem: "SaintsXCTF.App.StartViewController", category: "StartViewController")
     
+    /**
+     Invoked when the StartViewController loads
+     */
     override func viewDidLoad() {
         super.viewDidLoad()
         os_log("StartViewController Loaded.", log: logTag, type: .debug)
     }
     
+    /**
+     Invoked after the StartViewController first appears
+     */
     override func viewDidAppear(_ animated: Bool) {
         
         // Execute after a two second delay
