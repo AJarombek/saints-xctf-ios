@@ -66,15 +66,41 @@ class ReportViewController: UIViewController, UITextViewDelegate {
         
         if !report.isEmpty && report != "Send report to admin <andrew@jarombek.com>" {
             
-            // Add a loading overlay to the report view on accept
-            var overlay: UIView?
-            overlay = LoadingView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height))
-            view.addSubview(overlay!)
-            self.submitButton.isEnabled = false
-            
             // Send an email to the website admin with the report
             sendEmail(withBody: report)
-            
+        }
+    }
+    
+    /**
+     When beginning to edit the textview, remove the placeholder and prepare view for user input
+     - parameters:
+     - body: text to send in the email body
+     */
+    func sendEmail(withBody body: String) {
+        
+        // Add a loading overlay to the report view on accept
+        var overlay: UIView?
+        overlay = LoadingView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height))
+        view.addSubview(overlay!)
+        self.submitButton.isEnabled = false
+        
+        // Build report email
+        let mail: Mail = Mail()
+        mail.emailAddress = "andrew@jarombek.com"
+        mail.subject = "SaintsXCTF Report: \(user.first ?? "") \(user.last ?? "") (\(user.username ?? ""))"
+        mail.body = """
+        <html>
+        <head>
+            <title>HTML email</title>
+        </head>
+        <body>
+            <p>\(body)</p>
+        </body>
+        </html>
+        """
+        
+        APIClient.mailPostRequest(withMail: mail) {
+            newMail -> Void in
             // Build the popup dialog to be displayed
             let title = "Report Submitted"
             
@@ -94,27 +120,6 @@ class ReportViewController: UIViewController, UITextViewDelegate {
             
             self.present(popup, animated: true, completion: nil)
         }
-    }
-    
-    /**
-     When beginning to edit the textview, remove the placeholder and prepare view for user input
-     - parameters:
-     - body: text to send in the email body
-     */
-    func sendEmail(withBody body: String) {
-        let mail: Mail = Mail()
-        mail.emailAddress = "andrew@jarombek.com"
-        mail.subject = "SaintsXCTF Report: \(user.first ?? "") \(user.last ?? "") (\(user.username ?? ""))"
-        mail.body = """
-        <html>
-        <head>
-            <title>HTML email</title>
-        </head>
-        <body>
-            <p>\(body)</p>
-        </body>
-        </html>
-        """
     }
     
     /**

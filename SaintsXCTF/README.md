@@ -65,3 +65,18 @@ Data models can be converted to and from JSON for use in REST API calls and thro
 | `Mail.swift`             | Data model representing an email.                                      |
 
 ### App Group
+
+App is the second of the two main groups.  It contains code that helps control the business logic behind the UI.
+
+**App**
+
+| Filename                         | Description                                                               |
+|----------------------------------|---------------------------------------------------------------------------|
+| `HomeViewController.swift`       | Controller for the view displayed before a user is signed in.             |
+| `SignUpViewController.swift`     | Controller for the view containing a form to sign up.                     |
+| `SignOutViewController.swift`    | Controller for the view allowing a user to sign out.                      |
+| `PickGroupViewController.swift`  | Controller for the view where users pick groups to join.                  |
+| `SignedInUser.swift`             | Helper methods to save and retrieve a signed in user from the filesystem. |
+| `StartViewController.swift`      | Controller for the view displayed as the app loads.                       |
+| `Utils.swift`                    | Utility functions used throughout the application.                        |
+| `LoadingView.swift`              | Storyboard view which displays a loading spinner.                         |
