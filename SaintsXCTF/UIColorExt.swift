@@ -8,9 +8,19 @@
 
 import UIKit
 
-// Build an extension on UIColor to take in hex values for colors
+/**
+ Build an extension on UIColor to take in hex values for colors.
+ */
 extension UIColor {
     
+    /**
+     Convenience initializer for creating a color with RGB integer values and an A float value
+     - parameters:
+     - red: R in RGBA
+     - green: G in RGBA
+     - blue: B in RGBA
+     - a: A in RGBA
+     */
     convenience init(red: Int, green: Int, blue: Int, a: CGFloat = 1.0) {
         assert(red >= 0 && red <= 255, "Invalid Red Value")
         assert(green >= 0 && green <= 255, "Invalid Green Value")
@@ -24,7 +34,12 @@ extension UIColor {
                   blue: CGFloat(blue) / 255.0, alpha: a)
     }
     
-    // Calls the first custom convenience int, but you can pass in one hex rgb value
+    /**
+     Calls the first custom convenience int, but you can pass in one hex rgb value
+     - parameters:
+     - rgb: Integer representing an RGB color.  First two digits are red, second two are green, and last two are blue.
+     - a: A in RGBA
+     */
     convenience init(_ rgb: Int, a: CGFloat = 1.0) {
         
         // Shift the bits and bitwise and to get the red green and blue

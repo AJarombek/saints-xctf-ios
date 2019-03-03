@@ -10,6 +10,12 @@ import UIKit
 import os.log
 import PopupDialog
 
+/**
+ Class representing a cell in the log table view.  Displays an exercise log.
+ - Important:
+ ## Extends the following class:
+ - UITableViewCell: provides methods for managing a table view cell
+ */
 class LogTableViewCell: UITableViewCell {
     
     let logTag = OSLog(subsystem: "SaintsXCTF.App.LogTableViewCell", category: "LogTableViewCell")
@@ -43,7 +49,9 @@ class LogTableViewCell: UITableViewCell {
         }
     }
     
-    // Called when the cell is about to be reused.  Reset all of the text fields
+    /**
+     Called when the cell is about to be reused.  Reset all of the text fields
+     */
     override func prepareForReuse() {
         super.prepareForReuse()
         
@@ -54,7 +62,11 @@ class LogTableViewCell: UITableViewCell {
         descriptionLabel.text = ""
     }
     
-    // Set the style of the cell with a background color determined by the log feel
+    /**
+     Set the style of the cell with a background color determined by the log feel
+     - parameters:
+     - feel: an integer representing how someone felt during their exercise
+     */
     func setStyle(withFeel feel: Int) {
         self.layer.borderWidth = 2
         self.layer.borderColor = UIColor(0xAAAAAA).cgColor
@@ -63,9 +75,12 @@ class LogTableViewCell: UITableViewCell {
         self.descriptionLabel.backgroundColor = UIColor(Constants.getFeelColor(feel - 1))
     }
     
-    // Executed when the user clicks on the edit log button
-    @objc
-    func editLog(sender: LogTableViewCell) {
+    /**
+     Executed when the user clicks on the edit log button
+     - parameters:
+     - sender: the cell that contains the edit button
+     */
+    @objc func editLog(sender: LogTableViewCell) {
         os_log("Pressed Edit", log: logTag, type: .debug)
         
         if let i = self.index, let logToEdit = self.log {
@@ -75,9 +90,12 @@ class LogTableViewCell: UITableViewCell {
         }
     }
     
-    // Executed when the user clicks on the delete log button
-    @objc
-    func deleteLog(sender: UIButton) {
+    /**
+     Executed when the user clicks on the delete log button
+     - parameters:
+     - sender: the button pressed (deleteButton)
+     */
+    @objc func deleteLog(sender: UIButton) {
         os_log("Pressed Delete", log: logTag, type: .debug)
         
         // Build the popup dialog to be displayed

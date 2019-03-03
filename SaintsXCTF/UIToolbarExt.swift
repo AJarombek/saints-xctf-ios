@@ -8,9 +8,16 @@
 
 import UIKit
 
+/**
+ Build an extension on UIToolbar.
+ */
 extension UIToolbar {
     
-    // Make a toolbar for a picker that has a done button
+    /**
+     Make a toolbar for a picker that has a 'Done' button.
+     - parameters:
+     - selector: the name of a method to call when the 'Done' button is clicked
+     */
     func PickerToolbar(selector: Selector) -> UIToolbar {
         
         let toolbar = UIToolbar()

@@ -10,6 +10,15 @@ import UIKit
 import os.log
 import PopupDialog
 
+/**
+ Controller for the newest exercise logs in the application.
+ - Important:
+ ## Extends the following class:
+ - UITableViewController: view controller for managing a table view
+ 
+ ## Implements the following protocols:
+ - UITextViewDelegate: methods that change the behavior of a text view being edited
+ */
 class MainViewController: UITableViewController, UITextViewDelegate {
     
     let logTag = OSLog(subsystem: "SaintsXCTF.App.MainViewController", category: "MainViewController")

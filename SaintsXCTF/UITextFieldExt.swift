@@ -14,10 +14,16 @@ enum Style {
 
 private var __maxLengths = [UITextField: Int]()
 
-// Build an extension on the UITextField class for styling functions
+/**
+ Build an extension on the UITextField class for styling functions.
+ */
 extension UITextField {
     
-    // Change border and background based on the style argument
+    /**
+     Change border and background based on the style argument
+     - parameters:
+     - style: an enum representing the different available border styles
+     */
     func changeStyle(_ style: Style) {
         
         if style == .valid {
@@ -45,7 +51,9 @@ extension UITextField {
         }
     }
     
-    // Set a text field to the standard style used across the app
+    /**
+     Set a text field to the standard style used across the app.
+     */
     func standardStyle() {
         self.layer.borderWidth = 2
         self.layer.borderColor = UIColor(0xCCCCCC).cgColor
@@ -67,6 +75,11 @@ extension UITextField {
         }
     }
     
+    /**
+     Limit a text field to a certain number of characters.
+     - parameters:
+     - textField: a UITextField to apply this change to
+     */
     @objc func fix(textField: UITextField) {
         let t = textField.text
         textField.text = t?.safelyLimitedTo(length: maxLength)

@@ -8,9 +8,14 @@
 
 import UIKit
 
+/**
+ Build an extension on UITableView to refresh the values in the cells.
+ */
 extension UITableView {
     
-    // A function to refresh the UITableView Cells
+    /**
+     A function to refresh the UITableView Cells.
+     */
     func refresh() {
         let indexPathForSection: IndexSet = [0]
         self.reloadSections(indexPathForSection, with: UITableView.RowAnimation.middle)

@@ -8,7 +8,10 @@
 
 import Foundation
 
-
+/**
+ Model class that represents data held in a LogTableViewCell
+ - SeeAlso: `LogTableViewCell`
+ */
 class LogData {
     
     var log: Log!
@@ -21,5 +24,8 @@ class LogData {
     var description: String?
     var descriptionTags: NSMutableAttributedString?
     
+    /**
+     Empty default initializer for the class
+     */
     init() {}
 }
