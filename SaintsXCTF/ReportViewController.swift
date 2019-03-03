@@ -62,28 +62,46 @@ class ReportViewController: UIViewController, UITextViewDelegate {
     @IBAction func submitReport(_ sender: UIButton) {
         os_log("Submitting Report.", log: logTag, type: .debug)
         
-        // Build the popup dialog to be displayed
-        let title = "Report Submitted"
+        let report: String = reportTextView.text
         
-        let button = DefaultButton(title: "Continue") {
-            self.resetField()
+        if !report.isEmpty && report != "Send report to admin <andrew@jarombek.com>" {
             
-            self.submittingReport = false
-            os_log("Continue and Reset Report Form.", log: self.logTag, type: .debug)
+            // Add a loading overlay to the report view on accept
+            var overlay: UIView?
+            overlay = LoadingView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height))
+            view.addSubview(overlay!)
+            self.submitButton.isEnabled = false
+            
+            // Send an email to the website admin with the report
+            /// TODO
+            
+            // Build the popup dialog to be displayed
+            let title = "Report Submitted"
+            
+            let button = DefaultButton(title: "Continue") {
+                self.resetField()
+                
+                // Re-enable button and remove loading overlay
+                overlay?.removeFromSuperview()
+                self.submitButton.isEnabled = true
+                
+                self.submittingReport = false
+                os_log("Continue and Reset Report Form.", log: self.logTag, type: .debug)
+            }
+            
+            let popup = PopupDialog(title: title, message: nil)
+            popup.addButton(button)
+            
+            self.present(popup, animated: true, completion: nil)
         }
-        
-        let popup = PopupDialog(title: title, message: nil)
-        popup.addButton(button)
-        
-        self.present(popup, animated: true, completion: nil)
     }
     
     /**
      Reset the report form to its default value
      */
     func resetField() {
-        reportTextView.text = "Send report to admin <andrew@jarombek.com>"
-        reportTextView.textColor = UIColor.lightGray
+        reportTextView.text = ""
+        reportTextView.textColor = UIColor.black
     }
     
     /**

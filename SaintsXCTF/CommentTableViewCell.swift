@@ -8,6 +8,12 @@
 
 import UIKit
 
+/**
+ Class representing a cell in the comments table view.  Displays a comment for an exercise log.
+ - Important:
+ ## Extends the following class:
+ - UITableViewCell: provides methods for managing a table view cell
+ */
 class CommentTableViewCell: UITableViewCell {
     
     @IBOutlet weak var nameLabel: UILabel!
@@ -31,7 +37,9 @@ class CommentTableViewCell: UITableViewCell {
         }
     }
     
-    // Called when the cell is about to be reused.  Reset all of the text fields
+    /**
+     Called when the cell is about to be reused.  Reset all of the text fields
+     */
     override func prepareForReuse() {
         super.prepareForReuse()
         

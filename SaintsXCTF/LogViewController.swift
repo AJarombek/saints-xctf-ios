@@ -520,6 +520,12 @@ class LogViewController: UIViewController, UITextViewDelegate, UIPickerViewDeleg
             
             os_log("Log Passed Validation: %@", log: logTag, type: .debug, log.description)
             
+            // Add a loading overlay to the log view on accept
+            var overlay: UIView?
+            overlay = LoadingView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height))
+            view.addSubview(overlay!)
+            self.submitButton.isEnabled = false
+            
             if !self.editingLog {
                 
                 // Submit the new log to the API
@@ -533,6 +539,10 @@ class LogViewController: UIViewController, UITextViewDelegate, UIPickerViewDeleg
                     
                     let button = DefaultButton(title: "Continue") {
                         self.resetFields()
+                        
+                        // Re-enable button and remove loading overlay
+                        overlay?.removeFromSuperview()
+                        self.submitButton.isEnabled = true
                         
                         self.editingLog = false
                         self.indexPassed = nil
@@ -560,6 +570,10 @@ class LogViewController: UIViewController, UITextViewDelegate, UIPickerViewDeleg
                     
                     let button = DefaultButton(title: "Continue") {
                         self.resetFields()
+                        
+                        // Re-enable button and remove loading overlay
+                        overlay?.removeFromSuperview()
+                        self.submitButton.isEnabled = true
                         
                         self.editingLog = false
                         self.indexPassed = nil
