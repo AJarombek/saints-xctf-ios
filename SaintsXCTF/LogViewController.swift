@@ -15,6 +15,7 @@ import PopupDialog
  - Important:
  ## Implements the following class:
  - UIViewController: provides behavior shared between all classes that manage a view
+ 
  ## Implements the following protocols:
  - UITextViewDelegate: methods that change the behavior of a text view being edited
  - UIPickerViewDelegate: required class for a picker view to construct itself

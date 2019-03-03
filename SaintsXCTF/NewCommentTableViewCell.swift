@@ -9,6 +9,13 @@
 import UIKit
 import os.log
 
+/**
+ Class representing a cell in the comments table view.  Provides an input text field to create a new comment
+ on the exercise log.
+ - Important:
+ ## Extends the following class:
+ - UITableViewCell: provides methods for managing a table view cell
+ */
 class NewCommentTableViewCell: UITableViewCell {
     
     let logTag = OSLog(subsystem: "SaintsXCTF.App.NewCommentTableViewCell", category: "NewCommentTableViewCell")

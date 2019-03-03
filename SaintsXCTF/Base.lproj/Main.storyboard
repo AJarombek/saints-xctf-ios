@@ -2364,20 +2364,23 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sMg-fp-XQP">
-                                <rect key="frame" x="36" y="70" width="303" height="547"/>
+                                <rect key="frame" x="21" y="70" width="333" height="547"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="zKA-Cr-DiT">
-                                        <rect key="frame" x="31.5" y="20" width="240" height="437"/>
+                                        <rect key="frame" x="13.5" y="20" width="306" height="437"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="zKA-Cr-DiT" secondAttribute="height" multiplier="240:437" id="djC-EO-IVo"/>
+                                            <constraint firstAttribute="width" secondItem="zKA-Cr-DiT" secondAttribute="height" multiplier="35:50" id="djC-EO-IVo"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9VI-4k-BBo">
-                                        <rect key="frame" x="127" y="467" width="49" height="30"/>
+                                        <rect key="frame" x="142" y="467" width="49" height="30"/>
                                         <state key="normal" title="Submit"/>
+                                        <connections>
+                                            <action selector="submitReport:" destination="5KW-RA-XGZ" eventType="touchUpInside" id="d3A-Rw-5ng"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2392,10 +2395,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="sMg-fp-XQP" secondAttribute="trailing" constant="20" id="B05-pN-bR2"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="sMg-fp-XQP" secondAttribute="trailing" constant="5" id="B05-pN-bR2"/>
                             <constraint firstItem="EH2-J9-gI7" firstAttribute="top" secondItem="sMg-fp-XQP" secondAttribute="bottom" constant="50" id="CA1-90-h7b"/>
                             <constraint firstItem="sMg-fp-XQP" firstAttribute="top" secondItem="vP6-Sm-2vA" secondAttribute="bottom" constant="50" id="Ddz-dO-FEd"/>
-                            <constraint firstItem="sMg-fp-XQP" firstAttribute="leading" secondItem="7A7-C7-cgc" secondAttribute="leadingMargin" constant="20" id="sa3-WA-jUR"/>
+                            <constraint firstItem="sMg-fp-XQP" firstAttribute="leading" secondItem="7A7-C7-cgc" secondAttribute="leadingMargin" constant="5" id="sa3-WA-jUR"/>
                         </constraints>
                     </view>
                     <connections>

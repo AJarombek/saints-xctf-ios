@@ -9,6 +9,15 @@
 import UIKit
 import os.log
 
+/**
+ Controller for comments on an exercise log.
+ - Important:
+ ## Extends the following class:
+ - UITableViewController: view controller for managing a table view
+ 
+ ## Implements the following protocols:
+ - UITextViewDelegate: methods that change the behavior of a text view being edited
+ */
 class CommentViewController: UITableViewController, UITextViewDelegate {
     
     @IBOutlet weak var commentTableView: UITableView!
