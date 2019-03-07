@@ -19,6 +19,15 @@ You can follow development of the android app here: [SaintsXCTF Android GitHub](
 
 This was the first public release of the iOS app.
 
+**V.1.1 - Safety Release**
+
+> Release Date: Mar 5, 2019
+
+The second major release for the SaintsXCTF iOS app.  Besides for bug fixes, this release introduced a EULA which is
+presented to users as they sign up.  Another major feature was the report functionality, allowing users to contact the
+site administrator about application problems / questionable user content.  Both of these features were added to conform
+to Apple guidelines.
+
 
 Current development is being spent on other projects.  However a codebase is always dynamic.  Future plans include:
 

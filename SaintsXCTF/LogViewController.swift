@@ -11,7 +11,7 @@ import os.log
 import PopupDialog
 
 /**
- Class controlling logic for the view displaying exercise logs.
+ Class controlling logic for the view allowing users to create/update exercise logs.
  - Important:
  ## Implements the following class:
  - UIViewController: provides behavior shared between all classes that manage a view

@@ -70,6 +70,9 @@ App is the second of the two main groups.  It contains code that helps control t
 
 **App**
 
+Contains controllers for views used before a user is signed in.  Also has pieces of functionality used throughout the
+application.
+
 | Filename                         | Description                                                               |
 |----------------------------------|---------------------------------------------------------------------------|
 | `HomeViewController.swift`       | Controller for the view displayed before a user is signed in.             |
@@ -80,3 +83,87 @@ App is the second of the two main groups.  It contains code that helps control t
 | `StartViewController.swift`      | Controller for the view displayed as the app loads.                       |
 | `Utils.swift`                    | Utility functions used throughout the application.                        |
 | `LoadingView.swift`              | Storyboard view which displays a loading spinner.                         |
+
+**App.Group**
+
+Swift code used throughout the Group pages of the application.
+
+| Filename                          | Description                                                               |
+|-----------------------------------|---------------------------------------------------------------------------|
+| `GroupListViewController.swift`   | Controller for the view displaying all the groups in the app.             |
+| `GroupViewController.swift`       | Controller for the view displaying a specific groups information.         |
+| `LeaderboardViewController.swift` | Controller for the view showing the groups exercise leaderboard.          |
+| `LeaderboardTableViewCell.swift`  | Controller for a cell in the groups exercise leaderboard.                 |
+| `SortView.swift`                  | A view with filters for different exercise types.                         |
+| `MessageViewController.swift`     | Controller for the view displaying private group messages.                |
+| `MessageTableViewCell.swift`      | Controller for a cell in the groups messages.                             |
+| `NewMessageTableViewCell.swift`   | Controller for a cell allowing the creation of a new group message.       |
+| `MemberViewController.swift`      | Controller for the view displaying group members.                         |
+| `MemberTableViewCell.swift`       | Controller for a cell in the group member list.                           |
+| `AdminViewController.swift`       | Controller for the view providing administrative functions.               |
+
+**App.Profile**
+
+Swift code used throughout the Profile pages of the application.
+
+| Filename                          | Description                                                               |
+|-----------------------------------|---------------------------------------------------------------------------|
+| `ProfileViewController.swift`     | Controller for viewing a users profile.                                   |
+| `EditProfileViewController.swift` | Controller for providing a user options to edit their profile.            |
+| `DetailsViewController.swift`     | Controller allowing users to edit their profile details.                  |
+| `ProPicViewController.swift`      | Controller allowing users to change their profile picture.                |
+| `MonthlyViewController.swift`     | Controller for the view displaying a monthly calendar of workouts.        |
+| `WeeklyViewController.swift`      | Controller for the view displaying a weekly graph of workouts.            |
+| `BarChartFormatter.swift`         | Extension of the BarChartView class which draws a bar chart.              |
+| `ReportViewController.swift`      | Controller allowing users to report issues to the application admin.      |
+
+**App.Log**
+
+Swift code used for creating and updating exercise logs.
+
+| Filename                          | Description                                                               |
+|-----------------------------------|---------------------------------------------------------------------------|
+| `LogViewController.swift`         | Controller for the form used to create/update exercise logs.              |
+
+**App.Comment**
+
+Swift code used for commenting functionality on exercise logs.
+
+| Filename                          | Description                                                               |
+|-----------------------------------|---------------------------------------------------------------------------|
+| `NewCommentTableViewCell.swift`   | Cell for writing a comment on a users exercise log.                       |
+| `CommentViewController.swift`     | Controller for the comments on a users exercise log.                      |
+| `CommentTableViewCell.swift`      | Cell for a single comment in a table view.                                |
+
+**App.Constants**
+
+Constants used in Swift code throughout the application.
+
+| Filename                          | Description                                                               |
+|-----------------------------------|---------------------------------------------------------------------------|
+| `Constants.swift`                 | Swift constant arrays and functions to retrieve items from these arrays.  |
+
+**App.Main**
+
+Swift code for the main page of the application.  The main page is displayed as soon as the user logs in, and showcases
+all the latest exercise logs.
+
+| Filename                          | Description                                                               |
+|-----------------------------------|---------------------------------------------------------------------------|
+| `LogDataSource.swift`             | An array of LogData objects which are displayed on the main page.         |
+| `MainViewController.swift`        | Controller for displaying an infinite scroll of exercise logs.            |
+| `LogTableViewCell.swift`          | Cell displaying a single exercise log.                                    |
+| `LogData.swift`                   | Model representing the data shown in an exercise log.                     |
+
+**App.Extensions**
+
+Extensions for existing classes and structs in the Swift standard library and third party tools.
+
+| Filename                    | Description                                                               |
+|-----------------------------|---------------------------------------------------------------------------|
+| `UITextFieldExt.swift`      | Extension for the UITextField class from UIKit.                           |
+| `UIColorExt.swift`          | Extension for constructing the UIColor class from UIKit.                  |
+| `UITableExt.swift`          | Extension for the UITable class from UIKit.                               |
+| `UIToolbarExt.swift`        | Extension for the UIToolbar class from UIKit.                             |
+| `StringExt.swift`           | Extension for the standard library String struct.                         |
+| `TextViewExt.swift`         | Extension for the UITextView class from UIKit.                            |
