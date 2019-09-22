@@ -84,13 +84,29 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SaintsXCTF/APIClient.swift"
-            timestampString = "573175600.093199"
+            timestampString = "590803307.214898"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "442"
             endingLineNumber = "442"
             landmarkName = "logfeedGetRequest(withParamType:sortParam:limit:offset:completion:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SaintsXCTFTests/LeaderboardViewControllerTest.swift"
+            timestampString = "590803307.2153831"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "15"
+            endingLineNumber = "15"
+            landmarkName = "LeaderboardViewControllerTest"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

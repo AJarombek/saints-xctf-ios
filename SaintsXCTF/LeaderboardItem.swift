@@ -21,11 +21,11 @@ class LeaderboardItem: Mappable {
     var username: String!
     var first: String!
     var last: String!
-    var miles: String!
-    var milesrun: String!
-    var milesbiked: String!
-    var milesswam: String!
-    var milesother: String!
+    var miles: Double!
+    var milesrun: Double!
+    var milesbiked: Double!
+    var milesswam: Double!
+    var milesother: Double!
     
     /**
      Required initializer for the Mappable protocol
