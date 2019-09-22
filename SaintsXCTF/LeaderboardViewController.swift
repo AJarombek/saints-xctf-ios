@@ -309,6 +309,7 @@ class LeaderboardViewController: UITableViewController, UIGestureRecognizerDeleg
      */
     func sortLeaderboardByMileage(leaderArray: [[String]]) -> [[String]] {
         var leaders = leaderArray
+        
         leaders.sort {
             $0[1].compare($1[1], options: .numeric) == .orderedDescending
         }

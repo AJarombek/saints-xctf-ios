@@ -8,3 +8,7 @@ target 'SaintsXCTF' do
   pod 'Charts'
   pod 'IQKeyboardManagerSwift'
 end
+
+target 'SaintsXCTFTests' do
+  pod 'ObjectMapper', '~> 3.4'
+end
