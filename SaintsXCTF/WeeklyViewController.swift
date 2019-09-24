@@ -188,7 +188,7 @@ class WeeklyViewController: UIViewController {
         
         // Get the day of the week
         let date: Date = Date()
-        var weekdayComponent = calendar.dateComponents([.weekday], from: date)
+        let weekdayComponent = calendar.dateComponents([.weekday], from: date)
         let weekday = weekdayComponent.weekday!
         
         // Set the end date as the end of this week and start date as 10 weeks previous

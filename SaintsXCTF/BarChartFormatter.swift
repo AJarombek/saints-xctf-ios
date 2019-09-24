@@ -73,7 +73,7 @@ extension BarChartView {
         }
         
         // Set the dataset values and colors
-        let chartDataSet = BarChartDataSet(values: dataEntries, label: label)
+        let chartDataSet = BarChartDataSet(entries: dataEntries, label: label)
         let chartData = BarChartData()
         chartData.addDataSet(chartDataSet)
         chartData.setDrawValues(true)

@@ -426,7 +426,7 @@ class MonthlyViewController: UIViewController {
         monthLabel.text = title
         
         // Get the day of the week that the first of the month is on
-        var weekdayComponent = calendar.dateComponents([.weekday], from: startMonth)
+        let weekdayComponent = calendar.dateComponents([.weekday], from: startMonth)
         let weekday = weekdayComponent.weekday!
         
         // First day of the calendar
