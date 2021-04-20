@@ -17,6 +17,8 @@ class APIClient {
     
     private static let logTag = OSLog(subsystem: "SaintsXCTF.APIClient.APIClient", category: "APIClient")
     
+    private static let apiBaseUrl = "https://dev.api.saintsxctf.com"
+    
     // MARK: - GET Requests
     
     /**
@@ -29,7 +31,7 @@ class APIClient {
                                       completion: @escaping (User) -> Void) {
         
         // Create the URL
-        let userGetEndpoint = "https://www.saintsxctf.com/api/api.php/users/\(username)"
+        let userGetEndpoint = "\(apiBaseUrl)/v2/users/\(username)"
         guard let url = URL(string: userGetEndpoint) else {
             os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
             OperationQueue.main.addOperation {
@@ -66,7 +68,7 @@ class APIClient {
      */
     public static func usersGetRequest(completion: @escaping ([User]) -> Void) {
     
-        let usersGetEndpoint = "https://www.saintsxctf.com/api/api.php/users"
+        let usersGetEndpoint = "\(apiBaseUrl)/v2/users"
         guard let url = URL(string: usersGetEndpoint) else {
             os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
             return
@@ -97,7 +99,7 @@ class APIClient {
                                      completion: @escaping (Log) -> Void) {
         
         // Create the URL
-        let logGetEndpoint = "https://www.saintsxctf.com/api/api.php/log/\(logID)"
+        let logGetEndpoint = "\(apiBaseUrl)/v2/log/\(logID)"
         guard let url = URL(string: logGetEndpoint) else {
             os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
             return
@@ -126,7 +128,7 @@ class APIClient {
      */
     public static func logsGetRequest(completion: @escaping ([Log]) -> Void) {
         
-        let logsGetEndpoint = "https://www.saintsxctf.com/api/api.php/logs"
+        let logsGetEndpoint = "\(apiBaseUrl)/v2/logs"
         guard let url = URL(string: logsGetEndpoint) else {
             os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
             return
@@ -157,7 +159,7 @@ class APIClient {
                                        completion: @escaping (Group) -> Void) {
         
         // Create the URL
-        let groupGetEndpoint = "https://www.saintsxctf.com/api/api.php/group/\(groupname)"
+        let groupGetEndpoint = "\(apiBaseUrl)/v2/group/\(groupname)"
         guard let url = URL(string: groupGetEndpoint) else {
             os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
             return
@@ -185,7 +187,7 @@ class APIClient {
      */
     public static func groupsGetRequest(completion: @escaping ([Group]) -> Void) {
         
-        let groupsGetEndpoint = "https://www.saintsxctf.com/api/api.php/groups"
+        let groupsGetEndpoint = "\(apiBaseUrl)/v2/groups"
         guard let url = URL(string: groupsGetEndpoint) else {
             os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
             return
@@ -216,7 +218,7 @@ class APIClient {
                                          completion: @escaping (Comment) -> Void) {
         
         // Create the URL
-        let commentGetEndpoint = "https://www.saintsxctf.com/api/api.php/comment/\(commentId)"
+        let commentGetEndpoint = "\(apiBaseUrl)/v2/comment/\(commentId)"
         guard let url = URL(string: commentGetEndpoint) else {
             os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
             return
@@ -244,7 +246,7 @@ class APIClient {
      */
     public static func commentsGetRequest(completion: @escaping ([Comment]) -> Void) {
         
-        let commentsGetEndpoint = "https://www.saintsxctf.com/api/api.php/comments"
+        let commentsGetEndpoint = "\(apiBaseUrl)/v2/comments"
         guard let url = URL(string: commentsGetEndpoint) else {
             os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
             return
@@ -275,7 +277,7 @@ class APIClient {
                                          completion: @escaping (Message) -> Void) {
         
         // Create the URL
-        let messageGetEndpoint = "https://www.saintsxctf.com/api/api.php/message/\(messageId)"
+        let messageGetEndpoint = "\(apiBaseUrl)/v2/message/\(messageId)"
         guard let url = URL(string: messageGetEndpoint) else {
             os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
             return
@@ -303,7 +305,7 @@ class APIClient {
      */
     public static func messagesGetRequest(completion: @escaping ([Message]) -> Void) {
         
-        let messagesGetEndpoint = "https://www.saintsxctf.com/api/api.php/messages"
+        let messagesGetEndpoint = "\(apiBaseUrl)/v2/messages"
         guard let url = URL(string: messagesGetEndpoint) else {
             os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
             return
@@ -334,7 +336,7 @@ class APIClient {
                                                 completion: @escaping (ActivationCode?) -> Void) {
         
         // Create the URL
-        let activationCodeGetEndpoint = "https://www.saintsxctf.com/api/api.php/activationcode/\(code)"
+        let activationCodeGetEndpoint = "\(apiBaseUrl)/v2/activationcode/\(code)"
         guard let url = URL(string: activationCodeGetEndpoint) else {
             os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
             return
@@ -369,7 +371,7 @@ class APIClient {
                                               completion: @escaping (Notification) -> Void) {
         
         // Create the URL
-        let notificationGetEndpoint = "https://www.saintsxctf.com/api/api.php/notification/\(notificationId)"
+        let notificationGetEndpoint = "\(apiBaseUrl)/v2/notification/\(notificationId)"
         guard let url = URL(string: notificationGetEndpoint) else {
             os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
             return
@@ -397,7 +399,7 @@ class APIClient {
      */
     public static func notificationsGetRequest(completion: @escaping ([Notification]) -> Void) {
         
-        let notificationsGetEndpoint = "https://www.saintsxctf.com/api/api.php/notifications"
+        let notificationsGetEndpoint = "\(apiBaseUrl)/v2/notifications"
         guard let url = URL(string: notificationsGetEndpoint) else {
             os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
             return
@@ -431,8 +433,7 @@ class APIClient {
     public static func logfeedGetRequest(withParamType paramType: String, sortParam: String,
                                          limit: Int, offset: Int, completion: @escaping ([Log]) -> Void) {
         
-        let logfeedGetEndpoint = "https://www.saintsxctf.com/api/api.php/logfeed/"
-            + "\(paramType)/\(sortParam)/\(limit)/\(offset)"
+        let logfeedGetEndpoint = "\(apiBaseUrl)/v2/logfeed/\(paramType)/\(sortParam)/\(limit)/\(offset)"
         guard let url = URL(string: logfeedGetEndpoint) else {
             os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
             return
@@ -466,8 +467,7 @@ class APIClient {
     public static func messagefeedGetRequest(withParamType paramType: String, sortParam: String,
                                              limit: Int, offset: Int, completion: @escaping ([Message]) -> Void) {
         
-        let messagefeedGetEndpoint = "https://www.saintsxctf.com/api/api.php/messagefeed/"
-            + "\(paramType)/\(sortParam)/\(limit)/\(offset)"
+        let messagefeedGetEndpoint = "\(apiBaseUrl)/v2/messagefeed/\(paramType)/\(sortParam)/\(limit)/\(offset)"
         guard let url = URL(string: messagefeedGetEndpoint) else {
             os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
             return
@@ -503,8 +503,7 @@ class APIClient {
     public static func rangeViewGetRequest(withParamType paramType: String, sortParam: String, filter: String,
                                            start: String, end: String, completion: @escaping ([RangeView]) -> Void) {
         
-        let rangeviewGetEndpoint = "https://www.saintsxctf.com/api/api.php/rangeview/"
-            + "\(paramType)/\(sortParam)/\(filter)/\(start)/\(end)"
+        let rangeviewGetEndpoint = "\(apiBaseUrl)/v2/rangeview/\(paramType)/\(sortParam)/\(filter)/\(start)/\(end)"
         print(rangeviewGetEndpoint)
         guard let url = URL(string: rangeviewGetEndpoint) else {
             os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
@@ -540,7 +539,7 @@ class APIClient {
      */
     public static func userPostRequest(withUser user: User, completion: @escaping (User?) -> Void) {
         
-        let usersPostEndpoint = "https://www.saintsxctf.com/api/api.php/users"
+        let usersPostEndpoint = "\(apiBaseUrl)/v2/users"
         guard let url = URL(string: usersPostEndpoint) else {
             os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
             return
@@ -576,7 +575,7 @@ class APIClient {
      */
     public static func logPostRequest(withLog log: Log, completion: @escaping (Log) -> Void) {
         
-        let logPostEndpoint = "https://www.saintsxctf.com/api/api.php/log"
+        let logPostEndpoint = "\(apiBaseUrl)/v2/log"
         guard let url = URL(string: logPostEndpoint) else {
             os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
             return
@@ -609,7 +608,7 @@ class APIClient {
     public static func commentPostRequest(withComment comment: Comment,
                                           completion: @escaping (Comment) -> Void) {
         
-        let commentPostEndpoint = "https://www.saintsxctf.com/api/api.php/comment"
+        let commentPostEndpoint = "\(apiBaseUrl)/v2/comment"
         guard let url = URL(string: commentPostEndpoint) else {
             os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
             return
@@ -642,7 +641,7 @@ class APIClient {
     public static func messagePostRequest(withMessage message: Message,
                                           completion: @escaping (Message) -> Void) {
         
-        let messagePostEndpoint = "https://www.saintsxctf.com/api/api.php/message"
+        let messagePostEndpoint = "\(apiBaseUrl)/v2/message"
         guard let url = URL(string: messagePostEndpoint) else {
             os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
             return
@@ -673,7 +672,7 @@ class APIClient {
      */
     public static func activationCodePostRequest(completion: @escaping (ActivationCode?) -> Void) {
         
-        let activationCodePostEndpoint = "https://www.saintsxctf.com/api/api.php/activationcode"
+        let activationCodePostEndpoint = "\(apiBaseUrl)/v2/activationcode"
         guard let url = URL(string: activationCodePostEndpoint) else {
             os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
             return
@@ -706,7 +705,7 @@ class APIClient {
     public static func notificationPostRequest(withNotification notification: Notification,
                                                completion: @escaping (Notification) -> Void) {
         
-        let notificationPostEndpoint = "https://www.saintsxctf.com/api/api.php/notification"
+        let notificationPostEndpoint = "\(apiBaseUrl)/v2/notification"
         guard let url = URL(string: notificationPostEndpoint) else {
             os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
             return
@@ -739,7 +738,7 @@ class APIClient {
     public static func mailPostRequest(withMail mail: Mail,
                                                completion: @escaping (Mail?) -> Void) {
         
-        let mailPostEndpoint = "https://www.saintsxctf.com/api/api.php/mail"
+        let mailPostEndpoint = "\(apiBaseUrl)/v2/mail"
         guard let url = URL(string: mailPostEndpoint) else {
             os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
             return
@@ -769,7 +768,7 @@ class APIClient {
     public static func userPutRequest(withUsername username: String, andUser user: User,
                                       completion: @escaping (User?) -> Void) {
         
-        let usersPutEndpoint = "https://www.saintsxctf.com/api/api.php/user/\(username)"
+        let usersPutEndpoint = "\(apiBaseUrl)/v2/user/\(username)"
         guard let url = URL(string: usersPutEndpoint) else {
             os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
             return
@@ -808,7 +807,7 @@ class APIClient {
     public static func logPutRequest(withLogID logID: Int, andLog log: Log,
                                      completion: @escaping (Log) -> Void) {
         
-        let logPutEndpoint = "https://www.saintsxctf.com/api/api.php/log/\(logID)"
+        let logPutEndpoint = "\(apiBaseUrl)/v2/log/\(logID)"
         guard let url = URL(string: logPutEndpoint) else {
             os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
             return
@@ -842,7 +841,7 @@ class APIClient {
     public static func groupPutRequest(withGroupname groupname: String, andGroup group: Group,
                                        completion: @escaping (Group?) -> Void) {
         
-        let groupPutEndpoint = "https://www.saintsxctf.com/api/api.php/group/\(groupname)"
+        let groupPutEndpoint = "\(apiBaseUrl)/v2/group/\(groupname)"
         guard let url = URL(string: groupPutEndpoint) else {
             os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
             return
@@ -880,7 +879,7 @@ class APIClient {
     public static func commentPutRequest(withCommentId commentId: Int, andComment comment: Comment,
                                          completion: @escaping (Comment) -> Void) {
         
-        let commentPutEndpoint = "https://www.saintsxctf.com/api/api.php/comment/\(commentId)"
+        let commentPutEndpoint = "\(apiBaseUrl)/v2/comment/\(commentId)"
         guard let url = URL(string: commentPutEndpoint) else {
             os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
             return
@@ -914,7 +913,7 @@ class APIClient {
     public static func messagePutRequest(withMessageId messageId: Int, andMessage message: Message,
                                          completion: @escaping (Message) -> Void) {
         
-        let messagePutEndpoint = "https://www.saintsxctf.com/api/api.php/message/\(messageId)"
+        let messagePutEndpoint = "\(apiBaseUrl)/v2/message/\(messageId)"
         guard let url = URL(string: messagePutEndpoint) else {
             os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
             return
@@ -949,7 +948,7 @@ class APIClient {
     public static func userDeleteRequest(withUsername username: String,
                                          completion: @escaping (Bool) -> Void) {
         
-        let usersDeleteEndpoint = "https://www.saintsxctf.com/api/api.php/user/\(username)"
+        let usersDeleteEndpoint = "\(apiBaseUrl)/v2/user/\(username)"
         guard let url = URL(string: usersDeleteEndpoint) else {
             os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
             return
@@ -975,7 +974,7 @@ class APIClient {
     public static func logDeleteRequest(withLogID logID: Int,
                                         completion: @escaping (Bool) -> Void) {
         
-        let logDeleteEndpoint = "https://www.saintsxctf.com/api/api.php/log/\(logID)"
+        let logDeleteEndpoint = "\(apiBaseUrl)/v2/log/\(logID)"
         guard let url = URL(string: logDeleteEndpoint) else {
             os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
             return
@@ -1001,7 +1000,7 @@ class APIClient {
     public static func commentDeleteRequest(withCommentID commentID: Int,
                                             completion: @escaping (Bool) -> Void) {
         
-        let commentDeleteEndpoint = "https://www.saintsxctf.com/api/api.php/comment/\(commentID)"
+        let commentDeleteEndpoint = "\(apiBaseUrl)/v2/comment/\(commentID)"
         guard let url = URL(string: commentDeleteEndpoint) else {
             os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
             return
@@ -1027,7 +1026,7 @@ class APIClient {
     public static func messageDeleteRequest(withMessageID messageID: Int,
                                             completion: @escaping (Bool) -> Void) {
         
-        let messageDeleteEndpoint = "https://www.saintsxctf.com/api/api.php/message/\(messageID)"
+        let messageDeleteEndpoint = "\(apiBaseUrl)/v2/message/\(messageID)"
         guard let url = URL(string: messageDeleteEndpoint) else {
             os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
             return
@@ -1053,8 +1052,7 @@ class APIClient {
     public static func activationCodeDeleteRequest(withActivationCode activationCode: String,
                                                    completion: @escaping (Bool) -> Void) {
         
-        let activationCodeDeleteEndpoint = "https://www.saintsxctf.com/api/api.php/"
-                                            + "activationcode/\(activationCode)"
+        let activationCodeDeleteEndpoint = "\(apiBaseUrl)/v2/activationcode/\(activationCode)"
         guard let url = URL(string: activationCodeDeleteEndpoint) else {
             os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
             return
@@ -1080,8 +1078,7 @@ class APIClient {
     public static func notificationDeleteRequest(withNotificationId notificationId: String,
                                                  completion: @escaping (Bool) -> Void) {
         
-        let notificationDeleteEndpoint = "https://www.saintsxctf.com/api/api.php/"
-            + "notification/\(notificationId)"
+        let notificationDeleteEndpoint = "\(apiBaseUrl)/v2/notification/\(notificationId)"
         guard let url = URL(string: notificationDeleteEndpoint) else {
             os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
             return

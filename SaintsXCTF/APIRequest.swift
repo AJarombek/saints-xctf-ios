@@ -39,6 +39,8 @@ class APIRequest {
         var credsJSON: String? = cred.toJSONString()
         credsJSON = credsJSON?.toBase64()
         
+        os_log("%@", log: APIRequest.logTag, type: .debug, credsJSON!)
+        
         // add the credentials and accept type to the url request
         urlRequest.addValue("application/json", forHTTPHeaderField: "Accept")
         urlRequest.addValue(credsJSON!, forHTTPHeaderField: "Authorization")
@@ -69,6 +71,8 @@ class APIRequest {
                 return
                     
             }
+            
+            os_log("%@", log: APIRequest.logTag, type: .debug, json)
                 
             OperationQueue.main.addOperation {
                 completion(json)
