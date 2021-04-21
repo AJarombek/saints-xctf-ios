@@ -32,18 +32,8 @@ class APIRequest {
     public static func get(withURL url: URL, completion: @escaping (String) -> Void) {
         var urlRequest = URLRequest(url: url)
         
-        // Get the necessary credentials for the API Request
-        let cred = Credentials()
-
-        // encode the credentials
-        var credsJSON: String? = cred.toJSONString()
-        credsJSON = credsJSON?.toBase64()
-        
-        os_log("%@", log: APIRequest.logTag, type: .debug, credsJSON!)
-        
         // add the credentials and accept type to the url request
         urlRequest.addValue("application/json", forHTTPHeaderField: "Accept")
-        urlRequest.addValue(credsJSON!, forHTTPHeaderField: "Authorization")
         
         let task = session.dataTask(with: urlRequest) {
             (data, response, error) -> Void in
@@ -97,16 +87,8 @@ class APIRequest {
         let body: Data = json.data(using: .utf8)!
         urlrequest.httpBody = body
         
-        // Get the necessary credentials for the API Request
-        let cred = Credentials()
-        
-        // encode the credentials
-        var credsJSON: String? = cred.toJSONString()
-        credsJSON = credsJSON?.toBase64()
-        
         // add the credentials and accept type to the url request
         urlrequest.addValue("application/json", forHTTPHeaderField: "Accept")
-        urlrequest.addValue(credsJSON!, forHTTPHeaderField: "Authorization")
         
         let task = session.dataTask(with: urlrequest) {
             (data, response, error) -> Void in
@@ -158,16 +140,8 @@ class APIRequest {
         let body: Data = json.data(using: .utf8)!
         urlrequest.httpBody = body
         
-        // Get the necessary credentials for the API Request
-        let cred = Credentials()
-        
-        // encode the credentials
-        var credsJSON: String? = cred.toJSONString()
-        credsJSON = credsJSON?.toBase64()
-        
         // add the credentials and accept type to the url request
         urlrequest.addValue("application/json", forHTTPHeaderField: "Accept")
-        urlrequest.addValue(credsJSON!, forHTTPHeaderField: "Authorization")
         
         let task = session.dataTask(with: urlrequest) {
             (data, response, error) -> Void in
@@ -213,16 +187,8 @@ class APIRequest {
         var urlrequest = URLRequest(url: url)
         urlrequest.httpMethod = "DELETE"
         
-        // Get the necessary credentials for the API Request
-        let cred = Credentials()
-        
-        // encode the credentials
-        var credsJSON: String? = cred.toJSONString()
-        credsJSON = credsJSON?.toBase64()
-        
         // add the credentials and accept type to the url request
         urlrequest.addValue("application/json", forHTTPHeaderField: "Accept")
-        urlrequest.addValue(credsJSON!, forHTTPHeaderField: "Authorization")
         
         let task = session.dataTask(with: urlrequest) {
             (data, response, error) -> Void in
