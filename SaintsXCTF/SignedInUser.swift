@@ -84,7 +84,7 @@ class SignedInUser {
             try data.write(to: SignedInUser.userArchiveURL)
             return true
         } catch {
-            os_log("Error saving Signed In User", log: SignedInUser.logTag, type: .debug)
+            os_log("Error removing Signed In User", log: SignedInUser.logTag, type: .debug)
             return false
         }
     }

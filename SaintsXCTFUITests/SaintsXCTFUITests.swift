@@ -16,7 +16,7 @@ class SaintsXCTFUITests: XCTestCase {
 
     override func tearDownWithError() throws {}
 
-    func testExample() throws {
+    func testAbleToViewEula() throws {
         let app = XCUIApplication()
         app.launch()
         
@@ -57,7 +57,22 @@ class SaintsXCTFUITests: XCTestCase {
         XCTAssert(submitButton.exists)
         XCTAssert(cancelButton.exists)
         
-        app.textViews.textViews.matching(identifier: "I have read and agree to the SaintsXCTF EULA").links["SaintsXCTF EULA"].tap()
+        let eula = app.textViews.textViews.matching(identifier: "I have read and agree to the SaintsXCTF EULA").links["SaintsXCTF EULA"]
+            
+        XCTAssert(eula.exists)
+        
+        eula.tap()
+        
+        let eulaUrl = "https://www.termsfeed.com/eula/ef5f58cef41e72df54c0b73d8ee8be15"
+        
+        let safari = XCUIApplication(bundleIdentifier: "com.apple.mobilesafari")
+        safari.buttons["URL"].tap()
+        let browserUrl = safari.textFields["URL"].value as! String
+        
+        XCTAssert(browserUrl == eulaUrl)
+        
+        safari.buttons["Cancel"].tap()
+        app.activate()
     }
 
     func testLaunchPerformance() throws {

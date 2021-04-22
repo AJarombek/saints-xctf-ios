@@ -11,6 +11,7 @@
 		3FC8B703262E5C8D00FFAB08 /* FnClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC8B702262E5C8D00FFAB08 /* FnClient.swift */; };
 		3FC8B70D262F9D9300FFAB08 /* SaintsXCTFUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC8B70C262F9D9300FFAB08 /* SaintsXCTFUITests.swift */; };
 		3FC8B717262FA91100FFAB08 /* AuthResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC8B716262FA91100FFAB08 /* AuthResult.swift */; };
+		3FC8B71D2630E67500FFAB08 /* UserJWT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC8B71C2630E67500FFAB08 /* UserJWT.swift */; };
 		74D2B82CDDDB8485C81DDB7D /* Pods_SaintsXCTFTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C6D808CC5886260E5A60EA3 /* Pods_SaintsXCTFTests.framework */; };
 		A1015A371EEDC0EA00A2358E /* ActivationCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1015A361EEDC0EA00A2358E /* ActivationCode.swift */; };
 		A1015A391EEDC1CF00A2358E /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1015A381EEDC1CF00A2358E /* Message.swift */; };
@@ -173,6 +174,7 @@
 		3FC8B70C262F9D9300FFAB08 /* SaintsXCTFUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaintsXCTFUITests.swift; sourceTree = "<group>"; };
 		3FC8B70E262F9D9300FFAB08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3FC8B716262FA91100FFAB08 /* AuthResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResult.swift; sourceTree = "<group>"; };
+		3FC8B71C2630E67500FFAB08 /* UserJWT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserJWT.swift; sourceTree = "<group>"; };
 		7A2D9BE8020FFC609A9D432B /* Pods_SaintsXCTF.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SaintsXCTF.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1015A361EEDC0EA00A2358E /* ActivationCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivationCode.swift; sourceTree = "<group>"; };
 		A1015A381EEDC1CF00A2358E /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
@@ -436,6 +438,7 @@
 				A15E623F1F4273BB00AC9EF1 /* StartViewController.swift */,
 				A19DED581F6CC79500E6C9DA /* Utils.swift */,
 				A173CB531F81C07D009C7A28 /* LoadingView.swift */,
+				3FC8B71C2630E67500FFAB08 /* UserJWT.swift */,
 			);
 			name = App;
 			sourceTree = "<group>";
@@ -849,6 +852,7 @@
 				A172A1771F96E8A100C7A535 /* LogData.swift in Sources */,
 				A11AB8B41F8EF0810098AE8E /* MessageTableViewCell.swift in Sources */,
 				A1505B921E8F10A900F111DB /* Group.swift in Sources */,
+				3FC8B71D2630E67500FFAB08 /* UserJWT.swift in Sources */,
 				A11AB8B01F8C57B50098AE8E /* SortView.swift in Sources */,
 				A11C2DF61F0B284F00EBDDB5 /* MainViewController.swift in Sources */,
 				A15E623E1F41545000AC9EF1 /* SignedInUser.swift in Sources */,

@@ -35,6 +35,8 @@ class StartViewController: UIViewController {
         // Execute after a two second delay
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2), execute: {
             _ = SignedInUser()
+            _ = UserJWT()
+            
             let user = SignedInUser.user
             
             if (user.username != "") {
