@@ -82,49 +82,22 @@ class HomeViewController: UIViewController {
                 signUp.isEnabled = false
             
                 os_log("Logging In User %@.", log: logTag, type: .debug, usernameString)
-            
-                // Second request the user from the API and specify a callback closure
-                APIClient.userGetRequest(withUsername: usernameString) {
-                    (user) -> Void in
                 
-                    // Check to see if the password entered and the users hash match
-                    if let hash: String = user.password,
-                        let verified: Bool = BCryptSwift.verifyPassword(passwordString, matchesHash: hash) {
+                AuthClient.tokenPostRequest(withUsername: usernameString, password: passwordString, completion: {
+                    (authResult: AuthResult) -> Void in
                     
-                        if verified {
-                            os_log("Valid Password Entered!", log: self.logTag, type: .debug)
-                        
-                            // Save the user sign in data
-                            SignedInUser.user = user
-                            let savedUser = SignedInUser.saveUser()
-                            
-                            if (savedUser) {
-                                os_log("Saved User to Persistant Storage.", log: self.logTag, type: .debug)
-                            } else {
-                                os_log("Failed to Saves User to Persistant Storage",
-                                       log: self.logTag, type: .error)
-                            }
-                        
-                            // Redirect to the main page
-                            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                            let mainViewController = storyBoard.instantiateViewController(withIdentifier:
-                                "mainViewController") as! UITabBarController
-                            self.present(mainViewController, animated: true, completion: nil)
-                        
-                        } else {
-                            os_log("INVALID Password Entered.", log: self.logTag, type: .error)
-                            self.error.text = "Invalid Username/Password Entered"
-                            self.username.changeStyle(.warning)
-                            self.password.changeStyle(.warning)
-                            self.removeOverlay()
-                        }
-                    } else {
-                        os_log("Unable to Verify Password", log: self.logTag, type: .error)
-                        self.error.text = "Invalid Username Entered"
-                        self.username.changeStyle(.error)
+                    if (!authResult.result.isEmpty) {
+                        os_log("No Auth Token Returned.", log: self.logTag, type: .error)
+                        self.error.text = "Invalid Username/Password Entered"
+                        self.username.changeStyle(.warning)
+                        self.password.changeStyle(.warning)
                         self.removeOverlay()
+                    } else {
+                        UserJWT.jwt = authResult.result
+                        _ = UserJWT.saveJWT()
+                        self.validatePassword(username: usernameString, password: passwordString)
                     }
-                }
+                })
             }
         } else {
             self.error.text = "Please Enter a Username and Password"
@@ -132,6 +105,51 @@ class HomeViewController: UIViewController {
             self.password.changeStyle(.error)
         }
         
+    }
+    
+    func validatePassword(username: String, password: String) {
+        // Second request the user from the API and specify a callback closure
+        APIClient.userGetRequest(withUsername: username, fromController: self) {
+            (user: User) -> Void in
+        
+            // Check to see if the password entered and the users hash match
+            if let hash: String = user.password,
+                let verified: Bool = BCryptSwift.verifyPassword(password, matchesHash: hash) {
+            
+                if verified {
+                    os_log("Valid Password Entered!", log: self.logTag, type: .debug)
+                
+                    // Save the user sign in data
+                    SignedInUser.user = user
+                    let savedUser = SignedInUser.saveUser()
+                    
+                    if (savedUser) {
+                        os_log("Saved User to Persistant Storage.", log: self.logTag, type: .debug)
+                    } else {
+                        os_log("Failed to Saves User to Persistant Storage",
+                               log: self.logTag, type: .error)
+                    }
+                
+                    // Redirect to the main page
+                    let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                    let mainViewController = storyBoard.instantiateViewController(withIdentifier:
+                        "mainViewController") as! UITabBarController
+                    self.present(mainViewController, animated: true, completion: nil)
+                
+                } else {
+                    os_log("INVALID Password Entered.", log: self.logTag, type: .error)
+                    self.error.text = "Invalid Username/Password Entered"
+                    self.username.changeStyle(.warning)
+                    self.password.changeStyle(.warning)
+                    self.removeOverlay()
+                }
+            } else {
+                os_log("Unable to Verify Password", log: self.logTag, type: .error)
+                self.error.text = "Invalid Username Entered"
+                self.username.changeStyle(.error)
+                self.removeOverlay()
+            }
+        }
     }
     
     /**

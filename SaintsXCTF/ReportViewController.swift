@@ -99,7 +99,7 @@ class ReportViewController: UIViewController, UITextViewDelegate {
         </html>
         """
         
-        APIClient.mailPostRequest(withMail: mail) {
+        APIClient.mailPostRequest(withMail: mail, fromController: self) {
             newMail -> Void in
             // Build the popup dialog to be displayed
             let title = "Report Submitted"

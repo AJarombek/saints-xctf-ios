@@ -25,10 +25,14 @@ class APIClient {
      Handle GET Requests for a User
      - parameters:
      - username: the username of a user to retrieve
+     - controller:  UI Controller that the API request originates from
      - completion:  Callback function which is invoked once the GET request is fulfilled
      */
-    public static func userGetRequest(withUsername username: String,
-                                      completion: @escaping (User) -> Void) {
+    public static func userGetRequest(
+        withUsername username: String,
+        fromController controller: UIViewController?,
+        completion: @escaping (User) -> Void
+    ) {
         
         // Create the URL
         let userGetEndpoint = "\(apiBaseUrl)/v2/users/\(username)"
@@ -41,7 +45,7 @@ class APIClient {
         }
         
         // Generate the request with a completion function to parse JSON
-        APIRequest.get(withURL: url) {
+        APIRequest.get(withURL: url, fromController: controller) {
             (json) -> Void in
         
             if let user: User = Mapper<User>().map(JSONString: json) {
@@ -64,9 +68,10 @@ class APIClient {
     /**
      Handle a GET request for all Users in the database
      - parameters:
+     - controller: UI Controller that the API request originates from
      - completion:  Callback function which is invoked once the GET request is fulfilled
      */
-    public static func usersGetRequest(completion: @escaping ([User]) -> Void) {
+    public static func usersGetRequest(fromController controller: UIViewController?, completion: @escaping ([User]) -> Void) {
     
         let usersGetEndpoint = "\(apiBaseUrl)/v2/users"
         guard let url = URL(string: usersGetEndpoint) else {
@@ -74,7 +79,7 @@ class APIClient {
             return
         }
         
-        APIRequest.get(withURL: url) {
+        APIRequest.get(withURL: url, fromController: controller) {
             (json) -> Void in
             
             if let users: Array<User> = Mapper<User>().mapArray(JSONString: json) {
@@ -93,10 +98,14 @@ class APIClient {
      Handle GET Requests for an exercise Log
      - parameters:
      - logID: a unique identifier for an exercise log
+     - controller: UI Controller that the API request originates from
      - completion:  Callback function which is invoked once the GET request is fulfilled
      */
-    public static func logGetRequest(withLogID logID: Int,
-                                     completion: @escaping (Log) -> Void) {
+    public static func logGetRequest(
+        withLogID logID: Int,
+        fromController controller: UIViewController?,
+        completion: @escaping (Log) -> Void
+    ) {
         
         // Create the URL
         let logGetEndpoint = "\(apiBaseUrl)/v2/log/\(logID)"
@@ -106,7 +115,7 @@ class APIClient {
         }
         
         // Generate the request with a completion function to parse JSON
-        APIRequest.get(withURL: url) {
+        APIRequest.get(withURL: url, fromController: controller) {
             (json) -> Void in
             
             if let log: Log = Mapper<Log>().map(JSONString: json) {
@@ -124,9 +133,10 @@ class APIClient {
     /**
      Handle a GET Request for all Logs in the database
      - parameters:
+     - controller: UI Controller that the API request originates from
      - completion:  Callback function which is invoked once the GET request is fulfilled
      */
-    public static func logsGetRequest(completion: @escaping ([Log]) -> Void) {
+    public static func logsGetRequest(fromController controller: UIViewController?, completion: @escaping ([Log]) -> Void) {
         
         let logsGetEndpoint = "\(apiBaseUrl)/v2/logs"
         guard let url = URL(string: logsGetEndpoint) else {
@@ -134,7 +144,7 @@ class APIClient {
             return
         }
         
-        APIRequest.get(withURL: url) {
+        APIRequest.get(withURL: url, fromController: controller) {
             (json) -> Void in
             
             if let logs: Array<Log> = Mapper<Log>().mapArray(JSONString: json) {
@@ -153,10 +163,14 @@ class APIClient {
      Handle GET Requests for a Group
      - parameters:
      - groupname: a unique name for a group
+     - controller: UI Controller that the API request originates from
      - completion:  Callback function which is invoked once the GET request is fulfilled
      */
-    public static func groupGetRequest(withGroupname groupname: String,
-                                       completion: @escaping (Group) -> Void) {
+    public static func groupGetRequest(
+        withGroupname groupname: String,
+        fromController controller: UIViewController?,
+        completion: @escaping (Group) -> Void
+    ) {
         
         // Create the URL
         let groupGetEndpoint = "\(apiBaseUrl)/v2/group/\(groupname)"
@@ -165,7 +179,7 @@ class APIClient {
             return
         }
         
-        APIRequest.get(withURL: url) {
+        APIRequest.get(withURL: url, fromController: controller) {
             (json) -> Void in
             
             if let group: Group = Mapper<Group>().map(JSONString: json) {
@@ -183,9 +197,10 @@ class APIClient {
     /**
      Handle a GET Request for all the Groups in the database
      - parameters:
+     - controller: UI Controller that the API request originates from
      - completion:  Callback function which is invoked once the GET request is fulfilled
      */
-    public static func groupsGetRequest(completion: @escaping ([Group]) -> Void) {
+    public static func groupsGetRequest(fromController controller: UIViewController?, completion: @escaping ([Group]) -> Void) {
         
         let groupsGetEndpoint = "\(apiBaseUrl)/v2/groups"
         guard let url = URL(string: groupsGetEndpoint) else {
@@ -193,7 +208,7 @@ class APIClient {
             return
         }
         
-        APIRequest.get(withURL: url) {
+        APIRequest.get(withURL: url, fromController: controller) {
             (json) -> Void in
             
             if let groups: Array<Group> = Mapper<Group>().mapArray(JSONString: json) {
@@ -212,10 +227,14 @@ class APIClient {
      Handle GET Requests for a Comment
      - parameters:
      - commentId: a unique identifer for a comment
+     - controller: UI Controller that the API request originates from
      - completion:  Callback function which is invoked once the GET request is fulfilled
      */
-    public static func commentGetRequest(withCommentId commentId: Int,
-                                         completion: @escaping (Comment) -> Void) {
+    public static func commentGetRequest(
+        withCommentId commentId: Int,
+        fromController controller: UIViewController?,
+        completion: @escaping (Comment) -> Void
+    ) {
         
         // Create the URL
         let commentGetEndpoint = "\(apiBaseUrl)/v2/comment/\(commentId)"
@@ -224,7 +243,7 @@ class APIClient {
             return
         }
         
-        APIRequest.get(withURL: url) {
+        APIRequest.get(withURL: url, fromController: controller) {
             (json) -> Void in
             
             if let comment: Comment = Mapper<Comment>().map(JSONString: json) {
@@ -242,9 +261,13 @@ class APIClient {
     /**
      Handle a GET Request for all the comments in the database
      - parameters:
+     - controller: UI Controller that the API request originates from
      - completion:  Callback function which is invoked once the GET request is fulfilled
      */
-    public static func commentsGetRequest(completion: @escaping ([Comment]) -> Void) {
+    public static func commentsGetRequest(
+        fromController controller: UIViewController?,
+        completion: @escaping ([Comment]) -> Void
+    ) {
         
         let commentsGetEndpoint = "\(apiBaseUrl)/v2/comments"
         guard let url = URL(string: commentsGetEndpoint) else {
@@ -252,7 +275,7 @@ class APIClient {
             return
         }
         
-        APIRequest.get(withURL: url) {
+        APIRequest.get(withURL: url, fromController: controller) {
             (json) -> Void in
             
             if let comments: Array<Comment> = Mapper<Comment>().mapArray(JSONString: json) {
@@ -271,10 +294,14 @@ class APIClient {
      Handle GET Requests for a Message
      - parameters:
      - messageId: a unique identifer for a message
+     - controller: UI Controller that the API request originates from
      - completion:  Callback function which is invoked once the GET request is fulfilled
      */
-    public static func messageGetRequest(withMessageId messageId: Int,
-                                         completion: @escaping (Message) -> Void) {
+    public static func messageGetRequest(
+        withMessageId messageId: Int,
+        fromController controller: UIViewController?,
+        completion: @escaping (Message) -> Void
+    ) {
         
         // Create the URL
         let messageGetEndpoint = "\(apiBaseUrl)/v2/message/\(messageId)"
@@ -283,7 +310,7 @@ class APIClient {
             return
         }
         
-        APIRequest.get(withURL: url) {
+        APIRequest.get(withURL: url, fromController: controller) {
             (json) -> Void in
             
             if let message: Message = Mapper<Message>().map(JSONString: json) {
@@ -301,9 +328,13 @@ class APIClient {
     /**
      Handle a GET Request for all the messages in the database
      - parameters:
+     - controller: UI Controller that the API request originates from
      - completion:  Callback function which is invoked once the GET request is fulfilled
      */
-    public static func messagesGetRequest(completion: @escaping ([Message]) -> Void) {
+    public static func messagesGetRequest(
+        fromController controller: UIViewController?,
+        completion: @escaping ([Message]) -> Void
+    ) {
         
         let messagesGetEndpoint = "\(apiBaseUrl)/v2/messages"
         guard let url = URL(string: messagesGetEndpoint) else {
@@ -311,7 +342,7 @@ class APIClient {
             return
         }
         
-        APIRequest.get(withURL: url) {
+        APIRequest.get(withURL: url, fromController: controller) {
             (json) -> Void in
             
             if let messages: Array<Message> = Mapper<Message>().mapArray(JSONString: json) {
@@ -330,10 +361,14 @@ class APIClient {
      Handle GET Requests for an Activation Code
      - parameters:
      - code: a unique code to activate an account
+     - controller: UI Controller that the API request originates from
      - completion:  Callback function which is invoked once the GET request is fulfilled
      */
-    public static func activationCodeGetRequest(withCode code: String,
-                                                completion: @escaping (ActivationCode?) -> Void) {
+    public static func activationCodeGetRequest(
+        withCode code: String,
+        fromController controller: UIViewController?,
+        completion: @escaping (ActivationCode?) -> Void
+    ) {
         
         // Create the URL
         let activationCodeGetEndpoint = "\(apiBaseUrl)/v2/activationcode/\(code)"
@@ -342,7 +377,7 @@ class APIClient {
             return
         }
         
-        APIRequest.get(withURL: url) {
+        APIRequest.get(withURL: url, fromController: controller) {
             (json) -> Void in
             
             if let activationcode: ActivationCode = Mapper<ActivationCode>().map(JSONString: json) {
@@ -365,10 +400,14 @@ class APIClient {
      Handle GET Requests for a Notification
      - parameters:
      - notificationId: a unique identifer for a notification
+     - controller: UI Controller that the API request originates from
      - completion:  Callback function which is invoked once the GET request is fulfilled
      */
-    public static func notificationGetRequest(withNotificationId notificationId: Int,
-                                              completion: @escaping (Notification) -> Void) {
+    public static func notificationGetRequest(
+        withNotificationId notificationId: Int,
+        fromController controller: UIViewController?,
+        completion: @escaping (Notification) -> Void
+    ) {
         
         // Create the URL
         let notificationGetEndpoint = "\(apiBaseUrl)/v2/notification/\(notificationId)"
@@ -377,7 +416,7 @@ class APIClient {
             return
         }
         
-        APIRequest.get(withURL: url) {
+        APIRequest.get(withURL: url, fromController: controller) {
             (json) -> Void in
             
             if let notification: Notification = Mapper<Notification>().map(JSONString: json) {
@@ -395,9 +434,13 @@ class APIClient {
     /**
      Handle a GET Request for all the notifications in the database
      - parameters:
+     - controller: UI Controller that the API request originates from
      - completion:  Callback function which is invoked once the GET request is fulfilled
      */
-    public static func notificationsGetRequest(completion: @escaping ([Notification]) -> Void) {
+    public static func notificationsGetRequest(
+        fromController controller: UIViewController?,
+        completion: @escaping ([Notification]) -> Void
+    ) {
         
         let notificationsGetEndpoint = "\(apiBaseUrl)/v2/notifications"
         guard let url = URL(string: notificationsGetEndpoint) else {
@@ -405,7 +448,7 @@ class APIClient {
             return
         }
         
-        APIRequest.get(withURL: url) {
+        APIRequest.get(withURL: url, fromController: controller) {
             (json) -> Void in
             
             if let notifications: Array<Notification> = Mapper<Notification>().mapArray(JSONString: json) {
@@ -428,10 +471,17 @@ class APIClient {
      be the username of a user
      - limit: the maximum number of logs to return
      - offset: not the rapper
+     - controller: UI Controller that the API request originates from
      - completion:  Callback function which is invoked once the GET request is fulfilled
      */
-    public static func logfeedGetRequest(withParamType paramType: String, sortParam: String,
-                                         limit: Int, offset: Int, completion: @escaping ([Log]) -> Void) {
+    public static func logfeedGetRequest(
+        withParamType paramType: String,
+        sortParam: String,
+        limit: Int,
+        offset: Int,
+        fromController controller: UIViewController?,
+        completion: @escaping ([Log]) -> Void
+    ) {
         
         let logfeedGetEndpoint = "\(apiBaseUrl)/v2/logfeed/\(paramType)/\(sortParam)/\(limit)/\(offset)"
         guard let url = URL(string: logfeedGetEndpoint) else {
@@ -439,7 +489,7 @@ class APIClient {
             return
         }
         
-        APIRequest.get(withURL: url) {
+        APIRequest.get(withURL: url, fromController: controller) {
             (json) -> Void in
             
             if let logfeed: Array<Log> = Mapper<Log>().mapArray(JSONString: json) {
@@ -462,10 +512,17 @@ class APIClient {
      be the group name
      - limit: the maximum number of messages to return
      - offset: not the rapper
+     - controller: UI Controller that the API request originates from
      - completion:  Callback function which is invoked once the GET request is fulfilled
      */
-    public static func messagefeedGetRequest(withParamType paramType: String, sortParam: String,
-                                             limit: Int, offset: Int, completion: @escaping ([Message]) -> Void) {
+    public static func messagefeedGetRequest(
+        withParamType paramType: String,
+        sortParam: String,
+        limit: Int,
+        offset: Int,
+        fromController controller: UIViewController?,
+        completion: @escaping ([Message]) -> Void
+    ) {
         
         let messagefeedGetEndpoint = "\(apiBaseUrl)/v2/messagefeed/\(paramType)/\(sortParam)/\(limit)/\(offset)"
         guard let url = URL(string: messagefeedGetEndpoint) else {
@@ -473,7 +530,7 @@ class APIClient {
             return
         }
         
-        APIRequest.get(withURL: url) {
+        APIRequest.get(withURL: url, fromController: controller) {
             (json) -> Void in
             
             if let messagefeed: Array<Message> = Mapper<Message>().mapArray(JSONString: json) {
@@ -498,10 +555,18 @@ class APIClient {
      r->Run, b->Bike, s->Swim, o->Other
      - start: the first day in the range view
      - end: the last day in the range view
+     - controller: UI Controller that the API request originates from
      - completion:  Callback function which is invoked once the GET request is fulfilled
      */
-    public static func rangeViewGetRequest(withParamType paramType: String, sortParam: String, filter: String,
-                                           start: String, end: String, completion: @escaping ([RangeView]) -> Void) {
+    public static func rangeViewGetRequest(
+        withParamType paramType: String,
+        sortParam: String,
+        filter: String,
+        start: String,
+        end: String,
+        fromController controller: UIViewController?,
+        completion: @escaping ([RangeView]) -> Void
+    ) {
         
         let rangeviewGetEndpoint = "\(apiBaseUrl)/v2/rangeview/\(paramType)/\(sortParam)/\(filter)/\(start)/\(end)"
         print(rangeviewGetEndpoint)
@@ -510,7 +575,7 @@ class APIClient {
             return
         }
         
-        APIRequest.get(withURL: url) {
+        APIRequest.get(withURL: url, fromController: controller) {
             (json) -> Void in
             
             if let rangeview: Array<RangeView> = Mapper<RangeView>().mapArray(JSONString: json) {
@@ -535,9 +600,14 @@ class APIClient {
      Handle POST Requests for a User
      - parameters:
      - user: an object representing the user to create on the server
+     - controller: UI Controller that the API request originates from
      - completion:  Callback function which is invoked once the POST request is fulfilled
      */
-    public static func userPostRequest(withUser user: User, completion: @escaping (User?) -> Void) {
+    public static func userPostRequest(
+        withUser user: User,
+        fromController controller: UIViewController?,
+        completion: @escaping (User?) -> Void
+    ) {
         
         let usersPostEndpoint = "\(apiBaseUrl)/v2/users"
         guard let url = URL(string: usersPostEndpoint) else {
@@ -548,7 +618,7 @@ class APIClient {
         // Convert the User to a JSON string
         let userJSON = Mapper().toJSONString(user, prettyPrint: false)
         
-        APIRequest.post(withURL: url, andJson: userJSON ?? "") {
+        APIRequest.post(withURL: url, andJson: userJSON ?? "", fromController: controller) {
             (json) -> Void in
             
             if let user: User = Mapper<User>().map(JSONString: json) {
@@ -571,9 +641,14 @@ class APIClient {
      Handle POST Requests for a Log
      - parameters:
      - log: an object representing the exercie log to create on the server
+     - controller: UI Controller that the API request originates from
      - completion:  Callback function which is invoked once the POST request is fulfilled
      */
-    public static func logPostRequest(withLog log: Log, completion: @escaping (Log) -> Void) {
+    public static func logPostRequest(
+        withLog log: Log,
+        fromController controller: UIViewController?,
+        completion: @escaping (Log) -> Void
+    ) {
         
         let logPostEndpoint = "\(apiBaseUrl)/v2/log"
         guard let url = URL(string: logPostEndpoint) else {
@@ -584,7 +659,7 @@ class APIClient {
         // Convert the Log to a JSON string
         let logJSON = Mapper().toJSONString(log, prettyPrint: false)
         
-        APIRequest.post(withURL: url, andJson: logJSON ?? "") {
+        APIRequest.post(withURL: url, andJson: logJSON ?? "", fromController: controller) {
             (json) -> Void in
             
             if let log: Log = Mapper<Log>().map(JSONString: json) {
@@ -603,11 +678,15 @@ class APIClient {
      Handle POST Requests for a Comment
      - parameters:
      - comment: an object representing the comment to create on the server
+     - controller: UI Controller that the API request originates from
      - completion:  Callback function which is invoked once the POST request is fulfilled
      */
-    public static func commentPostRequest(withComment comment: Comment,
-                                          completion: @escaping (Comment) -> Void) {
-        
+    public static func commentPostRequest(
+        withComment comment: Comment,
+        fromController controller: UIViewController?,
+        completion: @escaping (Comment) -> Void
+    ) {
+
         let commentPostEndpoint = "\(apiBaseUrl)/v2/comment"
         guard let url = URL(string: commentPostEndpoint) else {
             os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
@@ -617,7 +696,7 @@ class APIClient {
         // Convert the Comment to a JSON string
         let commentJSON = Mapper().toJSONString(comment, prettyPrint: false)
         
-        APIRequest.post(withURL: url, andJson: commentJSON ?? "") {
+        APIRequest.post(withURL: url, andJson: commentJSON ?? "", fromController: controller) {
             (json) -> Void in
             
             if let comment: Comment = Mapper<Comment>().map(JSONString: json) {
@@ -636,10 +715,14 @@ class APIClient {
      Handle POST Requests for a Message
      - parameters:
      - message: an object representing the message to create on the server
+     - controller: UI Controller that the API request originates from
      - completion:  Callback function which is invoked once the POST request is fulfilled
      */
-    public static func messagePostRequest(withMessage message: Message,
-                                          completion: @escaping (Message) -> Void) {
+    public static func messagePostRequest(
+        withMessage message: Message,
+        fromController controller: UIViewController?,
+        completion: @escaping (Message) -> Void
+    ) {
         
         let messagePostEndpoint = "\(apiBaseUrl)/v2/message"
         guard let url = URL(string: messagePostEndpoint) else {
@@ -650,7 +733,7 @@ class APIClient {
         // Convert the Message to a JSON string
         let messageJSON = Mapper().toJSONString(message, prettyPrint: false)
         
-        APIRequest.post(withURL: url, andJson: messageJSON ?? "") {
+        APIRequest.post(withURL: url, andJson: messageJSON ?? "", fromController: controller) {
             (json) -> Void in
             
             if let message: Message = Mapper<Message>().map(JSONString: json) {
@@ -668,9 +751,13 @@ class APIClient {
     /**
      Handle POST Requests for an Activation Code
      - parameters:
+     - controller: UI Controller that the API request originates from
      - completion:  Callback function which is invoked once the POST request is fulfilled
      */
-    public static func activationCodePostRequest(completion: @escaping (ActivationCode?) -> Void) {
+    public static func activationCodePostRequest(
+        fromController controller: UIViewController?,
+        completion: @escaping (ActivationCode?
+    ) -> Void) {
         
         let activationCodePostEndpoint = "\(apiBaseUrl)/v2/activationcode"
         guard let url = URL(string: activationCodePostEndpoint) else {
@@ -678,7 +765,7 @@ class APIClient {
             return
         }
         
-        APIRequest.post(withURL: url, andJson: "") {
+        APIRequest.post(withURL: url, andJson: "", fromController: controller) {
             (json) -> Void in
             
             if let activationcode: ActivationCode = Mapper<ActivationCode>().map(JSONString: json) {
@@ -700,10 +787,14 @@ class APIClient {
      Handle POST Requests for a Notification
      - parameters:
      - notification: an object representing the notification to create on the server
+     - controller: UI Controller that the API request originates from
      - completion:  Callback function which is invoked once the POST request is fulfilled
      */
-    public static func notificationPostRequest(withNotification notification: Notification,
-                                               completion: @escaping (Notification) -> Void) {
+    public static func notificationPostRequest(
+        withNotification notification: Notification,
+        fromController controller: UIViewController?,
+        completion: @escaping (Notification) -> Void
+    ) {
         
         let notificationPostEndpoint = "\(apiBaseUrl)/v2/notification"
         guard let url = URL(string: notificationPostEndpoint) else {
@@ -714,7 +805,7 @@ class APIClient {
         // Convert the Notification to a JSON string
         let notificationJSON = Mapper().toJSONString(notification, prettyPrint: false)
         
-        APIRequest.post(withURL: url, andJson: notificationJSON ?? "") {
+        APIRequest.post(withURL: url, andJson: notificationJSON ?? "", fromController: controller) {
             (json) -> Void in
             
             if let notification: Notification = Mapper<Notification>().map(JSONString: json) {
@@ -733,10 +824,14 @@ class APIClient {
      Handle POST Requests for an Email
      - parameters:
      - mail: an object representing the email to send to an address
+     - controller: UI Controller that the API request originates from
      - completion:  Callback function which is invoked once the POST request is fulfilled
      */
-    public static func mailPostRequest(withMail mail: Mail,
-                                               completion: @escaping (Mail?) -> Void) {
+    public static func mailPostRequest(
+        withMail mail: Mail,
+        fromController controller: UIViewController?,
+        completion: @escaping (Mail?) -> Void
+    ) {
         
         let mailPostEndpoint = "\(apiBaseUrl)/v2/mail"
         guard let url = URL(string: mailPostEndpoint) else {
@@ -747,7 +842,7 @@ class APIClient {
         // Convert the Mail to a JSON string
         let mailJSON = Mapper().toJSONString(mail, prettyPrint: false)
         
-        APIRequest.post(withURL: url, andJson: mailJSON ?? "") {
+        APIRequest.post(withURL: url, andJson: mailJSON ?? "", fromController: controller) {
             (json) -> Void in
                 
             OperationQueue.main.addOperation {
@@ -763,10 +858,15 @@ class APIClient {
      - parameters:
      - username: the username of an existing user on the server
      - user: an object representing the updated user to reflect on the server
+     - controller: UI Controller that the API request originates from
      - completion:  Callback function which is invoked once the PUT request is fulfilled
      */
-    public static func userPutRequest(withUsername username: String, andUser user: User,
-                                      completion: @escaping (User?) -> Void) {
+    public static func userPutRequest(
+        withUsername username: String,
+        andUser user: User,
+        fromController controller: UIViewController?,
+        completion: @escaping (User?) -> Void
+    ) {
         
         let usersPutEndpoint = "\(apiBaseUrl)/v2/user/\(username)"
         guard let url = URL(string: usersPutEndpoint) else {
@@ -778,7 +878,7 @@ class APIClient {
         let userJSON = Mapper().toJSONString(user, prettyPrint: false)
         os_log("%@", log: APIClient.logTag, type: .debug, userJSON!)
         
-        APIRequest.put(withURL: url, andJson: userJSON ?? "") {
+        APIRequest.put(withURL: url, andJson: userJSON ?? "", fromController: controller) {
             (json) -> Void in
             
             if let user: User = Mapper<User>().map(JSONString: json) {
@@ -802,10 +902,15 @@ class APIClient {
      - parameters:
      - logID: the unique logId of an existing log on the server
      - log: an object representing the updated log to reflect on the server
+     - controller: UI Controller that the API request originates from
      - completion:  Callback function which is invoked once the PUT request is fulfilled
      */
-    public static func logPutRequest(withLogID logID: Int, andLog log: Log,
-                                     completion: @escaping (Log) -> Void) {
+    public static func logPutRequest(
+        withLogID logID: Int,
+        andLog log: Log,
+        fromController controller: UIViewController?,
+        completion: @escaping (Log) -> Void
+    ) {
         
         let logPutEndpoint = "\(apiBaseUrl)/v2/log/\(logID)"
         guard let url = URL(string: logPutEndpoint) else {
@@ -816,7 +921,7 @@ class APIClient {
         // Convert the User to a JSON string
         let logJSON = Mapper().toJSONString(log, prettyPrint: false)
         
-        APIRequest.put(withURL: url, andJson: logJSON ?? "") {
+        APIRequest.put(withURL: url, andJson: logJSON ?? "", fromController: controller) {
             (json) -> Void in
             
             if let log: Log = Mapper<Log>().map(JSONString: json) {
@@ -836,10 +941,15 @@ class APIClient {
      - parameters:
      - groupname: the groupname of an existing group on the server
      - group: an object representing the updated group to reflect on the server
+     - controller: UI Controller that the API request originates from
      - completion:  Callback function which is invoked once the PUT request is fulfilled
      */
-    public static func groupPutRequest(withGroupname groupname: String, andGroup group: Group,
-                                       completion: @escaping (Group?) -> Void) {
+    public static func groupPutRequest(
+        withGroupname groupname: String,
+        andGroup group: Group,
+        fromController controller: UIViewController?,
+        completion: @escaping (Group?) -> Void
+    ) {
         
         let groupPutEndpoint = "\(apiBaseUrl)/v2/group/\(groupname)"
         guard let url = URL(string: groupPutEndpoint) else {
@@ -850,7 +960,7 @@ class APIClient {
         // Convert the User to a JSON string
         let groupJSON = Mapper().toJSONString(group, prettyPrint: false)
         
-        APIRequest.put(withURL: url, andJson: groupJSON ?? "") {
+        APIRequest.put(withURL: url, andJson: groupJSON ?? "", fromController: controller) {
             (json) -> Void in
             
             if let group: Group = Mapper<Group>().map(JSONString: json) {
@@ -874,10 +984,15 @@ class APIClient {
      - parameters:
      - commentId: the unqiue comment identifier for an existing comment on the server
      - comment: an object representing the updated comment to reflect on the server
+     - controller: UI Controller that the API request originates from
      - completion:  Callback function which is invoked once the PUT request is fulfilled
      */
-    public static func commentPutRequest(withCommentId commentId: Int, andComment comment: Comment,
-                                         completion: @escaping (Comment) -> Void) {
+    public static func commentPutRequest(
+        withCommentId commentId: Int,
+        andComment comment: Comment,
+        fromController controller: UIViewController?,
+        completion: @escaping (Comment) -> Void
+    ) {
         
         let commentPutEndpoint = "\(apiBaseUrl)/v2/comment/\(commentId)"
         guard let url = URL(string: commentPutEndpoint) else {
@@ -888,7 +1003,7 @@ class APIClient {
         // Convert the User to a JSON string
         let commentJSON = Mapper().toJSONString(comment, prettyPrint: false)
         
-        APIRequest.put(withURL: url, andJson: commentJSON ?? "") {
+        APIRequest.put(withURL: url, andJson: commentJSON ?? "", fromController: controller) {
             (json) -> Void in
             
             if let comment: Comment = Mapper<Comment>().map(JSONString: json) {
@@ -908,10 +1023,15 @@ class APIClient {
      - parameters:
      - messageId: the unqiue message identifier for an existing message on the server
      - message: an object representing the updated message to reflect on the server
+     - controller: UI Controller that the API request originates from
      - completion:  Callback function which is invoked once the PUT request is fulfilled
      */
-    public static func messagePutRequest(withMessageId messageId: Int, andMessage message: Message,
-                                         completion: @escaping (Message) -> Void) {
+    public static func messagePutRequest(
+        withMessageId messageId: Int,
+        andMessage message: Message,
+        fromController controller: UIViewController?,
+        completion: @escaping (Message) -> Void
+    ) {
         
         let messagePutEndpoint = "\(apiBaseUrl)/v2/message/\(messageId)"
         guard let url = URL(string: messagePutEndpoint) else {
@@ -922,7 +1042,7 @@ class APIClient {
         // Convert the User to a JSON string
         let messageJSON = Mapper().toJSONString(message, prettyPrint: false)
         
-        APIRequest.put(withURL: url, andJson: messageJSON ?? "") {
+        APIRequest.put(withURL: url, andJson: messageJSON ?? "", fromController: controller) {
             (json) -> Void in
             
             if let message: Message = Mapper<Message>().map(JSONString: json) {
@@ -943,10 +1063,14 @@ class APIClient {
      Handle DELETE Requests for a User
      - parameters:
      - username: the username of an existing user on the server
+     - controller: UI Controller that the API request originates from
      - completion:  Callback function which is invoked once the DELETE request is fulfilled
      */
-    public static func userDeleteRequest(withUsername username: String,
-                                         completion: @escaping (Bool) -> Void) {
+    public static func userDeleteRequest(
+        withUsername username: String,
+        fromController controller: UIViewController?,
+        completion: @escaping (Bool) -> Void
+    ) {
         
         let usersDeleteEndpoint = "\(apiBaseUrl)/v2/user/\(username)"
         guard let url = URL(string: usersDeleteEndpoint) else {
@@ -954,7 +1078,7 @@ class APIClient {
             return
         }
         
-        APIRequest.delete(withURL: url) {
+        APIRequest.delete(withURL: url, fromController: controller) {
             (success) -> Void in
             
             os_log("Delete Result: %@", log: APIClient.logTag, type: .debug, String(success))
@@ -969,10 +1093,14 @@ class APIClient {
      Handle DELETE Requests for a Log
      - parameters:
      - logID: the unique log identifier of an existing log on the server
+     - controller: UI Controller that the API request originates from
      - completion:  Callback function which is invoked once the DELETE request is fulfilled
      */
-    public static func logDeleteRequest(withLogID logID: Int,
-                                        completion: @escaping (Bool) -> Void) {
+    public static func logDeleteRequest(
+        withLogID logID: Int,
+        fromController controller: UIViewController?,
+        completion: @escaping (Bool) -> Void
+    ) {
         
         let logDeleteEndpoint = "\(apiBaseUrl)/v2/log/\(logID)"
         guard let url = URL(string: logDeleteEndpoint) else {
@@ -980,7 +1108,7 @@ class APIClient {
             return
         }
         
-        APIRequest.delete(withURL: url) {
+        APIRequest.delete(withURL: url, fromController: controller) {
             (success) -> Void in
             
             os_log("Delete Result: %@", log: APIClient.logTag, type: .debug, String(success))
@@ -995,10 +1123,14 @@ class APIClient {
      Handle DELETE Requests for a Comment
      - parameters:
      - commentID: the unique comment identifier for an existing comment on the server
+     - controller: UI Controller that the API request originates from
      - completion:  Callback function which is invoked once the DELETE request is fulfilled
      */
-    public static func commentDeleteRequest(withCommentID commentID: Int,
-                                            completion: @escaping (Bool) -> Void) {
+    public static func commentDeleteRequest(
+        withCommentID commentID: Int,
+        fromController controller: UIViewController?,
+        completion: @escaping (Bool) -> Void
+    ) {
         
         let commentDeleteEndpoint = "\(apiBaseUrl)/v2/comment/\(commentID)"
         guard let url = URL(string: commentDeleteEndpoint) else {
@@ -1006,7 +1138,7 @@ class APIClient {
             return
         }
         
-        APIRequest.delete(withURL: url) {
+        APIRequest.delete(withURL: url, fromController: controller) {
             (success) -> Void in
             
             os_log("Delete Result: %@", log: APIClient.logTag, type: .debug, String(success))
@@ -1021,10 +1153,14 @@ class APIClient {
      Handle DELETE Requests for a Message
      - parameters:
      - messageID: the unique message identifier of an existing message on the server
+     - controller: UI Controller that the API request originates from
      - completion:  Callback function which is invoked once the DELETE request is fulfilled
      */
-    public static func messageDeleteRequest(withMessageID messageID: Int,
-                                            completion: @escaping (Bool) -> Void) {
+    public static func messageDeleteRequest(
+        withMessageID messageID: Int,
+        fromController controller: UIViewController?,
+        completion: @escaping (Bool) -> Void
+    ) {
         
         let messageDeleteEndpoint = "\(apiBaseUrl)/v2/message/\(messageID)"
         guard let url = URL(string: messageDeleteEndpoint) else {
@@ -1032,7 +1168,7 @@ class APIClient {
             return
         }
         
-        APIRequest.delete(withURL: url) {
+        APIRequest.delete(withURL: url, fromController: controller) {
             (success) -> Void in
             
             os_log("Delete Result: %@", log: APIClient.logTag, type: .debug, String(success))
@@ -1047,10 +1183,14 @@ class APIClient {
      Handle DELETE Requests for an Activation Code
      - parameters:
      - activationCode: the existing activation code on the server
+     - controller: UI Controller that the API request originates from
      - completion:  Callback function which is invoked once the DELETE request is fulfilled
      */
-    public static func activationCodeDeleteRequest(withActivationCode activationCode: String,
-                                                   completion: @escaping (Bool) -> Void) {
+    public static func activationCodeDeleteRequest(
+        withActivationCode activationCode: String,
+        fromController controller: UIViewController?,
+        completion: @escaping (Bool) -> Void
+    ) {
         
         let activationCodeDeleteEndpoint = "\(apiBaseUrl)/v2/activationcode/\(activationCode)"
         guard let url = URL(string: activationCodeDeleteEndpoint) else {
@@ -1058,7 +1198,7 @@ class APIClient {
             return
         }
         
-        APIRequest.delete(withURL: url) {
+        APIRequest.delete(withURL: url, fromController: controller) {
             (success) -> Void in
             
             os_log("Delete Result: %@", log: APIClient.logTag, type: .debug, String(success))
@@ -1073,10 +1213,14 @@ class APIClient {
      Handle DELETE Requests for a Notification
      - parameters:
      - notificationId: the unique notification identifier of an existing notification on the server
+     - controller: UI Controller that the API request originates from
      - completion:  Callback function which is invoked once the DELETE request is fulfilled
      */
-    public static func notificationDeleteRequest(withNotificationId notificationId: String,
-                                                 completion: @escaping (Bool) -> Void) {
+    public static func notificationDeleteRequest(
+        withNotificationId notificationId: String,
+        fromController controller: UIViewController?,
+        completion: @escaping (Bool) -> Void
+    ) {
         
         let notificationDeleteEndpoint = "\(apiBaseUrl)/v2/notification/\(notificationId)"
         guard let url = URL(string: notificationDeleteEndpoint) else {
@@ -1084,7 +1228,7 @@ class APIClient {
             return
         }
         
-        APIRequest.delete(withURL: url) {
+        APIRequest.delete(withURL: url, fromController: controller) {
             (success) -> Void in
             
             os_log("Delete Result: %@", log: APIClient.logTag, type: .debug, String(success))

@@ -27,9 +27,14 @@ class APIRequest {
      @escaping annotation lets the compiler know that the closure might not get called immediately
      - parameters:
      - url: the HTTP API URL to invoke
+     - controller:  UI Controller that the API request originates from
      - completion:  Callback function which is invoked once the GET request is fulfilled
      */
-    public static func get(withURL url: URL, completion: @escaping (String) -> Void) {
+    public static func get(
+        withURL url: URL,
+        fromController controller: UIViewController?,
+        completion: @escaping (String) -> Void
+    ) {
         var urlRequest = URLRequest(url: url)
         
         // add the credentials and accept type to the url request
@@ -39,9 +44,14 @@ class APIRequest {
             (data, response, error) -> Void in
                 
             // Check for any errors
-            guard error == nil else {
+            guard let httpResponse = response as? HTTPURLResponse, error == nil else {
                 os_log("Error with GET request.", log: APIRequest.logTag, type: .error)
                 print(error!)
+                return
+            }
+            
+            guard 200 ..< 300 ~= httpResponse.statusCode else {
+                handleErrorCode(httpResponse: httpResponse, controller: controller)
                 return
             }
         
@@ -76,10 +86,15 @@ class APIRequest {
      - parameters:
      - url: the HTTP API URL to invoke
      - json: JSON to use as the HTTP request body
+     - controller:  UI Controller that the API request originates from
      - completion:  Callback function which is invoked once the POST request is fulfilled
      */
-    public static func post(withURL url: URL, andJson json: String,
-                            completion: @escaping (String) -> Void) {
+    public static func post(
+        withURL url: URL,
+        andJson json: String,
+        fromController controller: UIViewController?,
+        completion: @escaping (String) -> Void
+    ) {
         var urlrequest = URLRequest(url: url)
         urlrequest.httpMethod = "POST"
         
@@ -94,9 +109,14 @@ class APIRequest {
             (data, response, error) -> Void in
                 
             // Check for any errors
-            guard error == nil else {
+            guard let httpResponse = response as? HTTPURLResponse, error == nil else {
                 os_log("Error with POST request.", log: APIRequest.logTag, type: .error)
                 print(error!)
+                return
+            }
+            
+            guard 200 ..< 300 ~= httpResponse.statusCode else {
+                handleErrorCode(httpResponse: httpResponse, controller: controller)
                 return
             }
             
@@ -129,10 +149,15 @@ class APIRequest {
      - parameters:
      - url: the HTTP API URL to invoke
      - json: JSON to use as the HTTP request body
+     - controller:  UI Controller that the API request originates from
      - completion:  Callback function which is invoked once the PUT request is fulfilled
      */
-    public static func put(withURL url: URL, andJson json: String,
-                           completion: @escaping (String) -> Void) {
+    public static func put(
+        withURL url: URL,
+        andJson json: String,
+        fromController controller: UIViewController?,
+        completion: @escaping (String) -> Void
+    ) {
         var urlrequest = URLRequest(url: url)
         urlrequest.httpMethod = "PUT"
         
@@ -147,9 +172,14 @@ class APIRequest {
             (data, response, error) -> Void in
                 
             // Check for any errors
-            guard error == nil else {
+            guard let httpResponse = response as? HTTPURLResponse, error == nil else {
                 os_log("Error with PUT request.", log: APIRequest.logTag, type: .error)
                 print(error!)
+                return
+            }
+            
+            guard 200 ..< 300 ~= httpResponse.statusCode else {
+                handleErrorCode(httpResponse: httpResponse, controller: controller)
                 return
             }
                 
@@ -181,9 +211,14 @@ class APIRequest {
      Handle HTTP DELETE Requests to the API
      - parameters:
      - url: the HTTP API URL to invoke
+     - controller:  UI Controller that the API request originates from
      - completion:  Callback function which is invoked once the DELETE request is fulfilled
      */
-    public static func delete(withURL url: URL, completion: @escaping (Bool) -> Void) {
+    public static func delete(
+        withURL url: URL,
+        fromController controller: UIViewController?,
+        completion: @escaping (Bool) -> Void
+    ) {
         var urlrequest = URLRequest(url: url)
         urlrequest.httpMethod = "DELETE"
         
@@ -192,6 +227,18 @@ class APIRequest {
         
         let task = session.dataTask(with: urlrequest) {
             (data, response, error) -> Void in
+            
+            // Check for any errors
+            guard let httpResponse = response as? HTTPURLResponse, error == nil else {
+                os_log("Error with DELETE request.", log: APIRequest.logTag, type: .error)
+                print(error!)
+                return
+            }
+            
+            guard 200 ..< 300 ~= httpResponse.statusCode else {
+                handleErrorCode(httpResponse: httpResponse, controller: controller)
+                return
+            }
             
             guard let _ = data else {
                 os_log("Error, Delete Request failed", log: APIRequest.logTag, type: .error)
@@ -204,5 +251,24 @@ class APIRequest {
             }
         }
         task.resume()
+    }
+    
+    private static func handleErrorCode(httpResponse: HTTPURLResponse, controller: UIViewController?) {
+        os_log(
+            "Request returned unexpected error code %@",
+            log: APIRequest.logTag,
+            type: .error,
+            httpResponse.statusCode
+        )
+        
+        if httpResponse.statusCode == 403 {
+            _ = UserJWT.removeJWT()
+            _ = SignedInUser.removeUser()
+            
+            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let startViewController = storyBoard.instantiateViewController(withIdentifier:
+                "startViewController") as! StartViewController
+            controller?.present(startViewController, animated: true, completion: nil)
+        }
     }
 }

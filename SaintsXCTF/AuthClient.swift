@@ -25,7 +25,7 @@ class AuthClient {
      - password: The password of the user that is signing in.
      - completion:  Callback function which is invoked once the POST request is fulfilled
      */
-    public static func tokenPostRequest(withUsername username: String, password: String, completion: @escaping (AuthResult?) -> Void) {
+    public static func tokenPostRequest(withUsername username: String, password: String, completion: @escaping (AuthResult) -> Void) {
         
         let tokenEndpoint = "\(authBaseUrl)/token"
         guard let url = URL(string: tokenEndpoint) else {
@@ -44,7 +44,7 @@ class AuthClient {
             return
         }
         
-        APIRequest.post(withURL: url, andJson: credentials ?? "") {
+        APIRequest.post(withURL: url, andJson: credentials ?? "", fromController: nil) {
             (json) -> Void in
             
             if let authResult: AuthResult = Mapper<AuthResult>().map(JSONString: json) {
@@ -57,7 +57,7 @@ class AuthClient {
                 os_log("User Conversion Failed.", log: AuthClient.logTag, type: .error)
                 
                 OperationQueue.main.addOperation {
-                    completion(nil)
+                    completion(AuthResult())
                 }
             }
         }
