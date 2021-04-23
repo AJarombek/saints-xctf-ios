@@ -58,7 +58,18 @@ class PickGroupController: UIViewController {
         
         // See if there is a user entered.  If so, check to see if the user is a member of any groups
         if let _: User = user {
-            let groups: [GroupInfo] = (user?.groups)!
+            
+            if user?.groups == nil {
+                APIClient.userGroupsGetRequest(withUsername: user!.username, fromController: self) {
+                    (groupInfo) -> Void in
+                    
+                    self.user?.groups = groupInfo
+                }
+            } else {
+                // TODO
+            }
+            
+            let groups: [GroupInfo] = user?.groups ?? []
             
             navigationItem.title = "Edit Groups"
             
@@ -286,7 +297,7 @@ class PickGroupController: UIViewController {
             
             if let user: User = newuser {
                 
-                os_log("Users picked groups: %@", log: self.logTag, type: .debug, user.groups)
+                os_log("Users picked groups: %@", log: self.logTag, type: .debug, user.groups!)
                 
                 // Save the user picked groups data
                 SignedInUser.user = user
@@ -310,7 +321,7 @@ class PickGroupController: UIViewController {
                 self.present(mainViewController, animated: true, completion: nil)
                 
                 // Send a notification to the picked group admins
-                user.groups.forEach {
+                user.groups?.forEach {
                     groupinfo in
                     
                     if let groupname: String = groupinfo.group_name {
@@ -386,7 +397,7 @@ class PickGroupController: UIViewController {
             
             mensxcInfo.user = "user"
             
-            user.groups.append(mensxcInfo)
+            user.groups?.append(mensxcInfo)
         }
         
         if (wmensxc) {
@@ -399,7 +410,7 @@ class PickGroupController: UIViewController {
             
             wmensxcInfo.user = "user"
             
-            user.groups.append(wmensxcInfo)
+            user.groups?.append(wmensxcInfo)
         }
         
         if (menstf) {
@@ -412,7 +423,7 @@ class PickGroupController: UIViewController {
             
             menstfInfo.user = "user"
             
-            user.groups.append(menstfInfo)
+            user.groups?.append(menstfInfo)
         }
         
         if (wmenstf) {
@@ -425,7 +436,7 @@ class PickGroupController: UIViewController {
             
             wmenstfInfo.user = "user"
             
-            user.groups.append(wmenstfInfo)
+            user.groups?.append(wmenstfInfo)
         }
         
         if (alumni) {
@@ -438,7 +449,7 @@ class PickGroupController: UIViewController {
             
             alumniInfo.user = "user"
             
-            user.groups.append(alumniInfo)
+            user.groups?.append(alumniInfo)
         }
     }
 }

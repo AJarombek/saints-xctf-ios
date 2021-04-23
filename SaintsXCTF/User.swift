@@ -32,10 +32,10 @@ class User: NSObject, Mappable, NSCoding {
     var class_year: String?
     var location: String?
     var favorite_event: String?
-    var forgot_password: [String]!
-    var flair: [String]!
-    var notifications: [Notification]!
-    var groups: [GroupInfo]!
+    var forgot_password: [String]?
+    var flair: [String]?
+    var notifications: [Notification]?
+    var groups: [GroupInfo]?
     var statistics: [String:Double]!
     var last_signin: String?
     var week_start: String?
@@ -70,10 +70,10 @@ class User: NSObject, Mappable, NSCoding {
         class_year = aDecoder.decodeObject(forKey: "class_year") as! String?
         location = aDecoder.decodeObject(forKey: "location") as! String?
         favorite_event = aDecoder.decodeObject(forKey: "favorite_event") as! String?
-        forgot_password = aDecoder.decodeObject(forKey: "forgot_password") as? [String]
-        flair = aDecoder.decodeObject(forKey: "flair") as? [String]
-        notifications = aDecoder.decodeObject(forKey: "notifications") as? [Notification]
-        groups = aDecoder.decodeObject(forKey: "groups") as? [GroupInfo]
+        forgot_password = aDecoder.decodeObject(forKey: "forgot_password") as! [String]?
+        flair = aDecoder.decodeObject(forKey: "flair") as! [String]?
+        notifications = aDecoder.decodeObject(forKey: "notifications") as! [Notification]?
+        groups = aDecoder.decodeObject(forKey: "groups") as! [GroupInfo]?
         statistics = aDecoder.decodeObject(forKey: "statistics") as? [String:Double]
         last_signin = aDecoder.decodeObject(forKey: "last_signin") as! String?
         week_start = aDecoder.decodeObject(forKey: "week_start") as! String?

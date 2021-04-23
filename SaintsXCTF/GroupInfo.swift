@@ -21,6 +21,7 @@ import ObjectMapper
  */
 class GroupInfo: NSObject, Mappable, NSCoding {
     
+    var id: Int!
     var group_name: String!
     var group_title: String!
     var status: String?
@@ -48,6 +49,7 @@ class GroupInfo: NSObject, Mappable, NSCoding {
      Used in this method for decoding persisted data.
      */
     required init?(coder aDecoder: NSCoder) {
+        id = aDecoder.decodeObject(forKey: "id") as? Int
         group_name = aDecoder.decodeObject(forKey: "group_name") as? String
         group_title = aDecoder.decodeObject(forKey: "group_title") as? String
         status = aDecoder.decodeObject(forKey: "status") as? String
@@ -69,6 +71,7 @@ class GroupInfo: NSObject, Mappable, NSCoding {
      Used in this method for encoding data to be persisted.
      */
     func encode(with aCoder: NSCoder) {
+        aCoder.encode(id, forKey: "id")
         aCoder.encode(group_name, forKey: "group_name")
         aCoder.encode(group_title, forKey: "group_title")
         aCoder.encode(status, forKey: "status")
@@ -83,6 +86,7 @@ class GroupInfo: NSObject, Mappable, NSCoding {
      - map: JSON data is stored within this map
      */
     func mapping(map: Map) {
+        id <- map["id"]
         group_name <- map["group_name"]
         group_title <- map["group_title"]
         status <- map["status"]

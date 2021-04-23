@@ -96,14 +96,63 @@ class APIClient {
         APIRequest.get(withURL: url, fromController: controller) {
             (json) -> Void in
             
-            if let users: Array<User> = Mapper<User>().mapArray(JSONString: json) {
-                os_log("%@", log: APIClient.logTag, type: .debug, users)
-            
-                OperationQueue.main.addOperation {
-                    completion(users)
+            do {
+                if let jsonDict = try JSONSerialization.jsonObject(with: Data(json.utf8), options: []) as? [String: Any] {
+                    let usersJsonDict = jsonDict["users"] ?? [:]
+                    
+                    let usersJson = try JSONSerialization.data(withJSONObject: usersJsonDict, options: [])
+                    let usersJsonString = String(data: usersJson, encoding: String.Encoding.utf8) ?? "[]"
+                    
+                    if let users: Array<User> = Mapper<User>().mapArray(JSONString: usersJsonString) {
+                        os_log("%@", log: APIClient.logTag, type: .debug, users)
+                    
+                        OperationQueue.main.addOperation {
+                            completion(users)
+                        }
+                    } else {
+                        os_log("Users Conversion Failed.", log: APIClient.logTag, type: .error)
+                    }
                 }
-            } else {
-                os_log("Users Conversion Failed.", log: APIClient.logTag, type: .error)
+            } catch {
+                os_log("API Response JSON Parse Failed.", log: APIClient.logTag, type: .error)
+            }
+        }
+    }
+    
+    public static func userGroupsGetRequest(
+        withUsername username: String,
+        fromController controller: UIViewController?,
+        completion: @escaping ([GroupInfo]) -> Void
+    ) {
+        // Create the URL
+        let userGroupsGetEndpoint = "\(apiBaseUrl)/v2/users/groups/\(username)"
+        guard let url = URL(string: userGroupsGetEndpoint) else {
+            os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
+            return
+        }
+        
+        APIRequest.get(withURL: url, fromController: controller) {
+            (json) -> Void in
+            
+            do {
+                if let jsonDict = try JSONSerialization.jsonObject(with: Data(json.utf8), options: []) as? [String: Any] {
+                    let groupsJsonDict = jsonDict["groups"] ?? [:]
+                    
+                    let groupsJson = try JSONSerialization.data(withJSONObject: groupsJsonDict, options: [])
+                    let groupsJsonString = String(data: groupsJson, encoding: String.Encoding.utf8) ?? "[]"
+                    
+                    if let groups: Array<GroupInfo> = Mapper<GroupInfo>().mapArray(JSONString: groupsJsonString) {
+                        os_log("%@", log: APIClient.logTag, type: .debug, groups)
+                    
+                        OperationQueue.main.addOperation {
+                            completion(groups)
+                        }
+                    } else {
+                        os_log("Group Memberships Conversion Failed.", log: APIClient.logTag, type: .error)
+                    }
+                }
+            } catch {
+                os_log("API Response JSON Parse Failed.", log: APIClient.logTag, type: .error)
             }
         }
     }
@@ -122,7 +171,7 @@ class APIClient {
     ) {
         
         // Create the URL
-        let logGetEndpoint = "\(apiBaseUrl)/v2/log/\(logID)"
+        let logGetEndpoint = "\(apiBaseUrl)/v2/logs/\(logID)"
         guard let url = URL(string: logGetEndpoint) else {
             os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
             return
@@ -132,14 +181,25 @@ class APIClient {
         APIRequest.get(withURL: url, fromController: controller) {
             (json) -> Void in
             
-            if let log: Log = Mapper<Log>().map(JSONString: json) {
-                os_log("%@", log: APIClient.logTag, type: .debug, log.toJSONString()!)
-                
-                OperationQueue.main.addOperation {
-                    completion(log)
+            do {
+                if let jsonDict = try JSONSerialization.jsonObject(with: Data(json.utf8), options: []) as? [String: Any] {
+                    let logJsonDict = jsonDict["log"] ?? [:]
+                    
+                    let logJson = try JSONSerialization.data(withJSONObject: logJsonDict, options: [])
+                    let logJsonString = String(data: logJson, encoding: String.Encoding.utf8) ?? "{}"
+                    
+                    if let log: Log = Mapper<Log>().map(JSONString: logJsonString) {
+                        os_log("%@", log: APIClient.logTag, type: .debug, log.toJSONString()!)
+                        
+                        OperationQueue.main.addOperation {
+                            completion(log)
+                        }
+                    } else {
+                        os_log("Log Conversion Failed.", log: APIClient.logTag, type: .error)
+                    }
                 }
-            } else {
-                os_log("Log Conversion Failed.", log: APIClient.logTag, type: .error)
+            } catch {
+                os_log("API Response JSON Parse Failed.", log: APIClient.logTag, type: .error)
             }
         }
     }
@@ -161,14 +221,25 @@ class APIClient {
         APIRequest.get(withURL: url, fromController: controller) {
             (json) -> Void in
             
-            if let logs: Array<Log> = Mapper<Log>().mapArray(JSONString: json) {
-                os_log("%@", log: APIClient.logTag, type: .debug, logs)
-                
-                OperationQueue.main.addOperation {
-                    completion(logs)
+            do {
+                if let jsonDict = try JSONSerialization.jsonObject(with: Data(json.utf8), options: []) as? [String: Any] {
+                    let logsJsonDict = jsonDict["log"] ?? [:]
+                    
+                    let logsJson = try JSONSerialization.data(withJSONObject: logsJsonDict, options: [])
+                    let logsJsonString = String(data: logsJson, encoding: String.Encoding.utf8) ?? "[]"
+                    
+                    if let logs: Array<Log> = Mapper<Log>().mapArray(JSONString: logsJsonString) {
+                        os_log("%@", log: APIClient.logTag, type: .debug, logs)
+                        
+                        OperationQueue.main.addOperation {
+                            completion(logs)
+                        }
+                    } else {
+                        os_log("Logs Conversion Failed.", log: APIClient.logTag, type: .error)
+                    }
                 }
-            } else {
-                os_log("Logs Conversion Failed.", log: APIClient.logTag, type: .error)
+            } catch {
+                os_log("API Response JSON Parse Failed.", log: APIClient.logTag, type: .error)
             }
         }
     }
@@ -675,7 +746,7 @@ class APIClient {
         completion: @escaping (Log) -> Void
     ) {
         
-        let logPostEndpoint = "\(apiBaseUrl)/v2/log"
+        let logPostEndpoint = "\(apiBaseUrl)/v2/logs"
         guard let url = URL(string: logPostEndpoint) else {
             os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
             return
@@ -937,7 +1008,7 @@ class APIClient {
         completion: @escaping (Log) -> Void
     ) {
         
-        let logPutEndpoint = "\(apiBaseUrl)/v2/log/\(logID)"
+        let logPutEndpoint = "\(apiBaseUrl)/v2/logs/\(logID)"
         guard let url = URL(string: logPutEndpoint) else {
             os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
             return
@@ -1127,7 +1198,7 @@ class APIClient {
         completion: @escaping (Bool) -> Void
     ) {
         
-        let logDeleteEndpoint = "\(apiBaseUrl)/v2/log/\(logID)"
+        let logDeleteEndpoint = "\(apiBaseUrl)/v2/logs/soft/\(logID)"
         guard let url = URL(string: logDeleteEndpoint) else {
             os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
             return
