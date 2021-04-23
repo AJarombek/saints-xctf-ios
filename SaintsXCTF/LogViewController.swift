@@ -529,7 +529,7 @@ class LogViewController: UIViewController, UITextViewDelegate, UIPickerViewDeleg
             if !self.editingLog {
                 
                 // Submit the new log to the API
-                APIClient.logPostRequest(withLog: log) {
+                APIClient.logPostRequest(withLog: log, fromController: self) {
                     (newlog) -> Void in
                     
                     os_log("New Log Submitted to API.", log: self.logTag, type: .debug)
@@ -560,7 +560,7 @@ class LogViewController: UIViewController, UITextViewDelegate, UIPickerViewDeleg
                 log.log_id = logPassed?.log_id
                 
                 // Submit the edited log to the API
-                APIClient.logPutRequest(withLogID: log.log_id!, andLog: log) {
+                APIClient.logPutRequest(withLogID: log.log_id!, andLog: log, fromController: self) {
                     (newlog) -> Void in
                     
                     os_log("Updated Log Submitted to API.", log: self.logTag, type: .debug)

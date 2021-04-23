@@ -47,17 +47,31 @@ class APIClient {
         // Generate the request with a completion function to parse JSON
         APIRequest.get(withURL: url, fromController: controller) {
             (json) -> Void in
-        
-            if let user: User = Mapper<User>().map(JSONString: json) {
-                os_log("%@", log: APIClient.logTag, type: .debug, user.toJSONString()!)
-                
-                OperationQueue.main.addOperation {
-                    completion(user)
+            
+            do {
+                if let jsonDict = try JSONSerialization.jsonObject(with: Data(json.utf8), options: []) as? [String: Any] {
+                    let userJsonDict = jsonDict["user"] ?? [:]
+                    
+                    let userJson = try JSONSerialization.data(withJSONObject: userJsonDict, options: [])
+                    let userJsonString = String(data: userJson, encoding: String.Encoding.utf8) ?? "{}"
+                    
+                    if let user: User = Mapper<User>().map(JSONString: userJsonString) {
+                        os_log("%@", log: APIClient.logTag, type: .debug, user.toJSONString()!)
+                        
+                        OperationQueue.main.addOperation {
+                            completion(user)
+                        }
+                    } else {
+                        os_log("User Conversion Failed.", log: APIClient.logTag, type: .error)
+                        
+                        // If no user exists, return an empty user object
+                        OperationQueue.main.addOperation {
+                            completion(User())
+                        }
+                    }
                 }
-            } else {
-                os_log("User Conversion Failed.", log: APIClient.logTag, type: .error)
-                
-                // If no user exists, return an empty user object
+            } catch {
+                os_log("API Response JSON Parse Failed.", log: APIClient.logTag, type: .error)
                 OperationQueue.main.addOperation {
                     completion(User())
                 }
@@ -483,7 +497,7 @@ class APIClient {
         completion: @escaping ([Log]) -> Void
     ) {
         
-        let logfeedGetEndpoint = "\(apiBaseUrl)/v2/logfeed/\(paramType)/\(sortParam)/\(limit)/\(offset)"
+        let logfeedGetEndpoint = "\(apiBaseUrl)/v2/log_feed/\(paramType)/\(sortParam)/\(limit)/\(offset)"
         guard let url = URL(string: logfeedGetEndpoint) else {
             os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
             return
@@ -492,14 +506,25 @@ class APIClient {
         APIRequest.get(withURL: url, fromController: controller) {
             (json) -> Void in
             
-            if let logfeed: Array<Log> = Mapper<Log>().mapArray(JSONString: json) {
-                os_log("%@", log: APIClient.logTag, type: .debug, logfeed)
-                
-                OperationQueue.main.addOperation {
-                    completion(logfeed)
+            do {
+                if let jsonDict = try JSONSerialization.jsonObject(with: Data(json.utf8), options: []) as? [String: Any] {
+                    let logsJsonDict = jsonDict["logs"] ?? [:]
+                    
+                    let logsJson = try JSONSerialization.data(withJSONObject: logsJsonDict, options: [])
+                    let logsJsonString = String(data: logsJson, encoding: String.Encoding.utf8) ?? "[]"
+                    
+                    if let logfeed: Array<Log> = Mapper<Log>().mapArray(JSONString: logsJsonString) {
+                        os_log("%@", log: APIClient.logTag, type: .debug, logfeed)
+                        
+                        OperationQueue.main.addOperation {
+                            completion(logfeed)
+                        }
+                    } else {
+                        os_log("Log Feed Conversion Failed.", log: APIClient.logTag, type: .error)
+                    }
                 }
-            } else {
-                os_log("Log Feed Conversion Failed.", log: APIClient.logTag, type: .error)
+            } catch {
+                os_log("Log Feed API Response JSON Parse Failed.", log: APIClient.logTag, type: .error)
             }
         }
     }

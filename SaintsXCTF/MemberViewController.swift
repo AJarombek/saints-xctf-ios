@@ -157,7 +157,7 @@ class MemberViewController: UITableViewController, UIGestureRecognizerDelegate {
             
             os_log("Load Users Profile: %@", log: logTag, type: .debug, username)
             
-            APIClient.userGetRequest(withUsername: username) {
+            APIClient.userGetRequest(withUsername: username, fromController: self) {
                 (user) -> Void in
                 
                 let profileViewController = self.storyboard?.instantiateViewController(withIdentifier:

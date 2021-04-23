@@ -86,7 +86,7 @@ class HomeViewController: UIViewController {
                 AuthClient.tokenPostRequest(withUsername: usernameString, password: passwordString, completion: {
                     (authResult: AuthResult) -> Void in
                     
-                    if (!authResult.result.isEmpty) {
+                    if (authResult.result.isEmpty) {
                         os_log("No Auth Token Returned.", log: self.logTag, type: .error)
                         self.error.text = "Invalid Username/Password Entered"
                         self.username.changeStyle(.warning)

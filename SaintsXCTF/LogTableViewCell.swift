@@ -114,7 +114,7 @@ class LogTableViewCell: UITableViewCell {
             if let log_id: Int = self.log?.log_id {
                 
                 // Call the api to delete the log
-                APIClient.logDeleteRequest(withLogID: log_id) {
+                APIClient.logDeleteRequest(withLogID: log_id, fromController: self.parentContainerViewController()) {
                     (result) -> Void in
                     
                     // The result of the API call is a boolean of whether or not the delete operation succeeded

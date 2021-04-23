@@ -67,7 +67,7 @@ class GroupViewController: UIViewController, UIGestureRecognizerDelegate {
         adminView.isHidden = true
         
         // Get the group from the API with given groupname 
-        APIClient.groupGetRequest(withGroupname: groupname) {
+        APIClient.groupGetRequest(withGroupname: groupname, fromController: self) {
             (group) -> Void in
             
             // Put the group title in the navigation bar

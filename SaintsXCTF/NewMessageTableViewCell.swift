@@ -50,7 +50,7 @@ class NewMessageTableViewCell: UITableViewCell {
                 message.last = user.last
                 
                 // Send a request to the API to create a new message on this group
-                APIClient.messagePostRequest(withMessage: message) {
+                APIClient.messagePostRequest(withMessage: message, fromController: self.parentContainerViewController()) {
                     (newmessage) -> Void in
                     
                     os_log("New Message Created: %@", log: self.logTag, type: .debug, newmessage.description)
@@ -99,7 +99,7 @@ class NewMessageTableViewCell: UITableViewCell {
      */
     func messageNotification(_ notification: Notification) {
         
-        APIClient.notificationPostRequest(withNotification: notification) {
+        APIClient.notificationPostRequest(withNotification: notification, fromController: self.parentContainerViewController()) {
             (newnotification) -> Void in
             
             os_log("New Notification Sent: %@", log: self.logTag, type: .debug, newnotification.description)

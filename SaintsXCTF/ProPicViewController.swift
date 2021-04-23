@@ -147,7 +147,7 @@ class ProPicViewController: UIViewController, UIGestureRecognizerDelegate,
             
             user.profilepic = "data:image/jpeg;base64," + proPicBase64
             
-            APIClient.userPutRequest(withUsername: user.username, andUser: user) {
+            APIClient.userPutRequest(withUsername: user.username, andUser: user, fromController: self) {
                 (nu) -> Void in
                 
                 if let newuser: User = nu {

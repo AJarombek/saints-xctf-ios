@@ -165,7 +165,7 @@ class DetailsViewController: UIViewController, UITextViewDelegate, UITextFieldDe
             cancelButton.isEnabled = false
             
             // If the details are valid, send them to the API
-            APIClient.userPutRequest(withUsername: user.username, andUser: user) {
+            APIClient.userPutRequest(withUsername: user.username, andUser: user, fromController: self) {
                 (nu) -> Void in
                 
                 if let newuser: User = nu {

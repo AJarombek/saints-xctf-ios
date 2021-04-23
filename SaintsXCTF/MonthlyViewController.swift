@@ -488,8 +488,14 @@ class MonthlyViewController: UIViewController {
         }
         
         // Get the range view from the API for this month and user
-        APIClient.rangeViewGetRequest(withParamType: "user", sortParam: user.username!, filter: typeFilter,
-                                      start: first, end: last) {
+        APIClient.rangeViewGetRequest(
+            withParamType: "user",
+            sortParam: user.username!,
+            filter: typeFilter,
+            start: first,
+            end: last,
+            fromController: self
+        ) {
             rangeView -> Void in
             
             var weekTotals: [Double] = [0,0,0,0,0,0]

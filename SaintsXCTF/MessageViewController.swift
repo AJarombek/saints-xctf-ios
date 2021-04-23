@@ -53,7 +53,13 @@ class MessageViewController: UITableViewController {
             groupname = passedGroup?.group_name ?? ""
             
             // Make a request to the API to get the messages for this group
-            APIClient.messagefeedGetRequest(withParamType: "group", sortParam: groupname, limit: 50, offset: 0) {
+            APIClient.messagefeedGetRequest(
+                withParamType: "group",
+                sortParam: groupname,
+                limit: 50,
+                offset: 0,
+                fromController: self
+            ) {
                 (messagefeed) -> Void in
                 
                 self.messages = messagefeed

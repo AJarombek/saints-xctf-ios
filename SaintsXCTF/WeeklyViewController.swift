@@ -230,7 +230,14 @@ class WeeklyViewController: UIViewController {
         dateFormatter.dateFormat = "yyyy-MM-dd"
         
         // Get the range view from the API for this month and user
-        APIClient.rangeViewGetRequest(withParamType: "user", sortParam: user.username!, filter: typeFilter, start: start, end: end) {
+        APIClient.rangeViewGetRequest(
+            withParamType: "user",
+            sortParam: user.username!,
+            filter: typeFilter,
+            start: start,
+            end: end,
+            fromController: self
+        ) {
             rangeView -> Void in
             
             var logsWeekly: [Int] = [0,0,0,0,0,0,0,0,0,0]

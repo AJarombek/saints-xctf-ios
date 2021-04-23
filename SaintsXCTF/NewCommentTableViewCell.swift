@@ -51,7 +51,7 @@ class NewCommentTableViewCell: UITableViewCell {
                 comment.last = user.last
                 
                 // Send a request to the API to create a new comment on this log
-                APIClient.commentPostRequest(withComment: comment) {
+                APIClient.commentPostRequest(withComment: comment, fromController: self.parentContainerViewController()) {
                     (newcomment) -> Void in
                     
                     os_log("New Comment Created: %@", log: self.logTag, type: .debug, newcomment.description)
@@ -128,7 +128,7 @@ class NewCommentTableViewCell: UITableViewCell {
      */
     func commentNotification(_ notification: Notification) {
         
-        APIClient.notificationPostRequest(withNotification: notification) {
+        APIClient.notificationPostRequest(withNotification: notification, fromController: self.parentContainerViewController()) {
             (newnotification) -> Void in
             
             os_log("New Notification Sent: %@", log: self.logTag, type: .debug, newnotification.description)

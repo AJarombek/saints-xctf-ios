@@ -235,7 +235,7 @@ class AdminViewController: UIViewController, UIPickerViewDelegate {
         if let group: Group = passedGroup {
             group.members = newMembers
             
-            APIClient.groupPutRequest(withGroupname: groupname, andGroup: group) {
+            APIClient.groupPutRequest(withGroupname: groupname, andGroup: group, fromController: self) {
                 newgroup -> Void in
                 
                 var title: String?
@@ -303,7 +303,7 @@ class AdminViewController: UIViewController, UIPickerViewDelegate {
         if let group: Group = passedGroup {
             group.members = newMembers
             
-            APIClient.groupPutRequest(withGroupname: groupname, andGroup: group) {
+            APIClient.groupPutRequest(withGroupname: groupname, andGroup: group, fromController: self) {
                 newgroup -> Void in
                 
                 var title: String?
@@ -366,7 +366,7 @@ class AdminViewController: UIViewController, UIPickerViewDelegate {
                 
                 sendRequestField.changeStyle(.none)
                 
-                APIClient.activationCodePostRequest() {
+                APIClient.activationCodePostRequest(fromController: self) {
                     code -> Void in
                     
                     if let activationCode: ActivationCode = code {
@@ -428,7 +428,7 @@ class AdminViewController: UIViewController, UIPickerViewDelegate {
             "</body>" +
         "</html>"
         
-        APIClient.mailPostRequest(withMail: mail) {
+        APIClient.mailPostRequest(withMail: mail, fromController: self) {
             newMail -> Void in
             
             let title = "Sent Email Request to \(address)"
@@ -476,13 +476,13 @@ class AdminViewController: UIViewController, UIPickerViewDelegate {
         // Call the API to get the selected user if the flair is not empty
         if !flair.isEmpty {
             
-            APIClient.userGetRequest(withUsername: username) {
+            APIClient.userGetRequest(withUsername: username, fromController: self) {
                 user -> Void in
                 
                 // Now give this user the flair and send the change request to the API
                 user.give_flair = flair
                 
-                APIClient.userPutRequest(withUsername: user.username!, andUser: user) {
+                APIClient.userPutRequest(withUsername: user.username!, andUser: user, fromController: self) {
                     newuser -> Void in
                     
                     var title: String?
@@ -567,7 +567,7 @@ class AdminViewController: UIViewController, UIPickerViewDelegate {
                 notification.viewed = "N"
                 
                 // Send the notification
-                APIClient.notificationPostRequest(withNotification: notification) {
+                APIClient.notificationPostRequest(withNotification: notification, fromController: self) {
                     (newnotification) -> Void in
                     
                     os_log("New Notification Sent: %@", log: self.logTag, type: .debug, newnotification.description)

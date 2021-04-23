@@ -281,7 +281,7 @@ class PickGroupController: UIViewController {
         // points back to this user object
         addGroups(user)
         
-        APIClient.userPutRequest(withUsername: username, andUser: user) {
+        APIClient.userPutRequest(withUsername: username, andUser: user, fromController: self) {
             (newuser) -> Void in
             
             if let user: User = newuser {
@@ -330,7 +330,7 @@ class PickGroupController: UIViewController {
      - user: information about the user that is requesting to join a group
      */
     func findGroupAdmins(withGroupname groupname: String, forUser user: User) {
-        APIClient.groupGetRequest(withGroupname: groupname) {
+        APIClient.groupGetRequest(withGroupname: groupname, fromController: self) {
             (group) -> Void in
             
             let members: [GroupMember] = group.members!
@@ -363,7 +363,7 @@ class PickGroupController: UIViewController {
      */
     func sendAdminNotification(_ notification: Notification) {
         
-        APIClient.notificationPostRequest(withNotification: notification) {
+        APIClient.notificationPostRequest(withNotification: notification, fromController: self) {
             (newnotification) -> Void in
             
             os_log("New Notification Sent: %@", log: self.logTag, type: .debug, newnotification.description)

@@ -87,12 +87,25 @@ class LogDataSource {
      - sortParam: the group or user whose logs are needed
      - limit: the max number of logs to retrieve
      - offset: the offset from the most recent logs
+     - controller: UI Controller that the API request originates from
      - completion: a callback function called when the logs are returned from the API
      */
-    func load(withParamType paramType: String, sortParam: String, limit: Int, andOffset offset: Int,
-              completion: @escaping (Bool) -> Void) {
+    func load(
+        withParamType paramType: String,
+        sortParam: String,
+        limit: Int,
+        andOffset offset: Int,
+        fromController controller: UIViewController?,
+        completion: @escaping (Bool) -> Void
+    ) {
         
-        APIClient.logfeedGetRequest(withParamType: paramType, sortParam: sortParam, limit: limit, offset: offset) {
+        APIClient.logfeedGetRequest(
+            withParamType: paramType,
+            sortParam: sortParam,
+            limit: limit,
+            offset: offset,
+            fromController: controller
+        ) {
             (logArray) -> Void in
                             
             var done = false

@@ -302,7 +302,7 @@ class MainViewController: UITableViewController, UITextViewDelegate {
         let start = URL.absoluteString.index(URL.absoluteString.startIndex, offsetBy: 1)
         let end = URL.absoluteString.endIndex
         
-        APIClient.userGetRequest(withUsername: String(URL.absoluteString[start..<end])) {
+        APIClient.userGetRequest(withUsername: String(URL.absoluteString[start..<end]), fromController: self) {
             (user) -> Void in
             
             if (user.username! != "") {
@@ -344,7 +344,13 @@ class MainViewController: UITableViewController, UITextViewDelegate {
      Load more logs into the data source
      */
     func load() {
-        logDataSource.load(withParamType: paramType, sortParam: sortParam, limit: limit, andOffset: offset) {
+        logDataSource.load(
+            withParamType: paramType,
+            sortParam: sortParam,
+            limit: limit,
+            andOffset: offset,
+            fromController: self
+        ) {
             (done) -> Void in
             
             self.logTableView.reloadData()

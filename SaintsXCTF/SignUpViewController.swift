@@ -193,7 +193,7 @@ class SignUpViewController: UIViewController {
             }
             
             // First we must check to see if this Username has already been taken
-            APIClient.userGetRequest(withUsername: usernameString) {
+            APIClient.userGetRequest(withUsername: usernameString, fromController: self) {
                 (user) -> Void in
                 
                 if user.username == usernameString {
@@ -205,7 +205,7 @@ class SignUpViewController: UIViewController {
                        type: .debug, user.username)
                 
                 // Validate the activation code
-                APIClient.activationCodeGetRequest(withCode: activationCodeString) {
+                APIClient.activationCodeGetRequest(withCode: activationCodeString, fromController: self) {
                     (activationcode) -> Void in
                     
                     if let _: ActivationCode = activationcode {
@@ -250,7 +250,7 @@ class SignUpViewController: UIViewController {
      - username: the username of the user to be added
      */
     func addUser(_ user: User, _ username: String) {
-        APIClient.userPostRequest(withUser: user) {
+        APIClient.userPostRequest(withUser: user, fromController: self) {
             (user) -> Void in
             
             // Check that the added user exists and the username is as expected

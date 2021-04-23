@@ -33,12 +33,17 @@ class APIRequest {
     public static func get(
         withURL url: URL,
         fromController controller: UIViewController?,
+        authRequired: Bool = true,
         completion: @escaping (String) -> Void
     ) {
         var urlRequest = URLRequest(url: url)
         
         // add the credentials and accept type to the url request
         urlRequest.addValue("application/json", forHTTPHeaderField: "Accept")
+        
+        if (authRequired) {
+            urlRequest.addValue("Bearer \(UserJWT.jwt)", forHTTPHeaderField: "Authorization")
+        }
         
         let task = session.dataTask(with: urlRequest) {
             (data, response, error) -> Void in
@@ -93,6 +98,7 @@ class APIRequest {
         withURL url: URL,
         andJson json: String,
         fromController controller: UIViewController?,
+        authRequired: Bool = true,
         completion: @escaping (String) -> Void
     ) {
         var urlrequest = URLRequest(url: url)
@@ -104,6 +110,10 @@ class APIRequest {
         
         // add the credentials and accept type to the url request
         urlrequest.addValue("application/json", forHTTPHeaderField: "Accept")
+        
+        if (authRequired) {
+            urlrequest.addValue("Bearer \(UserJWT.jwt)", forHTTPHeaderField: "Authorization")
+        }
         
         let task = session.dataTask(with: urlrequest) {
             (data, response, error) -> Void in
@@ -156,6 +166,7 @@ class APIRequest {
         withURL url: URL,
         andJson json: String,
         fromController controller: UIViewController?,
+        authRequired: Bool = true,
         completion: @escaping (String) -> Void
     ) {
         var urlrequest = URLRequest(url: url)
@@ -167,6 +178,10 @@ class APIRequest {
         
         // add the credentials and accept type to the url request
         urlrequest.addValue("application/json", forHTTPHeaderField: "Accept")
+        
+        if (authRequired) {
+            urlrequest.addValue("Bearer \(UserJWT.jwt)", forHTTPHeaderField: "Authorization")
+        }
         
         let task = session.dataTask(with: urlrequest) {
             (data, response, error) -> Void in
@@ -217,6 +232,7 @@ class APIRequest {
     public static func delete(
         withURL url: URL,
         fromController controller: UIViewController?,
+        authRequired: Bool = true,
         completion: @escaping (Bool) -> Void
     ) {
         var urlrequest = URLRequest(url: url)
@@ -224,6 +240,10 @@ class APIRequest {
         
         // add the credentials and accept type to the url request
         urlrequest.addValue("application/json", forHTTPHeaderField: "Accept")
+        
+        if (authRequired) {
+            urlrequest.addValue("Bearer \(UserJWT.jwt)", forHTTPHeaderField: "Authorization")
+        }
         
         let task = session.dataTask(with: urlrequest) {
             (data, response, error) -> Void in
@@ -258,7 +278,7 @@ class APIRequest {
             "Request returned unexpected error code %@",
             log: APIRequest.logTag,
             type: .error,
-            httpResponse.statusCode
+            "\(httpResponse.statusCode)"
         )
         
         if httpResponse.statusCode == 403 {
