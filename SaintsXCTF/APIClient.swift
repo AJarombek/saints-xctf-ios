@@ -17,8 +17,16 @@ class APIClient {
     
     private static let logTag = OSLog(subsystem: "SaintsXCTF.APIClient.APIClient", category: "APIClient")
     
-    // private static let apiBaseUrl = "http://dev.api.saintsxctf.com"
-    private static let apiBaseUrl = "http://localhost:5000"
+    private static var apiBaseUrl: String {
+        switch NetworkEnvironment.environment {
+        case .local:
+            return "http://localhost:5000"
+        case .development:
+            return "http://dev.api.saintsxctf.com"
+        case .production:
+            return "http://api.saintsxctf.com"
+        }
+    }
     
     // MARK: - GET Requests
     
@@ -319,11 +327,11 @@ class APIClient {
     public static func commentGetRequest(
         withCommentId commentId: Int,
         fromController controller: UIViewController?,
-        completion: @escaping (Comment) -> Void
+        completion: @escaping (Comment?) -> Void
     ) {
         
         // Create the URL
-        let commentGetEndpoint = "\(apiBaseUrl)/v2/comment/\(commentId)"
+        let commentGetEndpoint = "\(apiBaseUrl)/v2/comments/\(commentId)"
         guard let url = URL(string: commentGetEndpoint) else {
             os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
             return
@@ -332,14 +340,33 @@ class APIClient {
         APIRequest.get(withURL: url, fromController: controller) {
             (json) -> Void in
             
-            if let comment: Comment = Mapper<Comment>().map(JSONString: json) {
-                os_log("%@", log: APIClient.logTag, type: .debug, comment.description)
+            do {
+                if let jsonDict = try JSONSerialization.jsonObject(with: Data(json.utf8), options: []) as? [String: Any] {
+                    let commentJsonDict = jsonDict["comment"] ?? [:]
+                    
+                    let commentJson = try JSONSerialization.data(withJSONObject: commentJsonDict, options: [])
+                    let commentJsonString = String(data: commentJson, encoding: String.Encoding.utf8) ?? "{}"
+                    
+                    if let comment: Comment = Mapper<Comment>().map(JSONString: commentJsonString) {
+                        os_log("%@", log: APIClient.logTag, type: .debug, comment.toJSONString()!)
+                        
+                        OperationQueue.main.addOperation {
+                            completion(comment)
+                        }
+                    } else {
+                        os_log("Comment Conversion Failed.", log: APIClient.logTag, type: .error)
+                        
+                        OperationQueue.main.addOperation {
+                            completion(nil)
+                        }
+                    }
+                }
+            } catch {
+                os_log("API Response JSON Parse Failed.", log: APIClient.logTag, type: .error)
                 
                 OperationQueue.main.addOperation {
-                    completion(comment)
+                    completion(nil)
                 }
-            } else {
-                os_log("Comment Conversion Failed.", log: APIClient.logTag, type: .error)
             }
         }
     }
@@ -352,10 +379,10 @@ class APIClient {
      */
     public static func commentsGetRequest(
         fromController controller: UIViewController?,
-        completion: @escaping ([Comment]) -> Void
+        completion: @escaping ([Comment]?) -> Void
     ) {
         
-        let commentsGetEndpoint = "\(apiBaseUrl)/v2/comments"
+        let commentsGetEndpoint = "\(apiBaseUrl)/v2/comments/"
         guard let url = URL(string: commentsGetEndpoint) else {
             os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
             return
@@ -364,14 +391,33 @@ class APIClient {
         APIRequest.get(withURL: url, fromController: controller) {
             (json) -> Void in
             
-            if let comments: Array<Comment> = Mapper<Comment>().mapArray(JSONString: json) {
-                os_log("%@", log: APIClient.logTag, type: .debug, comments)
+            do {
+                if let jsonDict = try JSONSerialization.jsonObject(with: Data(json.utf8), options: []) as? [String: Any] {
+                    let commentsJsonDict = jsonDict["comments"] ?? [:]
+                    
+                    let commentsJson = try JSONSerialization.data(withJSONObject: commentsJsonDict, options: [])
+                    let commentsJsonString = String(data: commentsJson, encoding: String.Encoding.utf8) ?? "[]"
+                    
+                    if let comments: Array<Comment> = Mapper<Comment>().mapArray(JSONString: commentsJsonString) {
+                        os_log("%@", log: APIClient.logTag, type: .debug, comments)
+                        
+                        OperationQueue.main.addOperation {
+                            completion(comments)
+                        }
+                    } else {
+                        os_log("Comments Conversion Failed.", log: APIClient.logTag, type: .error)
+                        
+                        OperationQueue.main.addOperation {
+                            completion(nil)
+                        }
+                    }
+                }
+            } catch {
+                os_log("API Response JSON Parse Failed.", log: APIClient.logTag, type: .error)
                 
                 OperationQueue.main.addOperation {
-                    completion(comments)
+                    completion(nil)
                 }
-            } else {
-                os_log("Comments Conversion Failed.", log: APIClient.logTag, type: .error)
             }
         }
     }
@@ -805,7 +851,7 @@ class APIClient {
         completion: @escaping (Comment) -> Void
     ) {
 
-        let commentPostEndpoint = "\(apiBaseUrl)/v2/comment"
+        let commentPostEndpoint = "\(apiBaseUrl)/v2/comments/"
         guard let url = URL(string: commentPostEndpoint) else {
             os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
             return
@@ -1133,7 +1179,7 @@ class APIClient {
         completion: @escaping (Comment) -> Void
     ) {
         
-        let commentPutEndpoint = "\(apiBaseUrl)/v2/comment/\(commentId)"
+        let commentPutEndpoint = "\(apiBaseUrl)/v2/comments/\(commentId)"
         guard let url = URL(string: commentPutEndpoint) else {
             os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
             return
@@ -1271,7 +1317,7 @@ class APIClient {
         completion: @escaping (Bool) -> Void
     ) {
         
-        let commentDeleteEndpoint = "\(apiBaseUrl)/v2/comment/\(commentID)"
+        let commentDeleteEndpoint = "\(apiBaseUrl)/v2/comments/\(commentID)"
         guard let url = URL(string: commentDeleteEndpoint) else {
             os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
             return

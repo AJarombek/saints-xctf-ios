@@ -18,7 +18,7 @@ import ObjectMapper
  */
 class Comment: Mappable, CustomStringConvertible {
     
-    var comment_id: Int!
+    var comment_id: Int?
     var log_id: Int!
     var username: String!
     var first: String!
@@ -29,9 +29,7 @@ class Comment: Mappable, CustomStringConvertible {
     /**
      Default initializer for a Notification object
      */
-    init() {
-        comment_id = 0
-    }
+    init() {}
     
     /**
      Required initializer for the Mappable protocol

@@ -13,7 +13,16 @@ class FnClient {
     
     private static let logTag = OSLog(subsystem: "SaintsXCTF.APIClient.FnClient", category: "FnClient")
     
-    private static let fnBaseUrl = "https://dev.fn.saintsxctf.com"
+    private static var fnBaseUrl: String {
+        switch NetworkEnvironment.environment {
+        case .local:
+            return "http://localhost:5002"
+        case .development:
+            return "http://dev.fn.saintsxctf.com"
+        case .production:
+            return "http://fn.saintsxctf.com"
+        }
+    }
     
     // MARK: - POST Requests
     
