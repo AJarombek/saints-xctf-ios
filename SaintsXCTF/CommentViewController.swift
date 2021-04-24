@@ -149,7 +149,7 @@ class CommentViewController: UITableViewController, UITextViewDelegate {
             
                 // Convert the string to a date
                 let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                dateFormatter.dateFormat = "E, dd MMM yyyy HH:mm:ss zzz"
                  
                 // Then format the date for viewing
                 let formattedDate = dateFormatter.date(from: comment.time)

@@ -848,7 +848,7 @@ class APIClient {
     public static func commentPostRequest(
         withComment comment: Comment,
         fromController controller: UIViewController?,
-        completion: @escaping (Comment) -> Void
+        completion: @escaping (Comment?) -> Void
     ) {
 
         let commentPostEndpoint = "\(apiBaseUrl)/v2/comments/"
@@ -863,14 +863,35 @@ class APIClient {
         APIRequest.post(withURL: url, andJson: commentJSON ?? "", fromController: controller) {
             (json) -> Void in
             
-            if let comment: Comment = Mapper<Comment>().map(JSONString: json ?? "") {
-                os_log("%@", log: APIClient.logTag, type: .debug, comment.description)
+            let jsonResponse = json ?? ""
+            
+            do {
+                if let jsonDict = try JSONSerialization.jsonObject(with: Data(jsonResponse.utf8), options: []) as? [String: Any] {
+                    let commentJsonDict = jsonDict["comment"] ?? [:]
+                    
+                    let commentJson = try JSONSerialization.data(withJSONObject: commentJsonDict, options: [])
+                    let commentJsonString = String(data: commentJson, encoding: String.Encoding.utf8) ?? "{}"
+                    
+                    if let comment: Comment = Mapper<Comment>().map(JSONString: commentJsonString) {
+                        os_log("%@", log: APIClient.logTag, type: .debug, comment.toJSONString()!)
+                        
+                        OperationQueue.main.addOperation {
+                            completion(comment)
+                        }
+                    } else {
+                        os_log("Comment Conversion Failed.", log: APIClient.logTag, type: .error)
+                        
+                        OperationQueue.main.addOperation {
+                            completion(nil)
+                        }
+                    }
+                }
+            } catch {
+                os_log("API Response JSON Parse Failed.", log: APIClient.logTag, type: .error)
                 
                 OperationQueue.main.addOperation {
-                    completion(comment)
+                    completion(nil)
                 }
-            } else {
-                os_log("Comment Conversion Failed.", log: APIClient.logTag, type: .error)
             }
         }
     }
@@ -1176,7 +1197,7 @@ class APIClient {
         withCommentId commentId: Int,
         andComment comment: Comment,
         fromController controller: UIViewController?,
-        completion: @escaping (Comment) -> Void
+        completion: @escaping (Comment?) -> Void
     ) {
         
         let commentPutEndpoint = "\(apiBaseUrl)/v2/comments/\(commentId)"
@@ -1191,14 +1212,35 @@ class APIClient {
         APIRequest.put(withURL: url, andJson: commentJSON ?? "", fromController: controller) {
             (json) -> Void in
             
-            if let comment: Comment = Mapper<Comment>().map(JSONString: json ?? "") {
-                os_log("%@", log: APIClient.logTag, type: .debug, comment.description)
+            let jsonResponse = json ?? ""
+            
+            do {
+                if let jsonDict = try JSONSerialization.jsonObject(with: Data(jsonResponse.utf8), options: []) as? [String: Any] {
+                    let commentJsonDict = jsonDict["comment"] ?? [:]
+                    
+                    let commentJson = try JSONSerialization.data(withJSONObject: commentJsonDict, options: [])
+                    let commentJsonString = String(data: commentJson, encoding: String.Encoding.utf8) ?? "{}"
+                    
+                    if let comment: Comment = Mapper<Comment>().map(JSONString: commentJsonString) {
+                        os_log("%@", log: APIClient.logTag, type: .debug, comment.toJSONString()!)
+                        
+                        OperationQueue.main.addOperation {
+                            completion(comment)
+                        }
+                    } else {
+                        os_log("Comment Conversion Failed.", log: APIClient.logTag, type: .error)
+                        
+                        OperationQueue.main.addOperation {
+                            completion(nil)
+                        }
+                    }
+                }
+            } catch {
+                os_log("API Response JSON Parse Failed.", log: APIClient.logTag, type: .error)
                 
                 OperationQueue.main.addOperation {
-                    completion(comment)
+                    completion(nil)
                 }
-            } else {
-                os_log("Comment Conversion Failed.", log: APIClient.logTag, type: .error)
             }
         }
     }

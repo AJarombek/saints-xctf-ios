@@ -8,6 +8,7 @@
 
 import UIKit
 import os.log
+import PopupDialog
 
 /**
  Class representing a cell in the comments table view.  Provides an input text field to create a new comment
@@ -50,65 +51,89 @@ class NewCommentTableViewCell: UITableViewCell {
                 comment.first = user.first
                 comment.last = user.last
                 
+                // Add a loading overlay to the log view on accept
+                var overlay: UIView?
+                overlay = LoadingView(frame: CGRect(
+                    x: 0,
+                    y: 0,
+                    width: self.parentContainerViewController()?.view.frame.width ?? 0,
+                    height: self.parentContainerViewController()?.view.frame.height ?? 0
+                ))
+                self.parentContainerViewController()?.view.addSubview(overlay!)
+                
                 // Send a request to the API to create a new comment on this log
                 APIClient.commentPostRequest(withComment: comment, fromController: self.parentContainerViewController()) {
-                    (newcomment) -> Void in
+                    (addedcomment) -> Void in
                     
-                    os_log("New Comment Created: %@", log: self.logTag, type: .debug, newcomment.description)
-                    
-                    // Append the comment to the log, comments object, update the log in the view controller
-                    // And reload the cells in the comment table view
-                    self.log?.comments.insert(newcomment, at: 0)
-                    self.commentVC?.comments?.insert(newcomment, at: 0)
-                    self.commentVC?.log = self.log
-                    self.commentVC?.commentTableView.reloadData()
-                    
-                    // Find all the tags in the new comment
-                    let tagRegex = "@[a-zA-Z0-9]+"
-                    let tags: [String] = Utils.matches(for: tagRegex, in: newcomment.content!)
-                    
-                    os_log("Comment Tags: %@", log: self.logTag, type: .debug, tags)
-                    
-                    // Go thorugh each tag and notify the user tagged
-                    tags.forEach {
-                        tag -> Void in
+                    if let newcomment: Comment = addedcomment {
+                        overlay?.removeFromSuperview()
+                        os_log("New Comment Created: %@", log: self.logTag, type: .debug, newcomment.description)
                         
-                        let start = tag.index(tag.startIndex, offsetBy: 1)
-                        let end = tag.endIndex
+                        // Append the comment to the log, comments object, update the log in the view controller
+                        // And reload the cells in the comment table view
+                        self.log?.comments.insert(newcomment, at: 0)
+                        self.commentVC?.comments?.insert(newcomment, at: 0)
+                        self.commentVC?.log = self.log
+                        self.commentVC?.commentTableView.reloadData()
                         
-                        let tagUsername: String = String(tag[start..<end])
+                        // Find all the tags in the new comment
+                        let tagRegex = "@[a-zA-Z0-9]+"
+                        let tags: [String] = Utils.matches(for: tagRegex, in: newcomment.content!)
                         
-                        // Build the notification
-                        let tagnotification = Notification()
-                        tagnotification.username = tagUsername
-                        tagnotification.link = "https://www.saintsxctf.com/log.php?logno=\(newcomment.log_id!)"
-                        tagnotification.notification_description = "\(newcomment.first!) \(newcomment.last!)"
-                                                                    + " Mentioned You in a Log."
-                        tagnotification.viewed = "N"
+                        os_log("Comment Tags: %@", log: self.logTag, type: .debug, tags)
                         
-                        self.commentTagNotification(tagnotification)
-                    }
-                    
-                    // Reset the comment text field
-                    self.commentField.text = ""
-                    
-                    // If the commenter isnt also the log owner, send the owner a notification
-                    let logUsername: String = self.log?.username ?? ""
-                    
-                    if newcomment.username != logUsername {
+                        // Go thorugh each tag and notify the user tagged
+                        tags.forEach {
+                            tag -> Void in
+                            
+                            let start = tag.index(tag.startIndex, offsetBy: 1)
+                            let end = tag.endIndex
+                            
+                            let tagUsername: String = String(tag[start..<end])
+                            
+                            // Build the notification
+                            let tagnotification = Notification()
+                            tagnotification.username = tagUsername
+                            tagnotification.link = "https://www.saintsxctf.com/log.php?logno=\(newcomment.log_id!)"
+                            tagnotification.notification_description = "\(newcomment.first!) \(newcomment.last!)"
+                                                                        + " Mentioned You in a Log."
+                            tagnotification.viewed = "N"
+                            
+                            self.commentTagNotification(tagnotification)
+                        }
                         
-                        let logId = self.log?.log_id ?? 0
-                        let first = newcomment.first ?? ""
-                        let last = newcomment.last ?? ""
+                        // Reset the comment text field
+                        self.commentField.text = ""
                         
-                        // Build the notification
-                        let notification = Notification()
-                        notification.username = logUsername
-                        notification.link = "https://www.saintsxctf.com/log.php?logno=\(logId)"
-                        notification.notification_description = "\(first) \(last) Commented on Your Log."
-                        notification.viewed = "N"
+                        // If the commenter isnt also the log owner, send the owner a notification
+                        let logUsername: String = self.log?.username ?? ""
                         
-                        self.commentNotification(notification)
+                        if newcomment.username != logUsername {
+                            
+                            let logId = self.log?.log_id ?? 0
+                            let first = newcomment.first ?? ""
+                            let last = newcomment.last ?? ""
+                            
+                            // Build the notification
+                            let notification = Notification()
+                            notification.username = logUsername
+                            notification.link = "https://www.saintsxctf.com/log.php?logno=\(logId)"
+                            notification.notification_description = "\(first) \(last) Commented on Your Log."
+                            notification.viewed = "N"
+                            
+                            self.commentNotification(notification)
+                        }
+                    } else {
+                        let title = "Failed to Create a New Comment"
+                        
+                        let button = DefaultButton(title: "Try Again") {
+                            overlay?.removeFromSuperview()
+                        }
+                        
+                        let popup = PopupDialog(title: title, message: nil)
+                        popup.addButton(button)
+                        
+                        self.parentContainerViewController()?.present(popup, animated: true, completion: nil)
                     }
                 }
                 
