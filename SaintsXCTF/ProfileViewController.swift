@@ -99,18 +99,48 @@ class ProfileViewController: UIViewController, UIGestureRecognizerDelegate {
         nameLabel.text = "\(user?.first ?? "") \(user?.last ?? "")"
         usernameLabel.text = "@\(user?.username ?? "")"
         
-        // Build up the group label with all of the users groups
-        var teamsTxt = ""
-        let groups: [GroupInfo] = (user?.groups)!
-        
-        if (groups.count > 0) {
-            for i in 0...groups.count - 1 {
-                teamsTxt += "\(groups[i].group_title!)\n"
-            }
+        var groupsTxt: String = ""
+        if user?.groups != nil {
+            groupsTxt = createGroupInfoText(withGroups: (user?.groups)!)
+            displayUserInfo(groupsTxt: groupsTxt)
         } else {
-            teamsTxt += "No Teams"
+            APIClient.userGroupsGetRequest(withUsername: user!.username, fromController: self) {
+                (groupInfo) -> Void in
+                
+                self.user?.groups = groupInfo
+                groupsTxt = self.createGroupInfoText(withGroups: groupInfo)
+                self.displayUserInfo(groupsTxt: groupsTxt)
+            }
+        }
+    }
+    
+    /**
+     Generate a group info string for the profile page.
+     - returns: A string containing all the groups that a user is a member of.
+     */
+    func createGroupInfoText(withGroups groups: [GroupInfo]) -> String {
+        // Build up the group label with all of the users groups
+        var groupsTxt = ""
+        
+        let filteredGroups = groups.filter { (group: GroupInfo) in
+            return group.status == "accepted"
         }
         
+        if (filteredGroups.count > 0) {
+            for i in 0...filteredGroups.count - 1 {
+                groupsTxt += "\(filteredGroups[i].group_title!)\n"
+            }
+        } else {
+            groupsTxt += "No Groups"
+        }
+        
+        return groupsTxt
+    }
+    
+    /**
+     Display user info on the profile page.
+     */
+    func displayUserInfo(groupsTxt: String) {
         // Set the description text view with the users class year, favorite event,
         // and location
         var classYearTxt = ""
@@ -128,14 +158,13 @@ class ProfileViewController: UIViewController, UIGestureRecognizerDelegate {
             locationTxt = "Location: \(location)\n"
         }
         
-        let descriptionText = "\(teamsTxt)\n\(classYearTxt)\(favoriteEventTxt)\(locationTxt)"
+        let descriptionText = "\(groupsTxt)\n\(classYearTxt)\(favoriteEventTxt)\(locationTxt)"
         
         // Create a MutableAttributedString for the profile description
-        let mutableContent = NSMutableAttributedString(string: descriptionText,
-                                                       attributes: [:])
+        let mutableContent = NSMutableAttributedString(string: descriptionText, attributes: [:])
         
         let start = 0
-        let end = teamsTxt.count
+        let end = groupsTxt.count
         
         let boldFontAttribute = [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 12.0)]
         mutableContent.addAttributes(boldFontAttribute, range: NSRange(location: start, length: end))
