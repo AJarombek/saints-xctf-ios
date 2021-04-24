@@ -18,7 +18,7 @@ import ObjectMapper
  */
 class Log: Mappable, CustomStringConvertible {
     
-    var log_id: Int!
+    var log_id: Int?
     var username: String!
     var first: String!
     var last: String!
@@ -39,9 +39,7 @@ class Log: Mappable, CustomStringConvertible {
     /**
      Default initializer for a Log object
      */
-    init() {
-        log_id = 0
-    }
+    init() {}
     
     /**
      Required initializer for the Mappable protocol

@@ -113,6 +113,7 @@ class APIRequest {
         
         // add the credentials and accept type to the url request
         urlrequest.addValue("application/json", forHTTPHeaderField: "Accept")
+        urlrequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
         if (authRequired) {
             urlrequest.addValue("Bearer \(UserJWT.jwt)", forHTTPHeaderField: "Authorization")
@@ -184,6 +185,7 @@ class APIRequest {
         
         // add the credentials and accept type to the url request
         urlrequest.addValue("application/json", forHTTPHeaderField: "Accept")
+        urlrequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
         if (authRequired) {
             urlrequest.addValue("Bearer \(UserJWT.jwt)", forHTTPHeaderField: "Authorization")

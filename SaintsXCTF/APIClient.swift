@@ -17,7 +17,8 @@ class APIClient {
     
     private static let logTag = OSLog(subsystem: "SaintsXCTF.APIClient.APIClient", category: "APIClient")
     
-    private static let apiBaseUrl = "https://dev.api.saintsxctf.com"
+    // private static let apiBaseUrl = "http://dev.api.saintsxctf.com"
+    private static let apiBaseUrl = "http://localhost:5000"
     
     // MARK: - GET Requests
     
@@ -746,7 +747,7 @@ class APIClient {
         completion: @escaping (Log?) -> Void
     ) {
         
-        let logPostEndpoint = "\(apiBaseUrl)/v2/logs"
+        let logPostEndpoint = "\(apiBaseUrl)/v2/logs/"
         guard let url = URL(string: logPostEndpoint) else {
             os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
             return
@@ -758,14 +759,31 @@ class APIClient {
         APIRequest.post(withURL: url, andJson: logJSON ?? "", fromController: controller) {
             (json) -> Void in
             
-            if let log: Log = Mapper<Log>().map(JSONString: json ?? "") {
-                os_log("%@", log: APIClient.logTag, type: .debug, log.description)
-                
-                OperationQueue.main.addOperation {
-                    completion(log)
+            let jsonResponse = json ?? ""
+            
+            do {
+                if let jsonDict = try JSONSerialization.jsonObject(with: Data(jsonResponse.utf8), options: []) as? [String: Any] {
+                    let logJsonDict = jsonDict["log"] ?? [:]
+                    
+                    let logJson = try JSONSerialization.data(withJSONObject: logJsonDict, options: [])
+                    let logJsonString = String(data: logJson, encoding: String.Encoding.utf8) ?? "{}"
+                    
+                    if let log: Log = Mapper<Log>().map(JSONString: logJsonString) {
+                        os_log("%@", log: APIClient.logTag, type: .debug, log.toJSONString()!)
+                        
+                        OperationQueue.main.addOperation {
+                            completion(log)
+                        }
+                    } else {
+                        os_log("Log Conversion Failed.", log: APIClient.logTag, type: .error)
+                        
+                        OperationQueue.main.addOperation {
+                            completion(nil)
+                        }
+                    }
                 }
-            } else {
-                os_log("Log Conversion Failed.", log: APIClient.logTag, type: .error)
+            } catch {
+                os_log("API Response JSON Parse Failed.", log: APIClient.logTag, type: .error)
                 
                 OperationQueue.main.addOperation {
                     completion(nil)
@@ -1024,14 +1042,31 @@ class APIClient {
         APIRequest.put(withURL: url, andJson: logJSON ?? "", fromController: controller) {
             (json) -> Void in
             
-            if let log: Log = Mapper<Log>().map(JSONString: json ?? "") {
-                os_log("%@", log: APIClient.logTag, type: .debug, log.description)
-                
-                OperationQueue.main.addOperation {
-                    completion(log)
+            let jsonResponse = json ?? ""
+            
+            do {
+                if let jsonDict = try JSONSerialization.jsonObject(with: Data(jsonResponse.utf8), options: []) as? [String: Any] {
+                    let logJsonDict = jsonDict["log"] ?? [:]
+                    
+                    let logJson = try JSONSerialization.data(withJSONObject: logJsonDict, options: [])
+                    let logJsonString = String(data: logJson, encoding: String.Encoding.utf8) ?? "{}"
+                    
+                    if let log: Log = Mapper<Log>().map(JSONString: logJsonString) {
+                        os_log("%@", log: APIClient.logTag, type: .debug, log.toJSONString()!)
+                        
+                        OperationQueue.main.addOperation {
+                            completion(log)
+                        }
+                    } else {
+                        os_log("Log Conversion Failed.", log: APIClient.logTag, type: .error)
+                        
+                        OperationQueue.main.addOperation {
+                            completion(nil)
+                        }
+                    }
                 }
-            } else {
-                os_log("Log Conversion Failed.", log: APIClient.logTag, type: .error)
+            } catch {
+                os_log("API Response JSON Parse Failed.", log: APIClient.logTag, type: .error)
                 
                 OperationQueue.main.addOperation {
                     completion(nil)

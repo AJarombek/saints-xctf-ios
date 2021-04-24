@@ -14,7 +14,8 @@ class AuthClient {
     
     private static let logTag = OSLog(subsystem: "SaintsXCTF.APIClient.AuthClient", category: "AuthClient")
     
-    private static let authBaseUrl = "https://dev.auth.saintsxctf.com"
+    // private static let authBaseUrl = "https://dev.auth.saintsxctf.com"
+    private static let authBaseUrl = "http://localhost:5001"
     
     // MARK: - POST Requests
     
