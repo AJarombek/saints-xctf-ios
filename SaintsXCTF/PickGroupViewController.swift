@@ -64,43 +64,49 @@ class PickGroupController: UIViewController {
                     (groupInfo) -> Void in
                     
                     self.user?.groups = groupInfo
+                    self.setCurrentGroupMemberships()
                 }
             } else {
-                // TODO
+                setCurrentGroupMemberships()
             }
+        }
+    }
+    
+    /**
+     Set the current group memberships of a user before they are edited.
+     */
+    func setCurrentGroupMemberships() {
+        let groups: [GroupInfo] = user?.groups ?? []
+        
+        navigationItem.title = "Edit Groups"
+        
+        groups.forEach {
+            (group) -> Void in
             
-            let groups: [GroupInfo] = user?.groups ?? []
-            
-            navigationItem.title = "Edit Groups"
-            
-            groups.forEach {
-                (group) -> Void in
+            // Get whether the user is accepted into the group
+            let accepted: Bool = group.status == "accepted"
                 
-                // Get whether the user is accepted into the group
-                let accepted: Bool = group.status == "accepted"
-                    
-                let groupName: String = group.group_name
-                
-                // Select the group that the user is a member of
-                switch groupName {
-                case "mensxc":
-                    mensxcAccepted = accepted
-                    mensxcSelected()
-                case "wmensxc":
-                    wmensxcAccepted = accepted
-                    womensxcSelected()
-                case "menstf":
-                    menstfAccepted = accepted
-                    menstfSelected()
-                case "wmenstf":
-                    wmenstfAccepted = accepted
-                    womenstfSelected()
-                case "alumni":
-                    alumniAccepted = accepted
-                    alumniSelected()
-                default:
-                    os_log("Invalid Group Name.", log: OSLog.default, type: .error)
-                }
+            let groupName: String = group.group_name
+            
+            // Select the group that the user is a member of
+            switch groupName {
+            case "mensxc":
+                mensxcAccepted = accepted
+                mensxcSelected()
+            case "wmensxc":
+                wmensxcAccepted = accepted
+                womensxcSelected()
+            case "menstf":
+                menstfAccepted = accepted
+                menstfSelected()
+            case "wmenstf":
+                wmenstfAccepted = accepted
+                womenstfSelected()
+            case "alumni":
+                alumniAccepted = accepted
+                alumniSelected()
+            default:
+                os_log("Invalid Group Name.", log: OSLog.default, type: .error)
             }
         }
     }

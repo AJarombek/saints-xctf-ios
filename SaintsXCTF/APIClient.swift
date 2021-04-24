@@ -717,7 +717,7 @@ class APIClient {
         APIRequest.post(withURL: url, andJson: userJSON ?? "", fromController: controller) {
             (json) -> Void in
             
-            if let user: User = Mapper<User>().map(JSONString: json) {
+            if let user: User = Mapper<User>().map(JSONString: json ?? "") {
                 os_log("%@", log: APIClient.logTag, type: .debug, user.description)
                 
                 OperationQueue.main.addOperation {
@@ -743,7 +743,7 @@ class APIClient {
     public static func logPostRequest(
         withLog log: Log,
         fromController controller: UIViewController?,
-        completion: @escaping (Log) -> Void
+        completion: @escaping (Log?) -> Void
     ) {
         
         let logPostEndpoint = "\(apiBaseUrl)/v2/logs"
@@ -758,7 +758,7 @@ class APIClient {
         APIRequest.post(withURL: url, andJson: logJSON ?? "", fromController: controller) {
             (json) -> Void in
             
-            if let log: Log = Mapper<Log>().map(JSONString: json) {
+            if let log: Log = Mapper<Log>().map(JSONString: json ?? "") {
                 os_log("%@", log: APIClient.logTag, type: .debug, log.description)
                 
                 OperationQueue.main.addOperation {
@@ -766,6 +766,10 @@ class APIClient {
                 }
             } else {
                 os_log("Log Conversion Failed.", log: APIClient.logTag, type: .error)
+                
+                OperationQueue.main.addOperation {
+                    completion(nil)
+                }
             }
         }
     }
@@ -795,7 +799,7 @@ class APIClient {
         APIRequest.post(withURL: url, andJson: commentJSON ?? "", fromController: controller) {
             (json) -> Void in
             
-            if let comment: Comment = Mapper<Comment>().map(JSONString: json) {
+            if let comment: Comment = Mapper<Comment>().map(JSONString: json ?? "") {
                 os_log("%@", log: APIClient.logTag, type: .debug, comment.description)
                 
                 OperationQueue.main.addOperation {
@@ -832,7 +836,7 @@ class APIClient {
         APIRequest.post(withURL: url, andJson: messageJSON ?? "", fromController: controller) {
             (json) -> Void in
             
-            if let message: Message = Mapper<Message>().map(JSONString: json) {
+            if let message: Message = Mapper<Message>().map(JSONString: json ?? "") {
                 os_log("%@", log: APIClient.logTag, type: .debug, message.description)
                 
                 OperationQueue.main.addOperation {
@@ -864,7 +868,7 @@ class APIClient {
         APIRequest.post(withURL: url, andJson: "", fromController: controller) {
             (json) -> Void in
             
-            if let activationcode: ActivationCode = Mapper<ActivationCode>().map(JSONString: json) {
+            if let activationcode: ActivationCode = Mapper<ActivationCode>().map(JSONString: json ?? "") {
                 os_log("%@", log: APIClient.logTag, type: .debug, activationcode.description)
                 
                 OperationQueue.main.addOperation {
@@ -904,7 +908,7 @@ class APIClient {
         APIRequest.post(withURL: url, andJson: notificationJSON ?? "", fromController: controller) {
             (json) -> Void in
             
-            if let notification: Notification = Mapper<Notification>().map(JSONString: json) {
+            if let notification: Notification = Mapper<Notification>().map(JSONString: json ?? "") {
                 os_log("%@", log: APIClient.logTag, type: .debug, notification.description)
                 
                 OperationQueue.main.addOperation {
@@ -977,7 +981,7 @@ class APIClient {
         APIRequest.put(withURL: url, andJson: userJSON ?? "", fromController: controller) {
             (json) -> Void in
             
-            if let user: User = Mapper<User>().map(JSONString: json) {
+            if let user: User = Mapper<User>().map(JSONString: json ?? "") {
                 os_log("%@", log: APIClient.logTag, type: .debug, user.description)
                 
                 OperationQueue.main.addOperation {
@@ -1005,7 +1009,7 @@ class APIClient {
         withLogID logID: Int,
         andLog log: Log,
         fromController controller: UIViewController?,
-        completion: @escaping (Log) -> Void
+        completion: @escaping (Log?) -> Void
     ) {
         
         let logPutEndpoint = "\(apiBaseUrl)/v2/logs/\(logID)"
@@ -1020,7 +1024,7 @@ class APIClient {
         APIRequest.put(withURL: url, andJson: logJSON ?? "", fromController: controller) {
             (json) -> Void in
             
-            if let log: Log = Mapper<Log>().map(JSONString: json) {
+            if let log: Log = Mapper<Log>().map(JSONString: json ?? "") {
                 os_log("%@", log: APIClient.logTag, type: .debug, log.description)
                 
                 OperationQueue.main.addOperation {
@@ -1028,6 +1032,10 @@ class APIClient {
                 }
             } else {
                 os_log("Log Conversion Failed.", log: APIClient.logTag, type: .error)
+                
+                OperationQueue.main.addOperation {
+                    completion(nil)
+                }
             }
         }
     }
@@ -1059,7 +1067,7 @@ class APIClient {
         APIRequest.put(withURL: url, andJson: groupJSON ?? "", fromController: controller) {
             (json) -> Void in
             
-            if let group: Group = Mapper<Group>().map(JSONString: json) {
+            if let group: Group = Mapper<Group>().map(JSONString: json ?? "") {
                 os_log("%@", log: APIClient.logTag, type: .debug, group.description)
                 
                 OperationQueue.main.addOperation {
@@ -1102,7 +1110,7 @@ class APIClient {
         APIRequest.put(withURL: url, andJson: commentJSON ?? "", fromController: controller) {
             (json) -> Void in
             
-            if let comment: Comment = Mapper<Comment>().map(JSONString: json) {
+            if let comment: Comment = Mapper<Comment>().map(JSONString: json ?? "") {
                 os_log("%@", log: APIClient.logTag, type: .debug, comment.description)
                 
                 OperationQueue.main.addOperation {
@@ -1141,7 +1149,7 @@ class APIClient {
         APIRequest.put(withURL: url, andJson: messageJSON ?? "", fromController: controller) {
             (json) -> Void in
             
-            if let message: Message = Mapper<Message>().map(JSONString: json) {
+            if let message: Message = Mapper<Message>().map(JSONString: json ?? "") {
                 os_log("%@", log: APIClient.logTag, type: .debug, message.description)
                 
                 OperationQueue.main.addOperation {

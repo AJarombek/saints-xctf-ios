@@ -47,7 +47,7 @@ class AuthClient {
         APIRequest.post(withURL: url, andJson: credentials ?? "", fromController: nil) {
             (json) -> Void in
             
-            if let authResult: AuthResult = Mapper<AuthResult>().map(JSONString: json) {
+            if let authResult: AuthResult = Mapper<AuthResult>().map(JSONString: json ?? "") {
                 os_log("%@", log: AuthClient.logTag, type: .debug, authResult.description)
                 
                 OperationQueue.main.addOperation {

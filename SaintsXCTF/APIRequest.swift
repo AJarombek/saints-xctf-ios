@@ -99,10 +99,13 @@ class APIRequest {
         andJson json: String,
         fromController controller: UIViewController?,
         authRequired: Bool = true,
-        completion: @escaping (String) -> Void
+        completion: @escaping (String?) -> Void
     ) {
         var urlrequest = URLRequest(url: url)
         urlrequest.httpMethod = "POST"
+        
+        os_log("POST request url %@", log: APIRequest.logTag, type: .debug, url.path)
+        os_log("POST request body %@", log: APIRequest.logTag, type: .debug, json)
         
         // Get the data for the httpbody from the JSON
         let body: Data = json.data(using: .utf8)!
@@ -125,26 +128,29 @@ class APIRequest {
                 return
             }
             
-            guard 200 ..< 300 ~= httpResponse.statusCode else {
-                handleErrorCode(httpResponse: httpResponse, controller: controller)
-                return
-            }
-            
             // Check the response data
             guard let responseData = data else {
                 os_log("Error, did not receive data.", log: APIRequest.logTag, type: .error)
                 return
             }
                 
-            print(responseData)
-                
             let jsonString: String? = String(data: responseData, encoding: String.Encoding.utf8)
             
             guard let json = jsonString else {
-                
                 os_log("Error, Map Conversion Failed.", log: APIRequest.logTag, type: .error)
                 return
+            }
+            
+            os_log("POST response body %@", log: APIRequest.logTag, type: .debug, json)
+            
+            guard 200 ..< 300 ~= httpResponse.statusCode else {
+                handleErrorCode(httpResponse: httpResponse, controller: controller)
                 
+                OperationQueue.main.addOperation {
+                    completion(nil)
+                }
+                
+                return
             }
             
             OperationQueue.main.addOperation {
@@ -167,7 +173,7 @@ class APIRequest {
         andJson json: String,
         fromController controller: UIViewController?,
         authRequired: Bool = true,
-        completion: @escaping (String) -> Void
+        completion: @escaping (String?) -> Void
     ) {
         var urlrequest = URLRequest(url: url)
         urlrequest.httpMethod = "PUT"
@@ -195,6 +201,11 @@ class APIRequest {
             
             guard 200 ..< 300 ~= httpResponse.statusCode else {
                 handleErrorCode(httpResponse: httpResponse, controller: controller)
+                
+                OperationQueue.main.addOperation {
+                    completion(nil)
+                }
+                
                 return
             }
                 
@@ -257,6 +268,11 @@ class APIRequest {
             
             guard 200 ..< 300 ~= httpResponse.statusCode else {
                 handleErrorCode(httpResponse: httpResponse, controller: controller)
+                
+                OperationQueue.main.addOperation {
+                    completion(false)
+                }
+                
                 return
             }
             
@@ -285,10 +301,12 @@ class APIRequest {
             _ = UserJWT.removeJWT()
             _ = SignedInUser.removeUser()
             
-            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let startViewController = storyBoard.instantiateViewController(withIdentifier:
-                "startViewController") as! StartViewController
-            controller?.present(startViewController, animated: true, completion: nil)
+            DispatchQueue.main.async {
+                let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let startViewController = storyBoard.instantiateViewController(withIdentifier:
+                    "startViewController") as! StartViewController
+                controller?.present(startViewController, animated: true, completion: nil)
+            }
         }
     }
 }

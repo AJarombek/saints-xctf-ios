@@ -532,28 +532,43 @@ class LogViewController: UIViewController, UITextViewDelegate, UIPickerViewDeleg
                 APIClient.logPostRequest(withLog: log, fromController: self) {
                     (newlog) -> Void in
                     
-                    os_log("New Log Submitted to API.", log: self.logTag, type: .debug)
-                    
-                    // Build the popup dialog to be displayed
-                    let title = "New Log Created"
-                    
-                    let button = DefaultButton(title: "Continue") {
-                        self.resetFields()
+                    if newlog != nil {
+                        os_log("New Log Submitted to API.", log: self.logTag, type: .debug)
                         
-                        // Re-enable button and remove loading overlay
-                        overlay?.removeFromSuperview()
-                        self.submitButton.isEnabled = true
+                        // Build the popup dialog to be displayed
+                        let title = "New Log Created"
                         
-                        self.editingLog = false
-                        self.indexPassed = nil
-                        self.logPassed = nil
-                        os_log("Continue and Reset Log Inputs.", log: self.logTag, type: .debug)
+                        let button = DefaultButton(title: "Continue") {
+                            self.resetFields()
+                            
+                            // Re-enable button and remove loading overlay
+                            overlay?.removeFromSuperview()
+                            self.submitButton.isEnabled = true
+                            
+                            self.editingLog = false
+                            self.indexPassed = nil
+                            self.logPassed = nil
+                            os_log("Continue and Reset Log Inputs.", log: self.logTag, type: .debug)
+                        }
+                        
+                        let popup = PopupDialog(title: title, message: nil)
+                        popup.addButton(button)
+                        
+                        self.present(popup, animated: true, completion: nil)
+                    } else {
+                        let title = "Failed to Create New Exercise Log"
+                        
+                        let button = DefaultButton(title: "Try Again") {
+                            // Re-enable button and remove loading overlay
+                            overlay?.removeFromSuperview()
+                            self.submitButton.isEnabled = true
+                        }
+                        
+                        let popup = PopupDialog(title: title, message: nil)
+                        popup.addButton(button)
+                        
+                        self.present(popup, animated: true, completion: nil)
                     }
-                    
-                    let popup = PopupDialog(title: title, message: nil)
-                    popup.addButton(button)
-                    
-                    self.present(popup, animated: true, completion: nil)
                 }
             } else {
                 
@@ -563,28 +578,43 @@ class LogViewController: UIViewController, UITextViewDelegate, UIPickerViewDeleg
                 APIClient.logPutRequest(withLogID: log.log_id!, andLog: log, fromController: self) {
                     (newlog) -> Void in
                     
-                    os_log("Updated Log Submitted to API.", log: self.logTag, type: .debug)
-                    
-                    // Build the popup dialog to be displayed
-                    let title = "Existing Log Updated"
-                    
-                    let button = DefaultButton(title: "Continue") {
-                        self.resetFields()
+                    if newlog != nil {
+                        os_log("Updated Log Submitted to API.", log: self.logTag, type: .debug)
                         
-                        // Re-enable button and remove loading overlay
-                        overlay?.removeFromSuperview()
-                        self.submitButton.isEnabled = true
+                        // Build the popup dialog to be displayed
+                        let title = "Existing Log Updated"
                         
-                        self.editingLog = false
-                        self.indexPassed = nil
-                        self.logPassed = nil
-                        os_log("Continue and Reset Log Inputs.", log: self.logTag, type: .debug)
+                        let button = DefaultButton(title: "Continue") {
+                            self.resetFields()
+                            
+                            // Re-enable button and remove loading overlay
+                            overlay?.removeFromSuperview()
+                            self.submitButton.isEnabled = true
+                            
+                            self.editingLog = false
+                            self.indexPassed = nil
+                            self.logPassed = nil
+                            os_log("Continue and Reset Log Inputs.", log: self.logTag, type: .debug)
+                        }
+                        
+                        let popup = PopupDialog(title: title, message: nil)
+                        popup.addButton(button)
+                        
+                        self.present(popup, animated: true, completion: nil)
+                    } else {
+                        let title = "Failed to Update Existing Exercise Log"
+                        
+                        let button = DefaultButton(title: "Try Again") {
+                            // Re-enable button and remove loading overlay
+                            overlay?.removeFromSuperview()
+                            self.submitButton.isEnabled = true
+                        }
+                        
+                        let popup = PopupDialog(title: title, message: nil)
+                        popup.addButton(button)
+                        
+                        self.present(popup, animated: true, completion: nil)
                     }
-                    
-                    let popup = PopupDialog(title: title, message: nil)
-                    popup.addButton(button)
-                    
-                    self.present(popup, animated: true, completion: nil)
                 }
             }
             
