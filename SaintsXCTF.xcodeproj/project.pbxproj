@@ -13,6 +13,7 @@
 		3FC8B717262FA91100FFAB08 /* AuthResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC8B716262FA91100FFAB08 /* AuthResult.swift */; };
 		3FC8B71D2630E67500FFAB08 /* UserJWT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC8B71C2630E67500FFAB08 /* UserJWT.swift */; };
 		3FC8B7212634A7B400FFAB08 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC8B7202634A7B300FFAB08 /* Environment.swift */; };
+		3FC8B725263611B300FFAB08 /* FnResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC8B724263611B300FFAB08 /* FnResult.swift */; };
 		74D2B82CDDDB8485C81DDB7D /* Pods_SaintsXCTFTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C6D808CC5886260E5A60EA3 /* Pods_SaintsXCTFTests.framework */; };
 		A1015A371EEDC0EA00A2358E /* ActivationCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1015A361EEDC0EA00A2358E /* ActivationCode.swift */; };
 		A1015A391EEDC1CF00A2358E /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1015A381EEDC1CF00A2358E /* Message.swift */; };
@@ -177,6 +178,7 @@
 		3FC8B716262FA91100FFAB08 /* AuthResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResult.swift; sourceTree = "<group>"; };
 		3FC8B71C2630E67500FFAB08 /* UserJWT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserJWT.swift; sourceTree = "<group>"; };
 		3FC8B7202634A7B300FFAB08 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		3FC8B724263611B300FFAB08 /* FnResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FnResult.swift; sourceTree = "<group>"; };
 		7A2D9BE8020FFC609A9D432B /* Pods_SaintsXCTF.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SaintsXCTF.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1015A361EEDC0EA00A2358E /* ActivationCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivationCode.swift; sourceTree = "<group>"; };
 		A1015A381EEDC1CF00A2358E /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
@@ -462,6 +464,7 @@
 				A1505B931E8F10E400F111DB /* GroupInfo.swift */,
 				A11AB8BD1F92ACE60098AE8E /* Mail.swift */,
 				3FC8B716262FA91100FFAB08 /* AuthResult.swift */,
+				3FC8B724263611B300FFAB08 /* FnResult.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -880,6 +883,7 @@
 				A11AB8B61F8EF0A10098AE8E /* NewMessageTableViewCell.swift in Sources */,
 				A11AB8A51F8997290098AE8E /* BarChartFormatter.swift in Sources */,
 				A18968271F7B25940073A73B /* EditProfileViewController.swift in Sources */,
+				3FC8B725263611B300FFAB08 /* FnResult.swift in Sources */,
 				A15E62391F3FD44000AC9EF1 /* UIColorExt.swift in Sources */,
 				A10D61C51F6F45C100A406D9 /* UIToolbarExt.swift in Sources */,
 				A1015A391EEDC1CF00A2358E /* Message.swift in Sources */,

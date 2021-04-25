@@ -27,7 +27,6 @@ class ReportViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var reportTextView: UITextView!
     @IBOutlet weak var submitButton: UIButton!
     
-    var user: User = User()
     var submittingReport: Bool = false
     
     /**
@@ -84,41 +83,42 @@ class ReportViewController: UIViewController, UITextViewDelegate {
         view.addSubview(overlay!)
         self.submitButton.isEnabled = false
         
-        // Build report email
-        let mail: Mail = Mail()
-        mail.emailAddress = "andrew@jarombek.com"
-        mail.subject = "SaintsXCTF Report: \(user.first ?? "") \(user.last ?? "") (\(user.username ?? ""))"
-        mail.body = """
-        <html>
-        <head>
-            <title>HTML email</title>
-        </head>
-        <body>
-            <p>\(body)</p>
-        </body>
-        </html>
-        """
-        
-        APIClient.mailPostRequest(withMail: mail, fromController: self) {
-            newMail -> Void in
-            // Build the popup dialog to be displayed
-            let title = "Report Submitted"
+        FnClient.emailReportPostRequest(firstName: SignedInUser.user.first, lastName: SignedInUser.user.last, report: body) {
+            (result: FnResult?) -> Void in
             
-            let button = DefaultButton(title: "Continue") {
-                self.resetField()
+            if result != nil && (result?.result ?? false) {
+                let title = "Report Submitted"
                 
-                // Re-enable button and remove loading overlay
-                overlay?.removeFromSuperview()
-                self.submitButton.isEnabled = true
+                let button = DefaultButton(title: "Continue") {
+                    self.resetField()
+                    
+                    // Re-enable button and remove loading overlay
+                    overlay?.removeFromSuperview()
+                    self.submitButton.isEnabled = true
+                    
+                    self.submittingReport = false
+                    os_log("Continue and Reset Report Form.", log: self.logTag, type: .debug)
+                }
                 
-                self.submittingReport = false
-                os_log("Continue and Reset Report Form.", log: self.logTag, type: .debug)
+                let popup = PopupDialog(title: title, message: nil)
+                popup.addButton(button)
+                
+                self.present(popup, animated: true, completion: nil)
+            } else {
+                let title = "Failed to Submit Report"
+                
+                let button = DefaultButton(title: "Try Again") {
+                    // Re-enable button and remove loading overlay
+                    overlay?.removeFromSuperview()
+                    self.submitButton.isEnabled = true
+                    self.submittingReport = false
+                }
+                
+                let popup = PopupDialog(title: title, message: nil)
+                popup.addButton(button)
+                
+                self.present(popup, animated: true, completion: nil)
             }
-            
-            let popup = PopupDialog(title: title, message: nil)
-            popup.addButton(button)
-            
-            self.present(popup, animated: true, completion: nil)
         }
     }
     

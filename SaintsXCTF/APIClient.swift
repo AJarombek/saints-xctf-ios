@@ -19,7 +19,7 @@ class APIClient {
     
     private static var apiBaseUrl: String {
         switch NetworkEnvironment.environment {
-        case .local:
+        case .local, .localEmail:
             return "http://localhost:5000"
         case .development:
             return "http://dev.api.saintsxctf.com"
@@ -1001,37 +1001,6 @@ class APIClient {
                 }
             } else {
                 os_log("Notifications Conversion Failed.", log: APIClient.logTag, type: .error)
-            }
-        }
-    }
-    
-    /**
-     Handle POST Requests for an Email
-     - parameters:
-     - mail: an object representing the email to send to an address
-     - controller: UI Controller that the API request originates from
-     - completion:  Callback function which is invoked once the POST request is fulfilled
-     */
-    public static func mailPostRequest(
-        withMail mail: Mail,
-        fromController controller: UIViewController?,
-        completion: @escaping (Mail?) -> Void
-    ) {
-        
-        let mailPostEndpoint = "\(apiBaseUrl)/v2/mail"
-        guard let url = URL(string: mailPostEndpoint) else {
-            os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
-            return
-        }
-        
-        // Convert the Mail to a JSON string
-        let mailJSON = Mapper().toJSONString(mail, prettyPrint: false)
-        
-        APIRequest.post(withURL: url, andJson: mailJSON ?? "", fromController: controller) {
-            (json) -> Void in
-                
-            OperationQueue.main.addOperation {
-                completion(mail)
             }
         }
     }

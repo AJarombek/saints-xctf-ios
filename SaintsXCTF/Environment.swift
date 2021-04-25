@@ -10,10 +10,11 @@ import Foundation
 
 enum Environment {
     case local
+    case localEmail
     case development
     case production
 }
 
 class NetworkEnvironment {
-    static let environment: Environment = .local
+    static let environment: Environment = .localEmail
 }

@@ -378,10 +378,6 @@ class ProfileViewController: UIViewController, UIGestureRecognizerDelegate {
         
         let reportViewController = storyboard?.instantiateViewController(withIdentifier:
             "reportViewController") as! ReportViewController
-        
-        // Pass the user to the file report view
-        reportViewController.user = user ?? User()
-        
         navigationController?.pushViewController(reportViewController, animated: true)
     }
     

@@ -16,7 +16,7 @@ class AuthClient {
     
     private static var authBaseUrl: String {
         switch NetworkEnvironment.environment {
-        case .local:
+        case .local, .localEmail:
             return "http://localhost:5001"
         case .development:
             return "http://dev.auth.saintsxctf.com"
@@ -53,7 +53,7 @@ class AuthClient {
             return
         }
         
-        APIRequest.post(withURL: url, andJson: credentials ?? "", fromController: nil) {
+        APIRequest.post(withURL: url, andJson: credentials ?? "", fromController: nil, authRequired: false) {
             (json) -> Void in
             
             if let authResult: AuthResult = Mapper<AuthResult>().map(JSONString: json ?? "") {
