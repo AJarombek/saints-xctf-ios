@@ -14,6 +14,7 @@
 		3FC8B71D2630E67500FFAB08 /* UserJWT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC8B71C2630E67500FFAB08 /* UserJWT.swift */; };
 		3FC8B7212634A7B400FFAB08 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC8B7202634A7B300FFAB08 /* Environment.swift */; };
 		3FC8B725263611B300FFAB08 /* FnResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC8B724263611B300FFAB08 /* FnResult.swift */; };
+		3FC8B72F26362F2600FFAB08 /* AdminViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC8B72E26362F2600FFAB08 /* AdminViewController.swift */; };
 		74D2B82CDDDB8485C81DDB7D /* Pods_SaintsXCTFTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C6D808CC5886260E5A60EA3 /* Pods_SaintsXCTFTests.framework */; };
 		A1015A371EEDC0EA00A2358E /* ActivationCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1015A361EEDC0EA00A2358E /* ActivationCode.swift */; };
 		A1015A391EEDC1CF00A2358E /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1015A381EEDC1CF00A2358E /* Message.swift */; };
@@ -28,12 +29,8 @@
 		A11AB8AC1F8AC91F0098AE8E /* LeaderboardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11AB8AB1F8AC91F0098AE8E /* LeaderboardTableViewCell.swift */; };
 		A11AB8AE1F8C56180098AE8E /* SortView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A11AB8AD1F8C56180098AE8E /* SortView.xib */; };
 		A11AB8B01F8C57B50098AE8E /* SortView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11AB8AF1F8C57B50098AE8E /* SortView.swift */; };
-		A11AB8B21F8EE9360098AE8E /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11AB8B11F8EE9360098AE8E /* MessageViewController.swift */; };
-		A11AB8B41F8EF0810098AE8E /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11AB8B31F8EF0810098AE8E /* MessageTableViewCell.swift */; };
-		A11AB8B61F8EF0A10098AE8E /* NewMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11AB8B51F8EF0A10098AE8E /* NewMessageTableViewCell.swift */; };
 		A11AB8B81F9060850098AE8E /* MemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11AB8B71F9060850098AE8E /* MemberViewController.swift */; };
 		A11AB8BA1F9065390098AE8E /* MemberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11AB8B91F9065390098AE8E /* MemberTableViewCell.swift */; };
-		A11AB8BC1F9189C20098AE8E /* AdminViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11AB8BB1F9189C20098AE8E /* AdminViewController.swift */; };
 		A11AB8BE1F92ACE60098AE8E /* Mail.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11AB8BD1F92ACE60098AE8E /* Mail.swift */; };
 		A11C2DF41F0B249E00EBDDB5 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11C2DF31F0B249E00EBDDB5 /* SignUpViewController.swift */; };
 		A11C2DF61F0B284F00EBDDB5 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11C2DF51F0B284F00EBDDB5 /* MainViewController.swift */; };
@@ -179,6 +176,7 @@
 		3FC8B71C2630E67500FFAB08 /* UserJWT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserJWT.swift; sourceTree = "<group>"; };
 		3FC8B7202634A7B300FFAB08 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		3FC8B724263611B300FFAB08 /* FnResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FnResult.swift; sourceTree = "<group>"; };
+		3FC8B72E26362F2600FFAB08 /* AdminViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminViewController.swift; sourceTree = "<group>"; };
 		7A2D9BE8020FFC609A9D432B /* Pods_SaintsXCTF.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SaintsXCTF.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1015A361EEDC0EA00A2358E /* ActivationCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivationCode.swift; sourceTree = "<group>"; };
 		A1015A381EEDC1CF00A2358E /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
@@ -194,12 +192,8 @@
 		A11AB8AB1F8AC91F0098AE8E /* LeaderboardTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaderboardTableViewCell.swift; sourceTree = "<group>"; };
 		A11AB8AD1F8C56180098AE8E /* SortView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SortView.xib; sourceTree = "<group>"; };
 		A11AB8AF1F8C57B50098AE8E /* SortView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SortView.swift; sourceTree = "<group>"; };
-		A11AB8B11F8EE9360098AE8E /* MessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
-		A11AB8B31F8EF0810098AE8E /* MessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
-		A11AB8B51F8EF0A10098AE8E /* NewMessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewMessageTableViewCell.swift; sourceTree = "<group>"; };
 		A11AB8B71F9060850098AE8E /* MemberViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberViewController.swift; sourceTree = "<group>"; };
 		A11AB8B91F9065390098AE8E /* MemberTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberTableViewCell.swift; sourceTree = "<group>"; };
-		A11AB8BB1F9189C20098AE8E /* AdminViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdminViewController.swift; sourceTree = "<group>"; };
 		A11AB8BD1F92ACE60098AE8E /* Mail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mail.swift; sourceTree = "<group>"; };
 		A11C2DF31F0B249E00EBDDB5 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		A11C2DF51F0B284F00EBDDB5 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -351,12 +345,9 @@
 				A11AB8A91F8ABB650098AE8E /* LeaderboardViewController.swift */,
 				A11AB8AB1F8AC91F0098AE8E /* LeaderboardTableViewCell.swift */,
 				A11AB8AF1F8C57B50098AE8E /* SortView.swift */,
-				A11AB8B11F8EE9360098AE8E /* MessageViewController.swift */,
-				A11AB8B31F8EF0810098AE8E /* MessageTableViewCell.swift */,
-				A11AB8B51F8EF0A10098AE8E /* NewMessageTableViewCell.swift */,
 				A11AB8B71F9060850098AE8E /* MemberViewController.swift */,
 				A11AB8B91F9065390098AE8E /* MemberTableViewCell.swift */,
-				A11AB8BB1F9189C20098AE8E /* AdminViewController.swift */,
+				3FC8B72E26362F2600FFAB08 /* AdminViewController.swift */,
 			);
 			name = Group;
 			sourceTree = "<group>";
@@ -857,7 +848,6 @@
 				A19DED511F5907C500E6C9DA /* CommentTableViewCell.swift in Sources */,
 				A11C2DF41F0B249E00EBDDB5 /* SignUpViewController.swift in Sources */,
 				A172A1771F96E8A100C7A535 /* LogData.swift in Sources */,
-				A11AB8B41F8EF0810098AE8E /* MessageTableViewCell.swift in Sources */,
 				A1505B921E8F10A900F111DB /* Group.swift in Sources */,
 				3FC8B71D2630E67500FFAB08 /* UserJWT.swift in Sources */,
 				A11AB8B01F8C57B50098AE8E /* SortView.swift in Sources */,
@@ -871,19 +861,17 @@
 				A11AB8BA1F9065390098AE8E /* MemberTableViewCell.swift in Sources */,
 				A11AB8BE1F92ACE60098AE8E /* Mail.swift in Sources */,
 				A15E62491F52372000AC9EF1 /* LogTableViewCell.swift in Sources */,
-				A11AB8BC1F9189C20098AE8E /* AdminViewController.swift in Sources */,
 				A15E62351F3F98EC00AC9EF1 /* SignOutViewController.swift in Sources */,
 				A11AB8A31F895CC40098AE8E /* WeeklyViewController.swift in Sources */,
 				A15BA1671E8AF6CE00B9796B /* HomeViewController.swift in Sources */,
 				A11AB8AA1F8ABB650098AE8E /* LeaderboardViewController.swift in Sources */,
-				A11AB8B21F8EE9360098AE8E /* MessageViewController.swift in Sources */,
 				A11AB8AC1F8AC91F0098AE8E /* LeaderboardTableViewCell.swift in Sources */,
 				A1157E8F222B2507006DA097 /* ReportViewController.swift in Sources */,
 				A15E62421F4FC70400AC9EF1 /* LogDataSource.swift in Sources */,
-				A11AB8B61F8EF0A10098AE8E /* NewMessageTableViewCell.swift in Sources */,
 				A11AB8A51F8997290098AE8E /* BarChartFormatter.swift in Sources */,
 				A18968271F7B25940073A73B /* EditProfileViewController.swift in Sources */,
 				3FC8B725263611B300FFAB08 /* FnResult.swift in Sources */,
+				3FC8B72F26362F2600FFAB08 /* AdminViewController.swift in Sources */,
 				A15E62391F3FD44000AC9EF1 /* UIColorExt.swift in Sources */,
 				A10D61C51F6F45C100A406D9 /* UIToolbarExt.swift in Sources */,
 				A1015A391EEDC1CF00A2358E /* Message.swift in Sources */,

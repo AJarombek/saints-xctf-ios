@@ -159,15 +159,6 @@ class GroupViewController: UIViewController, UIGestureRecognizerDelegate {
             leaderboardbuttonclick.delegate = self
             self.leaderboardsButton.addGestureRecognizer(leaderboardbuttonclick)
             
-            // Set click listener to the messages view to open up the group messages page
-            let messagesclick = UITapGestureRecognizer(target: self, action: #selector(self.viewMessages(_:)))
-            messagesclick.delegate = self
-            self.messagesView.addGestureRecognizer(messagesclick)
-            
-            let messagesbuttonclick = UITapGestureRecognizer(target: self, action: #selector(self.viewMessages(_:)))
-            messagesbuttonclick.delegate = self
-            self.messagesButton.addGestureRecognizer(messagesbuttonclick)
-            
             // Set click listener to the members view to open up the group members page
             let membersclick = UITapGestureRecognizer(target: self, action: #selector(self.viewMembers(_:)))
             membersclick.delegate = self
@@ -256,23 +247,6 @@ class GroupViewController: UIViewController, UIGestureRecognizerDelegate {
         leaderboardViewController.passedGroup = group ?? nil
         
         navigationController?.pushViewController(leaderboardViewController, animated: true)
-    }
-    
-    /**
-     Navigate to the Messages page for the group
-     - parameters:
-     - sender: the view that invoked this function (messagesView)
-     */
-    @objc func viewMessages(_ sender: UIView) {
-        os_log("View Group Messages", log: logTag, type: .debug)
-        
-        let messageViewController = storyboard?.instantiateViewController(withIdentifier:
-            "messageViewController") as! MessageViewController
-        
-        // Pass the group to the message view controller
-        messageViewController.passedGroup = group ?? nil
-        
-        navigationController?.pushViewController(messageViewController, animated: true)
     }
     
     /**
