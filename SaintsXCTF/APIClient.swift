@@ -423,73 +423,6 @@ class APIClient {
     }
     
     /**
-     Handle GET Requests for a Message
-     - parameters:
-     - messageId: a unique identifer for a message
-     - controller: UI Controller that the API request originates from
-     - completion:  Callback function which is invoked once the GET request is fulfilled
-     */
-    public static func messageGetRequest(
-        withMessageId messageId: Int,
-        fromController controller: UIViewController?,
-        completion: @escaping (Message) -> Void
-    ) {
-        
-        // Create the URL
-        let messageGetEndpoint = "\(apiBaseUrl)/v2/message/\(messageId)"
-        guard let url = URL(string: messageGetEndpoint) else {
-            os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
-            return
-        }
-        
-        APIRequest.get(withURL: url, fromController: controller) {
-            (json) -> Void in
-            
-            if let message: Message = Mapper<Message>().map(JSONString: json) {
-                os_log("%@", log: APIClient.logTag, type: .debug, message.description)
-                
-                OperationQueue.main.addOperation {
-                    completion(message)
-                }
-            } else {
-                os_log("Message Conversion Failed.", log: APIClient.logTag, type: .error)
-            }
-        }
-    }
-    
-    /**
-     Handle a GET Request for all the messages in the database
-     - parameters:
-     - controller: UI Controller that the API request originates from
-     - completion:  Callback function which is invoked once the GET request is fulfilled
-     */
-    public static func messagesGetRequest(
-        fromController controller: UIViewController?,
-        completion: @escaping ([Message]) -> Void
-    ) {
-        
-        let messagesGetEndpoint = "\(apiBaseUrl)/v2/messages"
-        guard let url = URL(string: messagesGetEndpoint) else {
-            os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
-            return
-        }
-        
-        APIRequest.get(withURL: url, fromController: controller) {
-            (json) -> Void in
-            
-            if let messages: Array<Message> = Mapper<Message>().mapArray(JSONString: json) {
-                os_log("%@", log: APIClient.logTag, type: .debug, messages)
-                
-                OperationQueue.main.addOperation {
-                    completion(messages)
-                }
-            } else {
-                os_log("Messages Conversion Failed.", log: APIClient.logTag, type: .error)
-            }
-        }
-    }
-    
-    /**
      Handle GET Requests for an Activation Code
      - parameters:
      - code: a unique code to activate an account
@@ -648,47 +581,6 @@ class APIClient {
     }
     
     /**
-     Handle GET Requests for a Message Feed
-     - parameters:
-     - paramType: the grouping of messages to return (ex. group, all)
-     - sortParam: a string to query the param type.  For example, if the paramType is group, the sortParam can
-     be the group name
-     - limit: the maximum number of messages to return
-     - offset: not the rapper
-     - controller: UI Controller that the API request originates from
-     - completion:  Callback function which is invoked once the GET request is fulfilled
-     */
-    public static func messagefeedGetRequest(
-        withParamType paramType: String,
-        sortParam: String,
-        limit: Int,
-        offset: Int,
-        fromController controller: UIViewController?,
-        completion: @escaping ([Message]) -> Void
-    ) {
-        
-        let messagefeedGetEndpoint = "\(apiBaseUrl)/v2/messagefeed/\(paramType)/\(sortParam)/\(limit)/\(offset)"
-        guard let url = URL(string: messagefeedGetEndpoint) else {
-            os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
-            return
-        }
-        
-        APIRequest.get(withURL: url, fromController: controller) {
-            (json) -> Void in
-            
-            if let messagefeed: Array<Message> = Mapper<Message>().mapArray(JSONString: json) {
-                os_log("%@", log: APIClient.logTag, type: .debug, messagefeed)
-                
-                OperationQueue.main.addOperation {
-                    completion(messagefeed)
-                }
-            } else {
-                os_log("Message Feed Conversion Failed.", log: APIClient.logTag, type: .error)
-            }
-        }
-    }
-    
-    /**
      Handle GET Requests for a Range View
      - parameters:
      - paramType: the grouping of range views to return (ex. user, group)
@@ -711,8 +603,7 @@ class APIClient {
         completion: @escaping ([RangeView]) -> Void
     ) {
         
-        let rangeviewGetEndpoint = "\(apiBaseUrl)/v2/rangeview/\(paramType)/\(sortParam)/\(filter)/\(start)/\(end)"
-        print(rangeviewGetEndpoint)
+        let rangeviewGetEndpoint = "\(apiBaseUrl)/v2/range_view/\(paramType)/\(sortParam)/\(filter)/\(start)/\(end)"
         guard let url = URL(string: rangeviewGetEndpoint) else {
             os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
             return
@@ -721,14 +612,29 @@ class APIClient {
         APIRequest.get(withURL: url, fromController: controller) {
             (json) -> Void in
             
-            if let rangeview: Array<RangeView> = Mapper<RangeView>().mapArray(JSONString: json) {
-                os_log("%@", log: APIClient.logTag, type: .debug, rangeview.description)
-                
-                OperationQueue.main.addOperation {
-                    completion(rangeview)
+            do {
+                if let jsonDict = try JSONSerialization.jsonObject(with: Data(json.utf8), options: []) as? [String: Any] {
+                    let rangeViewJsonDict = jsonDict["range_view"] ?? [:]
+                    
+                    let rangeViewJson = try JSONSerialization.data(withJSONObject: rangeViewJsonDict, options: [])
+                    let rangeViewJsonString = String(data: rangeViewJson, encoding: String.Encoding.utf8) ?? "[]"
+                    
+                    if let rangeview: Array<RangeView> = Mapper<RangeView>().mapArray(JSONString: rangeViewJsonString) {
+                        os_log("%@", log: APIClient.logTag, type: .debug, rangeview.description)
+                        
+                        OperationQueue.main.addOperation {
+                            completion(rangeview)
+                        }
+                    } else {
+                        os_log("Range View Conversion Failed.", log: APIClient.logTag, type: .error)
+                        
+                        OperationQueue.main.addOperation {
+                            completion([])
+                        }
+                    }
                 }
-            } else {
-                os_log("Range View Conversion Failed.", log: APIClient.logTag, type: .error)
+            } catch {
+                os_log("Range View API Response JSON Parse Failed.", log: APIClient.logTag, type: .error)
                 
                 OperationQueue.main.addOperation {
                     completion([])
@@ -892,43 +798,6 @@ class APIClient {
                 OperationQueue.main.addOperation {
                     completion(nil)
                 }
-            }
-        }
-    }
-    
-    /**
-     Handle POST Requests for a Message
-     - parameters:
-     - message: an object representing the message to create on the server
-     - controller: UI Controller that the API request originates from
-     - completion:  Callback function which is invoked once the POST request is fulfilled
-     */
-    public static func messagePostRequest(
-        withMessage message: Message,
-        fromController controller: UIViewController?,
-        completion: @escaping (Message) -> Void
-    ) {
-        
-        let messagePostEndpoint = "\(apiBaseUrl)/v2/message"
-        guard let url = URL(string: messagePostEndpoint) else {
-            os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
-            return
-        }
-        
-        // Convert the Message to a JSON string
-        let messageJSON = Mapper().toJSONString(message, prettyPrint: false)
-        
-        APIRequest.post(withURL: url, andJson: messageJSON ?? "", fromController: controller) {
-            (json) -> Void in
-            
-            if let message: Message = Mapper<Message>().map(JSONString: json ?? "") {
-                os_log("%@", log: APIClient.logTag, type: .debug, message.description)
-                
-                OperationQueue.main.addOperation {
-                    completion(message)
-                }
-            } else {
-                os_log("Message Conversion Failed.", log: APIClient.logTag, type: .error)
             }
         }
     }
@@ -1214,45 +1083,6 @@ class APIClient {
         }
     }
     
-    /**
-     Handle PUT Requests for a Message
-     - parameters:
-     - messageId: the unqiue message identifier for an existing message on the server
-     - message: an object representing the updated message to reflect on the server
-     - controller: UI Controller that the API request originates from
-     - completion:  Callback function which is invoked once the PUT request is fulfilled
-     */
-    public static func messagePutRequest(
-        withMessageId messageId: Int,
-        andMessage message: Message,
-        fromController controller: UIViewController?,
-        completion: @escaping (Message) -> Void
-    ) {
-        
-        let messagePutEndpoint = "\(apiBaseUrl)/v2/message/\(messageId)"
-        guard let url = URL(string: messagePutEndpoint) else {
-            os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
-            return
-        }
-        
-        // Convert the User to a JSON string
-        let messageJSON = Mapper().toJSONString(message, prettyPrint: false)
-        
-        APIRequest.put(withURL: url, andJson: messageJSON ?? "", fromController: controller) {
-            (json) -> Void in
-            
-            if let message: Message = Mapper<Message>().map(JSONString: json ?? "") {
-                os_log("%@", log: APIClient.logTag, type: .debug, message.description)
-                
-                OperationQueue.main.addOperation {
-                    completion(message)
-                }
-            } else {
-                os_log("Message Conversion Failed.", log: APIClient.logTag, type: .error)
-            }
-        }
-    }
-    
     // MARK: - DELETE Requests
     
     /**
@@ -1330,36 +1160,6 @@ class APIClient {
         
         let commentDeleteEndpoint = "\(apiBaseUrl)/v2/comments/\(commentID)"
         guard let url = URL(string: commentDeleteEndpoint) else {
-            os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
-            return
-        }
-        
-        APIRequest.delete(withURL: url, fromController: controller) {
-            (success) -> Void in
-            
-            os_log("Delete Result: %@", log: APIClient.logTag, type: .debug, String(success))
-            
-            OperationQueue.main.addOperation {
-                completion(success)
-            }
-        }
-    }
-    
-    /**
-     Handle DELETE Requests for a Message
-     - parameters:
-     - messageID: the unique message identifier of an existing message on the server
-     - controller: UI Controller that the API request originates from
-     - completion:  Callback function which is invoked once the DELETE request is fulfilled
-     */
-    public static func messageDeleteRequest(
-        withMessageID messageID: Int,
-        fromController controller: UIViewController?,
-        completion: @escaping (Bool) -> Void
-    ) {
-        
-        let messageDeleteEndpoint = "\(apiBaseUrl)/v2/message/\(messageID)"
-        guard let url = URL(string: messageDeleteEndpoint) else {
             os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
             return
         }

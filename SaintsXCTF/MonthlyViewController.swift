@@ -503,6 +503,8 @@ class MonthlyViewController: UIViewController {
             rangeView.forEach {
                 activity -> Void in
                 
+                dateFormatter.dateFormat = "E, dd MMM yyyy HH:mm:ss zzz"
+                
                 let activityDateString: String = activity.date!
                 let activityDate: Date = dateFormatter.date(from: activityDateString)!
                 

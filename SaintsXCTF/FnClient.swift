@@ -59,7 +59,7 @@ class FnClient {
             return
         }
         
-        APIRequest.post(withURL: url, andJson: requestBody ?? "", fromController: nil, authRequired: true) {
+        APIRequest.post(withURL: url, andJson: requestBody ?? "", fromController: nil, authRequired: true, authToken: UserJWT.jwt) {
             (json) -> Void in
             
             if let result: FnResult = Mapper<FnResult>().map(JSONString: json ?? "") {

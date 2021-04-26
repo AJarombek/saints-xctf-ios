@@ -74,6 +74,19 @@ class SaintsXCTFUITests: XCTestCase {
         safari.buttons["Cancel"].tap()
         app.activate()
     }
+    
+    func testAbleToSignIn() throws {
+        let app = XCUIApplication()
+        app.launch()
+        
+        let usernameTextField = app.textFields["Username"]
+        let passwordSecureTextField = app.secureTextFields["Password"]
+        
+        usernameTextField.typeText("username")
+        passwordSecureTextField.typeText("password")
+        
+        app/*@START_MENU_TOKEN@*/.staticTexts["Sign Up"]/*[[".buttons[\"Sign Up\"].staticTexts[\"Sign Up\"]",".staticTexts[\"Sign Up\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+    }
 
     func testLaunchPerformance() throws {
         if #available(macOS 10.15, iOS 13.0, tvOS 13.0, *) {

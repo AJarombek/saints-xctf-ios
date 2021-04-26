@@ -249,6 +249,8 @@ class WeeklyViewController: UIViewController {
             rangeView.forEach {
                 activity -> Void in
                 
+                dateFormatter.dateFormat = "E, dd MMM yyyy HH:mm:ss zzz"
+                
                 let mileage: Double = activity.miles
                 let feel: Int = activity.feel
                 let dateString: String = activity.date!

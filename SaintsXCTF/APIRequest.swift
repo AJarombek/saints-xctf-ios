@@ -34,6 +34,7 @@ class APIRequest {
         withURL url: URL,
         fromController controller: UIViewController?,
         authRequired: Bool = true,
+        authToken: String = "Bearer \(UserJWT.jwt)",
         completion: @escaping (String) -> Void
     ) {
         var urlRequest = URLRequest(url: url)
@@ -42,7 +43,7 @@ class APIRequest {
         urlRequest.addValue("application/json", forHTTPHeaderField: "Accept")
         
         if (authRequired) {
-            urlRequest.addValue("Bearer \(UserJWT.jwt)", forHTTPHeaderField: "Authorization")
+            urlRequest.addValue(authToken, forHTTPHeaderField: "Authorization")
         }
         
         let task = session.dataTask(with: urlRequest) {
@@ -99,6 +100,7 @@ class APIRequest {
         andJson json: String,
         fromController controller: UIViewController?,
         authRequired: Bool = true,
+        authToken: String = "Bearer \(UserJWT.jwt)",
         completion: @escaping (String?) -> Void
     ) {
         var urlrequest = URLRequest(url: url)
@@ -116,7 +118,7 @@ class APIRequest {
         urlrequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
         if (authRequired) {
-            urlrequest.addValue("Bearer \(UserJWT.jwt)", forHTTPHeaderField: "Authorization")
+            urlrequest.addValue(authToken, forHTTPHeaderField: "Authorization")
         }
         
         let task = session.dataTask(with: urlrequest) {
@@ -174,6 +176,7 @@ class APIRequest {
         andJson json: String,
         fromController controller: UIViewController?,
         authRequired: Bool = true,
+        authToken: String = "Bearer \(UserJWT.jwt)",
         completion: @escaping (String?) -> Void
     ) {
         var urlrequest = URLRequest(url: url)
@@ -188,7 +191,7 @@ class APIRequest {
         urlrequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
         if (authRequired) {
-            urlrequest.addValue("Bearer \(UserJWT.jwt)", forHTTPHeaderField: "Authorization")
+            urlrequest.addValue(authToken, forHTTPHeaderField: "Authorization")
         }
         
         let task = session.dataTask(with: urlrequest) {
@@ -246,6 +249,7 @@ class APIRequest {
         withURL url: URL,
         fromController controller: UIViewController?,
         authRequired: Bool = true,
+        authToken: String = "Bearer \(UserJWT.jwt)",
         completion: @escaping (Bool) -> Void
     ) {
         var urlrequest = URLRequest(url: url)
@@ -255,7 +259,7 @@ class APIRequest {
         urlrequest.addValue("application/json", forHTTPHeaderField: "Accept")
         
         if (authRequired) {
-            urlrequest.addValue("Bearer \(UserJWT.jwt)", forHTTPHeaderField: "Authorization")
+            urlrequest.addValue(authToken, forHTTPHeaderField: "Authorization")
         }
         
         let task = session.dataTask(with: urlrequest) {

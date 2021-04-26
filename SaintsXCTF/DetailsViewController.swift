@@ -176,7 +176,6 @@ class DetailsViewController: UIViewController, UITextViewDelegate, UITextFieldDe
                     // Build the popup dialog to be displayed
                     let title = "Profile Details Changed"
                     
-                    // Actions to do when deleting a log
                     let continueButton = DefaultButton(title: "Continue") {
                         os_log("Continue to Edit Profile Page", log: self.logTag, type: .debug)
                         
@@ -192,6 +191,21 @@ class DetailsViewController: UIViewController, UITextViewDelegate, UITextFieldDe
                     // Display the popup before redirecting to edit profile page
                     let popup = PopupDialog(title: title, message: nil)
                     popup.addButton(continueButton)
+                    
+                    self.present(popup, animated: true, completion: nil)
+                } else {
+                    // Build the popup dialog to be displayed
+                    let title = "Failed to Update Profile Details"
+                    
+                    let tryAgainButton = DefaultButton(title: "Try Again") {
+                        // Re-enable buttons and remove loading overlay
+                        overlay?.removeFromSuperview()
+                        self.saveButton.isEnabled = true
+                        self.cancelButton.isEnabled = true
+                    }
+                    
+                    let popup = PopupDialog(title: title, message: nil)
+                    popup.addButton(tryAgainButton)
                     
                     self.present(popup, animated: true, completion: nil)
                 }
