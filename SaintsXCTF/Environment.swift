@@ -16,5 +16,5 @@ enum Environment {
 }
 
 class NetworkEnvironment {
-    static let environment: Environment = .localEmail
+    static let environment: Environment = .development
 }

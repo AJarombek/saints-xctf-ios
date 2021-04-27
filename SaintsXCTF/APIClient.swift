@@ -891,7 +891,7 @@ class APIClient {
         completion: @escaping (User?) -> Void
     ) {
         
-        let usersPutEndpoint = "\(apiBaseUrl)/v2/user/\(username)"
+        let usersPutEndpoint = "\(apiBaseUrl)/v2/users/\(username)"
         guard let url = URL(string: usersPutEndpoint) else {
             os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
             return
@@ -902,17 +902,34 @@ class APIClient {
         os_log("%@", log: APIClient.logTag, type: .debug, userJSON!)
         
         APIRequest.put(withURL: url, andJson: userJSON ?? "", fromController: controller) {
-            (json) -> Void in
+            (json: String?) -> Void in
             
-            if let user: User = Mapper<User>().map(JSONString: json ?? "") {
-                os_log("%@", log: APIClient.logTag, type: .debug, user.description)
-                
-                OperationQueue.main.addOperation {
-                    completion(user)
+            let jsonResponse = json ?? ""
+            
+            do {
+                if let jsonDict = try JSONSerialization.jsonObject(with: Data(jsonResponse.utf8), options: []) as? [String: Any] {
+                    let userJsonDict = jsonDict["user"] ?? [:]
+                    
+                    let userJson = try JSONSerialization.data(withJSONObject: userJsonDict, options: [])
+                    let userJsonString = String(data: userJson, encoding: String.Encoding.utf8) ?? "{}"
+                    
+                    if let user: User = Mapper<User>().map(JSONString: userJsonString) {
+                        os_log("%@", log: APIClient.logTag, type: .debug, user.toJSONString()!)
+                        
+                        OperationQueue.main.addOperation {
+                            completion(user)
+                        }
+                    } else {
+                        os_log("User Conversion Failed.", log: APIClient.logTag, type: .error)
+                        
+                        // If no user exists, return an empty user object
+                        OperationQueue.main.addOperation {
+                            completion(nil)
+                        }
+                    }
                 }
-            } else {
-                os_log("User Conversion Failed.", log: APIClient.logTag, type: .error)
-                
+            } catch {
+                os_log("API Response JSON Parse Failed.", log: APIClient.logTag, type: .error)
                 OperationQueue.main.addOperation {
                     completion(nil)
                 }
@@ -1098,7 +1115,7 @@ class APIClient {
         completion: @escaping (Bool) -> Void
     ) {
         
-        let usersDeleteEndpoint = "\(apiBaseUrl)/v2/user/\(username)"
+        let usersDeleteEndpoint = "\(apiBaseUrl)/v2/users/soft/\(username)"
         guard let url = URL(string: usersDeleteEndpoint) else {
             os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
             return
@@ -1158,7 +1175,7 @@ class APIClient {
         completion: @escaping (Bool) -> Void
     ) {
         
-        let commentDeleteEndpoint = "\(apiBaseUrl)/v2/comments/\(commentID)"
+        let commentDeleteEndpoint = "\(apiBaseUrl)/v2/comments/soft/\(commentID)"
         guard let url = URL(string: commentDeleteEndpoint) else {
             os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
             return
@@ -1188,7 +1205,7 @@ class APIClient {
         completion: @escaping (Bool) -> Void
     ) {
         
-        let activationCodeDeleteEndpoint = "\(apiBaseUrl)/v2/activationcode/\(activationCode)"
+        let activationCodeDeleteEndpoint = "\(apiBaseUrl)/v2/activation_code/soft/\(activationCode)"
         guard let url = URL(string: activationCodeDeleteEndpoint) else {
             os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
             return
@@ -1218,7 +1235,7 @@ class APIClient {
         completion: @escaping (Bool) -> Void
     ) {
         
-        let notificationDeleteEndpoint = "\(apiBaseUrl)/v2/notification/\(notificationId)"
+        let notificationDeleteEndpoint = "\(apiBaseUrl)/v2/notification/soft/\(notificationId)"
         guard let url = URL(string: notificationDeleteEndpoint) else {
             os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
             return

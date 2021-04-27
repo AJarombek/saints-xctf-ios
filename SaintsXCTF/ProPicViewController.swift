@@ -60,26 +60,18 @@ class ProPicViewController: UIViewController, UIGestureRecognizerDelegate,
         cancelButton.setTitleColor(UIColor(0xAAAAAA), for: .normal)
         
         // If the user has a profile picture, display it
-        if let profPicBase64 = user.profilepic {
+        if let profilePictureName = user.profilepic_name {
             
-            // Save the base64 encoding in case an invalid picture is entered
-            originalBase64 = profPicBase64
+            let url = URL(string: "\(UassetClient.baseUrl)/profile/\(user.username!)/\(profilePictureName)")
             
-            // Part of the base 64 encoding is html specific, remove this piece
-            let start = profPicBase64.index(profPicBase64.startIndex, offsetBy: 23)
-            let end = profPicBase64.endIndex
-            
-            let base64 = String(profPicBase64[start..<end])
-            
-            // Now decode the base 64 encoded string and convert it to an image
-            let profPicData: Data = Data(base64Encoded: base64, options: .ignoreUnknownCharacters)!
-            let profPic: UIImage = UIImage(data: profPicData)!
-            
-            // Set the original profile picture in case an invalid picture is entered
-            originalPic = profPic
-            
-            // Display the profile picture image
-            proPicView.image = profPic
+            DispatchQueue.global().async {
+                let data = try? Data(contentsOf: url!)
+                
+                DispatchQueue.main.async {
+                    // Display the profile picture image
+                    self.proPicView.image = UIImage(data: data!)
+                }
+            }
         }
         
         // Set click listener to the profile picture view to upload a picture

@@ -15,6 +15,7 @@
 		3FC8B7212634A7B400FFAB08 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC8B7202634A7B300FFAB08 /* Environment.swift */; };
 		3FC8B725263611B300FFAB08 /* FnResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC8B724263611B300FFAB08 /* FnResult.swift */; };
 		3FC8B72F26362F2600FFAB08 /* AdminViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC8B72E26362F2600FFAB08 /* AdminViewController.swift */; };
+		3FC8B7332638D61B00FFAB08 /* UassetClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC8B7322638D61B00FFAB08 /* UassetClient.swift */; };
 		74D2B82CDDDB8485C81DDB7D /* Pods_SaintsXCTFTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C6D808CC5886260E5A60EA3 /* Pods_SaintsXCTFTests.framework */; };
 		A1015A371EEDC0EA00A2358E /* ActivationCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1015A361EEDC0EA00A2358E /* ActivationCode.swift */; };
 		A1015A391EEDC1CF00A2358E /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1015A381EEDC1CF00A2358E /* Message.swift */; };
@@ -177,6 +178,7 @@
 		3FC8B7202634A7B300FFAB08 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		3FC8B724263611B300FFAB08 /* FnResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FnResult.swift; sourceTree = "<group>"; };
 		3FC8B72E26362F2600FFAB08 /* AdminViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminViewController.swift; sourceTree = "<group>"; };
+		3FC8B7322638D61B00FFAB08 /* UassetClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UassetClient.swift; sourceTree = "<group>"; };
 		7A2D9BE8020FFC609A9D432B /* Pods_SaintsXCTF.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SaintsXCTF.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1015A361EEDC0EA00A2358E /* ActivationCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivationCode.swift; sourceTree = "<group>"; };
 		A1015A381EEDC1CF00A2358E /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
@@ -412,6 +414,7 @@
 				3FC8B6EF262E5ABF00FFAB08 /* AuthClient.swift */,
 				3FC8B702262E5C8D00FFAB08 /* FnClient.swift */,
 				3FC8B7202634A7B300FFAB08 /* Environment.swift */,
+				3FC8B7322638D61B00FFAB08 /* UassetClient.swift */,
 			);
 			name = APIClient;
 			sourceTree = "<group>";
@@ -827,6 +830,7 @@
 				A15BA1391E8AF61D00B9796B /* AppDelegate.swift in Sources */,
 				A1D53DF01E8B648400842177 /* APIRequest.swift in Sources */,
 				A15E622E1F3F97D700AC9EF1 /* ProfileViewController.swift in Sources */,
+				3FC8B7332638D61B00FFAB08 /* UassetClient.swift in Sources */,
 				A1505B9A1E8F11BC00F111DB /* Log.swift in Sources */,
 				A173CB541F81C07D009C7A28 /* LoadingView.swift in Sources */,
 				3FC8B703262E5C8D00FFAB08 /* FnClient.swift in Sources */,

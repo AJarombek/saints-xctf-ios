@@ -172,27 +172,17 @@ class ProfileViewController: UIViewController, UIGestureRecognizerDelegate {
         descriptionView.attributedText = mutableContent
         
         // Set the profile picture
-        if let profPicBase64 = user?.profilepic {
+        if let profilePictureName = user?.profilepic_name, let username = user?.username {
             
-            if let range = profPicBase64.range(of: ",") {
-                let start = profPicBase64.distance(from: profPicBase64.startIndex, to: range.lowerBound)
+            let url = URL(string: "\(UassetClient.baseUrl)/profile/\(username)/\(profilePictureName)")
+            
+            DispatchQueue.global().async {
+                let data = try? Data(contentsOf: url!)
                 
-                // Part of the base 64 encoding is html specific, remove this piece
-                let startIndex = profPicBase64.index(profPicBase64.startIndex, offsetBy: start)
-                let endIndex = profPicBase64.endIndex
-                
-                let base64 = String(profPicBase64[startIndex..<endIndex])
-                
-                // Now decode the base 64 encoded string and convert it to an image
-                guard let profPicData: Data = Data(base64Encoded: base64, options: .ignoreUnknownCharacters) else {
-                    os_log("Failed to decode profile picture", log: logTag, type: .error)
-                    return
+                DispatchQueue.main.async {
+                    // Display the profile picture image
+                    self.profilePictureView.image = UIImage(data: data!)
                 }
-                
-                let profPic: UIImage = UIImage(data: profPicData)!
-                
-                // Display the profile picture image
-                profilePictureView.image = profPic
             }
         }
     }
