@@ -11,6 +11,9 @@ import XCTest
 class SaintsXCTFUITests: XCTestCase {
 
     override func setUpWithError() throws {
+        // SignedInUser.removeUser()
+        // UserJWT.removeJWT()
+        
         continueAfterFailure = false
     }
 
@@ -24,7 +27,7 @@ class SaintsXCTFUITests: XCTestCase {
         let passwordSecureTextField = app.secureTextFields["Password"]
         
         let signUpButton = app/*@START_MENU_TOKEN@*/.staticTexts["Sign Up"]/*[[".buttons[\"Sign Up\"].staticTexts[\"Sign Up\"]",".staticTexts[\"Sign Up\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
-        let logInButton = app/*@START_MENU_TOKEN@*/.staticTexts["Log In"]/*[[".buttons[\"Log In\"].staticTexts[\"Log In\"]",".staticTexts[\"Log In\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        let logInButton = app.staticTexts["Log In"]
         
         let inRunningState = app.wait(for: XCUIApplication.State(rawValue: 4)!, timeout: 3)
         XCTAssert(inRunningState)
@@ -82,10 +85,30 @@ class SaintsXCTFUITests: XCTestCase {
         let usernameTextField = app.textFields["Username"]
         let passwordSecureTextField = app.secureTextFields["Password"]
         
-        usernameTextField.typeText("username")
-        passwordSecureTextField.typeText("password")
+        XCTAssert(usernameTextField.waitForExistence(timeout: 5))
+        XCTAssert(usernameTextField.exists)
+        XCTAssert(passwordSecureTextField.exists)
         
-        app/*@START_MENU_TOKEN@*/.staticTexts["Sign Up"]/*[[".buttons[\"Sign Up\"].staticTexts[\"Sign Up\"]",".staticTexts[\"Sign Up\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        usernameTextField.tap()
+        usernameTextField.typeText("SaintsIOS")
+        
+        passwordSecureTextField.tap()
+        passwordSecureTextField.typeText("SaintsIOS")
+        
+        app.staticTexts["Log In"].tap()
+        
+        let homeTab = app.tabBars["Tab Bar"].buttons["Home"]
+        let profileTab = app.tabBars["Tab Bar"].buttons["Profile"]
+        let newLogTab = app.tabBars["Tab Bar"].buttons["New Log"]
+        let groupsTab = app.tabBars["Tab Bar"].buttons["Groups"]
+        let signOutTab = app.tabBars["Tab Bar"].buttons["Sign Out"]
+        
+        XCTAssert(homeTab.waitForExistence(timeout: 10))
+        XCTAssert(homeTab.exists)
+        XCTAssert(profileTab.exists)
+        XCTAssert(newLogTab.exists)
+        XCTAssert(groupsTab.exists)
+        XCTAssert(signOutTab.exists)
     }
 
     func testLaunchPerformance() throws {
