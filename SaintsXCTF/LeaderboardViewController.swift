@@ -195,7 +195,7 @@ class LeaderboardViewController: UITableViewController, UIGestureRecognizerDeleg
      */
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "LogCell", for: indexPath)
                         as! LeaderboardTableViewCell
         let leader: [String] = leaderboard[indexPath.row]
         

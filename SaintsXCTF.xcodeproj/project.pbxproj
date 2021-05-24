@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3F28BB90265B250C008C7833 /* HomeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F28BB8F265B250C008C7833 /* HomeUITests.swift */; };
+		3F28BB98265B3956008C7833 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F28BB97265B3956008C7833 /* Utils.swift */; };
 		3FC8B6F0262E5ABF00FFAB08 /* AuthClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC8B6EF262E5ABF00FFAB08 /* AuthClient.swift */; };
 		3FC8B703262E5C8D00FFAB08 /* FnClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC8B702262E5C8D00FFAB08 /* FnClient.swift */; };
 		3FC8B70D262F9D9300FFAB08 /* SaintsXCTFUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC8B70C262F9D9300FFAB08 /* SaintsXCTFUITests.swift */; };
@@ -170,6 +171,7 @@
 		0C6D808CC5886260E5A60EA3 /* Pods_SaintsXCTFTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SaintsXCTFTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3811F0EA85CD8ED0784F92A9 /* Pods-SaintsXCTF.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SaintsXCTF.debug.xcconfig"; path = "Target Support Files/Pods-SaintsXCTF/Pods-SaintsXCTF.debug.xcconfig"; sourceTree = "<group>"; };
 		3F28BB8F265B250C008C7833 /* HomeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeUITests.swift; sourceTree = "<group>"; };
+		3F28BB97265B3956008C7833 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		3FC8B6EF262E5ABF00FFAB08 /* AuthClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthClient.swift; sourceTree = "<group>"; };
 		3FC8B702262E5C8D00FFAB08 /* FnClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FnClient.swift; sourceTree = "<group>"; };
 		3FC8B70A262F9D9200FFAB08 /* SaintsXCTFUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SaintsXCTFUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -294,6 +296,7 @@
 				3FC8B70C262F9D9300FFAB08 /* SaintsXCTFUITests.swift */,
 				3FC8B70E262F9D9300FFAB08 /* Info.plist */,
 				3F28BB8F265B250C008C7833 /* HomeUITests.swift */,
+				3F28BB97265B3956008C7833 /* Utils.swift */,
 			);
 			path = SaintsXCTFUITests;
 			sourceTree = "<group>";
@@ -823,6 +826,7 @@
 			files = (
 				3F28BB90265B250C008C7833 /* HomeUITests.swift in Sources */,
 				3FC8B70D262F9D9300FFAB08 /* SaintsXCTFUITests.swift in Sources */,
+				3F28BB98265B3956008C7833 /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

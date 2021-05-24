@@ -63,6 +63,8 @@ class MainViewController: UITableViewController, UITextViewDelegate {
         // Set the refresh control for the table view for pull down refresh
         logTableView.refreshControl = refreshcontrol
         
+        logTableView.accessibilityIdentifier = "LogTableView"
+        
         refreshcontrol.addTarget(self, action: #selector(reloadLogs(_:)), for: .valueChanged)
         refreshcontrol.attributedTitle = NSAttributedString(string: "Reloading Logs ...", attributes: [:])
         
@@ -174,6 +176,8 @@ class MainViewController: UITableViewController, UITextViewDelegate {
         let log: LogData? = logDataSource.get(indexPath.row)
         let cell = cell as! LogTableViewCell
         
+        cell.accessibilityIdentifier = "LogCell\(indexPath.row)"
+        
         if let logData: LogData = log {
             
             // Create a reference to the view controller in the cell
@@ -269,7 +273,7 @@ class MainViewController: UITableViewController, UITextViewDelegate {
      */
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! LogTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "LogCell", for: indexPath) as! LogTableViewCell
         
         let log: LogData? = logDataSource.get(indexPath.row)
         

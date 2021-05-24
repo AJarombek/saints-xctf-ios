@@ -12,7 +12,7 @@ import os.log
 /**
  Class with helper methods to save and remove the signed in user from the filesystem
  */
-class SignedInUser {
+public class SignedInUser {
     
     static let logTag = OSLog(subsystem: "SaintsXCTF.App.SignedInUser", category: "SignedInUser")
     
@@ -72,7 +72,7 @@ class SignedInUser {
      Remove the user in the filesystem by overwriting the old user with an empty one
      - returns: `true` if the user was successfully removed, `false` otherwise
      */
-    static func removeUser() -> Bool {
+    public static func removeUser() -> Bool {
         os_log("Removing user from storage", log: SignedInUser.logTag, type: .debug)
         
         // Create an empty user to overwrite the existing one

@@ -12,11 +12,20 @@ class HomeUITests: XCTestCase {
 
     override func setUpWithError() throws {
         continueAfterFailure = false
-        XCUIApplication().launch()
+        let app = XCUIApplication()
+        app.launch()
+        signIn(app: app)
     }
 
     override func tearDownWithError() throws {}
+    
 
-    func displaysLogs() throws {}
+    func testDisplaysLogs() throws {
+        let app = XCUIApplication()
+        let logTableView = app.tables.matching(identifier: "LogTableView")
 
+        let logCell = logTableView.cells.firstMatch
+        XCTAssert(logCell.exists)
+        XCTAssertEqual(logCell.accessibility, "LogCell0")
+    }
 }

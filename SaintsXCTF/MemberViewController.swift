@@ -115,7 +115,7 @@ class MemberViewController: UITableViewController, UIGestureRecognizerDelegate {
      */
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "LogCell", for: indexPath)
             as! MemberTableViewCell
         let member: GroupMember = members[indexPath.row]
         

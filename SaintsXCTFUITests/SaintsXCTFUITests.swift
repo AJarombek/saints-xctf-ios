@@ -7,12 +7,18 @@
 //
 
 import XCTest
+import SaintsXCTF
 
 class SaintsXCTFUITests: XCTestCase {
 
     override func setUpWithError() throws {
-        // SignedInUser.removeUser()
-        // UserJWT.removeJWT()
+        let directory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        let userArchive = directory.appendingPathComponent("user.archive")
+        let jwtArchive = directory.appendingPathComponent("jwt.archive")
+        
+        let data: Data = try NSKeyedArchiver.archivedData(withRootObject: "", requiringSecureCoding: false)
+        try data.write(to: userArchive)
+        try data.write(to: jwtArchive)
         
         continueAfterFailure = false
     }
