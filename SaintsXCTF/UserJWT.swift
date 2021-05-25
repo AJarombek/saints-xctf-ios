@@ -9,7 +9,7 @@
 import Foundation
 import os.log
 
-public class UserJWT {
+class UserJWT {
     
     static let logTag = OSLog(subsystem: "SaintsXCTF.App.UserJWT", category: "UserJWT")
     
@@ -68,7 +68,7 @@ public class UserJWT {
      Remove the JWT from the filesystem
      - returns: `true` if the JWT was successfully removed, `false` otherwise
      */
-    public static func removeJWT() -> Bool {
+    static func removeJWT() -> Bool {
         os_log("Removing JWT from storage", log: UserJWT.logTag, type: .debug)
         
         do {

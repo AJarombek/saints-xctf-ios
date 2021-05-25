@@ -32,8 +32,6 @@ class GroupViewController: UIViewController, UIGestureRecognizerDelegate {
     @IBOutlet weak var logsButton: UIButton!
     @IBOutlet weak var leaderboardsView: UIView!
     @IBOutlet weak var leaderboardsButton: UIButton!
-    @IBOutlet weak var messagesView: UIView!
-    @IBOutlet weak var messagesButton: UIButton!
     @IBOutlet weak var membersView: UIView!
     @IBOutlet weak var membersButton: UIButton!
     @IBOutlet weak var adminView: UIView!
@@ -62,12 +60,11 @@ class GroupViewController: UIViewController, UIGestureRecognizerDelegate {
         // Hide all the views until we know which ones to show
         logsView.isHidden = true
         leaderboardsView.isHidden = true
-        messagesView.isHidden = true
         membersView.isHidden = true
         adminView.isHidden = true
         
         // Get the group from the API with given groupname 
-        APIClient.groupGetRequest(withGroupname: groupname, fromController: self) {
+        APIClient.groupGetRequest(withGroupname: groupname, inTeam: "saintsxctf", fromController: self) {
             (group) -> Void in
             
             // Put the group title in the navigation bar
@@ -125,18 +122,21 @@ class GroupViewController: UIViewController, UIGestureRecognizerDelegate {
                 self.membersView.layer.addSublayer(membersBottomBorder)
                 
             } else if member[0].user! != "admin" {
-                self.messagesView.isHidden = false
+                self.membersView.isHidden = false
                 
-                let messagesBottomBorder = CALayer()
-                messagesBottomBorder.frame = CGRect.init(x: -20, y: self.messagesView.frame.height + 1,
-                                                         width: self.view.frame.width + 20, height: 1)
-                messagesBottomBorder.backgroundColor = UIColor(0xBBBBBB).cgColor
+                let membersBottomBorder = CALayer()
+                membersBottomBorder.frame = CGRect.init(
+                    x: -20,
+                    y: self.membersView.frame.height + 1,
+                    width: self.view.frame.width + 20,
+                    height: 1
+                )
+                membersBottomBorder.backgroundColor = UIColor(0xBBBBBB).cgColor
                 
-                self.messagesView.layer.addSublayer(messagesBottomBorder)
+                self.membersView.layer.addSublayer(membersBottomBorder)
                 
             } else {
                 self.adminView.isHidden = false
-                self.messagesView.isHidden = false
             }
             
             // Set click listener to the logs view to open up the group logs page
@@ -206,7 +206,6 @@ class GroupViewController: UIViewController, UIGestureRecognizerDelegate {
         
         logsView.layer.addSublayer(topBorder)
         leaderboardsView.layer.addSublayer(leaderboardsTopBorder)
-        messagesView.layer.addSublayer(messagesTopBorder)
         membersView.layer.addSublayer(membersTopBorder)
         adminView.layer.addSublayer(adminTopBorder)
         adminView.layer.addSublayer(adminBottomBorder)

@@ -23,6 +23,7 @@ import PopupDialog
  */
 class LogViewController: UIViewController, UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var locationField: UITextField!
     @IBOutlet weak var dateField: UITextField!
@@ -161,6 +162,9 @@ class LogViewController: UIViewController, UITextViewDelegate, UIPickerViewDeleg
         // Check if we are editing an existing log.  If so, fill in the existing fields
         if editingLog {
             setFields()
+            titleLabel.text = "Edit Exercise Log"
+        } else {
+            titleLabel.text = "Create Exercise Log"
         }
     }
     

@@ -29,3 +29,8 @@ func signIn(app: XCUIApplication) {
         XCTAssert(homeTab.waitForExistence(timeout: 10))
     }
 }
+
+func logFeedData(testCase: XCTestCase) -> Data {
+    let url = Bundle(for: type(of: testCase)).url(forResource: "logfeed", withExtension: "json")!
+    return try! Data(contentsOf: url)
+}

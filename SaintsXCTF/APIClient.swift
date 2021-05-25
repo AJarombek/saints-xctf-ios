@@ -262,12 +262,13 @@ class APIClient {
      */
     public static func groupGetRequest(
         withGroupname groupname: String,
+        inTeam teamname: String,
         fromController controller: UIViewController?,
         completion: @escaping (Group) -> Void
     ) {
         
         // Create the URL
-        let groupGetEndpoint = "\(apiBaseUrl)/v2/group/\(groupname)"
+        let groupGetEndpoint = "\(apiBaseUrl)/v2/group/\(teamname)/\(groupname)"
         guard let url = URL(string: groupGetEndpoint) else {
             os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
             return
@@ -276,14 +277,25 @@ class APIClient {
         APIRequest.get(withURL: url, fromController: controller) {
             (json) -> Void in
             
-            if let group: Group = Mapper<Group>().map(JSONString: json) {
-                os_log("%@", log: APIClient.logTag, type: .debug, group.description)
-                
-                OperationQueue.main.addOperation {
-                    completion(group)
+            do {
+                if let jsonDict = try JSONSerialization.jsonObject(with: Data(json.utf8), options: []) as? [String: Any] {
+                    let groupJsonDict = jsonDict["group"] ?? [:]
+                    
+                    let groupJson = try JSONSerialization.data(withJSONObject: groupJsonDict, options: [])
+                    let groupJsonString = String(data: groupJson, encoding: String.Encoding.utf8) ?? "{}"
+                    
+                    if let group: Group = Mapper<Group>().map(JSONString: groupJsonString) {
+                        os_log("%@", log: APIClient.logTag, type: .debug, group.toJSONString()!)
+                        
+                        OperationQueue.main.addOperation {
+                            completion(group)
+                        }
+                    } else {
+                        os_log("Group Conversion Failed.", log: APIClient.logTag, type: .error)
+                    }
                 }
-            } else {
-                os_log("Group Conversion Failed.", log: APIClient.logTag, type: .error)
+            } catch {
+                os_log("API Response JSON Parse Failed.", log: APIClient.logTag, type: .error)
             }
         }
     }
@@ -305,14 +317,25 @@ class APIClient {
         APIRequest.get(withURL: url, fromController: controller) {
             (json) -> Void in
             
-            if let groups: Array<Group> = Mapper<Group>().mapArray(JSONString: json) {
-                os_log("%@", log: APIClient.logTag, type: .debug, groups)
-                
-                OperationQueue.main.addOperation {
-                    completion(groups)
+            do {
+                if let jsonDict = try JSONSerialization.jsonObject(with: Data(json.utf8), options: []) as? [String: Any] {
+                    let groupsJsonDict = jsonDict["groups"] ?? [:]
+                    
+                    let groupsJson = try JSONSerialization.data(withJSONObject: groupsJsonDict, options: [])
+                    let groupsJsonString = String(data: groupsJson, encoding: String.Encoding.utf8) ?? "[]"
+                    
+                    if let groups: Array<Group> = Mapper<Group>().mapArray(JSONString: groupsJsonString) {
+                        os_log("%@", log: APIClient.logTag, type: .debug, groups)
+                        
+                        OperationQueue.main.addOperation {
+                            completion(groups)
+                        }
+                    } else {
+                        os_log("Groups Conversion Failed.", log: APIClient.logTag, type: .error)
+                    }
                 }
-            } else {
-                os_log("Groups Conversion Failed.", log: APIClient.logTag, type: .error)
+            } catch {
+                os_log("API Response JSON Parse Failed.", log: APIClient.logTag, type: .error)
             }
         }
     }

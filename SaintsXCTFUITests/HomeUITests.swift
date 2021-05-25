@@ -26,6 +26,13 @@ class HomeUITests: XCTestCase {
 
         let logCell = logTableView.cells.firstMatch
         XCTAssert(logCell.exists)
-        XCTAssertEqual(logCell.accessibility, "LogCell0")
+    }
+    
+    func testAbleToViewProfileFromLog() throws {
+        let app = XCUIApplication()
+        let logTableView = app.tables.matching(identifier: "LogTableView")
+        let logCell = logTableView.cells.firstMatch
+        let nameLabel = logCell.textViews.element(matching: .textView, identifier: "NameLabel")
+        print(nameLabel.value!)
     }
 }

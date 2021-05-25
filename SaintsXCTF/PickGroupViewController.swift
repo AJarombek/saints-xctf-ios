@@ -347,7 +347,7 @@ class PickGroupController: UIViewController {
      - user: information about the user that is requesting to join a group
      */
     func findGroupAdmins(withGroupname groupname: String, forUser user: User) {
-        APIClient.groupGetRequest(withGroupname: groupname, fromController: self) {
+        APIClient.groupGetRequest(withGroupname: groupname, inTeam: "saintsxctf", fromController: self) {
             (group) -> Void in
             
             let members: [GroupMember] = group.members!
