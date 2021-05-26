@@ -11,6 +11,7 @@ import Foundation
 enum Environment {
     case local
     case localEmail
+    case localUITestStub
     case development
     case production
 }

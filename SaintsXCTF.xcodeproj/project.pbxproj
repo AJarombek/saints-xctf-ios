@@ -10,7 +10,8 @@
 		3F28BB90265B250C008C7833 /* HomeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F28BB8F265B250C008C7833 /* HomeUITests.swift */; };
 		3F28BB98265B3956008C7833 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F28BB97265B3956008C7833 /* Utils.swift */; };
 		3F28BBAA265C716F008C7833 /* logfeed.json in Resources */ = {isa = PBXBuildFile; fileRef = 3F28BBA9265C716F008C7833 /* logfeed.json */; };
-		3F28BBE7265C8086008C7833 /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F28BBE6265C8086008C7833 /* Server.swift */; };
+		3F28BBFC265DCC5D008C7833 /* Stubs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F28BBFB265DCC5C008C7833 /* Stubs.swift */; };
+		3F28BC11265DD187008C7833 /* LogFeedStubs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F28BC10265DD187008C7833 /* LogFeedStubs.swift */; };
 		3FC8B6F0262E5ABF00FFAB08 /* AuthClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC8B6EF262E5ABF00FFAB08 /* AuthClient.swift */; };
 		3FC8B703262E5C8D00FFAB08 /* FnClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC8B702262E5C8D00FFAB08 /* FnClient.swift */; };
 		3FC8B70D262F9D9300FFAB08 /* SaintsXCTFUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC8B70C262F9D9300FFAB08 /* SaintsXCTFUITests.swift */; };
@@ -106,6 +107,13 @@
 			remoteGlobalIDString = 6A92D13ACA76A198281BA4FC0F5CBAD0;
 			remoteInfo = URITemplate;
 		};
+		3F28BC09265DCC5F008C7833 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A1081BFA21FFF94500BF80A8 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E7E98885A0FEF49E9EE8975449969BEB;
+			remoteInfo = Swifter;
+		};
 		3FC8B70F262F9D9300FFAB08 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A15BA12D1E8AF61D00B9796B /* Project object */;
@@ -197,7 +205,8 @@
 		3F28BB8F265B250C008C7833 /* HomeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeUITests.swift; sourceTree = "<group>"; };
 		3F28BB97265B3956008C7833 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		3F28BBA9265C716F008C7833 /* logfeed.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = logfeed.json; sourceTree = "<group>"; };
-		3F28BBE6265C8086008C7833 /* Server.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
+		3F28BBFB265DCC5C008C7833 /* Stubs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stubs.swift; sourceTree = "<group>"; };
+		3F28BC10265DD187008C7833 /* LogFeedStubs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogFeedStubs.swift; sourceTree = "<group>"; };
 		3FC8B6EF262E5ABF00FFAB08 /* AuthClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthClient.swift; sourceTree = "<group>"; };
 		3FC8B702262E5C8D00FFAB08 /* FnClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FnClient.swift; sourceTree = "<group>"; };
 		3FC8B70A262F9D9200FFAB08 /* SaintsXCTFUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SaintsXCTFUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -321,23 +330,24 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		3F28BBDA265C8069008C7833 /* Server */ = {
+		3F28BC0F265DD163008C7833 /* Stubs */ = {
 			isa = PBXGroup;
 			children = (
-				3F28BBE6265C8086008C7833 /* Server.swift */,
+				3F28BC10265DD187008C7833 /* LogFeedStubs.swift */,
 			);
-			path = Server;
+			path = Stubs;
 			sourceTree = "<group>";
 		};
 		3FC8B70B262F9D9200FFAB08 /* SaintsXCTFUITests */ = {
 			isa = PBXGroup;
 			children = (
-				3F28BBDA265C8069008C7833 /* Server */,
+				3F28BC0F265DD163008C7833 /* Stubs */,
 				3FC8B70C262F9D9300FFAB08 /* SaintsXCTFUITests.swift */,
 				3FC8B70E262F9D9300FFAB08 /* Info.plist */,
 				3F28BB8F265B250C008C7833 /* HomeUITests.swift */,
 				3F28BB97265B3956008C7833 /* Utils.swift */,
 				3F28BBA9265C716F008C7833 /* logfeed.json */,
+				3F28BBFB265DCC5C008C7833 /* Stubs.swift */,
 			);
 			path = SaintsXCTFUITests;
 			sourceTree = "<group>";
@@ -368,6 +378,7 @@
 				A1E0C7EC233989A30026841B /* Pods_SaintsXCTFTests.framework */,
 				3F28BBB9265C7170008C7833 /* Pods_SaintsXCTFUITests.framework */,
 				A1D8AC2322012B22007648DB /* PopupDialog.framework */,
+				3F28BC0A265DCC5F008C7833 /* Swifter.framework */,
 				3F28BBBB265C7170008C7833 /* URITemplate.framework */,
 			);
 			name = Products;
@@ -709,6 +720,13 @@
 			remoteRef = 3F28BBBA265C7170008C7833 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		3F28BC0A265DCC5F008C7833 /* Swifter.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Swifter.framework;
+			remoteRef = 3F28BC09265DCC5F008C7833 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		A1081C0C21FFF94500BF80A8 /* Pods_SaintsXCTF.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -940,8 +958,9 @@
 			files = (
 				3F28BB90265B250C008C7833 /* HomeUITests.swift in Sources */,
 				3FC8B70D262F9D9300FFAB08 /* SaintsXCTFUITests.swift in Sources */,
-				3F28BBE7265C8086008C7833 /* Server.swift in Sources */,
 				3F28BB98265B3956008C7833 /* Utils.swift in Sources */,
+				3F28BC11265DD187008C7833 /* LogFeedStubs.swift in Sources */,
+				3F28BBFC265DCC5D008C7833 /* Stubs.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

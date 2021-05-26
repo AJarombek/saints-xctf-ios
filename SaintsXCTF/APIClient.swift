@@ -19,6 +19,8 @@ class APIClient {
     
     private static var apiBaseUrl: String {
         switch NetworkEnvironment.environment {
+        case .localUITestStub:
+            return "http://localhost:9080"
         case .local, .localEmail:
             return "http://localhost:5000"
         case .development:

@@ -9,19 +9,26 @@
 import XCTest
 
 class HomeUITests: XCTestCase {
+    
+    let stubs = Stubs()
+    
+    lazy var app = XCUIApplication()
 
     override func setUpWithError() throws {
+        try! stubs.server.start(9080)
         continueAfterFailure = false
-        let app = XCUIApplication()
-        app.launch()
-        signIn(app: app)
     }
 
-    override func tearDownWithError() throws {}
+    override func tearDownWithError() throws {
+        stubs.server.stop()
+    }
     
 
     func testDisplaysLogs() throws {
-        let app = XCUIApplication()
+        stubs.stubRequest(path: "/v2/log_feed/all/all/25/0", jsonData: LogFeedStubs().pageOneData)
+        app.launch()
+        signIn(app: app)
+
         let logTableView = app.tables.matching(identifier: "LogTableView")
 
         let logCell = logTableView.cells.firstMatch
@@ -29,7 +36,9 @@ class HomeUITests: XCTestCase {
     }
     
     func testAbleToViewProfileFromLog() throws {
-        let app = XCUIApplication()
+        app.launch()
+        signIn(app: app)
+
         let logTableView = app.tables.matching(identifier: "LogTableView")
         let logCell = logTableView.cells.firstMatch
         let nameLabel = logCell.textViews.element(matching: .textView, identifier: "NameLabel")

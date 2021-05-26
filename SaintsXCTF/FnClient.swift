@@ -16,6 +16,8 @@ class FnClient {
     
     private static var fnBaseUrl: String {
         switch NetworkEnvironment.environment {
+        case .localUITestStub:
+            return "http://localhost:9082"
         case .local:
             return "http://localhost:5002"
         case .localEmail, .development:

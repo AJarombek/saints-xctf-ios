@@ -16,6 +16,8 @@ class AuthClient {
     
     private static var authBaseUrl: String {
         switch NetworkEnvironment.environment {
+        case .localUITestStub:
+            return "http://localhost:9081"
         case .local, .localEmail:
             return "http://localhost:5001"
         case .development:
