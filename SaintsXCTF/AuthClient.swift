@@ -15,7 +15,7 @@ class AuthClient {
     private static let logTag = OSLog(subsystem: "SaintsXCTF.APIClient.AuthClient", category: "AuthClient")
     
     private static var authBaseUrl: String {
-        switch NetworkEnvironment.environment {
+        switch NetworkEnvironment().environment {
         case .localUITestStub:
             return "http://localhost:9081"
         case .local, .localEmail:

@@ -15,7 +15,7 @@ class FnClient {
     private static let logTag = OSLog(subsystem: "SaintsXCTF.APIClient.FnClient", category: "FnClient")
     
     private static var fnBaseUrl: String {
-        switch NetworkEnvironment.environment {
+        switch NetworkEnvironment().environment {
         case .localUITestStub:
             return "http://localhost:9082"
         case .local:

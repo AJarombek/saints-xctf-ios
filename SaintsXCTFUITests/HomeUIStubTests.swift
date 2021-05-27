@@ -32,8 +32,15 @@ class HomeUIStubTests: XCTestCase {
 
         let logTableView = app.tables.matching(identifier: "LogTableView")
 
-        let logCell = logTableView.cells.firstMatch
-        XCTAssert(logCell.exists)
+        let logCell0 = logTableView.cells.element(matching: .cell, identifier: "LogCell0")
+        XCTAssert(logCell0.exists)
+        
+        print(logCell0.textViews)
+        let logCell0Name: XCUIElement = app.textViews["UserLabel"]
+        XCTAssertEqual(logCell0Name.value as! String, "Central Park Trails")
+        
+        let logCell1 = logTableView.cells.element(matching: .cell, identifier: "LogCell1")
+        XCTAssert(logCell1.exists)
     }
     
     func testAbleToViewProfileFromLog() throws {

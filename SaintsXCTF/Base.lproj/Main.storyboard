@@ -318,28 +318,33 @@
                                     <subviews>
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Description" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Nol-T3-Uj4">
                                             <rect key="frame" x="2" y="57" width="373" height="32"/>
+                                            <accessibility key="accessibilityConfiguration" identifier="DescriptionLabel"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="MMM. DD, YYYY" textAlignment="right" translatesAutoresizingMaskIntoConstraints="NO" id="xS7-gu-K0R">
                                             <rect key="frame" x="247.5" y="0.0" width="127.5" height="32"/>
+                                            <accessibility key="accessibilityConfiguration" identifier="DateLabel"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Log Name" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dd8-8u-fXj">
                                             <rect key="frame" x="1" y="20" width="276.5" height="32"/>
+                                            <accessibility key="accessibilityConfiguration" identifier="NameLabel"/>
                                             <edgeInsets key="layoutMargins" top="0.0" left="8" bottom="8" right="8"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="First Last" translatesAutoresizingMaskIntoConstraints="NO" id="y4e-xk-vUC">
                                             <rect key="frame" x="0.0" y="0.0" width="247.5" height="37"/>
+                                            <accessibility key="accessibilityConfiguration" identifier="UserLabel"/>
                                             <edgeInsets key="layoutMargins" top="0.0" left="8" bottom="0.0" right="8"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="TYPE" textAlignment="right" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2VM-X6-oEn">
                                             <rect key="frame" x="277.5" y="21" width="86.5" height="32"/>
+                                            <accessibility key="accessibilityConfiguration" identifier="LogTypeLabel"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>

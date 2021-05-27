@@ -10,7 +10,7 @@ import Foundation
 
 class UassetClient {
     public static var baseUrl: String {
-        switch NetworkEnvironment.environment {
+        switch NetworkEnvironment().environment {
         case .local, .localEmail, .localUITestStub, .development:
             return "https://uasset.saintsxctf.com/dev"
         case .production:

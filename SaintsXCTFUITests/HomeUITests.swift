@@ -28,4 +28,36 @@ class HomeUITests: XCTestCase {
         let logCell = logTableView.cells.firstMatch
         XCTAssert(logCell.exists)
     }
+    
+    func testNavigateToProfile() throws {
+        app.launch()
+        signIn(app: app)
+        
+        let tabBar = app.tabBars["Tab Bar"]
+        tabBar.buttons["Profile"].tap()
+    }
+    
+    func testNavigateToNewLog() throws {
+        app.launch()
+        signIn(app: app)
+        
+        let tabBar = app.tabBars["Tab Bar"]
+        tabBar.buttons["New Log"].tap()
+    }
+    
+    func testNavigateToGroups() throws {
+        app.launch()
+        signIn(app: app)
+        
+        let tabBar = app.tabBars["Tab Bar"]
+        tabBar.buttons["Groups"].tap()
+    }
+    
+    func testNavigateToSignOut() throws {
+        app.launch()
+        signIn(app: app)
+        
+        let tabBar = app.tabBars["Tab Bar"]
+        tabBar.buttons["Sign Out"].tap()
+    }
 }

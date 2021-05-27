@@ -95,7 +95,7 @@ class HomeViewController: UIViewController {
                     } else {
                         UserJWT.jwt = authResult.result
                         _ = UserJWT.saveJWT()
-                        self.validatePassword(username: usernameString, password: passwordString)
+                        self.saveUserDetails(username: usernameString, password: passwordString)
                     }
                 })
             }
@@ -107,44 +107,34 @@ class HomeViewController: UIViewController {
         
     }
     
-    func validatePassword(username: String, password: String) {
+    func saveUserDetails(username: String, password: String) {
         // Second request the user from the API and specify a callback closure
         APIClient.userGetRequest(withUsername: username, fromController: self) {
             (user: User) -> Void in
         
-            // Check to see if the password entered and the users hash match
-            if let hash: String = user.password,
-                let verified: Bool = BCryptSwift.verifyPassword(password, matchesHash: hash) {
-            
-                if verified {
-                    os_log("Valid Password Entered!", log: self.logTag, type: .debug)
+            // Check to see if the user object properly has a username field
+            if let _: String = user.username {
+                // Save the user sign in data
+                SignedInUser.user = user
+                let savedUser = SignedInUser.saveUser()
                 
-                    // Save the user sign in data
-                    SignedInUser.user = user
-                    let savedUser = SignedInUser.saveUser()
-                    
-                    if (savedUser) {
-                        os_log("Saved User to Persistant Storage.", log: self.logTag, type: .debug)
-                    } else {
-                        os_log("Failed to Saves User to Persistant Storage",
-                               log: self.logTag, type: .error)
-                    }
-                
-                    // Redirect to the main page
-                    let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                    let mainViewController = storyBoard.instantiateViewController(withIdentifier:
-                        "mainViewController") as! UITabBarController
-                    self.present(mainViewController, animated: true, completion: nil)
-                
+                if (savedUser) {
+                    os_log("Saved User to Persistant Storage.", log: self.logTag, type: .debug)
                 } else {
-                    os_log("INVALID Password Entered.", log: self.logTag, type: .error)
-                    self.error.text = "Invalid Username/Password Entered"
-                    self.username.changeStyle(.warning)
-                    self.password.changeStyle(.warning)
-                    self.removeOverlay()
+                    os_log(
+                        "Failed to Saves User to Persistant Storage",
+                        log: self.logTag,
+                        type: .error
+                    )
                 }
+            
+                // Redirect to the main page
+                let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let mainViewController = storyBoard.instantiateViewController(withIdentifier:
+                    "mainViewController") as! UITabBarController
+                self.present(mainViewController, animated: true, completion: nil)
             } else {
-                os_log("Unable to Verify Password", log: self.logTag, type: .error)
+                os_log("Unable to Retrieve User Details", log: self.logTag, type: .error)
                 self.error.text = "Invalid Username Entered"
                 self.username.changeStyle(.error)
                 self.removeOverlay()

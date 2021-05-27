@@ -18,7 +18,7 @@ class APIClient {
     private static let logTag = OSLog(subsystem: "SaintsXCTF.APIClient.APIClient", category: "APIClient")
     
     private static var apiBaseUrl: String {
-        switch NetworkEnvironment.environment {
+        switch NetworkEnvironment().environment {
         case .localUITestStub:
             return "http://localhost:9080"
         case .local, .localEmail:

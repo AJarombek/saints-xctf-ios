@@ -51,7 +51,6 @@ class LogTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        nameLabel.accessibilityIdentifier = "NameLabel"
     }
     
     required init?(coder: NSCoder) {
