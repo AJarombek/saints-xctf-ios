@@ -17,5 +17,15 @@ enum Environment {
 }
 
 class NetworkEnvironment {
-    static let environment: Environment = .development
+    var environment: Environment {
+        get {
+            if ProcessInfo.processInfo.arguments.contains("UI_STUB_TESTING") {
+                return .localUITestStub
+            } else if ProcessInfo.processInfo.arguments.contains("UI_TESTING") {
+                return .local
+            } else {
+                return .development
+            }
+        }
+    }
 }

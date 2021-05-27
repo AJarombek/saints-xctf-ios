@@ -14,8 +14,8 @@
             filePath = "SaintsXCTFUITests/HomeUITests.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "27"
-            endingLineNumber = "27"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
             landmarkName = "testDisplaysLogs()"
             landmarkType = "7">
          </BreakpointContent>

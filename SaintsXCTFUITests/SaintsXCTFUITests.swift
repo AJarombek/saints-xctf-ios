@@ -10,6 +10,8 @@ import XCTest
 import SaintsXCTF
 
 class SaintsXCTFUITests: XCTestCase {
+    
+    lazy var app = XCUIApplication()
 
     override func setUpWithError() throws {
         let directory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
@@ -20,13 +22,13 @@ class SaintsXCTFUITests: XCTestCase {
         try data.write(to: userArchive)
         try data.write(to: jwtArchive)
         
+        app.launchArguments += ["UI_TESTING"]
         continueAfterFailure = false
     }
 
     override func tearDownWithError() throws {}
 
     func testAbleToViewEula() throws {
-        let app = XCUIApplication()
         app.launch()
         
         let usernameTextField = app.textFields["Username"]
@@ -85,7 +87,6 @@ class SaintsXCTFUITests: XCTestCase {
     }
     
     func testAbleToSignIn() throws {
-        let app = XCUIApplication()
         app.launch()
         
         let usernameTextField = app.textFields["Username"]
