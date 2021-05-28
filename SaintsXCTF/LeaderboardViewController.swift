@@ -33,7 +33,7 @@ class LeaderboardViewController: UITableViewController, UIGestureRecognizerDeleg
     let heightDict = NSMutableDictionary()
     
     let timeFilters = ["All Time", "Past Year", "Past Month", "Past Week"]
-    let timeAPIFilters = ["miles", "milespastyear", "milespastmonth", "milespastweek"]
+    let timeAPIFilters = ["all", "year", "month", "week"]
     var run = true, bike = false, swim = false, other = false
     
     var timePicker: UIPickerView!
@@ -70,9 +70,19 @@ class LeaderboardViewController: UITableViewController, UIGestureRecognizerDeleg
             navigationItem.title = group.group_title!
             
             // Build the default leaderboard - all time running miles
-            leaderboardItems = group.leaderboards["miles"]!
-            buildLeaderboardData()
-            self.leaderboardTableView.reloadData()
+            if group.leaderboards != nil && group.leaderboards["all"] != nil {
+                leaderboardItems = group.leaderboards["all"]!
+                buildLeaderboardData()
+                leaderboardTableView.reloadData()
+            } else {
+                APIClient.groupLeaderboardGetRequest(withGroupId: group.id, inInterval: nil, fromController: self) {
+                    (leaderboard: [LeaderboardItem]?) -> Void in
+                    
+                    self.leaderboardItems = leaderboard ?? []
+                    self.buildLeaderboardData()
+                    self.leaderboardTableView.reloadData()
+                }
+            }
         }
     }
     
@@ -195,7 +205,7 @@ class LeaderboardViewController: UITableViewController, UIGestureRecognizerDeleg
      */
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "LogCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "LeaderboardCell", for: indexPath)
                         as! LeaderboardTableViewCell
         let leader: [String] = leaderboard[indexPath.row]
         
@@ -288,10 +298,10 @@ class LeaderboardViewController: UITableViewController, UIGestureRecognizerDeleg
             // For each item, get the persons name and their mileage for the given filters
             var leader: [String] = []
             
-            let milesrun: Double = run ? entry.milesrun : 0
-            let milesbiked: Double = bike ? entry.milesbiked : 0
-            let milesswam: Double = swim ? entry.milesswam : 0
-            let milesother: Double = other ? entry.milesother : 0
+            let milesrun: Double = run ? entry.miles_run : 0
+            let milesbiked: Double = bike ? entry.miles_biked : 0
+            let milesswam: Double = swim ? entry.miles_swam : 0
+            let milesother: Double = other ? entry.miles_other : 0
             
             leader.append("\(entry.first!) \(entry.last!)")
             leader.append("\(milesrun + milesbiked + milesswam + milesother)")

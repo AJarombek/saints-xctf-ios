@@ -18,6 +18,7 @@ import ObjectMapper
  */
 class Group: Mappable, CustomStringConvertible {
     
+    var id: Int!
     var group_name: String!
     var group_title: String!
     var grouppic: String?
@@ -38,7 +39,7 @@ class Group: Mappable, CustomStringConvertible {
     // This class uses the CustomStringConvertible protocol.
     // The description will be printed whenever we try to print a Comment object
     var description: String {
-        return "Group: (\(group_name!), \(group_title!))"
+        return "Group: (\(id!), \(group_name!), \(group_title!))"
     }
     
     /**
@@ -47,6 +48,7 @@ class Group: Mappable, CustomStringConvertible {
      - map: JSON data is stored within this map
      */
     func mapping(map: Map) {
+        id <- map["id"]
         group_name <- map["group_name"]
         group_title <- map["group_title"]
         grouppic <- map["grouppic"]

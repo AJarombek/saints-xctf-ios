@@ -115,7 +115,7 @@ class MemberViewController: UITableViewController, UIGestureRecognizerDelegate {
      */
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "LogCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MemberCell", for: indexPath)
             as! MemberTableViewCell
         let member: GroupMember = members[indexPath.row]
         
@@ -123,7 +123,7 @@ class MemberViewController: UITableViewController, UIGestureRecognizerDelegate {
         
         // Format the member join date
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
+        dateFormatter.dateFormat = "E, dd MMM yyyy HH:mm:ss zzz"
         
         let formattedDate = dateFormatter.date(from: member.member_since)!
         dateFormatter.dateFormat = "MMM dd, yyyy"

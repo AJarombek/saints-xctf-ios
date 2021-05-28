@@ -406,6 +406,63 @@ class APIClient {
     }
     
     /**
+     Handle a GET Request for leaderboard information about a group in the database
+     - parameters:
+        - groupname: a unique name for a group
+        - teamname:  a unique name for the team that a group is in
+        - controller: UI Controller that the API request originates from
+        - completion:  Callback function which is invoked once the GET request is fulfilled
+     */
+    public static func groupLeaderboardGetRequest(
+        withGroupId groupId: Int,
+        inInterval interval: String?,
+        fromController controller: UIViewController?,
+        completion: @escaping ([LeaderboardItem]?) -> Void
+    ) {
+        let intervalString: String = (interval != nil) ? "/\(interval ?? "")" : ""
+        let groupLeaderboardGetEndpoint = "\(apiBaseUrl)/v2/groups/leaderboard/\(groupId)\(intervalString)"
+        guard let url = URL(string: groupLeaderboardGetEndpoint) else {
+            os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
+            return
+        }
+        
+        APIRequest.get(withURL: url, fromController: controller) {
+            (json) -> Void in
+            
+            do {
+                if let jsonDict = try JSONSerialization.jsonObject(with: Data(json.utf8), options: []) as? [String: Any] {
+                    let leaderboardJsonDict = jsonDict["leaderboard"] ?? [:]
+                    
+                    let leaderboardJson = try JSONSerialization.data(withJSONObject: leaderboardJsonDict, options: [])
+                    let leaderboardJsonString = String(data: leaderboardJson, encoding: String.Encoding.utf8) ?? "[]"
+                    
+                    if let leaderboardItems: Array<LeaderboardItem> =
+                        Mapper<LeaderboardItem>().mapArray(JSONString: leaderboardJsonString) {
+                        
+                        os_log("%@", log: APIClient.logTag, type: .debug, leaderboardItems)
+                        
+                        OperationQueue.main.addOperation {
+                            completion(leaderboardItems)
+                        }
+                    } else {
+                        os_log("Leaderboard Conversion Failed.", log: APIClient.logTag, type: .error)
+                        
+                        OperationQueue.main.addOperation {
+                            completion(nil)
+                        }
+                    }
+                }
+            } catch {
+                os_log("API Response JSON Parse Failed.", log: APIClient.logTag, type: .error)
+                
+                OperationQueue.main.addOperation {
+                    completion(nil)
+                }
+            }
+        }
+    }
+    
+    /**
      Handle GET Requests for a Comment
      - parameters:
         - commentId: a unique identifer for a comment

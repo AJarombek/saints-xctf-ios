@@ -22,10 +22,10 @@ class LeaderboardItem: Mappable {
     var first: String!
     var last: String!
     var miles: Double!
-    var milesrun: Double!
-    var milesbiked: Double!
-    var milesswam: Double!
-    var milesother: Double!
+    var miles_run: Double!
+    var miles_biked: Double!
+    var miles_swam: Double!
+    var miles_other: Double!
     
     /**
      Required initializer for the Mappable protocol
@@ -44,9 +44,9 @@ class LeaderboardItem: Mappable {
         first <- map["first"]
         last <- map["last"]
         miles <- map["miles"]
-        milesrun <- map["milesrun"]
-        milesbiked <- map["milesbiked"]
-        milesswam <- map["milesswam"]
-        milesother <- map["milesother"]
+        miles_run <- map["miles_run"]
+        miles_biked <- map["miles_biked"]
+        miles_swam <- map["miles_swam"]
+        miles_other <- map["miles_other"]
     }
 }
