@@ -74,70 +74,7 @@ class GroupViewController: UIViewController, UIGestureRecognizerDelegate {
             // Set the group title and description
             self.groupTitleView.text = group.group_title!
             
-            var members: [GroupMember] = group.members!
-            
-            // Filter the members array so only accepted members show up
-            members = members.filter { $0.status ?? "" == "accepted" }
-            
-            let memberCount: Int = members.count
-            let description = group.group_description ?? ""
-            
-            self.groupDescriptionView.text = "Members: \(memberCount)\n\n\(description)"
-            
-            // Set the group picture
-            if let groupPicBase64 = group.grouppic {
-                
-                // Part of the base 64 encoding is html specific, remove this piece
-                let start: String.Index = groupPicBase64.index(groupPicBase64.startIndex, offsetBy: 23)
-                let end: String.Index = groupPicBase64.endIndex
-                
-                let base64: String = String(groupPicBase64[start..<end])
-                
-                // Now decode the base 64 encoded string and convert it to an image
-                let groupPicData: Data = Data(base64Encoded: base64, options: .ignoreUnknownCharacters)!
-                let groupPic: UIImage = UIImage(data: groupPicData)!
-                
-                // Display the group picture image
-                self.groupImageView.image = groupPic
-            }
-            
-            // Get the member info for the currently signed in user
-            let user: User = SignedInUser.user
-            let member: [GroupMember] = members.filter { $0.username! == user.username! }
-            
-            // Unhide the always visible buttons
-            self.logsView.isHidden = false
-            self.leaderboardsView.isHidden = false
-            self.membersView.isHidden = false
-            
-            // Hide message button if the signed in user is not an accepted member,
-            // Hide admin button if the signed in user is not an admin
-            if member.count == 0 || member[0].status! != "accepted" {
-                
-                let membersBottomBorder = CALayer()
-                membersBottomBorder.frame = CGRect.init(x: -20, y: self.membersView.frame.height + 1,
-                                                        width: self.view.frame.width + 20, height: 1)
-                membersBottomBorder.backgroundColor = UIColor(0xBBBBBB).cgColor
-                
-                self.membersView.layer.addSublayer(membersBottomBorder)
-                
-            } else if member[0].user! != "admin" {
-                self.membersView.isHidden = false
-                
-                let membersBottomBorder = CALayer()
-                membersBottomBorder.frame = CGRect.init(
-                    x: -20,
-                    y: self.membersView.frame.height + 1,
-                    width: self.view.frame.width + 20,
-                    height: 1
-                )
-                membersBottomBorder.backgroundColor = UIColor(0xBBBBBB).cgColor
-                
-                self.membersView.layer.addSublayer(membersBottomBorder)
-                
-            } else {
-                self.adminView.isHidden = false
-            }
+            self.loadGroupMembers()
             
             // Set click listener to the logs view to open up the group logs page
             let click = UITapGestureRecognizer(target: self, action: #selector(self.viewLogs(_:)))
@@ -209,6 +146,76 @@ class GroupViewController: UIViewController, UIGestureRecognizerDelegate {
         membersView.layer.addSublayer(membersTopBorder)
         adminView.layer.addSublayer(adminTopBorder)
         adminView.layer.addSublayer(adminBottomBorder)
+    }
+    
+    func loadGroupMembers() {
+        APIClient.groupMembersGetRequest(withGroupname: groupname, inTeam: "saintsxctf", fromController: self) {
+            (groupMembers: [GroupMember]?) -> Void in
+            
+            var members: [GroupMember] = groupMembers ?? []
+            self.group!.members = members
+            
+            // Filter the members array so only accepted members show up
+            members = members.filter { $0.status ?? "" == "accepted" }
+            
+            let memberCount: Int = members.count
+            let description = self.group!.group_description ?? ""
+            
+            self.groupDescriptionView.text = "Members: \(memberCount)\n\n\(description)"
+            
+            // Set the group picture
+            if let groupPictureName = self.group!.grouppic_name {
+                
+                let url = URL(string: "\(UassetClient.baseUrl)/group/\(self.groupname)/\(groupPictureName)")
+                
+                DispatchQueue.global().async {
+                    let data = try? Data(contentsOf: url!)
+                    
+                    DispatchQueue.main.async {
+                        // Display the profile picture image
+                        self.groupImageView.image = UIImage(data: data!)
+                    }
+                }
+            }
+            
+            // Get the member info for the currently signed in user
+            let user: User = SignedInUser.user
+            let member: [GroupMember] = members.filter { $0.username! == user.username! }
+            
+            // Unhide the always visible buttons
+            self.logsView.isHidden = false
+            self.leaderboardsView.isHidden = false
+            self.membersView.isHidden = false
+            
+            // Hide message button if the signed in user is not an accepted member,
+            // Hide admin button if the signed in user is not an admin
+            if member.count == 0 || member[0].status! != "accepted" {
+                
+                let membersBottomBorder = CALayer()
+                membersBottomBorder.frame = CGRect.init(x: -20, y: self.membersView.frame.height + 1,
+                                                        width: self.view.frame.width + 20, height: 1)
+                membersBottomBorder.backgroundColor = UIColor(0xBBBBBB).cgColor
+                
+                self.membersView.layer.addSublayer(membersBottomBorder)
+                
+            } else if member[0].user! != "admin" {
+                self.membersView.isHidden = false
+                
+                let membersBottomBorder = CALayer()
+                membersBottomBorder.frame = CGRect.init(
+                    x: -20,
+                    y: self.membersView.frame.height + 1,
+                    width: self.view.frame.width + 20,
+                    height: 1
+                )
+                membersBottomBorder.backgroundColor = UIColor(0xBBBBBB).cgColor
+                
+                self.membersView.layer.addSublayer(membersBottomBorder)
+                
+            } else {
+                self.adminView.isHidden = false
+            }
+        }
     }
     
     /**

@@ -37,6 +37,8 @@ class APIRequest {
         authToken: String = "Bearer \(UserJWT.jwt)",
         completion: @escaping (String) -> Void
     ) {
+        os_log("GET request url %@", log: APIRequest.logTag, type: .debug, url.path)
+        
         var urlRequest = URLRequest(url: url)
         
         // add the credentials and accept type to the url request
@@ -103,11 +105,11 @@ class APIRequest {
         authToken: String = "Bearer \(UserJWT.jwt)",
         completion: @escaping (String?) -> Void
     ) {
-        var urlrequest = URLRequest(url: url)
-        urlrequest.httpMethod = "POST"
-        
         os_log("POST request url %@", log: APIRequest.logTag, type: .debug, url.path)
         os_log("POST request body %@", log: APIRequest.logTag, type: .debug, json)
+        
+        var urlrequest = URLRequest(url: url)
+        urlrequest.httpMethod = "POST"
         
         // Get the data for the httpbody from the JSON
         let body: Data = json.data(using: .utf8)!
@@ -179,6 +181,9 @@ class APIRequest {
         authToken: String = "Bearer \(UserJWT.jwt)",
         completion: @escaping (String?) -> Void
     ) {
+        os_log("PUT request url %@", log: APIRequest.logTag, type: .debug, url.path)
+        os_log("PUT request body %@", log: APIRequest.logTag, type: .debug, json)
+        
         var urlrequest = URLRequest(url: url)
         urlrequest.httpMethod = "PUT"
         
@@ -252,6 +257,8 @@ class APIRequest {
         authToken: String = "Bearer \(UserJWT.jwt)",
         completion: @escaping (Bool) -> Void
     ) {
+        os_log("DELETE request url %@", log: APIRequest.logTag, type: .debug, url.path)
+        
         var urlrequest = URLRequest(url: url)
         urlrequest.httpMethod = "DELETE"
         

@@ -35,9 +35,9 @@ class APIClient {
     /**
      Handle GET Requests for a User
      - parameters:
-     - username: the username of a user to retrieve
-     - controller:  UI Controller that the API request originates from
-     - completion:  Callback function which is invoked once the GET request is fulfilled
+         - username: the username of a user to retrieve
+         - controller:  UI Controller that the API request originates from
+         - completion:  Callback function which is invoked once the GET request is fulfilled
      */
     public static func userGetRequest(
         withUsername username: String,
@@ -93,8 +93,8 @@ class APIClient {
     /**
      Handle a GET request for all Users in the database
      - parameters:
-     - controller: UI Controller that the API request originates from
-     - completion:  Callback function which is invoked once the GET request is fulfilled
+        - controller: UI Controller that the API request originates from
+        - completion:  Callback function which is invoked once the GET request is fulfilled
      */
     public static func usersGetRequest(fromController controller: UIViewController?, completion: @escaping ([User]) -> Void) {
     
@@ -130,6 +130,13 @@ class APIClient {
         }
     }
     
+    /**
+     Handle a GET request for the group memberships of a user
+     - parameters:
+        - username: Unique identifier for a user of the application
+        - controller: UI Controller that the API request originates from
+        - completion:  Callback function which is invoked once the GET request is fulfilled
+     */
     public static func userGroupsGetRequest(
         withUsername username: String,
         fromController controller: UIViewController?,
@@ -171,9 +178,9 @@ class APIClient {
     /**
      Handle GET Requests for an exercise Log
      - parameters:
-     - logID: a unique identifier for an exercise log
-     - controller: UI Controller that the API request originates from
-     - completion:  Callback function which is invoked once the GET request is fulfilled
+        - logID: a unique identifier for an exercise log
+        - controller: UI Controller that the API request originates from
+        - completion:  Callback function which is invoked once the GET request is fulfilled
      */
     public static func logGetRequest(
         withLogID logID: Int,
@@ -218,8 +225,8 @@ class APIClient {
     /**
      Handle a GET Request for all Logs in the database
      - parameters:
-     - controller: UI Controller that the API request originates from
-     - completion:  Callback function which is invoked once the GET request is fulfilled
+        - controller: UI Controller that the API request originates from
+        - completion:  Callback function which is invoked once the GET request is fulfilled
      */
     public static func logsGetRequest(fromController controller: UIViewController?, completion: @escaping ([Log]) -> Void) {
         
@@ -258,9 +265,10 @@ class APIClient {
     /**
      Handle GET Requests for a Group
      - parameters:
-     - groupname: a unique name for a group
-     - controller: UI Controller that the API request originates from
-     - completion:  Callback function which is invoked once the GET request is fulfilled
+        - groupname: a unique name for a group
+        - teamname:  a unique name for the team that a group is in
+        - controller: UI Controller that the API request originates from
+        - completion:  Callback function which is invoked once the GET request is fulfilled
      */
     public static func groupGetRequest(
         withGroupname groupname: String,
@@ -270,7 +278,7 @@ class APIClient {
     ) {
         
         // Create the URL
-        let groupGetEndpoint = "\(apiBaseUrl)/v2/group/\(teamname)/\(groupname)"
+        let groupGetEndpoint = "\(apiBaseUrl)/v2/groups/\(teamname)/\(groupname)"
         guard let url = URL(string: groupGetEndpoint) else {
             os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
             return
@@ -305,8 +313,8 @@ class APIClient {
     /**
      Handle a GET Request for all the Groups in the database
      - parameters:
-     - controller: UI Controller that the API request originates from
-     - completion:  Callback function which is invoked once the GET request is fulfilled
+        - controller: UI Controller that the API request originates from
+        - completion:  Callback function which is invoked once the GET request is fulfilled
      */
     public static func groupsGetRequest(fromController controller: UIViewController?, completion: @escaping ([Group]) -> Void) {
         
@@ -343,11 +351,66 @@ class APIClient {
     }
     
     /**
+     Handle a GET Request for all the members of a group in the database
+     - parameters:
+        - groupname: a unique name for a group
+        - teamname:  a unique name for the team that a group is in
+        - controller: UI Controller that the API request originates from
+        - completion:  Callback function which is invoked once the GET request is fulfilled
+     */
+    public static func groupMembersGetRequest(
+        withGroupname groupname: String,
+        inTeam teamname: String,
+        fromController controller: UIViewController?,
+        completion: @escaping ([GroupMember]?) -> Void
+    ) {
+        
+        let groupMembersGetEndpoint = "\(apiBaseUrl)/v2/groups/members/\(teamname)/\(groupname)"
+        guard let url = URL(string: groupMembersGetEndpoint) else {
+            os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
+            return
+        }
+        
+        APIRequest.get(withURL: url, fromController: controller) {
+            (json) -> Void in
+            
+            do {
+                if let jsonDict = try JSONSerialization.jsonObject(with: Data(json.utf8), options: []) as? [String: Any] {
+                    let groupMembersJsonDict = jsonDict["group_members"] ?? [:]
+                    
+                    let groupMembersJson = try JSONSerialization.data(withJSONObject: groupMembersJsonDict, options: [])
+                    let groupMembersJsonString = String(data: groupMembersJson, encoding: String.Encoding.utf8) ?? "[]"
+                    
+                    if let groupMembers: Array<GroupMember> = Mapper<GroupMember>().mapArray(JSONString: groupMembersJsonString) {
+                        os_log("%@", log: APIClient.logTag, type: .debug, groupMembers)
+                        
+                        OperationQueue.main.addOperation {
+                            completion(groupMembers)
+                        }
+                    } else {
+                        os_log("Group Members Conversion Failed.", log: APIClient.logTag, type: .error)
+                        
+                        OperationQueue.main.addOperation {
+                            completion(nil)
+                        }
+                    }
+                }
+            } catch {
+                os_log("API Response JSON Parse Failed.", log: APIClient.logTag, type: .error)
+                
+                OperationQueue.main.addOperation {
+                    completion(nil)
+                }
+            }
+        }
+    }
+    
+    /**
      Handle GET Requests for a Comment
      - parameters:
-     - commentId: a unique identifer for a comment
-     - controller: UI Controller that the API request originates from
-     - completion:  Callback function which is invoked once the GET request is fulfilled
+        - commentId: a unique identifer for a comment
+        - controller: UI Controller that the API request originates from
+        - completion:  Callback function which is invoked once the GET request is fulfilled
      */
     public static func commentGetRequest(
         withCommentId commentId: Int,
@@ -399,8 +462,8 @@ class APIClient {
     /**
      Handle a GET Request for all the comments in the database
      - parameters:
-     - controller: UI Controller that the API request originates from
-     - completion:  Callback function which is invoked once the GET request is fulfilled
+         - controller: UI Controller that the API request originates from
+         - completion:  Callback function which is invoked once the GET request is fulfilled
      */
     public static func commentsGetRequest(
         fromController controller: UIViewController?,
@@ -450,9 +513,9 @@ class APIClient {
     /**
      Handle GET Requests for an Activation Code
      - parameters:
-     - code: a unique code to activate an account
-     - controller: UI Controller that the API request originates from
-     - completion:  Callback function which is invoked once the GET request is fulfilled
+         - code: a unique code to activate an account
+         - controller: UI Controller that the API request originates from
+         - completion:  Callback function which is invoked once the GET request is fulfilled
      */
     public static func activationCodeGetRequest(
         withCode code: String,
@@ -489,9 +552,9 @@ class APIClient {
     /**
      Handle GET Requests for a Notification
      - parameters:
-     - notificationId: a unique identifer for a notification
-     - controller: UI Controller that the API request originates from
-     - completion:  Callback function which is invoked once the GET request is fulfilled
+         - notificationId: a unique identifer for a notification
+         - controller: UI Controller that the API request originates from
+         - completion:  Callback function which is invoked once the GET request is fulfilled
      */
     public static func notificationGetRequest(
         withNotificationId notificationId: Int,
@@ -524,8 +587,8 @@ class APIClient {
     /**
      Handle a GET Request for all the notifications in the database
      - parameters:
-     - controller: UI Controller that the API request originates from
-     - completion:  Callback function which is invoked once the GET request is fulfilled
+         - controller: UI Controller that the API request originates from
+         - completion:  Callback function which is invoked once the GET request is fulfilled
      */
     public static func notificationsGetRequest(
         fromController controller: UIViewController?,
@@ -556,13 +619,13 @@ class APIClient {
     /**
      Handle GET Requests for a Log Feed
      - parameters:
-     - paramType: the grouping of logs to return (ex. user, group)
-     - sortParam: a string to query the param type.  For example, if the paramType is user, the sortParam can
-     be the username of a user
-     - limit: the maximum number of logs to return
-     - offset: not the rapper
-     - controller: UI Controller that the API request originates from
-     - completion:  Callback function which is invoked once the GET request is fulfilled
+         - paramType: the grouping of logs to return (ex. user, group)
+         - sortParam: a string to query the param type.  For example, if the paramType is user, the sortParam can
+         be the username of a user
+         - limit: the maximum number of logs to return
+         - offset: not the rapper
+         - controller: UI Controller that the API request originates from
+         - completion:  Callback function which is invoked once the GET request is fulfilled
      */
     public static func logfeedGetRequest(
         withParamType paramType: String,
@@ -608,15 +671,15 @@ class APIClient {
     /**
      Handle GET Requests for a Range View
      - parameters:
-     - paramType: the grouping of range views to return (ex. user, group)
-     - sortParam: a string to query the param type.  For example, if the paramType is user, the sortParam can
-     be the username of a user
-     - filter: the types of exercises to include in the range view (any combination of 'r', 'b', 's', 'o') where
-     r->Run, b->Bike, s->Swim, o->Other
-     - start: the first day in the range view
-     - end: the last day in the range view
-     - controller: UI Controller that the API request originates from
-     - completion:  Callback function which is invoked once the GET request is fulfilled
+         - paramType: the grouping of range views to return (ex. user, group)
+         - sortParam: a string to query the param type.  For example, if the paramType is user, the sortParam can
+         be the username of a user
+         - filter: the types of exercises to include in the range view (any combination of 'r', 'b', 's', 'o') where
+         r->Run, b->Bike, s->Swim, o->Other
+         - start: the first day in the range view
+         - end: the last day in the range view
+         - controller: UI Controller that the API request originates from
+         - completion:  Callback function which is invoked once the GET request is fulfilled
      */
     public static func rangeViewGetRequest(
         withParamType paramType: String,
@@ -673,9 +736,9 @@ class APIClient {
     /**
      Handle POST Requests for a User
      - parameters:
-     - user: an object representing the user to create on the server
-     - controller: UI Controller that the API request originates from
-     - completion:  Callback function which is invoked once the POST request is fulfilled
+         - user: an object representing the user to create on the server
+         - controller: UI Controller that the API request originates from
+         - completion:  Callback function which is invoked once the POST request is fulfilled
      */
     public static func userPostRequest(
         withUser user: User,
@@ -714,9 +777,9 @@ class APIClient {
     /**
      Handle POST Requests for a Log
      - parameters:
-     - log: an object representing the exercie log to create on the server
-     - controller: UI Controller that the API request originates from
-     - completion:  Callback function which is invoked once the POST request is fulfilled
+         - log: an object representing the exercie log to create on the server
+         - controller: UI Controller that the API request originates from
+         - completion:  Callback function which is invoked once the POST request is fulfilled
      */
     public static func logPostRequest(
         withLog log: Log,
@@ -772,9 +835,9 @@ class APIClient {
     /**
      Handle POST Requests for a Comment
      - parameters:
-     - comment: an object representing the comment to create on the server
-     - controller: UI Controller that the API request originates from
-     - completion:  Callback function which is invoked once the POST request is fulfilled
+         - comment: an object representing the comment to create on the server
+         - controller: UI Controller that the API request originates from
+         - completion:  Callback function which is invoked once the POST request is fulfilled
      */
     public static func commentPostRequest(
         withComment comment: Comment,
@@ -830,8 +893,8 @@ class APIClient {
     /**
      Handle POST Requests for an Activation Code
      - parameters:
-     - controller: UI Controller that the API request originates from
-     - completion:  Callback function which is invoked once the POST request is fulfilled
+         - controller: UI Controller that the API request originates from
+         - completion:  Callback function which is invoked once the POST request is fulfilled
      */
     public static func activationCodePostRequest(
         fromController controller: UIViewController?,
@@ -865,9 +928,9 @@ class APIClient {
     /**
      Handle POST Requests for a Notification
      - parameters:
-     - notification: an object representing the notification to create on the server
-     - controller: UI Controller that the API request originates from
-     - completion:  Callback function which is invoked once the POST request is fulfilled
+         - notification: an object representing the notification to create on the server
+         - controller: UI Controller that the API request originates from
+         - completion:  Callback function which is invoked once the POST request is fulfilled
      */
     public static func notificationPostRequest(
         withNotification notification: Notification,
@@ -904,10 +967,10 @@ class APIClient {
     /**
      Handle PUT Requests for a User
      - parameters:
-     - username: the username of an existing user on the server
-     - user: an object representing the updated user to reflect on the server
-     - controller: UI Controller that the API request originates from
-     - completion:  Callback function which is invoked once the PUT request is fulfilled
+         - username: the username of an existing user on the server
+         - user: an object representing the updated user to reflect on the server
+         - controller: UI Controller that the API request originates from
+         - completion:  Callback function which is invoked once the PUT request is fulfilled
      */
     public static func userPutRequest(
         withUsername username: String,
@@ -965,10 +1028,10 @@ class APIClient {
     /**
      Handle PUT Requests for a Log
      - parameters:
-     - logID: the unique logId of an existing log on the server
-     - log: an object representing the updated log to reflect on the server
-     - controller: UI Controller that the API request originates from
-     - completion:  Callback function which is invoked once the PUT request is fulfilled
+         - logID: the unique logId of an existing log on the server
+         - log: an object representing the updated log to reflect on the server
+         - controller: UI Controller that the API request originates from
+         - completion:  Callback function which is invoked once the PUT request is fulfilled
      */
     public static func logPutRequest(
         withLogID logID: Int,
@@ -1025,10 +1088,10 @@ class APIClient {
     /**
      Handle PUT Requests for a Group
      - parameters:
-     - groupname: the groupname of an existing group on the server
-     - group: an object representing the updated group to reflect on the server
-     - controller: UI Controller that the API request originates from
-     - completion:  Callback function which is invoked once the PUT request is fulfilled
+         - groupname: the groupname of an existing group on the server
+         - group: an object representing the updated group to reflect on the server
+         - controller: UI Controller that the API request originates from
+         - completion:  Callback function which is invoked once the PUT request is fulfilled
      */
     public static func groupPutRequest(
         withGroupname groupname: String,
@@ -1037,7 +1100,7 @@ class APIClient {
         completion: @escaping (Group?) -> Void
     ) {
         
-        let groupPutEndpoint = "\(apiBaseUrl)/v2/group/\(groupname)"
+        let groupPutEndpoint = "\(apiBaseUrl)/v2/groups/\(groupname)"
         guard let url = URL(string: groupPutEndpoint) else {
             os_log("Error, Cannot create URL.", log: APIClient.logTag, type: .error)
             return
@@ -1130,9 +1193,9 @@ class APIClient {
     /**
      Handle DELETE Requests for a User
      - parameters:
-     - username: the username of an existing user on the server
-     - controller: UI Controller that the API request originates from
-     - completion:  Callback function which is invoked once the DELETE request is fulfilled
+         - username: the username of an existing user on the server
+         - controller: UI Controller that the API request originates from
+         - completion:  Callback function which is invoked once the DELETE request is fulfilled
      */
     public static func userDeleteRequest(
         withUsername username: String,
@@ -1160,9 +1223,9 @@ class APIClient {
     /**
      Handle DELETE Requests for a Log
      - parameters:
-     - logID: the unique log identifier of an existing log on the server
-     - controller: UI Controller that the API request originates from
-     - completion:  Callback function which is invoked once the DELETE request is fulfilled
+         - logID: the unique log identifier of an existing log on the server
+         - controller: UI Controller that the API request originates from
+         - completion:  Callback function which is invoked once the DELETE request is fulfilled
      */
     public static func logDeleteRequest(
         withLogID logID: Int,
@@ -1190,9 +1253,9 @@ class APIClient {
     /**
      Handle DELETE Requests for a Comment
      - parameters:
-     - commentID: the unique comment identifier for an existing comment on the server
-     - controller: UI Controller that the API request originates from
-     - completion:  Callback function which is invoked once the DELETE request is fulfilled
+         - commentID: the unique comment identifier for an existing comment on the server
+         - controller: UI Controller that the API request originates from
+         - completion:  Callback function which is invoked once the DELETE request is fulfilled
      */
     public static func commentDeleteRequest(
         withCommentID commentID: Int,
@@ -1220,9 +1283,9 @@ class APIClient {
     /**
      Handle DELETE Requests for an Activation Code
      - parameters:
-     - activationCode: the existing activation code on the server
-     - controller: UI Controller that the API request originates from
-     - completion:  Callback function which is invoked once the DELETE request is fulfilled
+         - activationCode: the existing activation code on the server
+         - controller: UI Controller that the API request originates from
+         - completion:  Callback function which is invoked once the DELETE request is fulfilled
      */
     public static func activationCodeDeleteRequest(
         withActivationCode activationCode: String,
@@ -1250,9 +1313,9 @@ class APIClient {
     /**
      Handle DELETE Requests for a Notification
      - parameters:
-     - notificationId: the unique notification identifier of an existing notification on the server
-     - controller: UI Controller that the API request originates from
-     - completion:  Callback function which is invoked once the DELETE request is fulfilled
+         - notificationId: the unique notification identifier of an existing notification on the server
+         - controller: UI Controller that the API request originates from
+         - completion:  Callback function which is invoked once the DELETE request is fulfilled
      */
     public static func notificationDeleteRequest(
         withNotificationId notificationId: String,
