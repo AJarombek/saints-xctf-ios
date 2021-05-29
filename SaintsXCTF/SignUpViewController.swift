@@ -258,23 +258,14 @@ class SignUpViewController: UIViewController {
                 os_log("User Successfully Created", log: self.logTag, type: .debug)
                 os_log("%@", log: self.logTag, type: .debug, newUser.description)
                 
-                // Save the user sign in data
-                SignedInUser.user = newUser
-                let savedUser = SignedInUser.saveUser()
-                
-                if (savedUser) {
-                    os_log("Saved User to Persistant Storage.", log: self.logTag, type: .debug)
-                } else {
-                    os_log("Failed to Saves User to Persistant Storage",
-                           log: self.logTag, type: .error)
-                }
-                
-                // Redirect to the pick group page
+                // Redirect to the signed up page
                 let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                let mainViewController = storyBoard.instantiateViewController(
-                    withIdentifier: "mainViewController"
-                ) as! MainViewController
-                self.present(mainViewController, animated: true, completion: nil)
+                let signedUpViewController = storyBoard.instantiateViewController(
+                    withIdentifier: "signedUpViewController"
+                ) as! SignedUpViewController
+                
+                signedUpViewController.user = newUser
+                self.present(signedUpViewController, animated: true, completion: nil)
                 
             } else {
                 os_log("User Creation Failed", log: self.logTag, type: .error)

@@ -12,6 +12,7 @@
 		3F28BBFC265DCC5D008C7833 /* Stubs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F28BBFB265DCC5C008C7833 /* Stubs.swift */; };
 		3F28BC11265DD187008C7833 /* LogFeedStubs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F28BC10265DD187008C7833 /* LogFeedStubs.swift */; };
 		3F28BC24265EC69B008C7833 /* HomeUIStubTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F28BC23265EC69B008C7833 /* HomeUIStubTests.swift */; };
+		3F28BC2E2661D00B008C7833 /* SignedUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F28BC2D2661D00A008C7833 /* SignedUpViewController.swift */; };
 		3FC8B6F0262E5ABF00FFAB08 /* AuthClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC8B6EF262E5ABF00FFAB08 /* AuthClient.swift */; };
 		3FC8B703262E5C8D00FFAB08 /* FnClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC8B702262E5C8D00FFAB08 /* FnClient.swift */; };
 		3FC8B70D262F9D9300FFAB08 /* SaintsXCTFUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC8B70C262F9D9300FFAB08 /* SaintsXCTFUITests.swift */; };
@@ -207,6 +208,7 @@
 		3F28BBFB265DCC5C008C7833 /* Stubs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stubs.swift; sourceTree = "<group>"; };
 		3F28BC10265DD187008C7833 /* LogFeedStubs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogFeedStubs.swift; sourceTree = "<group>"; };
 		3F28BC23265EC69B008C7833 /* HomeUIStubTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeUIStubTests.swift; sourceTree = "<group>"; };
+		3F28BC2D2661D00A008C7833 /* SignedUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignedUpViewController.swift; sourceTree = "<group>"; };
 		3FC8B6EF262E5ABF00FFAB08 /* AuthClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthClient.swift; sourceTree = "<group>"; };
 		3FC8B702262E5C8D00FFAB08 /* FnClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FnClient.swift; sourceTree = "<group>"; };
 		3FC8B70A262F9D9200FFAB08 /* SaintsXCTFUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SaintsXCTFUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -494,6 +496,7 @@
 				A15E622C1F3F938B00AC9EF1 /* Extensions */,
 				A15BA1661E8AF6CE00B9796B /* HomeViewController.swift */,
 				A11C2DF31F0B249E00EBDDB5 /* SignUpViewController.swift */,
+				3F28BC2D2661D00A008C7833 /* SignedUpViewController.swift */,
 				A15E62341F3F98EC00AC9EF1 /* SignOutViewController.swift */,
 				A15E62361F3FA45F00AC9EF1 /* PickGroupViewController.swift */,
 				A15E623D1F41545000AC9EF1 /* SignedInUser.swift */,
@@ -1009,6 +1012,7 @@
 				A15E62491F52372000AC9EF1 /* LogTableViewCell.swift in Sources */,
 				A15E62351F3F98EC00AC9EF1 /* SignOutViewController.swift in Sources */,
 				A11AB8A31F895CC40098AE8E /* WeeklyViewController.swift in Sources */,
+				3F28BC2E2661D00B008C7833 /* SignedUpViewController.swift in Sources */,
 				A15BA1671E8AF6CE00B9796B /* HomeViewController.swift in Sources */,
 				A11AB8AA1F8ABB650098AE8E /* LeaderboardViewController.swift in Sources */,
 				A11AB8AC1F8AC91F0098AE8E /* LeaderboardTableViewCell.swift in Sources */,

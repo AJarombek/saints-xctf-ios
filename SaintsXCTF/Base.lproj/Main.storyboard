@@ -165,6 +165,7 @@
                             <constraint firstItem="5mD-YQ-23l" firstAttribute="centerX" secondItem="TCD-wy-8MH" secondAttribute="centerX" id="eio-Pl-hr5"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="spM-9u-ONL"/>
                     <connections>
                         <outlet property="backgroundImage" destination="TCD-wy-8MH" id="uaU-we-vWl"/>
                         <outlet property="error" destination="n0v-hY-vAW" id="O13-Tj-abI"/>
@@ -531,6 +532,67 @@
             </objects>
             <point key="canvasLocation" x="3588" y="-878.41079460269873"/>
         </scene>
+        <!--Signed Up View Controller-->
+        <scene sceneID="vOU-V0-YCK">
+            <objects>
+                <viewController id="Pcm-5S-JhI" customClass="SignedUpViewController" customModule="SaintsXCTF" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cSb-oQ-51g"/>
+                        <viewControllerLayoutGuide type="bottom" id="n9L-76-SlY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Kp1-oi-yia">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="xctf_logo_large" translatesAutoresizingMaskIntoConstraints="NO" id="w4O-pq-pkE">
+                                <rect key="frame" x="137.5" y="50" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="8y6-Ke-drF"/>
+                                    <constraint firstAttribute="height" constant="100" id="Ao7-FZ-71M"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to SaintsXCTF!" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gVx-nY-TOe">
+                                <rect key="frame" x="80" y="155" width="215" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="LXJ-Zq-UzK"/>
+                                    <constraint firstAttribute="width" constant="215" id="Lti-d1-ng4"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wra-AL-2lF">
+                                <rect key="frame" x="157.5" y="260" width="60" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="492-h1-h3q"/>
+                                    <constraint firstAttribute="height" constant="30" id="cVd-M0-oyz"/>
+                                </constraints>
+                                <state key="normal" title="Log In"/>
+                                <connections>
+                                    <action selector="signUpUser:" destination="adv-TS-dIo" eventType="touchUpInside" id="6Un-Ru-Xme"/>
+                                    <action selector="submitLog:" destination="ZET-dO-YVX" eventType="touchUpInside" id="ADf-pE-Xa9"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="C9T-CB-l2F"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="gVx-nY-TOe" firstAttribute="centerX" secondItem="Kp1-oi-yia" secondAttribute="centerX" id="32b-2m-Ib4"/>
+                            <constraint firstItem="w4O-pq-pkE" firstAttribute="centerX" secondItem="Kp1-oi-yia" secondAttribute="centerX" id="LYN-T6-6qS"/>
+                            <constraint firstItem="Wra-AL-2lF" firstAttribute="top" secondItem="gVx-nY-TOe" secondAttribute="bottom" constant="25" id="U4C-nA-JdH"/>
+                            <constraint firstItem="Wra-AL-2lF" firstAttribute="centerX" secondItem="Kp1-oi-yia" secondAttribute="centerX" id="ZP0-oB-6gH"/>
+                            <constraint firstItem="w4O-pq-pkE" firstAttribute="top" secondItem="cSb-oQ-51g" secondAttribute="bottom" constant="50" id="fj4-hK-ife"/>
+                            <constraint firstItem="gVx-nY-TOe" firstAttribute="top" secondItem="w4O-pq-pkE" secondAttribute="bottom" constant="5" id="yJe-TF-eeS"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="logIn" destination="Wra-AL-2lF" id="lv6-XV-1gb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SqM-KZ-ZbB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="-662.51874062968523"/>
+        </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="737-Ld-le4">
             <objects>
@@ -540,7 +602,7 @@
                         <viewControllerLayoutGuide type="bottom" id="uVi-CD-RSk"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="PKw-7Z-3to">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign Up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pkb-rO-QxR">
@@ -733,6 +795,7 @@
                             <constraint firstItem="pkb-rO-QxR" firstAttribute="centerX" secondItem="PKw-7Z-3to" secondAttribute="centerX" id="xTh-Yp-xel"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="7FV-hi-hMY"/>
                     <connections>
                         <outlet property="activationCode" destination="TbJ-H8-AIK" id="yYf-cB-cdW"/>
                         <outlet property="cancelButton" destination="OYo-1P-2ao" id="xfJ-oh-QP8"/>
@@ -4656,7 +4719,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="XQU-bB-hvE"/>
+        <segue reference="C9T-CB-l2F"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="admin" width="24" height="24"/>
