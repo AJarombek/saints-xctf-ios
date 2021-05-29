@@ -23,4 +23,21 @@ class SignedUpViewController: UIViewController {
     @IBOutlet var logIn: UIButton!
     
     var user: User? = nil
+    
+    /**
+     Invoked when the SignedUpViewController loads
+     */
+    override func viewDidLoad() {
+        if let userInfo: User = user {
+            FnClient.emailWelcomePostRequest(email: userInfo.email!, firstName: userInfo.first, lastName: userInfo.last) {
+                (result: FnResult?) -> Void in
+                
+                if result?.result != nil && result?.result! == true {
+                    os_log("Welcome Email Successfully Sent", log: self.logTag, type: .debug)
+                } else {
+                    os_log("Welcome Email Failed to Send", log: self.logTag, type: .error)
+                }
+            }
+        }
+    }
 }
