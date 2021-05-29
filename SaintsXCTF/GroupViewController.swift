@@ -105,14 +105,14 @@ class GroupViewController: UIViewController, UIGestureRecognizerDelegate {
             membersbuttonclick.delegate = self
             self.membersButton.addGestureRecognizer(membersbuttonclick)
             
-            // Set click listener to the logs view to open up the group logs page
-            let adminclick = UITapGestureRecognizer(target: self, action: #selector(self.viewAdmin(_:)))
-            adminclick.delegate = self
-            self.adminView.addGestureRecognizer(adminclick)
+            // Set click listener to the admin view to open up the group logs page
+            // let adminclick = UITapGestureRecognizer(target: self, action: #selector(self.viewAdmin(_:)))
+            // adminclick.delegate = self
+            // self.adminView.addGestureRecognizer(adminclick)
             
-            let adminbuttonclick = UITapGestureRecognizer(target: self, action: #selector(self.viewAdmin(_:)))
-            adminbuttonclick.delegate = self
-            self.adminButton.addGestureRecognizer(adminbuttonclick)
+            // let adminbuttonclick = UITapGestureRecognizer(target: self, action: #selector(self.viewAdmin(_:)))
+            // adminbuttonclick.delegate = self
+            // self.adminButton.addGestureRecognizer(adminbuttonclick)
         }
         
         // Create top borders for all the group selections
@@ -132,20 +132,20 @@ class GroupViewController: UIViewController, UIGestureRecognizerDelegate {
         membersTopBorder.frame = CGRect.init(x: -20, y: 0, width: view.frame.width + 20, height: 1)
         membersTopBorder.backgroundColor = UIColor(0xBBBBBB).cgColor
         
-        let adminTopBorder = CALayer()
-        adminTopBorder.frame = CGRect.init(x: -20, y: 0, width: view.frame.width + 20, height: 1)
-        adminTopBorder.backgroundColor = UIColor(0xBBBBBB).cgColor
+        // let adminTopBorder = CALayer()
+        // adminTopBorder.frame = CGRect.init(x: -20, y: 0, width: view.frame.width + 20, height: 1)
+        // adminTopBorder.backgroundColor = UIColor(0xBBBBBB).cgColor
         
-        let adminBottomBorder = CALayer()
-        adminBottomBorder.frame = CGRect.init(x: -20, y: adminView.frame.height + 1,
+        let membersBottomBorder = CALayer()
+        membersBottomBorder.frame = CGRect.init(x: -20, y: membersView.frame.height + 1,
                                                width: view.frame.width + 20, height: 1)
-        adminBottomBorder.backgroundColor = UIColor(0xBBBBBB).cgColor
+        membersBottomBorder.backgroundColor = UIColor(0xBBBBBB).cgColor
         
         logsView.layer.addSublayer(topBorder)
         leaderboardsView.layer.addSublayer(leaderboardsTopBorder)
         membersView.layer.addSublayer(membersTopBorder)
-        adminView.layer.addSublayer(adminTopBorder)
-        adminView.layer.addSublayer(adminBottomBorder)
+        // adminView.layer.addSublayer(adminTopBorder)
+        membersView.layer.addSublayer(membersBottomBorder)
     }
     
     func loadGroupMembers() {
@@ -213,7 +213,8 @@ class GroupViewController: UIViewController, UIGestureRecognizerDelegate {
                 self.membersView.layer.addSublayer(membersBottomBorder)
                 
             } else {
-                self.adminView.isHidden = false
+                // Temporarily hide the admin view
+                // self.adminView.isHidden = false
             }
         }
     }
@@ -231,7 +232,7 @@ class GroupViewController: UIViewController, UIGestureRecognizerDelegate {
         
         // Pass the parameter types and group to the main view controller
         mainViewController.paramType = "group"
-        mainViewController.sortParam = group?.group_name ?? ""
+        mainViewController.sortParam = "\(group?.id ?? 0)"
         mainViewController.showNavBar = true
         mainViewController.groupPassed = group ?? nil
         

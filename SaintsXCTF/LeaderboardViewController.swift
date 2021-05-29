@@ -79,6 +79,12 @@ class LeaderboardViewController: UITableViewController, UIGestureRecognizerDeleg
                     (leaderboard: [LeaderboardItem]?) -> Void in
                     
                     self.leaderboardItems = leaderboard ?? []
+                    
+                    if group.leaderboards == nil {
+                        group.leaderboards = [:]
+                    }
+                    
+                    group.leaderboards["all"] = self.leaderboardItems
                     self.buildLeaderboardData()
                     self.leaderboardTableView.reloadData()
                 }
@@ -265,9 +271,30 @@ class LeaderboardViewController: UITableViewController, UIGestureRecognizerDeleg
         // Get the proper leaderboard based on the time filter selected.  Also make sure to reload the
         // data for the table view
         let filter: String = timeAPIFilters[row]
-        leaderboardItems = (passedGroup?.leaderboards[filter])!
-        buildLeaderboardData()
-        self.leaderboardTableView.reloadData()
+        
+        if passedGroup?.leaderboards[filter] == nil {
+            if let group: Group = passedGroup {
+                let interval = filter != "all" ? filter : nil
+                
+                APIClient.groupLeaderboardGetRequest(withGroupId: group.id, inInterval: interval, fromController: self) {
+                    (leaderboard: [LeaderboardItem]?) -> Void in
+                    
+                    self.leaderboardItems = leaderboard ?? []
+                    
+                    if group.leaderboards == nil {
+                        group.leaderboards = [:]
+                    }
+                    
+                    group.leaderboards[filter] = self.leaderboardItems
+                    self.buildLeaderboardData()
+                    self.leaderboardTableView.reloadData()
+                }
+            }
+        } else {
+            leaderboardItems = (passedGroup?.leaderboards[filter])!
+            buildLeaderboardData()
+            leaderboardTableView.reloadData()
+        }
     }
     
     /**

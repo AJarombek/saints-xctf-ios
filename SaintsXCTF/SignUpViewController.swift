@@ -271,9 +271,10 @@ class SignUpViewController: UIViewController {
                 
                 // Redirect to the pick group page
                 let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                let pickGroupViewController = storyBoard.instantiateViewController(withIdentifier:
-                    "pickGroupViewController") as! PickGroupController
-                self.present(pickGroupViewController, animated: true, completion: nil)
+                let mainViewController = storyBoard.instantiateViewController(
+                    withIdentifier: "mainViewController"
+                ) as! MainViewController
+                self.present(mainViewController, animated: true, completion: nil)
                 
             } else {
                 os_log("User Creation Failed", log: self.logTag, type: .error)
