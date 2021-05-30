@@ -50,6 +50,7 @@ class LogViewController: UIViewController, UITextViewDelegate, UIPickerViewDeleg
     var indexPassed: Int? = nil
     
     let distanceRegex = "^[0-9]{0,3}(\\.[0-9]{1,2})?$"
+    let timeRegex = "[0-9]{1,2}:[0-9]{2}:[0-9]{2}"
     let minuteRegex = "^[0-9]{1,5}$"
     let secondRegex = "^[0-9]{1,2}$"
     let userTagRegex = "@[a-zA-Z0-9]+"
@@ -300,6 +301,18 @@ class LogViewController: UIViewController, UITextViewDelegate, UIPickerViewDeleg
         
         minutesField.text = ""
         secondsField.text = ""
+        
+        if let time: String = logPassed?.time, time.range(of: timeRegex, options: .regularExpression) != nil {
+            let hourEnd = time.index(time.startIndex, offsetBy: time.count - 6)
+            let minuteStart = time.index(time.startIndex, offsetBy: time.count - 5)
+            let minuteEnd = time.index(time.startIndex, offsetBy: time.count - 3)
+            let secondStart = time.index(time.startIndex, offsetBy: time.count - 2)
+            
+            let minutes = (Int(time[..<hourEnd])! * 60) + Int(time[minuteStart..<minuteEnd])!
+            let seconds = Int(time[secondStart...])!
+            minutesField.text = String(minutes)
+            secondsField.text = String(seconds)
+        }
         
         let feelValue: Int = (logPassed?.feel)! - 1
         feelStepper.value = Double(feelValue + 1)
@@ -598,6 +611,8 @@ class LogViewController: UIViewController, UITextViewDelegate, UIPickerViewDeleg
                             self.editingLog = false
                             self.indexPassed = nil
                             self.logPassed = nil
+                            
+                            self.navigationController?.popViewController(animated: true)
                             os_log("Continue and Reset Log Inputs.", log: self.logTag, type: .debug)
                         }
                         

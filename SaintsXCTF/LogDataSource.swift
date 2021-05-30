@@ -172,10 +172,10 @@ class LogDataSource {
                         var timeTxt = ""
                         
                         if let time: String = log.time, let pace: String = log.pace {
-                            if time != "00:00:00" {
+                            if time != "0:00:00" {
                                 timeTxt = self.shortenTime(withTime: time)
                                 
-                                if pace == "00:00:00" {
+                                if pace == "0:00:00" {
                                     timeTxt += " (0:00/mi)\n"
                                 } else {
                                     timeTxt += " (\(self.shortenTime(withTime: pace))/mi)\n"
