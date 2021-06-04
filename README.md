@@ -13,11 +13,12 @@ You can follow development of the android app here: [SaintsXCTF Android GitHub](
 
 ## Releases
 
-**V.1.0 - Official Release**
+**V.2.0.0 - Version 2 Release**
 
-> Release Date: Oct 19, 2017
+> Release Date: Jun 1, 2021
 
-This was the first public release of the iOS app.
+This version of the iOS app aligns with the second version of the web application and API.  While no new features were added to the iOS app, aligning it with 
+the new web application and API enables quick updates going forward.
 
 **V.1.1 - Safety Release**
 
@@ -28,12 +29,11 @@ presented to users as they sign up.  Another major feature was the report functi
 site administrator about application problems / questionable user content.  Both of these features were added to conform
 to Apple guidelines.
 
+**V.1.0 - Official Release**
 
-Current development is being spent on other projects.  However a codebase is always dynamic.  Future plans include:
+> Release Date: Oct 19, 2017
 
-* Suggested Features (ex. Delete/Edit Comments)
-* Forgot Password
-* Real-Time Notifications with a Message Broker
+This was the first public release of the iOS app.
 
 ### Files
 

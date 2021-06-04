@@ -24,7 +24,7 @@ class NetworkEnvironment {
             } else if ProcessInfo.processInfo.arguments.contains("UI_TESTING") {
                 return .local
             } else {
-                return .development
+                return .production
             }
         }
     }
