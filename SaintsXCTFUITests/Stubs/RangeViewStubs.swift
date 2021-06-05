@@ -38,7 +38,7 @@ struct RangeViewStubs {
                  "miles":4.489999828338623
               }
            ],
-           "self":"/v2/range_view/users/andy/r/2021-05-31/2021-07-11"
+           "self":"/v2/range_view/user/andy/r/2021-05-31/2021-07-11"
         }
     """
     
@@ -141,7 +141,7 @@ struct RangeViewStubs {
                  "miles":7.039999961853027
               }
            ],
-           "self":"/v2/range_view/users/andy/r/2021-04-26/2021-06-06"
+           "self":"/v2/range_view/user/andy/r/2021-04-26/2021-06-06"
         }
     """
     

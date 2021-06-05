@@ -25,14 +25,14 @@ class ProfileUIStubTests: XCTestCase {
     }
     
 
-    func testShowsCalendarData() throws {
+    func testShowsCalendarDataMondayWeekstart() throws {
         apiStubs.stubRequest(path: "/v2/log_feed/all/all/25/0", jsonData: LogFeedStubs().pageOneData)
         apiStubs.stubRequest(
-            path: "/v2/range_view/users/andy/r/2021-05-31/2021-07-11",
+            path: "/v2/range_view/user/andy/r/2021-05-31/2021-07-11",
             jsonData: RangeViewStubs().userAndyCurrentMonthData
         )
         apiStubs.stubRequest(
-            path: "/v2/range_view/users/andy/r/2021-04-26/2021-06-06",
+            path: "/v2/range_view/user/andy/r/2021-04-26/2021-06-06",
             jsonData: RangeViewStubs().userAndyPreviousMonthData
         )
         app.launch()
@@ -40,11 +40,27 @@ class ProfileUIStubTests: XCTestCase {
         let tabBar = app.tabBars["Tab Bar"]
         tabBar.buttons["Profile"].tap()
         
-        app.staticTexts["Monthly Calendar"].tap()
-        app.buttons["prev"].tap()
-        app.staticTexts["May 2021"].tap()
+        app.otherElements["monthlyCalendar"].tap()
         
-        app.staticTexts["6.57\n Miles"].tap()
-        app.staticTexts["5.87\n Miles"].tap()
+        let day1: String = app.otherElements["day1"].value as! String
+        XCTAssertEqual(day1, "7.28\n Miles")
+        
+        app.buttons["prev"].tap()
+        
+        XCTAssertEqual(day1, "2.87\n Miles")
+        app.otherElements["totalWeek1"].tap()
+    }
+    
+    func testShowsCalendarDataSundayWeekstart() throws {
+        apiStubs.stubRequest(path: "/v2/log_feed/all/all/25/0", jsonData: LogFeedStubs().pageOneData)
+        apiStubs.stubRequest(
+            path: "/v2/range_view/user/andy/r/2021-05-30/2021-07-10",
+            jsonData: RangeViewStubs().userAndyCurrentMonthData
+        )
+        apiStubs.stubRequest(
+            path: "/v2/range_view/user/andy/r/2021-04-25/2021-06-05",
+            jsonData: RangeViewStubs().userAndyPreviousMonthData
+        )
+        app.launch()
     }
 }

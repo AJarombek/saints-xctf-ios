@@ -1787,6 +1787,9 @@
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <accessibility key="accessibilityConfiguration" identifier="logs">
+                                    <bool key="isElement" value="YES"/>
+                                </accessibility>
                                 <constraints>
                                     <constraint firstItem="75s-IL-8Wg" firstAttribute="top" secondItem="yFv-rs-N6U" secondAttribute="top" constant="5" id="9p0-r7-irb"/>
                                     <constraint firstItem="U5s-Ht-0kP" firstAttribute="leading" secondItem="yFv-rs-N6U" secondAttribute="leading" constant="10" id="Sc3-nG-l1o"/>
@@ -1819,6 +1822,9 @@
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <accessibility key="accessibilityConfiguration" identifier="monthlyCalendar">
+                                    <bool key="isElement" value="YES"/>
+                                </accessibility>
                                 <constraints>
                                     <constraint firstItem="R7z-1x-grQ" firstAttribute="leading" secondItem="RiL-9x-41n" secondAttribute="trailing" constant="20" id="2BK-cy-mdC"/>
                                     <constraint firstAttribute="height" constant="45" id="3t2-M4-Lgt"/>
@@ -1851,6 +1857,9 @@
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <accessibility key="accessibilityConfiguration" identifier="weeklyGraph">
+                                    <bool key="isElement" value="YES"/>
+                                </accessibility>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="eC7-ij-rax" secondAttribute="trailing" constant="10" id="7oi-u1-q95"/>
                                     <constraint firstItem="6rq-NH-NDa" firstAttribute="leading" secondItem="FVS-2T-VNq" secondAttribute="leading" constant="10" id="ANX-xe-agF"/>
@@ -1883,6 +1892,9 @@
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <accessibility key="accessibilityConfiguration" identifier="editProfile">
+                                    <bool key="isElement" value="YES"/>
+                                </accessibility>
                                 <constraints>
                                     <constraint firstItem="RFA-nT-mhn" firstAttribute="top" secondItem="8TG-zC-SGs" secondAttribute="top" constant="5" id="1cR-sD-C1K"/>
                                     <constraint firstAttribute="trailing" secondItem="Bxk-9j-yQz" secondAttribute="trailing" constant="10" id="2gF-Om-Xrq"/>
@@ -1915,6 +1927,9 @@
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <accessibility key="accessibilityConfiguration" identifier="fileReport">
+                                    <bool key="isElement" value="YES"/>
+                                </accessibility>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="3LU-s8-t42"/>
                                     <constraint firstItem="2Em-vy-fof" firstAttribute="leading" secondItem="yS5-dG-UsB" secondAttribute="leading" constant="10" id="Ewj-zV-2pV"/>
@@ -2640,6 +2655,7 @@
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 Miles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sPX-qh-RFW">
                                                 <rect key="frame" x="0.0" y="1" width="44.5" height="43.5"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="miles"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -2674,6 +2690,7 @@
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 Miles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sz6-lu-Vtw">
                                                 <rect key="frame" x="0.0" y="1" width="44.5" height="43.5"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="miles"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -2708,6 +2725,7 @@
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 Miles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n0t-ZQ-DtU">
                                                 <rect key="frame" x="0.0" y="1" width="44" height="43.5"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="miles"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -2742,6 +2760,7 @@
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 Miles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AOE-gk-gYJ">
                                                 <rect key="frame" x="0.0" y="1" width="44.5" height="43.5"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="miles"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -2776,6 +2795,7 @@
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 Miles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vVq-UH-CAj">
                                                 <rect key="frame" x="0.0" y="1" width="44.5" height="43.5"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="miles"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -2808,6 +2828,7 @@
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 Miles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r4z-pR-Weu">
                                                 <rect key="frame" x="0.0" y="1" width="44.5" height="43.5"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="miles"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -2842,6 +2863,7 @@
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 Miles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ffh-og-iP4">
                                                 <rect key="frame" x="0.0" y="1" width="44" height="43.5"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="miles"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -2867,6 +2889,7 @@
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 Miles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kHL-cY-e80">
                                                 <rect key="frame" x="0.0" y="1" width="44.5" height="43.5"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="total"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -2912,12 +2935,16 @@
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 Miles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WXM-ae-YEd">
                                                 <rect key="frame" x="0.0" y="1" width="44.5" height="43.5"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="miles"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                         <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="day8">
+                                            <bool key="isElement" value="YES"/>
+                                        </accessibility>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="WXM-ae-YEd" secondAttribute="bottom" id="2eO-1e-5ga"/>
                                             <constraint firstAttribute="trailing" secondItem="WXM-ae-YEd" secondAttribute="trailing" id="5ph-rZ-REh"/>
@@ -2943,12 +2970,16 @@
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 Miles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fct-Nr-FzM">
                                                 <rect key="frame" x="0.0" y="1" width="44.5" height="43.5"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="miles"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                         <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="day9">
+                                            <bool key="isElement" value="YES"/>
+                                        </accessibility>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="egT-22-KYK" secondAttribute="height" multiplier="1:1" id="0k2-B6-PMJ"/>
                                             <constraint firstItem="Fct-Nr-FzM" firstAttribute="leading" secondItem="egT-22-KYK" secondAttribute="leading" id="5VD-sU-Z2J"/>
@@ -2974,12 +3005,16 @@
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 Miles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f2k-9I-eJx">
                                                 <rect key="frame" x="0.0" y="1" width="44" height="43.5"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="miles"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                         <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="day10">
+                                            <bool key="isElement" value="YES"/>
+                                        </accessibility>
                                         <constraints>
                                             <constraint firstItem="f2k-9I-eJx" firstAttribute="top" secondItem="zgq-ug-3Cj" secondAttribute="top" constant="1" id="0lp-eO-nqp"/>
                                             <constraint firstAttribute="trailing" secondItem="OjT-43-90f" secondAttribute="trailing" constant="1" id="6Kf-bL-Vm9"/>
@@ -3005,12 +3040,16 @@
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 Miles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m9B-7u-hJy">
                                                 <rect key="frame" x="0.0" y="1" width="44.5" height="43.5"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="miles"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                         <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="day11">
+                                            <bool key="isElement" value="YES"/>
+                                        </accessibility>
                                         <constraints>
                                             <constraint firstItem="m9B-7u-hJy" firstAttribute="leading" secondItem="SNb-NI-T52" secondAttribute="leading" id="0qw-zg-vRs"/>
                                             <constraint firstItem="m9B-7u-hJy" firstAttribute="top" secondItem="SNb-NI-T52" secondAttribute="top" constant="1" id="NtU-vq-Gib"/>
@@ -3036,12 +3075,16 @@
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 Miles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eac-n5-Ev1">
                                                 <rect key="frame" x="0.0" y="1" width="44.5" height="43.5"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="miles"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                         <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="day12">
+                                            <bool key="isElement" value="YES"/>
+                                        </accessibility>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="VOd-BB-dmk" secondAttribute="trailing" constant="1" id="7eb-Oq-Rlp"/>
                                             <constraint firstAttribute="trailing" secondItem="Eac-n5-Ev1" secondAttribute="trailing" id="8fN-4z-pIJ"/>
@@ -3067,12 +3110,16 @@
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 Miles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N3u-nG-2wb">
                                                 <rect key="frame" x="0.0" y="1" width="44.5" height="43.5"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="miles"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                         <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="day13">
+                                            <bool key="isElement" value="YES"/>
+                                        </accessibility>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="N3u-nG-2wb" secondAttribute="bottom" id="0Fr-ts-jqk"/>
                                             <constraint firstItem="OHY-X4-stv" firstAttribute="leading" secondItem="UHO-GI-4Qk" secondAttribute="leading" id="250-IY-stK"/>
@@ -3098,12 +3145,16 @@
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 Miles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ouo-SF-tE4">
                                                 <rect key="frame" x="0.0" y="1" width="44" height="43.5"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="miles"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                         <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="day14">
+                                            <bool key="isElement" value="YES"/>
+                                        </accessibility>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="Ouo-SF-tE4" secondAttribute="bottom" id="JBN-ge-ytD"/>
                                             <constraint firstAttribute="width" secondItem="gpx-SQ-Hkd" secondAttribute="height" multiplier="1:1" id="ME8-Nv-6wF"/>
@@ -3120,12 +3171,14 @@
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 Miles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="afR-xv-fgP">
                                                 <rect key="frame" x="0.0" y="1" width="44.5" height="43.5"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="total"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                         <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="totalWeek2"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="afR-xv-fgP" secondAttribute="trailing" id="0nP-1A-nTT"/>
                                             <constraint firstItem="afR-xv-fgP" firstAttribute="leading" secondItem="Pvh-kt-FA7" secondAttribute="leading" id="2PI-8p-UcO"/>
@@ -3162,12 +3215,16 @@
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 Miles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="475-9L-X2I">
                                                 <rect key="frame" x="0.0" y="1" width="44.5" height="43"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="miles"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                         <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="day15">
+                                            <bool key="isElement" value="YES"/>
+                                        </accessibility>
                                         <constraints>
                                             <constraint firstItem="475-9L-X2I" firstAttribute="leading" secondItem="MAe-kf-i9l" secondAttribute="leading" id="0PU-GK-eBo"/>
                                             <constraint firstAttribute="trailing" secondItem="475-9L-X2I" secondAttribute="trailing" id="7ed-sM-VNU"/>
@@ -3193,12 +3250,16 @@
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 Miles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u1H-7e-FGY">
                                                 <rect key="frame" x="0.0" y="1" width="44.5" height="43"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="miles"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                         <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="day16">
+                                            <bool key="isElement" value="YES"/>
+                                        </accessibility>
                                         <constraints>
                                             <constraint firstItem="azJ-gf-Thg" firstAttribute="leading" secondItem="E80-Qp-amJ" secondAttribute="leading" id="13G-NK-R4a"/>
                                             <constraint firstAttribute="trailing" secondItem="u1H-7e-FGY" secondAttribute="trailing" id="5VH-Wz-Ohf"/>
@@ -3224,12 +3285,16 @@
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 Miles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H0q-FT-1TB">
                                                 <rect key="frame" x="0.0" y="1" width="44" height="43"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="miles"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                         <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="day17">
+                                            <bool key="isElement" value="YES"/>
+                                        </accessibility>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="H0q-FT-1TB" secondAttribute="bottom" id="Jve-bM-zr6"/>
                                             <constraint firstItem="H0q-FT-1TB" firstAttribute="leading" secondItem="lcn-8t-6v8" secondAttribute="leading" id="MoM-C9-Oz3"/>
@@ -3255,12 +3320,16 @@
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 Miles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C7Q-cN-g6m">
                                                 <rect key="frame" x="0.0" y="1" width="44.5" height="43"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="miles"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                         <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="day18">
+                                            <bool key="isElement" value="YES"/>
+                                        </accessibility>
                                         <constraints>
                                             <constraint firstItem="m7P-tY-5kD" firstAttribute="leading" secondItem="fBC-4j-TAc" secondAttribute="leading" id="Fdv-UP-XGx"/>
                                             <constraint firstAttribute="width" secondItem="fBC-4j-TAc" secondAttribute="height" multiplier="1:1" id="J1G-tX-Bya"/>
@@ -3286,12 +3355,16 @@
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 Miles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6e7-xb-4xQ">
                                                 <rect key="frame" x="0.0" y="1" width="44.5" height="43"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="miles"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                         <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="day19">
+                                            <bool key="isElement" value="YES"/>
+                                        </accessibility>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="6e7-xb-4xQ" secondAttribute="trailing" id="7iM-oP-LUl"/>
                                             <constraint firstItem="vzO-fz-9oB" firstAttribute="leading" secondItem="SmH-c0-x39" secondAttribute="leading" id="93o-XR-Yo8"/>
@@ -3317,12 +3390,16 @@
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 Miles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fKZ-p7-shc">
                                                 <rect key="frame" x="0.0" y="1" width="44.5" height="43"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="miles"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                         <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="day20">
+                                            <bool key="isElement" value="YES"/>
+                                        </accessibility>
                                         <constraints>
                                             <constraint firstItem="BGn-0R-GYp" firstAttribute="top" secondItem="9l2-IT-c5q" secondAttribute="top" constant="1" id="4Y6-CL-9S2"/>
                                             <constraint firstItem="fKZ-p7-shc" firstAttribute="leading" secondItem="9l2-IT-c5q" secondAttribute="leading" id="4tr-07-E9b"/>
@@ -3348,12 +3425,16 @@
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 Miles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Iu-2n-Xrb">
                                                 <rect key="frame" x="0.0" y="1" width="44" height="43"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="miles"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                         <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="day21">
+                                            <bool key="isElement" value="YES"/>
+                                        </accessibility>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="6Iu-2n-Xrb" secondAttribute="trailing" id="1GF-we-tVP"/>
                                             <constraint firstItem="Aud-cd-UIA" firstAttribute="leading" secondItem="ZSX-Aa-maC" secondAttribute="leading" id="2IA-qm-fCY"/>
@@ -3370,12 +3451,16 @@
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 Miles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ugk-7A-S95">
                                                 <rect key="frame" x="0.0" y="1" width="44.5" height="43"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="total"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                         <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="totalWeek3">
+                                            <bool key="isElement" value="YES"/>
+                                        </accessibility>
                                         <constraints>
                                             <constraint firstItem="Ugk-7A-S95" firstAttribute="leading" secondItem="3nE-qR-5Sp" secondAttribute="leading" id="NUp-4i-jr1"/>
                                             <constraint firstItem="Ugk-7A-S95" firstAttribute="top" secondItem="3nE-qR-5Sp" secondAttribute="top" constant="1" id="QNO-Vo-3kD"/>
@@ -3412,12 +3497,16 @@
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 Miles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oxz-aM-SXe">
                                                 <rect key="frame" x="0.0" y="1" width="44.5" height="43.5"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="miles"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                         <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="day22">
+                                            <bool key="isElement" value="YES"/>
+                                        </accessibility>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Vpb-Fr-knv" secondAttribute="height" multiplier="1:1" id="Gjd-Ej-euY"/>
                                             <constraint firstItem="Oxz-aM-SXe" firstAttribute="top" secondItem="Vpb-Fr-knv" secondAttribute="top" constant="1" id="IJ7-Ej-NAT"/>
@@ -3443,12 +3532,16 @@
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 Miles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QLt-yD-GxX">
                                                 <rect key="frame" x="0.0" y="1" width="44.5" height="43.5"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="miles"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                         <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="day23">
+                                            <bool key="isElement" value="YES"/>
+                                        </accessibility>
                                         <constraints>
                                             <constraint firstItem="QLt-yD-GxX" firstAttribute="top" secondItem="IES-yS-XcH" secondAttribute="top" constant="1" id="4Nj-Fd-Gfd"/>
                                             <constraint firstAttribute="bottom" secondItem="QLt-yD-GxX" secondAttribute="bottom" id="9P6-oD-tDz"/>
@@ -3474,12 +3567,16 @@
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 Miles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Mn-0J-3bt">
                                                 <rect key="frame" x="0.0" y="1" width="44" height="43.5"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="miles"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                         <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="day24">
+                                            <bool key="isElement" value="YES"/>
+                                        </accessibility>
                                         <constraints>
                                             <constraint firstItem="4Mn-0J-3bt" firstAttribute="top" secondItem="hcd-8g-SeY" secondAttribute="top" constant="1" id="0Cv-VO-bc3"/>
                                             <constraint firstAttribute="trailing" secondItem="4Mn-0J-3bt" secondAttribute="trailing" id="1CK-Gf-i6f"/>
@@ -3505,12 +3602,16 @@
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 Miles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rNR-yS-rei">
                                                 <rect key="frame" x="0.0" y="1" width="44.5" height="43.5"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="miles"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                         <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="day25">
+                                            <bool key="isElement" value="YES"/>
+                                        </accessibility>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="rNR-yS-rei" secondAttribute="bottom" id="3uf-I2-otC"/>
                                             <constraint firstItem="PGI-WS-Qkq" firstAttribute="top" secondItem="qQ6-i3-pP3" secondAttribute="top" constant="1" id="XMN-Vw-gw7"/>
@@ -3536,12 +3637,16 @@
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 Miles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xRQ-Wy-VfN">
                                                 <rect key="frame" x="0.0" y="1" width="44.5" height="43.5"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="miles"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                         <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="day26">
+                                            <bool key="isElement" value="YES"/>
+                                        </accessibility>
                                         <constraints>
                                             <constraint firstItem="R2E-B1-7S5" firstAttribute="leading" secondItem="nKn-2g-Iyk" secondAttribute="leading" id="2hd-Xx-tZy"/>
                                             <constraint firstItem="R2E-B1-7S5" firstAttribute="top" secondItem="nKn-2g-Iyk" secondAttribute="top" constant="1" id="85r-6S-T54"/>
@@ -3567,12 +3672,16 @@
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 Miles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qYC-bE-4Ny">
                                                 <rect key="frame" x="0.0" y="1" width="44.5" height="43.5"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="miles"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                         <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="day27">
+                                            <bool key="isElement" value="YES"/>
+                                        </accessibility>
                                         <constraints>
                                             <constraint firstItem="qYC-bE-4Ny" firstAttribute="leading" secondItem="G7Y-wN-3Uc" secondAttribute="leading" id="1Ny-4H-HJt"/>
                                             <constraint firstItem="qYC-bE-4Ny" firstAttribute="top" secondItem="G7Y-wN-3Uc" secondAttribute="top" constant="1" id="Aa7-6l-ssg"/>
@@ -3598,12 +3707,16 @@
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 Miles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oNu-gh-Yl4">
                                                 <rect key="frame" x="0.0" y="1" width="44" height="43.5"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="miles"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                         <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="day28">
+                                            <bool key="isElement" value="YES"/>
+                                        </accessibility>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="oNu-gh-Yl4" secondAttribute="trailing" id="1FW-ew-tKC"/>
                                             <constraint firstAttribute="width" secondItem="TWe-IG-rcj" secondAttribute="height" multiplier="1:1" id="8B8-8H-Hp7"/>
@@ -3620,12 +3733,16 @@
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 Miles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FcS-V7-t1q">
                                                 <rect key="frame" x="0.0" y="1" width="44.5" height="43.5"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="total"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                         <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="totalWeek4">
+                                            <bool key="isElement" value="YES"/>
+                                        </accessibility>
                                         <constraints>
                                             <constraint firstItem="FcS-V7-t1q" firstAttribute="top" secondItem="kOS-VR-O0W" secondAttribute="top" constant="1" id="6Wj-Pr-YO0"/>
                                             <constraint firstAttribute="bottom" secondItem="FcS-V7-t1q" secondAttribute="bottom" id="Ciw-W1-RBW"/>
@@ -3662,12 +3779,16 @@
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 Miles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9SC-OG-0fW">
                                                 <rect key="frame" x="0.0" y="1" width="44.5" height="43.5"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="miles"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                         <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="day29">
+                                            <bool key="isElement" value="YES"/>
+                                        </accessibility>
                                         <constraints>
                                             <constraint firstItem="9SC-OG-0fW" firstAttribute="top" secondItem="U6k-Uc-DoK" secondAttribute="top" constant="1" id="26q-XJ-3h2"/>
                                             <constraint firstAttribute="trailing" secondItem="9SC-OG-0fW" secondAttribute="trailing" id="4Sg-Kd-Jqg"/>
@@ -3693,12 +3814,16 @@
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 Miles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SNT-lk-CxM">
                                                 <rect key="frame" x="0.0" y="1" width="44.5" height="43.5"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="miles"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                         <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="day30">
+                                            <bool key="isElement" value="YES"/>
+                                        </accessibility>
                                         <constraints>
                                             <constraint firstItem="SNT-lk-CxM" firstAttribute="leading" secondItem="tLq-hV-5jR" secondAttribute="leading" id="6wc-Wb-6a1"/>
                                             <constraint firstAttribute="bottom" secondItem="SNT-lk-CxM" secondAttribute="bottom" id="8Pm-sF-TXx"/>
@@ -3724,12 +3849,16 @@
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 Miles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wjo-kr-Ds7">
                                                 <rect key="frame" x="0.0" y="1" width="44" height="43.5"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="miles"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                         <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="day31">
+                                            <bool key="isElement" value="YES"/>
+                                        </accessibility>
                                         <constraints>
                                             <constraint firstItem="Izn-HW-dsD" firstAttribute="leading" secondItem="M6X-ej-kl5" secondAttribute="leading" id="BRD-8D-NEm"/>
                                             <constraint firstItem="Izn-HW-dsD" firstAttribute="top" secondItem="M6X-ej-kl5" secondAttribute="top" constant="1" id="DFB-Tf-9YX"/>
@@ -3755,12 +3884,16 @@
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 Miles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EFE-gF-yxF">
                                                 <rect key="frame" x="0.0" y="1" width="44.5" height="43.5"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="miles"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                         <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="day32">
+                                            <bool key="isElement" value="YES"/>
+                                        </accessibility>
                                         <constraints>
                                             <constraint firstItem="EFE-gF-yxF" firstAttribute="leading" secondItem="EQM-dC-FeL" secondAttribute="leading" id="6os-LH-iUa"/>
                                             <constraint firstAttribute="width" secondItem="EQM-dC-FeL" secondAttribute="height" multiplier="1:1" id="9nA-Lh-moc"/>
@@ -3786,12 +3919,16 @@
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 Miles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NTA-qb-V0V">
                                                 <rect key="frame" x="0.0" y="1" width="44.5" height="43.5"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="miles"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                         <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="day33">
+                                            <bool key="isElement" value="YES"/>
+                                        </accessibility>
                                         <constraints>
                                             <constraint firstItem="NTA-qb-V0V" firstAttribute="leading" secondItem="rws-4w-q8x" secondAttribute="leading" id="7gm-Y1-dSH"/>
                                             <constraint firstItem="oK7-Ei-0Qo" firstAttribute="leading" secondItem="rws-4w-q8x" secondAttribute="leading" id="BAi-6r-EF5"/>
@@ -3817,12 +3954,16 @@
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 Miles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TAn-7u-k6h">
                                                 <rect key="frame" x="0.0" y="1" width="44.5" height="43.5"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="miles"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                         <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="day34">
+                                            <bool key="isElement" value="YES"/>
+                                        </accessibility>
                                         <constraints>
                                             <constraint firstItem="TAn-7u-k6h" firstAttribute="leading" secondItem="MPx-Qh-awk" secondAttribute="leading" id="6c2-VZ-VWL"/>
                                             <constraint firstItem="fkS-f5-ID4" firstAttribute="top" secondItem="MPx-Qh-awk" secondAttribute="top" constant="1" id="EBK-Mw-hTv"/>
@@ -3848,12 +3989,16 @@
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 Miles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8sw-mN-o9T">
                                                 <rect key="frame" x="0.0" y="1" width="44" height="43.5"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="miles"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                         <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="day35">
+                                            <bool key="isElement" value="YES"/>
+                                        </accessibility>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="8sw-mN-o9T" secondAttribute="bottom" id="831-cU-DYe"/>
                                             <constraint firstItem="8sw-mN-o9T" firstAttribute="leading" secondItem="GFG-nW-P65" secondAttribute="leading" id="Cu6-fW-8V0"/>
@@ -3870,12 +4015,16 @@
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 Miles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2X9-lP-zXv">
                                                 <rect key="frame" x="0.0" y="1" width="44.5" height="43.5"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="total"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                         <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="totalWeek5">
+                                            <bool key="isElement" value="YES"/>
+                                        </accessibility>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="2X9-lP-zXv" secondAttribute="bottom" id="DRx-hL-BPt"/>
                                             <constraint firstAttribute="width" secondItem="ZDt-66-a3j" secondAttribute="height" multiplier="1:1" id="GUd-lP-ta5"/>
@@ -3912,12 +4061,16 @@
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 Miles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="967-If-fWA">
                                                 <rect key="frame" x="0.0" y="1" width="44.5" height="43.5"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="miles"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                         <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="day36">
+                                            <bool key="isElement" value="YES"/>
+                                        </accessibility>
                                         <constraints>
                                             <constraint firstItem="ZHx-69-Pa0" firstAttribute="top" secondItem="FSb-Tp-yLN" secondAttribute="top" constant="1" id="6cX-1q-VEa"/>
                                             <constraint firstAttribute="trailing" secondItem="ZHx-69-Pa0" secondAttribute="trailing" constant="1" id="8p7-7e-GE9"/>
@@ -3943,12 +4096,16 @@
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 Miles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cYT-ae-oYb">
                                                 <rect key="frame" x="0.0" y="1" width="44.5" height="43.5"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="miles"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                         <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="day37">
+                                            <bool key="isElement" value="YES"/>
+                                        </accessibility>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="gfw-bO-d28" secondAttribute="height" multiplier="1:1" id="3UQ-ed-DnP"/>
                                             <constraint firstAttribute="trailing" secondItem="cYT-ae-oYb" secondAttribute="trailing" id="3YX-hQ-rKp"/>
@@ -3974,12 +4131,16 @@
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 Miles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vLy-Cy-zWg">
                                                 <rect key="frame" x="0.0" y="1" width="44" height="43.5"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="miles"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                         <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="day38">
+                                            <bool key="isElement" value="YES"/>
+                                        </accessibility>
                                         <constraints>
                                             <constraint firstItem="rBP-Lu-K3I" firstAttribute="top" secondItem="Bpe-uQ-BHC" secondAttribute="top" constant="1" id="20Z-oq-IDQ"/>
                                             <constraint firstItem="vLy-Cy-zWg" firstAttribute="top" secondItem="Bpe-uQ-BHC" secondAttribute="top" constant="1" id="AzI-lz-Iyo"/>
@@ -4005,12 +4166,16 @@
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 Miles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hE3-hb-IIP">
                                                 <rect key="frame" x="0.0" y="1" width="44.5" height="43.5"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="miles"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                         <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="day39">
+                                            <bool key="isElement" value="YES"/>
+                                        </accessibility>
                                         <constraints>
                                             <constraint firstItem="Lf9-mF-tUT" firstAttribute="top" secondItem="DWD-gH-YdQ" secondAttribute="top" constant="1" id="3yQ-8M-03O"/>
                                             <constraint firstItem="hE3-hb-IIP" firstAttribute="leading" secondItem="DWD-gH-YdQ" secondAttribute="leading" id="JHj-ef-DP8"/>
@@ -4036,12 +4201,16 @@
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 Miles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dxO-Qe-7AD">
                                                 <rect key="frame" x="0.0" y="1" width="44.5" height="43.5"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="miles"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                         <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="day40">
+                                            <bool key="isElement" value="YES"/>
+                                        </accessibility>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="vAB-xA-lwh" secondAttribute="height" multiplier="1:1" id="Lha-mQ-KDK"/>
                                             <constraint firstAttribute="trailing" secondItem="YvR-AV-aO7" secondAttribute="trailing" constant="1" id="N73-Rh-TUG"/>
@@ -4067,12 +4236,16 @@
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 Miles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EjV-ut-BgB">
                                                 <rect key="frame" x="0.0" y="1" width="44.5" height="43.5"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="miles"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                         <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="day41">
+                                            <bool key="isElement" value="YES"/>
+                                        </accessibility>
                                         <constraints>
                                             <constraint firstItem="EjV-ut-BgB" firstAttribute="top" secondItem="t4W-Ge-MuF" secondAttribute="top" constant="1" id="2FU-7z-KCZ"/>
                                             <constraint firstItem="IoR-EG-Dgv" firstAttribute="leading" secondItem="t4W-Ge-MuF" secondAttribute="leading" id="396-AD-9At"/>
@@ -4098,12 +4271,16 @@
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 Miles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B9Z-Ge-36Z">
                                                 <rect key="frame" x="0.0" y="1" width="44" height="43.5"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="miles"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                         <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="day42">
+                                            <bool key="isElement" value="YES"/>
+                                        </accessibility>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="590-GF-FNr" secondAttribute="height" multiplier="1:1" id="51n-UB-f5k"/>
                                             <constraint firstAttribute="bottom" secondItem="B9Z-Ge-36Z" secondAttribute="bottom" id="5c3-2H-cRF"/>
@@ -4120,12 +4297,16 @@
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 Miles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pH1-hO-mJl">
                                                 <rect key="frame" x="0.0" y="1" width="44.5" height="43.5"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="total"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                         <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="totalWeek6">
+                                            <bool key="isElement" value="YES"/>
+                                        </accessibility>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="pH1-hO-mJl" secondAttribute="bottom" id="SQM-6E-2yA"/>
                                             <constraint firstItem="pH1-hO-mJl" firstAttribute="top" secondItem="NSV-9e-jc8" secondAttribute="top" constant="1" id="Urz-hi-v1e"/>
