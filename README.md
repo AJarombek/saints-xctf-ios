@@ -1,17 +1,19 @@
 # saints-xctf-ios
 
-## Overview
+### Overview
 
-The SaintsXCTF iOS App goes along with my website SaintsXCTF.com.  All development is done in Swift.  
-The backend calls the REST API built on the website server (Written in PHP).
+An iOS app that goes along with my website `saintsxctf.com`.  All development is done in Swift.  
+The backend calls a REST API written in Python.
 
 There is also an Android app that was released August 2017.
 
-You can follow development of the website here: [SaintsXCTF Website GitHub](https://github.com/AJarombek/saints-xctf).
+You can follow development of the website here: [SaintsXCTF Website GitHub](https://github.com/AJarombek/saints-xctf-web).
+
+You can follow development of the API here: [SaintsXCTF API GitHub](https://github.com/AJarombek/saints-xctf-api).
 
 You can follow development of the android app here: [SaintsXCTF Android GitHub](https://github.com/AJarombek/saints-xctf-android).
 
-## Releases
+### Releases
 
 **V.2.0.0 - Version 2 Release**
 

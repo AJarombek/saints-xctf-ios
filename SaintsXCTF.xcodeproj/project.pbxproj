@@ -13,6 +13,8 @@
 		3F28BC11265DD187008C7833 /* LogFeedStubs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F28BC10265DD187008C7833 /* LogFeedStubs.swift */; };
 		3F28BC24265EC69B008C7833 /* HomeUIStubTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F28BC23265EC69B008C7833 /* HomeUIStubTests.swift */; };
 		3F28BC2E2661D00B008C7833 /* SignedUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F28BC2D2661D00A008C7833 /* SignedUpViewController.swift */; };
+		3F28BC3E266A5C6D008C7833 /* ProfileUIStubTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F28BC3D266A5C6D008C7833 /* ProfileUIStubTests.swift */; };
+		3F28BC42266AD3AD008C7833 /* RangeViewStubs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F28BC41266AD3AD008C7833 /* RangeViewStubs.swift */; };
 		3FC8B6F0262E5ABF00FFAB08 /* AuthClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC8B6EF262E5ABF00FFAB08 /* AuthClient.swift */; };
 		3FC8B703262E5C8D00FFAB08 /* FnClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC8B702262E5C8D00FFAB08 /* FnClient.swift */; };
 		3FC8B70D262F9D9300FFAB08 /* SaintsXCTFUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC8B70C262F9D9300FFAB08 /* SaintsXCTFUITests.swift */; };
@@ -209,6 +211,8 @@
 		3F28BC10265DD187008C7833 /* LogFeedStubs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogFeedStubs.swift; sourceTree = "<group>"; };
 		3F28BC23265EC69B008C7833 /* HomeUIStubTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeUIStubTests.swift; sourceTree = "<group>"; };
 		3F28BC2D2661D00A008C7833 /* SignedUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignedUpViewController.swift; sourceTree = "<group>"; };
+		3F28BC3D266A5C6D008C7833 /* ProfileUIStubTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUIStubTests.swift; sourceTree = "<group>"; };
+		3F28BC41266AD3AD008C7833 /* RangeViewStubs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangeViewStubs.swift; sourceTree = "<group>"; };
 		3FC8B6EF262E5ABF00FFAB08 /* AuthClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthClient.swift; sourceTree = "<group>"; };
 		3FC8B702262E5C8D00FFAB08 /* FnClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FnClient.swift; sourceTree = "<group>"; };
 		3FC8B70A262F9D9200FFAB08 /* SaintsXCTFUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SaintsXCTFUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -336,6 +340,7 @@
 			isa = PBXGroup;
 			children = (
 				3F28BC10265DD187008C7833 /* LogFeedStubs.swift */,
+				3F28BC41266AD3AD008C7833 /* RangeViewStubs.swift */,
 			);
 			path = Stubs;
 			sourceTree = "<group>";
@@ -350,6 +355,7 @@
 				3F28BB97265B3956008C7833 /* Utils.swift */,
 				3F28BBFB265DCC5C008C7833 /* Stubs.swift */,
 				3F28BC23265EC69B008C7833 /* HomeUIStubTests.swift */,
+				3F28BC3D266A5C6D008C7833 /* ProfileUIStubTests.swift */,
 			);
 			path = SaintsXCTFUITests;
 			sourceTree = "<group>";
@@ -958,6 +964,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F28BC42266AD3AD008C7833 /* RangeViewStubs.swift in Sources */,
+				3F28BC3E266A5C6D008C7833 /* ProfileUIStubTests.swift in Sources */,
 				3F28BB90265B250C008C7833 /* HomeUITests.swift in Sources */,
 				3FC8B70D262F9D9300FFAB08 /* SaintsXCTFUITests.swift in Sources */,
 				3F28BC24265EC69B008C7833 /* HomeUIStubTests.swift in Sources */,

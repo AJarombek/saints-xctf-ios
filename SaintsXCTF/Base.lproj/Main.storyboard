@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="z0R-dm-gls">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -399,6 +398,9 @@
                                         <constraint firstItem="xS7-gu-K0R" firstAttribute="leading" secondItem="y4e-xk-vUC" secondAttribute="trailing" id="qeH-sK-7Kf"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <accessibility key="accessibilityConfiguration">
+                                    <bool key="isElement" value="YES"/>
+                                </accessibility>
                                 <gestureRecognizers/>
                                 <connections>
                                     <outlet property="commentsButton" destination="ZEy-6j-OeE" id="jSQ-sS-fbd"/>
@@ -2644,6 +2646,9 @@
                                             </label>
                                         </subviews>
                                         <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="day1">
+                                            <bool key="isElement" value="YES"/>
+                                        </accessibility>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="sPX-qh-RFW" secondAttribute="bottom" id="1KT-zb-Pvs"/>
                                             <constraint firstItem="sPX-qh-RFW" firstAttribute="leading" secondItem="s84-CD-OsF" secondAttribute="leading" id="2S2-5E-x1w"/>
@@ -2675,6 +2680,9 @@
                                             </label>
                                         </subviews>
                                         <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="day2">
+                                            <bool key="isElement" value="YES"/>
+                                        </accessibility>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="eZl-H6-YKf" secondAttribute="trailing" constant="1" id="7Re-yT-e1B"/>
                                             <constraint firstItem="eZl-H6-YKf" firstAttribute="top" secondItem="yNu-hl-Xya" secondAttribute="top" constant="1" id="A8Q-si-OZC"/>
@@ -2706,6 +2714,9 @@
                                             </label>
                                         </subviews>
                                         <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="day3">
+                                            <bool key="isElement" value="YES"/>
+                                        </accessibility>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="n0t-ZQ-DtU" secondAttribute="trailing" id="G96-6b-4N4"/>
                                             <constraint firstItem="7ES-Nc-Aae" firstAttribute="leading" secondItem="ZNp-Pb-AvN" secondAttribute="leading" id="KA6-lm-5z0"/>
@@ -2737,6 +2748,9 @@
                                             </label>
                                         </subviews>
                                         <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="day4">
+                                            <bool key="isElement" value="YES"/>
+                                        </accessibility>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="AOE-gk-gYJ" secondAttribute="trailing" id="G9B-f7-9Gu"/>
                                             <constraint firstItem="uvn-Zn-WQb" firstAttribute="top" secondItem="tga-Ev-ZbP" secondAttribute="top" constant="1" id="KFJ-HW-Rly"/>
@@ -2768,6 +2782,7 @@
                                             </label>
                                         </subviews>
                                         <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="day5"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="8i1-82-RFZ" secondAttribute="trailing" constant="1" id="3eJ-xn-bbE"/>
                                             <constraint firstAttribute="trailing" secondItem="vVq-UH-CAj" secondAttribute="trailing" id="5dF-lt-sd7"/>
@@ -2799,6 +2814,9 @@
                                             </label>
                                         </subviews>
                                         <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="day6">
+                                            <bool key="isElement" value="YES"/>
+                                        </accessibility>
                                         <constraints>
                                             <constraint firstItem="9mz-Fd-UEW" firstAttribute="top" secondItem="Fj7-W1-ADG" secondAttribute="top" constant="1" id="0xG-9c-9zO"/>
                                             <constraint firstAttribute="trailing" secondItem="9mz-Fd-UEW" secondAttribute="trailing" constant="1" id="5kL-bW-zCn"/>
@@ -2830,6 +2848,9 @@
                                             </label>
                                         </subviews>
                                         <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="day7">
+                                            <bool key="isElement" value="YES"/>
+                                        </accessibility>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="ffh-og-iP4" secondAttribute="trailing" id="2Du-EL-OBE"/>
                                             <constraint firstItem="ewa-g3-ZgG" firstAttribute="leading" secondItem="L4C-eK-RA4" secondAttribute="leading" id="6n3-p0-bcE"/>
@@ -2852,6 +2873,9 @@
                                             </label>
                                         </subviews>
                                         <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="totalWeek1">
+                                            <bool key="isElement" value="YES"/>
+                                        </accessibility>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="kHL-cY-e80" secondAttribute="trailing" id="Hiv-P8-G7O"/>
                                             <constraint firstItem="kHL-cY-e80" firstAttribute="top" secondItem="PzA-MK-ndh" secondAttribute="top" constant="1" id="Hrw-7r-G7O"/>
