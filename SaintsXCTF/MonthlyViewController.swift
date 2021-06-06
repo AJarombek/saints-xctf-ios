@@ -517,7 +517,11 @@ class MonthlyViewController: UIViewController {
                 let milesString = String(format: "%.2f", miles)
                 miles = Double(milesString)!
                 
-                self.miles[day].text = "\(milesString)\n Miles"
+                let milesText = "\(milesString)\n Miles"
+                self.miles[day].text = milesText
+                self.miles[day].accessibilityValue = milesText
+                self.miles[day].accessibilityLabel = milesText
+                self.miles[day].accessibilityIdentifier = "miles\(day + 1)"
                 
                 // Set the background color based on the days feel
                 let feel: Int = activity.feel!
@@ -531,7 +535,9 @@ class MonthlyViewController: UIViewController {
             // Populate all the week totals
             for i in 0...5 {
                 let weekMiles = String(format: "%.2f", weekTotals[i])
-                self.totals[i].text = "\(weekMiles)\n Miles"
+                let totalText = "\(weekMiles)\n Miles"
+                self.totals[i].text = totalText
+                self.totals[i].accessibilityValue = totalText
             }
         }
     }
