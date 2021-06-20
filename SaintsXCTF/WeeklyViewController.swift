@@ -184,21 +184,23 @@ class WeeklyViewController: UIViewController {
         let day: TimeInterval = 60 * 60 * 24
         
         // Initialize the date range for the graph
-        let calendar = Calendar(identifier: .gregorian)
+        var calendar = Calendar(identifier: .gregorian)
+        calendar.timeZone = TimeZone(secondsFromGMT: 0)!
         
         // Get the day of the week
-        let date: Date = Date()
+        let date: Date = calendar.startOfDay(for: Date())
         let weekdayComponent = calendar.dateComponents([.weekday], from: date)
         let weekday = weekdayComponent.weekday!
         
         // Set the end date as the end of this week and start date as 10 weeks previous
-        endDate = Calendar.current.date(byAdding: .day, value: weekstartOffset - weekday, to: date)!
+        endDate = calendar.date(byAdding: .day, value: weekstartOffset - weekday, to: date)!
         endDate.addTimeInterval(day * 7)
         startDate = endDate
         startDate.addTimeInterval(day * -69)
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
+        dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
         
         end = dateFormatter.string(from: endDate)
         start = dateFormatter.string(from: startDate)
@@ -282,8 +284,12 @@ class WeeklyViewController: UIViewController {
             }
             
             // Finally set up the bar chart with the given data
-            self.barChartView.setBarChartData(xValues: self.chartLabels, yValues: mileageWeekly,
-                                         feelValues: feelWeekly, label: "Miles")
+            self.barChartView.setBarChartData(
+                xValues: self.chartLabels,
+                yValues: mileageWeekly,
+                feelValues: feelWeekly,
+                label: "Miles"
+            )
         }
     }
     

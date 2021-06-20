@@ -283,12 +283,13 @@ class MonthlyViewController: UIViewController {
         
         // Get the date for the start of the month
         let date = Date()
-        let calendar = Calendar(identifier: .gregorian)
+        var calendar = Calendar(identifier: .gregorian)
+        calendar.timeZone = TimeZone(secondsFromGMT: 0)!
         
         var components = calendar.dateComponents([.year, .month, .day], from: date)
         components.day = 1
         
-        monthStart = Calendar.current.date(from: components)!
+        monthStart = calendar.date(from: components)!
         
         reset()
         filter(monthStart)
@@ -412,7 +413,8 @@ class MonthlyViewController: UIViewController {
         
         let start = startMonth
         
-        let calendar = Calendar(identifier: .gregorian)
+        var calendar = Calendar(identifier: .gregorian)
+        calendar.timeZone = TimeZone(secondsFromGMT: 0)!
         
         // Intervals to add and subtract a day from a date
         let prevday: TimeInterval = -60 * 60 * 24
@@ -421,6 +423,8 @@ class MonthlyViewController: UIViewController {
         // First set up the date formatter for the month and year label
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMMM YYYY"
+        dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+
         let title = dateFormatter.string(from: startMonth)
         
         monthLabel.text = title
@@ -430,8 +434,11 @@ class MonthlyViewController: UIViewController {
         let weekday = weekdayComponent.weekday!
         
         // First day of the calendar
-        var firstDay: Date = Calendar.current.date(byAdding: .day, value: weekstartOffset - weekday,
-                                                         to: start)!
+        var firstDay: Date = calendar.date(
+            byAdding: .day,
+            value: weekstartOffset - weekday,
+            to: start
+        )!
         
         let dayComponent = calendar.dateComponents([.day], from: firstDay)
         let dayNum: Int = dayComponent.day!
@@ -445,7 +452,7 @@ class MonthlyViewController: UIViewController {
         let fd = firstDay
         
         // Last day of the calendar - add 41 days to the first day in the calendar
-        let lastDay: Date = Calendar.current.date(byAdding: .day, value: 41, to: firstDay)!
+        let lastDay: Date = calendar.date(byAdding: .day, value: 41, to: firstDay)!
         
         // Keep track of the previous day when iterating through the calendar days
         var prevDayNum = -1

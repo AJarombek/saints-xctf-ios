@@ -15,6 +15,12 @@ You can follow development of the android app here: [SaintsXCTF Android GitHub](
 
 ### Releases
 
+**V.2.0.1 - Calendar & Monthly Chart Fixes**
+
+> Release Date: Jun 21, 2021
+
+This update fixes an issue with the monthly calendar and weekly chart.  Days were offset by one in both views, due in part to differences in the new API.
+
 **V.2.0.0 - Version 2 Release**
 
 > Release Date: Jun 1, 2021
