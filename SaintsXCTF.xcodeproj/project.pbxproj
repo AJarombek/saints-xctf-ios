@@ -16,6 +16,7 @@
 		3F28BC3E266A5C6D008C7833 /* ProfileUIStubTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F28BC3D266A5C6D008C7833 /* ProfileUIStubTests.swift */; };
 		3F28BC42266AD3AD008C7833 /* RangeViewStubs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F28BC41266AD3AD008C7833 /* RangeViewStubs.swift */; };
 		3F53B18F266C2CAC003D8F12 /* UserStubs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F53B18E266C2CAC003D8F12 /* UserStubs.swift */; };
+		3F633E7726D72520009F05AC /* ExerciseLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F633E7626D72520009F05AC /* ExerciseLogView.swift */; };
 		3FC8B6F0262E5ABF00FFAB08 /* AuthClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC8B6EF262E5ABF00FFAB08 /* AuthClient.swift */; };
 		3FC8B703262E5C8D00FFAB08 /* FnClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC8B702262E5C8D00FFAB08 /* FnClient.swift */; };
 		3FC8B70D262F9D9300FFAB08 /* SaintsXCTFUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC8B70C262F9D9300FFAB08 /* SaintsXCTFUITests.swift */; };
@@ -215,6 +216,7 @@
 		3F28BC3D266A5C6D008C7833 /* ProfileUIStubTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUIStubTests.swift; sourceTree = "<group>"; };
 		3F28BC41266AD3AD008C7833 /* RangeViewStubs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangeViewStubs.swift; sourceTree = "<group>"; };
 		3F53B18E266C2CAC003D8F12 /* UserStubs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStubs.swift; sourceTree = "<group>"; };
+		3F633E7626D72520009F05AC /* ExerciseLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseLogView.swift; sourceTree = "<group>"; };
 		3FC8B6EF262E5ABF00FFAB08 /* AuthClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthClient.swift; sourceTree = "<group>"; };
 		3FC8B702262E5C8D00FFAB08 /* FnClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FnClient.swift; sourceTree = "<group>"; };
 		3FC8B70A262F9D9200FFAB08 /* SaintsXCTFUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SaintsXCTFUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -409,6 +411,7 @@
 			isa = PBXGroup;
 			children = (
 				A15E622F1F3F981600AC9EF1 /* LogViewController.swift */,
+				3F633E7626D72520009F05AC /* ExerciseLogView.swift */,
 			);
 			name = Log;
 			sourceTree = "<group>";
@@ -1017,6 +1020,7 @@
 				A1505B901E8F105A00F111DB /* Comment.swift in Sources */,
 				A15E62371F3FA45F00AC9EF1 /* PickGroupViewController.swift in Sources */,
 				A1505B961E8F112500F111DB /* GroupMember.swift in Sources */,
+				3F633E7726D72520009F05AC /* ExerciseLogView.swift in Sources */,
 				A15E62301F3F981600AC9EF1 /* LogViewController.swift in Sources */,
 				A19DED551F590A9F00E6C9DA /* NewCommentTableViewCell.swift in Sources */,
 				A11AB8BA1F9065390098AE8E /* MemberTableViewCell.swift in Sources */,
@@ -1266,7 +1270,7 @@
 				INFOPLIST_FILE = SaintsXCTF/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 2.0.0;
+				MARKETING_VERSION = 2.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jarombek.saintsxctf;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1286,7 +1290,7 @@
 				INFOPLIST_FILE = SaintsXCTF/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 2.0.0;
+				MARKETING_VERSION = 2.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jarombek.saintsxctf;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
