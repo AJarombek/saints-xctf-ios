@@ -526,6 +526,7 @@
                             <outlet property="delegate" destination="TEP-fJ-qwv" id="zMh-Uw-J33"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="AMZ-Vq-2YF"/>
                     <connections>
                         <outlet property="commentTableView" destination="5bm-A4-f5r" id="tbs-6A-9Le"/>
                     </connections>
@@ -840,7 +841,7 @@
                     <connections>
                         <segue destination="KJM-Et-dTA" kind="relationship" relationship="viewControllers" id="unZ-ge-98h"/>
                         <segue destination="KsS-GM-skk" kind="relationship" relationship="viewControllers" id="kMz-Rq-Nzj"/>
-                        <segue destination="ZET-dO-YVX" kind="relationship" relationship="viewControllers" id="3Ke-kd-k9Y"/>
+                        <segue destination="16X-We-aQn" kind="relationship" relationship="viewControllers" id="XPG-aL-ZdK"/>
                         <segue destination="d6A-NZ-ZeC" kind="relationship" relationship="viewControllers" id="hEg-3q-GGI"/>
                         <segue destination="Bxe-MV-Z1j" kind="relationship" relationship="viewControllers" id="H9w-je-24d"/>
                     </connections>
@@ -1156,7 +1157,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QDL-Qz-q5o" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1905" y="503"/>
+            <point key="canvasLocation" x="1975" y="501"/>
         </scene>
         <!--Sign Out-->
         <scene sceneID="cTm-cP-C5x">
@@ -2374,6 +2375,28 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q5t-EH-Iha" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5136.8000000000002" y="-181.25937031484258"/>
+        </scene>
+        <!--New Log-->
+        <scene sceneID="Bsf-y4-8ba">
+            <objects>
+                <viewController storyboardIdentifier="exerciseLogViewController" id="16X-We-aQn" customClass="ExerciseLogViewController" customModule="SaintsXCTF" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="j5M-th-VZ7"/>
+                        <viewControllerLayoutGuide type="bottom" id="XCd-dq-fvu"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2Db-aV-pHu">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="New Log" image="edit" selectedImage="edit" id="fCR-ZA-FUG"/>
+                    <connections>
+                        <outlet property="container" destination="2Db-aV-pHu" id="ulg-rD-tJQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mMN-iv-XbG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2798" y="511"/>
         </scene>
         <!--Monthly View Controller-->
         <scene sceneID="jA3-zD-H5c">

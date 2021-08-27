@@ -11,6 +11,10 @@ import SwiftUI
 struct ExerciseLogView: View {
     @State private var name: String = ""
     @State private var isEditingName: Bool = false
+    @State private var location: String = ""
+    @State private var isEditingLocation: Bool = false
+    @State private var date: String = ""
+    @State private var isEditingDate: Bool = false
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -40,17 +44,31 @@ struct ExerciseLogView: View {
                 }
                 .padding(.top, 5.0)
                 HStack {
-                    VStack {
+                    VStack(alignment: .leading) {
                         Text("Location")
                             .font(.subheadline)
                             .foregroundColor(Color(UIColor(0xA96A5B)))
                             .bold()
+                        TextField("", text: $location) { isEditing in
+                            self.isEditingLocation = isEditing
+                        }
+                        .autocapitalization(.none)
+                        .disableAutocorrection(true)
+                        .background(Color(UIColor.white))
+                        .frame(minHeight: 30)
                     }
-                    VStack {
+                    VStack(alignment: .leading) {
                         Text("Date*")
                             .font(.subheadline)
                             .foregroundColor(Color(UIColor(0xA96A5B)))
                             .bold()
+                        TextField("", text: $date) { isEditing in
+                            self.isEditingDate = isEditing
+                        }
+                        .autocapitalization(.none)
+                        .disableAutocorrection(true)
+                        .background(Color(UIColor.white))
+                        .frame(minHeight: 30)
                     }
                 }
                 .padding(.top, 5.0)
