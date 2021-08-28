@@ -17,6 +17,11 @@ struct ExerciseLogView: View {
     @State private var date: Date = Date()
     @State private var isEditingDate: Bool = false
     @State private var exerciseType: ExerciseType = ExerciseType.run
+    @State private var distance: String = ""
+    @State private var isEditingDistance: Bool = false
+    @State private var metric: Metric = Metric.miles
+    @State private var time: String = ""
+    @State private var isEditingTime: Bool = false
     @State private var description: String = ""
     @State private var isEditingDescription: Bool = false
     
@@ -41,6 +46,7 @@ struct ExerciseLogView: View {
                 .font(.title)
                 .foregroundColor(.black)
                 .bold()
+            
             VStack(alignment: .leading) {
                 HStack {
                     Text("Average")
@@ -48,11 +54,13 @@ struct ExerciseLogView: View {
                         .foregroundColor(Color(UIColor(0x737373)))
                 }
                 .frame(minWidth: 0, maxWidth: .infinity, alignment: .trailing)
+                
                 VStack(alignment: .leading) {
                     Text("Exercise Name*")
                         .font(.subheadline)
                         .foregroundColor(Color(UIColor(0xA96A5B)))
                         .bold()
+                    
                     TextField("", text: $name) { isEditing in
                         self.isEditingName = isEditing
                     }
@@ -65,15 +73,20 @@ struct ExerciseLogView: View {
                     .frame(minHeight: 30)
                 }
                 .padding(.top, 5.0)
+                
                 HStack {
                     VStack(alignment: .leading) {
                         Text("Location")
                             .font(.subheadline)
                             .foregroundColor(Color(UIColor(0xA96A5B)))
                             .bold()
+                        
                         TextField("", text: $location) { isEditing in
                             self.isEditingLocation = isEditing
                         }
+                        .onReceive(Just(location), perform: { _ in
+                            limitLocationText(locationTextLimit)
+                        })
                         .autocapitalization(.none)
                         .disableAutocorrection(true)
                         .background(Color(UIColor.white))
@@ -85,6 +98,7 @@ struct ExerciseLogView: View {
                             .foregroundColor(Color(UIColor(0xA96A5B)))
                             .bold()
                             .padding(.leading, 8)
+                        
                         DatePicker(
                             "",
                             selection: $date,
@@ -97,32 +111,75 @@ struct ExerciseLogView: View {
                 }
                 .padding(.top, 5.0)
                 .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+                
                 HStack {
-                    VStack {
+                    VStack(alignment: .leading) {
                         Text("Exercise Type")
                             .font(.subheadline)
                             .foregroundColor(Color(UIColor(0xA96A5B)))
                             .bold()
-                        Picker(selection: $exerciseType, label: Text("Exercise Type")) {
+                        
+                        Picker(
+                            selection: $exerciseType,
+                            label: Text("\(exerciseType.rawValue.capitalized)")
+                        ) {
                             ForEach(ExerciseType.allCases) { type in
                                 Text(type.rawValue.capitalized)
+                                    .tag(type)
                             }
                         }
                         .pickerStyle(MenuPickerStyle())
+                        .frame(width: 80, alignment: .leading)
                     }
                 }
                 .padding(.top, 5.0)
+                
                 HStack {
-                    Text("Distance")
-                        .font(.subheadline)
-                        .foregroundColor(Color(UIColor(0xA96A5B)))
-                        .bold()
-                    Text("Time")
-                        .font(.subheadline)
-                        .foregroundColor(Color(UIColor(0xA96A5B)))
-                        .bold()
+                    VStack(alignment: .leading) {
+                        Text("Distance")
+                            .font(.subheadline)
+                            .foregroundColor(Color(UIColor(0xA96A5B)))
+                            .bold()
+                        
+                        HStack {
+                            TextField("", text: $distance) { isEditing in
+                                self.isEditingDistance = isEditing
+                            }
+                            .autocapitalization(.none)
+                            .disableAutocorrection(true)
+                            .background(Color(UIColor.white))
+                            .frame(minWidth: 90, minHeight: 30)
+                            
+                            Picker(
+                                selection: $metric,
+                                label: Text("\(metric.rawValue.capitalized)")
+                            ) {
+                                ForEach(Metric.allCases) { metric in
+                                    Text(metric.rawValue.capitalized)
+                                        .tag(metric)
+                                }
+                            }
+                            .pickerStyle(MenuPickerStyle())
+                            .frame(width: 90, alignment: .leading)
+                        }
+                    }
+                    VStack(alignment: .leading) {
+                        Text("Time")
+                            .font(.subheadline)
+                            .foregroundColor(Color(UIColor(0xA96A5B)))
+                            .bold()
+                        
+                        TextField("", text: $time) { isEditing in
+                            self.isEditingTime = isEditing
+                        }
+                        .autocapitalization(.none)
+                        .disableAutocorrection(true)
+                        .background(Color(UIColor.white))
+                        .frame(minHeight: 30)
+                    }
                 }
                 .padding(.top, 5.0)
+                
                 HStack {
                     Text("Feel")
                         .font(.subheadline)
@@ -130,6 +187,7 @@ struct ExerciseLogView: View {
                         .bold()
                 }
                 .padding(.top, 5.0)
+                
                 HStack {
                     Text("Description")
                         .font(.subheadline)
@@ -137,6 +195,7 @@ struct ExerciseLogView: View {
                         .bold()
                 }
                 .padding(.top, 5.0)
+                
                 HStack(spacing: 20) {
                     Button(action: {
                         print("Create")

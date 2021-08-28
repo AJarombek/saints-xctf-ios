@@ -19,6 +19,7 @@
 		3F633E7726D72520009F05AC /* ExerciseLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F633E7626D72520009F05AC /* ExerciseLogView.swift */; };
 		3F633E8726D87B63009F05AC /* ExerciseLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F633E8626D87B63009F05AC /* ExerciseLogViewController.swift */; };
 		3F633E8C26D9B0D7009F05AC /* ExerciseType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F633E8B26D9B0D7009F05AC /* ExerciseType.swift */; };
+		3F633E9226DAD18A009F05AC /* Metric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F633E9126DAD189009F05AC /* Metric.swift */; };
 		3FC8B6F0262E5ABF00FFAB08 /* AuthClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC8B6EF262E5ABF00FFAB08 /* AuthClient.swift */; };
 		3FC8B703262E5C8D00FFAB08 /* FnClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC8B702262E5C8D00FFAB08 /* FnClient.swift */; };
 		3FC8B70D262F9D9300FFAB08 /* SaintsXCTFUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC8B70C262F9D9300FFAB08 /* SaintsXCTFUITests.swift */; };
@@ -221,6 +222,7 @@
 		3F633E7626D72520009F05AC /* ExerciseLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseLogView.swift; sourceTree = "<group>"; };
 		3F633E8626D87B63009F05AC /* ExerciseLogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseLogViewController.swift; sourceTree = "<group>"; };
 		3F633E8B26D9B0D7009F05AC /* ExerciseType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseType.swift; sourceTree = "<group>"; };
+		3F633E9126DAD189009F05AC /* Metric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Metric.swift; sourceTree = "<group>"; };
 		3FC8B6EF262E5ABF00FFAB08 /* AuthClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthClient.swift; sourceTree = "<group>"; };
 		3FC8B702262E5C8D00FFAB08 /* FnClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FnClient.swift; sourceTree = "<group>"; };
 		3FC8B70A262F9D9200FFAB08 /* SaintsXCTFUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SaintsXCTFUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -358,6 +360,7 @@
 			isa = PBXGroup;
 			children = (
 				3F633E8B26D9B0D7009F05AC /* ExerciseType.swift */,
+				3F633E9126DAD189009F05AC /* Metric.swift */,
 			);
 			name = Enums;
 			sourceTree = "<group>";
@@ -1051,6 +1054,7 @@
 				A1157E8F222B2507006DA097 /* ReportViewController.swift in Sources */,
 				A15E62421F4FC70400AC9EF1 /* LogDataSource.swift in Sources */,
 				A11AB8A51F8997290098AE8E /* BarChartFormatter.swift in Sources */,
+				3F633E9226DAD18A009F05AC /* Metric.swift in Sources */,
 				A18968271F7B25940073A73B /* EditProfileViewController.swift in Sources */,
 				3FC8B725263611B300FFAB08 /* FnResult.swift in Sources */,
 				3FC8B72F26362F2600FFAB08 /* AdminViewController.swift in Sources */,
