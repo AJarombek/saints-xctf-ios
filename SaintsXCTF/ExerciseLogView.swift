@@ -22,6 +22,7 @@ struct ExerciseLogView: View {
     @State private var metric: Metric = Metric.miles
     @State private var time: String = ""
     @State private var isEditingTime: Bool = false
+    @State private var feel: Float = 6.0
     @State private var description: String = ""
     @State private var isEditingDescription: Bool = false
     
@@ -49,7 +50,7 @@ struct ExerciseLogView: View {
             
             VStack(alignment: .leading) {
                 HStack {
-                    Text("Average")
+                    Text(Constants.getFeelDescription(Int(feel) - 1))
                         .font(.subheadline)
                         .foregroundColor(Color(UIColor(0x737373)))
                 }
@@ -58,7 +59,7 @@ struct ExerciseLogView: View {
                 VStack(alignment: .leading) {
                     Text("Exercise Name*")
                         .font(.subheadline)
-                        .foregroundColor(Color(UIColor(0xA96A5B)))
+                        .foregroundColor(Color(UIColor(Constants.spotPaletteBrown)))
                         .bold()
                     
                     TextField("", text: $name) { isEditing in
@@ -78,7 +79,7 @@ struct ExerciseLogView: View {
                     VStack(alignment: .leading) {
                         Text("Location")
                             .font(.subheadline)
-                            .foregroundColor(Color(UIColor(0xA96A5B)))
+                            .foregroundColor(Color(UIColor(Constants.spotPaletteBrown)))
                             .bold()
                         
                         TextField("", text: $location) { isEditing in
@@ -95,7 +96,7 @@ struct ExerciseLogView: View {
                     VStack(alignment: .leading) {
                         Text("Date*")
                             .font(.subheadline)
-                            .foregroundColor(Color(UIColor(0xA96A5B)))
+                            .foregroundColor(Color(UIColor(Constants.spotPaletteBrown)))
                             .bold()
                             .padding(.leading, 8)
                         
@@ -106,6 +107,7 @@ struct ExerciseLogView: View {
                             displayedComponents: [.date]
                         )
                         .frame(minWidth: 0, maxWidth: .infinity, minHeight: 30)
+                        .accentColor(Color(UIColor(Constants.saintsXctfRed)))
                     }
                     .frame(minWidth: 0, maxWidth: 130)
                 }
@@ -116,7 +118,7 @@ struct ExerciseLogView: View {
                     VStack(alignment: .leading) {
                         Text("Exercise Type")
                             .font(.subheadline)
-                            .foregroundColor(Color(UIColor(0xA96A5B)))
+                            .foregroundColor(Color(UIColor(Constants.spotPaletteBrown)))
                             .bold()
                         
                         Picker(
@@ -129,6 +131,7 @@ struct ExerciseLogView: View {
                             }
                         }
                         .pickerStyle(MenuPickerStyle())
+                        .foregroundColor(Color(UIColor(Constants.saintsXctfRed)))
                         .frame(width: 80, alignment: .leading)
                     }
                 }
@@ -138,7 +141,7 @@ struct ExerciseLogView: View {
                     VStack(alignment: .leading) {
                         Text("Distance")
                             .font(.subheadline)
-                            .foregroundColor(Color(UIColor(0xA96A5B)))
+                            .foregroundColor(Color(UIColor(Constants.spotPaletteBrown)))
                             .bold()
                         
                         HStack {
@@ -160,13 +163,14 @@ struct ExerciseLogView: View {
                                 }
                             }
                             .pickerStyle(MenuPickerStyle())
+                            .foregroundColor(Color(UIColor(Constants.saintsXctfRed)))
                             .frame(width: 90, alignment: .leading)
                         }
                     }
                     VStack(alignment: .leading) {
                         Text("Time")
                             .font(.subheadline)
-                            .foregroundColor(Color(UIColor(0xA96A5B)))
+                            .foregroundColor(Color(UIColor(Constants.spotPaletteBrown)))
                             .bold()
                         
                         TextField("", text: $time) { isEditing in
@@ -181,18 +185,42 @@ struct ExerciseLogView: View {
                 .padding(.top, 5.0)
                 
                 HStack {
-                    Text("Feel")
-                        .font(.subheadline)
-                        .foregroundColor(Color(UIColor(0xA96A5B)))
-                        .bold()
+                    VStack(alignment: .leading) {
+                        Text("Feel")
+                            .font(.subheadline)
+                            .foregroundColor(Color(UIColor(Constants.spotPaletteBrown)))
+                            .bold()
+                        
+                        Slider(
+                            value: $feel,
+                            in: 1...10,
+                            step: 1
+                        ) {
+                            Text("Title")
+                        }
+                        .accentColor(Color(UIColor(Constants.saintsXctfRed)))
+                    }
                 }
                 .padding(.top, 5.0)
                 
                 HStack {
-                    Text("Description")
-                        .font(.subheadline)
-                        .foregroundColor(Color(UIColor(0xA96A5B)))
-                        .bold()
+                    VStack(alignment: .leading) {
+                        Text("Description")
+                            .font(.subheadline)
+                            .foregroundColor(Color(UIColor(Constants.spotPaletteBrown)))
+                            .bold()
+                        
+                        TextField("", text: $description) { isEditing in
+                            self.isEditingDescription = isEditing
+                        }
+                        .onReceive(Just(description), perform: { _ in
+                            limitDescriptionText(descriptionTextLimit)
+                        })
+                        .autocapitalization(.none)
+                        .disableAutocorrection(true)
+                        .background(Color(UIColor.white))
+                        .frame(minHeight: 30)
+                    }
                 }
                 .padding(.top, 5.0)
                 
@@ -201,12 +229,13 @@ struct ExerciseLogView: View {
                         print("Create")
                     }) {
                         Text("Create")
+                            .foregroundColor(Color(UIColor(Constants.saintsXctfRed)))
                     }
                     Button(action: {
                         print("Cancel")
                     }) {
                         Text("Cancel")
-                            .foregroundColor(Color(UIColor(0x990000)))
+                            .foregroundColor(Color(UIColor(Constants.darkGray)))
                     }
                 }
                 .padding(.top, 15)
@@ -219,7 +248,7 @@ struct ExerciseLogView: View {
                     .stroke(Color.gray, lineWidth: 0.25)
                     .shadow(radius: 2)
             )
-            .background(Color.init(UIColor(0xF8F8F8)))
+            .background(Color.init(UIColor(Constants.getFeelColor(Int(feel - 1)))))
             .cornerRadius(5)
             .textFieldStyle(RoundedBorderTextFieldStyle())
         }

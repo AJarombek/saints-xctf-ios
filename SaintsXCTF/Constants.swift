@@ -13,6 +13,12 @@ import Foundation
  */
 class Constants {
     
+    public static let saintsXctfRed = 0x990000
+    public static let spotPaletteBrown = 0xA96A5B
+    public static let spotPaletteCream = 0xFFE6D9
+    public static let spotPaletteBlue = 0x58B7D2
+    public static let darkGray = 0x555555
+    
     private static let feel_colors = [0xEA9999, 0xFFAD99, 0xEAC199, 0xFFD699, 0xFFFFAD, 0xE3E3E3, 0xC7F599,
                        0x99D699, 0x99C199, 0xA3A3FF]
     
