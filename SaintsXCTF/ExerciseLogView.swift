@@ -39,6 +39,7 @@ struct ExerciseLogView: View {
     
     let nameTextLimit = 40
     let locationTextLimit = 50
+    let timeTextLimit = 6
     let descriptionTextLimit = 1000
     
     var body: some View {
@@ -71,6 +72,10 @@ struct ExerciseLogView: View {
                     .autocapitalization(.none)
                     .disableAutocorrection(true)
                     .background(Color(UIColor.white))
+                    .border(
+                        Color(UIColor(Constants.spotPaletteCream)),
+                        width: isEditingName ? 1 : 0
+                    )
                     .frame(minHeight: 30)
                 }
                 .padding(.top, 5.0)
@@ -91,6 +96,10 @@ struct ExerciseLogView: View {
                         .autocapitalization(.none)
                         .disableAutocorrection(true)
                         .background(Color(UIColor.white))
+                        .border(
+                            Color(UIColor(Constants.spotPaletteCream)),
+                            width: isEditingLocation ? 1 : 0
+                        )
                         .frame(minHeight: 30)
                     }
                     VStack(alignment: .leading) {
@@ -151,6 +160,10 @@ struct ExerciseLogView: View {
                             .autocapitalization(.none)
                             .disableAutocorrection(true)
                             .background(Color(UIColor.white))
+                            .border(
+                                Color(UIColor(Constants.spotPaletteCream)),
+                                width: isEditingDistance ? 1 : 0
+                            )
                             .frame(minWidth: 90, minHeight: 30)
                             
                             Picker(
@@ -176,9 +189,17 @@ struct ExerciseLogView: View {
                         TextField("", text: $time) { isEditing in
                             self.isEditingTime = isEditing
                         }
+                        .onReceive(Just(time), perform: { _ in
+                            limitTimeText(timeTextLimit)
+                            filterTimeText()
+                        })
                         .autocapitalization(.none)
                         .disableAutocorrection(true)
                         .background(Color(UIColor.white))
+                        .border(
+                            Color(UIColor(Constants.spotPaletteCream)),
+                            width: isEditingTime ? 1 : 0
+                        )
                         .frame(minHeight: 30)
                     }
                 }
@@ -219,6 +240,10 @@ struct ExerciseLogView: View {
                         .autocapitalization(.none)
                         .disableAutocorrection(true)
                         .background(Color(UIColor.white))
+                        .border(
+                            Color(UIColor(Constants.spotPaletteCream)),
+                            width: isEditingDescription ? 1 : 0
+                        )
                         .frame(minHeight: 30)
                     }
                 }
@@ -265,6 +290,16 @@ struct ExerciseLogView: View {
         if location.count > upper {
             location = String(location.prefix(upper))
         }
+    }
+    
+    func limitTimeText(_ upper: Int) {
+        if time.count > upper {
+            time = String(time.prefix(upper))
+        }
+    }
+    
+    func filterTimeText() {
+        
     }
     
     func limitDescriptionText(_ upper: Int) {
