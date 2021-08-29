@@ -21,6 +21,7 @@ struct ExerciseLogView: View {
     @State private var isEditingDistance: Bool = false
     @State private var metric: Metric = Metric.miles
     @State private var time: String = ""
+    @State private var formattedTime: String = ""
     @State private var isEditingTime: Bool = false
     @State private var feel: Float = 6.0
     @State private var description: String = ""
@@ -157,8 +158,12 @@ struct ExerciseLogView: View {
                             TextField("", text: $distance) { isEditing in
                                 self.isEditingDistance = isEditing
                             }
+                            .onReceive(Just(distance), perform: { _ in
+                                filterDistanceText()
+                            })
                             .autocapitalization(.none)
                             .disableAutocorrection(true)
+                            .keyboardType(.numbersAndPunctuation)
                             .background(Color(UIColor.white))
                             .border(
                                 Color(UIColor(Constants.spotPaletteCream)),
@@ -186,15 +191,17 @@ struct ExerciseLogView: View {
                             .foregroundColor(Color(UIColor(Constants.spotPaletteBrown)))
                             .bold()
                         
-                        TextField("", text: $time) { isEditing in
+                        TextField("", text: $formattedTime) { isEditing in
                             self.isEditingTime = isEditing
                         }
-                        .onReceive(Just(time), perform: { _ in
-                            limitTimeText(timeTextLimit)
+                        .onReceive(Just(formattedTime), perform: { _ in
                             filterTimeText()
+                            limitTimeText(timeTextLimit)
+                            setFormattedTimeText()
                         })
                         .autocapitalization(.none)
                         .disableAutocorrection(true)
+                        .keyboardType(.numbersAndPunctuation)
                         .background(Color(UIColor.white))
                         .border(
                             Color(UIColor(Constants.spotPaletteCream)),
@@ -299,7 +306,43 @@ struct ExerciseLogView: View {
     }
     
     func filterTimeText() {
+        time = formattedTime
         
+        var filteredTime = ""
+        for char in time {
+            if let intValue = char.wholeNumberValue {
+                filteredTime += "\(intValue)"
+            }
+        }
+        
+        time = filteredTime
+    }
+    
+    func setFormattedTimeText() {
+        formattedTime = time
+            .enumerated()
+            .map {
+                ((time.count - $0.offset) % 2 != 0) || $0.offset == 0 ?
+                    $0.element.description : ":\($0.element)"
+            }.reduce("") {
+                $0 + $1
+            }
+    }
+    
+    func filterDistanceText() {
+        var decimalPointUsed = false
+        var filteredDistance = ""
+        
+        for char in distance {
+            if let intValue = char.wholeNumberValue {
+                filteredDistance += "\(intValue)"
+            } else if char == "." && !decimalPointUsed {
+                filteredDistance += char.description
+                decimalPointUsed = true
+            }
+        }
+        
+        distance = filteredDistance
     }
     
     func limitDescriptionText(_ upper: Int) {
