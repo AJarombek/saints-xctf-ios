@@ -12,15 +12,18 @@ import Combine
 struct ExerciseLogView: View {
     @State private var name: String = ""
     @State private var isEditingName: Bool = false
+    @State private var nameStatus: InputStatus = InputStatus.none
     @State private var location: String = ""
     @State private var isEditingLocation: Bool = false
     @State private var date: Date = Date()
     @State private var isEditingDate: Bool = false
     @State private var exerciseType: ExerciseType = ExerciseType.run
     @State private var distance: String = ""
+    @State private var distanceStatus: InputStatus = InputStatus.none
     @State private var isEditingDistance: Bool = false
     @State private var metric: Metric = Metric.miles
     @State private var time: String = ""
+    @State private var timeStatus: InputStatus = InputStatus.none
     @State private var formattedTime: String = ""
     @State private var isEditingTime: Bool = false
     @State private var feel: Float = 6.0
@@ -64,20 +67,33 @@ struct ExerciseLogView: View {
                         .foregroundColor(Color(UIColor(Constants.spotPaletteBrown)))
                         .bold()
                     
-                    TextField("", text: $name) { isEditing in
-                        self.isEditingName = isEditing
+                    VStack(alignment: .leading) {
+                        TextField("", text: $name) { isEditing in
+                            self.isEditingName = isEditing
+                        }
+                        .onReceive(Just(name), perform: { _ in
+                            limitNameText(nameTextLimit)
+                            validateNameText()
+                        })
+                        .autocapitalization(.none)
+                        .disableAutocorrection(true)
+                        .background(Color(UIColor.white))
+                        .border(
+                            Color(UIColor(Constants.spotPaletteCream)),
+                            width: isEditingName ? 1 : 0
+                        )
+                        .border(
+                            Color(UIColor(Constants.statusWarning)),
+                            width: nameStatus == InputStatus.warning ? 2 : 0
+                        )
+                        .frame(minHeight: 30)
+                        
+                        if nameStatus == InputStatus.warning {
+                            Text("Exercise logs must have a name.")
+                                .font(.caption)
+                                .foregroundColor(Color(UIColor(Constants.statusFailure)))
+                        }
                     }
-                    .onReceive(Just(name), perform: { _ in
-                        limitNameText(nameTextLimit)
-                    })
-                    .autocapitalization(.none)
-                    .disableAutocorrection(true)
-                    .background(Color(UIColor.white))
-                    .border(
-                        Color(UIColor(Constants.spotPaletteCream)),
-                        width: isEditingName ? 1 : 0
-                    )
-                    .frame(minHeight: 30)
                 }
                 .padding(.top, 5.0)
                 
@@ -160,6 +176,7 @@ struct ExerciseLogView: View {
                             }
                             .onReceive(Just(distance), perform: { _ in
                                 filterDistanceText()
+                                validateTimeAndDistance()
                             })
                             .autocapitalization(.none)
                             .disableAutocorrection(true)
@@ -198,6 +215,7 @@ struct ExerciseLogView: View {
                             filterTimeText()
                             limitTimeText(timeTextLimit)
                             setFormattedTimeText()
+                            validateTimeAndDistance()
                         })
                         .autocapitalization(.none)
                         .disableAutocorrection(true)
@@ -293,6 +311,14 @@ struct ExerciseLogView: View {
         }
     }
     
+    func validateNameText() {
+        if name.count == 0 {
+            nameStatus = InputStatus.warning
+        } else {
+            nameStatus = InputStatus.none
+        }
+    }
+    
     func limitLocationText(_ upper: Int) {
         if location.count > upper {
             location = String(location.prefix(upper))
@@ -343,6 +369,16 @@ struct ExerciseLogView: View {
         }
         
         distance = filteredDistance
+    }
+    
+    func validateTimeAndDistance() {
+        if time.count == 0 && distance.count == 0 {
+            timeStatus = InputStatus.warning
+            distanceStatus = InputStatus.warning
+        } else {
+            timeStatus = InputStatus.none
+            distanceStatus = InputStatus.none
+        }
     }
     
     func limitDescriptionText(_ upper: Int) {

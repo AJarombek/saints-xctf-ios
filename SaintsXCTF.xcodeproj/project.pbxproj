@@ -15,6 +15,7 @@
 		3F28BC2E2661D00B008C7833 /* SignedUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F28BC2D2661D00A008C7833 /* SignedUpViewController.swift */; };
 		3F28BC3E266A5C6D008C7833 /* ProfileUIStubTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F28BC3D266A5C6D008C7833 /* ProfileUIStubTests.swift */; };
 		3F28BC42266AD3AD008C7833 /* RangeViewStubs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F28BC41266AD3AD008C7833 /* RangeViewStubs.swift */; };
+		3F4B88BA26DC71F4009B8CD9 /* InputStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4B88B926DC71F4009B8CD9 /* InputStatus.swift */; };
 		3F53B18F266C2CAC003D8F12 /* UserStubs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F53B18E266C2CAC003D8F12 /* UserStubs.swift */; };
 		3F633E7726D72520009F05AC /* ExerciseLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F633E7626D72520009F05AC /* ExerciseLogView.swift */; };
 		3F633E8726D87B63009F05AC /* ExerciseLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F633E8626D87B63009F05AC /* ExerciseLogViewController.swift */; };
@@ -218,6 +219,7 @@
 		3F28BC2D2661D00A008C7833 /* SignedUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignedUpViewController.swift; sourceTree = "<group>"; };
 		3F28BC3D266A5C6D008C7833 /* ProfileUIStubTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUIStubTests.swift; sourceTree = "<group>"; };
 		3F28BC41266AD3AD008C7833 /* RangeViewStubs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangeViewStubs.swift; sourceTree = "<group>"; };
+		3F4B88B926DC71F4009B8CD9 /* InputStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputStatus.swift; sourceTree = "<group>"; };
 		3F53B18E266C2CAC003D8F12 /* UserStubs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStubs.swift; sourceTree = "<group>"; };
 		3F633E7626D72520009F05AC /* ExerciseLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseLogView.swift; sourceTree = "<group>"; };
 		3F633E8626D87B63009F05AC /* ExerciseLogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseLogViewController.swift; sourceTree = "<group>"; };
@@ -361,6 +363,7 @@
 			children = (
 				3F633E8B26D9B0D7009F05AC /* ExerciseType.swift */,
 				3F633E9126DAD189009F05AC /* Metric.swift */,
+				3F4B88B926DC71F4009B8CD9 /* InputStatus.swift */,
 			);
 			name = Enums;
 			sourceTree = "<group>";
@@ -1053,6 +1056,7 @@
 				A11AB8AC1F8AC91F0098AE8E /* LeaderboardTableViewCell.swift in Sources */,
 				A1157E8F222B2507006DA097 /* ReportViewController.swift in Sources */,
 				A15E62421F4FC70400AC9EF1 /* LogDataSource.swift in Sources */,
+				3F4B88BA26DC71F4009B8CD9 /* InputStatus.swift in Sources */,
 				A11AB8A51F8997290098AE8E /* BarChartFormatter.swift in Sources */,
 				3F633E9226DAD18A009F05AC /* Metric.swift in Sources */,
 				A18968271F7B25940073A73B /* EditProfileViewController.swift in Sources */,
