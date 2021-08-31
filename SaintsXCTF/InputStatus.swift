@@ -13,6 +13,7 @@ enum InputStatus: String, CaseIterable, Identifiable {
     case success
     case warning
     case failure
+    case initial
     
     var id: String {
         self.rawValue
