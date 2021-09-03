@@ -10,6 +10,8 @@ import SwiftUI
 import Combine
 
 struct ExerciseLogView: View {
+    @StateObject private var log = NewLog()
+    
     @State private var name: String = ""
     @State private var isEditingName: Bool = false
     @State private var nameStatus: InputStatus = InputStatus.initial
@@ -34,7 +36,7 @@ struct ExerciseLogView: View {
     @State private var showError: Bool = false
     @State private var showCanceling: Bool = false
     
-    @State private var confirmCancel: Bool = false
+    @State private var isCreating: Bool = false
     
     let dateRange: ClosedRange<Date> = {
         let calendar = Calendar.current
@@ -53,186 +55,140 @@ struct ExerciseLogView: View {
     let descriptionTextLimit = 1000
     
     var body: some View {
-        NavigationView {
-            ScrollView {
+        ScrollView {
+            VStack(alignment: .leading) {
+                Text("Create Exercise Log")
+                    .font(.title)
+                    .foregroundColor(.black)
+                    .bold()
+                
                 VStack(alignment: .leading) {
-                    Text("Create Exercise Log")
-                        .font(.title)
-                        .foregroundColor(.black)
-                        .bold()
+                    HStack {
+                        Text(Constants.getFeelDescription(Int(feel) - 1))
+                            .font(.subheadline)
+                            .foregroundColor(Color(UIColor(0x737373)))
+                    }
+                    .frame(minWidth: 0, maxWidth: .infinity, alignment: .trailing)
                     
                     VStack(alignment: .leading) {
-                        HStack {
-                            Text(Constants.getFeelDescription(Int(feel) - 1))
-                                .font(.subheadline)
-                                .foregroundColor(Color(UIColor(0x737373)))
-                        }
-                        .frame(minWidth: 0, maxWidth: .infinity, alignment: .trailing)
+                        Text("Exercise Name*")
+                            .font(.subheadline)
+                            .foregroundColor(Color(UIColor(Constants.spotPaletteBrown)))
+                            .bold()
                         
                         VStack(alignment: .leading) {
-                            Text("Exercise Name*")
+                            TextField("", text: $name) { isEditing in
+                                self.isEditingName = isEditing
+                            }
+                            .onReceive(Just(name), perform: { _ in
+                                limitNameText(nameTextLimit)
+                                validateNameText()
+                            })
+                            .autocapitalization(.none)
+                            .disableAutocorrection(true)
+                            .background(Color(UIColor.white))
+                            .border(
+                                Color(UIColor(Constants.spotPaletteCream)),
+                                width: isEditingName ? 1 : 0
+                            )
+                            .border(
+                                Color(UIColor(Constants.statusWarning)),
+                                width: nameStatus == InputStatus.warning ? 2 : 0
+                            )
+                            .border(
+                                Color(UIColor(Constants.statusFailure)),
+                                width: nameStatus == InputStatus.failure ? 2 : 0
+                            )
+                            .frame(minHeight: 30)
+                            
+                            if nameStatus == InputStatus.warning {
+                                Text("Exercise logs must have a name.")
+                                    .font(.caption)
+                                    .foregroundColor(Color(UIColor(Constants.statusFailure)))
+                            }
+                        }
+                    }
+                    .padding(.top, 5.0)
+                    
+                    HStack {
+                        VStack(alignment: .leading) {
+                            Text("Location")
                                 .font(.subheadline)
                                 .foregroundColor(Color(UIColor(Constants.spotPaletteBrown)))
                                 .bold()
                             
-                            VStack(alignment: .leading) {
-                                TextField("", text: $name) { isEditing in
-                                    self.isEditingName = isEditing
-                                }
-                                .onReceive(Just(name), perform: { _ in
-                                    limitNameText(nameTextLimit)
-                                    validateNameText()
-                                })
-                                .autocapitalization(.none)
-                                .disableAutocorrection(true)
-                                .background(Color(UIColor.white))
-                                .border(
-                                    Color(UIColor(Constants.spotPaletteCream)),
-                                    width: isEditingName ? 1 : 0
-                                )
-                                .border(
-                                    Color(UIColor(Constants.statusWarning)),
-                                    width: nameStatus == InputStatus.warning ? 2 : 0
-                                )
-                                .frame(minHeight: 30)
-                                
-                                if nameStatus == InputStatus.warning {
-                                    Text("Exercise logs must have a name.")
-                                        .font(.caption)
-                                        .foregroundColor(Color(UIColor(Constants.statusFailure)))
-                                }
+                            TextField("", text: $location) { isEditing in
+                                self.isEditingLocation = isEditing
                             }
+                            .onReceive(Just(location), perform: { _ in
+                                limitLocationText(locationTextLimit)
+                            })
+                            .autocapitalization(.none)
+                            .disableAutocorrection(true)
+                            .background(Color(UIColor.white))
+                            .border(
+                                Color(UIColor(Constants.spotPaletteCream)),
+                                width: isEditingLocation ? 1 : 0
+                            )
+                            .frame(minHeight: 30)
                         }
-                        .padding(.top, 5.0)
-                        
-                        HStack {
-                            VStack(alignment: .leading) {
-                                Text("Location")
-                                    .font(.subheadline)
-                                    .foregroundColor(Color(UIColor(Constants.spotPaletteBrown)))
-                                    .bold()
-                                
-                                TextField("", text: $location) { isEditing in
-                                    self.isEditingLocation = isEditing
-                                }
-                                .onReceive(Just(location), perform: { _ in
-                                    limitLocationText(locationTextLimit)
-                                })
-                                .autocapitalization(.none)
-                                .disableAutocorrection(true)
-                                .background(Color(UIColor.white))
-                                .border(
-                                    Color(UIColor(Constants.spotPaletteCream)),
-                                    width: isEditingLocation ? 1 : 0
-                                )
-                                .frame(minHeight: 30)
-                            }
-                            VStack(alignment: .leading) {
-                                Text("Date*")
-                                    .font(.subheadline)
-                                    .foregroundColor(Color(UIColor(Constants.spotPaletteBrown)))
-                                    .bold()
-                                    .padding(.leading, 8)
-                                
-                                DatePicker(
-                                    "",
-                                    selection: $date,
-                                    in: dateRange,
-                                    displayedComponents: [.date]
-                                )
-                                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 30)
-                                .accentColor(Color(UIColor(Constants.saintsXctfRed)))
-                            }
-                            .frame(minWidth: 0, maxWidth: 130)
+                        VStack(alignment: .leading) {
+                            Text("Date*")
+                                .font(.subheadline)
+                                .foregroundColor(Color(UIColor(Constants.spotPaletteBrown)))
+                                .bold()
+                                .padding(.leading, 8)
+                            
+                            DatePicker(
+                                "",
+                                selection: $date,
+                                in: dateRange,
+                                displayedComponents: [.date]
+                            )
+                            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 30)
+                            .accentColor(Color(UIColor(Constants.saintsXctfRed)))
                         }
-                        .padding(.top, 5.0)
-                        .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
-                        
-                        HStack {
-                            VStack(alignment: .leading) {
-                                Text("Exercise Type")
-                                    .font(.subheadline)
-                                    .foregroundColor(Color(UIColor(Constants.spotPaletteBrown)))
-                                    .bold()
-                                
-                                Picker(
-                                    selection: $exerciseType,
-                                    label: Text("\(exerciseType.rawValue.capitalized)")
-                                ) {
-                                    ForEach(ExerciseType.allCases) { type in
-                                        Text(type.rawValue.capitalized)
-                                            .tag(type)
-                                    }
+                        .frame(minWidth: 0, maxWidth: 130)
+                    }
+                    .padding(.top, 5.0)
+                    .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+                    
+                    HStack {
+                        VStack(alignment: .leading) {
+                            Text("Exercise Type")
+                                .font(.subheadline)
+                                .foregroundColor(Color(UIColor(Constants.spotPaletteBrown)))
+                                .bold()
+                            
+                            Picker(
+                                selection: $exerciseType,
+                                label: Text("\(exerciseType.rawValue.capitalized)")
+                            ) {
+                                ForEach(ExerciseType.allCases) { type in
+                                    Text(type.rawValue.capitalized)
+                                        .tag(type)
                                 }
-                                .pickerStyle(MenuPickerStyle())
-                                .foregroundColor(Color(UIColor(Constants.saintsXctfRed)))
-                                .frame(width: 80, alignment: .leading)
                             }
+                            .pickerStyle(MenuPickerStyle())
+                            .foregroundColor(Color(UIColor(Constants.saintsXctfRed)))
+                            .frame(width: 80, alignment: .leading)
                         }
-                        .padding(.top, 5.0)
-                        
-                        HStack {
-                            VStack(alignment: .leading) {
-                                Text("Distance")
-                                    .font(.subheadline)
-                                    .foregroundColor(Color(UIColor(Constants.spotPaletteBrown)))
-                                    .bold()
-                                
-                                HStack {
-                                    TextField("", text: $distance) { isEditing in
-                                        self.isEditingDistance = isEditing
-                                    }
-                                    .onReceive(Just(distance), perform: { _ in
-                                        filterDistanceText()
-                                        validateTimeAndDistance()
-                                    })
-                                    .autocapitalization(.none)
-                                    .disableAutocorrection(true)
-                                    .keyboardType(.numbersAndPunctuation)
-                                    .background(Color(UIColor.white))
-                                    .border(
-                                        Color(UIColor(Constants.spotPaletteCream)),
-                                        width: isEditingDistance ? 1 : 0
-                                    )
-                                    .border(
-                                        Color(UIColor(Constants.statusWarning)),
-                                        width: distanceStatus == InputStatus.warning ? 2 : 0
-                                    )
-                                    .frame(minWidth: 90, minHeight: 30)
-                                    
-                                    Picker(
-                                        selection: $metric,
-                                        label: Text("\(metric.rawValue.capitalized)")
-                                    ) {
-                                        ForEach(Metric.allCases) { metric in
-                                            Text(metric.rawValue.capitalized)
-                                                .tag(metric)
-                                        }
-                                    }
-                                    .pickerStyle(MenuPickerStyle())
-                                    .foregroundColor(Color(UIColor(Constants.saintsXctfRed)))
-                                    .frame(width: 90, alignment: .leading)
+                    }
+                    .padding(.top, 5.0)
+                    
+                    HStack {
+                        VStack(alignment: .leading) {
+                            Text("Distance")
+                                .font(.subheadline)
+                                .foregroundColor(Color(UIColor(Constants.spotPaletteBrown)))
+                                .bold()
+                            
+                            HStack {
+                                TextField("", text: $distance) { isEditing in
+                                    self.isEditingDistance = isEditing
                                 }
-                                
-                                if distanceStatus == InputStatus.warning {
-                                    Text("A distance is required if no time is entered.")
-                                        .font(.caption)
-                                        .foregroundColor(Color(UIColor(Constants.statusFailure)))
-                                }
-                            }
-                            VStack(alignment: .leading) {
-                                Text("Time")
-                                    .font(.subheadline)
-                                    .foregroundColor(Color(UIColor(Constants.spotPaletteBrown)))
-                                    .bold()
-                                
-                                TextField("", text: $formattedTime) { isEditing in
-                                    self.isEditingTime = isEditing
-                                }
-                                .onReceive(Just(formattedTime), perform: { _ in
-                                    filterTimeText()
-                                    limitTimeText(timeTextLimit)
-                                    setFormattedTimeText()
+                                .onReceive(Just(distance), perform: { _ in
+                                    filterDistanceText()
                                     validateTimeAndDistance()
                                 })
                                 .autocapitalization(.none)
@@ -241,149 +197,201 @@ struct ExerciseLogView: View {
                                 .background(Color(UIColor.white))
                                 .border(
                                     Color(UIColor(Constants.spotPaletteCream)),
-                                    width: isEditingTime ? 1 : 0
+                                    width: isEditingDistance ? 1 : 0
                                 )
                                 .border(
                                     Color(UIColor(Constants.statusWarning)),
-                                    width: timeStatus == InputStatus.warning ? 2 : 0
+                                    width: distanceStatus == InputStatus.warning ? 2 : 0
                                 )
-                                .frame(minHeight: 30)
-                                
-                                if timeStatus == InputStatus.warning {
-                                    Text("A time is required if no distance is entered.")
-                                        .font(.caption)
-                                        .foregroundColor(Color(UIColor(Constants.statusFailure)))
-                                }
-                            }
-                        }
-                        .padding(.top, 5.0)
-                        
-                        HStack {
-                            VStack(alignment: .leading) {
-                                Text("Feel")
-                                    .font(.subheadline)
-                                    .foregroundColor(Color(UIColor(Constants.spotPaletteBrown)))
-                                    .bold()
-                                
-                                Slider(
-                                    value: $feel,
-                                    in: 1...10,
-                                    step: 1
-                                ) {
-                                    Text("Title")
-                                }
-                                .accentColor(Color(UIColor(Constants.saintsXctfRed)))
-                            }
-                        }
-                        .padding(.top, 5.0)
-                        
-                        HStack {
-                            VStack(alignment: .leading) {
-                                Text("Description")
-                                    .font(.subheadline)
-                                    .foregroundColor(Color(UIColor(Constants.spotPaletteBrown)))
-                                    .bold()
-                                
-                                TextField("", text: $description) { isEditing in
-                                    self.isEditingDescription = isEditing
-                                }
-                                .onReceive(Just(description), perform: { _ in
-                                    limitDescriptionText(descriptionTextLimit)
-                                })
-                                .autocapitalization(.none)
-                                .disableAutocorrection(true)
-                                .background(Color(UIColor.white))
                                 .border(
-                                    Color(UIColor(Constants.spotPaletteCream)),
-                                    width: isEditingDescription ? 1 : 0
+                                    Color(UIColor(Constants.statusFailure)),
+                                    width: distanceStatus == InputStatus.failure ? 2 : 0
                                 )
-                                .frame(minHeight: 30)
+                                .frame(minWidth: 90, minHeight: 30)
+                                
+                                Picker(
+                                    selection: $metric,
+                                    label: Text("\(metric.rawValue.capitalized)")
+                                ) {
+                                    ForEach(Metric.allCases) { metric in
+                                        Text(metric.rawValue.capitalized)
+                                            .tag(metric)
+                                    }
+                                }
+                                .pickerStyle(MenuPickerStyle())
+                                .foregroundColor(Color(UIColor(Constants.saintsXctfRed)))
+                                .frame(width: 90, alignment: .leading)
+                            }
+                            
+                            if distanceStatus == InputStatus.warning {
+                                Text("A distance is required if no time is entered.")
+                                    .font(.caption)
+                                    .foregroundColor(Color(UIColor(Constants.statusFailure)))
                             }
                         }
-                        .padding(.top, 5.0)
-                        
-                        HStack(spacing: 20) {
-                            Button(action: {
-                                onCreate()
-                            }) {
-                                Text("Create")
-                                    .foregroundColor(Color(UIColor(Constants.saintsXctfRed)))
+                        VStack(alignment: .leading) {
+                            Text("Time")
+                                .font(.subheadline)
+                                .foregroundColor(Color(UIColor(Constants.spotPaletteBrown)))
+                                .bold()
+                            
+                            TextField("", text: $formattedTime) { isEditing in
+                                self.isEditingTime = isEditing
                             }
-                            Button(action: {
-                                onCancel()
-                            }) {
-                                Text("Cancel")
-                                    .foregroundColor(Color(UIColor(Constants.darkGray)))
+                            .onReceive(Just(formattedTime), perform: { _ in
+                                filterTimeText()
+                                limitTimeText(timeTextLimit)
+                                setFormattedTimeText()
+                                validateTimeAndDistance()
+                            })
+                            .autocapitalization(.none)
+                            .disableAutocorrection(true)
+                            .keyboardType(.numbersAndPunctuation)
+                            .background(Color(UIColor.white))
+                            .border(
+                                Color(UIColor(Constants.spotPaletteCream)),
+                                width: isEditingTime ? 1 : 0
+                            )
+                            .border(
+                                Color(UIColor(Constants.statusWarning)),
+                                width: timeStatus == InputStatus.warning ? 2 : 0
+                            )
+                            .border(
+                                Color(UIColor(Constants.statusFailure)),
+                                width: timeStatus == InputStatus.failure ? 2 : 0
+                            )
+                            .frame(minHeight: 30)
+                            
+                            if timeStatus == InputStatus.warning {
+                                Text("A time is required if no distance is entered.")
+                                    .font(.caption)
+                                    .foregroundColor(Color(UIColor(Constants.statusFailure)))
                             }
                         }
-                        .padding(.top, 15)
-                        .padding(.trailing, 10)
-                        .frame(minWidth: 0, maxWidth: .infinity, alignment: .trailing)
                     }
-                    .padding()
-                    .overlay(
-                        Rectangle()
-                            .stroke(Color.gray, lineWidth: 0.25)
-                            .shadow(radius: 2)
-                    )
-                    .background(Color.init(UIColor(Constants.getFeelColor(Int(feel - 1)))))
-                    .cornerRadius(5)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding(.top, 5.0)
+                    
+                    HStack {
+                        VStack(alignment: .leading) {
+                            Text("Feel")
+                                .font(.subheadline)
+                                .foregroundColor(Color(UIColor(Constants.spotPaletteBrown)))
+                                .bold()
+                            
+                            Slider(
+                                value: $feel,
+                                in: 1...10,
+                                step: 1
+                            ) {
+                                Text("Title")
+                            }
+                            .accentColor(Color(UIColor(Constants.saintsXctfRed)))
+                        }
+                    }
+                    .padding(.top, 5.0)
+                    
+                    HStack {
+                        VStack(alignment: .leading) {
+                            Text("Description")
+                                .font(.subheadline)
+                                .foregroundColor(Color(UIColor(Constants.spotPaletteBrown)))
+                                .bold()
+                            
+                            TextField("", text: $description) { isEditing in
+                                self.isEditingDescription = isEditing
+                            }
+                            .onReceive(Just(description), perform: { _ in
+                                limitDescriptionText(descriptionTextLimit)
+                            })
+                            .autocapitalization(.none)
+                            .disableAutocorrection(true)
+                            .background(Color(UIColor.white))
+                            .border(
+                                Color(UIColor(Constants.spotPaletteCream)),
+                                width: isEditingDescription ? 1 : 0
+                            )
+                            .frame(minHeight: 30)
+                        }
+                    }
+                    .padding(.top, 5.0)
+                    
+                    HStack(spacing: 20) {
+                        Button(action: {
+                            onCreate()
+                        }) {
+                            Text("Create")
+                                .foregroundColor(Color(UIColor(Constants.saintsXctfRed)))
+                        }
+                        .disabled(isCreating)
+                        
+                        Button(action: {
+                            onCancel()
+                        }) {
+                            Text("Cancel")
+                                .foregroundColor(Color(UIColor(Constants.darkGray)))
+                        }
+                        .disabled(isCreating)
+                    }
+                    .padding(.top, 15)
+                    .padding(.trailing, 10)
+                    .frame(minWidth: 0, maxWidth: .infinity, alignment: .trailing)
                 }
                 .padding()
-                .padding(.top, 20)
-                .alert(isPresented: $showSuccess) {
-                    Alert(
-                        title: Text("Exercise log created!"),
-                        dismissButton: .cancel(
-                            Text("Continue"),
-                            action: {
-                                print("Continue")
-                            }
-                        )
+                .overlay(
+                    Rectangle()
+                        .stroke(Color.gray, lineWidth: 0.25)
+                        .shadow(radius: 2)
+                )
+                .background(Color.init(UIColor(Constants.getFeelColor(Int(feel - 1)))))
+                .cornerRadius(5)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+            }
+            .padding()
+            .padding(.top, 20)
+            .alert(isPresented: $showSuccess) {
+                Alert(
+                    title: Text("Exercise log created!"),
+                    dismissButton: .cancel(
+                        Text("Continue"),
+                        action: {
+                            print("Continue")
+                        }
                     )
-                }
-                .alert(isPresented: $showError) {
-                    Alert(
-                        title: Text("An unexpected error occurred while creating an exercise log."),
-                        primaryButton: .default(
-                            Text("Try Again"),
-                            action: {
-                                print("Try Again")
-                            }
-                        ),
-                        secondaryButton: .cancel(
-                            Text("Cancel"),
-                            action: {
-                                print("Cancel")
-                            }
-                        )
+                )
+            }
+            .alert(isPresented: $showError) {
+                Alert(
+                    title: Text("An unexpected error occurred while creating an exercise log."),
+                    primaryButton: .default(
+                        Text("Try Again"),
+                        action: {
+                            print("Try Again")
+                        }
+                    ),
+                    secondaryButton: .cancel(
+                        Text("Cancel"),
+                        action: {
+                            print("Cancel")
+                        }
                     )
-                }
-                .alert(isPresented: $showCanceling) {
-                    Alert(
-                        title: Text("Are you sure you want to cancel your changes?"),
-                        message: Text("You will be navigated to the home page."),
-                        primaryButton: .default(
-                            Text("Yes"),
-                            action: {
-                                onConfirmCancel()
-                            }
-                        ),
-                        secondaryButton: .cancel(
-                            Text("No")
-                        )
+                )
+            }
+            .alert(isPresented: $showCanceling) {
+                Alert(
+                    title: Text("Are you sure you want to cancel your changes?"),
+                    message: Text("Your progress will be lost."),
+                    primaryButton: .default(
+                        Text("Yes"),
+                        action: {
+                            onConfirmCancel()
+                        }
+                    ),
+                    secondaryButton: .cancel(
+                        Text("No")
                     )
-                }
+                )
             }
         }
-        NavigationLink(
-            destination: MainView(),
-            isActive: $confirmCancel,
-            label: {
-                EmptyView()
-            }
-        )
     }
     
     func limitNameText(_ upper: Int) {
@@ -480,12 +488,47 @@ struct ExerciseLogView: View {
     }
     
     func onConfirmCancel() {
-        print("Confirm Cancel")
-        confirmCancel = true
+        reset()
     }
     
     func onCreate() {
+        isCreating = true
+        var failedValidation = false
         
+        if name.trimmingCharacters(in: .whitespaces).count == 0 {
+            failedValidation = true
+            nameStatus = InputStatus.failure
+        }
+        
+        if time.count == 0 && distance.count == 0 {
+            failedValidation = true
+            timeStatus = InputStatus.failure
+            distanceStatus = InputStatus.failure
+        }
+        
+        if failedValidation {
+            print("Failed")
+        } else {
+            print("Passed")
+        }
+        
+        isCreating = false
+    }
+    
+    func reset() {
+        name = ""
+        nameStatus = InputStatus.initial
+        location = ""
+        date = Date()
+        exerciseType = ExerciseType.run
+        distance = ""
+        distanceStatus = InputStatus.initial
+        metric = Metric.miles
+        time = ""
+        timeStatus = InputStatus.initial
+        formattedTime = ""
+        feel = 6.0
+        description = ""
     }
 }
 

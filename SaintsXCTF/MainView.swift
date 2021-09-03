@@ -11,8 +11,8 @@ import SwiftUI
 
 struct MainView: UIViewControllerRepresentable {
     func makeUIViewController(context: Context) -> some UIViewController {
-        guard let viewController = UIStoryboard(name: "MainViewController", bundle: nil).instantiateViewController(
-            identifier: "mainViewController"
+        guard let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(
+            identifier: "showLogView"
         ) as? MainViewController else {
             fatalError("MainViewController not implemented in storyboard.")
         }

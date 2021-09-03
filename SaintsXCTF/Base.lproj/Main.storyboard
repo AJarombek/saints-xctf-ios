@@ -300,10 +300,10 @@
             </objects>
             <point key="canvasLocation" x="1000.8" y="-1224.737631184408"/>
         </scene>
-        <!--Main View Controller-->
+        <!--MainViewController-->
         <scene sceneID="948-tj-hXj">
             <objects>
-                <tableViewController storyboardIdentifier="showLogView" automaticallyAdjustsScrollViewInsets="NO" id="ZHR-vo-NS8" customClass="MainViewController" customModule="SaintsXCTF" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="showLogView" title="MainViewController" automaticallyAdjustsScrollViewInsets="NO" id="ZHR-vo-NS8" customClass="MainViewController" customModule="SaintsXCTF" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="119" sectionHeaderHeight="28" sectionFooterHeight="28" id="zQP-vr-edn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -19,6 +19,7 @@
 		3F53B18F266C2CAC003D8F12 /* UserStubs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F53B18E266C2CAC003D8F12 /* UserStubs.swift */; };
 		3F597A7F26DDA33B00B35715 /* Devices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F597A7E26DDA33B00B35715 /* Devices.swift */; };
 		3F597A8F26E0545700B35715 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F597A8E26E0545700B35715 /* MainView.swift */; };
+		3F597A9326E1A87A00B35715 /* NewLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F597A9226E1A87A00B35715 /* NewLog.swift */; };
 		3F633E7726D72520009F05AC /* ExerciseLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F633E7626D72520009F05AC /* ExerciseLogView.swift */; };
 		3F633E8726D87B63009F05AC /* ExerciseLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F633E8626D87B63009F05AC /* ExerciseLogViewController.swift */; };
 		3F633E8C26D9B0D7009F05AC /* ExerciseType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F633E8B26D9B0D7009F05AC /* ExerciseType.swift */; };
@@ -225,6 +226,7 @@
 		3F53B18E266C2CAC003D8F12 /* UserStubs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStubs.swift; sourceTree = "<group>"; };
 		3F597A7E26DDA33B00B35715 /* Devices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Devices.swift; sourceTree = "<group>"; };
 		3F597A8E26E0545700B35715 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		3F597A9226E1A87A00B35715 /* NewLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewLog.swift; sourceTree = "<group>"; };
 		3F633E7626D72520009F05AC /* ExerciseLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseLogView.swift; sourceTree = "<group>"; };
 		3F633E8626D87B63009F05AC /* ExerciseLogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseLogViewController.swift; sourceTree = "<group>"; };
 		3F633E8B26D9B0D7009F05AC /* ExerciseType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseType.swift; sourceTree = "<group>"; };
@@ -435,6 +437,7 @@
 				A15E622F1F3F981600AC9EF1 /* LogViewController.swift */,
 				3F633E7626D72520009F05AC /* ExerciseLogView.swift */,
 				3F633E8626D87B63009F05AC /* ExerciseLogViewController.swift */,
+				3F597A9226E1A87A00B35715 /* NewLog.swift */,
 			);
 			name = Log;
 			sourceTree = "<group>";
@@ -1049,6 +1052,7 @@
 				3F633E8C26D9B0D7009F05AC /* ExerciseType.swift in Sources */,
 				A1505B901E8F105A00F111DB /* Comment.swift in Sources */,
 				A15E62371F3FA45F00AC9EF1 /* PickGroupViewController.swift in Sources */,
+				3F597A9326E1A87A00B35715 /* NewLog.swift in Sources */,
 				A1505B961E8F112500F111DB /* GroupMember.swift in Sources */,
 				3F633E7726D72520009F05AC /* ExerciseLogView.swift in Sources */,
 				A15E62301F3F981600AC9EF1 /* LogViewController.swift in Sources */,
