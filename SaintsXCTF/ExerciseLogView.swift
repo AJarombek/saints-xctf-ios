@@ -10,26 +10,19 @@ import SwiftUI
 import Combine
 
 struct ExerciseLogView: View {
-    @StateObject private var log = NewLog()
+    @ObservedObject var log: ExerciseLog
+    @ObservedObject var meta: ExerciseLogMeta
     
-    @State private var name: String = ""
     @State private var isEditingName: Bool = false
     @State private var nameStatus: InputStatus = InputStatus.initial
-    @State private var location: String = ""
     @State private var isEditingLocation: Bool = false
-    @State private var date: Date = Date()
     @State private var isEditingDate: Bool = false
-    @State private var exerciseType: ExerciseType = ExerciseType.run
-    @State private var distance: String = ""
     @State private var distanceStatus: InputStatus = InputStatus.initial
     @State private var isEditingDistance: Bool = false
-    @State private var metric: Metric = Metric.miles
-    @State private var time: String = ""
+    @State private var rawTime: String = ""
+    @State private var displayedTime: String = ""
     @State private var timeStatus: InputStatus = InputStatus.initial
-    @State private var formattedTime: String = ""
     @State private var isEditingTime: Bool = false
-    @State private var feel: Float = 6.0
-    @State private var description: String = ""
     @State private var isEditingDescription: Bool = false
     
     @State private var showSuccess: Bool = false
@@ -57,14 +50,14 @@ struct ExerciseLogView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
-                Text("Create Exercise Log")
+                Text(meta.isExistingLog ? "Edit Exercise Log" : "Create Exercise Log")
                     .font(.title)
                     .foregroundColor(.black)
                     .bold()
                 
                 VStack(alignment: .leading) {
                     HStack {
-                        Text(Constants.getFeelDescription(Int(feel) - 1))
+                        Text(Constants.getFeelDescription(Int(log.feel) - 1))
                             .font(.subheadline)
                             .foregroundColor(Color(UIColor(0x737373)))
                     }
@@ -77,10 +70,10 @@ struct ExerciseLogView: View {
                             .bold()
                         
                         VStack(alignment: .leading) {
-                            TextField("", text: $name) { isEditing in
+                            TextField("", text: $log.name) { isEditing in
                                 self.isEditingName = isEditing
                             }
-                            .onReceive(Just(name), perform: { _ in
+                            .onReceive(Just(log.name), perform: { _ in
                                 limitNameText(nameTextLimit)
                                 validateNameText()
                             })
@@ -117,10 +110,10 @@ struct ExerciseLogView: View {
                                 .foregroundColor(Color(UIColor(Constants.spotPaletteBrown)))
                                 .bold()
                             
-                            TextField("", text: $location) { isEditing in
+                            TextField("", text: $log.location) { isEditing in
                                 self.isEditingLocation = isEditing
                             }
-                            .onReceive(Just(location), perform: { _ in
+                            .onReceive(Just(log.location), perform: { _ in
                                 limitLocationText(locationTextLimit)
                             })
                             .autocapitalization(.none)
@@ -141,7 +134,7 @@ struct ExerciseLogView: View {
                             
                             DatePicker(
                                 "",
-                                selection: $date,
+                                selection: $log.date,
                                 in: dateRange,
                                 displayedComponents: [.date]
                             )
@@ -161,8 +154,8 @@ struct ExerciseLogView: View {
                                 .bold()
                             
                             Picker(
-                                selection: $exerciseType,
-                                label: Text("\(exerciseType.rawValue.capitalized)")
+                                selection: $log.exerciseType,
+                                label: Text("\(log.exerciseType.rawValue.capitalized)")
                             ) {
                                 ForEach(ExerciseType.allCases) { type in
                                     Text(type.rawValue.capitalized)
@@ -184,10 +177,10 @@ struct ExerciseLogView: View {
                                 .bold()
                             
                             HStack {
-                                TextField("", text: $distance) { isEditing in
+                                TextField("", text: $log.distance) { isEditing in
                                     self.isEditingDistance = isEditing
                                 }
-                                .onReceive(Just(distance), perform: { _ in
+                                .onReceive(Just(log.distance), perform: { _ in
                                     filterDistanceText()
                                     validateTimeAndDistance()
                                 })
@@ -210,8 +203,8 @@ struct ExerciseLogView: View {
                                 .frame(minWidth: 90, minHeight: 30)
                                 
                                 Picker(
-                                    selection: $metric,
-                                    label: Text("\(metric.rawValue.capitalized)")
+                                    selection: $log.metric,
+                                    label: Text("\(log.metric.rawValue.capitalized)")
                                 ) {
                                     ForEach(Metric.allCases) { metric in
                                         Text(metric.rawValue.capitalized)
@@ -235,10 +228,10 @@ struct ExerciseLogView: View {
                                 .foregroundColor(Color(UIColor(Constants.spotPaletteBrown)))
                                 .bold()
                             
-                            TextField("", text: $formattedTime) { isEditing in
+                            TextField("", text: $displayedTime) { isEditing in
                                 self.isEditingTime = isEditing
                             }
-                            .onReceive(Just(formattedTime), perform: { _ in
+                            .onReceive(Just(displayedTime), perform: { _ in
                                 filterTimeText()
                                 limitTimeText(timeTextLimit)
                                 setFormattedTimeText()
@@ -279,7 +272,7 @@ struct ExerciseLogView: View {
                                 .bold()
                             
                             Slider(
-                                value: $feel,
+                                value: $log.feel,
                                 in: 1...10,
                                 step: 1
                             ) {
@@ -297,10 +290,10 @@ struct ExerciseLogView: View {
                                 .foregroundColor(Color(UIColor(Constants.spotPaletteBrown)))
                                 .bold()
                             
-                            TextField("", text: $description) { isEditing in
+                            TextField("", text: $log.description) { isEditing in
                                 self.isEditingDescription = isEditing
                             }
-                            .onReceive(Just(description), perform: { _ in
+                            .onReceive(Just(log.description), perform: { _ in
                                 limitDescriptionText(descriptionTextLimit)
                             })
                             .autocapitalization(.none)
@@ -342,7 +335,7 @@ struct ExerciseLogView: View {
                         .stroke(Color.gray, lineWidth: 0.25)
                         .shadow(radius: 2)
                 )
-                .background(Color.init(UIColor(Constants.getFeelColor(Int(feel - 1)))))
+                .background(Color.init(UIColor(Constants.getFeelColor(Int(log.feel - 1)))))
                 .cornerRadius(5)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
             }
@@ -395,13 +388,13 @@ struct ExerciseLogView: View {
     }
     
     func limitNameText(_ upper: Int) {
-        if name.count > upper {
-            name = String(name.prefix(upper))
+        if log.name.count > upper {
+            log.name = String(log.name.prefix(upper))
         }
     }
     
     func validateNameText() {
-        if name.count == 0 {
+        if log.name.count == 0 {
             if nameStatus != InputStatus.initial {
                 nameStatus = InputStatus.warning
             }
@@ -411,46 +404,48 @@ struct ExerciseLogView: View {
     }
     
     func limitLocationText(_ upper: Int) {
-        if location.count > upper {
-            location = String(location.prefix(upper))
-        }
-    }
-    
-    func limitTimeText(_ upper: Int) {
-        if time.count > upper {
-            time = String(time.prefix(upper))
+        if log.location.count > upper {
+            log.location = String(log.location.prefix(upper))
         }
     }
     
     func filterTimeText() {
-        time = formattedTime
+        rawTime = displayedTime
         
         var filteredTime = ""
-        for char in time {
+        for char in rawTime {
             if let intValue = char.wholeNumberValue {
                 filteredTime += "\(intValue)"
             }
         }
         
-        time = filteredTime
+        rawTime = filteredTime
+    }
+    
+    func limitTimeText(_ upper: Int) {
+        if rawTime.count > upper {
+            rawTime = String(rawTime.prefix(upper))
+        }
     }
     
     func setFormattedTimeText() {
-        formattedTime = time
+        displayedTime = rawTime
             .enumerated()
             .map {
-                ((time.count - $0.offset) % 2 != 0) || $0.offset == 0 ?
+                ((rawTime.count - $0.offset) % 2 != 0) || $0.offset == 0 ?
                     $0.element.description : ":\($0.element)"
             }.reduce("") {
                 $0 + $1
             }
+        
+        log.time = displayedTime
     }
     
     func filterDistanceText() {
         var decimalPointUsed = false
         var filteredDistance = ""
         
-        for char in distance {
+        for char in log.distance {
             if let intValue = char.wholeNumberValue {
                 filteredDistance += "\(intValue)"
             } else if char == "." && !decimalPointUsed {
@@ -459,11 +454,11 @@ struct ExerciseLogView: View {
             }
         }
         
-        distance = filteredDistance
+        log.distance = filteredDistance
     }
     
     func validateTimeAndDistance() {
-        if time.count == 0 && distance.count == 0 {
+        if rawTime.count == 0 && log.distance.count == 0 {
             if timeStatus != InputStatus.initial {
                 timeStatus = InputStatus.warning
             }
@@ -478,8 +473,8 @@ struct ExerciseLogView: View {
     }
     
     func limitDescriptionText(_ upper: Int) {
-        if description.count > upper {
-            description = String(description.prefix(upper))
+        if log.description.count > upper {
+            log.description = String(log.description.prefix(upper))
         }
     }
     
@@ -495,12 +490,12 @@ struct ExerciseLogView: View {
         isCreating = true
         var failedValidation = false
         
-        if name.trimmingCharacters(in: .whitespaces).count == 0 {
+        if log.name.trimmingCharacters(in: .whitespaces).count == 0 {
             failedValidation = true
             nameStatus = InputStatus.failure
         }
         
-        if time.count == 0 && distance.count == 0 {
+        if rawTime.count == 0 && log.distance.count == 0 {
             failedValidation = true
             timeStatus = InputStatus.failure
             distanceStatus = InputStatus.failure
@@ -516,26 +511,27 @@ struct ExerciseLogView: View {
     }
     
     func reset() {
-        name = ""
+        log.name = ""
         nameStatus = InputStatus.initial
-        location = ""
-        date = Date()
-        exerciseType = ExerciseType.run
-        distance = ""
+        log.location = ""
+        log.date = Date()
+        log.exerciseType = ExerciseType.run
+        log.distance = ""
         distanceStatus = InputStatus.initial
-        metric = Metric.miles
-        time = ""
+        log.metric = Metric.miles
+        rawTime = ""
+        displayedTime = ""
         timeStatus = InputStatus.initial
-        formattedTime = ""
-        feel = 6.0
-        description = ""
+        log.time = ""
+        log.feel = 6.0
+        log.description = ""
     }
 }
 
 struct ExerciseLogView_Previews: PreviewProvider {
     static var previews: some View {
         ForEach(Devices.IPhonesSupported, id: \.self) { deviceName in
-            ExerciseLogView()
+            ExerciseLogView(log: ExerciseLog(), meta: ExerciseLogMeta(isExisting: false))
                 .previewDevice(PreviewDevice(rawValue: deviceName))
         }
     }

@@ -2379,7 +2379,7 @@
         <!--New Log-->
         <scene sceneID="Bsf-y4-8ba">
             <objects>
-                <viewController storyboardIdentifier="exerciseLogViewController" id="16X-We-aQn" customClass="ExerciseLogViewController" customModule="SaintsXCTF" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="createExerciseLogViewController" id="16X-We-aQn" customClass="CreateExerciseLogViewController" customModule="SaintsXCTF" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="j5M-th-VZ7"/>
                         <viewControllerLayoutGuide type="bottom" id="XCd-dq-fvu"/>

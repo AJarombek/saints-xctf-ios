@@ -8,13 +8,15 @@
 
 import SwiftUI
 
-class NewLog: ObservableObject {
+class ExerciseLog: ObservableObject {
+    @Published var id: Int? = nil
     @Published var name = ""
-    @Published var location = ""
-    @Published var date = Date()
-    @Published var distance = ""
+    var location = ""
+    var date = Date()
+    @Published var exerciseType = ExerciseType.run
+    var distance = ""
     @Published var metric = Metric.miles
-    @Published var time = ""
+    var time = ""
     @Published var feel = 6.0
-    @Published var description = ""
+    var description = ""
 }

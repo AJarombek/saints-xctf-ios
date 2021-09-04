@@ -19,9 +19,12 @@
 		3F53B18F266C2CAC003D8F12 /* UserStubs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F53B18E266C2CAC003D8F12 /* UserStubs.swift */; };
 		3F597A7F26DDA33B00B35715 /* Devices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F597A7E26DDA33B00B35715 /* Devices.swift */; };
 		3F597A8F26E0545700B35715 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F597A8E26E0545700B35715 /* MainView.swift */; };
-		3F597A9326E1A87A00B35715 /* NewLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F597A9226E1A87A00B35715 /* NewLog.swift */; };
+		3F597A9326E1A87A00B35715 /* ExerciseLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F597A9226E1A87A00B35715 /* ExerciseLog.swift */; };
+		3F597A9726E2C7D100B35715 /* CreateExerciseLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F597A9626E2C7D100B35715 /* CreateExerciseLogView.swift */; };
+		3F597A9B26E2C7E200B35715 /* EditExerciseLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F597A9A26E2C7E200B35715 /* EditExerciseLogView.swift */; };
+		3F597AA326E2F80D00B35715 /* ExerciseLogMeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F597AA226E2F80D00B35715 /* ExerciseLogMeta.swift */; };
 		3F633E7726D72520009F05AC /* ExerciseLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F633E7626D72520009F05AC /* ExerciseLogView.swift */; };
-		3F633E8726D87B63009F05AC /* ExerciseLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F633E8626D87B63009F05AC /* ExerciseLogViewController.swift */; };
+		3F633E8726D87B63009F05AC /* CreateExerciseLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F633E8626D87B63009F05AC /* CreateExerciseLogViewController.swift */; };
 		3F633E8C26D9B0D7009F05AC /* ExerciseType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F633E8B26D9B0D7009F05AC /* ExerciseType.swift */; };
 		3F633E9226DAD18A009F05AC /* Metric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F633E9126DAD189009F05AC /* Metric.swift */; };
 		3FC8B6F0262E5ABF00FFAB08 /* AuthClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC8B6EF262E5ABF00FFAB08 /* AuthClient.swift */; };
@@ -226,9 +229,12 @@
 		3F53B18E266C2CAC003D8F12 /* UserStubs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStubs.swift; sourceTree = "<group>"; };
 		3F597A7E26DDA33B00B35715 /* Devices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Devices.swift; sourceTree = "<group>"; };
 		3F597A8E26E0545700B35715 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
-		3F597A9226E1A87A00B35715 /* NewLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewLog.swift; sourceTree = "<group>"; };
+		3F597A9226E1A87A00B35715 /* ExerciseLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseLog.swift; sourceTree = "<group>"; };
+		3F597A9626E2C7D100B35715 /* CreateExerciseLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateExerciseLogView.swift; sourceTree = "<group>"; };
+		3F597A9A26E2C7E200B35715 /* EditExerciseLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditExerciseLogView.swift; sourceTree = "<group>"; };
+		3F597AA226E2F80D00B35715 /* ExerciseLogMeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseLogMeta.swift; sourceTree = "<group>"; };
 		3F633E7626D72520009F05AC /* ExerciseLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseLogView.swift; sourceTree = "<group>"; };
-		3F633E8626D87B63009F05AC /* ExerciseLogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseLogViewController.swift; sourceTree = "<group>"; };
+		3F633E8626D87B63009F05AC /* CreateExerciseLogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateExerciseLogViewController.swift; sourceTree = "<group>"; };
 		3F633E8B26D9B0D7009F05AC /* ExerciseType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseType.swift; sourceTree = "<group>"; };
 		3F633E9126DAD189009F05AC /* Metric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Metric.swift; sourceTree = "<group>"; };
 		3FC8B6EF262E5ABF00FFAB08 /* AuthClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthClient.swift; sourceTree = "<group>"; };
@@ -364,6 +370,26 @@
 			path = Stubs;
 			sourceTree = "<group>";
 		};
+		3F597AA026E2F6B700B35715 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3F597A9A26E2C7E200B35715 /* EditExerciseLogView.swift */,
+				3F597A9626E2C7D100B35715 /* CreateExerciseLogView.swift */,
+				3F633E8626D87B63009F05AC /* CreateExerciseLogViewController.swift */,
+				3F633E7626D72520009F05AC /* ExerciseLogView.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		3F597AA126E2F6C000B35715 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3F597A9226E1A87A00B35715 /* ExerciseLog.swift */,
+				3F597AA226E2F80D00B35715 /* ExerciseLogMeta.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		3F633E8A26D9B0C3009F05AC /* Enums */ = {
 			isa = PBXGroup;
 			children = (
@@ -434,10 +460,9 @@
 		A10D61C31F6E126900A406D9 /* Log */ = {
 			isa = PBXGroup;
 			children = (
+				3F597AA126E2F6C000B35715 /* Model */,
+				3F597AA026E2F6B700B35715 /* View */,
 				A15E622F1F3F981600AC9EF1 /* LogViewController.swift */,
-				3F633E7626D72520009F05AC /* ExerciseLogView.swift */,
-				3F633E8626D87B63009F05AC /* ExerciseLogViewController.swift */,
-				3F597A9226E1A87A00B35715 /* NewLog.swift */,
 			);
 			name = Log;
 			sourceTree = "<group>";
@@ -1030,13 +1055,14 @@
 				A1D53DF61E8DE25400842177 /* User.swift in Sources */,
 				A189682D1F7F253E0073A73B /* ProPicViewController.swift in Sources */,
 				A15E624C1F536C8500AC9EF1 /* Constants.swift in Sources */,
+				3F597AA326E2F80D00B35715 /* ExerciseLogMeta.swift in Sources */,
 				3F597A7F26DDA33B00B35715 /* Devices.swift in Sources */,
 				A1015A371EEDC0EA00A2358E /* ActivationCode.swift in Sources */,
 				A15E62471F5231CC00AC9EF1 /* UITableExt.swift in Sources */,
 				3FC8B6F0262E5ABF00FFAB08 /* AuthClient.swift in Sources */,
 				3F597A8F26E0545700B35715 /* MainView.swift in Sources */,
 				A19DED591F6CC79500E6C9DA /* Utils.swift in Sources */,
-				3F633E8726D87B63009F05AC /* ExerciseLogViewController.swift in Sources */,
+				3F633E8726D87B63009F05AC /* CreateExerciseLogViewController.swift in Sources */,
 				A18968291F7B44150073A73B /* DetailsViewController.swift in Sources */,
 				3FC8B7212634A7B400FFAB08 /* Environment.swift in Sources */,
 				A1B458961F11AC0800EDCF80 /* UITextFieldExt.swift in Sources */,
@@ -1051,8 +1077,9 @@
 				A15E623E1F41545000AC9EF1 /* SignedInUser.swift in Sources */,
 				3F633E8C26D9B0D7009F05AC /* ExerciseType.swift in Sources */,
 				A1505B901E8F105A00F111DB /* Comment.swift in Sources */,
+				3F597A9726E2C7D100B35715 /* CreateExerciseLogView.swift in Sources */,
 				A15E62371F3FA45F00AC9EF1 /* PickGroupViewController.swift in Sources */,
-				3F597A9326E1A87A00B35715 /* NewLog.swift in Sources */,
+				3F597A9326E1A87A00B35715 /* ExerciseLog.swift in Sources */,
 				A1505B961E8F112500F111DB /* GroupMember.swift in Sources */,
 				3F633E7726D72520009F05AC /* ExerciseLogView.swift in Sources */,
 				A15E62301F3F981600AC9EF1 /* LogViewController.swift in Sources */,
@@ -1061,6 +1088,7 @@
 				A11AB8BE1F92ACE60098AE8E /* Mail.swift in Sources */,
 				A15E62491F52372000AC9EF1 /* LogTableViewCell.swift in Sources */,
 				A15E62351F3F98EC00AC9EF1 /* SignOutViewController.swift in Sources */,
+				3F597A9B26E2C7E200B35715 /* EditExerciseLogView.swift in Sources */,
 				A11AB8A31F895CC40098AE8E /* WeeklyViewController.swift in Sources */,
 				3F28BC2E2661D00B008C7833 /* SignedUpViewController.swift in Sources */,
 				A15BA1671E8AF6CE00B9796B /* HomeViewController.swift in Sources */,
