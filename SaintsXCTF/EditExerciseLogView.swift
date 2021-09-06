@@ -13,12 +13,21 @@ struct EditExerciseLogView: View {
     @StateObject var meta = ExerciseLogMeta(isExisting: true)
     
     var body: some View {
-        ExerciseLogView(log: log)
+        ExerciseLogView(log: log, meta: meta)
     }
 }
 
 struct EditExerciseLogView_Previews: PreviewProvider {
+    static let previewAllDevices = false
+    
     static var previews: some View {
-        EditExerciseLogView()
+        if previewAllDevices {
+            ForEach(Devices.IPhonesSupported, id: \.self) { deviceName in
+                EditExerciseLogView()
+                    .previewDevice(PreviewDevice(rawValue: deviceName))
+            }
+        } else {
+            EditExerciseLogView()
+        }
     }
 }

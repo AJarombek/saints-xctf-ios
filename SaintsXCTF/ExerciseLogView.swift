@@ -93,6 +93,7 @@ struct ExerciseLogView: View {
                                 width: nameStatus == InputStatus.failure ? 2 : 0
                             )
                             .frame(minHeight: 30)
+                            .disabled(isCreating)
                             
                             if nameStatus == InputStatus.warning {
                                 Text("Exercise logs must have a name.")
@@ -124,6 +125,7 @@ struct ExerciseLogView: View {
                                 width: isEditingLocation ? 1 : 0
                             )
                             .frame(minHeight: 30)
+                            .disabled(isCreating)
                         }
                         VStack(alignment: .leading) {
                             Text("Date*")
@@ -140,6 +142,7 @@ struct ExerciseLogView: View {
                             )
                             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 30)
                             .accentColor(Color(UIColor(Constants.saintsXctfRed)))
+                            .disabled(isCreating)
                         }
                         .frame(minWidth: 0, maxWidth: 130)
                     }
@@ -165,6 +168,7 @@ struct ExerciseLogView: View {
                             .pickerStyle(MenuPickerStyle())
                             .foregroundColor(Color(UIColor(Constants.saintsXctfRed)))
                             .frame(width: 80, alignment: .leading)
+                            .disabled(isCreating)
                         }
                     }
                     .padding(.top, 5.0)
@@ -214,6 +218,7 @@ struct ExerciseLogView: View {
                                 .pickerStyle(MenuPickerStyle())
                                 .foregroundColor(Color(UIColor(Constants.saintsXctfRed)))
                                 .frame(width: 90, alignment: .leading)
+                                .disabled(isCreating)
                             }
                             
                             if distanceStatus == InputStatus.warning {
@@ -254,6 +259,7 @@ struct ExerciseLogView: View {
                                 width: timeStatus == InputStatus.failure ? 2 : 0
                             )
                             .frame(minHeight: 30)
+                            .disabled(isCreating)
                             
                             if timeStatus == InputStatus.warning {
                                 Text("A time is required if no distance is entered.")
@@ -279,6 +285,7 @@ struct ExerciseLogView: View {
                                 Text("Title")
                             }
                             .accentColor(Color(UIColor(Constants.saintsXctfRed)))
+                            .disabled(isCreating)
                         }
                     }
                     .padding(.top, 5.0)
@@ -304,6 +311,7 @@ struct ExerciseLogView: View {
                                 width: isEditingDescription ? 1 : 0
                             )
                             .frame(minHeight: 30)
+                            .disabled(isCreating)
                         }
                     }
                     .padding(.top, 5.0)
@@ -312,8 +320,14 @@ struct ExerciseLogView: View {
                         Button(action: {
                             onCreate()
                         }) {
-                            Text("Create")
-                                .foregroundColor(Color(UIColor(Constants.saintsXctfRed)))
+                            if !isCreating {
+                                Text(meta.isExistingLog ? "Update" : "Create")
+                                    .foregroundColor(Color(UIColor(Constants.saintsXctfRed)))
+                            } else {
+                                Text(meta.isExistingLog ? "Creating  " : "Updating  ")
+                                    .foregroundColor(Color(UIColor(Constants.saintsXctfRed)))
+                                ProgressView()
+                            }
                         }
                         .disabled(isCreating)
                         
@@ -385,6 +399,9 @@ struct ExerciseLogView: View {
                 )
             }
         }
+        .progressViewStyle(
+            CircularProgressViewStyle(tint: Color(UIColor(Constants.saintsXctfRed)))
+        )
     }
     
     func limitNameText(_ upper: Int) {
@@ -529,10 +546,16 @@ struct ExerciseLogView: View {
 }
 
 struct ExerciseLogView_Previews: PreviewProvider {
+    static let previewAllDevices = false
+
     static var previews: some View {
-        ForEach(Devices.IPhonesSupported, id: \.self) { deviceName in
+        if previewAllDevices {
+            ForEach(Devices.IPhonesSupported, id: \.self) { deviceName in
+                ExerciseLogView(log: ExerciseLog(), meta: ExerciseLogMeta(isExisting: false))
+                    .previewDevice(PreviewDevice(rawValue: deviceName))
+            }
+        } else {
             ExerciseLogView(log: ExerciseLog(), meta: ExerciseLogMeta(isExisting: false))
-                .previewDevice(PreviewDevice(rawValue: deviceName))
         }
     }
 }

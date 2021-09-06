@@ -13,12 +13,21 @@ struct CreateExerciseLogView: View {
     @StateObject var meta = ExerciseLogMeta(isExisting: false)
     
     var body: some View {
-        ExerciseLogView(log: log)
+        ExerciseLogView(log: log, meta: meta)
     }
 }
 
 struct CreateExerciseLogView_Previews: PreviewProvider {
+    static let previewAllDevices = false
+    
     static var previews: some View {
-        CreateExerciseLogView()
+        if previewAllDevices {
+            ForEach(Devices.IPhonesSupported, id: \.self) { deviceName in
+                CreateExerciseLogView()
+                    .previewDevice(PreviewDevice(rawValue: deviceName))
+            }
+        } else {
+            CreateExerciseLogView()
+        }
     }
 }
