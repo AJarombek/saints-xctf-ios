@@ -20,7 +20,3 @@ class ExerciseLog: ObservableObject {
     @Published var feel = 6.0
     var description = ""
 }
-
-func createExerciseLog(log: ExerciseLog) -> Void {
-    
-}

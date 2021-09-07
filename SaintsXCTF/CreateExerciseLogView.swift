@@ -11,9 +11,10 @@ import SwiftUI
 struct CreateExerciseLogView: View {
     @StateObject var log = ExerciseLog()
     @StateObject var meta = ExerciseLogMeta(isExisting: false)
+    @StateObject var createLog = CreateExerciseLog()
     
     var body: some View {
-        ExerciseLogView(log: log, meta: meta)
+        ExerciseLogView(log: log, meta: meta, createLog: createLog)
     }
 }
 

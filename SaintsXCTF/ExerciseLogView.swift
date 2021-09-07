@@ -12,6 +12,7 @@ import Combine
 struct ExerciseLogView: View {
     @ObservedObject var log: ExerciseLog
     @ObservedObject var meta: ExerciseLogMeta
+    @ObservedObject var createLog: CreateExerciseLog
     
     @State private var isEditingName: Bool = false
     @State private var nameStatus: InputStatus = InputStatus.initial
@@ -28,8 +29,6 @@ struct ExerciseLogView: View {
     @State private var showSuccess: Bool = false
     @State private var showError: Bool = false
     @State private var showCanceling: Bool = false
-    
-    @State private var isCreating: Bool = false
     
     let dateRange: ClosedRange<Date> = {
         let calendar = Calendar.current
@@ -93,7 +92,7 @@ struct ExerciseLogView: View {
                                 width: nameStatus == InputStatus.failure ? 2 : 0
                             )
                             .frame(minHeight: 30)
-                            .disabled(isCreating)
+                            .disabled(createLog.creating)
                             
                             if nameStatus == InputStatus.warning {
                                 Text("Exercise logs must have a name.")
@@ -125,7 +124,7 @@ struct ExerciseLogView: View {
                                 width: isEditingLocation ? 1 : 0
                             )
                             .frame(minHeight: 30)
-                            .disabled(isCreating)
+                            .disabled(createLog.creating)
                         }
                         VStack(alignment: .leading) {
                             Text("Date*")
@@ -142,7 +141,7 @@ struct ExerciseLogView: View {
                             )
                             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 30)
                             .accentColor(Color(UIColor(Constants.saintsXctfRed)))
-                            .disabled(isCreating)
+                            .disabled(createLog.creating)
                         }
                         .frame(minWidth: 0, maxWidth: 130)
                     }
@@ -168,7 +167,7 @@ struct ExerciseLogView: View {
                             .pickerStyle(MenuPickerStyle())
                             .foregroundColor(Color(UIColor(Constants.saintsXctfRed)))
                             .frame(width: 80, alignment: .leading)
-                            .disabled(isCreating)
+                            .disabled(createLog.creating)
                         }
                     }
                     .padding(.top, 5.0)
@@ -218,7 +217,7 @@ struct ExerciseLogView: View {
                                 .pickerStyle(MenuPickerStyle())
                                 .foregroundColor(Color(UIColor(Constants.saintsXctfRed)))
                                 .frame(width: 90, alignment: .leading)
-                                .disabled(isCreating)
+                                .disabled(createLog.creating)
                             }
                             
                             if distanceStatus == InputStatus.warning {
@@ -259,7 +258,7 @@ struct ExerciseLogView: View {
                                 width: timeStatus == InputStatus.failure ? 2 : 0
                             )
                             .frame(minHeight: 30)
-                            .disabled(isCreating)
+                            .disabled(createLog.creating)
                             
                             if timeStatus == InputStatus.warning {
                                 Text("A time is required if no distance is entered.")
@@ -285,7 +284,7 @@ struct ExerciseLogView: View {
                                 Text("Title")
                             }
                             .accentColor(Color(UIColor(Constants.saintsXctfRed)))
-                            .disabled(isCreating)
+                            .disabled(createLog.creating)
                         }
                     }
                     .padding(.top, 5.0)
@@ -311,7 +310,7 @@ struct ExerciseLogView: View {
                                 width: isEditingDescription ? 1 : 0
                             )
                             .frame(minHeight: 30)
-                            .disabled(isCreating)
+                            .disabled(createLog.creating)
                         }
                     }
                     .padding(.top, 5.0)
@@ -329,7 +328,7 @@ struct ExerciseLogView: View {
                                 ProgressView()
                             }
                         }
-                        .disabled(isCreating)
+                        .disabled(createLog.creating)
                         
                         Button(action: {
                             onCancel()
@@ -337,7 +336,7 @@ struct ExerciseLogView: View {
                             Text("Cancel")
                                 .foregroundColor(Color(UIColor(Constants.darkGray)))
                         }
-                        .disabled(isCreating)
+                        .disabled(createLog.creating)
                     }
                     .padding(.top, 15)
                     .padding(.trailing, 10)
@@ -504,7 +503,6 @@ struct ExerciseLogView: View {
     }
     
     func onCreate() {
-        isCreating = true
         var failedValidation = false
         
         if log.name.trimmingCharacters(in: .whitespaces).count == 0 {
@@ -518,13 +516,13 @@ struct ExerciseLogView: View {
             distanceStatus = InputStatus.failure
         }
         
-        if failedValidation {
-            print("Failed")
-        } else {
-            print("Passed")
+        if !failedValidation {
+            if meta.isExistingLog {
+                createLog.updateExerciseLog(newLog: log, existingLog: Log())
+            } else {
+                createLog.createExerciseLog(exerciseLog: log)
+            }
         }
-        
-        isCreating = false
     }
     
     func reset() {
@@ -551,11 +549,19 @@ struct ExerciseLogView_Previews: PreviewProvider {
     static var previews: some View {
         if previewAllDevices {
             ForEach(Devices.IPhonesSupported, id: \.self) { deviceName in
-                ExerciseLogView(log: ExerciseLog(), meta: ExerciseLogMeta(isExisting: false))
-                    .previewDevice(PreviewDevice(rawValue: deviceName))
+                ExerciseLogView(
+                    log: ExerciseLog(),
+                    meta: ExerciseLogMeta(isExisting: false),
+                    createLog: CreateExerciseLog()
+                )
+                .previewDevice(PreviewDevice(rawValue: deviceName))
             }
         } else {
-            ExerciseLogView(log: ExerciseLog(), meta: ExerciseLogMeta(isExisting: false))
+            ExerciseLogView(
+                log: ExerciseLog(),
+                meta: ExerciseLogMeta(isExisting: false),
+                createLog: CreateExerciseLog()
+            )
         }
     }
 }

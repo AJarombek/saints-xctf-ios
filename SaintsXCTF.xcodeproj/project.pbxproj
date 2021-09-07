@@ -23,6 +23,7 @@
 		3F597A9726E2C7D100B35715 /* CreateExerciseLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F597A9626E2C7D100B35715 /* CreateExerciseLogView.swift */; };
 		3F597A9B26E2C7E200B35715 /* EditExerciseLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F597A9A26E2C7E200B35715 /* EditExerciseLogView.swift */; };
 		3F597AA326E2F80D00B35715 /* ExerciseLogMeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F597AA226E2F80D00B35715 /* ExerciseLogMeta.swift */; };
+		3F597AA926E6A4D500B35715 /* CreateExerciseLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F597AA826E6A4D400B35715 /* CreateExerciseLog.swift */; };
 		3F633E7726D72520009F05AC /* ExerciseLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F633E7626D72520009F05AC /* ExerciseLogView.swift */; };
 		3F633E8726D87B63009F05AC /* CreateExerciseLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F633E8626D87B63009F05AC /* CreateExerciseLogViewController.swift */; };
 		3F633E8C26D9B0D7009F05AC /* ExerciseType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F633E8B26D9B0D7009F05AC /* ExerciseType.swift */; };
@@ -233,6 +234,7 @@
 		3F597A9626E2C7D100B35715 /* CreateExerciseLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateExerciseLogView.swift; sourceTree = "<group>"; };
 		3F597A9A26E2C7E200B35715 /* EditExerciseLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditExerciseLogView.swift; sourceTree = "<group>"; };
 		3F597AA226E2F80D00B35715 /* ExerciseLogMeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseLogMeta.swift; sourceTree = "<group>"; };
+		3F597AA826E6A4D400B35715 /* CreateExerciseLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateExerciseLog.swift; sourceTree = "<group>"; };
 		3F633E7626D72520009F05AC /* ExerciseLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseLogView.swift; sourceTree = "<group>"; };
 		3F633E8626D87B63009F05AC /* CreateExerciseLogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateExerciseLogViewController.swift; sourceTree = "<group>"; };
 		3F633E8B26D9B0D7009F05AC /* ExerciseType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseType.swift; sourceTree = "<group>"; };
@@ -386,6 +388,7 @@
 			children = (
 				3F597A9226E1A87A00B35715 /* ExerciseLog.swift */,
 				3F597AA226E2F80D00B35715 /* ExerciseLogMeta.swift */,
+				3F597AA826E6A4D400B35715 /* CreateExerciseLog.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1066,6 +1069,7 @@
 				A18968291F7B44150073A73B /* DetailsViewController.swift in Sources */,
 				3FC8B7212634A7B400FFAB08 /* Environment.swift in Sources */,
 				A1B458961F11AC0800EDCF80 /* UITextFieldExt.swift in Sources */,
+				3F597AA926E6A4D500B35715 /* CreateExerciseLog.swift in Sources */,
 				A11AB8B81F9060850098AE8E /* MemberViewController.swift in Sources */,
 				A19DED511F5907C500E6C9DA /* CommentTableViewCell.swift in Sources */,
 				A11C2DF41F0B249E00EBDDB5 /* SignUpViewController.swift in Sources */,
