@@ -24,6 +24,7 @@
 		3F597A9B26E2C7E200B35715 /* EditExerciseLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F597A9A26E2C7E200B35715 /* EditExerciseLogView.swift */; };
 		3F597AA326E2F80D00B35715 /* ExerciseLogMeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F597AA226E2F80D00B35715 /* ExerciseLogMeta.swift */; };
 		3F597AA926E6A4D500B35715 /* CreateExerciseLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F597AA826E6A4D400B35715 /* CreateExerciseLog.swift */; };
+		3F597AAD26E979CC00B35715 /* ExerciseLogUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F597AAC26E979CC00B35715 /* ExerciseLogUITests.swift */; };
 		3F633E7726D72520009F05AC /* ExerciseLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F633E7626D72520009F05AC /* ExerciseLogView.swift */; };
 		3F633E8726D87B63009F05AC /* CreateExerciseLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F633E8626D87B63009F05AC /* CreateExerciseLogViewController.swift */; };
 		3F633E8C26D9B0D7009F05AC /* ExerciseType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F633E8B26D9B0D7009F05AC /* ExerciseType.swift */; };
@@ -235,6 +236,7 @@
 		3F597A9A26E2C7E200B35715 /* EditExerciseLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditExerciseLogView.swift; sourceTree = "<group>"; };
 		3F597AA226E2F80D00B35715 /* ExerciseLogMeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseLogMeta.swift; sourceTree = "<group>"; };
 		3F597AA826E6A4D400B35715 /* CreateExerciseLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateExerciseLog.swift; sourceTree = "<group>"; };
+		3F597AAC26E979CC00B35715 /* ExerciseLogUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseLogUITests.swift; sourceTree = "<group>"; };
 		3F633E7626D72520009F05AC /* ExerciseLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseLogView.swift; sourceTree = "<group>"; };
 		3F633E8626D87B63009F05AC /* CreateExerciseLogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateExerciseLogViewController.swift; sourceTree = "<group>"; };
 		3F633E8B26D9B0D7009F05AC /* ExerciseType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseType.swift; sourceTree = "<group>"; };
@@ -414,6 +416,7 @@
 				3F28BBFB265DCC5C008C7833 /* Stubs.swift */,
 				3F28BC23265EC69B008C7833 /* HomeUIStubTests.swift */,
 				3F28BC3D266A5C6D008C7833 /* ProfileUIStubTests.swift */,
+				3F597AAC26E979CC00B35715 /* ExerciseLogUITests.swift */,
 			);
 			path = SaintsXCTFUITests;
 			sourceTree = "<group>";
@@ -1029,6 +1032,7 @@
 			files = (
 				3F28BC42266AD3AD008C7833 /* RangeViewStubs.swift in Sources */,
 				3F28BC3E266A5C6D008C7833 /* ProfileUIStubTests.swift in Sources */,
+				3F597AAD26E979CC00B35715 /* ExerciseLogUITests.swift in Sources */,
 				3F28BB90265B250C008C7833 /* HomeUITests.swift in Sources */,
 				3FC8B70D262F9D9300FFAB08 /* SaintsXCTFUITests.swift in Sources */,
 				3F53B18F266C2CAC003D8F12 /* UserStubs.swift in Sources */,

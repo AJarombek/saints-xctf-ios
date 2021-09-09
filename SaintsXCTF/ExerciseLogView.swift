@@ -319,7 +319,7 @@ struct ExerciseLogView: View {
                         Button(action: {
                             onCreate()
                         }) {
-                            if !isCreating {
+                            if !createLog.creating {
                                 Text(meta.isExistingLog ? "Update" : "Create")
                                     .foregroundColor(Color(UIColor(Constants.saintsXctfRed)))
                             } else {
@@ -518,9 +518,13 @@ struct ExerciseLogView: View {
         
         if !failedValidation {
             if meta.isExistingLog {
-                createLog.updateExerciseLog(newLog: log, existingLog: Log())
+                createLog.updateExerciseLog(newLog: log, existingLog: Log()) {
+                    reset()
+                }
             } else {
-                createLog.createExerciseLog(exerciseLog: log)
+                createLog.createExerciseLog(exerciseLog: log) {
+                    reset()
+                }
             }
         }
     }

@@ -13,7 +13,7 @@ class CreateExerciseLog: ObservableObject {
     @Published var created = false
     @Published var error: String? = nil
     
-    func createExerciseLog(exerciseLog: ExerciseLog) -> Void {
+    func createExerciseLog(exerciseLog: ExerciseLog, completion: @escaping () -> Void) -> Void {
         creating = true
         created = false
         error = nil
@@ -49,13 +49,14 @@ class CreateExerciseLog: ObservableObject {
             
             if newlog != nil {
                 self.created = true
+                completion()
             } else {
                 self.error = "Failed to Create New Exercise Log"
             }
         }
     }
     
-    func updateExerciseLog(newLog: ExerciseLog, existingLog: Log) -> Void {
+    func updateExerciseLog(newLog: ExerciseLog, existingLog: Log, completion: @escaping () -> Void) -> Void {
         
     }
 }
