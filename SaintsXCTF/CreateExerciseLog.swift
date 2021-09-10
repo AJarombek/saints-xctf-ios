@@ -11,12 +11,14 @@ import SwiftUI
 class CreateExerciseLog: ObservableObject {
     @Published var creating = false
     @Published var created = false
-    @Published var error: String? = nil
+    @Published var error = false
+    @Published var errorMessage: String? = nil
     
     func createExerciseLog(exerciseLog: ExerciseLog, completion: @escaping () -> Void) -> Void {
         creating = true
         created = false
-        error = nil
+        error = false
+        errorMessage = nil
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
@@ -51,7 +53,8 @@ class CreateExerciseLog: ObservableObject {
                 self.created = true
                 completion()
             } else {
-                self.error = "Failed to Create New Exercise Log"
+                self.error = true
+                self.errorMessage = "Failed to Create New Exercise Log"
             }
         }
     }

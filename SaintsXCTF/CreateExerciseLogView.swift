@@ -12,9 +12,10 @@ struct CreateExerciseLogView: View {
     @StateObject var log = ExerciseLog()
     @StateObject var meta = ExerciseLogMeta(isExisting: false)
     @StateObject var createLog = CreateExerciseLog()
+    @StateObject var form = ExerciseLogForm()
     
     var body: some View {
-        ExerciseLogView(log: log, meta: meta, createLog: createLog)
+        ExerciseLogView(log: log, meta: meta, createLog: createLog, form: form)
     }
 }
 

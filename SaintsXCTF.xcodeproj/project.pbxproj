@@ -15,6 +15,9 @@
 		3F28BC2E2661D00B008C7833 /* SignedUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F28BC2D2661D00A008C7833 /* SignedUpViewController.swift */; };
 		3F28BC3E266A5C6D008C7833 /* ProfileUIStubTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F28BC3D266A5C6D008C7833 /* ProfileUIStubTests.swift */; };
 		3F28BC42266AD3AD008C7833 /* RangeViewStubs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F28BC41266AD3AD008C7833 /* RangeViewStubs.swift */; };
+		3F49821226EAF263006312EF /* ExerciseLogActionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F49821126EAF263006312EF /* ExerciseLogActionsView.swift */; };
+		3F49821626EAF51F006312EF /* ExerciseLogFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F49821526EAF51F006312EF /* ExerciseLogFormView.swift */; };
+		3F49821A26EAF771006312EF /* ExerciseLogForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F49821926EAF771006312EF /* ExerciseLogForm.swift */; };
 		3F4B88BA26DC71F4009B8CD9 /* InputStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4B88B926DC71F4009B8CD9 /* InputStatus.swift */; };
 		3F53B18F266C2CAC003D8F12 /* UserStubs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F53B18E266C2CAC003D8F12 /* UserStubs.swift */; };
 		3F597A7F26DDA33B00B35715 /* Devices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F597A7E26DDA33B00B35715 /* Devices.swift */; };
@@ -227,6 +230,9 @@
 		3F28BC2D2661D00A008C7833 /* SignedUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignedUpViewController.swift; sourceTree = "<group>"; };
 		3F28BC3D266A5C6D008C7833 /* ProfileUIStubTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUIStubTests.swift; sourceTree = "<group>"; };
 		3F28BC41266AD3AD008C7833 /* RangeViewStubs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangeViewStubs.swift; sourceTree = "<group>"; };
+		3F49821126EAF263006312EF /* ExerciseLogActionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseLogActionsView.swift; sourceTree = "<group>"; };
+		3F49821526EAF51F006312EF /* ExerciseLogFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseLogFormView.swift; sourceTree = "<group>"; };
+		3F49821926EAF771006312EF /* ExerciseLogForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseLogForm.swift; sourceTree = "<group>"; };
 		3F4B88B926DC71F4009B8CD9 /* InputStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputStatus.swift; sourceTree = "<group>"; };
 		3F53B18E266C2CAC003D8F12 /* UserStubs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStubs.swift; sourceTree = "<group>"; };
 		3F597A7E26DDA33B00B35715 /* Devices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Devices.swift; sourceTree = "<group>"; };
@@ -381,6 +387,8 @@
 				3F597A9626E2C7D100B35715 /* CreateExerciseLogView.swift */,
 				3F633E8626D87B63009F05AC /* CreateExerciseLogViewController.swift */,
 				3F633E7626D72520009F05AC /* ExerciseLogView.swift */,
+				3F49821126EAF263006312EF /* ExerciseLogActionsView.swift */,
+				3F49821526EAF51F006312EF /* ExerciseLogFormView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -391,6 +399,7 @@
 				3F597A9226E1A87A00B35715 /* ExerciseLog.swift */,
 				3F597AA226E2F80D00B35715 /* ExerciseLogMeta.swift */,
 				3F597AA826E6A4D400B35715 /* CreateExerciseLog.swift */,
+				3F49821926EAF771006312EF /* ExerciseLogForm.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1058,7 +1067,9 @@
 				A11AB8A81F89C3760098AE8E /* GroupViewController.swift in Sources */,
 				A173CB561F847D90009C7A28 /* MonthlyViewController.swift in Sources */,
 				A189682B1F7C903B0073A73B /* TextViewExt.swift in Sources */,
+				3F49821226EAF263006312EF /* ExerciseLogActionsView.swift in Sources */,
 				A15E62401F4273BB00AC9EF1 /* StartViewController.swift in Sources */,
+				3F49821626EAF51F006312EF /* ExerciseLogFormView.swift in Sources */,
 				A1D53DF61E8DE25400842177 /* User.swift in Sources */,
 				A189682D1F7F253E0073A73B /* ProPicViewController.swift in Sources */,
 				A15E624C1F536C8500AC9EF1 /* Constants.swift in Sources */,
@@ -1089,6 +1100,7 @@
 				A15E62371F3FA45F00AC9EF1 /* PickGroupViewController.swift in Sources */,
 				3F597A9326E1A87A00B35715 /* ExerciseLog.swift in Sources */,
 				A1505B961E8F112500F111DB /* GroupMember.swift in Sources */,
+				3F49821A26EAF771006312EF /* ExerciseLogForm.swift in Sources */,
 				3F633E7726D72520009F05AC /* ExerciseLogView.swift in Sources */,
 				A15E62301F3F981600AC9EF1 /* LogViewController.swift in Sources */,
 				A19DED551F590A9F00E6C9DA /* NewCommentTableViewCell.swift in Sources */,
