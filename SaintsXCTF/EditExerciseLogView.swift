@@ -9,6 +9,8 @@
 import SwiftUI
 
 struct EditExerciseLogView: View {
+    @EnvironmentObject var existingLog: ExistingLog
+    
     @StateObject var log = ExerciseLog()
     @StateObject var meta = ExerciseLogMeta(isExisting: true)
     @StateObject var createLog = CreateExerciseLog()

@@ -4946,6 +4946,28 @@
             </objects>
             <point key="canvasLocation" x="3588" y="2348"/>
         </scene>
+        <!--New Log-->
+        <scene sceneID="VXw-6c-7TD">
+            <objects>
+                <viewController storyboardIdentifier="editExerciseLogViewController" id="GfD-GK-s3E" customClass="EditExerciseLogViewController" customModule="SaintsXCTF" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="PM2-3S-spX"/>
+                        <viewControllerLayoutGuide type="bottom" id="Lgk-36-9rF"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="FxA-RC-Y3e">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="New Log" image="edit" selectedImage="edit" id="kU6-OP-fBb"/>
+                    <connections>
+                        <outlet property="container" destination="FxA-RC-Y3e" id="j3l-uy-9SY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="F1C-B1-j5I" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1974" y="1917"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="C9T-CB-l2F"/>

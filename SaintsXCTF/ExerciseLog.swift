@@ -14,9 +14,9 @@ class ExerciseLog: ObservableObject {
     var location = ""
     var date = Date()
     @Published var exerciseType = ExerciseType.run
-    var distance = ""
+    @Published var distance = ""
     @Published var metric = Metric.miles
-    var time = ""
+    @Published var time = ""
     @Published var feel = 6.0
     var description = ""
     

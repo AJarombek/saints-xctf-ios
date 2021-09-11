@@ -7,7 +7,6 @@
 //
 
 import SwiftUI
-import Combine
 
 struct ExerciseLogView: View {
     @ObservedObject var log: ExerciseLog
@@ -22,70 +21,36 @@ struct ExerciseLogView: View {
                     .font(.title)
                     .foregroundColor(.black)
                     .bold()
+                    .alert(isPresented: $createLog.error) {
+                        Alert(
+                            title: Text("An unexpected error occurred while creating an exercise log."),
+                            primaryButton: .default(
+                                Text("Try Again"),
+                                action: {
+                                    createLog.error = false
+                                    createLog.createExerciseLog(exerciseLog: log) {
+                                        log.reset()
+                                        form.reset()
+                                    }
+                                }
+                            ),
+                            secondaryButton: .cancel(
+                                Text("Cancel"),
+                                action: {
+                                    createLog.error = false
+                                }
+                            )
+                        )
+                    }
                 
                 ExerciseLogFormView(log: log, meta: meta, createLog: createLog, form: form)
             }
             .padding()
             .padding(.top, 20)
-            .alert(isPresented: $createLog.created) {
-                Alert(
-                    title: Text(meta.isExistingLog ? "Exercise log updated!" : "Exercise log created!"),
-                    dismissButton: .cancel(
-                        Text("Continue"),
-                        action: {
-                            if !meta.isExistingLog {
-                                log.reset()
-                                form.reset()
-                            }
-                        }
-                    )
-                )
-            }
-            .alert(isPresented: $createLog.error) {
-                Alert(
-                    title: Text("An unexpected error occurred while creating an exercise log."),
-                    primaryButton: .default(
-                        Text("Try Again"),
-                        action: {
-                            createLog.error = false
-                            createLog.createExerciseLog(exerciseLog: log) {
-                                log.reset()
-                                form.reset()
-                            }
-                        }
-                    ),
-                    secondaryButton: .cancel(
-                        Text("Cancel"),
-                        action: {
-                            createLog.error = false
-                        }
-                    )
-                )
-            }
-            .alert(isPresented: $form.showCanceling) {
-                Alert(
-                    title: Text("Are you sure you want to cancel your changes?"),
-                    message: Text("Your progress will be lost."),
-                    primaryButton: .default(
-                        Text("Yes"),
-                        action: {
-                            onConfirmCancel()
-                        }
-                    ),
-                    secondaryButton: .cancel(
-                        Text("No")
-                    )
-                )
-            }
         }
         .progressViewStyle(
             CircularProgressViewStyle(tint: Color(UIColor(Constants.saintsXctfRed)))
         )
-    }
-    
-    func onConfirmCancel() {
-        log.reset()
-        form.reset()
     }
 }
 

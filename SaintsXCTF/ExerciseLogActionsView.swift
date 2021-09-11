@@ -23,12 +23,26 @@ struct ExerciseLogActionsView: View {
                     Text(meta.isExistingLog ? "Update" : "Create")
                         .foregroundColor(Color(UIColor(Constants.saintsXctfRed)))
                 } else {
-                    Text(meta.isExistingLog ? "Creating  " : "Updating  ")
+                    Text(meta.isExistingLog ? "Updating  " : "Creating  ")
                         .foregroundColor(Color(UIColor(Constants.saintsXctfRed)))
                     ProgressView()
                 }
             }
             .disabled(createLog.creating)
+            .alert(isPresented: $createLog.created) {
+                Alert(
+                    title: Text(meta.isExistingLog ? "Exercise log updated!" : "Exercise log created!"),
+                    dismissButton: .cancel(
+                        Text("Continue"),
+                        action: {
+                            if !meta.isExistingLog {
+                                log.reset()
+                                form.reset()
+                            }
+                        }
+                    )
+                )
+            }
             
             Button(action: {
                 onCancel()
@@ -37,6 +51,21 @@ struct ExerciseLogActionsView: View {
                     .foregroundColor(Color(UIColor(Constants.darkGray)))
             }
             .disabled(createLog.creating)
+            .alert(isPresented: $form.showCanceling) {
+                Alert(
+                    title: Text("Are you sure you want to cancel your changes?"),
+                    message: Text("Your progress will be lost."),
+                    primaryButton: .default(
+                        Text("Yes"),
+                        action: {
+                            onConfirmCancel()
+                        }
+                    ),
+                    secondaryButton: .cancel(
+                        Text("No")
+                    )
+                )
+            }
         }
         .padding(.top, 15)
         .padding(.trailing, 10)
@@ -74,6 +103,11 @@ struct ExerciseLogActionsView: View {
     
     func onCancel() {
         form.showCanceling = true
+    }
+    
+    func onConfirmCancel() {
+        log.reset()
+        form.reset()
     }
 }
 

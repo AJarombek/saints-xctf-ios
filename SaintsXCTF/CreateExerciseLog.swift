@@ -16,7 +16,7 @@ class CreateExerciseLog: ObservableObject {
     
     func createExerciseLog(exerciseLog: ExerciseLog, completion: @escaping () -> Void) -> Void {
         creating = true
-        created = false
+        created = true
         error = false
         errorMessage = nil
         

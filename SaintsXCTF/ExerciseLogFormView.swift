@@ -52,10 +52,10 @@ struct ExerciseLogFormView: View {
                     TextField("", text: $log.name) { isEditing in
                         form.isEditingName = isEditing
                     }
-                    .onReceive(Just(log.name), perform: { _ in
+                    .onChange(of: log.name) { _ in
                         limitNameText(nameTextLimit)
                         validateNameText()
-                    })
+                    }
                     .autocapitalization(.none)
                     .disableAutocorrection(true)
                     .background(Color(UIColor.white))
@@ -163,10 +163,10 @@ struct ExerciseLogFormView: View {
                         TextField("", text: $log.distance) { isEditing in
                             form.isEditingDistance = isEditing
                         }
-                        .onReceive(Just(log.distance), perform: { _ in
+                        .onChange(of: log.distance) { _ in
                             filterDistanceText()
                             validateTimeAndDistance()
-                        })
+                        }
                         .autocapitalization(.none)
                         .disableAutocorrection(true)
                         .keyboardType(.numbersAndPunctuation)
@@ -379,7 +379,7 @@ struct ExerciseLogFormView: View {
     }
     
     func validateTimeAndDistance() {
-        if rawTime.count == 0 && log.distance.count == 0 {
+        if log.time.count == 0 && log.distance.count == 0 {
             if form.timeStatus != InputStatus.initial {
                 form.timeStatus = InputStatus.warning
             }
