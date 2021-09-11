@@ -19,4 +19,16 @@ class ExerciseLog: ObservableObject {
     var time = ""
     @Published var feel = 6.0
     var description = ""
+    
+    func reset() {
+        name = ""
+        location = ""
+        date = Date()
+        exerciseType = ExerciseType.run
+        distance = ""
+        metric = Metric.miles
+        time = ""
+        feel = 6.0
+        description = ""
+    }
 }

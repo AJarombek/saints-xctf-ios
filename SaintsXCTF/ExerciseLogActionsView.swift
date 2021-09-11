@@ -51,7 +51,7 @@ struct ExerciseLogActionsView: View {
             form.nameStatus = InputStatus.failure
         }
         
-        if form.rawTime.count == 0 && log.distance.count == 0 {
+        if form.displayedTime.count == 0 && log.distance.count == 0 {
             failedValidation = true
             form.timeStatus = InputStatus.failure
             form.distanceStatus = InputStatus.failure
@@ -60,11 +60,13 @@ struct ExerciseLogActionsView: View {
         if !failedValidation {
             if meta.isExistingLog {
                 createLog.updateExerciseLog(newLog: log, existingLog: Log()) {
-                    reset()
+                    log.reset()
+                    form.reset()
                 }
             } else {
                 createLog.createExerciseLog(exerciseLog: log) {
-                    reset()
+                    log.reset()
+                    form.reset()
                 }
             }
         }
@@ -72,23 +74,6 @@ struct ExerciseLogActionsView: View {
     
     func onCancel() {
         form.showCanceling = true
-    }
-    
-    func reset() {
-        log.name = ""
-        form.nameStatus = InputStatus.initial
-        log.location = ""
-        log.date = Date()
-        log.exerciseType = ExerciseType.run
-        log.distance = ""
-        form.distanceStatus = InputStatus.initial
-        log.metric = Metric.miles
-        form.rawTime = ""
-        form.displayedTime = ""
-        form.timeStatus = InputStatus.initial
-        log.time = ""
-        log.feel = 6.0
-        log.description = ""
     }
 }
 

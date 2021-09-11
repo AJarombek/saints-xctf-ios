@@ -33,7 +33,10 @@ struct ExerciseLogView: View {
                     dismissButton: .cancel(
                         Text("Continue"),
                         action: {
-                            print("Continue")
+                            if !meta.isExistingLog {
+                                log.reset()
+                                form.reset()
+                            }
                         }
                     )
                 )
@@ -44,13 +47,17 @@ struct ExerciseLogView: View {
                     primaryButton: .default(
                         Text("Try Again"),
                         action: {
-                            print("Try Again")
+                            createLog.error = false
+                            createLog.createExerciseLog(exerciseLog: log) {
+                                log.reset()
+                                form.reset()
+                            }
                         }
                     ),
                     secondaryButton: .cancel(
                         Text("Cancel"),
                         action: {
-                            print("Cancel")
+                            createLog.error = false
                         }
                     )
                 )
@@ -77,7 +84,8 @@ struct ExerciseLogView: View {
     }
     
     func onConfirmCancel() {
-        reset()
+        log.reset()
+        form.reset()
     }
 }
 

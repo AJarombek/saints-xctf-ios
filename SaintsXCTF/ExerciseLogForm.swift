@@ -10,15 +10,21 @@ import SwiftUI
 
 class ExerciseLogForm: ObservableObject {
     @Published var isEditingName = false
-    @Published var nameStatus = InputStatus.initial
+    var nameStatus = InputStatus.initial
     @Published var isEditingLocation = false
     @Published var isEditingDate = false
-    @Published var distanceStatus = InputStatus.initial
+    var distanceStatus = InputStatus.initial
     @Published var isEditingDistance = false
-    @Published var rawTime = ""
     @Published var displayedTime = ""
-    @Published var timeStatus = InputStatus.initial
+    var timeStatus = InputStatus.initial
     @Published var isEditingTime = false
     @Published var isEditingDescription = false
     @Published var showCanceling = false
+    
+    func reset() {
+        nameStatus = InputStatus.initial
+        distanceStatus = InputStatus.initial
+        displayedTime = ""
+        timeStatus = InputStatus.initial
+    }
 }

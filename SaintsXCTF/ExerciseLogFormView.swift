@@ -15,6 +15,8 @@ struct ExerciseLogFormView: View {
     @ObservedObject var createLog: CreateExerciseLog
     @ObservedObject var form: ExerciseLogForm
     
+    @State var rawTime = ""
+    
     let dateRange: ClosedRange<Date> = {
         let calendar = Calendar.current
         let startComponents = DateComponents(year: 1994, month: 12, day: 31)
@@ -213,12 +215,12 @@ struct ExerciseLogFormView: View {
                     TextField("", text: $form.displayedTime) { isEditing in
                         form.isEditingTime = isEditing
                     }
-                    .onReceive(Just(form.displayedTime), perform: { _ in
+                    .onChange(of: form.displayedTime) { _ in
                         filterTimeText()
                         limitTimeText(timeTextLimit)
                         setFormattedTimeText()
                         validateTimeAndDistance()
-                    })
+                    }
                     .autocapitalization(.none)
                     .disableAutocorrection(true)
                     .keyboardType(.numbersAndPunctuation)
@@ -329,29 +331,29 @@ struct ExerciseLogFormView: View {
     }
     
     func filterTimeText() {
-        form.rawTime = form.displayedTime
+        rawTime = form.displayedTime
         
         var filteredTime = ""
-        for char in form.rawTime {
+        for char in rawTime {
             if let intValue = char.wholeNumberValue {
                 filteredTime += "\(intValue)"
             }
         }
         
-        form.rawTime = filteredTime
+        rawTime = filteredTime
     }
     
     func limitTimeText(_ upper: Int) {
-        if form.rawTime.count > upper {
-            form.rawTime = String(form.rawTime.prefix(upper))
+        if rawTime.count > upper {
+            rawTime = String(rawTime.prefix(upper))
         }
     }
     
     func setFormattedTimeText() {
-        form.displayedTime = form.rawTime
+        form.displayedTime = rawTime
             .enumerated()
             .map {
-                ((form.rawTime.count - $0.offset) % 2 != 0) || $0.offset == 0 ?
+                ((rawTime.count - $0.offset) % 2 != 0) || $0.offset == 0 ?
                     $0.element.description : ":\($0.element)"
             }.reduce("") {
                 $0 + $1
@@ -377,7 +379,7 @@ struct ExerciseLogFormView: View {
     }
     
     func validateTimeAndDistance() {
-        if form.rawTime.count == 0 && log.distance.count == 0 {
+        if rawTime.count == 0 && log.distance.count == 0 {
             if form.timeStatus != InputStatus.initial {
                 form.timeStatus = InputStatus.warning
             }

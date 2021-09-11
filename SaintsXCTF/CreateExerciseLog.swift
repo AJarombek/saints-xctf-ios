@@ -25,7 +25,7 @@ class CreateExerciseLog: ObservableObject {
         let formattedDate = dateFormatter.string(from: exerciseLog.date)
         
         let timeFormat = "00:00:00"
-        let end = timeFormat.index(timeFormat.endIndex, offsetBy: 0 - exerciseLog.time.count)
+        let end = timeFormat.index(timeFormat.endIndex, offsetBy: 0 - exerciseLog.time.count - 1)
         let formattedTime = "\(timeFormat[timeFormat.startIndex...end])\(exerciseLog.time)"
         
         let user = SignedInUser.user
