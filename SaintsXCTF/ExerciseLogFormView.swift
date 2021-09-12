@@ -56,6 +56,7 @@ struct ExerciseLogFormView: View {
                         limitNameText(nameTextLimit)
                         validateNameText()
                     }
+                    .accessibility(label: Text("nameField"))
                     .autocapitalization(.none)
                     .disableAutocorrection(true)
                     .background(Color(UIColor.white))
@@ -96,6 +97,7 @@ struct ExerciseLogFormView: View {
                     .onReceive(Just(log.location), perform: { _ in
                         limitLocationText(locationTextLimit)
                     })
+                    .accessibility(label: Text("locationField"))
                     .autocapitalization(.none)
                     .disableAutocorrection(true)
                     .background(Color(UIColor.white))
@@ -167,6 +169,7 @@ struct ExerciseLogFormView: View {
                             filterDistanceText()
                             validateTimeAndDistance()
                         }
+                        .accessibility(label: Text("distanceField"))
                         .autocapitalization(.none)
                         .disableAutocorrection(true)
                         .keyboardType(.numbersAndPunctuation)
@@ -221,6 +224,7 @@ struct ExerciseLogFormView: View {
                         setFormattedTimeText()
                         validateTimeAndDistance()
                     }
+                    .accessibility(label: Text("timeField"))
                     .autocapitalization(.none)
                     .disableAutocorrection(true)
                     .keyboardType(.numbersAndPunctuation)
@@ -263,6 +267,7 @@ struct ExerciseLogFormView: View {
                     ) {
                         Text("Title")
                     }
+                    .accessibility(label: Text("feel"))
                     .accentColor(Color(UIColor(Constants.saintsXctfRed)))
                     .disabled(createLog.creating)
                 }
@@ -282,6 +287,7 @@ struct ExerciseLogFormView: View {
                     .onReceive(Just(log.description), perform: { _ in
                         limitDescriptionText(descriptionTextLimit)
                     })
+                    .accessibility(label: Text("descriptionField"))
                     .autocapitalization(.none)
                     .disableAutocorrection(true)
                     .background(Color(UIColor.white))

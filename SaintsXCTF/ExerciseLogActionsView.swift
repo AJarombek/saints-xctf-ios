@@ -90,10 +90,7 @@ struct ExerciseLogActionsView: View {
         
         if !failedValidation {
             if meta.isExistingLog {
-                createLog.updateExerciseLog(newLog: log, existingLog: existingLog.log ?? Log()) {
-                    log.reset()
-                    form.reset()
-                }
+                createLog.updateExerciseLog(newLog: log, existingLog: existingLog.log ?? Log()) {}
             } else {
                 createLog.createExerciseLog(exerciseLog: log) {
                     log.reset()

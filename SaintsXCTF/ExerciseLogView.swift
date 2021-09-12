@@ -9,6 +9,8 @@
 import SwiftUI
 
 struct ExerciseLogView: View {
+    @EnvironmentObject var existingLog: ExistingLog
+    
     @ObservedObject var log: ExerciseLog
     @ObservedObject var meta: ExerciseLogMeta
     @ObservedObject var createLog: CreateExerciseLog
@@ -23,14 +25,23 @@ struct ExerciseLogView: View {
                     .bold()
                     .alert(isPresented: $createLog.error) {
                         Alert(
-                            title: Text("An unexpected error occurred while creating an exercise log."),
+                            title: Text(
+                                meta.isExistingLog ?
+                                    "An unexpected error occurred while updating the exercise log." :
+                                    "An unexpected error occurred while creating an exercise log."
+                            ),
                             primaryButton: .default(
                                 Text("Try Again"),
                                 action: {
                                     createLog.error = false
-                                    createLog.createExerciseLog(exerciseLog: log) {
-                                        log.reset()
-                                        form.reset()
+                                    
+                                    if meta.isExistingLog {
+                                        createLog.updateExerciseLog(newLog: log, existingLog: existingLog.log ?? Log()) {}
+                                    } else {
+                                        createLog.createExerciseLog(exerciseLog: log) {
+                                            log.reset()
+                                            form.reset()
+                                        }
                                     }
                                 }
                             ),
