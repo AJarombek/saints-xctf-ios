@@ -17,10 +17,28 @@ class EditExerciseLogViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let existingLog = ExistingLog()
-        existingLog.log = log
+        let exerciseLog = ExerciseLog()
         
-        let childView = UIHostingController(rootView: EditExerciseLogView().environmentObject(existingLog))
+        if let logObject = log {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            let dateObject = dateFormatter.date(from: logObject.date) ?? Date()
+            
+            exerciseLog.id = logObject.log_id
+            exerciseLog.name = logObject.name
+            exerciseLog.location = logObject.location ?? ""
+            exerciseLog.date = dateObject
+            exerciseLog.exerciseType = ExerciseType(rawValue: logObject.type!) ?? ExerciseType.run
+            exerciseLog.distance = logObject.distance != nil ? String(logObject.distance!) : ""
+            exerciseLog.metric = Metric(rawValue: logObject.metric!) ?? Metric.miles
+            exerciseLog.time = logObject.time ?? ""
+            exerciseLog.feel = Double(logObject.feel)
+            exerciseLog.description = logObject.log_description ?? ""
+        }
+        
+        let existingLog = ExistingLog(log ?? Log())
+        
+        let childView = UIHostingController(rootView: EditExerciseLogView(log: exerciseLog).environmentObject(existingLog))
         addChild(childView)
         childView.view.frame = container.bounds
         container.addSubview(childView.view)

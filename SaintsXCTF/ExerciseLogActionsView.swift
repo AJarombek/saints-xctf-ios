@@ -9,6 +9,8 @@
 import SwiftUI
 
 struct ExerciseLogActionsView: View {
+    @EnvironmentObject var existingLog: ExistingLog
+    
     @ObservedObject var log: ExerciseLog
     @ObservedObject var meta: ExerciseLogMeta
     @ObservedObject var createLog: CreateExerciseLog
@@ -88,7 +90,7 @@ struct ExerciseLogActionsView: View {
         
         if !failedValidation {
             if meta.isExistingLog {
-                createLog.updateExerciseLog(newLog: log, existingLog: Log()) {
+                createLog.updateExerciseLog(newLog: log, existingLog: existingLog.log ?? Log()) {
                     log.reset()
                     form.reset()
                 }

@@ -405,14 +405,13 @@ class MainViewController: UITableViewController, UITextViewDelegate {
      - log: the log object to edit
      */
     func editExistingLog(at index: Int, log: Log) {
-        let logViewController = storyboard?.instantiateViewController(withIdentifier: "logViewController")
-                                    as! LogViewController
+        let editExerciseLogViewController = storyboard?.instantiateViewController(
+            withIdentifier: "editExerciseLogViewController"
+        ) as! EditExerciseLogViewController
         
-        // Pass both the log and the index to the log view controller
-        logViewController.editingLog = true
-        logViewController.logPassed = log
-        logViewController.indexPassed = index
-        navigationController?.pushViewController(logViewController, animated: true)
+        // Pass the log to the view controller
+        editExerciseLogViewController.log = log
+        navigationController?.pushViewController(editExerciseLogViewController, animated: true)
     }
 }
 

@@ -19,7 +19,7 @@
 		3F49821626EAF51F006312EF /* ExerciseLogFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F49821526EAF51F006312EF /* ExerciseLogFormView.swift */; };
 		3F49821A26EAF771006312EF /* ExerciseLogForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F49821926EAF771006312EF /* ExerciseLogForm.swift */; };
 		3F49821E26ED5B70006312EF /* EditExerciseLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F49821D26ED5B70006312EF /* EditExerciseLogViewController.swift */; };
-		3F49822226ED5FDC006312EF /* ExistingLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F49822126ED5FDC006312EF /* ExistingLog.swift */; };
+		3F49822826ED94A4006312EF /* ExistingLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F49822726ED94A4006312EF /* ExistingLog.swift */; };
 		3F4B88BA26DC71F4009B8CD9 /* InputStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4B88B926DC71F4009B8CD9 /* InputStatus.swift */; };
 		3F53B18F266C2CAC003D8F12 /* UserStubs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F53B18E266C2CAC003D8F12 /* UserStubs.swift */; };
 		3F597A7F26DDA33B00B35715 /* Devices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F597A7E26DDA33B00B35715 /* Devices.swift */; };
@@ -236,7 +236,7 @@
 		3F49821526EAF51F006312EF /* ExerciseLogFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseLogFormView.swift; sourceTree = "<group>"; };
 		3F49821926EAF771006312EF /* ExerciseLogForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseLogForm.swift; sourceTree = "<group>"; };
 		3F49821D26ED5B70006312EF /* EditExerciseLogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditExerciseLogViewController.swift; sourceTree = "<group>"; };
-		3F49822126ED5FDC006312EF /* ExistingLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExistingLog.swift; sourceTree = "<group>"; };
+		3F49822726ED94A4006312EF /* ExistingLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExistingLog.swift; sourceTree = "<group>"; };
 		3F4B88B926DC71F4009B8CD9 /* InputStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputStatus.swift; sourceTree = "<group>"; };
 		3F53B18E266C2CAC003D8F12 /* UserStubs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStubs.swift; sourceTree = "<group>"; };
 		3F597A7E26DDA33B00B35715 /* Devices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Devices.swift; sourceTree = "<group>"; };
@@ -405,7 +405,7 @@
 				3F597AA226E2F80D00B35715 /* ExerciseLogMeta.swift */,
 				3F597AA826E6A4D400B35715 /* CreateExerciseLog.swift */,
 				3F49821926EAF771006312EF /* ExerciseLogForm.swift */,
-				3F49822126ED5FDC006312EF /* ExistingLog.swift */,
+				3F49822726ED94A4006312EF /* ExistingLog.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1129,7 +1129,7 @@
 				3FC8B725263611B300FFAB08 /* FnResult.swift in Sources */,
 				3FC8B72F26362F2600FFAB08 /* AdminViewController.swift in Sources */,
 				A15E62391F3FD44000AC9EF1 /* UIColorExt.swift in Sources */,
-				3F49822226ED5FDC006312EF /* ExistingLog.swift in Sources */,
+				3F49822826ED94A4006312EF /* ExistingLog.swift in Sources */,
 				A10D61C51F6F45C100A406D9 /* UIToolbarExt.swift in Sources */,
 				A1015A391EEDC1CF00A2358E /* Message.swift in Sources */,
 				A1AAD7D71F7745580066710C /* StringExt.swift in Sources */,
