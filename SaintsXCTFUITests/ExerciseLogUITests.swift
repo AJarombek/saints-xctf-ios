@@ -99,9 +99,123 @@ class ExerciseLogUITests: XCTestCase {
         let elementsQuery = scrollViewsQuery.otherElements
         
         let nameField = elementsQuery.textFields["nameField"]
+        let nameValidationText = elementsQuery.staticTexts["nameValidationText"]
+        
+        XCTAssertEqual(nameField.value as? String, "")
+        XCTAssertFalse(nameValidationText.exists)
+        
         nameField.tap()
         nameField.typeText("5th Ave Mile")
         
         XCTAssertEqual(nameField.value as? String, "5th Ave Mile")
+        XCTAssertFalse(nameValidationText.exists)
+        
+        nameField.typeText(String(repeating: XCUIKeyboardKey.delete.rawValue, count: 12))
+        XCTAssertEqual(nameField.value as? String, "")
+        XCTAssert(nameValidationText.exists)
+        
+        nameField.typeText("A")
+        XCTAssertEqual(nameField.value as? String, "A")
+        XCTAssertFalse(nameValidationText.exists)
+        
+        nameField.typeText(String(repeating: XCUIKeyboardKey.delete.rawValue, count: 1))
+        XCTAssertEqual(nameField.value as? String, "")
+        XCTAssert(nameValidationText.exists)
+    }
+    
+    func testDistanceTimeFormValidation() throws {
+        app.launch()
+        signIn(app: app)
+
+        let tabBar = app.tabBars["Tab Bar"]
+        tabBar.buttons["New Log"].tap()
+        
+        let scrollViewsQuery = app.scrollViews
+        let elementsQuery = scrollViewsQuery.otherElements
+        
+        let distanceField = elementsQuery.textFields["distanceField"]
+        let distanceValidationText = elementsQuery.staticTexts["distanceValidationText"]
+        
+        let timeField = elementsQuery.textFields["timeField"]
+        let timeValidationText = elementsQuery.staticTexts["timeValidationText"]
+        
+        XCTAssertEqual(distanceField.value as? String, "")
+        XCTAssertFalse(distanceValidationText.exists)
+        XCTAssertEqual(timeField.value as? String, "")
+        XCTAssertFalse(timeValidationText.exists)
+        
+        distanceField.tap()
+        distanceField.typeText("1")
+        
+        XCTAssertEqual(distanceField.value as? String, "1")
+        XCTAssertFalse(distanceValidationText.exists)
+        XCTAssertEqual(timeField.value as? String, "")
+        XCTAssertFalse(timeValidationText.exists)
+        
+        distanceField.typeText(String(repeating: XCUIKeyboardKey.delete.rawValue, count: 1))
+        
+        XCTAssertEqual(distanceField.value as? String, "")
+        XCTAssert(distanceValidationText.exists)
+        XCTAssertEqual(timeField.value as? String, "")
+        XCTAssert(timeValidationText.exists)
+        
+        timeField.tap()
+        timeField.typeText("439")
+        
+        XCTAssertEqual(distanceField.value as? String, "")
+        XCTAssertFalse(distanceValidationText.exists)
+        XCTAssertEqual(timeField.value as? String, "4:39")
+        XCTAssertFalse(timeValidationText.exists)
+        
+        timeField.typeText(String(repeating: XCUIKeyboardKey.delete.rawValue, count: 3))
+        
+        XCTAssertEqual(distanceField.value as? String, "")
+        XCTAssert(distanceValidationText.exists)
+        XCTAssertEqual(timeField.value as? String, "")
+        XCTAssert(timeValidationText.exists)
+    }
+    
+    func testDistanceTextFiltering() throws {
+        app.launch()
+        signIn(app: app)
+
+        let tabBar = app.tabBars["Tab Bar"]
+        tabBar.buttons["New Log"].tap()
+        
+        let scrollViewsQuery = app.scrollViews
+        let elementsQuery = scrollViewsQuery.otherElements
+        
+        let distanceField = elementsQuery.textFields["distanceField"]
+        XCTAssertEqual(distanceField.value as? String, "")
+        
+        distanceField.tap()
+        distanceField.typeText("Aa! ")
+        XCTAssertEqual(distanceField.value as? String, "")
+        
+        distanceField.typeText("10.40")
+        XCTAssertEqual(distanceField.value as? String, "10.40")
+        
+        distanceField.typeText(".23")
+        XCTAssertEqual(distanceField.value as? String, "10.4023")
+    }
+    
+    func testTimeTextFiltering() throws {
+        app.launch()
+        signIn(app: app)
+
+        let tabBar = app.tabBars["Tab Bar"]
+        tabBar.buttons["New Log"].tap()
+        
+        let scrollViewsQuery = app.scrollViews
+        let elementsQuery = scrollViewsQuery.otherElements
+        
+        let timeField = elementsQuery.textFields["timeField"]
+        
+        timeField.tap()
+        timeField.typeText("Aa! : ")
+        XCTAssertEqual(timeField.value as? String, "")
+        
+        timeField.typeText("1234")
+        XCTAssertEqual(timeField.value as? String, "12:34")
     }
 }

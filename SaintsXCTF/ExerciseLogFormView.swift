@@ -79,6 +79,7 @@ struct ExerciseLogFormView: View {
                         Text("Exercise logs must have a name.")
                             .font(.caption)
                             .foregroundColor(Color(UIColor(Constants.statusFailure)))
+                            .accessibility(label: Text("nameValidationText"))
                     }
                 }
             }
@@ -207,6 +208,7 @@ struct ExerciseLogFormView: View {
                         Text("A distance is required if no time is entered.")
                             .font(.caption)
                             .foregroundColor(Color(UIColor(Constants.statusFailure)))
+                            .accessibility(label: Text("distanceValidationText"))
                     }
                 }
                 VStack(alignment: .leading) {
@@ -248,6 +250,7 @@ struct ExerciseLogFormView: View {
                         Text("A time is required if no distance is entered.")
                             .font(.caption)
                             .foregroundColor(Color(UIColor(Constants.statusFailure)))
+                            .accessibility(label: Text("timeValidationText"))
                     }
                 }
             }
