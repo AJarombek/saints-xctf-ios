@@ -218,4 +218,121 @@ class ExerciseLogUITests: XCTestCase {
         timeField.typeText("1234")
         XCTAssertEqual(timeField.value as? String, "12:34")
     }
+    
+    func testTimeTextFormatting() throws {
+        app.launch()
+        signIn(app: app)
+
+        let tabBar = app.tabBars["Tab Bar"]
+        tabBar.buttons["New Log"].tap()
+        
+        let scrollViewsQuery = app.scrollViews
+        let elementsQuery = scrollViewsQuery.otherElements
+        
+        let timeField = elementsQuery.textFields["timeField"]
+        
+        timeField.tap()
+        timeField.typeText("1")
+        XCTAssertEqual(timeField.value as? String, "1")
+        
+        timeField.typeText("2")
+        XCTAssertEqual(timeField.value as? String, "12")
+        
+        timeField.typeText("3")
+        XCTAssertEqual(timeField.value as? String, "1:23")
+        
+        timeField.typeText("4")
+        XCTAssertEqual(timeField.value as? String, "12:34")
+        
+        timeField.typeText("5")
+        XCTAssertEqual(timeField.value as? String, "1:23:45")
+        
+        timeField.typeText("6")
+        XCTAssertEqual(timeField.value as? String, "12:34:56")
+        
+        timeField.typeText("7")
+        XCTAssertEqual(timeField.value as? String, "12:34:56")
+        
+        timeField.typeText(String(repeating: XCUIKeyboardKey.delete.rawValue, count: 1))
+        XCTAssertEqual(timeField.value as? String, "1:23:45")
+        
+        timeField.typeText(String(repeating: XCUIKeyboardKey.delete.rawValue, count: 1))
+        XCTAssertEqual(timeField.value as? String, "12:34")
+        
+        timeField.typeText(String(repeating: XCUIKeyboardKey.delete.rawValue, count: 1))
+        XCTAssertEqual(timeField.value as? String, "1:23")
+        
+        timeField.typeText(String(repeating: XCUIKeyboardKey.delete.rawValue, count: 1))
+        XCTAssertEqual(timeField.value as? String, "12")
+        
+        timeField.typeText(String(repeating: XCUIKeyboardKey.delete.rawValue, count: 1))
+        XCTAssertEqual(timeField.value as? String, "1")
+        
+        timeField.typeText(String(repeating: XCUIKeyboardKey.delete.rawValue, count: 1))
+        XCTAssertEqual(timeField.value as? String, "")
+    }
+    
+    func testNameTextLimit() throws {
+        app.launch()
+        signIn(app: app)
+
+        let tabBar = app.tabBars["Tab Bar"]
+        tabBar.buttons["New Log"].tap()
+        
+        let scrollViewsQuery = app.scrollViews
+        let elementsQuery = scrollViewsQuery.otherElements
+        
+        let nameField = elementsQuery.textFields["nameField"]
+        nameField.tap()
+        nameField.typeText(String(repeating: "x", count: 45))
+        XCTAssertEqual(nameField.value as? String, String(repeating: "x", count: 40))
+    }
+    
+    func testLocationTextLimit() throws {
+        app.launch()
+        signIn(app: app)
+
+        let tabBar = app.tabBars["Tab Bar"]
+        tabBar.buttons["New Log"].tap()
+        
+        let scrollViewsQuery = app.scrollViews
+        let elementsQuery = scrollViewsQuery.otherElements
+        
+        let locationField = elementsQuery.textFields["locationField"]
+        locationField.tap()
+        locationField.typeText(String(repeating: "x", count: 55))
+        XCTAssertEqual(locationField.value as? String, String(repeating: "x", count: 50))
+    }
+    
+    func testTimeTextLimit() throws {
+        app.launch()
+        signIn(app: app)
+
+        let tabBar = app.tabBars["Tab Bar"]
+        tabBar.buttons["New Log"].tap()
+        
+        let scrollViewsQuery = app.scrollViews
+        let elementsQuery = scrollViewsQuery.otherElements
+        
+        let timeField = elementsQuery.textFields["timeField"]
+        timeField.tap()
+        timeField.typeText(String(repeating: "1", count: 10))
+        XCTAssertEqual(timeField.value as? String, "11:11:11")
+    }
+    
+    func testDescriptionTextLimit() throws {
+        app.launch()
+        signIn(app: app)
+
+        let tabBar = app.tabBars["Tab Bar"]
+        tabBar.buttons["New Log"].tap()
+        
+        let scrollViewsQuery = app.scrollViews
+        let elementsQuery = scrollViewsQuery.otherElements
+        
+        let descriptionField = elementsQuery.textFields["descriptionField"]
+        descriptionField.tap()
+        descriptionField.typeText(String(repeating: "x", count: 1005))
+        XCTAssertEqual(descriptionField.value as? String, String(repeating: "x", count: 1000))
+    }
 }

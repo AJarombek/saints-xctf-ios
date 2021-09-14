@@ -95,9 +95,9 @@ struct ExerciseLogFormView: View {
                     TextField("", text: $log.location) { isEditing in
                         form.isEditingLocation = isEditing
                     }
-                    .onReceive(Just(log.location), perform: { _ in
+                    .onChange(of: log.location) { _ in
                         limitLocationText(locationTextLimit)
-                    })
+                    }
                     .accessibility(label: Text("locationField"))
                     .autocapitalization(.none)
                     .disableAutocorrection(true)
