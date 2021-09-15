@@ -30,6 +30,7 @@ struct ExerciseLogActionsView: View {
                     ProgressView()
                 }
             }
+            .accessibility(label: Text(meta.isExistingLog ? "Update" : "Create"))
             .disabled(createLog.creating)
             .alert(isPresented: $createLog.created) {
                 Alert(
@@ -52,19 +53,20 @@ struct ExerciseLogActionsView: View {
                 Text("Cancel")
                     .foregroundColor(Color(UIColor(Constants.darkGray)))
             }
+            .accessibility(label: Text("Cancel"))
             .disabled(createLog.creating)
             .alert(isPresented: $form.showCanceling) {
                 Alert(
                     title: Text("Are you sure you want to cancel your changes?"),
                     message: Text("Your progress will be lost."),
                     primaryButton: .default(
+                        Text("No")
+                    ),
+                    secondaryButton: .cancel(
                         Text("Yes"),
                         action: {
                             onConfirmCancel()
                         }
-                    ),
-                    secondaryButton: .cancel(
-                        Text("No")
                     )
                 )
             }

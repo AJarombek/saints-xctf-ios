@@ -56,7 +56,7 @@ struct ExerciseLogFormView: View {
                         limitNameText(nameTextLimit)
                         validateNameText()
                     }
-                    .accessibility(label: Text("nameField"))
+                    .accessibility(label: Text("Name Field"))
                     .autocapitalization(.none)
                     .disableAutocorrection(true)
                     .background(Color(UIColor.white))
@@ -75,11 +75,11 @@ struct ExerciseLogFormView: View {
                     .frame(minHeight: 30)
                     .disabled(createLog.creating)
                     
-                    if form.nameStatus == InputStatus.warning {
+                    if form.nameStatus == InputStatus.warning || form.nameStatus == InputStatus.failure {
                         Text("Exercise logs must have a name.")
                             .font(.caption)
                             .foregroundColor(Color(UIColor(Constants.statusFailure)))
-                            .accessibility(label: Text("nameValidationText"))
+                            .accessibility(label: Text("Name Validation Text"))
                     }
                 }
             }
@@ -98,7 +98,7 @@ struct ExerciseLogFormView: View {
                     .onChange(of: log.location) { _ in
                         limitLocationText(locationTextLimit)
                     }
-                    .accessibility(label: Text("locationField"))
+                    .accessibility(label: Text("Location Field"))
                     .autocapitalization(.none)
                     .disableAutocorrection(true)
                     .background(Color(UIColor.white))
@@ -170,7 +170,7 @@ struct ExerciseLogFormView: View {
                             filterDistanceText()
                             validateTimeAndDistance()
                         }
-                        .accessibility(label: Text("distanceField"))
+                        .accessibility(label: Text("Distance Field"))
                         .autocapitalization(.none)
                         .disableAutocorrection(true)
                         .keyboardType(.numbersAndPunctuation)
@@ -204,11 +204,11 @@ struct ExerciseLogFormView: View {
                         .disabled(createLog.creating)
                     }
                     
-                    if form.distanceStatus == InputStatus.warning {
+                    if form.distanceStatus == InputStatus.warning || form.distanceStatus == InputStatus.failure {
                         Text("A distance is required if no time is entered.")
                             .font(.caption)
                             .foregroundColor(Color(UIColor(Constants.statusFailure)))
-                            .accessibility(label: Text("distanceValidationText"))
+                            .accessibility(label: Text("Distance Validation Text"))
                     }
                 }
                 VStack(alignment: .leading) {
@@ -226,7 +226,7 @@ struct ExerciseLogFormView: View {
                         setFormattedTimeText()
                         validateTimeAndDistance()
                     }
-                    .accessibility(label: Text("timeField"))
+                    .accessibility(label: Text("Time Field"))
                     .autocapitalization(.none)
                     .disableAutocorrection(true)
                     .keyboardType(.numbersAndPunctuation)
@@ -246,11 +246,11 @@ struct ExerciseLogFormView: View {
                     .frame(minHeight: 30)
                     .disabled(createLog.creating)
                     
-                    if form.timeStatus == InputStatus.warning {
+                    if form.timeStatus == InputStatus.warning || form.timeStatus == InputStatus.failure {
                         Text("A time is required if no distance is entered.")
                             .font(.caption)
                             .foregroundColor(Color(UIColor(Constants.statusFailure)))
-                            .accessibility(label: Text("timeValidationText"))
+                            .accessibility(label: Text("Time Validation Text"))
                     }
                 }
             }
@@ -270,7 +270,7 @@ struct ExerciseLogFormView: View {
                     ) {
                         Text("Title")
                     }
-                    .accessibility(label: Text("feel"))
+                    .accessibility(label: Text("Feel"))
                     .accentColor(Color(UIColor(Constants.saintsXctfRed)))
                     .disabled(createLog.creating)
                 }
@@ -290,7 +290,7 @@ struct ExerciseLogFormView: View {
                     .onReceive(Just(log.description), perform: { _ in
                         limitDescriptionText(descriptionTextLimit)
                     })
-                    .accessibility(label: Text("descriptionField"))
+                    .accessibility(label: Text("Description Field"))
                     .autocapitalization(.none)
                     .disableAutocorrection(true)
                     .background(Color(UIColor.white))

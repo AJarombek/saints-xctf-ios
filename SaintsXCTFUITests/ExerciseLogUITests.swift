@@ -53,7 +53,7 @@ class ExerciseLogUITests: XCTestCase {
         
         let scrollViewsQuery = app.scrollViews
         let elementsQuery = scrollViewsQuery.otherElements
-        let feelSlider = elementsQuery.sliders["feel"]
+        let feelSlider = elementsQuery.sliders["Feel"]
         
         XCTAssert(elementsQuery.staticTexts["Average"].exists)
         
@@ -98,8 +98,8 @@ class ExerciseLogUITests: XCTestCase {
         let scrollViewsQuery = app.scrollViews
         let elementsQuery = scrollViewsQuery.otherElements
         
-        let nameField = elementsQuery.textFields["nameField"]
-        let nameValidationText = elementsQuery.staticTexts["nameValidationText"]
+        let nameField = elementsQuery.textFields["Name Field"]
+        let nameValidationText = elementsQuery.staticTexts["Name Validation Text"]
         
         XCTAssertEqual(nameField.value as? String, "")
         XCTAssertFalse(nameValidationText.exists)
@@ -133,11 +133,11 @@ class ExerciseLogUITests: XCTestCase {
         let scrollViewsQuery = app.scrollViews
         let elementsQuery = scrollViewsQuery.otherElements
         
-        let distanceField = elementsQuery.textFields["distanceField"]
-        let distanceValidationText = elementsQuery.staticTexts["distanceValidationText"]
+        let distanceField = elementsQuery.textFields["Distance Field"]
+        let distanceValidationText = elementsQuery.staticTexts["Distance Validation Text"]
         
-        let timeField = elementsQuery.textFields["timeField"]
-        let timeValidationText = elementsQuery.staticTexts["timeValidationText"]
+        let timeField = elementsQuery.textFields["Time Field"]
+        let timeValidationText = elementsQuery.staticTexts["Time Validation Text"]
         
         XCTAssertEqual(distanceField.value as? String, "")
         XCTAssertFalse(distanceValidationText.exists)
@@ -185,7 +185,7 @@ class ExerciseLogUITests: XCTestCase {
         let scrollViewsQuery = app.scrollViews
         let elementsQuery = scrollViewsQuery.otherElements
         
-        let distanceField = elementsQuery.textFields["distanceField"]
+        let distanceField = elementsQuery.textFields["Distance Field"]
         XCTAssertEqual(distanceField.value as? String, "")
         
         distanceField.tap()
@@ -209,7 +209,7 @@ class ExerciseLogUITests: XCTestCase {
         let scrollViewsQuery = app.scrollViews
         let elementsQuery = scrollViewsQuery.otherElements
         
-        let timeField = elementsQuery.textFields["timeField"]
+        let timeField = elementsQuery.textFields["Time Field"]
         
         timeField.tap()
         timeField.typeText("Aa! : ")
@@ -229,7 +229,7 @@ class ExerciseLogUITests: XCTestCase {
         let scrollViewsQuery = app.scrollViews
         let elementsQuery = scrollViewsQuery.otherElements
         
-        let timeField = elementsQuery.textFields["timeField"]
+        let timeField = elementsQuery.textFields["Time Field"]
         
         timeField.tap()
         timeField.typeText("1")
@@ -282,7 +282,7 @@ class ExerciseLogUITests: XCTestCase {
         let scrollViewsQuery = app.scrollViews
         let elementsQuery = scrollViewsQuery.otherElements
         
-        let nameField = elementsQuery.textFields["nameField"]
+        let nameField = elementsQuery.textFields["Name Field"]
         nameField.tap()
         nameField.typeText(String(repeating: "x", count: 45))
         XCTAssertEqual(nameField.value as? String, String(repeating: "x", count: 40))
@@ -298,7 +298,7 @@ class ExerciseLogUITests: XCTestCase {
         let scrollViewsQuery = app.scrollViews
         let elementsQuery = scrollViewsQuery.otherElements
         
-        let locationField = elementsQuery.textFields["locationField"]
+        let locationField = elementsQuery.textFields["Location Field"]
         locationField.tap()
         locationField.typeText(String(repeating: "x", count: 55))
         XCTAssertEqual(locationField.value as? String, String(repeating: "x", count: 50))
@@ -314,7 +314,7 @@ class ExerciseLogUITests: XCTestCase {
         let scrollViewsQuery = app.scrollViews
         let elementsQuery = scrollViewsQuery.otherElements
         
-        let timeField = elementsQuery.textFields["timeField"]
+        let timeField = elementsQuery.textFields["Time Field"]
         timeField.tap()
         timeField.typeText(String(repeating: "1", count: 10))
         XCTAssertEqual(timeField.value as? String, "11:11:11")
@@ -330,9 +330,120 @@ class ExerciseLogUITests: XCTestCase {
         let scrollViewsQuery = app.scrollViews
         let elementsQuery = scrollViewsQuery.otherElements
         
-        let descriptionField = elementsQuery.textFields["descriptionField"]
+        let descriptionField = elementsQuery.textFields["Description Field"]
         descriptionField.tap()
         descriptionField.typeText(String(repeating: "x", count: 1005))
         XCTAssertEqual(descriptionField.value as? String, String(repeating: "x", count: 1000))
+    }
+    
+    func testCancelButtonShowsAlert() throws {
+        app.launch()
+        signIn(app: app)
+
+        let tabBar = app.tabBars["Tab Bar"]
+        tabBar.buttons["New Log"].tap()
+        
+        let scrollViewsQuery = app.scrollViews
+        let elementsQuery = scrollViewsQuery.otherElements
+        let cancelButton = elementsQuery.buttons["Cancel"]
+        
+        let alert = app.alerts["Are you sure you want to cancel your changes?"]
+        XCTAssertFalse(alert.exists)
+        
+        cancelButton.tap()
+        XCTAssert(alert.exists)
+        
+        alert.buttons["Yes"].tap()
+        XCTAssertFalse(alert.exists)
+        
+        cancelButton.tap()
+        XCTAssert(alert.exists)
+        
+        alert.buttons["No"].tap()
+        XCTAssertFalse(alert.exists)
+    }
+    
+    func testCancelButtonResetsFields() throws {
+        app.launch()
+        signIn(app: app)
+
+        let tabBar = app.tabBars["Tab Bar"]
+        tabBar.buttons["New Log"].tap()
+        
+        let scrollViewsQuery = app.scrollViews
+        let elementsQuery = scrollViewsQuery.otherElements
+        let cancelButton = elementsQuery.buttons["Cancel"]
+        let alert = app.alerts["Are you sure you want to cancel your changes?"]
+        
+        let nameField = elementsQuery.textFields["Name Field"]
+        let locationField = elementsQuery.textFields["Location Field"]
+        let distanceField = elementsQuery.textFields["Distance Field"]
+        let timeField = elementsQuery.textFields["Time Field"]
+        let descriptionField = elementsQuery.textFields["Description Field"]
+        let feelSlider = elementsQuery.sliders["Feel"]
+        
+        nameField.tap()
+        nameField.typeText("Riverside Park")
+        
+        locationField.tap()
+        locationField.typeText("New York, NY")
+        
+        distanceField.tap()
+        distanceField.typeText("16")
+        
+        timeField.tap()
+        timeField.typeText("1")
+        timeField.typeText("54")
+        timeField.typeText("24")
+        
+        feelSlider.adjust(toNormalizedSliderPosition: 0.7)
+        
+        descriptionField.tap()
+        descriptionField.typeText("Monday Long Run")
+        
+        XCTAssertEqual(nameField.value as? String, "Riverside Park")
+        XCTAssertEqual(locationField.value as? String, "New York, NY")
+        XCTAssertEqual(distanceField.value as? String, "16")
+        XCTAssertEqual(timeField.value as? String, "1:54:24")
+        XCTAssert(elementsQuery.staticTexts["Fairly Good"].exists)
+        XCTAssertEqual(descriptionField.value as? String, "Monday Long Run")
+        
+        cancelButton.tap()
+        alert.buttons["Yes"].tap()
+        
+        XCTAssert(elementsQuery.staticTexts["Average"].waitForExistence(timeout: 2))
+        
+        XCTAssertEqual(nameField.value as? String, "")
+        XCTAssertEqual(locationField.value as? String, "")
+        XCTAssertEqual(distanceField.value as? String, "")
+        XCTAssertEqual(timeField.value as? String, "")
+        XCTAssert(elementsQuery.staticTexts["Average"].exists)
+        XCTAssertEqual(descriptionField.value as? String, "")
+    }
+    
+    func testCreateButtonShowsValidation() throws {
+        app.launch()
+        signIn(app: app)
+
+        let tabBar = app.tabBars["Tab Bar"]
+        tabBar.buttons["New Log"].tap()
+        
+        let scrollViewsQuery = app.scrollViews
+        let elementsQuery = scrollViewsQuery.otherElements
+        let createButton = elementsQuery.buttons["Create"]
+        
+        let nameValidationText = elementsQuery.staticTexts["Name Validation Text"]
+        let distanceValidationText = elementsQuery.staticTexts["Distance Validation Text"]
+        let timeValidationText = elementsQuery.staticTexts["Time Validation Text"]
+        
+        XCTAssertFalse(nameValidationText.exists)
+        XCTAssertFalse(distanceValidationText.exists)
+        XCTAssertFalse(timeValidationText.exists)
+        
+        createButton.tap()
+        
+        XCTAssert(nameValidationText.exists)
+        XCTAssert(distanceValidationText.exists)
+        XCTAssert(timeValidationText.exists)
     }
 }

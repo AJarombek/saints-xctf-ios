@@ -20,6 +20,7 @@
 		3F49821A26EAF771006312EF /* ExerciseLogForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F49821926EAF771006312EF /* ExerciseLogForm.swift */; };
 		3F49821E26ED5B70006312EF /* EditExerciseLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F49821D26ED5B70006312EF /* EditExerciseLogViewController.swift */; };
 		3F49822826ED94A4006312EF /* ExistingLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F49822726ED94A4006312EF /* ExistingLog.swift */; };
+		3F49822C26F11756006312EF /* ExerciseLogUIStubTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F49822B26F11756006312EF /* ExerciseLogUIStubTests.swift */; };
 		3F4B88BA26DC71F4009B8CD9 /* InputStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4B88B926DC71F4009B8CD9 /* InputStatus.swift */; };
 		3F53B18F266C2CAC003D8F12 /* UserStubs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F53B18E266C2CAC003D8F12 /* UserStubs.swift */; };
 		3F597A7F26DDA33B00B35715 /* Devices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F597A7E26DDA33B00B35715 /* Devices.swift */; };
@@ -237,6 +238,7 @@
 		3F49821926EAF771006312EF /* ExerciseLogForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseLogForm.swift; sourceTree = "<group>"; };
 		3F49821D26ED5B70006312EF /* EditExerciseLogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditExerciseLogViewController.swift; sourceTree = "<group>"; };
 		3F49822726ED94A4006312EF /* ExistingLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExistingLog.swift; sourceTree = "<group>"; };
+		3F49822B26F11756006312EF /* ExerciseLogUIStubTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseLogUIStubTests.swift; sourceTree = "<group>"; };
 		3F4B88B926DC71F4009B8CD9 /* InputStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputStatus.swift; sourceTree = "<group>"; };
 		3F53B18E266C2CAC003D8F12 /* UserStubs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStubs.swift; sourceTree = "<group>"; };
 		3F597A7E26DDA33B00B35715 /* Devices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Devices.swift; sourceTree = "<group>"; };
@@ -426,12 +428,13 @@
 				3F28BC0F265DD163008C7833 /* Stubs */,
 				3FC8B70C262F9D9300FFAB08 /* SaintsXCTFUITests.swift */,
 				3FC8B70E262F9D9300FFAB08 /* Info.plist */,
-				3F28BB8F265B250C008C7833 /* HomeUITests.swift */,
 				3F28BB97265B3956008C7833 /* Utils.swift */,
 				3F28BBFB265DCC5C008C7833 /* Stubs.swift */,
+				3F28BB8F265B250C008C7833 /* HomeUITests.swift */,
 				3F28BC23265EC69B008C7833 /* HomeUIStubTests.swift */,
 				3F28BC3D266A5C6D008C7833 /* ProfileUIStubTests.swift */,
 				3F597AAC26E979CC00B35715 /* ExerciseLogUITests.swift */,
+				3F49822B26F11756006312EF /* ExerciseLogUIStubTests.swift */,
 			);
 			path = SaintsXCTFUITests;
 			sourceTree = "<group>";
@@ -1048,6 +1051,7 @@
 				3F28BC42266AD3AD008C7833 /* RangeViewStubs.swift in Sources */,
 				3F28BC3E266A5C6D008C7833 /* ProfileUIStubTests.swift in Sources */,
 				3F597AAD26E979CC00B35715 /* ExerciseLogUITests.swift in Sources */,
+				3F49822C26F11756006312EF /* ExerciseLogUIStubTests.swift in Sources */,
 				3F28BB90265B250C008C7833 /* HomeUITests.swift in Sources */,
 				3FC8B70D262F9D9300FFAB08 /* SaintsXCTFUITests.swift in Sources */,
 				3F53B18F266C2CAC003D8F12 /* UserStubs.swift in Sources */,
