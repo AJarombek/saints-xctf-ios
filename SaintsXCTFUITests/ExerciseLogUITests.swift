@@ -336,6 +336,48 @@ class ExerciseLogUITests: XCTestCase {
         XCTAssertEqual(descriptionField.value as? String, String(repeating: "x", count: 1000))
     }
     
+    func testProperExerciseTypeOptions() throws {
+        throw XCTSkip("Unknown Testing Approach/Potential SwiftUI Limitation")
+        
+        app.launch()
+        signIn(app: app)
+
+        let tabBar = app.tabBars["Tab Bar"]
+        tabBar.buttons["New Log"].tap()
+        
+        let elementsQuery = app.scrollViews.otherElements
+        
+        XCTAssert(elementsQuery.buttons["Run"].exists)
+        XCTAssertFalse(elementsQuery.buttons["Bike"].exists)
+        
+        elementsQuery.buttons["Run"].tap()
+        // TODO - Click "Bike" in the picker menu
+        
+        XCTAssertFalse(elementsQuery.buttons["Run"].exists)
+        XCTAssert(elementsQuery.buttons["Bike"].exists)
+    }
+    
+    func testProperMetricOptions() throws {
+        throw XCTSkip("Unknown Testing Approach/Potential SwiftUI Limitation")
+        
+        app.launch()
+        signIn(app: app)
+
+        let tabBar = app.tabBars["Tab Bar"]
+        tabBar.buttons["New Log"].tap()
+        
+        let elementsQuery = app.scrollViews.otherElements
+        
+        XCTAssert(elementsQuery.buttons["Miles"].exists)
+        XCTAssertFalse(elementsQuery.buttons["Kilometers"].exists)
+        
+        elementsQuery.buttons["Miles"].tap()
+        // TODO - Click "Kilometers" in the picker menu
+        
+        XCTAssertFalse(elementsQuery.buttons["Miles"].exists)
+        XCTAssert(elementsQuery.buttons["Kilometers"].exists)
+    }
+    
     func testCancelButtonShowsAlert() throws {
         app.launch()
         signIn(app: app)

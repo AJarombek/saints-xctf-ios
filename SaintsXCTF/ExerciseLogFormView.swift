@@ -28,6 +28,12 @@ struct ExerciseLogFormView: View {
         return calendar.date(from: startComponents)! ... calendar.date(from: endComponents)!
     }()
     
+    let formatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        return dateFormatter
+    }()
+    
     let nameTextLimit = 40
     let locationTextLimit = 50
     let timeTextLimit = 6
@@ -122,6 +128,7 @@ struct ExerciseLogFormView: View {
                         in: dateRange,
                         displayedComponents: [.date]
                     )
+                    .accessibility(label: Text(formatter.string(from: log.date)))
                     .frame(minWidth: 0, maxWidth: .infinity, minHeight: 30)
                     .accentColor(Color(UIColor(Constants.saintsXctfRed)))
                     .disabled(createLog.creating)
@@ -144,9 +151,11 @@ struct ExerciseLogFormView: View {
                     ) {
                         ForEach(ExerciseType.allCases) { type in
                             Text(type.rawValue.capitalized)
+                                .accessibility(label: Text(type.rawValue.capitalized))
                                 .tag(type)
                         }
                     }
+                    .accessibility(label: Text(log.exerciseType.rawValue.capitalized))
                     .pickerStyle(MenuPickerStyle())
                     .foregroundColor(Color(UIColor(Constants.saintsXctfRed)))
                     .frame(width: 80, alignment: .leading)
@@ -195,9 +204,11 @@ struct ExerciseLogFormView: View {
                         ) {
                             ForEach(Metric.allCases) { metric in
                                 Text(metric.rawValue.capitalized)
+                                    .accessibility(label: Text(metric.rawValue.capitalized))
                                     .tag(metric)
                             }
                         }
+                        .accessibility(label: Text(log.metric.rawValue.capitalized))
                         .pickerStyle(MenuPickerStyle())
                         .foregroundColor(Color(UIColor(Constants.saintsXctfRed)))
                         .frame(width: 90, alignment: .leading)
@@ -424,6 +435,18 @@ struct ExerciseLogFormView_Previews: PreviewProvider {
                 .previewDevice(PreviewDevice(rawValue: deviceName))
             }
         } else {
+            ExerciseLogFormView(
+                log: ExerciseLog(),
+                meta: ExerciseLogMeta(isExisting: false),
+                createLog: CreateExerciseLog(),
+                form: ExerciseLogForm()
+            )
+            ExerciseLogFormView(
+                log: ExerciseLog(),
+                meta: ExerciseLogMeta(isExisting: false),
+                createLog: CreateExerciseLog(),
+                form: ExerciseLogForm()
+            )
             ExerciseLogFormView(
                 log: ExerciseLog(),
                 meta: ExerciseLogMeta(isExisting: false),
