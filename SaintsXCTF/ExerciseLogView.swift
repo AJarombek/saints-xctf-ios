@@ -31,6 +31,12 @@ struct ExerciseLogView: View {
                                     "An unexpected error occurred while creating an exercise log."
                             ),
                             primaryButton: .default(
+                                Text("Cancel"),
+                                action: {
+                                    createLog.error = false
+                                }
+                            ),
+                            secondaryButton: .cancel(
                                 Text("Try Again"),
                                 action: {
                                     createLog.error = false
@@ -43,12 +49,6 @@ struct ExerciseLogView: View {
                                             form.reset()
                                         }
                                     }
-                                }
-                            ),
-                            secondaryButton: .cancel(
-                                Text("Cancel"),
-                                action: {
-                                    createLog.error = false
                                 }
                             )
                         )

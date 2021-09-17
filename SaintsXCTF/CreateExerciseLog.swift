@@ -16,7 +16,7 @@ class CreateExerciseLog: ObservableObject {
     
     func createExerciseLog(exerciseLog: ExerciseLog, completion: @escaping () -> Void) -> Void {
         creating = true
-        created = true
+        created = false
         error = false
         errorMessage = nil
         
@@ -39,7 +39,7 @@ class CreateExerciseLog: ObservableObject {
     
     func updateExerciseLog(newLog: ExerciseLog, existingLog: Log, completion: @escaping () -> Void) -> Void {
         creating = true
-        created = true
+        created = false
         error = false
         errorMessage = nil
         

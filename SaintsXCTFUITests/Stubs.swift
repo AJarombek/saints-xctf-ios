@@ -20,26 +20,39 @@ enum StubHttpVerb: String, CaseIterable, Identifiable {
     }
 }
 
+enum StubHttpStatus: String, CaseIterable, Identifiable {
+    case ok
+    case badRequest
+    
+    var id: String {
+        self.rawValue
+    }
+}
+
 class Stubs {
     let server = HttpServer()
     
-    func stubRequest(path: String, jsonData: Data, verb: StubHttpVerb = .get) {
+    func stubRequest(path: String, jsonData: Data, verb: StubHttpVerb = .get, status: StubHttpStatus = .ok) {
         guard let json = try? JSONSerialization.jsonObject(with: jsonData, options: .mutableContainers) else {
             return
         }
         
         let response: ((HttpRequest) -> HttpResponse) = { _ in
-            .ok(.json(json as AnyObject))
+            if status == .badRequest {
+                return HttpResponse.badRequest(.json(json as AnyObject))
+            } else {
+                return HttpResponse.ok(.json(json as AnyObject))
+            }
         }
         
-        if verb == .get {
-            server.get[path] = response
-        } else if verb == .post {
+        if verb == .post {
             server.post[path] = response
         } else if verb == .put {
             server.put[path] = response
         } else if verb == .delete {
             server.delete[path] = response
+        } else {
+            server.get[path] = response
         }
     }
 }
