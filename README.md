@@ -15,18 +15,26 @@ You can follow development of the android app here: [SaintsXCTF Android GitHub](
 
 ### Releases
 
+**V.2.1.0 - New Create & Edit Log Pages**
+
+> Release Date: Dec 29, 2021
+
+This update has newly designed create and edit log pages.  These pages are written using SwiftUI, replacing the old Storyboard/UIKit pages.  
+Also included in this release is a bug fix for the monthly calendar skipping months while navigating.
+
 **V.2.0.1 - Calendar & Monthly Chart Fixes**
 
 > Release Date: Jun 21, 2021
 
-This update fixes an issue with the monthly calendar and weekly chart.  Days were offset by one in both views, due in part to differences in the new API.
+This update fixes an issue with the monthly calendar and weekly chart.  Days were offset by one in both views, due in part to differences 
+in the new API.
 
 **V.2.0.0 - Version 2 Release**
 
 > Release Date: Jun 1, 2021
 
-This version of the iOS app aligns with the second version of the web application and API.  While no new features were added to the iOS app, aligning it with 
-the new web application and API enables quick updates going forward.
+This version of the iOS app aligns with the second version of the web application and API.  While no new features were added to the iOS app,
+ aligning it with the new web application and API enables quick updates going forward.
 
 **V.1.1 - Safety Release**
 

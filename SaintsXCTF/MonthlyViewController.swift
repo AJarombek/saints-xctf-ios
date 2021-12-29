@@ -290,6 +290,7 @@ class MonthlyViewController: UIViewController {
         components.day = 1
         
         monthStart = calendar.date(from: components)!
+        os_log("Month Start: %@", log: logTag, type: .debug, monthStart.description)
         
         reset()
         filter(monthStart)
@@ -597,13 +598,11 @@ class MonthlyViewController: UIViewController {
         os_log("View Previous Month.", log: logTag, type: .debug)
         
         // Subtract one month to the current monthStart date
-        let calendar = Calendar(identifier: .gregorian)
-        var components = calendar.dateComponents([.year, .month, .day], from: monthStart)
+        var calendar = Calendar(identifier: .gregorian)
+        calendar.timeZone = TimeZone(secondsFromGMT: 0)!
         
-        components.year = 0
-        components.day = 0
-        components.month = -1
-        monthStart = Calendar.current.date(byAdding: components, to: monthStart)!
+        monthStart = calendar.date(byAdding: .month, value: -1, to: monthStart)!
+        os_log("Previous Month Start: %@", log: logTag, type: .debug, monthStart.description)
         
         // Reset the calendar to default values and build the new month
         reset()
@@ -619,13 +618,11 @@ class MonthlyViewController: UIViewController {
         os_log("View Next Month.", log: logTag, type: .debug)
         
         // Add one month to the current monthStart date
-        let calendar = Calendar(identifier: .gregorian)
-        var components = calendar.dateComponents([.year, .month, .day], from: monthStart)
+        var calendar = Calendar(identifier: .gregorian)
+        calendar.timeZone = TimeZone(secondsFromGMT: 0)!
         
-        components.year = 0
-        components.day = 0
-        components.month = 1
-        monthStart = Calendar.current.date(byAdding: components, to: monthStart)!
+        monthStart = calendar.date(byAdding: .month, value: 1, to: monthStart)!
+        os_log("Next Month Start: %@", log: logTag, type: .debug, monthStart.description)
         
         // Reset the calendar to default values and build the new month
         reset()
