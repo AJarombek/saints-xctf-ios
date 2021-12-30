@@ -47,28 +47,30 @@ struct ExerciseLogActionsView: View {
                 )
             }
             
-            Button(action: {
-                onCancel()
-            }) {
-                Text("Cancel")
-                    .foregroundColor(Color(UIColor(Constants.darkGray)))
-            }
-            .accessibility(label: Text("Cancel"))
-            .disabled(createLog.creating)
-            .alert(isPresented: $form.showCanceling) {
-                Alert(
-                    title: Text("Are you sure you want to cancel your changes?"),
-                    message: Text("Your progress will be lost."),
-                    primaryButton: .default(
-                        Text("No")
-                    ),
-                    secondaryButton: .cancel(
-                        Text("Yes"),
-                        action: {
-                            onConfirmCancel()
-                        }
+            if !meta.isExistingLog {
+                Button(action: {
+                    onCancel()
+                }) {
+                    Text("Cancel")
+                        .foregroundColor(Color(UIColor(Constants.darkGray)))
+                }
+                .accessibility(label: Text("Cancel"))
+                .disabled(createLog.creating)
+                .alert(isPresented: $form.showCanceling) {
+                    Alert(
+                        title: Text("Are you sure you want to cancel your changes?"),
+                        message: Text("Your progress will be lost."),
+                        primaryButton: .default(
+                            Text("No")
+                        ),
+                        secondaryButton: .cancel(
+                            Text("Yes"),
+                            action: {
+                                onConfirmCancel()
+                            }
+                        )
                     )
-                )
+                }
             }
         }
         .padding(.top, 15)

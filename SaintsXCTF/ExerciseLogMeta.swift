@@ -15,4 +15,5 @@ class ExerciseLogMeta: ObservableObject {
     }
     
     var isExistingLog = false
+    var existingLogInitialized = false
 }

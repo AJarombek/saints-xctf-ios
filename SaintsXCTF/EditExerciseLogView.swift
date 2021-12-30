@@ -17,6 +17,11 @@ struct EditExerciseLogView: View {
     
     var body: some View {
         ExerciseLogView(log: log, meta: meta, createLog: createLog, form: form)
+            .onAppear(perform: {
+                if !meta.existingLogInitialized {
+                    form.displayedTime = log.time
+                }
+            })
     }
 }
 
