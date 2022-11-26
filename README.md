@@ -15,6 +15,18 @@ You can follow development of the android app here: [SaintsXCTF Android GitHub](
 
 ### Releases
 
+**V2.1.2 - Monthly Calendar Daylight Savings Fix**
+
+> Release Date: Nov 26, 2022
+
+Fixes an issue where the monthly calendar displays logs offest by one day during daylight savings.
+
+**V2.1.1 - iOS 15 Update**
+
+> Release Date: Dec 30, 2021
+
+The update makes the app support iOS 15, removes the cancel button from the edit log page, fixes the time on the edit log page.
+
 **V.2.1.0 - New Create & Edit Log Pages**
 
 > Release Date: Dec 29, 2021

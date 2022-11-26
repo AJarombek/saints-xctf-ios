@@ -516,7 +516,7 @@ class MonthlyViewController: UIViewController {
                 let activityDateString: String = activity.date!
                 let activityDate: Date = dateFormatter.date(from: activityDateString)!
                 
-                let difComponent = Calendar.current.dateComponents([.day], from: fd, to: activityDate)
+                let difComponent = calendar.dateComponents([.day], from: fd, to: activityDate)
                 let day = difComponent.day!
                 
                 var miles: Double = activity.miles!

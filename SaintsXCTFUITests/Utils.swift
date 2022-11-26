@@ -18,10 +18,10 @@ func signIn(app: XCUIApplication) {
     
     if signedOut {
         usernameTextField.tap()
-        usernameTextField.typeText("SaintsIOS")
+        usernameTextField.typeText(ProcessInfo.processInfo.environment["SAINTS_XCTF_TEST_USERNAME"] ?? "")
         
         passwordSecureTextField.tap()
-        passwordSecureTextField.typeText("SaintsIOS")
+        passwordSecureTextField.typeText(ProcessInfo.processInfo.environment["SAINTS_XCTF_TEST_PASSWORD"] ?? "")
         
         app.staticTexts["Log In"].tap()
         let homeTab = app.tabBars["Tab Bar"].buttons["Home"]
