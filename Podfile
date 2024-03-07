@@ -2,7 +2,7 @@
 # Author: Andrew Jarombek
 # Date: 1/29/2019
 
-platform :ios, '12.1'
+platform :ios, '15.0'
 use_frameworks!
 
 # The main iOS application
@@ -17,12 +17,12 @@ end
 # Unit tests for the iOS application
 target 'SaintsXCTFTests' do
   pod 'ObjectMapper', '~> 3.5.1'
-  pod 'Mockingjay', '~> 3.0.0-alpha.1'
 end
 
 # UI tests for the iOS application
 target 'SaintsXCTFUITests' do
   pod 'Swifter', '~> 1.5.0'
+  pod 'OHHTTPStubs/Swift', '~> 9.1.0'
 end
 
 post_install do |installer|

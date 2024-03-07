@@ -433,6 +433,17 @@ struct ExerciseLogFormView_Previews: PreviewProvider {
                     form: ExerciseLogForm()
                 )
                 .previewDevice(PreviewDevice(rawValue: deviceName))
+                .previewDisplayName("Default")
+                
+                ExerciseLogFormView(
+                    log: ExerciseLog(),
+                    meta: ExerciseLogMeta(isExisting: false),
+                    createLog: CreateExerciseLog(),
+                    form: ExerciseLogForm()
+                )
+                .previewDevice(PreviewDevice(rawValue: deviceName))
+                .environment(\.colorScheme, .dark)
+                .previewDisplayName("Dark Mode")
             }
         } else {
             ExerciseLogFormView(
@@ -441,18 +452,16 @@ struct ExerciseLogFormView_Previews: PreviewProvider {
                 createLog: CreateExerciseLog(),
                 form: ExerciseLogForm()
             )
+            .previewDisplayName("Default")
+            
             ExerciseLogFormView(
                 log: ExerciseLog(),
                 meta: ExerciseLogMeta(isExisting: false),
                 createLog: CreateExerciseLog(),
                 form: ExerciseLogForm()
             )
-            ExerciseLogFormView(
-                log: ExerciseLog(),
-                meta: ExerciseLogMeta(isExisting: false),
-                createLog: CreateExerciseLog(),
-                form: ExerciseLogForm()
-            )
+            .environment(\.colorScheme, .dark)
+            .previewDisplayName("Dark Mode")
         }
     }
 }

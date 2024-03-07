@@ -34,9 +34,11 @@ struct CreateExerciseLogView_Previews: PreviewProvider {
             }
         } else {
             CreateExerciseLogView()
+                .previewDisplayName("Default")
             
             CreateExerciseLogView()
                 .environment(\.colorScheme, .dark)
+                .previewDisplayName("Dark Mode")
         }
     }
 }
