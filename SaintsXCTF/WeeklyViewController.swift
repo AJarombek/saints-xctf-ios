@@ -8,7 +8,7 @@
 
 import UIKit
 import os.log
-import Charts
+import DGCharts
 
 /**
  Controller for a bar chart disaplying exercise summaries for each week.

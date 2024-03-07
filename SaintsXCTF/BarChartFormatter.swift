@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Charts
+import DGCharts
 
 /**
  An extension of the BarChartView class.  The BarChartView draws a bar chart.
@@ -24,7 +24,7 @@ extension BarChartView {
      ## Implements the following protocol:
      - IAxisValueFormatter: Assists in formatting a graph axis
      */
-    private class BarChartFormatter: NSObject, IAxisValueFormatter {
+    private class BarChartFormatter: NSObject, AxisValueFormatter {
         
         var labels: [String] = []
         
@@ -75,7 +75,7 @@ extension BarChartView {
         // Set the dataset values and colors
         let chartDataSet = BarChartDataSet(entries: dataEntries, label: label)
         let chartData = BarChartData()
-        chartData.addDataSet(chartDataSet)
+        chartData.append(chartDataSet)
         chartData.setDrawValues(true)
         chartDataSet.colors = chartColors
         
@@ -105,7 +105,7 @@ extension BarChartView {
     func initialSetup() {
         // Set up some default chart values
         self.backgroundColor = UIColor(0xFFFFFF)
-        self.chartDescription?.text = ""
+        self.chartDescription.text = ""
         
         // Setup the axis
         self.xAxis.labelPosition = .bottom

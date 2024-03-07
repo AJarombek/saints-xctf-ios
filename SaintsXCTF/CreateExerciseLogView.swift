@@ -27,9 +27,16 @@ struct CreateExerciseLogView_Previews: PreviewProvider {
             ForEach(Devices.IPhonesSupported, id: \.self) { deviceName in
                 CreateExerciseLogView()
                     .previewDevice(PreviewDevice(rawValue: deviceName))
+                
+                CreateExerciseLogView()
+                    .previewDevice(PreviewDevice(rawValue: deviceName))
+                    .environment(\.colorScheme, .dark)
             }
         } else {
             CreateExerciseLogView()
+            
+            CreateExerciseLogView()
+                .environment(\.colorScheme, .dark)
         }
     }
 }
