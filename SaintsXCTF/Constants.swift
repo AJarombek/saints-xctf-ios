@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 /**
  Constant values used throughout the application.
@@ -22,11 +23,31 @@ class Constants {
     public static let statusFailure = 0xDC3545
     public static let darkGray = 0x555555
     
-    private static let feel_colors = [0xEA9999, 0xFFAD99, 0xEAC199, 0xFFD699, 0xFFFFAD, 0xE3E3E3, 0xC7F599,
-                       0x99D699, 0x99C199, 0xA3A3FF]
+    private static let feel_colors = [
+        0xEA9999,
+        0xFFAD99,
+        0xEAC199,
+        0xFFD699,
+        0xFFFFAD,
+        0xE3E3E3,
+        0xC7F599,
+        0x99D699,
+        0x99C199,
+        0xA3A3FF
+    ]
     
-    private static let feel_descriptions = ["Terrible", "Very Bad", "Bad", "Pretty Bad", "Mediocre", "Average",
-                             "Fairly Good", "Good", "Great", "Fantastic"]
+    private static let feel_descriptions = [
+        "Terrible",
+        "Very Bad",
+        "Bad",
+        "Pretty Bad",
+        "Mediocre",
+        "Average",
+        "Fairly Good",
+        "Good",
+        "Great",
+        "Fantastic"
+    ]
     
     /**
      Retrieve a color that corresponds to how someone felt in their exercise
@@ -35,6 +56,20 @@ class Constants {
      */
     static func getFeelColor(_ index: Int) -> Int {
         return feel_colors[index]
+    }
+    
+    /**
+     Retrieve a UIColor instance that corresponds to how someone felt in their exercise
+     - parameters:
+     - index: the location of the feel color in the feel_colors array
+     - colorScheme: the SwiftUI Color Scheme of the UI device
+     */
+    static func getFeelUIColor(_ index: Int, _ colorScheme: ColorScheme) -> UIColor {
+        if colorScheme == .dark {
+            return UIColor(feel_colors[index], a: CGFloat(0.4))
+        }
+        
+        return UIColor(feel_colors[index])
     }
     
     /**

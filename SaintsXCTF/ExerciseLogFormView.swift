@@ -10,6 +10,8 @@ import SwiftUI
 import Combine
 
 struct ExerciseLogFormView: View {
+    @Environment(\.colorScheme) private var colorScheme: ColorScheme
+    
     @ObservedObject var log: ExerciseLog
     @ObservedObject var meta: ExerciseLogMeta
     @ObservedObject var createLog: CreateExerciseLog
@@ -323,7 +325,7 @@ struct ExerciseLogFormView: View {
                 .stroke(Color.gray, lineWidth: 0.25)
                 .shadow(radius: 2)
         )
-        .background(Color.init(UIColor(Constants.getFeelColor(Int(log.feel - 1)))))
+        .background(Color.init(Constants.getFeelUIColor(Int(log.feel - 1), colorScheme)))
         .cornerRadius(5)
         .textFieldStyle(RoundedBorderTextFieldStyle())
     }

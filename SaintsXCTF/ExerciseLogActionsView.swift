@@ -52,7 +52,7 @@ struct ExerciseLogActionsView: View {
                     onCancel()
                 }) {
                     Text("Cancel")
-                        .foregroundColor(Color(UIColor(Constants.darkGray)))
+                        .foregroundColor(Color("DarkGrayColor"))
                 }
                 .accessibility(label: Text("Cancel"))
                 .disabled(createLog.creating)

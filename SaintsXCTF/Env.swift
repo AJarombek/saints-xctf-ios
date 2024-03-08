@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum Environment {
+enum Env {
     case local
     case localEmail
     case localUITestStub
@@ -17,7 +17,7 @@ enum Environment {
 }
 
 class NetworkEnvironment {
-    var environment: Environment {
+    var environment: Env {
         get {
             if ProcessInfo.processInfo.arguments.contains("UI_STUB_TESTING") {
                 return .localUITestStub

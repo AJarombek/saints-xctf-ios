@@ -41,7 +41,7 @@
 		3FC8B70D262F9D9300FFAB08 /* SaintsXCTFUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC8B70C262F9D9300FFAB08 /* SaintsXCTFUITests.swift */; };
 		3FC8B717262FA91100FFAB08 /* AuthResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC8B716262FA91100FFAB08 /* AuthResult.swift */; };
 		3FC8B71D2630E67500FFAB08 /* UserJWT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC8B71C2630E67500FFAB08 /* UserJWT.swift */; };
-		3FC8B7212634A7B400FFAB08 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC8B7202634A7B300FFAB08 /* Environment.swift */; };
+		3FC8B7212634A7B400FFAB08 /* Env.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC8B7202634A7B300FFAB08 /* Env.swift */; };
 		3FC8B725263611B300FFAB08 /* FnResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC8B724263611B300FFAB08 /* FnResult.swift */; };
 		3FC8B72F26362F2600FFAB08 /* AdminViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC8B72E26362F2600FFAB08 /* AdminViewController.swift */; };
 		3FC8B7332638D61B00FFAB08 /* UassetClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC8B7322638D61B00FFAB08 /* UassetClient.swift */; };
@@ -110,26 +110,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		3F28BBB6265C7170008C7833 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A1081BFA21FFF94500BF80A8 /* Pods.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 3D24851DF2A7139150ADCA3F485D00DC;
-			remoteInfo = Mockingjay;
-		};
 		3F28BBB8265C7170008C7833 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A1081BFA21FFF94500BF80A8 /* Pods.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 11176B24408D7D776EC9649622F701AE;
 			remoteInfo = "Pods-SaintsXCTFUITests";
-		};
-		3F28BBBA265C7170008C7833 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A1081BFA21FFF94500BF80A8 /* Pods.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 6A92D13ACA76A198281BA4FC0F5CBAD0;
-			remoteInfo = URITemplate;
 		};
 		3F28BC09265DCC5F008C7833 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -158,6 +144,13 @@
 			proxyType = 2;
 			remoteGlobalIDString = B09B3C05ADDB6FD455CE9C0A26AF482B;
 			remoteInfo = "DGCharts-DGCharts";
+		};
+		3FE641E42B9AAF74003CFE60 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A1081BFA21FFF94500BF80A8 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 17E33041B314FA837A3CAEB9DF3CDE9F;
+			remoteInfo = OHHTTPStubs;
 		};
 		A1081C0B21FFF94500BF80A8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -269,7 +262,7 @@
 		3FC8B70E262F9D9300FFAB08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3FC8B716262FA91100FFAB08 /* AuthResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResult.swift; sourceTree = "<group>"; };
 		3FC8B71C2630E67500FFAB08 /* UserJWT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserJWT.swift; sourceTree = "<group>"; };
-		3FC8B7202634A7B300FFAB08 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		3FC8B7202634A7B300FFAB08 /* Env.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Env.swift; sourceTree = "<group>"; };
 		3FC8B724263611B300FFAB08 /* FnResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FnResult.swift; sourceTree = "<group>"; };
 		3FC8B72E26362F2600FFAB08 /* AdminViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminViewController.swift; sourceTree = "<group>"; };
 		3FC8B7322638D61B00FFAB08 /* UassetClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UassetClient.swift; sourceTree = "<group>"; };
@@ -470,14 +463,13 @@
 				3FE641D12B99F306003CFE60 /* DGCharts.bundle */,
 				A1D8AC58220137C1007648DB /* DynamicBlurView.framework */,
 				A1D8AC1F22012B22007648DB /* IQKeyboardManagerSwift.framework */,
-				3F28BBB7265C7170008C7833 /* Mockingjay.framework */,
 				A1D8AC2122012B22007648DB /* ObjectMapper.framework */,
+				3FE641E52B9AAF74003CFE60 /* OHHTTPStubs.framework */,
 				A1081C0C21FFF94500BF80A8 /* Pods_SaintsXCTF.framework */,
 				A1E0C7EC233989A30026841B /* Pods_SaintsXCTFTests.framework */,
 				3F28BBB9265C7170008C7833 /* Pods_SaintsXCTFUITests.framework */,
 				A1D8AC2322012B22007648DB /* PopupDialog.framework */,
 				3F28BC0A265DCC5F008C7833 /* Swifter.framework */,
-				3F28BBBB265C7170008C7833 /* URITemplate.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -576,7 +568,7 @@
 				A1D53DED1E8B647100842177 /* APIClient.swift */,
 				3FC8B6EF262E5ABF00FFAB08 /* AuthClient.swift */,
 				3FC8B702262E5C8D00FFAB08 /* FnClient.swift */,
-				3FC8B7202634A7B300FFAB08 /* Environment.swift */,
+				3FC8B7202634A7B300FFAB08 /* Env.swift */,
 				3FC8B7322638D61B00FFAB08 /* UassetClient.swift */,
 			);
 			name = APIClient;
@@ -803,25 +795,11 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		3F28BBB7265C7170008C7833 /* Mockingjay.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Mockingjay.framework;
-			remoteRef = 3F28BBB6265C7170008C7833 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		3F28BBB9265C7170008C7833 /* Pods_SaintsXCTFUITests.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = Pods_SaintsXCTFUITests.framework;
 			remoteRef = 3F28BBB8265C7170008C7833 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		3F28BBBB265C7170008C7833 /* URITemplate.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = URITemplate.framework;
-			remoteRef = 3F28BBBA265C7170008C7833 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		3F28BC0A265DCC5F008C7833 /* Swifter.framework */ = {
@@ -843,6 +821,13 @@
 			fileType = wrapper.cfbundle;
 			path = DGCharts.bundle;
 			remoteRef = 3FE641D02B99F306003CFE60 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		3FE641E52B9AAF74003CFE60 /* OHHTTPStubs.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = OHHTTPStubs.framework;
+			remoteRef = 3FE641E42B9AAF74003CFE60 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		A1081C0C21FFF94500BF80A8 /* Pods_SaintsXCTF.framework */ = {
@@ -1109,7 +1094,7 @@
 				A19DED591F6CC79500E6C9DA /* Utils.swift in Sources */,
 				3F633E8726D87B63009F05AC /* CreateExerciseLogViewController.swift in Sources */,
 				A18968291F7B44150073A73B /* DetailsViewController.swift in Sources */,
-				3FC8B7212634A7B400FFAB08 /* Environment.swift in Sources */,
+				3FC8B7212634A7B400FFAB08 /* Env.swift in Sources */,
 				A1B458961F11AC0800EDCF80 /* UITextFieldExt.swift in Sources */,
 				3F597AA926E6A4D500B35715 /* CreateExerciseLog.swift in Sources */,
 				A11AB8B81F9060850098AE8E /* MemberViewController.swift in Sources */,
