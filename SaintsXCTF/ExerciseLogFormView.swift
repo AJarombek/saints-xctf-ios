@@ -46,14 +46,14 @@ struct ExerciseLogFormView: View {
             HStack {
                 Text(Constants.getFeelDescription(Int(log.feel) - 1))
                     .font(.subheadline)
-                    .foregroundColor(Color(UIColor(0x737373)))
+                    .foregroundColor(Color(ColorSet.tip.rawValue))
             }
             .frame(minWidth: 0, maxWidth: .infinity, alignment: .trailing)
             
             VStack(alignment: .leading) {
                 Text("Exercise Name*")
                     .font(.subheadline)
-                    .foregroundColor(Color(UIColor(Constants.spotPaletteBrown)))
+                    .foregroundColor(Color(ColorSet.brown.rawValue))
                     .bold()
                 
                 VStack(alignment: .leading) {
@@ -67,9 +67,9 @@ struct ExerciseLogFormView: View {
                     .accessibility(label: Text("Name Field"))
                     .autocapitalization(.none)
                     .disableAutocorrection(true)
-                    .background(Color(UIColor.white))
+                    .background(Color(ColorSet.white.rawValue))
                     .border(
-                        Color(UIColor(Constants.spotPaletteCream)),
+                        Color(ColorSet.cream.rawValue),
                         width: form.isEditingName ? 1 : 0
                     )
                     .border(
@@ -97,7 +97,7 @@ struct ExerciseLogFormView: View {
                 VStack(alignment: .leading) {
                     Text("Location")
                         .font(.subheadline)
-                        .foregroundColor(Color(UIColor(Constants.spotPaletteBrown)))
+                        .foregroundColor(Color(ColorSet.brown.rawValue))
                         .bold()
                     
                     TextField("", text: $log.location) { isEditing in
@@ -111,7 +111,7 @@ struct ExerciseLogFormView: View {
                     .disableAutocorrection(true)
                     .background(Color(UIColor.white))
                     .border(
-                        Color(UIColor(Constants.spotPaletteCream)),
+                        Color(ColorSet.cream.rawValue),
                         width: form.isEditingLocation ? 1 : 0
                     )
                     .frame(minHeight: 30)
@@ -120,7 +120,7 @@ struct ExerciseLogFormView: View {
                 VStack(alignment: .leading) {
                     Text("Date*")
                         .font(.subheadline)
-                        .foregroundColor(Color(UIColor(Constants.spotPaletteBrown)))
+                        .foregroundColor(Color(ColorSet.brown.rawValue))
                         .bold()
                         .padding(.leading, 8)
                     
@@ -144,7 +144,7 @@ struct ExerciseLogFormView: View {
                 VStack(alignment: .leading) {
                     Text("Exercise Type")
                         .font(.subheadline)
-                        .foregroundColor(Color(UIColor(Constants.spotPaletteBrown)))
+                        .foregroundColor(Color(ColorSet.brown.rawValue))
                         .bold()
                     
                     Picker(
@@ -170,7 +170,7 @@ struct ExerciseLogFormView: View {
                 VStack(alignment: .leading) {
                     Text("Distance")
                         .font(.subheadline)
-                        .foregroundColor(Color(UIColor(Constants.spotPaletteBrown)))
+                        .foregroundColor(Color(ColorSet.brown.rawValue))
                         .bold()
                     
                     HStack {
@@ -187,7 +187,7 @@ struct ExerciseLogFormView: View {
                         .keyboardType(.numbersAndPunctuation)
                         .background(Color(UIColor.white))
                         .border(
-                            Color(UIColor(Constants.spotPaletteCream)),
+                            Color(ColorSet.cream.rawValue),
                             width: form.isEditingDistance ? 1 : 0
                         )
                         .border(
@@ -227,7 +227,7 @@ struct ExerciseLogFormView: View {
                 VStack(alignment: .leading) {
                     Text("Time")
                         .font(.subheadline)
-                        .foregroundColor(Color(UIColor(Constants.spotPaletteBrown)))
+                        .foregroundColor(Color(ColorSet.brown.rawValue))
                         .bold()
                     
                     TextField("", text: $form.displayedTime) { isEditing in
@@ -245,7 +245,7 @@ struct ExerciseLogFormView: View {
                     .keyboardType(.numbersAndPunctuation)
                     .background(Color(UIColor.white))
                     .border(
-                        Color(UIColor(Constants.spotPaletteCream)),
+                        Color(ColorSet.cream.rawValue),
                         width: form.isEditingTime ? 1 : 0
                     )
                     .border(
@@ -273,7 +273,7 @@ struct ExerciseLogFormView: View {
                 VStack(alignment: .leading) {
                     Text("Feel")
                         .font(.subheadline)
-                        .foregroundColor(Color(UIColor(Constants.spotPaletteBrown)))
+                        .foregroundColor(Color(ColorSet.brown.rawValue))
                         .bold()
                     
                     Slider(
@@ -294,7 +294,7 @@ struct ExerciseLogFormView: View {
                 VStack(alignment: .leading) {
                     Text("Description")
                         .font(.subheadline)
-                        .foregroundColor(Color(UIColor(Constants.spotPaletteBrown)))
+                        .foregroundColor(Color(ColorSet.brown.rawValue))
                         .bold()
                     
                     TextField("", text: $log.description) { isEditing in
@@ -308,7 +308,7 @@ struct ExerciseLogFormView: View {
                     .disableAutocorrection(true)
                     .background(Color(UIColor.white))
                     .border(
-                        Color(UIColor(Constants.spotPaletteCream)),
+                        Color(ColorSet.cream.rawValue),
                         width: form.isEditingDescription ? 1 : 0
                     )
                     .frame(minHeight: 30)

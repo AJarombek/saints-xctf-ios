@@ -45,6 +45,7 @@
 		3FC8B725263611B300FFAB08 /* FnResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC8B724263611B300FFAB08 /* FnResult.swift */; };
 		3FC8B72F26362F2600FFAB08 /* AdminViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC8B72E26362F2600FFAB08 /* AdminViewController.swift */; };
 		3FC8B7332638D61B00FFAB08 /* UassetClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC8B7322638D61B00FFAB08 /* UassetClient.swift */; };
+		3FE641E72B9D4741003CFE60 /* ColorSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE641E62B9D4741003CFE60 /* ColorSet.swift */; };
 		A1015A371EEDC0EA00A2358E /* ActivationCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1015A361EEDC0EA00A2358E /* ActivationCode.swift */; };
 		A1015A391EEDC1CF00A2358E /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1015A381EEDC1CF00A2358E /* Message.swift */; };
 		A1015A3B1EEDC2B800A2358E /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1015A3A1EEDC2B800A2358E /* Notification.swift */; };
@@ -266,6 +267,7 @@
 		3FC8B724263611B300FFAB08 /* FnResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FnResult.swift; sourceTree = "<group>"; };
 		3FC8B72E26362F2600FFAB08 /* AdminViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminViewController.swift; sourceTree = "<group>"; };
 		3FC8B7322638D61B00FFAB08 /* UassetClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UassetClient.swift; sourceTree = "<group>"; };
+		3FE641E62B9D4741003CFE60 /* ColorSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSet.swift; sourceTree = "<group>"; };
 		53C2ABB03D67B933FC7E9AB3 /* Pods_SaintsXCTFUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SaintsXCTFUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		561542FDA2D02A364EF4A8AA /* Pods-SaintsXCTF.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SaintsXCTF.debug.xcconfig"; path = "Target Support Files/Pods-SaintsXCTF/Pods-SaintsXCTF.debug.xcconfig"; sourceTree = "<group>"; };
 		5673D16367E06BD22AB1191C /* Pods-SaintsXCTFUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SaintsXCTFUITests.release.xcconfig"; path = "Target Support Files/Pods-SaintsXCTFUITests/Pods-SaintsXCTFUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -421,6 +423,7 @@
 				3F633E8B26D9B0D7009F05AC /* ExerciseType.swift */,
 				3F633E9126DAD189009F05AC /* Metric.swift */,
 				3F4B88B926DC71F4009B8CD9 /* InputStatus.swift */,
+				3FE641E62B9D4741003CFE60 /* ColorSet.swift */,
 			);
 			name = Enums;
 			sourceTree = "<group>";
@@ -1072,6 +1075,7 @@
 				A15BA1391E8AF61D00B9796B /* AppDelegate.swift in Sources */,
 				A1D53DF01E8B648400842177 /* APIRequest.swift in Sources */,
 				A15E622E1F3F97D700AC9EF1 /* ProfileViewController.swift in Sources */,
+				3FE641E72B9D4741003CFE60 /* ColorSet.swift in Sources */,
 				3FC8B7332638D61B00FFAB08 /* UassetClient.swift in Sources */,
 				A1505B9A1E8F11BC00F111DB /* Log.swift in Sources */,
 				A173CB541F81C07D009C7A28 /* LoadingView.swift in Sources */,
