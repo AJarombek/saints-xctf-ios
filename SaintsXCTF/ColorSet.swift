@@ -10,6 +10,7 @@ import Foundation
 
 enum ColorSet: String {
     case background = "BackgroundColor"
+    case grayBackground = "GrayBackgroundColor"
     case daryGray = "DarkGrayColor"
     case blue = "PaletteBlueColor"
     case brown = "PaletteBrownColor"

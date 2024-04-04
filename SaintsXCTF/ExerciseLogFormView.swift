@@ -109,7 +109,7 @@ struct ExerciseLogFormView: View {
                     .accessibility(label: Text("Location Field"))
                     .autocapitalization(.none)
                     .disableAutocorrection(true)
-                    .background(Color(UIColor.white))
+                    .background(Color(ColorSet.white.rawValue))
                     .border(
                         Color(ColorSet.cream.rawValue),
                         width: form.isEditingLocation ? 1 : 0
@@ -185,7 +185,7 @@ struct ExerciseLogFormView: View {
                         .autocapitalization(.none)
                         .disableAutocorrection(true)
                         .keyboardType(.numbersAndPunctuation)
-                        .background(Color(UIColor.white))
+                        .background(Color(ColorSet.white.rawValue))
                         .border(
                             Color(ColorSet.cream.rawValue),
                             width: form.isEditingDistance ? 1 : 0
@@ -243,7 +243,7 @@ struct ExerciseLogFormView: View {
                     .autocapitalization(.none)
                     .disableAutocorrection(true)
                     .keyboardType(.numbersAndPunctuation)
-                    .background(Color(UIColor.white))
+                    .background(Color(ColorSet.white.rawValue))
                     .border(
                         Color(ColorSet.cream.rawValue),
                         width: form.isEditingTime ? 1 : 0
@@ -306,7 +306,7 @@ struct ExerciseLogFormView: View {
                     .accessibility(label: Text("Description Field"))
                     .autocapitalization(.none)
                     .disableAutocorrection(true)
-                    .background(Color(UIColor.white))
+                    .background(Color(ColorSet.white.rawValue))
                     .border(
                         Color(ColorSet.cream.rawValue),
                         width: form.isEditingDescription ? 1 : 0

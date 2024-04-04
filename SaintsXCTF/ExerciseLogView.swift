@@ -21,7 +21,7 @@ struct ExerciseLogView: View {
             VStack(alignment: .leading) {
                 Text(meta.isExistingLog ? "Edit Exercise Log" : "Create Exercise Log")
                     .font(.title)
-                    .foregroundColor(Color("TextColor"))
+                    .foregroundColor(Color(ColorSet.text.rawValue))
                     .bold()
                     .alert(isPresented: $createLog.error) {
                         Alert(
