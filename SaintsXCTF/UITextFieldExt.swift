@@ -56,9 +56,15 @@ extension UITextField {
      */
     func standardStyle() {
         self.layer.borderWidth = 2
-        self.layer.borderColor = UIColor(0xCCCCCC).cgColor
         self.layer.cornerRadius = 1
-        self.backgroundColor = UIColor.white
+        
+        if self.traitCollection.userInterfaceStyle == .dark {
+            self.backgroundColor = UIColor(0x191A1A)
+            self.layer.borderColor = UIColor(0x444444).cgColor
+        } else {
+            self.backgroundColor = UIColor.white
+            self.layer.borderColor = UIColor(0xCCCCCC).cgColor
+        }
     }
     
     // This is to set a maximum length option in the storyboard

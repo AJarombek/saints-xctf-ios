@@ -55,6 +55,15 @@ class ProfileViewController: UIViewController, UIGestureRecognizerDelegate {
         profilePictureView.layer.borderColor = UIColor(0xCCCCCC).cgColor
         profilePictureView.layer.cornerRadius = 1
         
+        // TODO: Not Working
+        if self.traitCollection.userInterfaceStyle == .dark {
+            reportButton.tintColor = .white
+            editProfileButton.tintColor = .white
+            logsButton.tintColor = .white
+            monthlyButton.tintColor = .white
+            weeklyButton.tintColor = .white
+        }
+        
         // Create top borders for all the profile selections
         let logsTopBorder = createTopBorder()
         let monthlyTopBorder = createTopBorder()

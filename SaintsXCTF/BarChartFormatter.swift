@@ -22,7 +22,7 @@ extension BarChartView {
      - NSObject: Represents an Objective-C class
      
      ## Implements the following protocol:
-     - IAxisValueFormatter: Assists in formatting a graph axis
+     - AxisValueFormatter: Assists in formatting a graph axis
      */
     private class BarChartFormatter: NSObject, AxisValueFormatter {
         
