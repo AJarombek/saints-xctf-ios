@@ -44,6 +44,20 @@ class GroupListViewController: UIViewController, UIGestureRecognizerDelegate {
         
         navigationController?.navigationBar.backgroundColor = UIColor(0x990000, a: 0.9)
         
+        if self.traitCollection.userInterfaceStyle == .dark {
+            wxcButton.tintColor = .white
+            mxcButton.tintColor = .white
+            wtfButton.tintColor = .white
+            mtfButton.tintColor = .white
+            alumniButton.tintColor = .white
+        } else {
+            wxcButton.tintColor = .darkGray
+            mxcButton.tintColor = .darkGray
+            wtfButton.tintColor = .darkGray
+            mtfButton.tintColor = .darkGray
+            alumniButton.tintColor = .darkGray
+        }
+        
         // Create top borders for all the group selections
         let wxcTopBorder = CALayer()
         wxcTopBorder.frame = CGRect.init(x: -20, y: 0, width: view.frame.width + 20, height: 1)

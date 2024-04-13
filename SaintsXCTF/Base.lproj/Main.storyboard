@@ -936,7 +936,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1WD-j2-M6J">
                                         <rect key="frame" x="313" y="10" width="20" height="25"/>
-                                        <state key="normal" image="arrow.forward.circle" catalog="system"/>
+                                        <state key="normal" image="arrowshape.forward.circle" catalog="system"/>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" name="BackgroundColor"/>
@@ -971,7 +971,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vZO-Pz-hjP">
                                         <rect key="frame" x="313" y="10" width="20" height="25"/>
-                                        <state key="normal" image="arrow.forward.circle" catalog="system"/>
+                                        <state key="normal" image="arrowshape.forward.circle" catalog="system"/>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" name="BackgroundColor"/>
@@ -1006,7 +1006,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oCM-hR-2WG">
                                         <rect key="frame" x="313" y="10" width="20" height="25"/>
-                                        <state key="normal" image="arrow.forward.circle" catalog="system"/>
+                                        <state key="normal" image="arrowshape.forward.circle" catalog="system"/>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" name="BackgroundColor"/>
@@ -1041,7 +1041,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q1h-zP-Utn">
                                         <rect key="frame" x="313" y="10" width="20" height="25"/>
-                                        <state key="normal" image="arrow.forward.circle" catalog="system"/>
+                                        <state key="normal" image="arrowshape.forward.circle" catalog="system"/>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" name="BackgroundColor"/>
@@ -1076,7 +1076,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K7E-zy-uQi">
                                         <rect key="frame" x="313" y="10" width="20" height="25"/>
-                                        <state key="normal" image="arrow.forward.circle" catalog="system"/>
+                                        <state key="normal" image="arrowshape.forward.circle" catalog="system"/>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" name="BackgroundColor"/>
@@ -1198,7 +1198,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="37R-sb-Y0L">
                                         <rect key="frame" x="313" y="10" width="20" height="25"/>
-                                        <state key="normal" image="arrow.forward.circle" catalog="system"/>
+                                        <state key="normal" image="arrowshape.forward.circle" catalog="system"/>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" name="BackgroundColor"/>
@@ -1230,7 +1230,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7jr-gv-CTM">
                                         <rect key="frame" x="313" y="10" width="20" height="25"/>
-                                        <state key="normal" image="arrow.forward.circle" catalog="system"/>
+                                        <state key="normal" image="arrowshape.forward.circle" catalog="system"/>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" name="BackgroundColor"/>
@@ -1262,7 +1262,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RJm-49-L6Y">
                                         <rect key="frame" x="313" y="10" width="20" height="25"/>
-                                        <state key="normal" image="arrow.forward.circle" catalog="system"/>
+                                        <state key="normal" image="arrowshape.forward.circle" catalog="system"/>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" name="BackgroundColor"/>
@@ -1294,7 +1294,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ndi-Aq-ta7">
                                         <rect key="frame" x="313" y="10" width="20" height="25"/>
-                                        <state key="normal" image="arrow.forward.circle" catalog="system"/>
+                                        <state key="normal" image="arrowshape.forward.circle" catalog="system"/>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" name="BackgroundColor"/>
@@ -1333,15 +1333,19 @@
                     </view>
                     <connections>
                         <outlet property="adminButton" destination="Ndi-Aq-ta7" id="Fry-y0-oen"/>
+                        <outlet property="adminIcon" destination="CW3-NC-twt" id="9Jq-Zu-yMy"/>
                         <outlet property="adminView" destination="8fT-Qo-Zqp" id="j3q-Dg-zal"/>
                         <outlet property="groupDescriptionView" destination="8c0-Ms-NDr" id="akc-x0-eU8"/>
                         <outlet property="groupImageView" destination="BS5-OK-QQd" id="oda-RF-6sg"/>
                         <outlet property="groupTitleView" destination="Mj9-ii-iyv" id="j10-8M-KEK"/>
                         <outlet property="leaderboardsButton" destination="7jr-gv-CTM" id="U6O-m6-iuQ"/>
+                        <outlet property="leaderboardsIcon" destination="rEg-rl-JZ8" id="N2i-D8-juk"/>
                         <outlet property="leaderboardsView" destination="WK3-Bl-QcC" id="Eyz-Y2-GJd"/>
                         <outlet property="logsButton" destination="37R-sb-Y0L" id="Idl-qx-N9h"/>
+                        <outlet property="logsIcon" destination="81X-jE-p94" id="3IT-Bd-xcd"/>
                         <outlet property="logsView" destination="lih-vh-uln" id="VoI-FL-xSt"/>
                         <outlet property="membersButton" destination="RJm-49-L6Y" id="MCS-UW-hBv"/>
+                        <outlet property="membersIcon" destination="7cq-S9-9K8" id="0zr-wX-yTU"/>
                         <outlet property="membersView" destination="IY3-h2-Q1h" id="Mo3-Rv-exq"/>
                     </connections>
                 </viewController>
@@ -4317,7 +4321,7 @@
                                     <constraint firstItem="4q6-3H-MIh" firstAttribute="width" secondItem="geR-cl-Oog" secondAttribute="width" id="sl4-rr-HpP"/>
                                 </constraints>
                             </stackView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eYk-6R-CNc" customClass="BarChartView" customModule="Charts">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eYk-6R-CNc" customClass="BarChartView" customModule="DGCharts">
                                 <rect key="frame" x="16" y="70" width="343" height="587"/>
                                 <color key="backgroundColor" name="BackgroundColor"/>
                             </view>
@@ -4684,7 +4688,6 @@
         <segue reference="XQU-bB-hvE"/>
     </inferredMetricsTieBreakers>
     <resources>
-        <image name="arrow.forward.circle" catalog="system" width="128" height="123"/>
         <image name="arrowshape.forward.circle" catalog="system" width="128" height="123"/>
         <image name="calendar" catalog="system" width="128" height="107"/>
         <image name="chart.bar.xaxis" catalog="system" width="128" height="97"/>

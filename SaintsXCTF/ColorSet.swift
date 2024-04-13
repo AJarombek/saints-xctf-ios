@@ -20,4 +20,5 @@ enum ColorSet: String {
     case text = "TextColor"
     case white = "WhiteColor"
     case alwaysDark = "AlwaysDarkColor"
+    case saintsRed = "SaintsRedColor"
 }

@@ -104,7 +104,12 @@ extension BarChartView {
      */
     func initialSetup() {
         // Set up some default chart values
-        self.backgroundColor = UIColor(0xFFFFFF)
+        if self.traitCollection.userInterfaceStyle == .dark {
+            self.backgroundColor = UIColor(0x1E1E1E)
+        } else {
+            self.backgroundColor = UIColor(0xFFFFFF)
+        }
+        
         self.chartDescription.text = ""
         
         // Setup the axis

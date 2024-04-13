@@ -60,24 +60,30 @@ class ProfileViewController: UIViewController, UIGestureRecognizerDelegate {
         profilePictureView.layer.borderColor = UIColor(0xCCCCCC).cgColor
         profilePictureView.layer.cornerRadius = 1
         
-        reportIcon.tintColor = UIColor(0x990000)
-        editProfileIcon.tintColor = UIColor(0x990000)
-        logsIcon.tintColor = UIColor(0x990000)
-        monthlyIcon.tintColor = UIColor(0x990000)
-        weeklyIcon.tintColor = UIColor(0x990000)
-        
         if self.traitCollection.userInterfaceStyle == .dark {
             reportButton.tintColor = .white
             editProfileButton.tintColor = .white
             logsButton.tintColor = .white
             monthlyButton.tintColor = .white
             weeklyButton.tintColor = .white
+            
+            reportIcon.tintColor = UIColor(0xE60000)
+            editProfileIcon.tintColor = UIColor(0xE60000)
+            logsIcon.tintColor = UIColor(0xE60000)
+            monthlyIcon.tintColor = UIColor(0xE60000)
+            weeklyIcon.tintColor = UIColor(0xE60000)
         } else {
             reportButton.tintColor = .darkGray
             editProfileButton.tintColor = .darkGray
             logsButton.tintColor = .darkGray
             monthlyButton.tintColor = .darkGray
             weeklyButton.tintColor = .darkGray
+            
+            reportIcon.tintColor = UIColor(0x990000)
+            editProfileIcon.tintColor = UIColor(0x990000)
+            logsIcon.tintColor = UIColor(0x990000)
+            monthlyIcon.tintColor = UIColor(0x990000)
+            weeklyIcon.tintColor = UIColor(0x990000)
         }
         
         // Create top borders for all the profile selections
@@ -195,6 +201,10 @@ class ProfileViewController: UIViewController, UIGestureRecognizerDelegate {
         mutableContent.addAttributes(boldFontAttribute, range: NSRange(location: start, length: end))
         
         descriptionView.attributedText = mutableContent
+        
+        if self.traitCollection.userInterfaceStyle == .dark {
+            descriptionView.textColor = UIColor(0xFFFFFF)
+        }
         
         // Set the profile picture
         if let profilePictureName = user?.profilepic_name, let username = user?.username {

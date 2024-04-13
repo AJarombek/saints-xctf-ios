@@ -30,12 +30,16 @@ class GroupViewController: UIViewController, UIGestureRecognizerDelegate {
     
     @IBOutlet weak var logsView: UIView!
     @IBOutlet weak var logsButton: UIButton!
+    @IBOutlet weak var logsIcon: UIButton!
     @IBOutlet weak var leaderboardsView: UIView!
     @IBOutlet weak var leaderboardsButton: UIButton!
+    @IBOutlet weak var leaderboardsIcon: UIButton!
     @IBOutlet weak var membersView: UIView!
     @IBOutlet weak var membersButton: UIButton!
+    @IBOutlet weak var membersIcon: UIButton!
     @IBOutlet weak var adminView: UIView!
     @IBOutlet weak var adminButton: UIButton!
+    @IBOutlet weak var adminIcon: UIButton!
     
     var group: Group? = nil
     var groupname = ""
@@ -56,6 +60,28 @@ class GroupViewController: UIViewController, UIGestureRecognizerDelegate {
         
         navigationItem.backBarButtonItem = UIBarButtonItem(title: " ", style:
             UIBarButtonItem.Style.plain, target: nil, action: nil)
+        
+        if self.traitCollection.userInterfaceStyle == .dark {
+            logsButton.tintColor = .white
+            leaderboardsButton.tintColor = .white
+            membersButton.tintColor = .white
+            adminButton.tintColor = .white
+            
+            logsIcon.tintColor = UIColor(0xE60000)
+            leaderboardsIcon.tintColor = UIColor(0xE60000)
+            membersIcon.tintColor = UIColor(0xE60000)
+            adminIcon.tintColor = UIColor(0xE60000)
+        } else {
+            logsButton.tintColor = .darkGray
+            leaderboardsButton.tintColor = .darkGray
+            membersButton.tintColor = .darkGray
+            adminButton.tintColor = .darkGray
+            
+            logsIcon.tintColor = UIColor(0x990000)
+            leaderboardsIcon.tintColor = UIColor(0x990000)
+            membersIcon.tintColor = UIColor(0x990000)
+            adminIcon.tintColor = UIColor(0x990000)
+        }
         
         // Hide all the views until we know which ones to show
         logsView.isHidden = true
@@ -171,9 +197,11 @@ class GroupViewController: UIViewController, UIGestureRecognizerDelegate {
                 DispatchQueue.global().async {
                     let data = try? Data(contentsOf: url!)
                     
-                    DispatchQueue.main.async {
-                        // Display the profile picture image
-                        self.groupImageView.image = UIImage(data: data!)
+                    if data != nil {
+                        DispatchQueue.main.async {
+                            // Display the group picture image
+                            self.groupImageView.image = UIImage(data: data!)
+                        }
                     }
                 }
             }
