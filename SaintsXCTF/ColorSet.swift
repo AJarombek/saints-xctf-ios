@@ -16,6 +16,8 @@ enum ColorSet: String {
     case brown = "PaletteBrownColor"
     case cream = "PaletteCreamColor"
     case tip = "TipColor"
+    case darkTip = "DarkTipColor"
     case text = "TextColor"
     case white = "WhiteColor"
+    case alwaysDark = "AlwaysDarkColor"
 }
