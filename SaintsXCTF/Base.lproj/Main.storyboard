@@ -21,12 +21,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sxctf" translatesAutoresizingMaskIntoConstraints="NO" id="2zb-xz-JVE">
-                                <rect key="frame" x="123" y="283.5" width="129.5" height="100"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="xctf_logo_large" translatesAutoresizingMaskIntoConstraints="NO" id="2zb-xz-JVE">
+                                <rect key="frame" x="132.5" y="283.5" width="110" height="100"/>
                                 <color key="backgroundColor" name="BackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="3r7-m5-M4S"/>
-                                    <constraint firstAttribute="width" constant="129.5" id="Eep-uu-JCK"/>
+                                    <constraint firstAttribute="width" constant="110" id="Eep-uu-JCK"/>
                                 </constraints>
                             </imageView>
                         </subviews>
@@ -897,7 +897,7 @@
                             <constraint firstItem="5dm-F0-Tya" firstAttribute="top" secondItem="EbE-I5-ihT" secondAttribute="bottom" constant="-2.5" id="v9M-be-n8K"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Sign Out" image="exit" id="9wg-KD-D3W"/>
+                    <tabBarItem key="tabBarItem" title="Sign Out" image="rectangle.portrait.and.arrow.forward" catalog="system" id="9wg-KD-D3W"/>
                     <connections>
                         <outlet property="signOutSwitch" destination="5dm-F0-Tya" id="oKu-J9-A5s"/>
                     </connections>
@@ -935,8 +935,8 @@
                                         <state key="normal" image="xctf_logo_large"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1WD-j2-M6J">
-                                        <rect key="frame" x="309" y="10" width="24" height="25"/>
-                                        <state key="normal" image="forward"/>
+                                        <rect key="frame" x="313" y="10" width="20" height="25"/>
+                                        <state key="normal" image="arrow.forward.circle" catalog="system"/>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" name="BackgroundColor"/>
@@ -970,8 +970,8 @@
                                         <state key="normal" image="xctf_logo_large"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vZO-Pz-hjP">
-                                        <rect key="frame" x="309" y="10" width="24" height="25"/>
-                                        <state key="normal" image="forward"/>
+                                        <rect key="frame" x="313" y="10" width="20" height="25"/>
+                                        <state key="normal" image="arrow.forward.circle" catalog="system"/>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" name="BackgroundColor"/>
@@ -1005,8 +1005,8 @@
                                         <state key="normal" image="xctf_logo_large"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oCM-hR-2WG">
-                                        <rect key="frame" x="309" y="10" width="24" height="25"/>
-                                        <state key="normal" image="forward"/>
+                                        <rect key="frame" x="313" y="10" width="20" height="25"/>
+                                        <state key="normal" image="arrow.forward.circle" catalog="system"/>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" name="BackgroundColor"/>
@@ -1040,8 +1040,8 @@
                                         <state key="normal" image="xctf_logo_large"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q1h-zP-Utn">
-                                        <rect key="frame" x="309" y="10" width="24" height="25"/>
-                                        <state key="normal" image="forward"/>
+                                        <rect key="frame" x="313" y="10" width="20" height="25"/>
+                                        <state key="normal" image="arrow.forward.circle" catalog="system"/>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" name="BackgroundColor"/>
@@ -1075,8 +1075,8 @@
                                         <state key="normal" image="xctf_logo_large"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K7E-zy-uQi">
-                                        <rect key="frame" x="309" y="10" width="24" height="25"/>
-                                        <state key="normal" image="forward"/>
+                                        <rect key="frame" x="313" y="10" width="20" height="25"/>
+                                        <state key="normal" image="arrow.forward.circle" catalog="system"/>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" name="BackgroundColor"/>
@@ -1187,18 +1187,18 @@
                                 <rect key="frame" x="16" y="235" width="343" height="45"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Logs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PW3-rX-RNd">
-                                        <rect key="frame" x="54" y="5" width="37" height="35"/>
+                                        <rect key="frame" x="49.5" y="5" width="37" height="35"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="81X-jE-p94">
-                                        <rect key="frame" x="10" y="5" width="24" height="35"/>
-                                        <state key="normal" image="logs"/>
+                                        <rect key="frame" x="10" y="5" width="19.5" height="35"/>
+                                        <state key="normal" image="figure.run.square.stack" catalog="system"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="37R-sb-Y0L">
-                                        <rect key="frame" x="309" y="10" width="24" height="25"/>
-                                        <state key="normal" image="forward"/>
+                                        <rect key="frame" x="313" y="10" width="20" height="25"/>
+                                        <state key="normal" image="arrow.forward.circle" catalog="system"/>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" name="BackgroundColor"/>
@@ -1219,18 +1219,18 @@
                                 <rect key="frame" x="16" y="280" width="343" height="45"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Leaderboards" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gb0-NX-XkQ">
-                                        <rect key="frame" x="54" y="5" width="106" height="35"/>
+                                        <rect key="frame" x="51" y="5" width="106" height="35"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rEg-rl-JZ8">
-                                        <rect key="frame" x="10" y="5" width="24" height="35"/>
-                                        <state key="normal" image="list"/>
+                                        <rect key="frame" x="10" y="5" width="21" height="35"/>
+                                        <state key="normal" image="list.number.rtl" catalog="system"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7jr-gv-CTM">
-                                        <rect key="frame" x="309" y="10" width="24" height="25"/>
-                                        <state key="normal" image="forward"/>
+                                        <rect key="frame" x="313" y="10" width="20" height="25"/>
+                                        <state key="normal" image="arrow.forward.circle" catalog="system"/>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" name="BackgroundColor"/>
@@ -1251,18 +1251,18 @@
                                 <rect key="frame" x="16" y="325" width="343" height="45"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Members" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oRs-kz-Y2M">
-                                        <rect key="frame" x="54" y="5" width="72" height="35"/>
+                                        <rect key="frame" x="57" y="5" width="72" height="35"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7cq-S9-9K8">
-                                        <rect key="frame" x="10" y="5" width="24" height="35"/>
-                                        <state key="normal" image="group"/>
+                                        <rect key="frame" x="10" y="5" width="27" height="35"/>
+                                        <state key="normal" image="person.2.fill" catalog="system"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RJm-49-L6Y">
-                                        <rect key="frame" x="309" y="10" width="24" height="25"/>
-                                        <state key="normal" image="forward"/>
+                                        <rect key="frame" x="313" y="10" width="20" height="25"/>
+                                        <state key="normal" image="arrow.forward.circle" catalog="system"/>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" name="BackgroundColor"/>
@@ -1290,11 +1290,11 @@
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CW3-NC-twt">
                                         <rect key="frame" x="10" y="5" width="24" height="35"/>
-                                        <state key="normal" image="admin"/>
+                                        <state key="normal" image="wrench.and.screwdriver.fill" catalog="system"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ndi-Aq-ta7">
-                                        <rect key="frame" x="309" y="10" width="24" height="25"/>
-                                        <state key="normal" image="forward"/>
+                                        <rect key="frame" x="313" y="10" width="20" height="25"/>
+                                        <state key="normal" image="arrow.forward.circle" catalog="system"/>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" name="BackgroundColor"/>
@@ -1477,18 +1477,18 @@
                                 <rect key="frame" x="16" y="245" width="343" height="45"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Logs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="75s-IL-8Wg">
-                                        <rect key="frame" x="54" y="5" width="37" height="35"/>
+                                        <rect key="frame" x="48" y="5" width="37" height="35"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U5s-Ht-0kP">
-                                        <rect key="frame" x="10" y="5" width="24" height="35"/>
-                                        <state key="normal" image="logs"/>
+                                        <rect key="frame" x="10" y="5" width="18" height="35"/>
+                                        <state key="normal" image="doc.plaintext" catalog="system"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C8r-Fe-50v">
-                                        <rect key="frame" x="309" y="10" width="24" height="25"/>
-                                        <state key="normal" image="forward"/>
+                                        <rect key="frame" x="313" y="10" width="20" height="25"/>
+                                        <state key="normal" image="arrowshape.forward.circle" catalog="system"/>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" name="BackgroundColor"/>
@@ -1512,18 +1512,18 @@
                                 <rect key="frame" x="16" y="290" width="343" height="45"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Monthly Calendar" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R7z-1x-grQ">
-                                        <rect key="frame" x="54" y="5" width="135" height="35"/>
+                                        <rect key="frame" x="51" y="5" width="135" height="35"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RiL-9x-41n">
-                                        <rect key="frame" x="10" y="5" width="24" height="35"/>
-                                        <state key="normal" image="calendar"/>
+                                        <rect key="frame" x="10" y="5" width="21" height="35"/>
+                                        <state key="normal" image="calendar" catalog="system"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gto-YN-Zzh">
-                                        <rect key="frame" x="309" y="10" width="24" height="25"/>
-                                        <state key="normal" image="forward"/>
+                                        <rect key="frame" x="313" y="10" width="20" height="25"/>
+                                        <state key="normal" image="arrowshape.forward.circle" catalog="system"/>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" name="BackgroundColor"/>
@@ -1547,18 +1547,18 @@
                                 <rect key="frame" x="16" y="335" width="343" height="45"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weekly Graph" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iGC-uT-Pmz">
-                                        <rect key="frame" x="54" y="5" width="107" height="35"/>
+                                        <rect key="frame" x="53" y="5" width="107" height="35"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6rq-NH-NDa">
-                                        <rect key="frame" x="10" y="5" width="24" height="35"/>
-                                        <state key="normal" image="graph"/>
+                                        <rect key="frame" x="10" y="5" width="23" height="35"/>
+                                        <state key="normal" image="chart.bar.xaxis" catalog="system"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eC7-ij-rax">
-                                        <rect key="frame" x="309" y="10" width="24" height="25"/>
-                                        <state key="normal" image="forward"/>
+                                        <rect key="frame" x="313" y="10" width="20" height="25"/>
+                                        <state key="normal" image="arrowshape.forward.circle" catalog="system"/>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" name="BackgroundColor"/>
@@ -1582,18 +1582,18 @@
                                 <rect key="frame" x="16" y="380" width="343" height="45"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit Profile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SxJ-A4-9EW">
-                                        <rect key="frame" x="54" y="5" width="82" height="35"/>
+                                        <rect key="frame" x="50.5" y="5" width="82" height="35"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RFA-nT-mhn">
-                                        <rect key="frame" x="10" y="5" width="24" height="35"/>
-                                        <state key="normal" image="edit"/>
+                                        <rect key="frame" x="10" y="5" width="20.5" height="35"/>
+                                        <state key="normal" image="gearshape.fill" catalog="system"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bxk-9j-yQz">
-                                        <rect key="frame" x="309" y="10" width="24" height="25"/>
-                                        <state key="normal" image="forward"/>
+                                        <rect key="frame" x="313" y="10" width="20" height="25"/>
+                                        <state key="normal" image="arrowshape.forward.circle" catalog="system"/>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" name="BackgroundColor"/>
@@ -1624,11 +1624,11 @@
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Em-vy-fof">
                                         <rect key="frame" x="10" y="5" width="24" height="35"/>
-                                        <state key="normal" image="messages"/>
+                                        <state key="normal" image="envelope.open.fill" catalog="system"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w2I-pV-o6U">
-                                        <rect key="frame" x="309" y="10" width="24" height="25"/>
-                                        <state key="normal" image="forward"/>
+                                        <rect key="frame" x="313" y="10" width="20" height="25"/>
+                                        <state key="normal" image="arrowshape.forward.circle" catalog="system"/>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" name="BackgroundColor"/>
@@ -1677,17 +1677,22 @@
                     <connections>
                         <outlet property="descriptionView" destination="jLY-sZ-oT6" id="7Hm-jR-Czy"/>
                         <outlet property="editProfileButton" destination="Bxk-9j-yQz" id="Fct-UL-XDa"/>
+                        <outlet property="editProfileIcon" destination="RFA-nT-mhn" id="ekn-Tu-HNV"/>
                         <outlet property="editView" destination="8TG-zC-SGs" id="0ZO-22-oJE"/>
                         <outlet property="logsButton" destination="C8r-Fe-50v" id="YUa-m2-XJA"/>
+                        <outlet property="logsIcon" destination="U5s-Ht-0kP" id="vEy-5w-Cyg"/>
                         <outlet property="logsView" destination="yFv-rs-N6U" id="e6x-fK-OCD"/>
                         <outlet property="monthlyButton" destination="gto-YN-Zzh" id="UU0-vC-RDX"/>
+                        <outlet property="monthlyIcon" destination="RiL-9x-41n" id="xi7-lH-MdO"/>
                         <outlet property="monthlyView" destination="Zog-3Z-cCv" id="ADC-zk-gr0"/>
                         <outlet property="nameLabel" destination="9aa-fr-SRy" id="RwV-1r-UGb"/>
                         <outlet property="profilePictureView" destination="iKi-Zj-3zY" id="IRh-UR-S0Y"/>
                         <outlet property="reportButton" destination="w2I-pV-o6U" id="Gt3-mi-M5x"/>
+                        <outlet property="reportIcon" destination="2Em-vy-fof" id="1zY-nY-dfi"/>
                         <outlet property="reportView" destination="yS5-dG-UsB" id="25Y-gg-evK"/>
                         <outlet property="usernameLabel" destination="4gk-HN-KB6" id="VYc-8k-dEi"/>
                         <outlet property="weeklyButton" destination="eC7-ij-rax" id="niu-9T-7Mx"/>
+                        <outlet property="weeklyIcon" destination="6rq-NH-NDa" id="VQt-Ft-VrU"/>
                         <outlet property="weeklyView" destination="FVS-2T-VNq" id="7dg-B9-l9b"/>
                     </connections>
                 </viewController>
@@ -1711,18 +1716,18 @@
                                 <rect key="frame" x="16" y="30" width="343" height="45"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q34-bY-qNn">
-                                        <rect key="frame" x="54" y="5" width="52" height="35"/>
+                                        <rect key="frame" x="50" y="5" width="52" height="35"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f4I-XF-QVE">
-                                        <rect key="frame" x="10" y="5" width="24" height="35"/>
-                                        <state key="normal" image="edit"/>
+                                        <rect key="frame" x="10" y="5" width="20" height="35"/>
+                                        <state key="normal" image="person.crop.circle" catalog="system"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ggj-hi-jaf">
-                                        <rect key="frame" x="309" y="10" width="24" height="25"/>
-                                        <state key="normal" image="forward"/>
+                                        <rect key="frame" x="313" y="10" width="20" height="25"/>
+                                        <state key="normal" image="arrowshape.forward.circle" catalog="system"/>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" name="BackgroundColor"/>
@@ -1750,11 +1755,11 @@
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Y7-dU-VMJ">
                                         <rect key="frame" x="10" y="5" width="24" height="35"/>
-                                        <state key="normal" image="photo"/>
+                                        <state key="normal" image="photo" catalog="system"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5NW-D2-eDr">
-                                        <rect key="frame" x="309" y="10" width="24" height="25"/>
-                                        <state key="normal" image="forward"/>
+                                        <rect key="frame" x="313" y="10" width="20" height="25"/>
+                                        <state key="normal" image="arrowshape.forward.circle" catalog="system"/>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" name="BackgroundColor"/>
@@ -1775,18 +1780,18 @@
                                 <rect key="frame" x="16" y="120" width="343" height="45"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Groups" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5So-iW-Z84">
-                                        <rect key="frame" x="54" y="5" width="56" height="35"/>
+                                        <rect key="frame" x="57" y="5" width="56" height="35"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gcg-CR-Epm">
-                                        <rect key="frame" x="10" y="5" width="24" height="35"/>
-                                        <state key="normal" image="group"/>
+                                        <rect key="frame" x="10" y="5" width="27" height="35"/>
+                                        <state key="normal" image="person.2.fill" catalog="system"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aSx-5e-e0n">
-                                        <rect key="frame" x="309" y="10" width="24" height="25"/>
-                                        <state key="normal" image="forward"/>
+                                        <rect key="frame" x="313" y="10" width="20" height="25"/>
+                                        <state key="normal" image="arrowshape.forward.circle" catalog="system"/>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" name="BackgroundColor"/>
@@ -2095,7 +2100,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="New Log" image="edit" selectedImage="edit" id="fCR-ZA-FUG"/>
+                    <tabBarItem key="tabBarItem" title="New Log" image="plus.circle.fill" catalog="system" selectedImage="plus.circle.fill" id="fCR-ZA-FUG"/>
                     <connections>
                         <outlet property="container" destination="2Db-aV-pHu" id="ulg-rD-tJQ"/>
                     </connections>
@@ -2125,7 +2130,7 @@
                                             <constraint firstAttribute="width" constant="25" id="ECf-Nj-Eit"/>
                                             <constraint firstAttribute="height" constant="25" id="YzA-B5-rX3"/>
                                         </constraints>
-                                        <state key="normal" image="prev"/>
+                                        <state key="normal" image="chevron.backward" catalog="system"/>
                                         <connections>
                                             <action selector="prevMonth:" destination="AAx-EL-ES5" eventType="touchUpInside" id="fbU-nS-2eX"/>
                                         </connections>
@@ -2145,7 +2150,7 @@
                                             <constraint firstAttribute="height" constant="25" id="ei7-pn-nbV"/>
                                             <constraint firstAttribute="width" constant="25" id="kmG-v1-TUR"/>
                                         </constraints>
-                                        <state key="normal" image="forward"/>
+                                        <state key="normal" image="chevron.forward" catalog="system"/>
                                         <connections>
                                             <action selector="nextMonth:" destination="AAx-EL-ES5" eventType="touchUpInside" id="ZTS-IV-y6Z"/>
                                         </connections>
@@ -4409,7 +4414,7 @@
         <scene sceneID="Tnw-S9-4Sj">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KJM-Et-dTA" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" image="home" id="fcm-sx-7H4"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="house.fill" catalog="system" id="fcm-sx-7H4"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="ZjL-Ux-97s">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -4433,7 +4438,7 @@
         <scene sceneID="aED-Pi-oRS">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KsS-GM-skk" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" image="profile" id="fdF-ye-nFm"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="person" catalog="system" id="fdF-ye-nFm"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="GWN-t1-lEn">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -4454,7 +4459,7 @@
         <scene sceneID="2Gz-zn-rVI">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="d6A-NZ-ZeC" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Groups" image="group" id="1U0-Cu-0PK"/>
+                    <tabBarItem key="tabBarItem" title="Groups" image="person.2.fill" catalog="system" id="1U0-Cu-0PK"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="XuH-UF-b87">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -4679,22 +4684,27 @@
         <segue reference="XQU-bB-hvE"/>
     </inferredMetricsTieBreakers>
     <resources>
-        <image name="admin" width="24" height="24"/>
-        <image name="calendar" width="24" height="24"/>
+        <image name="arrow.forward.circle" catalog="system" width="128" height="123"/>
+        <image name="arrowshape.forward.circle" catalog="system" width="128" height="123"/>
+        <image name="calendar" catalog="system" width="128" height="107"/>
+        <image name="chart.bar.xaxis" catalog="system" width="128" height="97"/>
+        <image name="chevron.backward" catalog="system" width="97" height="128"/>
+        <image name="chevron.forward" catalog="system" width="97" height="128"/>
         <image name="delete" width="24" height="24"/>
+        <image name="doc.plaintext" catalog="system" width="115" height="128"/>
         <image name="edit" width="24" height="24"/>
-        <image name="exit" width="24" height="24"/>
-        <image name="forward" width="24" height="24"/>
-        <image name="graph" width="24" height="24"/>
-        <image name="group" width="24" height="24"/>
-        <image name="home" width="24" height="24"/>
-        <image name="list" width="24" height="24"/>
-        <image name="logs" width="24" height="24"/>
-        <image name="messages" width="24" height="24"/>
-        <image name="photo" width="24" height="24"/>
-        <image name="prev" width="24" height="24"/>
-        <image name="profile" width="24" height="24"/>
-        <image name="sxctf" width="792" height="612"/>
+        <image name="envelope.open.fill" catalog="system" width="128" height="112"/>
+        <image name="figure.run.square.stack" catalog="system" width="105" height="128"/>
+        <image name="gearshape.fill" catalog="system" width="128" height="123"/>
+        <image name="house.fill" catalog="system" width="128" height="104"/>
+        <image name="list.number.rtl" catalog="system" width="128" height="97"/>
+        <image name="person" catalog="system" width="128" height="121"/>
+        <image name="person.2.fill" catalog="system" width="128" height="86"/>
+        <image name="person.crop.circle" catalog="system" width="128" height="123"/>
+        <image name="photo" catalog="system" width="128" height="93"/>
+        <image name="plus.circle.fill" catalog="system" width="128" height="123"/>
+        <image name="rectangle.portrait.and.arrow.forward" catalog="system" width="128" height="108"/>
+        <image name="wrench.and.screwdriver.fill" catalog="system" width="128" height="119"/>
         <image name="xctf_logo_large" width="512" height="512"/>
         <namedColor name="AlwaysDarkColor">
             <color red="0.11764705882352941" green="0.11764705882352941" blue="0.11764705882352941" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

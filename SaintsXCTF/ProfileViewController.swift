@@ -31,6 +31,11 @@ class ProfileViewController: UIViewController, UIGestureRecognizerDelegate {
     @IBOutlet weak var logsButton: UIButton!
     @IBOutlet weak var monthlyButton: UIButton!
     @IBOutlet weak var weeklyButton: UIButton!
+    @IBOutlet weak var reportIcon: UIButton!
+    @IBOutlet weak var editProfileIcon: UIButton!
+    @IBOutlet weak var logsIcon: UIButton!
+    @IBOutlet weak var monthlyIcon: UIButton!
+    @IBOutlet weak var weeklyIcon: UIButton!
     @IBOutlet weak var reportView: UIView!
     @IBOutlet weak var editView: UIView!
     @IBOutlet weak var logsView: UIView!
@@ -55,13 +60,24 @@ class ProfileViewController: UIViewController, UIGestureRecognizerDelegate {
         profilePictureView.layer.borderColor = UIColor(0xCCCCCC).cgColor
         profilePictureView.layer.cornerRadius = 1
         
-        // TODO: Not Working
+        reportIcon.tintColor = UIColor(0x990000)
+        editProfileIcon.tintColor = UIColor(0x990000)
+        logsIcon.tintColor = UIColor(0x990000)
+        monthlyIcon.tintColor = UIColor(0x990000)
+        weeklyIcon.tintColor = UIColor(0x990000)
+        
         if self.traitCollection.userInterfaceStyle == .dark {
             reportButton.tintColor = .white
             editProfileButton.tintColor = .white
             logsButton.tintColor = .white
             monthlyButton.tintColor = .white
             weeklyButton.tintColor = .white
+        } else {
+            reportButton.tintColor = .darkGray
+            editProfileButton.tintColor = .darkGray
+            logsButton.tintColor = .darkGray
+            monthlyButton.tintColor = .darkGray
+            weeklyButton.tintColor = .darkGray
         }
         
         // Create top borders for all the profile selections
