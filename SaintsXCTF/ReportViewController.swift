@@ -45,7 +45,6 @@ class ReportViewController: UIViewController, UITextViewDelegate {
         navigationItem.backBarButtonItem = UIBarButtonItem(title: " ", style:
             UIBarButtonItem.Style.plain, target: nil, action: nil)
         
-        reportTextView.standardStyle()
         submitButton.setTitleColor(UIColor(0x990000), for: .normal)
         
         reportTextView.text = "Send report to admin <andrew@jarombek.com>"
@@ -127,7 +126,12 @@ class ReportViewController: UIViewController, UITextViewDelegate {
      */
     func resetField() {
         reportTextView.text = ""
-        reportTextView.textColor = UIColor.black
+        
+        if self.traitCollection.userInterfaceStyle == .dark {
+            reportTextView.textColor = UIColor.white
+        } else {
+            reportTextView.textColor = UIColor.black
+        }
     }
     
     /**
@@ -138,7 +142,12 @@ class ReportViewController: UIViewController, UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.textColor == UIColor.lightGray {
             textView.text = ""
-            textView.textColor = UIColor.black
+            
+            if self.traitCollection.userInterfaceStyle == .dark {
+                textView.textColor = UIColor.white
+            } else {
+                textView.textColor = UIColor.black
+            }
         }
     }
     

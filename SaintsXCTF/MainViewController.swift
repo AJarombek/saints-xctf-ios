@@ -43,11 +43,37 @@ class MainViewController: UITableViewController, UITextViewDelegate {
     var offset = 0
     
     /**
+     Programatically set the style of the tab bar controller
+     - parameters:
+     - itemAppearance: The appearance of different tab bar item layouts
+     - style: Whether the user is configured to use dark mode
+     */
+    @available(iOS 13.0, *)
+    private func setTabBarItemColors(_ itemAppearance: UITabBarItemAppearance, style: UIUserInterfaceStyle) {
+        if style == .dark {
+            itemAppearance.normal.iconColor = .lightGray
+            itemAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.lightGray]
+        } else {
+            itemAppearance.normal.iconColor = .darkGray
+            itemAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.darkGray]
+        }
+        
+        itemAppearance.selected.iconColor = UIColor(0x990000)
+        itemAppearance.selected.titleTextAttributes = [.foregroundColor: UIColor(0x990000)]
+    }
+    
+    /**
      Invoked when the MainViewController loads
      */
     override func viewDidLoad() {
         super.viewDidLoad()
         os_log("MainViewController Loaded.", log: logTag, type: .debug)
+        
+        let appearance = UITabBarAppearance()
+        setTabBarItemColors(appearance.stackedLayoutAppearance, style: self.traitCollection.userInterfaceStyle)
+        setTabBarItemColors(appearance.inlineLayoutAppearance, style: self.traitCollection.userInterfaceStyle)
+        setTabBarItemColors(appearance.compactInlineLayoutAppearance, style: self.traitCollection.userInterfaceStyle)
+        self.tabBarController?.tabBar.standardAppearance = appearance
         
         navigationController?.navigationBar.backgroundColor = UIColor(0x990000, a: 0.9)
         

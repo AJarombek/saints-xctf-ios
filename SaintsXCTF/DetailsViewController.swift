@@ -65,7 +65,6 @@ class DetailsViewController: UIViewController, UITextViewDelegate, UITextFieldDe
         classYearField.standardStyle()
         locationField.standardStyle()
         favoriteEventField.standardStyle()
-        descriptionView.standardStyle()
         
         // Set the fields to the users values
         firstNameField.text = user.first ?? ""

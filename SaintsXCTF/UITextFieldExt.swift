@@ -55,8 +55,8 @@ extension UITextField {
      Set a text field to the standard style used across the app.
      */
     func standardStyle() {
-        self.layer.borderWidth = 2
-        self.layer.cornerRadius = 1
+        self.layer.borderWidth = 0
+        self.layer.cornerRadius = 0
         
         if self.traitCollection.userInterfaceStyle == .dark {
             self.backgroundColor = UIColor(0x191A1A)

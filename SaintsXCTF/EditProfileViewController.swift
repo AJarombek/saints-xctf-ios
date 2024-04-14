@@ -29,6 +29,9 @@ class EditProfileViewController: UIViewController, UIGestureRecognizerDelegate {
     @IBOutlet weak var detailsButton: UIButton!
     @IBOutlet weak var profileButton: UIButton!
     @IBOutlet weak var groupsButton: UIButton!
+    @IBOutlet weak var detailsIcon: UIButton!
+    @IBOutlet weak var profileIcon: UIButton!
+    @IBOutlet weak var groupsIcon: UIButton!
     
     var user: User = User()
     
@@ -47,6 +50,24 @@ class EditProfileViewController: UIViewController, UIGestureRecognizerDelegate {
         
         navigationItem.backBarButtonItem = UIBarButtonItem(title: " ", style:
             UIBarButtonItem.Style.plain, target: nil, action: nil)
+        
+        if self.traitCollection.userInterfaceStyle == .dark {
+            detailsButton.tintColor = .white
+            profileButton.tintColor = .white
+            groupsButton.tintColor = .white
+            
+            detailsIcon.tintColor = UIColor(0xE60000)
+            profileIcon.tintColor = UIColor(0xE60000)
+            groupsIcon.tintColor = UIColor(0xE60000)
+        } else {
+            detailsButton.tintColor = .darkGray
+            profileButton.tintColor = .darkGray
+            groupsButton.tintColor = .darkGray
+            
+            detailsIcon.tintColor = UIColor(0x990000)
+            profileIcon.tintColor = UIColor(0x990000)
+            groupsIcon.tintColor = UIColor(0x990000)
+        }
         
         // Create top borders for all the edit profile selections
         let detailsTopBorder = CALayer()

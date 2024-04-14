@@ -43,8 +43,6 @@ class SignUpViewController: UIViewController {
      */
     override func viewDidLoad() {
         super.viewDidLoad()
-        signUpView.backgroundColor = UIColor(0xEEEEEE)
-        signUpError.backgroundColor = UIColor(0xEEEEEE)
         
         // Give the textfields the standard app style
         username.standardStyle()
