@@ -1376,13 +1376,13 @@
                                                 <constraint firstAttribute="height" constant="26" id="ji9-jJ-zvT"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
-                                            <color key="textColor" name="WhiteColor"/>
+                                            <color key="textColor" name="AlwaysDarkColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 mi" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LNl-BG-F3D">
                                             <rect key="frame" x="244.5" y="13" width="114.5" height="18"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                            <color key="textColor" name="WhiteColor"/>
+                                            <color key="textColor" name="AlwaysDarkColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -2393,14 +2393,14 @@
                                                     <constraint firstAttribute="height" constant="12" id="NNJ-Yr-1o2"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="7"/>
-                                                <color key="textColor" name="WhiteColor"/>
+                                                <color key="textColor" name="AlwaysDarkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 Miles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sPX-qh-RFW">
                                                 <rect key="frame" x="0.0" y="1" width="44.5" height="43.5"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="miles1"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                                                <color key="textColor" name="WhiteColor"/>
+                                                <color key="textColor" name="AlwaysDarkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -2428,14 +2428,14 @@
                                                     <constraint firstAttribute="height" constant="12" id="GCe-Bd-aNe"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="7"/>
-                                                <color key="textColor" name="WhiteColor"/>
+                                                <color key="textColor" name="AlwaysDarkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 Miles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sz6-lu-Vtw">
                                                 <rect key="frame" x="0.0" y="1" width="44.5" height="43.5"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="miles2"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                                                <color key="textColor" name="WhiteColor"/>
+                                                <color key="textColor" name="AlwaysDarkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -2463,14 +2463,14 @@
                                                     <constraint firstAttribute="height" constant="12" id="1HW-yK-QI7"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="7"/>
-                                                <color key="textColor" name="WhiteColor"/>
+                                                <color key="textColor" name="AlwaysDarkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 Miles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n0t-ZQ-DtU">
                                                 <rect key="frame" x="0.0" y="1" width="44" height="43.5"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="miles3"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                                                <color key="textColor" name="WhiteColor"/>
+                                                <color key="textColor" name="AlwaysDarkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -2498,14 +2498,14 @@
                                                     <constraint firstAttribute="height" constant="12" id="8p0-IQ-vHP"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="7"/>
-                                                <color key="textColor" name="WhiteColor"/>
+                                                <color key="textColor" name="AlwaysDarkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 Miles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AOE-gk-gYJ">
                                                 <rect key="frame" x="0.0" y="1" width="44.5" height="43.5"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="miles4"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                                                <color key="textColor" name="WhiteColor"/>
+                                                <color key="textColor" name="AlwaysDarkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -2533,14 +2533,14 @@
                                                     <constraint firstAttribute="height" constant="12" id="xPS-Ai-9hg"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="7"/>
-                                                <color key="textColor" name="WhiteColor"/>
+                                                <color key="textColor" name="AlwaysDarkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 Miles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vVq-UH-CAj">
                                                 <rect key="frame" x="0.0" y="1" width="44.5" height="43.5"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="miles5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                                                <color key="textColor" name="WhiteColor"/>
+                                                <color key="textColor" name="AlwaysDarkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -2566,14 +2566,14 @@
                                                     <constraint firstAttribute="height" constant="12" id="omb-Gc-idh"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="7"/>
-                                                <color key="textColor" name="WhiteColor"/>
+                                                <color key="textColor" name="AlwaysDarkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 Miles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r4z-pR-Weu">
                                                 <rect key="frame" x="0.0" y="1" width="44.5" height="43.5"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="miles6"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                                                <color key="textColor" name="WhiteColor"/>
+                                                <color key="textColor" name="AlwaysDarkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -2601,14 +2601,14 @@
                                                     <constraint firstAttribute="height" constant="12" id="Qm8-CB-BM2"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="7"/>
-                                                <color key="textColor" name="WhiteColor"/>
+                                                <color key="textColor" name="AlwaysDarkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 Miles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ffh-og-iP4">
                                                 <rect key="frame" x="0.0" y="1" width="44" height="43.5"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="miles7"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                                                <color key="textColor" name="WhiteColor"/>
+                                                <color key="textColor" name="AlwaysDarkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -2634,7 +2634,7 @@
                                                 <rect key="frame" x="0.0" y="1" width="44.5" height="43.5"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="total1"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                                                <color key="textColor" name="WhiteColor"/>
+                                                <color key="textColor" name="AlwaysDarkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -2673,14 +2673,14 @@
                                                     <constraint firstAttribute="height" constant="12" id="3GE-IB-Yc6"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="7"/>
-                                                <color key="textColor" name="WhiteColor"/>
+                                                <color key="textColor" name="AlwaysDarkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 Miles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WXM-ae-YEd">
                                                 <rect key="frame" x="0.0" y="1" width="44.5" height="43.5"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="miles8"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                                                <color key="textColor" name="WhiteColor"/>
+                                                <color key="textColor" name="AlwaysDarkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -2708,14 +2708,14 @@
                                                     <constraint firstAttribute="height" constant="12" id="uDG-bp-eBg"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="7"/>
-                                                <color key="textColor" name="WhiteColor"/>
+                                                <color key="textColor" name="AlwaysDarkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 Miles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fct-Nr-FzM">
                                                 <rect key="frame" x="0.0" y="1" width="44.5" height="43.5"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="miles9"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                                                <color key="textColor" name="WhiteColor"/>
+                                                <color key="textColor" name="AlwaysDarkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -2743,14 +2743,14 @@
                                                     <constraint firstAttribute="height" constant="12" id="6Gk-kM-v8V"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="7"/>
-                                                <color key="textColor" name="WhiteColor"/>
+                                                <color key="textColor" name="AlwaysDarkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 Miles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f2k-9I-eJx">
                                                 <rect key="frame" x="0.0" y="1" width="44" height="43.5"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="miles10"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                                                <color key="textColor" name="WhiteColor"/>
+                                                <color key="textColor" name="AlwaysDarkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -2778,14 +2778,14 @@
                                                     <constraint firstAttribute="height" constant="12" id="b0S-1S-lah"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="7"/>
-                                                <color key="textColor" name="WhiteColor"/>
+                                                <color key="textColor" name="AlwaysDarkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 Miles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m9B-7u-hJy">
                                                 <rect key="frame" x="0.0" y="1" width="44.5" height="43.5"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="miles11"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                                                <color key="textColor" name="WhiteColor"/>
+                                                <color key="textColor" name="AlwaysDarkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -2813,14 +2813,14 @@
                                                     <constraint firstAttribute="height" constant="12" id="Wwu-vH-4o0"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="7"/>
-                                                <color key="textColor" name="WhiteColor"/>
+                                                <color key="textColor" name="AlwaysDarkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 Miles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eac-n5-Ev1">
                                                 <rect key="frame" x="0.0" y="1" width="44.5" height="43.5"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="miles12"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                                                <color key="textColor" name="WhiteColor"/>
+                                                <color key="textColor" name="AlwaysDarkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -2848,14 +2848,14 @@
                                                     <constraint firstAttribute="height" constant="12" id="gB6-l2-GlA"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="7"/>
-                                                <color key="textColor" name="WhiteColor"/>
+                                                <color key="textColor" name="AlwaysDarkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 Miles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N3u-nG-2wb">
                                                 <rect key="frame" x="0.0" y="1" width="44.5" height="43.5"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="miles13"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                                                <color key="textColor" name="WhiteColor"/>
+                                                <color key="textColor" name="AlwaysDarkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -2883,14 +2883,14 @@
                                                     <constraint firstAttribute="height" constant="12" id="pit-Kc-yLZ"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="7"/>
-                                                <color key="textColor" name="WhiteColor"/>
+                                                <color key="textColor" name="AlwaysDarkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 Miles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ouo-SF-tE4">
                                                 <rect key="frame" x="0.0" y="1" width="44" height="43.5"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="miles14"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                                                <color key="textColor" name="WhiteColor"/>
+                                                <color key="textColor" name="AlwaysDarkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -2916,7 +2916,7 @@
                                                 <rect key="frame" x="0.0" y="1" width="44.5" height="43.5"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="total2"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                                                <color key="textColor" name="WhiteColor"/>
+                                                <color key="textColor" name="AlwaysDarkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -2953,14 +2953,14 @@
                                                     <constraint firstAttribute="height" constant="12" id="nGS-LT-1ga"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="7"/>
-                                                <color key="textColor" name="WhiteColor"/>
+                                                <color key="textColor" name="AlwaysDarkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 Miles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="475-9L-X2I">
                                                 <rect key="frame" x="0.0" y="1" width="44.5" height="43"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="miles15"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                                                <color key="textColor" name="WhiteColor"/>
+                                                <color key="textColor" name="AlwaysDarkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -2988,14 +2988,14 @@
                                                     <constraint firstAttribute="height" constant="12" id="tI3-t5-CDz"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="7"/>
-                                                <color key="textColor" name="WhiteColor"/>
+                                                <color key="textColor" name="AlwaysDarkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 Miles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u1H-7e-FGY">
                                                 <rect key="frame" x="0.0" y="1" width="44.5" height="43"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="miles16"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                                                <color key="textColor" name="WhiteColor"/>
+                                                <color key="textColor" name="AlwaysDarkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -3023,14 +3023,14 @@
                                                     <constraint firstAttribute="height" constant="12" id="Reh-P1-FhT"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="7"/>
-                                                <color key="textColor" name="WhiteColor"/>
+                                                <color key="textColor" name="AlwaysDarkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 Miles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H0q-FT-1TB">
                                                 <rect key="frame" x="0.0" y="1" width="44" height="43"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="miles17"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                                                <color key="textColor" name="WhiteColor"/>
+                                                <color key="textColor" name="AlwaysDarkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -3058,14 +3058,14 @@
                                                     <constraint firstAttribute="height" constant="12" id="Isd-xE-ngu"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="7"/>
-                                                <color key="textColor" name="WhiteColor"/>
+                                                <color key="textColor" name="AlwaysDarkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 Miles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C7Q-cN-g6m">
                                                 <rect key="frame" x="0.0" y="1" width="44.5" height="43"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="miles18"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                                                <color key="textColor" name="WhiteColor"/>
+                                                <color key="textColor" name="AlwaysDarkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -3093,14 +3093,14 @@
                                                     <constraint firstAttribute="height" constant="12" id="WYk-Cg-9XZ"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="7"/>
-                                                <color key="textColor" name="WhiteColor"/>
+                                                <color key="textColor" name="AlwaysDarkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 Miles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6e7-xb-4xQ">
                                                 <rect key="frame" x="0.0" y="1" width="44.5" height="43"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="miles19"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                                                <color key="textColor" name="WhiteColor"/>
+                                                <color key="textColor" name="AlwaysDarkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -3128,14 +3128,14 @@
                                                     <constraint firstAttribute="height" constant="12" id="RsB-fx-bzy"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="7"/>
-                                                <color key="textColor" name="WhiteColor"/>
+                                                <color key="textColor" name="AlwaysDarkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 Miles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fKZ-p7-shc">
                                                 <rect key="frame" x="0.0" y="1" width="44.5" height="43"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="miles20"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                                                <color key="textColor" name="WhiteColor"/>
+                                                <color key="textColor" name="AlwaysDarkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -3163,14 +3163,14 @@
                                                     <constraint firstAttribute="height" constant="12" id="Xso-ki-0v5"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="7"/>
-                                                <color key="textColor" name="WhiteColor"/>
+                                                <color key="textColor" name="AlwaysDarkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 Miles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Iu-2n-Xrb">
                                                 <rect key="frame" x="0.0" y="1" width="44" height="43"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="miles21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                                                <color key="textColor" name="WhiteColor"/>
+                                                <color key="textColor" name="AlwaysDarkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -3196,7 +3196,7 @@
                                                 <rect key="frame" x="0.0" y="1" width="44.5" height="43"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="total3"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                                                <color key="textColor" name="WhiteColor"/>
+                                                <color key="textColor" name="AlwaysDarkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -3235,14 +3235,14 @@
                                                     <constraint firstAttribute="height" constant="12" id="5of-yF-2Jj"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="7"/>
-                                                <color key="textColor" name="WhiteColor"/>
+                                                <color key="textColor" name="AlwaysDarkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 Miles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oxz-aM-SXe">
                                                 <rect key="frame" x="0.0" y="1" width="44.5" height="43.5"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="miles22"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                                                <color key="textColor" name="WhiteColor"/>
+                                                <color key="textColor" name="AlwaysDarkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -3270,14 +3270,14 @@
                                                     <constraint firstAttribute="height" constant="12" id="qVY-ya-PHX"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="7"/>
-                                                <color key="textColor" name="WhiteColor"/>
+                                                <color key="textColor" name="AlwaysDarkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 Miles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QLt-yD-GxX">
                                                 <rect key="frame" x="0.0" y="1" width="44.5" height="43.5"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="miles23"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                                                <color key="textColor" name="WhiteColor"/>
+                                                <color key="textColor" name="AlwaysDarkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -3305,14 +3305,14 @@
                                                     <constraint firstAttribute="height" constant="12" id="ZEE-9r-PRn"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="7"/>
-                                                <color key="textColor" name="WhiteColor"/>
+                                                <color key="textColor" name="AlwaysDarkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 Miles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Mn-0J-3bt">
                                                 <rect key="frame" x="0.0" y="1" width="44" height="43.5"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="miles24"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                                                <color key="textColor" name="WhiteColor"/>
+                                                <color key="textColor" name="AlwaysDarkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -3340,14 +3340,14 @@
                                                     <constraint firstAttribute="height" constant="12" id="ZtP-fg-TlM"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="7"/>
-                                                <color key="textColor" name="WhiteColor"/>
+                                                <color key="textColor" name="AlwaysDarkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 Miles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rNR-yS-rei">
                                                 <rect key="frame" x="0.0" y="1" width="44.5" height="43.5"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="miles25"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                                                <color key="textColor" name="WhiteColor"/>
+                                                <color key="textColor" name="AlwaysDarkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -3375,14 +3375,14 @@
                                                     <constraint firstAttribute="height" constant="12" id="6A0-K6-A9y"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="7"/>
-                                                <color key="textColor" name="WhiteColor"/>
+                                                <color key="textColor" name="AlwaysDarkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 Miles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xRQ-Wy-VfN">
                                                 <rect key="frame" x="0.0" y="1" width="44.5" height="43.5"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="miles26"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                                                <color key="textColor" name="WhiteColor"/>
+                                                <color key="textColor" name="AlwaysDarkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -3410,14 +3410,14 @@
                                                     <constraint firstAttribute="height" constant="12" id="ZVC-pq-lzR"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="7"/>
-                                                <color key="textColor" name="WhiteColor"/>
+                                                <color key="textColor" name="AlwaysDarkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 Miles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qYC-bE-4Ny">
                                                 <rect key="frame" x="0.0" y="1" width="44.5" height="43.5"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="miles27"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                                                <color key="textColor" name="WhiteColor"/>
+                                                <color key="textColor" name="AlwaysDarkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -3445,14 +3445,14 @@
                                                     <constraint firstAttribute="height" constant="12" id="nI0-bx-pUy"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="7"/>
-                                                <color key="textColor" name="WhiteColor"/>
+                                                <color key="textColor" name="AlwaysDarkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 Miles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oNu-gh-Yl4">
                                                 <rect key="frame" x="0.0" y="1" width="44" height="43.5"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="miles28"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                                                <color key="textColor" name="WhiteColor"/>
+                                                <color key="textColor" name="AlwaysDarkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -3478,7 +3478,7 @@
                                                 <rect key="frame" x="0.0" y="1" width="44.5" height="43.5"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="total4"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                                                <color key="textColor" name="WhiteColor"/>
+                                                <color key="textColor" name="AlwaysDarkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -3517,14 +3517,14 @@
                                                     <constraint firstAttribute="height" constant="12" id="OTM-Kp-5KX"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="7"/>
-                                                <color key="textColor" name="WhiteColor"/>
+                                                <color key="textColor" name="AlwaysDarkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 Miles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9SC-OG-0fW">
                                                 <rect key="frame" x="0.0" y="1" width="44.5" height="43.5"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="miles29"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                                                <color key="textColor" name="WhiteColor"/>
+                                                <color key="textColor" name="AlwaysDarkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -3552,14 +3552,14 @@
                                                     <constraint firstAttribute="height" constant="12" id="BWY-j3-CM7"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="7"/>
-                                                <color key="textColor" name="WhiteColor"/>
+                                                <color key="textColor" name="AlwaysDarkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 Miles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SNT-lk-CxM">
                                                 <rect key="frame" x="0.0" y="1" width="44.5" height="43.5"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="miles"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                                                <color key="textColor" name="WhiteColor"/>
+                                                <color key="textColor" name="AlwaysDarkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -3587,14 +3587,14 @@
                                                     <constraint firstAttribute="height" constant="12" id="LuA-Hy-fh9"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="7"/>
-                                                <color key="textColor" name="WhiteColor"/>
+                                                <color key="textColor" name="AlwaysDarkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 Miles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wjo-kr-Ds7">
                                                 <rect key="frame" x="0.0" y="1" width="44" height="43.5"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="miles31"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                                                <color key="textColor" name="WhiteColor"/>
+                                                <color key="textColor" name="AlwaysDarkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -3622,14 +3622,14 @@
                                                     <constraint firstAttribute="height" constant="12" id="0Zt-Zn-jXV"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="7"/>
-                                                <color key="textColor" name="WhiteColor"/>
+                                                <color key="textColor" name="AlwaysDarkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 Miles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EFE-gF-yxF">
                                                 <rect key="frame" x="0.0" y="1" width="44.5" height="43.5"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="miles32"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                                                <color key="textColor" name="WhiteColor"/>
+                                                <color key="textColor" name="AlwaysDarkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -3657,14 +3657,14 @@
                                                     <constraint firstAttribute="height" constant="12" id="CIi-Cb-Rxh"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="7"/>
-                                                <color key="textColor" name="WhiteColor"/>
+                                                <color key="textColor" name="AlwaysDarkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 Miles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NTA-qb-V0V">
                                                 <rect key="frame" x="0.0" y="1" width="44.5" height="43.5"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="miles33"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                                                <color key="textColor" name="WhiteColor"/>
+                                                <color key="textColor" name="AlwaysDarkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -3692,14 +3692,14 @@
                                                     <constraint firstAttribute="height" constant="12" id="WB0-Av-MJO"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="7"/>
-                                                <color key="textColor" name="WhiteColor"/>
+                                                <color key="textColor" name="AlwaysDarkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 Miles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TAn-7u-k6h">
                                                 <rect key="frame" x="0.0" y="1" width="44.5" height="43.5"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="miles34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                                                <color key="textColor" name="WhiteColor"/>
+                                                <color key="textColor" name="AlwaysDarkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -3727,14 +3727,14 @@
                                                     <constraint firstAttribute="height" constant="12" id="8M8-9S-PIb"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="7"/>
-                                                <color key="textColor" name="WhiteColor"/>
+                                                <color key="textColor" name="AlwaysDarkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 Miles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8sw-mN-o9T">
                                                 <rect key="frame" x="0.0" y="1" width="44" height="43.5"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="miles35"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                                                <color key="textColor" name="WhiteColor"/>
+                                                <color key="textColor" name="AlwaysDarkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -3760,7 +3760,7 @@
                                                 <rect key="frame" x="0.0" y="1" width="44.5" height="43.5"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="total5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                                                <color key="textColor" name="WhiteColor"/>
+                                                <color key="textColor" name="AlwaysDarkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -3799,14 +3799,14 @@
                                                     <constraint firstAttribute="height" constant="12" id="lnb-tH-VdR"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="7"/>
-                                                <color key="textColor" name="WhiteColor"/>
+                                                <color key="textColor" name="AlwaysDarkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 Miles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="967-If-fWA">
                                                 <rect key="frame" x="0.0" y="1" width="44.5" height="43.5"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="miles36"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                                                <color key="textColor" name="WhiteColor"/>
+                                                <color key="textColor" name="AlwaysDarkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -3834,14 +3834,14 @@
                                                     <constraint firstAttribute="height" constant="12" id="Jl1-fN-wLC"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="7"/>
-                                                <color key="textColor" name="WhiteColor"/>
+                                                <color key="textColor" name="AlwaysDarkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 Miles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cYT-ae-oYb">
                                                 <rect key="frame" x="0.0" y="1" width="44.5" height="43.5"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="miles37"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                                                <color key="textColor" name="WhiteColor"/>
+                                                <color key="textColor" name="AlwaysDarkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -3869,14 +3869,14 @@
                                                     <constraint firstAttribute="height" constant="12" id="E19-Hd-As2"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="7"/>
-                                                <color key="textColor" name="WhiteColor"/>
+                                                <color key="textColor" name="AlwaysDarkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 Miles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vLy-Cy-zWg">
                                                 <rect key="frame" x="0.0" y="1" width="44" height="43.5"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="miles38"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                                                <color key="textColor" name="WhiteColor"/>
+                                                <color key="textColor" name="AlwaysDarkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -3904,14 +3904,14 @@
                                                     <constraint firstAttribute="height" constant="12" id="sGN-cA-n0c"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="7"/>
-                                                <color key="textColor" name="WhiteColor"/>
+                                                <color key="textColor" name="AlwaysDarkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 Miles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hE3-hb-IIP">
                                                 <rect key="frame" x="0.0" y="1" width="44.5" height="43.5"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="miles39"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                                                <color key="textColor" name="WhiteColor"/>
+                                                <color key="textColor" name="AlwaysDarkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -3939,14 +3939,14 @@
                                                     <constraint firstAttribute="height" constant="12" id="YyV-T7-ODz"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="7"/>
-                                                <color key="textColor" name="WhiteColor"/>
+                                                <color key="textColor" name="AlwaysDarkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 Miles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dxO-Qe-7AD">
                                                 <rect key="frame" x="0.0" y="1" width="44.5" height="43.5"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="miles40"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                                                <color key="textColor" name="WhiteColor"/>
+                                                <color key="textColor" name="AlwaysDarkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -3974,14 +3974,14 @@
                                                     <constraint firstAttribute="height" constant="12" id="4Th-Ej-eh1"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="7"/>
-                                                <color key="textColor" name="WhiteColor"/>
+                                                <color key="textColor" name="AlwaysDarkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 Miles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EjV-ut-BgB">
                                                 <rect key="frame" x="0.0" y="1" width="44.5" height="43.5"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="miles41"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                                                <color key="textColor" name="WhiteColor"/>
+                                                <color key="textColor" name="AlwaysDarkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -4009,14 +4009,14 @@
                                                     <constraint firstAttribute="height" constant="12" id="Xu5-VF-zLf"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="7"/>
-                                                <color key="textColor" name="WhiteColor"/>
+                                                <color key="textColor" name="AlwaysDarkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 Miles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B9Z-Ge-36Z">
                                                 <rect key="frame" x="0.0" y="1" width="44" height="43.5"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="miles42"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                                                <color key="textColor" name="WhiteColor"/>
+                                                <color key="textColor" name="AlwaysDarkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -4042,7 +4042,7 @@
                                                 <rect key="frame" x="0.0" y="1" width="44.5" height="43.5"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="total6"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                                                <color key="textColor" name="WhiteColor"/>
+                                                <color key="textColor" name="AlwaysDarkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -4607,13 +4607,13 @@
                                                 <constraint firstAttribute="height" constant="26" id="Qk9-Fy-932"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
-                                            <color key="textColor" name="WhiteColor"/>
+                                            <color key="textColor" name="AlwaysDarkColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Since: Oct. 12, 2017" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vjC-Tm-pO7">
                                             <rect key="frame" x="244.5" y="13" width="114.5" height="18"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                            <color key="textColor" name="WhiteColor"/>
+                                            <color key="textColor" name="AlwaysDarkColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>

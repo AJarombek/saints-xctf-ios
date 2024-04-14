@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import BCryptSwift
 import os.log
 
 /**

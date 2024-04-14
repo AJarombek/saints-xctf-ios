@@ -8,7 +8,6 @@ use_frameworks!
 # The main iOS application
 target 'SaintsXCTF' do
   pod 'ObjectMapper', '~> 3.5.1'
-  pod 'BCryptSwift', '~> 1.1'
   pod 'PopupDialog', '~> 1.1.0'
   pod 'DGCharts', '~> 5.1.0'
   pod 'IQKeyboardManagerSwift', '~> 6.4.2'

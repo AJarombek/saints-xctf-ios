@@ -5,26 +5,29 @@
 An iOS app that goes along with my website `saintsxctf.com`.  All development is done in Swift.  
 The backend calls a REST API written in Python.
 
-There is also an Android app that was released August 2017.
-
 You can follow development of the website here: [SaintsXCTF Website GitHub](https://github.com/AJarombek/saints-xctf-web).
 
 You can follow development of the API here: [SaintsXCTF API GitHub](https://github.com/AJarombek/saints-xctf-api).
 
-You can follow development of the android app here: [SaintsXCTF Android GitHub](https://github.com/AJarombek/saints-xctf-android).
-
 ### Files
 
-| Filename                  | Description                                                                                      |
-|---------------------------|--------------------------------------------------------------------------------------------------|
-| `SaintsXCTF.xcodeproj`    | Configuration for the XCode project.                                                             |
-| `SaintsXCTF.xcworkspace`  | Configuration for the XCode workspace.                                                           |
-| `SaintsXCTF`              | Contains code for the main SaintsXCTF application.                                               |
-| `SaintsXCTFTests`         | Contains unit tests for the SaintsXCTF application.                                              |
-| `Podfile`                 | Cocoapods dependencies for the application.  Written in Ruby.                                    |
-| `pod.sh`                  | Important shell commands for working with Cocoapods.                                             |
+| Filename                 | Description                                                   |
+|--------------------------|---------------------------------------------------------------|
+| `SaintsXCTF.xcodeproj`   | Configuration for the XCode project.                          |
+| `SaintsXCTF.xcworkspace` | Configuration for the XCode workspace.                        |
+| `SaintsXCTF`             | Contains code for the main SaintsXCTF application.            |
+| `SaintsXCTFTests`        | Contains unit tests for the SaintsXCTF application.           |
+| `SaintsXCTFUITests`      | Contains UI e2e tests for the SaintsXCTF application.         |
+| `Podfile`                | Cocoapods dependencies for the application.  Written in Ruby. |
+| `pod.sh`                 | Important shell commands for working with Cocoapods.          |
 
 ### Releases
+
+**v2.2.0 - Dark Mode**
+
+> Release Date: Apr 14, 2024
+
+Dark mode for all screens in the app.  Dark mode enablement is based on the iOS system setting.
 
 **v2.1.2 - Monthly Calendar Daylight Savings Fix**
 
