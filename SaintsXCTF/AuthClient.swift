@@ -23,7 +23,7 @@ class AuthClient {
         case .development:
             return "http://dev.auth.saintsxctf.com"
         case .production:
-            return "http://auth.saintsxctf.com"
+            return "https://auth.saintsxctf.com"
         }
     }
     

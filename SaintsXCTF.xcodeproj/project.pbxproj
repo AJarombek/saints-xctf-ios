@@ -160,13 +160,6 @@
 			remoteGlobalIDString = E9103F3E55351A2C1643C8BA70A5C589;
 			remoteInfo = "Pods-SaintsXCTF";
 		};
-		A1D8AC1822012B22007648DB /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A1081BFA21FFF94500BF80A8 /* Pods.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = DFF6B66B9C9DA59F0B294FC65C131E1E;
-			remoteInfo = BCryptSwift;
-		};
 		A1D8AC1E22012B22007648DB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A1081BFA21FFF94500BF80A8 /* Pods.xcodeproj */;
@@ -461,7 +454,6 @@
 		A1081BFB21FFF94500BF80A8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A1D8AC1922012B22007648DB /* BCryptSwift.framework */,
 				3FE641CF2B99F306003CFE60 /* DGCharts.framework */,
 				3FE641D12B99F306003CFE60 /* DGCharts.bundle */,
 				A1D8AC58220137C1007648DB /* DynamicBlurView.framework */,
@@ -838,13 +830,6 @@
 			fileType = wrapper.framework;
 			path = Pods_SaintsXCTF.framework;
 			remoteRef = A1081C0B21FFF94500BF80A8 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		A1D8AC1922012B22007648DB /* BCryptSwift.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = BCryptSwift.framework;
-			remoteRef = A1D8AC1822012B22007648DB /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		A1D8AC1F22012B22007648DB /* IQKeyboardManagerSwift.framework */ = {
@@ -1378,7 +1363,7 @@
 				INFOPLIST_FILE = SaintsXCTF/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 2.2.0;
+				MARKETING_VERSION = 2.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jarombek.saintsxctf;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1403,7 +1388,7 @@
 				INFOPLIST_FILE = SaintsXCTF/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 2.2.0;
+				MARKETING_VERSION = 2.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jarombek.saintsxctf;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

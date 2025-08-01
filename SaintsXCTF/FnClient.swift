@@ -23,7 +23,7 @@ class FnClient {
         case .localEmail, .development:
             return "http://dev.fn.saintsxctf.com"
         case .production:
-            return "http://fn.saintsxctf.com"
+            return "https://fn.saintsxctf.com"
         }
     }
     

@@ -26,7 +26,7 @@ class APIClient {
         case .development:
             return "http://dev.api.saintsxctf.com"
         case .production:
-            return "http://api.saintsxctf.com"
+            return "https://api.saintsxctf.com"
         }
     }
     
